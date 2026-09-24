@@ -18,7 +18,8 @@ const LANGS = arg("--langs", "en,ar").split(",");
 const OUT = path.join(process.cwd(), "public/images/concepts");
 fs.mkdirSync(OUT, { recursive: true });
 
-const browser = await chromium.launch();
+const executablePath = fs.existsSync("/opt/pw-browsers/chromium") ? "/opt/pw-browsers/chromium" : undefined;
+const browser = await chromium.launch({ executablePath });
 
 async function shoot(url, viewport, scale, mobile) {
   const context = await browser.newContext({ viewport, deviceScaleFactor: scale, isMobile: mobile, hasTouch: mobile, reducedMotion: "reduce" });

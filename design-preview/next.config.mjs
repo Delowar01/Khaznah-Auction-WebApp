@@ -16,6 +16,9 @@ const nextConfig = {
   agentRules: false,
   experimental: {
     optimizePackageImports: ["lucide-react", "motion"],
+    // The app has two root layouts ((root) and [lang]), so unmatched URLs
+    // need a standalone 404 page (app/global-not-found.js).
+    globalNotFound: true,
   },
 };
 
