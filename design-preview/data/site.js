@@ -58,7 +58,7 @@ export const TRUST_POINTS = [
     key: "payments",
     icon: "credit-card",
     title: { en: "Secure payment", ar: "دفع آمن" },
-    text: { en: "Pay with mada, Visa, Mastercard, STC Pay or your Khazna wallet.", ar: "ادفع عبر مدى أو فيزا أو ماستركارد أو STC Pay أو محفظة خزنة." },
+    text: { en: "Pay by mada, Visa or Mastercard, or from your Khazna wallet.", ar: "ادفع عبر مدى أو فيزا أو ماستركارد، أو من محفظة خزنة." },
   },
   {
     key: "delivery",
@@ -72,7 +72,7 @@ export const HOW_IT_WORKS = [
   {
     step: 1,
     title: { en: "Create your account", ar: "أنشئ حسابك" },
-    text: { en: "Register with your mobile number and verify it in under a minute.", ar: "سجّل برقم جوالك وأكّده في أقل من دقيقة." },
+    text: { en: "Create your account with your email and confirm it with a one-time code.", ar: "أنشئ حسابك ببريدك الإلكتروني وأكّده برمز لمرة واحدة." },
   },
   {
     step: 2,
@@ -137,7 +137,7 @@ export const FOOTER_COLUMNS = [
   },
 ];
 
-export const PAYMENT_METHODS = ["mada", "VISA", "Mastercard", "STC Pay"];
+export const PAYMENT_METHODS = ["mada", "VISA", "Mastercard"];
 
 export const COMPANY_LINE = {
   en: "© 2026 Logic Gate · Khaznah Auction House · Riyadh, Kingdom of Saudi Arabia",

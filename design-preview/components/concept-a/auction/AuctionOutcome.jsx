@@ -58,7 +58,7 @@ export function UpcomingBox({ product, a, formRef }) {
   const watching = isWatched(product.slug);
   const remind = () => {
     const now = toggleWatch(product.slug);
-    toast({ tone: now ? "success" : "neutral", title: ui(now ? "addedToWatchlist" : "removedFromWatchlist"), description: now ? t(COPY.remindText) : undefined });
+    toast({ tone: now ? "success" : "neutral", title: ui(now ? "addedToWatchlist" : "removedFromWatchlist") });
   };
   return (
     <div className="rounded-card border border-line bg-surface p-6 shadow-card sm:p-7">

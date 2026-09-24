@@ -135,14 +135,21 @@ concept folders only decide how things look.
 
 - `lib/useBrowse.js` — the browse model: tab, search (debounced), categories,
   grades, item type, price range, ending-within, availability, discount, sort,
-  numbered pagination and progressive loading. It reads and writes the same URL
-  parameters as production (`?tab=auction&category=…&condition=A,B&sort=…`).
-- `lib/useAuction.js` — timed-auction behaviour mirroring the backend rules:
+  numbered pagination and progressive loading, all kept in the URL
+  (`?tab=auction&category=electronics&condition=A,B&min_price=…&sort=…`) the way
+  production's browse page keeps its filters shareable.
+- `lib/useAuction.js` — timed-auction behaviour modelled on the backend rules:
   minimum next bid, increments, maximum (proxy) bids, anti-sniping (a bid in the
   last 5 minutes extends by 5 minutes), deposit coverage, bidder state
   (highest / outbid / won / lost) and Buy Now availability on "both" lots.
 - `lib/useLiveEvent.js` — the live event item lifecycle (live → going once →
-  going twice → sold / not sold → next lot).
+  going twice → sold / not sold → next lot). For a continuous demo it advances
+  to the next lot automatically; in production the presenter starts each lot.
+
+Where the preview's simplified models differ from production (URL parameter
+names, first-bid minimum, bidder-state names, urgency thresholds, live
+sequencing, seller profile fields …), the differences are listed in
+[`../CUSTOMER_REDESIGN_FILE_MAP.md`](../CUSTOMER_REDESIGN_FILE_MAP.md), section G.
 - `lib/clock.js` — one shared, hydration-safe countdown clock for the whole page.
 - `lib/format.js`, `lib/i18n.js` — money with the Saudi Riyal sign (U+20C1),
   durations, dates (Gregorian and Hijri), Arabic plural rules, bidi isolation.
