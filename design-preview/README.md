@@ -45,28 +45,19 @@ npm start            # http://localhost:3100
 
 ## Deploy independently
 
-**Vercel (recommended for a temporary client preview)**
+Full, step-by-step instructions — Vercel, static export, Cloudflare Pages,
+Netlify, S3/CloudFront and an Nginx VPS — are in
+[`DEPLOYMENT.md`](DEPLOYMENT.md). In short:
 
-1. Import the repository in Vercel.
-2. Set **Root Directory** to `design-preview`. Framework preset: *Next.js*.
-   Build command `npm run build`, install command `npm ci` (the defaults).
-3. No environment variables are needed.
-4. Optional: turn on *Deployment Protection* (password or Vercel
-   authentication) so only the client can open the link. Pages already send
-   `noindex`.
+- **Vercel (recommended):** import the repo, set **Root Directory** to
+  `design-preview` (Next.js is auto-detected, `npm run build` / `npm ci`), no
+  environment variables. The URL redirects to `/en`.
+- **Any static host:** `npm run export` writes a static site to `./out`; upload
+  its contents. `npm run package:static` produces a git-ignored zip of it.
+- **Node host:** `npm ci && npm run build && npm start` behind a reverse proxy.
 
-CLI alternative: `cd design-preview && npx vercel` (preview) or `npx vercel --prod`.
-
-**Any static host (S3 + CloudFront, Netlify, Nginx, GitHub Pages …)**
-
-```bash
-npm run export       # writes a static site to ./out
-```
-
-Upload the contents of `out/`. (The `export` script sets `STATIC_EXPORT=1`; on
-Windows run it from Git Bash/WSL, or set the variable manually.)
-
-**Docker / Node host** — `npm ci && npm run build && npm start` behind any reverse proxy.
+Every page sends `noindex` and `public/robots.txt` disallows crawling. Do not
+deploy to a live Khazna domain; use a temporary preview subdomain.
 
 ---
 
