@@ -12,7 +12,7 @@ The acceptance baseline for every change is `CURRENT_CUSTOMER_FRONTEND_INVENTORY
   - Production paths are relative to the reference package root: `frontend/…`, `backend-reference/…`.
   - Preview paths are relative to `design-preview/` and start with `app/`, `components/`, `lib/`, `data/` or `styles/`.
 - **Line counts** come from the package snapshot.
-- **Preview references** cite concept A (`components/concept-a/…`), the fully componentised reference at the time of writing. Concepts B–D share `components/shared`, `lib` and `data`. When a concept is approved, use its equivalent file.
+- **Preview references** cite concept A (`components/concept-a/…`) as the worked example. Concepts B–D have equivalent components in their own folders (`components/concept-b/…` etc.) and share `components/shared`, `lib` and `data`. When a concept is approved, use its equivalent files.
 - **Proposed new locations** (planning only; follows the existing `frontend/src/features/dashboard/` pattern):
 
   | What | Location |
