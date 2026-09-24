@@ -147,7 +147,7 @@ for (const concept of CONCEPTS) {
     for (const key of PAGES) {
       const route = `/${lang}/concept-${concept}${PAGE_PATHS[key] ?? key}`;
       for (const width of WIDTHS) {
-        const context = await browser.newContext({ viewport: { width, height: HEIGHTS[width] || 900 }, deviceScaleFactor: 1 });
+        const context = await browser.newContext({ viewport: { width, height: HEIGHTS[width] || 900 }, deviceScaleFactor: 1, reducedMotion: "reduce" });
         const page = await context.newPage();
         const url = `${BASE}${route}`;
         let entry;

@@ -390,3 +390,20 @@ html[data-pbar="hidden"] .kz-pbar {
 html[data-pbar="hidden"]:not([data-embed="1"]) .kz-pbar-show {
   display: grid;
 }
+
+/* Keyboard focus inside the presentation chrome: a gold ring that stays
+   visible on the near-black bar (the concept's own --focus can be a dark
+   colour, and some controls otherwise lose the outline). Unlayered and
+   element-typed so it wins over the base :focus-visible rule and Tailwind
+   preflight; the box-shadow ring is used alongside the outline so the
+   indicator survives even where an outline is reset to 0. */
+.kz-pbar a:focus-visible,
+.kz-pbar button:focus-visible,
+.kz-pbar select:focus-visible,
+.kz-pbar [tabindex]:focus-visible,
+.kz-pbar-show:focus-visible {
+  outline: 2px solid #f0c04a;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #0b0d12, 0 0 0 4px #f0c04a;
+  border-radius: 6px;
+}
