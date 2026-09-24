@@ -149,7 +149,10 @@ export function useBrowse({ sellerCode = null, pageSize = 12, initial = {}, sync
   const [loadingMore, setLoadingMore] = useState(false);
   const [visible, setVisible] = useState(pageSize);
   const loadingTimer = useRef(null);
-  const hydrated = useRef(false);
+  // Becomes true in the render where URL parameters have been applied, so the
+  // URL is never rewritten from the default state first (which would erase
+  // the parameters, e.g. under React StrictMode's double effect run).
+  const [ready, setReady] = useState(false);
 
   // Adopt URL parameters once on the client (keeps the static render stable).
   useEffect(() => {
@@ -160,13 +163,16 @@ export function useBrowse({ sellerCode = null, pageSize = 12, initial = {}, sync
       setLoading(true);
       loadingTimer.current = window.setTimeout(() => setLoading(false), 450);
     }
-    hydrated.current = true;
-    return () => window.clearTimeout(loadingTimer.current);
+    setReady(true);
+    return () => {
+      window.clearTimeout(loadingTimer.current);
+      setLoading(false);
+    };
   }, [syncUrl]);
 
   useEffect(() => {
-    if (hydrated.current && syncUrl) writeUrl(state);
-  }, [state, syncUrl]);
+    if (ready && syncUrl) writeUrl(state);
+  }, [ready, state, syncUrl]);
 
   const update = useCallback(
     (patch, { resetPage = true } = {}) => {

@@ -1,5 +1,7 @@
 "use client";
 
+import { LiveView } from "../live/LiveView";
+
 export function LivePage() {
-  return <div className="p-10 text-fg">LivePage</div>;
+  return <LiveView />;
 }

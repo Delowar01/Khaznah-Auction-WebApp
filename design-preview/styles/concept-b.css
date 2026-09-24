@@ -1,3 +1,419 @@
-/* Concept B tokens */
-:root[data-concept="b"] {
+/*
+ * Concept B — Modern Commerce
+ * ─────────────────────────────────────────────────────────────────────────
+ * Bright, efficient marketplace tokens. Brand indigo carries every action,
+ * brand gold marks value (always as a background with dark text), ink grounds
+ * the utility strip and footer. Status colours are tuned one step deeper than
+ * the brief so they pass WCAG AA as small text on white and on surface-2.
+ */
+
+/* ── Light (default) ─────────────────────────────────────────────────────── */
+:root[data-concept="b"],
+[data-concept="b"] .kb-force-light {
+  color-scheme: light;
+
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #eef0f4;
+  --surface-elevated: #ffffff;
+  --plate: #f6f7f9;
+  --border: #e3e6eb;
+  --border-strong: #cdd2da;
+
+  --text-primary: #101828;
+  --text-secondary: #475467;
+  --text-tertiary: #5d6679;
+
+  --primary: #3d4d9b;
+  --primary-hover: #33418a;
+  --primary-contrast: #ffffff;
+  --secondary: #101828;
+  --secondary-contrast: #ffffff;
+  --accent: #d8a535;
+  --accent-contrast: #1a1406;
+
+  --success: #067647;
+  --warning: #b54708;
+  --danger: #c01f14;
+  --live: #d1242f;
+  --auction: #3d4d9b;
+  --muted: #eef0f4;
+  --focus: #3d4d9b;
+  --overlay: rgb(16 24 40 / 0.56);
+
+  --grade-new: #175cd3;
+  --grade-a: #067647;
+  --grade-b: #0e7090;
+  --grade-c: #b54708;
+  --grade-d: #c4320a;
+  --grade-r: #6941c6;
+  --grade-f: #c01f14;
+
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-card: 12px;
+  --r-control: 10px;
+
+  --sh-card: 0 1px 2px rgb(16 24 40 / 0.05);
+  --sh-raised: 0 1px 3px rgb(16 24 40 / 0.06), 0 16px 32px -14px rgb(16 24 40 / 0.2);
+  --sh-overlay: 0 2px 6px rgb(16 24 40 / 0.06), 0 28px 64px -18px rgb(16 24 40 / 0.34);
+  --kb-sh-bar: 0 -10px 30px -20px rgb(16 24 40 / 0.45);
+
+  --font-display-stack: "Riyal", var(--font-b-sans), var(--font-b-sans-ar), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-b-sans), var(--font-b-sans-ar), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Concept extras (brand panels, logo colourways) */
+  --logo-mark: #d8a535;
+  --logo-word: #3d4d9b;
+  --kb-indigo-950: #0f1538;
+  --kb-indigo-900: #18205a;
+  --kb-indigo-800: #242e78;
+  --kb-indigo-600: #3d4d9b;
+  --kb-gold-soft: #f3d98f;
+  --kb-on-brand: #ffffff;
+  --kb-tick: rgb(16 24 40 / 0.06);
+}
+
+/* ── Dark ────────────────────────────────────────────────────────────────── */
+:root[data-concept="b"][data-theme="dark"],
+[data-concept="b"] .kb-force-dark {
+  color-scheme: dark;
+
+  --bg: #0c111d;
+  --surface: #161b26;
+  --surface-2: #1f242f;
+  --surface-elevated: #1f242f;
+  --plate: #f2f3f5;
+  --border: #2a303c;
+  --border-strong: #3b4252;
+
+  --text-primary: #f5f5f6;
+  --text-secondary: #a4a7ae;
+  --text-tertiary: #8b8f98;
+
+  --primary: #8190e6;
+  --primary-hover: #95a2ee;
+  --primary-contrast: #0c111d;
+  --secondary: #070a12;
+  --secondary-contrast: #f5f5f6;
+  --accent: #e0b04a;
+  --accent-contrast: #1a1406;
+
+  --success: #47cd89;
+  --warning: #fdb022;
+  --danger: #f97066;
+  --live: #d1242f;
+  --auction: #8190e6;
+  --muted: #1f242f;
+  --focus: #95a2ee;
+  --overlay: rgb(3 5 10 / 0.72);
+
+  --grade-new: #84adff;
+  --grade-a: #47cd89;
+  --grade-b: #5cc8e0;
+  --grade-c: #fdb022;
+  --grade-d: #fb9a6b;
+  --grade-r: #b69cff;
+  --grade-f: #f97066;
+
+  --sh-card: 0 1px 2px rgb(0 0 0 / 0.3);
+  --sh-raised: 0 1px 3px rgb(0 0 0 / 0.35), 0 18px 36px -14px rgb(0 0 0 / 0.6);
+  --sh-overlay: 0 2px 8px rgb(0 0 0 / 0.4), 0 30px 70px -18px rgb(0 0 0 / 0.75);
+  --kb-sh-bar: 0 -10px 30px -18px rgb(0 0 0 / 0.8);
+
+  --logo-mark: #e0b04a;
+  --logo-word: #f5f5f6;
+  --kb-tick: rgb(255 255 255 / 0.06);
+}
+
+/* ── Arabic: Almarai first, Figtree for Latin runs and digits ────────────── */
+:root[data-concept="b"][lang="ar"] {
+  --font-display-stack: "Riyal", var(--font-b-sans-ar), var(--font-b-sans), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-b-sans-ar), var(--font-b-sans), system-ui, sans-serif;
+}
+
+:root[data-concept="b"] body {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+:root[data-concept="b"][lang="ar"] body {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── Type roles ──────────────────────────────────────────────────────────
+   Compact commerce scale in Latin; Arabic runs one step larger with taller
+   leading and never uses tracking. */
+@layer components {
+  .kb-2xs { font-size: 11px; line-height: 14px; }
+  .kb-xs { font-size: 12px; line-height: 16px; }
+  .kb-sm { font-size: 13px; line-height: 18px; }
+  .kb-md { font-size: 14px; line-height: 20px; }
+  .kb-lg { font-size: 16px; line-height: 24px; }
+  .kb-xl { font-size: 18px; line-height: 26px; }
+
+  .kb-eyebrow {
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .kb-h3 { font-size: 17px; line-height: 23px; font-weight: 700; letter-spacing: -0.01em; }
+  .kb-h2 { font-size: 20px; line-height: 26px; font-weight: 800; letter-spacing: -0.02em; }
+  .kb-h1 { font-size: 24px; line-height: 30px; font-weight: 800; letter-spacing: -0.02em; }
+  .kb-display { font-size: 32px; line-height: 36px; font-weight: 800; letter-spacing: -0.03em; }
+
+  .kb-hero-title { font-size: 34px; line-height: 38px; font-weight: 800; letter-spacing: -0.03em; }
+
+  .kb-price-sm { font-size: 15px; line-height: 20px; font-weight: 700; letter-spacing: -0.01em; }
+  .kb-price { font-size: 18px; line-height: 24px; font-weight: 800; letter-spacing: -0.01em; }
+  .kb-price-lg { font-size: 28px; line-height: 32px; font-weight: 800; letter-spacing: -0.02em; }
+
+  @media (min-width: 768px) {
+    .kb-h2 { font-size: 22px; line-height: 28px; }
+    .kb-h1 { font-size: 28px; line-height: 34px; }
+    .kb-display { font-size: 42px; line-height: 46px; }
+  }
+
+  @media (min-width: 1280px) {
+    .kb-display { font-size: 50px; line-height: 54px; }
+    .kb-price-lg { font-size: 32px; line-height: 36px; }
+    .kb-hero-title { font-size: 42px; line-height: 46px; }
+  }
+
+  :root[lang="ar"] .kb-2xs { font-size: 12px; line-height: 17px; }
+  :root[lang="ar"] .kb-xs { font-size: 13px; line-height: 20px; }
+  :root[lang="ar"] .kb-sm { font-size: 14px; line-height: 22px; }
+  :root[lang="ar"] .kb-md { font-size: 15px; line-height: 24px; }
+  :root[lang="ar"] .kb-lg { font-size: 17px; line-height: 28px; }
+  :root[lang="ar"] .kb-xl { font-size: 19px; line-height: 30px; }
+  :root[lang="ar"] .kb-eyebrow { font-size: 12px; line-height: 17px; letter-spacing: 0; text-transform: none; }
+  :root[lang="ar"] .kb-h3 { font-size: 18px; line-height: 28px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-h2 { font-size: 21px; line-height: 32px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-h1 { font-size: 25px; line-height: 38px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-display { font-size: 32px; line-height: 48px; letter-spacing: 0; }
+  :root[lang="ar"] :is(.kb-price-sm, .kb-price, .kb-price-lg) { letter-spacing: 0; }
+  :root[lang="ar"] .kb-hero-title { font-size: 32px; line-height: 50px; letter-spacing: 0; }
+
+  @media (min-width: 1280px) {
+    :root[lang="ar"] .kb-hero-title { font-size: 40px; line-height: 60px; }
+  }
+
+  @media (min-width: 768px) {
+    :root[lang="ar"] .kb-h2 { font-size: 23px; line-height: 34px; }
+    :root[lang="ar"] .kb-h1 { font-size: 29px; line-height: 42px; }
+    :root[lang="ar"] .kb-display { font-size: 40px; line-height: 58px; }
+  }
+
+  @media (min-width: 1280px) {
+    :root[lang="ar"] .kb-display { font-size: 46px; line-height: 66px; }
+  }
+
+  /* Layout container */
+  .kb-container {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+
+  @media (min-width: 640px) {
+    .kb-container { padding-inline: 24px; }
+  }
+
+  @media (min-width: 1280px) {
+    .kb-container { padding-inline: 32px; }
+  }
+}
+
+/* ── Shell: sticky offsets follow the header as it collapses ─────────────── */
+.kb-shell {
+  --kb-head: 113px;
+  --kb-tabbar: calc(60px + env(safe-area-inset-bottom, 0px));
+}
+
+.kb-shell[data-head="collapsed"] {
+  --kb-head: 56px;
+}
+
+@media (min-width: 1024px) {
+  .kb-shell { --kb-head: 113px; --kb-tabbar: 0px; }
+  .kb-shell[data-head="collapsed"] { --kb-head: 68px; }
+}
+
+.kb-sticky {
+  position: sticky;
+  top: calc(var(--pbar-h) + var(--kb-head) + 16px);
+  transition: top 0.3s var(--ease-out-soft);
+}
+
+/* ── Brand surfaces ──────────────────────────────────────────────────────── */
+.kb-brand-panel {
+  background:
+    radial-gradient(120% 90% at 85% 40%, color-mix(in oklab, var(--kb-indigo-600) 70%, transparent) 0%, transparent 60%),
+    radial-gradient(60% 60% at 0% 100%, color-mix(in oklab, var(--kb-indigo-800) 80%, transparent) 0%, transparent 70%),
+    linear-gradient(135deg, var(--kb-indigo-900) 0%, var(--kb-indigo-950) 100%);
+  color: var(--kb-on-brand);
+}
+
+.kb-brand-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(80% 80% at 80% 50%, #000 0%, transparent 75%);
+}
+
+.kb-glow {
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--kb-gold-soft) 55%, transparent), transparent);
+}
+
+.kb-on-dark {
+  --focus: var(--kb-gold-soft);
+  --logo-word: #ffffff;
+}
+
+/* Light popovers opened from dark bars get the normal focus colour back. */
+.kb-focus-reset {
+  --focus: var(--primary);
+}
+
+.kb-btn-on-brand {
+  background: var(--kb-on-brand);
+  color: var(--kb-indigo-950);
+}
+
+.kb-btn-on-brand:hover {
+  background: color-mix(in oklab, var(--kb-on-brand) 88%, var(--kb-gold-soft));
+}
+
+/* Product photography: white packshots melt into the light plate. */
+.kb-pack {
+  mix-blend-mode: multiply;
+}
+
+/* Badges that sit on product plates. The plate is light in both themes, so
+   these fills are fixed (each pair clears 4.5:1 on its own). */
+.kb-tag-indigo { background: #3d4d9b; color: #ffffff; }
+.kb-tag-ink { background: #101828; color: #ffffff; }
+.kb-tag-new { background: #067647; color: #ffffff; }
+.kb-tag-warn { background: #b54708; color: #ffffff; }
+.kb-tag-live { background: #d1242f; color: #ffffff; }
+.kb-tag-gold { background: #d8a535; color: #1a1406; }
+.kb-tag-muted { background: #475467; color: #ffffff; }
+
+/* Seller monogram avatars sit on the seller's own tone. */
+.kb-avatar {
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14);
+  color: #ffffff;
+}
+
+/* ── Motion ──────────────────────────────────────────────────────────────── */
+@keyframes kb-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes kb-bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.28); }
+  100% { transform: scale(1); }
+}
+
+@keyframes kb-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes kb-drift {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to { transform: scale(1.09) translate3d(-1.5%, -1%, 0); }
+}
+
+.kb-pulse {
+  animation: kb-pulse 1.1s ease-in-out infinite;
+}
+
+/* Slow drift on the live-stream poster so the stage never feels frozen. */
+.kb-drift {
+  animation: kb-drift 22s ease-in-out infinite alternate;
+}
+
+.kb-bump {
+  animation: kb-bump 0.4s var(--ease-out-soft);
+}
+
+.kb-autoplay-bar {
+  transform-origin: left center;
+  animation: kb-progress var(--kb-autoplay, 6s) linear both;
+}
+
+[dir="rtl"] .kb-autoplay-bar {
+  transform-origin: right center;
+}
+
+.kb-autoplay-bar[data-paused="true"] {
+  animation-play-state: paused;
+}
+
+/* Horizontal rails: contained scrolling, no page overflow. */
+.kb-rail {
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: 16px;
+}
+
+.kb-rail > * {
+  scroll-snap-align: start;
+}
+
+@media (min-width: 640px) {
+  .kb-rail { scroll-padding-inline: 24px; }
+}
+
+@media (min-width: 1024px) {
+  .kb-rail { scroll-padding-inline: 0px; }
+}
+
+/* Skip link */
+.kb-skip {
+  position: fixed;
+  inset-inline-start: 12px;
+  top: calc(var(--pbar-h) + 8px);
+  z-index: 450;
+  transform: translateY(calc(-100% - var(--pbar-h) - 24px));
+  transition: transform 0.2s var(--ease-out-soft);
+}
+
+.kb-skip:focus-visible {
+  transform: none;
+}
+
+/* Number inputs without spinners (steppers provide their own buttons). */
+.kb-no-spin::-webkit-outer-spin-button,
+.kb-no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.kb-no-spin {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="search"].kb-search::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/* Forced states for the components board. */
+.kb-force-focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
 }

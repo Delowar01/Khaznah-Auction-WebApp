@@ -155,7 +155,8 @@ for (const concept of CONCEPTS) {
           entry = await checkPage(page, url);
           if (INTERACTIONS) entry.interactions = await interactions(page, width);
           if (SHOTS) {
-            const file = path.join(OUT, "shots", `${concept}-${key}-${lang}-${width}.png`);
+            const safeKey = key.replace(/^[/?]+/, "").replace(/[^a-z0-9-]+/gi, "_") || "home";
+            const file = path.join(OUT, "shots", `${concept}-${safeKey}-${lang}-${width}.png`);
             await page.screenshot({ path: file, fullPage: true, timeout: 60000 });
           }
         } catch (error) {
