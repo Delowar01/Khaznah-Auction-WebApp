@@ -1,3 +1,265 @@
-/* Concept A tokens */
+/*
+ * Concept A — Premium Marketplace
+ * "A modern auction house": warm ivory paper, ink, deep brand indigo and
+ * antique brass. Editorial serif display type with a refined grotesque for
+ * data. Packshots sit on warm stone plates like objects in a catalogue.
+ */
+
 :root[data-concept="a"] {
+  --bg: #f6f2ea;
+  --surface: #fffdf9;
+  --surface-2: #efe9de;
+  --surface-elevated: #fffdf9;
+  --plate: #efe9df;
+  --plate-hover: #e7e0d3;
+  --plate-fg: #16192a;
+  --plate-fg-2: #57534b;
+  --border: #e3dacb;
+  --border-strong: #cbbfa9;
+  --text-primary: #16192a;
+  --text-secondary: #56565e;
+  --text-tertiary: #6b665c;
+  --primary: #2b377a;
+  --primary-hover: #212a61;
+  --primary-contrast: #fffdf9;
+  --secondary: #16192a;
+  --secondary-contrast: #fffdf9;
+  --accent: #b08a3e;
+  --accent-contrast: #1b1406;
+  --accent-text: #85641f;
+  --success: #2f6b4f;
+  --warning: #92560f;
+  --danger: #a3352a;
+  --live: #b3261e;
+  --live-solid: #b3261e;
+  --auction: #85641f;
+  --muted: #efe9de;
+  --focus: #2b377a;
+  --overlay: rgb(22 25 42 / 0.56);
+  --grade-new: #2f58a8;
+  --grade-a: #2f6b4f;
+  --grade-b: #8a600f;
+  --grade-c: #9c4f1c;
+  --grade-d: #9e3a58;
+  --grade-r: #634b9c;
+  --grade-f: #a3352a;
+  --r-xs: 2px;
+  --r-sm: 3px;
+  --r-md: 4px;
+  --r-lg: 6px;
+  --r-xl: 10px;
+  --r-card: 4px;
+  --r-control: 2px;
+  --sh-card: 0 1px 0 rgb(22 25 42 / 0.04);
+  --sh-raised: 0 22px 44px -28px rgb(22 25 42 / 0.38);
+  --sh-overlay: 0 40px 100px -30px rgb(22 25 42 / 0.5);
+  --font-display-stack: "Riyal", var(--font-a-display), var(--font-a-display-ar), Georgia, serif;
+  --font-body-stack: "Riyal", var(--font-a-sans), var(--font-a-sans-ar), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", var(--font-a-sans), var(--font-a-sans-ar), system-ui, sans-serif;
+  --logo-mark: #b08a3e;
+  --logo-word: #16192a;
+  --stage: #121525;
+  --stage-fg: #f1ece2;
+  --stage-muted: #a7a295;
+  --stage-line: rgb(241 236 226 / 0.14);
+  --stage-surface: rgb(241 236 226 / 0.06);
+  --stage-success: #86d0aa;
+  --stage-live: #ff8f86;
+  --stage-accent: #dcb86c;
+  color-scheme: light;
+}
+
+:root[data-concept="a"][lang="ar"] {
+  --font-display-stack: "Riyal", var(--font-a-display-ar), var(--font-a-display), Georgia, serif;
+  --font-body-stack: "Riyal", var(--font-a-sans-ar), var(--font-a-sans), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", var(--font-a-sans-ar), var(--font-a-sans), system-ui, sans-serif;
+}
+
+:root[data-concept="a"][data-theme="dark"] {
+  --bg: #0f1118;
+  --surface: #151822;
+  --surface-2: #1b1f2b;
+  --surface-elevated: #1d2130;
+  --plate: #ebe5da;
+  --plate-hover: #e2dbcf;
+  --border: #292d3b;
+  --border-strong: #3b4053;
+  --text-primary: #f1ece2;
+  --text-secondary: #b8b1a4;
+  --text-tertiary: #938d80;
+  --primary: #e9e3d6;
+  --primary-hover: #ffffff;
+  --primary-contrast: #11131c;
+  --secondary: #f1ece2;
+  --secondary-contrast: #11131c;
+  --accent: #c9a45a;
+  --accent-contrast: #1b1406;
+  --accent-text: #d6b36a;
+  --success: #6cb792;
+  --warning: #d9a255;
+  --danger: #e2766a;
+  --live: #ec5b52;
+  --auction: #d6b36a;
+  --muted: #1b1f2b;
+  --focus: #d6b36a;
+  --overlay: rgb(5 6 10 / 0.7);
+  --grade-new: #8fb0f0;
+  --grade-a: #7cc3a0;
+  --grade-b: #dcb25e;
+  --grade-c: #e59a64;
+  --grade-d: #e58aa6;
+  --grade-r: #b3a0ea;
+  --grade-f: #ee8a80;
+  --sh-card: 0 1px 0 rgb(0 0 0 / 0.2);
+  --sh-raised: 0 24px 50px -28px rgb(0 0 0 / 0.8);
+  --sh-overlay: 0 40px 100px -30px rgb(0 0 0 / 0.85);
+  --logo-mark: #c9a45a;
+  --logo-word: #f1ece2;
+  --stage: #0a0c13;
+  color-scheme: dark;
+}
+
+/* ─── Concept A utilities ─────────────────────────────────────────────── */
+
+:root[data-concept="a"] .a-eyebrow {
+  font-family: var(--font-body-stack);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+:root[data-concept="a"][lang="ar"] .a-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 600;
+}
+
+:root[data-concept="a"] .a-display {
+  font-family: var(--font-display-stack);
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 1.02;
+}
+
+:root[data-concept="a"][lang="ar"] .a-display {
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.28;
+}
+
+:root[data-concept="a"] .a-serif {
+  font-family: var(--font-display-stack);
+  font-weight: 400;
+}
+
+:root[data-concept="a"][lang="ar"] .a-serif {
+  font-weight: 600;
+}
+
+:root[data-concept="a"] .a-accent-text {
+  color: var(--accent-text);
+}
+
+:root[data-concept="a"] .a-hairline {
+  border-color: var(--border);
+}
+
+:root[data-concept="a"] .a-link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.35s var(--ease-out-soft);
+  padding-bottom: 2px;
+}
+
+:root[data-concept="a"] .a-link:hover {
+  background-size: 0% 1px;
+}
+
+:root[data-concept="a"][dir="rtl"] .a-link {
+  background-position: 100% 100%;
+}
+
+:root[data-concept="a"] .a-underline-hover {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.35s var(--ease-out-soft);
+}
+
+:root[data-concept="a"][dir="rtl"] .a-underline-hover {
+  background-position: 100% 100%;
+}
+
+:root[data-concept="a"] .group:hover .a-underline-hover,
+:root[data-concept="a"] .a-underline-hover:hover {
+  background-size: 100% 1px;
+}
+
+/* Packshots on warm plates: white backgrounds melt into the plate. */
+:root[data-concept="a"] .a-plate-img {
+  mix-blend-mode: multiply;
+}
+
+:root[data-concept="a"] .a-stage {
+  background: var(--stage);
+  color: var(--stage-fg);
+}
+
+:root[data-concept="a"] .a-grain {
+  background-image: radial-gradient(rgb(22 25 42 / 0.05) 0.6px, transparent 0.7px);
+  background-size: 3px 3px;
+}
+
+:root[data-concept="a"][data-theme="dark"] .a-grain {
+  background-image: radial-gradient(rgb(255 255 255 / 0.035) 0.6px, transparent 0.7px);
+}
+
+@keyframes a-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes a-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+:root[data-concept="a"] .a-rise {
+  animation: a-rise 0.9s var(--ease-out-soft) both;
+  animation-delay: var(--d, 0ms);
+}
+
+:root[data-concept="a"] .a-draw {
+  transform-origin: 0 50%;
+  animation: a-draw 1.2s var(--ease-out-soft) both;
+  animation-delay: var(--d, 0ms);
+}
+
+:root[data-concept="a"][dir="rtl"] .a-draw {
+  transform-origin: 100% 50%;
+}
+
+:root[data-concept="a"] .a-progress {
+  transform-origin: 0 50%;
+  transition: transform 1s linear;
+}
+
+:root[data-concept="a"][dir="rtl"] .a-progress {
+  transform-origin: 100% 50%;
 }

@@ -23,9 +23,16 @@ const LABELS = {
   pages: { en: "Concept pages", ar: "صفحات المفهوم" },
 };
 
-function currentUrl(pathname) {
-  if (typeof window === "undefined") return pathname;
-  return `${pathname}${window.location.search}`;
+// Path plus the live query string. Only call from event handlers or UI that
+// renders after an interaction (never during the server render).
+const liveUrl = (pathname) => `${pathname}${window.location.search}`;
+
+// Language links render the bare path (identical on server and client) and
+// carry the live query string (filters, theme) only at click time.
+function switchLanguage(event, router, pathname, lang) {
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+  event.preventDefault();
+  router.push(withLang(liveUrl(pathname), lang));
 }
 
 export function toggleTheme(concept) {
@@ -62,7 +69,7 @@ export function PresentationBar({ concept }) {
   };
 
   const openDevice = (device) => {
-    router.push(`/${lang}/preview?device=${device}&src=${encodeURIComponent(currentUrl(pathname))}`);
+    router.push(`/${lang}/preview?device=${device}&src=${encodeURIComponent(liveUrl(pathname))}`);
   };
 
   // Keyboard shortcut for presenters: "." toggles the bar.
@@ -114,7 +121,7 @@ export function PresentationBar({ concept }) {
                 <Link
                   key={c.id}
                   role="menuitem"
-                  href={withConcept(currentUrl(pathname), c.id)}
+                  href={withConcept(liveUrl(pathname), c.id)}
                   onClick={() => setMenuOpen(false)}
                   aria-current={c.id === concept ? "true" : undefined}
                   className={`flex items-center gap-3 rounded-lg px-2.5 py-2 hover:bg-white/8 ${c.id === concept ? "bg-white/10" : ""}`}
@@ -183,7 +190,8 @@ export function PresentationBar({ concept }) {
 
         <div className="flex items-center rounded-md border border-white/10 p-0.5" role="group" aria-label="Language">
           <Link
-            href={withLang(currentUrl(pathname), "en")}
+            href={withLang(pathname, "en")}
+            onClick={(event) => switchLanguage(event, router, pathname, "en")}
             hrefLang="en"
             aria-current={lang === "en" ? "true" : undefined}
             className={`grid h-7 min-w-8 place-items-center rounded px-1.5 text-xs font-semibold ${lang === "en" ? "bg-white/15 text-white" : "text-[var(--pbar-muted)] hover:text-white"}`}
@@ -191,7 +199,8 @@ export function PresentationBar({ concept }) {
             EN
           </Link>
           <Link
-            href={withLang(currentUrl(pathname), "ar")}
+            href={withLang(pathname, "ar")}
+            onClick={(event) => switchLanguage(event, router, pathname, "ar")}
             hrefLang="ar"
             lang="ar"
             aria-current={lang === "ar" ? "true" : undefined}

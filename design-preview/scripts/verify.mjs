@@ -82,6 +82,8 @@ async function checkPage(page, url) {
     window.scrollTo(0, 0);
   });
   await page.waitForLoadState("networkidle").catch(() => {});
+  // Let scroll-reveal transitions finish so contrast is measured on final colours.
+  await page.waitForTimeout(1200);
   const layout = await page.evaluate(() => {
     const doc = document.documentElement;
     const overflow = doc.scrollWidth - window.innerWidth;

@@ -12,6 +12,8 @@ const nextConfig = {
     unoptimized: true,
   },
   poweredByHeader: false,
+  // Do not generate AGENTS.md / CLAUDE.md files during `next dev`.
+  agentRules: false,
   experimental: {
     optimizePackageImports: ["lucide-react", "motion"],
   },

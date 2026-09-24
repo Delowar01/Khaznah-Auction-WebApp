@@ -154,6 +154,7 @@ function sortProducts(list, sort) {
 export function useBrowse({ sellerCode = null, pageSize = 12, initial = {}, syncUrl = true } = {}) {
   const [state, setState] = useState(() => ({ ...DEFAULTS, ...initial }));
   const [loading, setLoading] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [visible, setVisible] = useState(pageSize);
   const loadingTimer = useRef(null);
   const hydrated = useRef(false);
@@ -268,12 +269,13 @@ export function useBrowse({ sellerCode = null, pageSize = 12, initial = {}, sync
     // progressive loading ("load more")
     shownItems,
     hasMore: visible < results.length,
+    loadingMore,
     loadMore: () => {
-      setLoading(true);
+      setLoadingMore(true);
       window.clearTimeout(loadingTimer.current);
       loadingTimer.current = window.setTimeout(() => {
         setVisible((v) => v + pageSize);
-        setLoading(false);
+        setLoadingMore(false);
       }, 500);
     },
     // setters
