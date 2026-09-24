@@ -10,6 +10,7 @@ import { ActiveFilters } from "../browse/ActiveFilters";
 import { Results } from "../browse/Results";
 import { MobileFilterButton, SortMenu, ViewToggle } from "../browse/Toolbar";
 import { SearchField } from "../browse/SearchField";
+import { BrowseUrlSync } from "@/components/shared/ui/BrowseUrlSync";
 
 export function BrowsePage() {
   const { ui } = useLang();
@@ -43,6 +44,7 @@ export function BrowsePage() {
         </div>
       </div>
       <FilterSheet open={sheetOpen} onClose={() => setSheetOpen(false)} browse={browse} />
+      <BrowseUrlSync browse={browse} />
     </>
   );
 }
