@@ -1,0 +1,392 @@
+@import "tailwindcss";
+
+/*
+ * ─── Semantic design tokens ──────────────────────────────────────────────
+ * Components only ever use these semantic utilities (bg-surface, text-fg,
+ * border-line, bg-primary, text-live …). Each concept stylesheet supplies
+ * the raw values for light and dark appearance, so the same component API
+ * can express four very different visual identities.
+ */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-elevated: var(--surface-elevated);
+  --color-plate: var(--plate);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-fg: var(--text-primary);
+  --color-fg-2: var(--text-secondary);
+  --color-fg-3: var(--text-tertiary);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-on-primary: var(--primary-contrast);
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--secondary-contrast);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--accent-contrast);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-live: var(--live);
+  --color-auction: var(--auction);
+  --color-muted: var(--muted);
+  --color-focus: var(--focus);
+  --color-overlay: var(--overlay);
+  --color-grade-new: var(--grade-new);
+  --color-grade-a: var(--grade-a);
+  --color-grade-b: var(--grade-b);
+  --color-grade-c: var(--grade-c);
+  --color-grade-d: var(--grade-d);
+  --color-grade-r: var(--grade-r);
+  --color-grade-f: var(--grade-f);
+
+  --font-display: var(--font-display-stack);
+  --font-sans: var(--font-body-stack);
+  --font-mono: var(--font-mono-stack);
+
+  --radius-xs: var(--r-xs);
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+  --radius-card: var(--r-card);
+  --radius-control: var(--r-control);
+  --radius-pill: 999px;
+
+  --shadow-card: var(--sh-card);
+  --shadow-raised: var(--sh-raised);
+  --shadow-overlay: var(--sh-overlay);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Neutral fallbacks (used by the presentation chrome and the selector). */
+:root {
+  --bg: #f4f2ee;
+  --surface: #ffffff;
+  --surface-2: #efece6;
+  --surface-elevated: #ffffff;
+  --plate: #f5f4f1;
+  --border: #e3dfd7;
+  --border-strong: #cfc9bd;
+  --text-primary: #13151c;
+  --text-secondary: #555a66;
+  --text-tertiary: #7d828d;
+  --primary: #3d4d9b;
+  --primary-hover: #33418a;
+  --primary-contrast: #ffffff;
+  --secondary: #13151c;
+  --secondary-contrast: #ffffff;
+  --accent: #d8a535;
+  --accent-contrast: #1a1406;
+  --success: #1f7a4d;
+  --warning: #b45309;
+  --danger: #c0352b;
+  --live: #d4332a;
+  --auction: #d8a535;
+  --muted: #efece6;
+  --focus: #3d4d9b;
+  --overlay: rgb(10 12 20 / 0.55);
+  --grade-new: #2f6fd6;
+  --grade-a: #1f8a5b;
+  --grade-b: #b7791f;
+  --grade-c: #c2622b;
+  --grade-d: #c24b6a;
+  --grade-r: #7b5cc4;
+  --grade-f: #c0352b;
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+  --r-card: 14px;
+  --r-control: 10px;
+  --sh-card: 0 1px 2px rgb(16 18 27 / 0.06), 0 8px 24px -12px rgb(16 18 27 / 0.12);
+  --sh-raised: 0 12px 32px -12px rgb(16 18 27 / 0.22);
+  --sh-overlay: 0 30px 80px -20px rgb(10 12 20 / 0.45);
+  --font-display-stack: "Riyal", var(--font-brand-latin), var(--font-brand-arabic), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-brand-latin), var(--font-brand-arabic), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Presentation chrome */
+  --pbar-h: 44px;
+  --pbar-bg: #0b0d12;
+  --pbar-fg: #e9eaee;
+  --pbar-muted: #8c909c;
+  --pbar-line: rgb(255 255 255 / 0.09);
+}
+
+html[lang="ar"] {
+  --font-display-stack: "Riyal", var(--font-brand-arabic), var(--font-brand-latin), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-brand-arabic), var(--font-brand-latin), system-ui, sans-serif;
+}
+
+html[data-embed="1"],
+html[data-pbar="hidden"] {
+  --pbar-h: 0px;
+}
+
+/* Official Saudi Riyal sign (U+20C1). Listed first in every font stack and
+   restricted by unicode-range, so it only ever renders that one glyph. */
+@font-face {
+  font-family: "Riyal";
+  src: url("/fonts/riyal-regular.woff2") format("woff2");
+  font-display: block;
+  unicode-range: U+20C1;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-padding-top: calc(var(--pbar-h) + 88px);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-body-stack);
+    min-height: 100dvh;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 22%, transparent);
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Mirror directional glyphs (arrows, chevrons) in right-to-left layouts. */
+  [dir="rtl"] .flip-rtl {
+    transform: scaleX(-1);
+  }
+
+  .pt-pbar {
+    padding-top: var(--pbar-h);
+  }
+
+  .top-pbar {
+    top: var(--pbar-h);
+  }
+
+  .isolate-bidi {
+    unicode-bidi: isolate;
+  }
+}
+
+/* Scroll-reveal: content is visible without JavaScript; the entrance
+   animation only applies once the pre-paint script has added .js. */
+html[data-js] .reveal {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 0.7s var(--ease-out-soft),
+    transform 0.7s var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html[data-js] .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes kz-pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  80%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes kz-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes kz-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes kz-flash {
+  0% {
+    background-color: color-mix(in oklab, var(--accent) 35%, transparent);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.kz-live-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--live);
+  flex: none;
+}
+
+.kz-live-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: kz-pulse-ring 1.8s var(--ease-out-soft) infinite;
+}
+
+.kz-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-2) 0%,
+    color-mix(in oklab, var(--surface-2) 55%, var(--surface)) 50%,
+    var(--surface-2) 100%
+  );
+  background-size: 200% 100%;
+  animation: kz-shimmer 1.4s linear infinite;
+}
+
+.kz-flash {
+  animation: kz-flash 1.4s ease-out;
+}
+
+.kz-fade-up {
+  animation: kz-fade-up 0.45s var(--ease-out-soft) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html[data-js] .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Dual range slider (components/shared/ui/PriceRange.jsx) */
+.kz-range {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  pointer-events: none;
+}
+
+.kz-range::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+.kz-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 2px solid var(--primary);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.18);
+  cursor: grab;
+}
+
+.kz-range::-moz-range-thumb {
+  pointer-events: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 2px solid var(--primary);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.18);
+  cursor: grab;
+}
+
+.kz-range:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.kz-range:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Presentation chrome visibility */
+html:not([data-theme="dark"]) .kz-theme-sun,
+html[data-theme="dark"] .kz-theme-moon {
+  display: none;
+}
+
+html[data-embed="1"] .kz-pbar,
+html[data-pbar="hidden"] .kz-pbar {
+  display: none;
+}
+
+html[data-pbar="hidden"]:not([data-embed="1"]) .kz-pbar-show {
+  display: grid;
+}

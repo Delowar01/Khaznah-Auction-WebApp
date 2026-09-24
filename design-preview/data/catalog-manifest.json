@@ -1,0 +1,3220 @@
+{
+ "tv-43": {
+  "source": "B082J6HXXN",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "tv-43-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "tv-43-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "tv-43-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 687,
+       "file": "tv-43-cut-600.webp"
+      }
+     ],
+     "ratio": 0.8733
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "tv-43-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "tv-43-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "tv-43-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "tv-43-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "tv-43-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "tv-43-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "tv-43-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "tv-43-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "tv-43-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "tv-43-4-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "tv-43-4-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "tv-43-4-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "fridge-690": {
+  "source": "B07RBMRPB1",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "fridge-690-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "fridge-690-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "fridge-690-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 1152,
+       "file": "fridge-690-cut-600.webp"
+      }
+     ],
+     "ratio": 0.5208
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "fridge-690-1-800.webp"
+     },
+     {
+      "w": 1500,
+      "h": 1500,
+      "file": "fridge-690-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "fridge-690-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "fridge-690-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "fridge-690-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "split-ac": {
+  "source": "B07L3S8JBS",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "split-ac-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "split-ac-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "split-ac-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 202,
+       "file": "split-ac-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 403,
+       "file": "split-ac-cut-1200.webp"
+      }
+     ],
+     "ratio": 2.9777
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "split-ac-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "split-ac-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "split-ac-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "split-ac-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "split-ac-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "split-ac-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "swivel-chair": {
+  "source": "B0792G6PVH",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "swivel-chair-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "swivel-chair-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "swivel-chair-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 658,
+       "file": "swivel-chair-cut-600.webp"
+      },
+      {
+       "w": 1094,
+       "h": 1200,
+       "file": "swivel-chair-cut-1200.webp"
+      }
+     ],
+     "ratio": 0.9117
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "swivel-chair-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "swivel-chair-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "swivel-chair-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "swivel-chair-2-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "swivel-chair-2-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "swivel-chair-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "swivel-chair-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "swivel-chair-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "swivel-chair-4-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "swivel-chair-4-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "swivel-chair-4-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "washer-front": {
+  "source": "B07V3SH9W8",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "washer-front-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "washer-front-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "washer-front-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 814,
+       "file": "washer-front-cut-600.webp"
+      }
+     ],
+     "ratio": 0.7367
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "washer-front-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "washer-front-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "washer-front-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "laptop-bags-24": {
+  "source": "B01MTA9GWF",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "laptop-bags-24-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "laptop-bags-24-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "laptop-bags-24-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 614,
+       "file": "laptop-bags-24-cut-600.webp"
+      },
+      {
+       "w": 1172,
+       "h": 1200,
+       "file": "laptop-bags-24-cut-1200.webp"
+      }
+     ],
+     "ratio": 0.9767
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "laptop-bags-24-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "laptop-bags-24-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "laptop-bags-24-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "laptop-bags-24-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "laptop-bags-24-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "laptop-bags-24-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "laptop-bags-24-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "laptop-bags-24-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "laptop-bags-24-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "dishwasher": {
+  "source": "B07S41FH4T",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "dishwasher-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "dishwasher-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "dishwasher-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 856,
+       "file": "dishwasher-cut-600.webp"
+      }
+     ],
+     "ratio": 0.7008
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "dishwasher-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "dishwasher-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "dishwasher-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "dishwasher-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "dishwasher-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "dishwasher-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "dishwasher-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "dishwasher-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "leather-sofa": {
+  "source": "B07HPQ7D3C",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "leather-sofa-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "leather-sofa-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "leather-sofa-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 512,
+       "file": "leather-sofa-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 1024,
+       "file": "leather-sofa-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.1719
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "leather-sofa-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "leather-sofa-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "leather-sofa-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "leather-sofa-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "leather-sofa-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "leather-sofa-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "leather-sofa-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "leather-sofa-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "leather-sofa-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "seat-covers": {
+  "source": "B07X33YLD7",
+  "images": [
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "seat-covers-0-800.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "seat-covers-1-800.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "seat-covers-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "seat-covers-2-800.webp"
+     },
+     {
+      "w": 1085,
+      "h": 1085,
+      "file": "seat-covers-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "robot-vacuum": {
+  "source": "B07KFRZHPG",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "robot-vacuum-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "robot-vacuum-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "robot-vacuum-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 576,
+       "file": "robot-vacuum-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 1152,
+       "file": "robot-vacuum-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.0417
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "robot-vacuum-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "robot-vacuum-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "robot-vacuum-2-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "robot-vacuum-2-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "robot-vacuum-3-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "robot-vacuum-3-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   }
+  ]
+ },
+ "monitor-stands-5": {
+  "source": "B071J4WN2Q",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "monitor-stands-5-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "monitor-stands-5-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "monitor-stands-5-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 180,
+       "file": "monitor-stands-5-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 359,
+       "file": "monitor-stands-5-cut-1200.webp"
+      }
+     ],
+     "ratio": 3.3426
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 799,
+      "file": "monitor-stands-5-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1598,
+      "file": "monitor-stands-5-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0013
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "monitor-stands-5-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "monitor-stands-5-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "monitor-stands-5-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "boxes-stack": {
+  "source": "B07RQ7D6SB",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "boxes-stack-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "boxes-stack-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "boxes-stack-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 472,
+       "file": "boxes-stack-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 945,
+       "file": "boxes-stack-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.2698
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "boxes-stack-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "boxes-stack-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "boxes-stack-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "headphones": {
+  "source": "B00KQFO12W",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "headphones-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "headphones-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "headphones-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 747,
+       "file": "headphones-cut-600.webp"
+      }
+     ],
+     "ratio": 0.8033
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "headphones-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "headphones-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   }
+  ]
+ },
+ "bt-speaker": {
+  "source": "B00MJEYM5O",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "bt-speaker-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "bt-speaker-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "bt-speaker-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 307,
+       "file": "bt-speaker-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 614,
+       "file": "bt-speaker-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.9544
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 624,
+      "file": "bt-speaker-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1249,
+      "file": "bt-speaker-1-1600.webp"
+     }
+    ],
+    "ratio": 1.281
+   }
+  ]
+ },
+ "gaming-keyboard": {
+  "source": "B07D8X6CK8",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "gaming-keyboard-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "gaming-keyboard-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "gaming-keyboard-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 313,
+       "file": "gaming-keyboard-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 626,
+       "file": "gaming-keyboard-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.9169
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "gaming-keyboard-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "gaming-keyboard-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "gaming-keyboard-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "gaming-keyboard-2-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "gaming-keyboard-2-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   }
+  ]
+ },
+ "ergo-mouse": {
+  "source": "B07M7VZ957",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "ergo-mouse-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "ergo-mouse-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "ergo-mouse-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 521,
+       "file": "ergo-mouse-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 1042,
+       "file": "ergo-mouse-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.1516
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "ergo-mouse-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "ergo-mouse-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   }
+  ]
+ },
+ "travel-tripod": {
+  "source": "B01LQX0P8Q",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "travel-tripod-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "travel-tripod-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "travel-tripod-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 732,
+       "file": "travel-tripod-cut-600.webp"
+      }
+     ],
+     "ratio": 0.8192
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "travel-tripod-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "travel-tripod-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "travel-tripod-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "task-lamp": {
+  "source": "B07NRMY8F2",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "task-lamp-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "task-lamp-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "task-lamp-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 1146,
+       "file": "task-lamp-cut-600.webp"
+      }
+     ],
+     "ratio": 0.5233
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "task-lamp-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "task-lamp-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "task-lamp-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "task-lamp-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "task-lamp-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "task-lamp-3-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "task-lamp-3-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "task-lamp-4-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "task-lamp-4-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "task-lamp-4-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "dutch-oven-blue": {
+  "source": "B07VD8MB71",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "dutch-oven-blue-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "dutch-oven-blue-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "dutch-oven-blue-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 330,
+       "file": "dutch-oven-blue-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 659,
+       "file": "dutch-oven-blue-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.8209
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "dutch-oven-blue-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "dutch-oven-blue-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "dutch-oven-blue-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "dutch-oven-blue-2-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1599,
+      "file": "dutch-oven-blue-2-1600.webp"
+     }
+    ],
+    "ratio": 1.0006
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "dutch-oven-blue-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "dutch-oven-blue-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "dutch-oven-blue-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "stand-mixer": {
+  "source": "B07MPZTTF9",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "stand-mixer-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "stand-mixer-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "stand-mixer-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 596,
+       "file": "stand-mixer-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 1192,
+       "file": "stand-mixer-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.0067
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "stand-mixer-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "stand-mixer-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "stand-mixer-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "stand-mixer-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "stand-mixer-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "stand-mixer-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "stand-mixer-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "stand-mixer-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "capsule-coffee": {
+  "source": "B07QP7SMZ2",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "capsule-coffee-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "capsule-coffee-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "capsule-coffee-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 959,
+       "file": "capsule-coffee-cut-600.webp"
+      }
+     ],
+     "ratio": 0.6258
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "capsule-coffee-1-800.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "capsule-coffee-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "capsule-coffee-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "capsule-coffee-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "capsule-coffee-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "capsule-coffee-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "capsule-coffee-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "knit-sneakers": {
+  "source": "B07YF8XXLC",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "knit-sneakers-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "knit-sneakers-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "knit-sneakers-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 430,
+       "file": "knit-sneakers-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 859,
+       "file": "knit-sneakers-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.397
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "knit-sneakers-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "knit-sneakers-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "knit-sneakers-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "knit-sneakers-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "knit-sneakers-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "knit-sneakers-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "knit-sneakers-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "knit-sneakers-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "knit-sneakers-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "suede-tote": {
+  "source": "B06XPKX2TR",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "suede-tote-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "suede-tote-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "suede-tote-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 853,
+       "file": "suede-tote-cut-600.webp"
+      }
+     ],
+     "ratio": 0.7033
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "suede-tote-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "suede-tote-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "suede-tote-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "suede-tote-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "suede-tote-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "suede-tote-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "suede-tote-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "suede-tote-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "suede-tote-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "field-watch": {
+  "source": "B07YQFJBJG",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "field-watch-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "field-watch-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "field-watch-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 1008,
+       "file": "field-watch-cut-600.webp"
+      }
+     ],
+     "ratio": 0.595
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "field-watch-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "field-watch-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "field-watch-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "hardside-spinner": {
+  "source": "B07G4FRDS4",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "hardside-spinner-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "hardside-spinner-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "hardside-spinner-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 1007,
+       "file": "hardside-spinner-cut-600.webp"
+      }
+     ],
+     "ratio": 0.5958
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "hardside-spinner-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "hardside-spinner-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "hardside-spinner-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "hardside-spinner-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "hardside-spinner-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "hardside-spinner-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "hardside-spinner-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "hardside-spinner-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "hardside-spinner-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "multimeter": {
+  "source": "B07VX41MMW",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "multimeter-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "multimeter-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "multimeter-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 564,
+       "file": "multimeter-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 1129,
+       "file": "multimeter-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.0629
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "multimeter-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "multimeter-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "multimeter-2-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "multimeter-2-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   }
+  ]
+ },
+ "tool-backpack": {
+  "source": "B079YRW4YJ",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "tool-backpack-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "tool-backpack-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "tool-backpack-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 852,
+       "file": "tool-backpack-cut-600.webp"
+      }
+     ],
+     "ratio": 0.7042
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "tool-backpack-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "tool-backpack-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "tool-backpack-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "tool-backpack-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "tool-backpack-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "tool-backpack-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "wrench-set": {
+  "source": "B07SV45HTF",
+  "images": [
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "wrench-set-0-800.webp"
+     },
+     {
+      "w": 1500,
+      "h": 1500,
+      "file": "wrench-set-0-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "wrench-set-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "wrench-set-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "wrench-set-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "wrench-set-2-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "wrench-set-2-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   }
+  ]
+ },
+ "tyre-inflator": {
+  "source": "B074DD3NS5",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "tyre-inflator-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "tyre-inflator-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "tyre-inflator-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 426,
+       "file": "tyre-inflator-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 852,
+       "file": "tyre-inflator-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.4085
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "tyre-inflator-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "tyre-inflator-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "tyre-inflator-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "tyre-inflator-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "tyre-inflator-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "tyre-inflator-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "tyre-inflator-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "tyre-inflator-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "car-cooler": {
+  "source": "B085D1TMQY",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "car-cooler-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "car-cooler-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "car-cooler-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 648,
+       "file": "car-cooler-cut-600.webp"
+      },
+      {
+       "w": 1111,
+       "h": 1200,
+       "file": "car-cooler-cut-1200.webp"
+      }
+     ],
+     "ratio": 0.9258
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "car-cooler-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "car-cooler-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "car-cooler-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "car-cooler-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "car-cooler-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "microwave": {
+  "source": "B07RTC8WSD",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "microwave-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "microwave-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "microwave-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 396,
+       "file": "microwave-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 793,
+       "file": "microwave-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.5132
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "microwave-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "microwave-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "microwave-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "hairpin-desk": {
+  "source": "B075Z6YS29",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "hairpin-desk-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "hairpin-desk-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "hairpin-desk-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 460,
+       "file": "hairpin-desk-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 921,
+       "file": "hairpin-desk-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.3029
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "hairpin-desk-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "hairpin-desk-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "hairpin-desk-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "hairpin-desk-2-800.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "hairpin-desk-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "hairpin-desk-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "hairpin-desk-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "floor-lamp": {
+  "source": "B0742F7GT8",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "floor-lamp-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "floor-lamp-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "floor-lamp-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 389,
+       "h": 1200,
+       "file": "floor-lamp-cut-600.webp"
+      }
+     ],
+     "ratio": 0.3242
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "floor-lamp-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "floor-lamp-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "floor-lamp-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "floor-lamp-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "floor-lamp-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "stick-vacuum": {
+  "source": "B07VPC6TCG",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "stick-vacuum-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "stick-vacuum-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "stick-vacuum-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 1161,
+       "file": "stick-vacuum-cut-600.webp"
+      }
+     ],
+     "ratio": 0.5167
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "stick-vacuum-1-800.webp"
+     },
+     {
+      "w": 1500,
+      "h": 1500,
+      "file": "stick-vacuum-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   }
+  ]
+ },
+ "coffee-maker-12": {
+  "source": "B084ZGMX1K",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "coffee-maker-12-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "coffee-maker-12-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "coffee-maker-12-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 1101,
+       "file": "coffee-maker-12-cut-600.webp"
+      }
+     ],
+     "ratio": 0.545
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "coffee-maker-12-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "coffee-maker-12-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   }
+  ]
+ },
+ "black-loveseat": {
+  "source": "B07B4H26MQ",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "black-loveseat-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "black-loveseat-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "black-loveseat-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 382,
+       "file": "black-loveseat-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 763,
+       "file": "black-loveseat-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.5727
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "black-loveseat-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "black-loveseat-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "black-loveseat-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "black-loveseat-2-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "black-loveseat-2-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "black-loveseat-2-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "recliner": {
+  "source": "B07KXYXGFM",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "recliner-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "recliner-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "recliner-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 637,
+       "file": "recliner-cut-600.webp"
+      },
+      {
+       "w": 1131,
+       "h": 1200,
+       "file": "recliner-cut-1200.webp"
+      }
+     ],
+     "ratio": 0.9425
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "recliner-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "recliner-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "recliner-2-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "recliner-2-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "recliner-3-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "recliner-3-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "recliner-3-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "dining-chairs": {
+  "source": "B084W32W2S",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "dining-chairs-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "dining-chairs-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "dining-chairs-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 432,
+       "file": "dining-chairs-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 865,
+       "file": "dining-chairs-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.3873
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 800,
+      "file": "dining-chairs-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1600,
+      "file": "dining-chairs-1-1600.webp"
+     }
+    ],
+    "ratio": 1.0
+   }
+  ]
+ },
+ "toolkit": {
+  "source": "B015X2NH8G",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "toolkit-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "toolkit-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "toolkit-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 477,
+       "file": "toolkit-cut-600.webp"
+      }
+     ],
+     "ratio": 1.259
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "toolkit-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "toolkit-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "toolkit-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ },
+ "dutch-oven-red": {
+  "source": "B07P5NN1G9",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "dutch-oven-red-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "dutch-oven-red-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "dutch-oven-red-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 464,
+       "file": "dutch-oven-red-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 928,
+       "file": "dutch-oven-red-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.2931
+    }
+   },
+   {
+    "kind": "scene",
+    "files": [
+     {
+      "w": 800,
+      "h": 719,
+      "file": "dutch-oven-red-1-800.webp"
+     },
+     {
+      "w": 1600,
+      "h": 1438,
+      "file": "dutch-oven-red-1-1600.webp"
+     }
+    ],
+    "ratio": 1.1127
+   }
+  ]
+ },
+ "suede-boots": {
+  "source": "B07NRWFLNS",
+  "images": [
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "suede-boots-0-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "suede-boots-0-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "suede-boots-0-1200.webp"
+     }
+    ],
+    "ratio": 1,
+    "cutout": {
+     "files": [
+      {
+       "w": 600,
+       "h": 472,
+       "file": "suede-boots-cut-600.webp"
+      },
+      {
+       "w": 1200,
+       "h": 943,
+       "file": "suede-boots-cut-1200.webp"
+      }
+     ],
+     "ratio": 1.2725
+    }
+   },
+   {
+    "kind": "product",
+    "files": [
+     {
+      "w": 400,
+      "h": 400,
+      "file": "suede-boots-1-400.webp"
+     },
+     {
+      "w": 800,
+      "h": 800,
+      "file": "suede-boots-1-800.webp"
+     },
+     {
+      "w": 1200,
+      "h": 1200,
+      "file": "suede-boots-1-1200.webp"
+     }
+    ],
+    "ratio": 1
+   }
+  ]
+ }
+}

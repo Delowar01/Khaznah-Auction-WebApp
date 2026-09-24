@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+.scratch/
+test-results/
+playwright-report/
+.verify/
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+.vercel
