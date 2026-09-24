@@ -106,6 +106,7 @@ Screen routes (same for `concept-a` … `concept-d`, prefixed with `/en` or `/ar
 design-preview/
 ├── app/
 │   ├── (root)/                 "/" → redirects to the visitor's last language
+│   ├── global-not-found.js     bilingual 404 for unknown URLs
 │   └── [lang]/                 en | ar (pre-rendered), sets <html lang dir>
 │       ├── page.js             concept selector
 │       ├── preview/            device frames (tablet / mobile)

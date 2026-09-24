@@ -29,11 +29,14 @@ feature baseline is in
   English and Arabic, light and dark, desktop to mobile.
 - The same sample content (`design-preview/data/`), whose field names follow the
   production card adapters and serializers.
-- The same behaviour layer (`design-preview/lib/`): browse filters that read and
-  write production's URL parameters, the timed-auction rules (minimum next bid,
+- The same behaviour layer (`design-preview/lib/`), modelled on production:
+  browse filters kept in the URL, the timed-auction rules (minimum next bid,
   increments, proxy bids, 5-minute anti-sniping, deposit coverage, bidder
-  states, Buy Now on "both" lots) and the live-event item lifecycle. Only the
-  visual layer (`components/concept-x/`, `styles/concept-x.css`) differs.
+  states, Buy Now on "both" lots) and the live-event item lifecycle. Where these
+  simplified models differ from production (parameter names, first-bid minimum,
+  bidder-state names, urgency thresholds, live sequencing), the file map lists
+  each difference in section G. Only the visual layer
+  (`components/concept-x/`, `styles/concept-x.css`) differs between concepts.
 
 ### Work any approved concept needs first
 
