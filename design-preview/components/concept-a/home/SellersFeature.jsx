@@ -16,7 +16,7 @@ export function SellersFeature() {
         <div className="relative aspect-[4/5] overflow-hidden rounded-card">
           <Img image={BRAND_PHOTOS.warehouseRiyadh} alt="" sizes="(min-width: 1024px) 38vw, 100vw" className="absolute inset-0 size-full object-cover object-[35%_center]" />
         </div>
-        <figcaption className="mt-3 text-[12px] text-fg-3">{ui("verifiedSeller")} · {ui("inspected")}</figcaption>
+        <figcaption className="mt-3 text-[12px] text-fg-3">{ui("sellerWarehouse")} · {ui("inspected")}</figcaption>
       </figure>
       <div className="lg:col-span-7">
         <SectionHead eyebrow={ui("sellers")} title={t(COPY.sellersTitle)} text={t(COPY.sellersText)} align="stack" />

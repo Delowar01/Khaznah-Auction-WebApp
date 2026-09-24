@@ -1,4 +1,4 @@
-import { BadgeCheck } from "lucide-react";
+import { Warehouse } from "lucide-react";
 
 const SIZES = {
   sm: "size-8 rounded-lg text-[11px]",
@@ -20,11 +20,11 @@ export function SellerAvatar({ seller, size = "md", className = "" }) {
   );
 }
 
-/** Verified-warehouse tick. */
-export function VerifiedMark({ label, className = "" }) {
+/** "Seller warehouse" label for storefront headers. */
+export function SellerMark({ label, className = "" }) {
   return (
-    <span className={`inline-flex items-center gap-1 d-ink ${className}`}>
-      <BadgeCheck aria-hidden="true" className="size-4 shrink-0" />
+    <span className={`inline-flex items-center gap-1 text-fg-2 ${className}`}>
+      <Warehouse aria-hidden="true" className="size-4 shrink-0" />
       {label ? <span className="text-xs font-medium">{label}</span> : null}
     </span>
   );

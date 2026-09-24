@@ -1,6 +1,6 @@
 "use client";
 
-import { BadgeCheck, Clock, ShieldCheck, Truck } from "lucide-react";
+import { BadgeCheck, Clock, Store, Truck } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { getCategory } from "@/data/categories";
 import { sellerStats } from "@/lib/catalog";
@@ -25,7 +25,7 @@ export function SellerOverview({ seller }) {
   const categoryNames = stats.categories.map((slug) => t(getCategory(slug)?.name)).join(" · ");
   const trust = [
     { icon: BadgeCheck, text: c("trustGraded") },
-    { icon: ShieldCheck, text: c("trustVerified") },
+    { icon: Store, text: c("trustStorefront") },
     { icon: Truck, text: c("trustPickup") },
   ];
 

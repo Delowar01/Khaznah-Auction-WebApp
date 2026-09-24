@@ -16,7 +16,6 @@ import { withLang } from "@/lib/routes";
 import { formatNumber } from "@/lib/format";
 import { useCopy } from "../lib/useCopy";
 import { useLive } from "../market/MarketProvider";
-import { VerifiedMark } from "../ui/SellerAvatar";
 import { useChrome, WithSection } from "./ChromeContext";
 import { UserInitials } from "./AccountMenu";
 import { SECTIONS } from "./nav";
@@ -49,7 +48,7 @@ export function MobileMenu() {
             <UserInitials className="size-11 text-sm" />
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-semibold text-fg">{t(DEMO_USER.name)}</p>
-              <VerifiedMark label={c("verifiedBuyer")} />
+              <p className="text-xs text-fg-3">{c("buyerAccount")}</p>
             </div>
             <div className="text-end">
               <p className="text-[11px] text-fg-3">{ui("wallet")}</p>

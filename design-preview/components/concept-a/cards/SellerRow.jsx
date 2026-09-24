@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, BadgeCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { sellerStats } from "@/lib/catalog";
@@ -20,7 +20,6 @@ export function SellerRow({ seller }) {
       <div className="min-w-0 flex-1">
         <p className="flex items-center gap-2 text-[17px] font-semibold text-fg">
           <span className="a-underline-hover truncate">{t(seller.name)}</span>
-          <BadgeCheck aria-label={ui("verifiedSeller")} className="size-4 shrink-0 text-primary" />
         </p>
         <p className="mt-1 text-[13px] text-fg-3">
           {t(CITIES[seller.city])} · {ui("memberSince", { date: formatMonthYear(seller.memberSince, lang) })}

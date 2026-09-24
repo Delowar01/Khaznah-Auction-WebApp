@@ -30,8 +30,8 @@ function EventCard({ event }) {
           {ui("hostedBy")} {t(host?.name)} · {pl("lots", event.lots)}
         </p>
         <div className="mt-auto pt-4">
-          <Button size="sm" variant="quiet" onClick={() => toast({ tone: "success", title: ui("remindMe"), description: t(event.title) })}>
-            {ui("remindMe")}
+          <Button size="sm" variant="quiet" onClick={() => toast({ tone: "success", title: ui("reminderSet"), description: t(event.title) })}>
+            {ui("remindEvent")}
           </Button>
         </div>
       </div>

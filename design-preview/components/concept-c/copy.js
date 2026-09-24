@@ -13,15 +13,15 @@ export const COPY = {
   noMatches: { en: "No direct matches yet — search all lots instead.", ar: "لا توجد نتائج مطابقة بعد — ابحث في كل المعروض." },
   searchAll: { en: "See all results for “{q}”", ar: "عرض كل نتائج «{q}»" },
   searchHint: { en: "Try a product, a brand or a lot number", ar: "جرّب اسم منتج أو علامة تجارية أو رقم منتج" },
-  verifiedAccount: { en: "Verified account", ar: "حساب موثّق" },
+  buyerAccount: { en: "Buyer account", ar: "حساب مشترٍ" },
   signOut: { en: "Sign out", ar: "تسجيل الخروج" },
   cartEmpty: { en: "Your cart is empty", ar: "سلتك فارغة" },
   cartEmptyText: { en: "Fixed-price lots you add will appear here.", ar: "ستظهر هنا منتجات الشراء الفوري التي تضيفها." },
   subtotal: { en: "Subtotal", ar: "المجموع الفرعي" },
   remove: { en: "Remove", ar: "إزالة" },
   checkoutNote: {
-    en: "Pay securely with mada, Visa, Mastercard, STC Pay or your Khazna wallet.",
-    ar: "ادفع بأمان عبر مدى أو فيزا أو ماستركارد أو STC Pay أو محفظة خزنة.",
+    en: "Pay by card (mada, Visa or Mastercard) on a secure payment page, or with your Khazna wallet.",
+    ar: "ادفع بالبطاقة (مدى أو فيزا أو ماستركارد) عبر صفحة دفع آمنة، أو من محفظة خزنة.",
   },
   watchEmpty: { en: "Your watchlist is empty", ar: "قائمة متابعتك فارغة" },
   watchEmptyText: {
@@ -30,7 +30,7 @@ export const COPY = {
   },
   pageSoon: { en: "This page is being prepared.", ar: "يجري إعداد هذه الصفحة." },
   helpText: { en: "Our team answers Sunday to Thursday, 9:00–18:00.", ar: "يسعد فريقنا بخدمتك من الأحد إلى الخميس، 9:00–18:00." },
-  sellText: { en: "Verified warehouses can list auctions, Buy Now stock and live sales.", ar: "يمكن للمستودعات الموثّقة عرض المزادات ومنتجات الشراء الفوري والمزادات المباشرة." },
+  sellText: { en: "Warehouses with a Khazna seller account can list auctions, Buy Now stock and live sales.", ar: "يمكن للمستودعات التي لديها حساب بائع على خزنة عرض المزادات ومنتجات الشراء الفوري والمزادات المباشرة." },
   menuAccount: { en: "Account", ar: "الحساب" },
   paymentMethods: { en: "Payment methods", ar: "طرق الدفع" },
 
@@ -39,11 +39,11 @@ export const COPY = {
   onTheBlock: { en: "On the block", ar: "المعروض الآن" },
 
   // Home · across the Kingdom
-  kingdomEyebrow: { en: "Verified Saudi warehouses", ar: "مستودعات سعودية موثّقة" },
+  kingdomEyebrow: { en: "Saudi seller warehouses", ar: "مستودعات البائعين في المملكة" },
   kingdomTitle: { en: "Across the Kingdom", ar: "في أنحاء المملكة" },
   kingdomText: {
-    en: "Every seller on Khazna is a verified warehouse. Choose a city to meet the sellers behind its lots.",
-    ar: "كل بائع على خزنة مستودع موثّق. اختر مدينة لتتعرّف على البائعين خلف معروضها.",
+    en: "Every seller on Khazna is a warehouse. Choose a city to meet the sellers behind its lots.",
+    ar: "كل بائع على خزنة مستودع. اختر مدينة لتتعرّف على البائعين خلف معروضها.",
   },
 
   // Home · sections
@@ -51,7 +51,7 @@ export const COPY = {
   endingEyebrow: { en: "Last chance to bid", ar: "الفرصة الأخيرة للمزايدة" },
   featuredEyebrow: { en: "Most bid right now", ar: "الأكثر مزايدة الآن" },
   buyNowEyebrow: { en: "Fixed price, no waiting", ar: "سعر ثابت دون انتظار" },
-  gradesEyebrow: { en: "Inspected & graded", ar: "مفحوص ومصنّف" },
+  gradesEyebrow: { en: "Condition graded", ar: "مصنّف حسب الحالة" },
   gradesTitle: { en: "One clear grade for every lot", ar: "درجة واضحة لكل منتج" },
   fullGuide: { en: "See the full guide", ar: "اطّلع على الدليل الكامل" },
   worksYes: { en: "Works", ar: "يعمل" },
@@ -66,15 +66,15 @@ export const COPY = {
   howEyebrow: { en: "Four steps", ar: "أربع خطوات" },
   million: { en: "M", ar: " مليون" },
   liveBandText: {
-    en: "A presenter-led sale streamed from the warehouse floor. Bid in real time, one lot every 45 seconds.",
-    ar: "مزاد يقدّمه مذيع مباشرة من أرض المستودع. زايد لحظياً، منتج كل 45 ثانية.",
+    en: "A presenter-led sale streamed from the warehouse floor. Bid in real time as each lot comes up.",
+    ar: "مزاد يقدّمه مذيع مباشرة من أرض المستودع. زايد لحظياً مع عرض كل منتج.",
   },
   moreEvents: { en: "Coming up", ar: "القادم" },
 
   // Browse
   browseLead: {
-    en: "Graded stock from verified Saudi warehouses — bid on it, or buy it now.",
-    ar: "مخزون مصنّف من مستودعات سعودية موثّقة — زايد عليه أو اشترِه فوراً.",
+    en: "Graded stock from Saudi warehouses — bid on it, or buy it now.",
+    ar: "مخزون مصنّف من مستودعات سعودية — زايد عليه أو اشترِه فوراً.",
   },
   view: { en: "View", ar: "طريقة العرض" },
   saleType: { en: "Sale type", ar: "نوع البيع" },
@@ -97,22 +97,19 @@ export const COPY = {
     en: "This lot has found its buyer. Similar lots are still open below.",
     ar: "وجد هذا المنتج مشتريه. تجد أدناه منتجات مشابهة ما زالت مفتوحة.",
   },
-  remindSet: { en: "We'll remind you when bidding opens.", ar: "سنذكّرك عند بدء المزايدة." },
-  remindOff: { en: "Reminder removed.", ar: "أُلغي التذكير." },
   paymentWindow: { en: "Payment is due within {n} hours of winning.", ar: "يُستحق الدفع خلال {n} ساعة من الفوز." },
   depositTerm: {
-    en: "A refundable deposit of {amount} is held while you bid — never charged unless you win.",
-    ar: "يُحجز تأمين مسترد بقيمة {amount} أثناء المزايدة — ولا يُخصم إلا عند الفوز.",
+    en: "To bid, your wallet must cover a refundable deposit of {amount}.",
+    ar: "للمزايدة، يجب أن يغطي رصيد محفظتك تأميناً مسترداً بقيمة {amount}.",
   },
   youBid: { en: "Your bid", ar: "مزايدتك" },
-  bidLeading: { en: "You lead at {amount}. We'll tell you the moment someone outbids you.", ar: "أنت في الصدارة بمبلغ {amount}. سننبّهك فور تجاوز مزايدتك." },
+  bidLeading: { en: "You lead at {amount}. You'll get a notification if someone outbids you.", ar: "أنت في الصدارة بمبلغ {amount}. سيصلك إشعار إذا تجاوز أحد مزايدتك." },
   bidOutbid: { en: "Bid {amount} or more to take the lead again.", ar: "زايد بـ {amount} أو أكثر لتستعيد الصدارة." },
   bidWon: { en: "Payment is due within 24 hours. We've sent the details to your account.", ar: "يُستحق الدفع خلال 24 ساعة، وقد أرسلنا التفاصيل إلى حسابك." },
   bidLost: { en: "Another bidder won this lot. Similar lots are open below.", ar: "فاز مزايد آخر بهذا المنتج. تجد أدناه منتجات مشابهة مفتوحة." },
   bidLostTitle: { en: "You didn't win this auction", ar: "لم تفز بهذا المزاد" },
   proxyActive: { en: "Automatic bidding is on", ar: "المزايدة التلقائية مفعّلة" },
   buyNowBoxText: { en: "Skip the bidding and take it home at a fixed price.", ar: "تجاوز المزايدة واحصل عليه بسعر ثابت." },
-  addedFromAuction: { en: "Reserved for checkout", ar: "حُجز لإتمام الشراء" },
   vsMarket: { en: "vs. typical market price", ar: "مقارنةً بسعر السوق المعتاد" },
   bidderCol: { en: "Bidder", ar: "المزايد" },
   amountCol: { en: "Amount", ar: "المبلغ" },
@@ -131,7 +128,7 @@ export const COPY = {
   nextUp: { en: "Next up", ar: "التالي" },
 
   // Seller
-  moreSellers: { en: "More verified warehouses", ar: "مستودعات موثّقة أخرى" },
+  moreSellers: { en: "More seller warehouses", ar: "مستودعات بائعين أخرى" },
   address: { en: "Pickup address", ar: "عنوان الاستلام" },
   hours: { en: "Opening hours", ar: "ساعات العمل" },
   totalListings: { en: "Listings", ar: "المعروضات" },
@@ -228,20 +225,20 @@ export const COPY = {
     outline: { en: "Outline", ar: "محدّد" },
     ghost: { en: "Quiet", ar: "هادئ" },
   },
-  helperText: { en: "We'll send closing-soon alerts here.", ar: "سنرسل إليك تنبيهات المزادات القريبة من الإغلاق." },
-  displaySample: { en: "Verified inventory.", ar: "مخزون موثّق." },
+  helperText: { en: "Used to sign in to your account.", ar: "يُستخدم لتسجيل الدخول إلى حسابك." },
+  displaySample: { en: "Graded inventory.", ar: "مخزون مصنّف." },
   headingSample: { en: "Ending soon", ar: "تنتهي قريباً" },
   bodySample: {
-    en: "Every lot is inspected, and every grade disclosed.",
-    ar: "كل قطعة تُفحص، وكل درجة تُعلن.",
+    en: "Every lot shows its condition grade.",
+    ar: "لكل منتج درجة حالة معلنة.",
   },
 };
 
 // Plural forms (same shape as data/ui.js PLURALS; Arabic uses all six CLDR forms).
 export const COPY_PLURALS = {
   warehouses: {
-    en: { one: "{n} verified warehouse", other: "{n} verified warehouses" },
-    ar: { zero: "لا مستودعات", one: "مستودع موثّق واحد", two: "مستودعان موثّقان", few: "{n} مستودعات موثّقة", many: "{n} مستودعاً موثّقاً", other: "{n} مستودع موثّق" },
+    en: { one: "{n} warehouse", other: "{n} warehouses" },
+    ar: { zero: "لا مستودعات", one: "مستودع واحد", two: "مستودعان", few: "{n} مستودعات", many: "{n} مستودعاً", other: "{n} مستودع" },
   },
   openAuctions: {
     en: { one: "{n} open auction", other: "{n} open auctions" },

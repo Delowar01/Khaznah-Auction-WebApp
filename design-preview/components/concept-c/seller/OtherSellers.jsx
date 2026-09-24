@@ -13,7 +13,7 @@ import { Diamond } from "../ui/Diamond";
 import { SectionHead } from "../ui/Section";
 import { DiamondAvatar } from "./DiamondAvatar";
 
-/** The other verified warehouses, as diamond-monogram cards. */
+/** The other seller warehouses, as diamond-monogram cards. */
 export function OtherSellers({ current }) {
   const { t, ui, pl } = useLang();
   const { link } = useConcept();

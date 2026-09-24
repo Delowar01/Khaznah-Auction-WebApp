@@ -52,7 +52,7 @@ export function LotHeader({ product, status = null, actions = null }) {
   );
 }
 
-/** The inspector's note and what the grade means. */
+/** The condition note and what the grade means. */
 export function ConditionNote({ product }) {
   const { t, ui } = useLang();
   const grade = getGrade(product.grade);

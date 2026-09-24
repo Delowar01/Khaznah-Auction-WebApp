@@ -1,6 +1,6 @@
 "use client";
 
-import { BadgeCheck, Clock, MapPin, ShieldCheck, Truck } from "lucide-react";
+import { BadgeCheck, Clock, MapPin, Truck, Warehouse } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { UI } from "@/data/ui";
 import { CITIES } from "@/data/sellers";
@@ -36,7 +36,7 @@ export function SellerAbout({ seller }) {
   const [address, hours] = t(seller.pickup).split(" · ");
   const trust = [
     { icon: BadgeCheck, label: ui("inspected") },
-    { icon: ShieldCheck, label: ui("verifiedSeller") },
+    { icon: Warehouse, label: ui("sellerWarehouse") },
     { icon: Truck, label: t(COPY.deliveryAvailable) },
   ];
   return (

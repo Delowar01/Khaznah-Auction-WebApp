@@ -87,7 +87,7 @@ export function BuyNowOption({ product, auction, bought, onBuyNow }) {
   );
 }
 
-/** Upcoming lots: explain when bidding opens and offer a reminder. */
+/** Upcoming lots: explain when bidding opens and offer to watch the lot. */
 export function UpcomingActions({ product }) {
   const { t, ui } = useLang();
   const { isWatched, toggleWatch, toast } = useStore();
@@ -104,10 +104,10 @@ export function UpcomingActions({ product }) {
         data-testid="watch-button"
         onClick={() => {
           const now = toggleWatch(product.slug);
-          toast({ tone: now ? "success" : "neutral", title: now ? t(COPY.reminderSet) : ui("removedFromWatchlist"), description: t(product.title) });
+          toast({ tone: now ? "success" : "neutral", title: ui(now ? "addedToWatchlist" : "removedFromWatchlist"), description: t(product.title) });
         }}
       >
-        {on ? t(COPY.reminderOn) : ui("remindMe")}
+        {on ? ui("watching") : ui("remindMe")}
       </Button>
     </div>
   );

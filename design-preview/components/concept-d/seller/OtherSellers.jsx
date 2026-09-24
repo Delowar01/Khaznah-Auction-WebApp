@@ -6,7 +6,7 @@ import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { DirIcon } from "@/components/shared/ui/DirIcon";
 import { CITIES, SELLERS } from "@/data/sellers";
-import { SellerAvatar, VerifiedMark } from "../ui/SellerAvatar";
+import { SellerAvatar } from "../ui/SellerAvatar";
 import { StatusChip } from "../ui/Chips";
 import { useCopy } from "../lib/useCopy";
 
@@ -29,7 +29,6 @@ export function OtherSellers({ current }) {
               <span className="min-w-0 flex-1">
                 <span className="flex items-center gap-1.5 text-sm font-medium text-fg">
                   <span className="truncate">{t(seller.name)}</span>
-                  <VerifiedMark />
                 </span>
                 <span className="mt-0.5 block text-xs text-fg-3">{t(CITIES[seller.city])}</span>
               </span>

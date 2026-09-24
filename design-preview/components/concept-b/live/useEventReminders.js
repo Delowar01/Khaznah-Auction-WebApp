@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useStore } from "@/components/shared/providers/PreviewStore";
-import { COPY } from "../copy";
 
-/** Local reminder toggles for upcoming live events (with a confirmation toast). */
+/** Local reminder toggles for upcoming live events (with a confirmation toast).
+ * Event reminders are a concept idea — production has no reminder notifications. */
 export function useEventReminders() {
-  const { t } = useLang();
+  const { t, ui } = useLang();
   const { toast } = useStore();
   const [reminders, setReminders] = useState(() => new Set());
   const toggle = (event) => {
@@ -18,7 +18,7 @@ export function useEventReminders() {
       else next.delete(event.slug);
       return next;
     });
-    if (on) toast({ tone: "success", title: t(COPY.reminderSet), description: t(COPY.reminderText, { title: t(event.title) }) });
+    if (on) toast({ tone: "success", title: ui("reminderSet"), description: t(event.title) });
   };
   return { isOn: (event) => reminders.has(event.slug), toggle };
 }

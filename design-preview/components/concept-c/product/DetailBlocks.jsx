@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { BadgeCheck } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { CITIES, getSeller } from "@/data/sellers";
@@ -100,7 +99,6 @@ export function SellerMiniCard({ code }) {
           <Link href={link(`/seller/${seller.code}`)} className="c-link truncate">
             {t(seller.name)}
           </Link>
-          <BadgeCheck aria-label={ui("verifiedSeller")} className="size-4 shrink-0 text-success" />
         </p>
         <p className="text-xs text-fg-2">
           {t(CITIES[seller.city])} · {ui("memberSince", { date: formatMonthYear(seller.memberSince, lang) })}

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Bell, ShoppingBag, Zap } from "lucide-react";
+import { LayoutGrid, ShoppingBag, Zap } from "lucide-react";
+import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useStore } from "@/components/shared/providers/PreviewStore";
 import { Money } from "@/components/shared/ui/Money";
@@ -10,7 +11,7 @@ import { COPY, COPY_PLURALS } from "../copy";
 import { plural } from "@/lib/i18n";
 import { StockLine } from "../cards/BuyNowCard";
 import { Badge } from "../ui/Badges";
-import { Button } from "../ui/Button";
+import { Button, ButtonLink } from "../ui/Button";
 import { ShareButton } from "../ui/Misc";
 import { QuantityStepper } from "../ui/QuantityStepper";
 import { WatchButton } from "../ui/WatchButton";
@@ -28,15 +29,15 @@ export function usePurchase(product) {
     toast({ tone: "success", title: ui("addedToCart"), description: `${qty} × ${t(product.title)}` });
     after?.();
   };
-  const notify = () => toast({ tone: "info", title: ui("notifyMe"), description: t(product.title) });
-  return { qty, setQty, out, add, buyNow: () => add(() => openChromePanel("cart")), notify };
+  return { qty, setQty, out, add, buyNow: () => add(() => openChromePanel("cart")) };
 }
 
 /** Buy Now purchase panel: price, saving, stock, quantity rules, cart actions, watch and share. */
 export function PurchasePanel({ product, purchase }) {
   const { t, ui, pl, money, lang } = useLang();
   const off = discountPercent(product);
-  const { qty, setQty, out, add, buyNow, notify } = purchase;
+  const { qty, setQty, out, add, buyNow } = purchase;
+  const { link } = useConcept();
   const perCase = Boolean(product.unitLabel);
 
   return (
@@ -91,9 +92,9 @@ export function PurchasePanel({ product, purchase }) {
           {ui("addToCart")}
         </Button>
         {out ? (
-          <Button size="lg" block variant="outline" icon={Bell} onClick={notify}>
-            {ui("notifyMe")}
-          </Button>
+          <ButtonLink href={link(`/browse?category=${product.category}`)} size="lg" block variant="outline" icon={LayoutGrid}>
+            {ui("seeSimilarItems")}
+          </ButtonLink>
         ) : (
           <Button size="lg" block variant="night" icon={Zap} onClick={buyNow}>
             {ui("buyItNow")}

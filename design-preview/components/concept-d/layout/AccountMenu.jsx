@@ -5,7 +5,6 @@ import { useLang } from "@/components/shared/providers/LangProvider";
 import { useStore } from "@/components/shared/providers/PreviewStore";
 import { DEMO_USER } from "@/data/site";
 import { Popover } from "../ui/Popover";
-import { VerifiedMark } from "../ui/SellerAvatar";
 import { useCopy } from "../lib/useCopy";
 
 export function UserInitials({ className = "" }) {
@@ -53,7 +52,7 @@ export function AccountMenu({ className = "" }) {
             <UserInitials className="size-10 text-sm" />
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold text-fg">{t(DEMO_USER.name)}</p>
-              <VerifiedMark label={c("verifiedBuyer")} />
+              <p className="text-xs text-fg-3">{c("buyerAccount")}</p>
             </div>
           </div>
           <div className="d-hairline mb-1" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, BellRing } from "lucide-react";
+import { Bookmark } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useStore } from "@/components/shared/providers/PreviewStore";
 import { Money } from "@/components/shared/ui/Money";
@@ -11,14 +11,14 @@ import { Diamond } from "../ui/Diamond";
 import { StatusLine } from "./StatusLine";
 import { BidderBanner } from "./BidNotices";
 
-/** Scheduled lot: "starts in" clock, opening bid and Remind me. */
+/** Scheduled lot: "starts in" clock, opening bid and Watch. */
 export function UpcomingPanel({ product, auction }) {
   const { t, ui } = useLang();
   const { isWatched, toggleWatch, toast } = useStore();
   const reminded = isWatched(product.slug);
   const remind = () => {
     const now = toggleWatch(product.slug);
-    toast({ tone: now ? "success" : "neutral", title: ui("remindMe"), description: t(now ? COPY.remindSet : COPY.remindOff) });
+    toast({ tone: now ? "success" : "neutral", title: ui(now ? "addedToWatchlist" : "removedFromWatchlist"), description: t(product.title) });
   };
   return (
     <section aria-labelledby="bid-title" className="rounded-md border border-line bg-surface p-5 sm:p-6">
@@ -35,8 +35,8 @@ export function UpcomingPanel({ product, auction }) {
         </div>
         <p className="text-sm font-medium text-primary">{ui("opensTomorrow")}</p>
       </div>
-      <Button size="lg" block icon={reminded ? BellRing : Bell} variant={reminded ? "outline" : "primary"} aria-pressed={reminded} onClick={remind} className="mt-6">
-        {reminded ? t(COPY.remindSet) : ui("remindMe")}
+      <Button size="lg" block icon={Bookmark} variant={reminded ? "outline" : "primary"} aria-pressed={reminded} onClick={remind} className="mt-6">
+        {reminded ? ui("watching") : ui("remindMe")}
       </Button>
     </section>
   );

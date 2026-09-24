@@ -18,7 +18,7 @@ export function DeliveryInfo({ product, className = "" }) {
     { icon: BadgeCheck, title: ui("inspected"), text: c("inspectedLine") },
   ];
   return (
-    <section aria-label={c("buyerProtection")} className={`d-panel ${className}`}>
+    <section aria-label={c("deliveryAndReturns")} className={`d-panel ${className}`}>
       <ul>
         {rows.map((row) => (
           <li key={row.title} className="flex gap-3 border-b border-line p-4">

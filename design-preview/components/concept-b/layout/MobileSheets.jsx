@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronRight, LayoutGrid, Phone } from "lucide-react";
+import { ChevronRight, LayoutGrid, Lock, Mail } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useStore } from "@/components/shared/providers/PreviewStore";
 import { DirIcon } from "@/components/shared/ui/DirIcon";
@@ -85,24 +85,25 @@ export function AccountSheet() {
   );
 }
 
-/** Mobile-number sign-in used after signing out. */
+/** Email and password sign-in used after signing out (the same fields production uses). */
 export function SignInDialog() {
   const { t, ui } = useLang();
   const { toast } = useStore();
   const { panel, close, setSignedIn } = useChrome();
   const firstName = useFirstName();
-  const [value, setValue] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
 
   const submit = (event) => {
     event.preventDefault();
-    const digits = value.replace(/\D/g, "").replace(/^966/, "").replace(/^0/, "");
-    if (!/^5\d{8}$/.test(digits)) {
-      setError(t(COPY.invalidMobile));
-      return;
-    }
-    setError("");
-    setValue("");
+    const next = {};
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) next.email = ui("invalidEmail");
+    if (!password) next.password = t(COPY.passwordRequired);
+    setErrors(next);
+    if (next.email || next.password) return;
+    setEmail("");
+    setPassword("");
     setSignedIn(true);
     close();
     toast({ tone: "success", title: t(COPY.welcomeBack, { name: firstName }) });
@@ -113,22 +114,35 @@ export function SignInDialog() {
       <form onSubmit={submit} noValidate className="grid gap-4">
         <p className="kb-md text-fg-2">{t(COPY.signInText)}</p>
         <TextField
-          label={t(COPY.mobileNumber)}
-          icon={Phone}
-          type="tel"
-          inputMode="tel"
-          autoComplete="tel"
+          label={ui("email")}
+          icon={Mail}
+          type="email"
+          inputMode="email"
+          autoComplete="email"
           dir="ltr"
-          placeholder="5X XXX XXXX"
-          value={value}
+          placeholder="name@example.com"
+          value={email}
           onChange={(event) => {
-            setValue(event.target.value);
-            if (error) setError("");
+            setEmail(event.target.value);
+            if (errors.email) setErrors((current) => ({ ...current, email: undefined }));
           }}
-          error={error}
-          hint={error ? undefined : t(COPY.mobileHint)}
+          error={errors.email}
           size="lg"
           data-autofocus
+        />
+        <TextField
+          label={t(COPY.password)}
+          icon={Lock}
+          type="password"
+          autoComplete="current-password"
+          dir="ltr"
+          value={password}
+          onChange={(event) => {
+            setPassword(event.target.value);
+            if (errors.password) setErrors((current) => ({ ...current, password: undefined }));
+          }}
+          error={errors.password}
+          size="lg"
         />
         <Button type="submit" size="lg" block>
           {t(COPY.continue)}

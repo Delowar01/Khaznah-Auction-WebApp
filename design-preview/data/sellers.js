@@ -3,6 +3,8 @@
 // active_auction_count, buy_now_count, live_now, entitlements — plus
 // presentation copy (tagline, description, pickup) that the storefront
 // designs use. Listing counts are derived from the sample catalogue.
+// Sellers other than Khazna Direct are fictional samples; production has no
+// pickup-address or opening-hours fields on the public seller response.
 import { photo, BRAND_PHOTOS } from "./media";
 
 export const CITIES = {
@@ -22,16 +24,16 @@ export const SELLERS = [
     city: "riyadh",
     memberSince: "2023-03-01",
     tagline: {
-      en: "Platform-owned stock, inspected and graded in-house.",
-      ar: "مخزون مملوك للمنصة، يُفحص ويُصنّف داخلياً.",
+      en: "Platform-owned stock, listed with condition grades.",
+      ar: "مخزون مملوك للمنصة، معروض بدرجات حالة.",
     },
     description: {
-      en: "Khazna Direct lists stock that Khazna owns outright — customer returns, overstock and liquidation lots processed at our Riyadh fulfilment centre. Every unit is tested, photographed and graded before it goes live.",
-      ar: "يعرض خزنة مباشر المخزون المملوك للمنصة بالكامل — مرتجعات العملاء وفائض المخزون ودفعات التصفية التي تتم معالجتها في مركز خزنة للتجهيز في الرياض. كل قطعة تُختبر وتُصوّر وتُصنّف قبل عرضها.",
+      en: "Khazna Direct lists stock that Khazna owns outright — customer returns, overstock and liquidation lots from the platform's own warehouse in Riyadh, each listed with a condition grade.",
+      ar: "يعرض خزنة مباشر المخزون المملوك للمنصة بالكامل — مرتجعات العملاء وفائض المخزون ودفعات التصفية من مستودع المنصة في الرياض، ولكل منتج درجة حالة معلنة.",
     },
     pickup: {
-      en: "Al Sulay Logistics Park, Riyadh · Sun–Thu 9:00–18:00",
-      ar: "مجمع السلي اللوجستي، الرياض · الأحد–الخميس 9:00–18:00",
+      en: "Riyadh · Sun–Thu 9:00–18:00",
+      ar: "الرياض · الأحد–الخميس 9:00–18:00",
     },
     cover: BRAND_PHOTOS.warehouseRiyadh,
     liveNow: false,
@@ -49,8 +51,8 @@ export const SELLERS = [
       ar: "فائض صالات العرض من الأثاث والإضاءة والأجهزة.",
     },
     description: {
-      en: "Rawabi supplies ex-display and overstock pieces from furniture showrooms across Riyadh. Their warehouse in Al Sulay prepares every item for collection within 24 hours of payment.",
-      ar: "تقدّم روابي قطع العرض السابقة وفائض المخزون من صالات الأثاث في الرياض. يجهّز مستودعها في السلي كل قطعة للاستلام خلال 24 ساعة من الدفع.",
+      en: "Rawabi supplies ex-display and overstock pieces from furniture showrooms across Riyadh, sold from its warehouse in Al Sulay.",
+      ar: "تقدّم روابي قطع العرض السابقة وفائض المخزون من صالات الأثاث في الرياض، وتبيعها من مستودعها في السلي.",
     },
     pickup: {
       en: "Al Sulay Industrial Area, Riyadh · Sat–Thu 10:00–20:00",
@@ -72,8 +74,8 @@ export const SELLERS = [
       ar: "مرتجعات الإلكترونيات والأجهزة المنزلية من المنطقة الغربية.",
     },
     description: {
-      en: "Red Sea Trading processes retail returns for electronics chains in Jeddah and Makkah. Their Tuesday evening live sessions are among the most watched on Khazna.",
-      ar: "تعالج شركة البحر الأحمر للتجارة مرتجعات متاجر الإلكترونيات في جدة ومكة. وتُعد جلساتها المباشرة مساء كل ثلاثاء من الأكثر مشاهدة على خزنة.",
+      en: "Red Sea Trading processes retail returns for electronics chains in Jeddah and Makkah, and hosts evening live sales on Khazna.",
+      ar: "تعالج شركة البحر الأحمر للتجارة مرتجعات متاجر الإلكترونيات في جدة ومكة، وتقيم مزادات مباشرة مسائية على خزنة.",
     },
     pickup: {
       en: "Al Khumrah District, Jeddah · Sun–Thu 9:00–17:00",
@@ -118,8 +120,8 @@ export const SELLERS = [
       ar: "فائض الأزياء وأدوات المطبخ من متاجر المنطقة الشرقية.",
     },
     description: {
-      en: "Sahel Lifestyle clears end-of-season fashion and kitchenware from retailers in Al Khobar and Dhahran, with same-week delivery across the Eastern Province.",
-      ar: "تصرّف ساحل لايف ستايل مخزون نهاية الموسم من الأزياء وأدوات المطبخ لمتاجر الخبر والظهران، مع توصيل خلال الأسبوع نفسه في المنطقة الشرقية.",
+      en: "Sahel Lifestyle clears end-of-season fashion and kitchenware from retailers in Al Khobar and Dhahran.",
+      ar: "تصرّف ساحل لايف ستايل مخزون نهاية الموسم من الأزياء وأدوات المطبخ لمتاجر الخبر والظهران.",
     },
     pickup: {
       en: "King Fahd Road, Al Khobar · Sat–Thu 10:00–22:00",

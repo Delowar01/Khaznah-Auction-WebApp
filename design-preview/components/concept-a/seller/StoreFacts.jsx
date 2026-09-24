@@ -1,6 +1,6 @@
 "use client";
 
-import { BadgeCheck, ClipboardCheck, Clock, MapPin, Truck } from "lucide-react";
+import { ClipboardCheck, Clock, MapPin, Truck, Warehouse } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { sellerStats } from "@/lib/catalog";
 import { TRUST_POINTS } from "@/data/site";
@@ -19,7 +19,7 @@ export function StoreFacts({ seller }) {
     { label: t(COPY.categoriesStat), value: stats.categories.length },
   ];
   const trust = [
-    { icon: BadgeCheck, title: ui("verifiedSeller"), text: t(COPY.verifiedText) },
+    { icon: Warehouse, title: ui("sellerWarehouse"), text: t(COPY.sellerWarehouseText) },
     { icon: ClipboardCheck, title: t(graded.title), text: t(graded.text) },
     { icon: Truck, title: t(delivery.title), text: t(delivery.text) },
   ];

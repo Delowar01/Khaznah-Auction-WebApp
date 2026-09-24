@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, BellRing, CheckCircle2, Trophy } from "lucide-react";
+import { ArrowDown, Bookmark, CheckCircle2, Trophy } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useStore } from "@/components/shared/providers/PreviewStore";
 import { Money } from "@/components/shared/ui/Money";
@@ -29,9 +29,9 @@ function Shell({ children }) {
   );
 }
 
-/** Scheduled lot: countdown to opening, opening bid, remind me. */
+/** Scheduled lot: countdown to opening, opening bid, watch. */
 export function UpcomingTerminal({ product, auction }) {
-  const { ui } = useLang();
+  const { t, ui } = useLang();
   const { isWatched, toggleWatch, toast } = useStore();
   const c = useCopy();
   const elapsed = useElapsed();
@@ -51,15 +51,15 @@ export function UpcomingTerminal({ product, auction }) {
       <Button
         variant={watched ? "secondary" : "gold"}
         size="xl"
-        icon={BellRing}
+        icon={Bookmark}
         className="w-full"
         aria-pressed={watched}
         onClick={() => {
           const now = toggleWatch(product.slug);
-          toast({ tone: now ? "success" : "neutral", title: now ? ui("remindMe") : ui("removedFromWatchlist"), description: now ? c("reminderSet") : undefined });
+          toast({ tone: now ? "success" : "neutral", title: ui(now ? "addedToWatchlist" : "removedFromWatchlist"), description: t(product.title) });
         }}
       >
-        {watched ? c("reminderOn") : ui("remindMe")}
+        {watched ? ui("watching") : ui("remindMe")}
       </Button>
       <MarketMeter product={product} currentBid={product.startingBid} />
       <div className="border-t border-line pt-4">

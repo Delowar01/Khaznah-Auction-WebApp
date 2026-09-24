@@ -32,7 +32,7 @@ export function AccountSummary({ onWatchlist, onItem, className = "" }) {
           <p className="truncate font-semibold text-fg">{t(DEMO_USER.name)}</p>
           <p className="flex items-center gap-1 text-xs text-success">
             <BadgeCheck aria-hidden="true" className="size-3.5" />
-            {t(COPY.verifiedAccount)}
+            {t(COPY.buyerAccount)}
           </p>
         </div>
       </div>

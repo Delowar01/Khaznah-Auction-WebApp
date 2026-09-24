@@ -1,14 +1,14 @@
 "use client";
 
-import { BellRing, Lock, Share2, ShoppingCart, Wallet, Zap } from "lucide-react";
+import { LayoutGrid, Lock, Share2, ShoppingCart, Wallet, Zap } from "lucide-react";
+import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
-import { useStore } from "@/components/shared/providers/PreviewStore";
 import { Money } from "@/components/shared/ui/Money";
 import { DEMO_USER, PAYMENT_METHODS } from "@/data/site";
 import { discountPercent } from "@/lib/catalog";
 import { PriceLabel } from "../cards/CardParts";
 import { Badge } from "../ui/Badge";
-import { Button } from "../ui/Button";
+import { Button, ButtonLink } from "../ui/Button";
 import { Stepper } from "../ui/Stepper";
 import { StockMeter } from "../ui/StockMeter";
 import { WatchButton } from "../ui/WatchButton";
@@ -19,18 +19,12 @@ import { COPY } from "../copy";
 /** Sticky purchase panel for Buy Now lots. */
 export function BuyBox({ product, qty, setQty, onAdd, onBuyNow, className = "" }) {
   const { t, ui, money } = useLang();
-  const { isWatched, toggleWatch, toast } = useStore();
+  const { link } = useConcept();
   const share = useShareLink();
   const soldOut = product.stock <= 0;
   const discount = discountPercent(product);
   const locked = Boolean(product.fullStockRequired);
   const max = locked ? 1 : Math.max(1, product.stock);
-  const watched = isWatched(product.slug);
-
-  const notify = () => {
-    const now = toggleWatch(product.slug);
-    toast({ tone: now ? "success" : "neutral", title: now ? t(COPY.notifyBack) : ui("removedFromWatchlist"), description: t(product.title) });
-  };
 
   return (
     <div className={cx("rounded-xl border border-line bg-surface p-5 shadow-card", className)}>
@@ -79,9 +73,9 @@ export function BuyBox({ product, qty, setQty, onAdd, onBuyNow, className = "" }
           {soldOut ? ui("outOfStock") : ui("addToCart")}
         </Button>
         {soldOut ? (
-          <Button variant="outline-primary" size="lg" block icon={BellRing} onClick={notify} aria-pressed={watched}>
-            {watched ? ui("watching") : ui("notifyMe")}
-          </Button>
+          <ButtonLink href={link(`/browse?category=${product.category}`)} variant="outline-primary" size="lg" block icon={LayoutGrid}>
+            {ui("seeSimilarItems")}
+          </ButtonLink>
         ) : (
           <Button variant="outline-primary" size="lg" block icon={Zap} onClick={onBuyNow}>
             {ui("buyItNow")}

@@ -6,7 +6,7 @@ import { useLang } from "@/components/shared/providers/LangProvider";
 import { CITIES, getSeller } from "@/data/sellers";
 import { formatMonthYear } from "@/lib/format";
 import { sellerStats } from "@/lib/catalog";
-import { SellerAvatar, VerifiedMark } from "../ui/SellerAvatar";
+import { SellerAvatar } from "../ui/SellerAvatar";
 import { StatusChip } from "../ui/Chips";
 import { Button } from "../ui/Button";
 
@@ -24,7 +24,6 @@ export function SellerCard({ code, detailed = false, className = "" }) {
           <p className="d-label text-fg-3">{seller.platform ? ui("platformSeller") : ui("soldBy")}</p>
           <p className="mt-0.5 flex items-center gap-1.5 font-medium text-fg">
             <span className="truncate">{t(seller.name)}</span>
-            <VerifiedMark />
           </p>
           <p className="mt-0.5 flex items-center gap-1 text-xs text-fg-3">
             <MapPin aria-hidden="true" className="size-3.5" />

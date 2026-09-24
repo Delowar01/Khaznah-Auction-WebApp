@@ -32,7 +32,7 @@ function StatValue({ stat }) {
   );
 }
 
-/** Marketplace credibility: headline stats and the verified sellers. */
+/** Marketplace credibility: headline stats and the sellers. */
 export function SellerShelf() {
   const { t, ui } = useLang();
   return (

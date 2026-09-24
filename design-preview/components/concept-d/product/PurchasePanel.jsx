@@ -1,7 +1,8 @@
 "use client";
 
 import { forwardRef, useState } from "react";
-import { BellRing, ShoppingCart, Zap } from "lucide-react";
+import { LayoutGrid, ShoppingCart, Zap } from "lucide-react";
+import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useStore } from "@/components/shared/providers/PreviewStore";
 import { Money } from "@/components/shared/ui/Money";
@@ -16,14 +17,14 @@ import { QuantityControl } from "./QuantityControl";
 /** Buy Now purchase panel: price, saving, stock, quantity and actions. */
 export const PurchasePanel = forwardRef(function PurchasePanel({ product }, ctaRef) {
   const { t, ui, money, pl } = useLang();
-  const { addToCart, toast, isWatched, toggleWatch } = useStore();
+  const { addToCart, toast } = useStore();
+  const { link } = useConcept();
   const { openCart } = useChrome();
   const c = useCopy();
   const [qty, setQty] = useState(1);
   const soldOut = product.stock <= 0;
   const pct = discountPercent(product);
   const saving = product.originalPrice - product.price;
-  const watched = isWatched(product.slug);
 
   const add = (andOpen = false) => {
     addToCart(product.slug, qty);
@@ -70,18 +71,8 @@ export const PurchasePanel = forwardRef(function PurchasePanel({ product }, ctaR
           <Button variant="primary" size="lg" className="w-full" disabled data-testid="add-to-cart" icon={ShoppingCart}>
             {ui("outOfStock")}
           </Button>
-          <Button
-            variant="secondary"
-            size="lg"
-            className="w-full"
-            icon={BellRing}
-            aria-pressed={watched}
-            onClick={() => {
-              const now = toggleWatch(product.slug);
-              toast({ tone: now ? "success" : "neutral", title: ui(now ? "notifyMe" : "removedFromWatchlist"), description: now ? c("notifySet") : t(product.title) });
-            }}
-          >
-            {watched ? c("reminderOn") : ui("notifyMe")}
+          <Button variant="secondary" size="lg" className="w-full" icon={LayoutGrid} href={link(`/browse?category=${product.category}`)}>
+            {ui("seeSimilarItems")}
           </Button>
         </div>
       ) : (

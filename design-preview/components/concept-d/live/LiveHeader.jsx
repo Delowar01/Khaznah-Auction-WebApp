@@ -9,7 +9,7 @@ import { getSeller } from "@/data/sellers";
 import { useElapsed } from "@/lib/clock";
 import { formatNumber } from "@/lib/format";
 import { Breadcrumbs } from "../ui/Breadcrumbs";
-import { SellerAvatar, VerifiedMark } from "../ui/SellerAvatar";
+import { SellerAvatar } from "../ui/SellerAvatar";
 import { StatusChip } from "../ui/Chips";
 import { useCopy } from "../lib/useCopy";
 
@@ -50,7 +50,6 @@ export function LiveHeader({ live }) {
             <p className="hidden text-[11px] text-fg-3 lg:block">{c("host")}</p>
             <p className="flex items-center gap-1 text-sm font-medium text-fg">
               {t(host.name)}
-              <VerifiedMark />
             </p>
           </div>
         </Link>

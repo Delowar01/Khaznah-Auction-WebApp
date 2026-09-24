@@ -50,8 +50,8 @@ export function BadgeStates() {
           <Badge tone="accent" size="md" icon={TrendingDown}>
             {ui("belowMarket", { pct: marketSaving(FRIDGE, FRIDGE.currentBid) })}
           </Badge>
-          <Badge tone="success" size="md">
-            {ui("verifiedSeller")}
+          <Badge tone="neutral" size="md">
+            {ui("sellerWarehouse")}
           </Badge>
           <Badge tone="warning" size="md">
             {ui("onlyLeft", { n: 3 })}

@@ -49,7 +49,7 @@ export function AuctionCard({ product, sizes = "(min-width: 1280px) 20vw, (min-w
   const remind = (event) => {
     event.preventDefault();
     const now = toggleWatch(product.slug);
-    toast({ tone: now ? "success" : "neutral", title: now ? t(COPY.reminderSet) : ui("removedFromWatchlist"), description: meta.title });
+    toast({ tone: now ? "success" : "neutral", title: ui(now ? "addedToWatchlist" : "removedFromWatchlist"), description: meta.title });
   };
 
   return (
@@ -99,7 +99,7 @@ export function AuctionCard({ product, sizes = "(min-width: 1280px) 20vw, (min-w
               aria-pressed={isWatched(product.slug)}
               className={buttonClass({ variant: "soft", size: "xs", className: "relative z-10 @max-[13rem]:w-full" })}
             >
-              {isWatched(product.slug) ? t(COPY.reminderOn) : ui("remindMe")}
+              {isWatched(product.slug) ? ui("watching") : ui("remindMe")}
             </button>
           ) : (
             <span aria-hidden="true" className={buttonClass({ variant: closed ? "outline" : "primary", size: "xs", className: "@max-[13rem]:w-full" })}>

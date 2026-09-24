@@ -33,7 +33,7 @@ function Specimen({ lang }) {
       </p>
       <p className="mt-1 text-[12px] text-fg-3">{t(COPY.typeBody)} · 16</p>
       <p className="mt-6 text-[12px] font-semibold text-fg" style={{ fontFamily: face.sans, letterSpacing: ar ? 0 : "0.18em", textTransform: ar ? "none" : "uppercase", fontSize: ar ? 13 : 11 }}>
-        {tr({ en: "Inspected & graded", ar: "مفحوص ومصنّف" }, lang)}
+        {tr({ en: "Condition graded", ar: "مصنّف حسب الحالة" }, lang)}
       </p>
       <p className="mt-1 text-[12px] text-fg-3">{t(COPY.typeLabel)}</p>
     </div>

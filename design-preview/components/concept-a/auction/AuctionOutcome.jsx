@@ -51,7 +51,7 @@ export function AuctionOutcome({ product, a, purchased }) {
   );
 }
 
-/** Scheduled lot: opening countdown, starting bid and a reminder. */
+/** Scheduled lot: opening countdown, starting bid and a watch toggle. */
 export function UpcomingBox({ product, a, formRef }) {
   const { t, ui } = useLang();
   const { isWatched, toggleWatch, toast } = useStore();

@@ -38,8 +38,8 @@ function EventCard({ event }) {
         <p className="mt-3 text-sm text-fg-2">
           {ui("startsIn")} <CountdownText seconds={startsIn} className="c-num font-semibold text-fg" />
         </p>
-        <Button variant="outline" size="sm" icon={Bell} className="mt-4 self-start" onClick={() => toast({ tone: "success", title: ui("remindMe"), description: t(COPY.remindSet) })}>
-          {ui("remindMe")}
+        <Button variant="outline" size="sm" icon={Bell} className="mt-4 self-start" onClick={() => toast({ tone: "success", title: ui("reminderSet"), description: t(event.title) })}>
+          {ui("remindEvent")}
         </Button>
       </div>
     </li>

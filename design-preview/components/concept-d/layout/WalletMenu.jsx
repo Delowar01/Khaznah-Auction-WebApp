@@ -15,7 +15,7 @@ export function WalletMenu({ className = "" }) {
   const { toast } = useStore();
   const c = useCopy();
   const balance = DEMO_USER.walletBalance;
-  const available = balance - AUCTION_POLICY.depositAmount;
+  const ready = balance >= AUCTION_POLICY.depositAmount;
 
   return (
     <Popover
@@ -41,12 +41,12 @@ export function WalletMenu({ className = "" }) {
           </p>
           <div className="mt-4 grid grid-cols-2 gap-2">
             <div className="d-panel-2 p-3">
-              <p className="text-xs text-fg-3">{c("depositHeld")}</p>
+              <p className="text-xs text-fg-3">{c("depositLabel")}</p>
               <Money value={AUCTION_POLICY.depositAmount} className="d-num mt-1 text-sm font-medium text-fg" />
             </div>
             <div className="d-panel-2 p-3">
-              <p className="text-xs text-fg-3">{c("available")}</p>
-              <Money value={available} className="d-num mt-1 text-sm font-medium text-fg" />
+              <p className="text-xs text-fg-3">{c("biddingStatus")}</p>
+              <p className="mt-1 text-sm font-medium text-fg">{c(ready ? "readyToBid" : "topUpToBid")}</p>
             </div>
           </div>
           <p className="mt-3 flex gap-2 text-xs text-fg-2">

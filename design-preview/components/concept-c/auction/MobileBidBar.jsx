@@ -1,13 +1,12 @@
 "use client";
 
 import { useId, useState } from "react";
-import { Bell, Gavel } from "lucide-react";
+import { Bookmark, Gavel } from "lucide-react";
 import { Modal } from "@/components/shared/ui/Modal";
 import { Money } from "@/components/shared/ui/Money";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useStore } from "@/components/shared/providers/PreviewStore";
 import { UI } from "@/data/ui";
-import { COPY } from "../copy";
 import { Button } from "../ui/Button";
 import { DIALOG_PANEL, DialogHeader } from "../ui/Dialog";
 import { CountdownText } from "../ui/Time";
@@ -26,7 +25,7 @@ export function MobileBidBar({ product, auction, onRequestBid }) {
 
   const remind = () => {
     const now = toggleWatch(product.slug);
-    toast({ tone: now ? "success" : "neutral", title: ui("remindMe"), description: t(now ? COPY.remindSet : COPY.remindOff) });
+    toast({ tone: now ? "success" : "neutral", title: ui(now ? "addedToWatchlist" : "removedFromWatchlist"), description: t(product.title) });
   };
 
   return (
@@ -44,8 +43,8 @@ export function MobileBidBar({ product, auction, onRequestBid }) {
             {ui("bidNow")}
           </Button>
         ) : phase === "upcoming" ? (
-          <Button variant={isWatched(product.slug) ? "outline" : "primary"} icon={Bell} aria-pressed={isWatched(product.slug)} onClick={remind}>
-            {ui("remindMe")}
+          <Button variant={isWatched(product.slug) ? "outline" : "primary"} icon={Bookmark} aria-pressed={isWatched(product.slug)} onClick={remind}>
+            {isWatched(product.slug) ? ui("watching") : ui("remindMe")}
           </Button>
         ) : (
           <a href="#similar" className="c-btn c-btn--outline">

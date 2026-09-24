@@ -38,10 +38,10 @@ export function MobileBidBar({ product, auction, onOpen }) {
             aria-pressed={watched}
             onClick={() => {
               const now = toggleWatch(product.slug);
-              toast({ tone: now ? "success" : "neutral", title: now ? t(COPY.reminderSet) : ui("removedFromWatchlist"), description: t(product.title) });
+              toast({ tone: now ? "success" : "neutral", title: ui(now ? "addedToWatchlist" : "removedFromWatchlist"), description: t(product.title) });
             }}
           >
-            {watched ? t(COPY.reminderOn) : ui("remindMe")}
+            {watched ? ui("watching") : ui("remindMe")}
           </Button>
         ) : (
           <Button size="lg" icon={Gavel} disabled={closed} onClick={onOpen} className="px-6">

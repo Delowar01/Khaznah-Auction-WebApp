@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BadgeCheck, CalendarDays, MapPin } from "lucide-react";
+import { CalendarDays, MapPin, Warehouse } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { Img } from "@/components/shared/ui/Img";
@@ -15,7 +15,7 @@ import { ChamferFrame } from "../ui/Frame";
 import { Breadcrumbs, ShareButton } from "../ui/Misc";
 import { DiamondAvatar } from "./DiamondAvatar";
 
-/** Storefront head: wide chamfered cover, diamond monogram, bilingual name, verification and facts. */
+/** Storefront head: wide chamfered cover, diamond monogram, bilingual name, seller label and facts. */
 export function SellerHero({ seller }) {
   const { t, ui, lang } = useLang();
   const { link } = useConcept();
@@ -38,9 +38,9 @@ export function SellerHero({ seller }) {
         <DiamondAvatar seller={seller} size="lg" ring className="-mt-12 ms-3 sm:-mt-16 sm:ms-8 sm:self-start" />
         <div className="min-w-0 flex-1 sm:pt-5">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge tone="success">
-              <BadgeCheck aria-hidden="true" className="size-3.5" />
-              {ui("verifiedSeller")}
+            <Badge>
+              <Warehouse aria-hidden="true" className="size-3.5" />
+              {ui("sellerWarehouse")}
             </Badge>
             {seller.platform ? <Badge tone="primary">{ui("platformSeller")}</Badge> : null}
           </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BadgeCheck, ChevronRight, MapPin } from "lucide-react";
+import { ChevronRight, MapPin, Warehouse } from "lucide-react";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { DirIcon } from "@/components/shared/ui/DirIcon";
@@ -35,9 +35,9 @@ export function SellerTile({ seller }) {
           </Link>
         </h3>
         <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 kb-xs text-fg-3">
-          <span className="inline-flex items-center gap-1 font-semibold text-success">
-            <BadgeCheck aria-hidden="true" className="size-3.5" />
-            {ui("verifiedSeller")}
+          <span className="inline-flex items-center gap-1 font-semibold text-fg-2">
+            <Warehouse aria-hidden="true" className="size-3.5" />
+            {ui("sellerWarehouse")}
           </span>
           <span className="inline-flex items-center gap-1">
             <MapPin aria-hidden="true" className="size-3.5" />

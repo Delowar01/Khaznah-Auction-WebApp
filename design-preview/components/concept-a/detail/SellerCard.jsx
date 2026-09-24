@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, Warehouse } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { CITIES } from "@/data/sellers";
@@ -27,8 +27,8 @@ export function SellerCard({ seller, compact = false }) {
           </Link>
           <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-fg-2">
             <span className="inline-flex items-center gap-1.5 text-success">
-              <BadgeCheck aria-hidden="true" className="size-4" />
-              {ui("verifiedSeller")}
+              <Warehouse aria-hidden="true" className="size-4" />
+              {ui("sellerWarehouse")}
             </span>
             <span className="inline-flex items-center gap-1.5">
               <MapPin aria-hidden="true" className="size-3.5 text-fg-3" />

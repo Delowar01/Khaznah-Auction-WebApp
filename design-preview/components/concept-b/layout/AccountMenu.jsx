@@ -23,7 +23,7 @@ export function AccountSummary({ className = "" }) {
         <p className="truncate kb-md font-bold text-fg">{t(DEMO_USER.name)}</p>
         <p className="flex items-center gap-1 kb-xs font-semibold text-success">
           <BadgeCheck aria-hidden="true" className="size-3.5" />
-          {t(COPY.verifiedBuyer)}
+          {t(COPY.buyerAccount)}
         </p>
       </div>
       <div className="text-end">

@@ -30,7 +30,7 @@ export function StoreHeader({ seller }) {
   ];
   const trust = [
     { key: "graded", icon: BadgeCheck, label: ui("inspected") },
-    { key: "verified", icon: Warehouse, label: ui("verifiedSeller") },
+    { key: "verified", icon: Warehouse, label: ui("sellerWarehouse") },
     { key: "delivery", icon: Truck, label: t(delivery.title) },
   ];
 
@@ -48,8 +48,8 @@ export function StoreHeader({ seller }) {
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
                   <h1 className="kb-h1 text-fg">{t(seller.name)}</h1>
-                  <Badge tone="success" size="md" icon={BadgeCheck}>
-                    {ui("verifiedSeller")}
+                  <Badge tone="neutral" size="md" icon={Warehouse}>
+                    {ui("sellerWarehouse")}
                   </Badge>
                   {seller.liveNow ? <LiveBadge size="md">{ui("sellerLive")}</LiveBadge> : null}
                 </div>

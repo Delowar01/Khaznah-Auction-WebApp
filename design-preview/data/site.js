@@ -3,7 +3,7 @@
 
 export const BRAND = {
   name: { en: "Khazna", ar: "خزنة" },
-  legalName: { en: "Khaznah Auction House", ar: "دار خزنة للمزادات" },
+  legalName: { en: "Khaznah — Direct Auction House", ar: "خزنة — دار المزادات المباشرة" },
   tagline: { en: "Safe deals, smart choices", ar: "صفقات آمنة، خيارات ذكية" },
   // The seven values behind the K-H-A-Z-N-A-H name (2026 brand guideline).
   values: [
@@ -19,52 +19,54 @@ export const BRAND = {
 
 export const HERO = {
   eyebrow: { en: "Safe deals, smart choices", ar: "صفقات آمنة، خيارات ذكية" },
-  title: { en: "Verified inventory. Honest auctions.", ar: "مخزون موثّق. مزادات نزيهة." },
+  title: { en: "Graded stock. Transparent auctions.", ar: "مخزون مصنّف. مزادات شفافة." },
   // Split form for designs that set the two sentences on separate lines.
   titleLines: [
-    { en: "Verified inventory.", ar: "مخزون موثّق." },
-    { en: "Honest auctions.", ar: "مزادات نزيهة." },
+    { en: "Graded stock.", ar: "مخزون مصنّف." },
+    { en: "Transparent auctions.", ar: "مزادات شفافة." },
   ],
   body: {
-    en: "Bid on graded surplus and returned stock from verified Saudi warehouses — or buy it now at a fixed price. Every lot is inspected, and every grade disclosed.",
-    ar: "زايد على فائض المخزون والمرتجعات المصنّفة من مستودعات سعودية موثّقة، أو اشترِها فوراً بسعر ثابت. كل قطعة تُفحص، وكل درجة تُعلن.",
+    en: "Bid on graded surplus and returned stock from Saudi warehouses — or buy it now at a fixed price. Every lot shows its condition grade.",
+    ar: "زايد على فائض المخزون والمرتجعات المصنّفة من مستودعات سعودية، أو اشترِها فوراً بسعر ثابت. لكل منتج درجة حالة معلنة.",
   },
   primaryCta: { en: "Explore auctions", ar: "تصفّح المزادات" },
   secondaryCta: { en: "Shop Buy Now", ar: "تسوّق الشراء الفوري" },
   featuredLot: "swivel-chair",
 };
 
+// Figures as published on the current Khazna About page (no live source
+// exists yet); confirm before any launch.
 export const STATS = [
-  { key: "lots", value: 2480, suffix: "+", label: { en: "Active lots", ar: "منتج معروض" } },
-  { key: "warehouses", value: 38, label: { en: "Verified warehouses", ar: "مستودعاً موثّقاً" } },
-  { key: "won", value: 14.2, prefix: "SAR ", suffixUnit: "M", label: { en: "Won at auction", ar: "قيمة المزادات الفائزة" }, money: true },
-  { key: "graded", value: 100, suffix: "%", label: { en: "Lots inspected & graded", ar: "من المنتجات مفحوصة ومصنّفة" } },
+  { key: "sold", value: 10000, suffix: "+", label: { en: "Lots sold", ar: "منتج مُباع" } },
+  { key: "buyers", value: 25000, suffix: "+", label: { en: "Active buyers", ar: "مشترٍ نشط" } },
+  { key: "warehouses", value: 3, label: { en: "Warehouses", ar: "مستودعات" } },
+  { key: "grades", value: 7, label: { en: "Condition grades", ar: "درجات حالة" } },
 ];
 
 export const TRUST_POINTS = [
   {
     key: "graded",
     icon: "badge-check",
-    title: { en: "Inspected & graded", ar: "مفحوص ومصنّف" },
-    text: { en: "Every lot carries a disclosed condition grade from New to F, with photos of any marks.", ar: "لكل منتج درجة حالة معلنة من «جديد» حتى F، مع صور لأي علامات." },
+    title: { en: "Condition graded", ar: "درجة حالة معلنة" },
+    text: { en: "Lots are listed with a condition grade from New to F, and a guide explains what each grade means.", ar: "تُعرض المنتجات بدرجة حالة من «جديد» حتى F، مع دليل يوضّح معنى كل درجة." },
   },
   {
     key: "deposit",
     icon: "shield-check",
-    title: { en: "Refundable deposits", ar: "تأمين مسترد" },
-    text: { en: "A small refundable deposit keeps bidding serious. It is never charged unless you win.", ar: "تأمين بسيط مسترد يضمن جدية المزايدة، ولا يُخصم إلا عند الفوز." },
+    title: { en: "Bidding deposit", ar: "تأمين المزايدة" },
+    text: { en: "To bid, your Khazna wallet needs to cover a small deposit. On timed auctions it isn't deducted — it just needs to be available.", ar: "للمزايدة، يجب أن يغطي رصيد محفظتك في خزنة تأميناً بسيطاً. في المزادات المحددة بوقت لا يُخصم، بل يكفي أن يكون متاحاً." },
   },
   {
     key: "payments",
     icon: "credit-card",
     title: { en: "Secure payment", ar: "دفع آمن" },
-    text: { en: "Pay by mada, Visa or Mastercard, or from your Khazna wallet.", ar: "ادفع عبر مدى أو فيزا أو ماستركارد، أو من محفظة خزنة." },
+    text: { en: "Pay by card on a secure payment page, or use your Khazna wallet balance.", ar: "ادفع بالبطاقة عبر صفحة دفع آمنة، أو استخدم رصيد محفظتك في خزنة." },
   },
   {
     key: "delivery",
     icon: "truck",
-    title: { en: "Pickup or delivery", ar: "استلام أو توصيل" },
-    text: { en: "Collect from the seller's warehouse or get it delivered anywhere in the Kingdom.", ar: "استلم من مستودع البائع أو اطلب التوصيل إلى أي مكان في المملكة." },
+    title: { en: "Delivery or pickup", ar: "توصيل أو استلام" },
+    text: { en: "Delivery is priced for your address at checkout, and warehouse pickup is offered where available.", ar: "تُحسب تكلفة التوصيل لعنوانك عند إتمام الشراء، ويتاح الاستلام من المستودع حيثما أمكن." },
   },
 ];
 
@@ -76,8 +78,8 @@ export const HOW_IT_WORKS = [
   },
   {
     step: 2,
-    title: { en: "Add a refundable deposit", ar: "أضف تأميناً مسترداً" },
-    text: { en: "Top up your wallet once to unlock bidding on any auction.", ar: "اشحن محفظتك مرة واحدة لتفعيل المزايدة على أي مزاد." },
+    title: { en: "Top up your wallet", ar: "اشحن محفظتك" },
+    text: { en: "Your wallet balance covers the small deposit needed to bid.", ar: "يغطي رصيد محفظتك التأمين البسيط المطلوب للمزايدة." },
   },
   {
     step: 3,
@@ -86,8 +88,8 @@ export const HOW_IT_WORKS = [
   },
   {
     step: 4,
-    title: { en: "Pay and collect", ar: "ادفع واستلم" },
-    text: { en: "Pay within 24 hours of winning, then collect or choose delivery.", ar: "ادفع خلال 24 ساعة من الفوز، ثم استلم أو اختر التوصيل." },
+    title: { en: "Pay and receive", ar: "ادفع واستلم" },
+    text: { en: "Pay for a timed-auction win within 24 hours, then choose how you receive it.", ar: "ادفع قيمة فوزك في المزاد المحدد بوقت خلال 24 ساعة، ثم اختر طريقة الاستلام." },
   },
 ];
 
@@ -140,8 +142,8 @@ export const FOOTER_COLUMNS = [
 export const PAYMENT_METHODS = ["mada", "VISA", "Mastercard"];
 
 export const COMPANY_LINE = {
-  en: "© 2026 Logic Gate · Khaznah Auction House · Riyadh, Kingdom of Saudi Arabia",
-  ar: "© 2026 لوجك جيت · دار خزنة للمزادات · الرياض، المملكة العربية السعودية",
+  en: "© 2026 Logic Gate · Khaznah — Direct Auction House",
+  ar: "© 2026 Logic Gate · خزنة — دار المزادات المباشرة",
 };
 
 // The signed-in customer used across the interactive prototype.
@@ -149,21 +151,21 @@ export const DEMO_USER = {
   name: { en: "Faisal Al-Harbi", ar: "فيصل الحربي" },
   initials: { en: "FH", ar: "ف ح" },
   walletBalance: 1250,
-  verified: true,
 };
 
-// Policy values mirrored from the backend defaults (deposit policy and
-// anti-sniping window on SaleLot).
+// Policy values mirrored from the backend defaults (deposit_policy fallback
+// SAR 50, SaleLot anti-sniping window, AUCTION_WIN_PAYMENT_WINDOW_HOURS).
+// Operators can change the deposit and payment window in production.
 export const AUCTION_POLICY = {
-  depositAmount: 200,
+  depositAmount: 50,
   antiSnipeWindowSeconds: 300,
   antiSnipeExtendSeconds: 300,
   paymentWindowHours: 24,
 };
 
 export const NEWSLETTER = {
-  title: { en: "Closing-soon alerts, once a week", ar: "تنبيهات المزادات القريبة من الإغلاق، مرة أسبوعياً" },
-  text: { en: "The best lots ending this week, graded and priced, in your inbox every Sunday.", ar: "أفضل المنتجات التي تنتهي هذا الأسبوع، مصنّفة ومسعّرة، في بريدك كل أحد." },
+  title: { en: "Closing-soon alerts by email", ar: "تنبيهات المزادات القريبة من الإغلاق عبر البريد" },
+  text: { en: "A round-up of graded lots that are closing soon.", ar: "ملخص للمنتجات المصنّفة التي تقترب مزاداتها من الإغلاق." },
   placeholder: { en: "Your email address", ar: "بريدك الإلكتروني" },
   cta: { en: "Subscribe", ar: "اشترك" },
 };

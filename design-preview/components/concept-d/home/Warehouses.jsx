@@ -10,7 +10,7 @@ import { SELLERS, CITIES } from "@/data/sellers";
 import { sellerStats } from "@/lib/catalog";
 import { formatMonthYear } from "@/lib/format";
 import { Container, SectionHeader } from "../ui/Layout";
-import { SellerAvatar, VerifiedMark } from "../ui/SellerAvatar";
+import { SellerAvatar } from "../ui/SellerAvatar";
 import { StatusChip } from "../ui/Chips";
 import { useCopy } from "../lib/useCopy";
 
@@ -30,8 +30,6 @@ function WarehouseRow({ seller }) {
             <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
               <Link href={href} className="flex items-center gap-1.5 text-sm font-medium text-fg hover:underline">
                 <span className="truncate">{t(seller.name)}</span>
-                <VerifiedMark />
-                <span className="sr-only">{ui("verifiedSeller")}</span>
               </Link>
               {seller.liveNow ? <StatusChip status="live" label={ui("sellerLive")} /> : null}
             </div>
@@ -64,7 +62,6 @@ function WarehouseCard({ seller }) {
       <div className="min-w-0 flex-1">
         <Link href={link(`/seller/${seller.code}`)} className="flex items-center gap-1.5 text-sm font-medium text-fg after:absolute after:inset-0 after:rounded-card">
           <span className="truncate">{t(seller.name)}</span>
-          <VerifiedMark />
         </Link>
         <p className="mt-0.5 flex flex-wrap gap-x-2 text-xs text-fg-3">
           <span>{t(CITIES[seller.city])}</span>
@@ -88,11 +85,11 @@ export function Warehouses() {
   return (
     <section aria-labelledby="warehouses-title" className="border-t border-line py-14 md:py-20">
       <Container>
-        <SectionHeader id="warehouses-title" eyebrow={ui("sellers")} title={ui("verifiedWarehouses")} text={c("warehousesText")} />
+        <SectionHeader id="warehouses-title" eyebrow={ui("sellers")} title={ui("sellerWarehouses")} text={c("warehousesText")} />
         <Reveal>
           <div className="d-panel relative hidden overflow-x-auto md:block">
             <table className="w-full min-w-[640px] border-collapse text-start">
-              <caption className="sr-only">{ui("verifiedWarehouses")}</caption>
+              <caption className="sr-only">{ui("sellerWarehouses")}</caption>
               <thead>
                 <tr>
                   <th scope="col" className={`${TH} text-start`}>{c("colWarehouse")}</th>

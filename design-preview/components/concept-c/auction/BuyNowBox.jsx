@@ -22,7 +22,7 @@ export function BuyNowBox({ product }) {
   const confirm = () => {
     addToCart(product.slug, 1);
     setOpen(false);
-    toast({ tone: "success", title: t(COPY.addedFromAuction), description: t(product.title) });
+    toast({ tone: "success", title: ui("addedToCart"), description: t(product.title) });
     openChromePanel("cart");
   };
 

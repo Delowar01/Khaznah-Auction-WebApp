@@ -40,7 +40,7 @@ export function EventCard({ event, reminded, onRemind, className = "" }) {
           )}
         >
           <BellRing aria-hidden="true" className="size-3.5" />
-          {reminded ? t(COPY.reminderOn) : ui("remindMe")}
+          {reminded ? ui("reminderOn") : ui("remindEvent")}
         </button>
       </div>
     </article>

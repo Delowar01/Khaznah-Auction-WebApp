@@ -50,14 +50,14 @@ export function UpcomingEventCard({ event, className = "" }) {
           onClick={() => {
             const next = !reminder;
             setReminder(next);
-            if (next) toast({ tone: "success", title: ui("remindMe"), description: c("reminderSet") });
+            if (next) toast({ tone: "success", title: ui("reminderSet"), description: t(event.title) });
           }}
           className={`inline-flex h-9 shrink-0 items-center gap-1.5 rounded-control px-3 text-[13px] font-medium transition-colors ${
             reminder ? "bg-accent/14 text-auction ring-1 ring-inset ring-accent/40" : "text-fg-2 ring-1 ring-inset ring-line-strong hover:bg-surface-2 hover:text-fg"
           }`}
         >
           <BellRing aria-hidden="true" className="size-3.5" />
-          {ui("remindMe")}
+          {reminder ? ui("reminderOn") : ui("remindEvent")}
         </button>
       </div>
     </article>

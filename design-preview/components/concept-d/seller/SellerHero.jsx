@@ -9,7 +9,7 @@ import { CITIES } from "@/data/sellers";
 import { formatMonthYear } from "@/lib/format";
 import { Container } from "../ui/Layout";
 import { Breadcrumbs } from "../ui/Breadcrumbs";
-import { SellerAvatar, VerifiedMark } from "../ui/SellerAvatar";
+import { SellerAvatar, SellerMark } from "../ui/SellerAvatar";
 import { ShareButton } from "../ui/Actions";
 import { useCopy } from "../lib/useCopy";
 
@@ -36,7 +36,7 @@ export function SellerHero({ seller }) {
             <SellerAvatar seller={seller} size="xl" className="ring-4 ring-bg" />
             <div className="min-w-0 sm:pt-[60px]">
               <div className="flex flex-wrap items-center gap-2">
-                <VerifiedMark label={ui("verifiedSeller")} />
+                <SellerMark label={ui("sellerWarehouse")} />
                 {seller.platform ? <span className="d-label rounded-full bg-accent/14 px-2 py-0.5 text-auction">{c("platformBadge")}</span> : null}
               </div>
               <h1 className="d-tight mt-1.5 text-3xl font-semibold text-fg sm:text-4xl">{t(seller.name)}</h1>

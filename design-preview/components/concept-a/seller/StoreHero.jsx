@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BadgeCheck, MapPin } from "lucide-react";
+import { MapPin, Warehouse } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { CITIES } from "@/data/sellers";
@@ -42,8 +42,8 @@ export function StoreHero({ seller }) {
                   <h1 className="a-display text-[36px] sm:text-[56px] rtl:sm:text-[48px]">{t(seller.name)}</h1>
                   <p className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-white/85 rtl:text-sm">
                     <span className="inline-flex items-center gap-1.5">
-                      <BadgeCheck aria-hidden="true" className="size-4" />
-                      {seller.platform ? ui("platformSeller") : ui("verifiedSeller")}
+                      <Warehouse aria-hidden="true" className="size-4" />
+                      {seller.platform ? ui("platformSeller") : ui("sellerWarehouse")}
                     </span>
                     <span className="inline-flex items-center gap-1.5">
                       <MapPin aria-hidden="true" className="size-4" />
