@@ -141,7 +141,7 @@ export function PresentationBar({ concept }) {
           ) : null}
         </div>
 
-        <nav aria-label={L("pages")} className="mx-auto hidden items-center gap-0.5 lg:flex">
+        <nav aria-label={L("pages")} className="mx-auto hidden items-center gap-0.5 xl:flex">
           {PAGES.map((page) => {
             const isActive = page.key === active;
             return (
@@ -149,7 +149,7 @@ export function PresentationBar({ concept }) {
                 key={page.key}
                 href={`/${lang}/concept-${concept}${page.path}`}
                 aria-current={isActive ? "page" : undefined}
-                className={`rounded-md px-2.5 py-1.5 font-medium transition-colors ${isActive ? "bg-white text-[#0b0d12]" : "text-[var(--pbar-muted)] hover:bg-white/10 hover:text-white"}`}
+                className={`whitespace-nowrap rounded-md px-2.5 py-1.5 font-medium transition-colors ${isActive ? "bg-white text-[#0b0d12]" : "text-[var(--pbar-muted)] hover:bg-white/10 hover:text-white"}`}
               >
                 {tr(page.label, lang)}
               </Link>
@@ -157,7 +157,7 @@ export function PresentationBar({ concept }) {
           })}
         </nav>
 
-        <label className="relative mx-auto flex items-center lg:hidden">
+        <label className="relative mx-auto flex items-center xl:hidden">
           <span className="sr-only">{L("page")}</span>
           <select
             value={active}

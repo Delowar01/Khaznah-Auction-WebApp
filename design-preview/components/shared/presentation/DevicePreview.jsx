@@ -41,7 +41,7 @@ export function DevicePreview({ lang }) {
       const stage = stageRef.current;
       if (!stage) return;
       const availW = stage.clientWidth - 32;
-      const availH = stage.clientHeight - 32;
+      const availH = stage.clientHeight - 80; // room for the device label below
       const totalW = device.w + device.bezel * 2;
       const totalH = device.h + device.bezel * 2;
       setScale(Math.min(1, availW / totalW, availH / totalH));
@@ -105,7 +105,7 @@ export function DevicePreview({ lang }) {
         </a>
       </header>
 
-      <div ref={stageRef} className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_center,#1a1f33_0%,#0b0d12_70%)]">
+      <div ref={stageRef} className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_center,#1a1f33_0%,#0b0d12_70%)] pb-10">
         <div
           className="relative shrink-0 bg-[#1b1d23] shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)] ring-1 ring-white/10"
           style={{
