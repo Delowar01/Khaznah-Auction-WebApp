@@ -65,7 +65,12 @@ async function checkPage(page, url) {
   const onResponse = (res) => {
     if (res.status() >= 400) failed.push(`${res.status()} ${res.url()}`);
   };
-  const onFailed = (req) => failed.push(`failed ${req.url()} ${req.failure()?.errorText || ""}`);
+  const onFailed = (req) => {
+    const reason = req.failure()?.errorText || "";
+    // Requests the page itself cancelled (e.g. link prefetches) are not failures.
+    if (reason.includes("ERR_ABORTED")) return;
+    failed.push(`failed ${req.url()} ${reason}`);
+  };
   page.on("console", onConsole);
   page.on("pageerror", onPageError);
   page.on("response", onResponse);

@@ -57,7 +57,11 @@ function ConceptCard({ concept, lang, index }) {
   const Arrow = lang === "ar" ? ArrowLeft : ArrowRight;
   const base = `/${lang}/concept-${concept.id}`;
   return (
-    <article className="kz-fade-up group flex flex-col rounded-[24px] border border-line bg-surface p-3 shadow-card sm:p-4" style={{ animationDelay: `${120 + index * 90}ms` }}>
+    <article
+      id={`option-${concept.id}`}
+      className="kz-fade-up group flex scroll-mt-6 flex-col rounded-[24px] border border-line bg-surface p-3 shadow-card sm:p-4"
+      style={{ animationDelay: `${120 + index * 90}ms` }}
+    >
       <Link href={base} tabIndex={-1} aria-hidden="true" className="block">
         <Preview concept={concept} lang={lang} name={name} />
       </Link>
@@ -164,24 +168,45 @@ export function ConceptSelector({ lang }) {
       </header>
 
       <main id="main">
-        <section className="mx-auto max-w-[1320px] px-5 pb-14 pt-10 sm:px-8 sm:pt-16 lg:pb-20">
-          <p className="kz-fade-up text-[12px] font-semibold uppercase tracking-[0.22em] text-fg-3 rtl:text-[14px] rtl:normal-case rtl:tracking-normal">{tr(S.eyebrow, lang)}</p>
-          <h1
-            className="kz-fade-up mt-5 max-w-5xl text-[42px] font-semibold leading-[1.02] tracking-[-0.025em] text-fg sm:text-[68px] lg:text-[84px] rtl:leading-[1.25] rtl:tracking-normal rtl:sm:text-[60px] rtl:lg:text-[72px]"
-            style={{ fontStretch: "118%", animationDelay: "60ms" }}
-          >
-            {tr(S.title, lang)}
-          </h1>
-          <p className="kz-fade-up mt-7 max-w-3xl text-[17px] leading-relaxed text-fg-2 sm:text-[19px] rtl:leading-9" style={{ animationDelay: "120ms" }}>
-            {tr(S.lead, lang)}
-          </p>
-          <ul className="kz-fade-up mt-8 flex flex-wrap gap-2" style={{ animationDelay: "180ms" }}>
-            {S.facts.map((fact) => (
-              <li key={fact.en} className="rounded-full border border-line-strong bg-surface px-4 py-2 text-[13px] font-medium text-fg">
-                {tr(fact, lang)}
-              </li>
-            ))}
-          </ul>
+        <section className="mx-auto grid max-w-[1320px] grid-cols-1 gap-12 px-5 pb-14 pt-10 sm:px-8 sm:pt-16 lg:grid-cols-12 lg:items-end lg:pb-20">
+          <div className="lg:col-span-8">
+            <p className="kz-fade-up text-[12px] font-semibold uppercase tracking-[0.22em] text-fg-3 rtl:text-[14px] rtl:normal-case rtl:tracking-normal">{tr(S.eyebrow, lang)}</p>
+            <h1
+              className="kz-fade-up mt-5 max-w-5xl text-[42px] font-semibold leading-[1.02] tracking-[-0.025em] text-fg sm:text-[68px] lg:text-[80px] rtl:leading-[1.25] rtl:tracking-normal rtl:sm:text-[60px] rtl:lg:text-[68px]"
+              style={{ fontStretch: "118%", animationDelay: "60ms" }}
+            >
+              {tr(S.title, lang)}
+            </h1>
+            <p className="kz-fade-up mt-7 max-w-3xl text-[17px] leading-relaxed text-fg-2 sm:text-[19px] rtl:leading-9" style={{ animationDelay: "120ms" }}>
+              {tr(S.lead, lang)}
+            </p>
+            <ul className="kz-fade-up mt-8 flex flex-wrap gap-2" style={{ animationDelay: "180ms" }}>
+              {S.facts.map((fact) => (
+                <li key={fact.en} className="rounded-full border border-line-strong bg-surface px-4 py-2 text-[13px] font-medium text-fg">
+                  {tr(fact, lang)}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <nav aria-label={tr(S.options, lang)} className="hidden lg:col-span-4 lg:block">
+            <ol className="divide-y divide-line border-y border-line">
+              {CONCEPTS.map((concept) => (
+                <li key={concept.id}>
+                  <a href={`#option-${concept.id}`} className="group/index flex items-center gap-4 py-4 text-fg">
+                    <span className="grid size-9 shrink-0 place-items-center rounded-full border border-line-strong text-[14px] font-semibold transition-colors group-hover/index:border-secondary group-hover/index:bg-secondary group-hover/index:text-on-secondary" style={{ fontStretch: "118%" }}>
+                      {concept.letter}
+                    </span>
+                    <span className="min-w-0 flex-1 text-[16px] font-medium">{tr(concept.name, lang)}</span>
+                    <span className="flex gap-1" aria-hidden="true">
+                      {concept.swatches.map((hex) => (
+                        <span key={hex} className="h-6 w-2 rounded-full border border-black/10" style={{ background: hex }} />
+                      ))}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
         </section>
 
         <section className="mx-auto grid max-w-[1320px] grid-cols-1 gap-6 px-5 sm:px-8 lg:grid-cols-2 lg:gap-8">

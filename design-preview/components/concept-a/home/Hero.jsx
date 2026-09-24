@@ -81,7 +81,7 @@ export function Hero() {
               {lot.lot}
             </span>
           </div>
-          <div className="a-rise absolute bottom-5 start-5 end-5 rounded-card bg-surface/95 p-6 shadow-raised backdrop-blur sm:end-auto sm:w-[380px] lg:-start-8 lg:bottom-10" style={{ "--d": "520ms" }}>
+          <div className="a-rise relative z-10 mx-4 -mt-24 rounded-card bg-surface/95 p-6 shadow-raised backdrop-blur sm:absolute sm:bottom-5 sm:start-5 sm:mx-0 sm:mt-0 sm:w-[380px] lg:-start-8 lg:bottom-10" style={{ "--d": "520ms" }}>
             <div className="flex items-center justify-between gap-4">
               <Eyebrow>{t(COPY.lotPlacard)}</Eyebrow>
               <StatusLabel status="live" />

@@ -14,6 +14,7 @@ export const S = {
     { en: "Desktop, tablet & mobile", ar: "سطح المكتب واللوحي والجوال" },
   ],
   option: { en: "Option", ar: "الخيار" },
+  options: { en: "The four options", ar: "الخيارات الأربعة" },
   philosophy: { en: "Design philosophy", ar: "فلسفة التصميم" },
   characteristics: { en: "Key characteristics", ar: "السمات الرئيسية" },
   palette: { en: "Palette", ar: "الألوان" },

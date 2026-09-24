@@ -10,7 +10,7 @@ export function CountdownText({ seconds, className = "", style = "short" }) {
   const { lang } = useLang();
   const urgent = seconds != null && seconds > 0 && seconds <= 3600;
   return (
-    <span dir="ltr" className={`tabular isolate-bidi ${urgent ? "text-live" : ""} ${className}`}>
+    <span dir={style === "clock" || lang !== "ar" ? "ltr" : "rtl"} className={`tabular isolate-bidi ${urgent ? "text-live" : ""} ${className}`}>
       {formatDuration(seconds ?? 0, lang, style)}
     </span>
   );

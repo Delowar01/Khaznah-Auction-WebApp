@@ -9,7 +9,8 @@
     "start": "next start -p 3100",
     "export": "STATIC_EXPORT=1 next build",
     "lint": "eslint",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "capture": "node scripts/capture-concepts.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.23.0",
