@@ -2,8 +2,9 @@
 
 // Browse / storefront state shared by every concept.
 //
-// Mirrors the production /browse contract so the chosen design can later be
-// wired to the real hook without behavioural change:
+// Modelled on the production /browse contract so the chosen design can later
+// be wired to the real hook (exact differences: CUSTOMER_REDESIGN_FILE_MAP.md,
+// section G):
 //   URL params: tab (auction|buy_now|all), search, category, condition,
 //   item_type, min_price, max_price, ending (1h|6h|24h), in_stock,
 //   has_discount, sort, page — kept in sync with history.replaceState.
@@ -12,8 +13,7 @@
 // shows how skeletons behave when filters change.
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { PRODUCTS, isAuction, isBuyNow } from "@/data/products";
-import { getCategory } from "@/data/categories";
-import { getSeller } from "@/data/sellers";
+import { matchesQuery } from "@/lib/catalog";
 
 const DEFAULTS = {
   tab: "all",
@@ -105,15 +105,7 @@ export function priceOf(product) {
 function matches(product, state, { ignore } = {}) {
   if (state.tab === "auction" && !isAuction(product)) return false;
   if (state.tab === "buy_now" && !isBuyNow(product)) return false;
-  if (state.search) {
-    const q = state.search.trim().toLowerCase();
-    const category = getCategory(product.category);
-    const seller = getSeller(product.seller);
-    const haystack = [product.title.en, product.title.ar, product.lot, category?.name.en, category?.name.ar, seller?.name.en, seller?.name.ar]
-      .join(" ")
-      .toLowerCase();
-    if (!haystack.includes(q)) return false;
-  }
+  if (state.search && !matchesQuery(product, state.search)) return false;
   if (ignore !== "categories" && state.categories.length && !state.categories.includes(product.category)) return false;
   if (ignore !== "grades" && state.grades.length && !state.grades.includes(product.grade)) return false;
   if (ignore !== "itemTypes" && state.itemTypes.length && !state.itemTypes.includes(product.itemType)) return false;

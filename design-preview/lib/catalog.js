@@ -2,7 +2,6 @@
 import { PRODUCTS, getProduct, isAuction, isBuyNow } from "@/data/products";
 import { SELLERS, getSeller } from "@/data/sellers";
 import { CATEGORIES, getCategory } from "@/data/categories";
-import { tr } from "@/lib/i18n";
 
 export { getProduct, getSeller, getCategory, isAuction, isBuyNow };
 
@@ -99,22 +98,38 @@ export function categoryProducts(slug) {
   return PRODUCTS.filter((p) => p.category === slug);
 }
 
-export function searchProducts(query, lang = "en") {
+// Everyday words buyers type that differ from catalogue titles.
+const SYNONYMS = {
+  fridge: "refrigerator",
+  couch: "sofa",
+  settee: "sofa",
+  television: "tv",
+  aircon: "air conditioner",
+  "a/c": "air conditioner",
+  hoover: "vacuum",
+  trainers: "sneakers",
+  suitcase: "spinner",
+  luggage: "spinner",
+};
+
+/** True when a lot matches a free-text query (title, lot number, category, seller — both languages). */
+export function matchesQuery(product, query) {
   const q = String(query || "").trim().toLowerCase();
+  if (!q) return true;
+  const category = getCategory(product.category);
+  const seller = getSeller(product.seller);
+  const haystack = [product.title.en, product.title.ar, product.lot, category?.name.en, category?.name.ar, seller?.name.en, seller?.name.ar]
+    .join(" ")
+    .toLowerCase();
+  const alt = SYNONYMS[q];
+  return haystack.includes(q) || (alt ? haystack.includes(alt) : false);
+}
+
+/** Lots matching a free-text query in either language. */
+export function searchProducts(query) {
+  const q = String(query || "").trim();
   if (!q) return PRODUCTS;
-  return PRODUCTS.filter((p) => {
-    const haystack = [
-      p.title.en,
-      p.title.ar,
-      p.lot,
-      tr(getCategory(p.category)?.name, "en"),
-      tr(getCategory(p.category)?.name, "ar"),
-      tr(getSeller(p.seller)?.name, lang),
-    ]
-      .join(" ")
-      .toLowerCase();
-    return haystack.includes(q);
-  });
+  return PRODUCTS.filter((p) => matchesQuery(p, q));
 }
 
 export const POPULAR_SEARCHES = [
