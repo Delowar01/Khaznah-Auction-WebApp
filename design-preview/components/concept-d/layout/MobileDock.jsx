@@ -41,7 +41,7 @@ export function MobileDock() {
                   <Link
                     href={link(section.path)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`relative flex flex-1 flex-col items-center justify-center gap-1 text-[11px] font-medium transition-colors ${isActive ? "text-fg" : "text-fg-3 hover:text-fg-2"}`}
+                    className={`relative flex flex-1 flex-col items-center justify-center gap-1 text-[11px] font-medium transition-colors ${isActive ? "text-fg" : "text-fg-2 hover:text-fg"}`}
                   >
                     {isActive ? <span aria-hidden="true" className="absolute top-0 h-0.5 w-8 rounded-full bg-[var(--d-ink)]" /> : null}
                     <section.icon aria-hidden="true" className={`size-5 ${isActive ? "d-ink" : ""}`} />

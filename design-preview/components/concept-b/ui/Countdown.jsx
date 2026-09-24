@@ -90,7 +90,7 @@ export function ClockDigits({ seconds, tone = "default", className = "" }) {
           )}
         >
           <span className="kb-xl font-extrabold tabular">{String(cell.value).padStart(2, "0")}</span>
-          <span dir={lang === "ar" ? "rtl" : "ltr"} className="kb-2xs font-medium opacity-80">
+          <span dir={lang === "ar" ? "rtl" : "ltr"} className={cx("kb-2xs font-medium", tone === "critical" || tone === "urgent" ? "" : "opacity-80")}>
             {units[cell.key]}
           </span>
         </div>

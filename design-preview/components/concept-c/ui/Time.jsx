@@ -36,9 +36,9 @@ export function CountdownBlocks({ seconds, urgency = "normal", label, className 
   return (
     <div role="timer" aria-label={label ? `${label} ${formatDuration(seconds ?? 0, lang, "short")}` : undefined} className={cx("grid grid-cols-4 gap-px overflow-hidden rounded-md border", critical ? "border-live/40 bg-live/30" : "border-line bg-line", className)}>
       {blocks.map(([key, value]) => (
-        <div key={key} aria-hidden="true" className={cx("flex flex-col items-center gap-1 px-1 py-3 transition-colors duration-500", critical ? "bg-live/8" : "bg-surface")}>
+        <div key={key} aria-hidden="true" className={cx("flex flex-col items-center gap-1 px-1 py-3 transition-colors duration-500", critical ? "bg-[color-mix(in_oklab,var(--live)_8%,var(--surface))]" : "bg-surface")}>
           <span className={cx("c-num text-[1.75rem] font-semibold leading-none transition-colors duration-500 sm:text-[2rem]", critical ? "text-live" : urgency === "urgent" ? "text-warning" : "text-fg")}>{pad(value)}</span>
-          <span className="text-xs text-fg-3">{L[key]}</span>
+          <span className={cx("text-xs", critical ? "text-fg-2" : "text-fg-3")}>{L[key]}</span>
         </div>
       ))}
     </div>
