@@ -36,7 +36,7 @@ export function BuyNowOption({ product, onPurchase }) {
             <Money value={product.buyNowPrice} className="d-num text-4xl font-medium text-fg" />
             <p className="mt-2 text-sm text-fg-2">{ui("buyNowClosesAuction")}</p>
           </div>
-          <p className="mt-4 text-[13px] text-fg-3">{ui("bindingBid")}</p>
+          <p className="mt-4 text-[13px] text-fg-3">{ui("buyNowCheckoutNote")}</p>
           <div className="mt-6 grid grid-cols-[auto_1fr] gap-2.5">
             <Button variant="secondary" size="lg" onClick={() => setOpen(false)}>
               {ui("cancel")}

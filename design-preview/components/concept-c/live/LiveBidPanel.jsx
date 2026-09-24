@@ -56,7 +56,7 @@ export function LiveBidPanel({ live }) {
         <ShieldCheck aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-success" />
         {t(COPY.liveDeposit, { amount: money(live.event.depositAmount) })}
       </p>
-      <p className="mt-2 text-xs text-fg-3">{ui("bindingBid")}</p>
+      <p className="mt-2 text-xs text-fg-3">{ui("bindingBidLive")}</p>
     </section>
   );
 }

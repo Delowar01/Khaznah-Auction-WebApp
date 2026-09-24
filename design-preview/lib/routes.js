@@ -9,7 +9,7 @@ export const PAGES = [
   { key: "auction", path: "/auction", label: { en: "Auction", ar: "المزاد" } },
   { key: "live", path: "/live-auction", label: { en: "Live auction", ar: "المزاد المباشر" } },
   { key: "seller", path: "/seller", label: { en: "Seller", ar: "البائع" } },
-  { key: "system", path: "/system", label: { en: "Components", ar: "المكونات" } },
+  { key: "system", path: "/system", label: { en: "Components & states", ar: "المكونات والحالات" } },
 ];
 
 /** Splits /en/concept-a/auction/tv-43 → { lang, concept, rest: "/auction/tv-43" }. */

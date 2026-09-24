@@ -1,6 +1,6 @@
 # Design concept implementation readiness
 
-**Phase 1 — for client review.** This document describes the four design
+**Phase 1, updated in Phase 1B — for client review.** This document describes the four design
 directions built in `design-preview/` and what each would mean for the real
 Khazna customer website if it were approved. The concepts are listed A to D in
 the order they were briefed. **They are not ranked and no concept is
@@ -17,6 +17,118 @@ Production paths are relative to the reference package root
 [`CUSTOMER_REDESIGN_FILE_MAP.md`](CUSTOMER_REDESIGN_FILE_MAP.md); the
 feature baseline is in
 [`CURRENT_CUSTOMER_FRONTEND_INVENTORY.md`](CURRENT_CUSTOMER_FRONTEND_INVENTORY.md).
+
+---
+
+## Phase 1B — client preview release
+
+Phase 1B prepared the four concepts for presentation to the client. It started
+from the Phase 1 checkpoint `bd8b19e`. The visual directions were **not**
+redesigned; changes were limited to misleading or unsupported copy,
+presentation quality, accessibility, responsiveness and consistency.
+
+### What changed in the preview
+
+- **Concept selector:** plain-language descriptions of the four options (no
+  ranking, no recommendation), a subtle "About this preview" note stating that
+  products, sellers, prices, figures, auction activity and interactions are
+  sample data, a four-step "How to review" guide (open an option, move between
+  screens, switch language and appearance, check desktop and mobile) and a note
+  explaining the presentation bar. The typeface list was removed as too
+  technical.
+- **Presentation bar:** a "Concept preview" caption next to the concept name, a
+  hide button at every screen size (previously hidden on phones), a "Hide
+  presentation controls" item in the concept menu, and a small side tab to bring
+  the bar back (the "." key still toggles it). The bar is visually separate
+  from the designs (dark strip, stronger bottom rule) and never overlaps page
+  content: every concept is offset by the bar's height. Arabic labels were added
+  for the device and language groups.
+- **Device preview:** a "Concepts" link back to the selector and translated
+  labels.
+- **Claims audit:** see below. Every change is a copy or label change inside
+  the existing designs, plus one flow change: Concept B's sign-in dialog now
+  uses email and password, as production does.
+- **Fixes:** Concept D's components board no longer overflows on 360 px
+  phones; `robots.txt` blocks indexing of the temporary preview.
+
+### Claims audit
+
+Every visible sentence, badge, payment label and trust or functional promise in
+the four concepts and the shared sample data was checked against the reference
+source. Unsupported statements were reworded neutrally, or kept only as concept
+ideas (next subsection).
+
+| Topic | In the Phase 1 preview | Production evidence | Phase 1B result |
+|---|---|---|---|
+| ZATCA, Maroof | Not shown | The production contact, terms and privacy pages show both as badges; the reference source holds no registration data to verify them | Not added to any concept. Production's own badges need LEGAL confirmation |
+| Seller verification and trust badges | "Verified warehouse" badges with check marks; "every seller is verified"; "warehouse address and licence verified"; "Verified Saudi warehouses" | No verified flag on warehouses or the public seller payload. Listing approval exists, but warehouses can be set to auto-approve | Neutral "Seller warehouse" label, check marks removed, section titles reworded (file map G row 2) |
+| Account verification | "Verified buyer" / "Verified account"; Concept B signed in with a mobile number and a one-time code | Email and password with an email one-time code; the phone is never verified | "Buyer account"; B signs in with email and password (G row 20) |
+| Guarantees, inspection, buyer protection | "The grade is the guarantee", "reviewed by Khazna", "every unit tested / inspected", "Inspected & graded by Khazna", "Buyer protection" | Condition grades exist; there is no inspection record or guarantee | "Condition grade disclosed" and neutral grade copy; "Buyer protection" became "Delivery, pickup and returns" |
+| Refunds and returns | "Report an issue within 3 days", "raise it within three days" | Return window per warehouse, 3 days by default (`return_window_days_for_warehouse`) | "…request a return within the seller's return window" |
+| Payment methods | mada, Visa, Mastercard and wallet; STC Pay in Concepts C and D | Moyasar card payments, default networks mada, Visa and Mastercard; wallet enabled; STC Pay and Apple Pay not in the default configuration | STC Pay removed; mada, Visa, Mastercard and wallet kept (G row 21, LEGAL review) |
+| Deposits | "held while you bid and released if you don't win", "never charged unless you win", wallet "Held for bidding / Available" | Bidding is allowed when the wallet balance covers the deposit or a lot deposit was paid; nothing is held. Default SAR 50, configurable, can be switched off | "Your wallet needs to cover a refundable deposit"; wallet panel shows "Bidding deposit · Ready to bid"; sample deposit set to SAR 50 (the code default) |
+| Auction reminders | "Remind me — we'll remind you when bidding opens" on upcoming timed lots and live events | No start or closing-soon reminders; watching a lot triggers "Auction activity" notifications on bids | Timed lots: **Watch** (the watchlist). Live events: "Remind me" kept as a concept idea (G row 29) |
+| Automated notifications | "Outbid and closing-soon alerts … by SMS", "we'll alert you the moment someone bids higher", "we'll tell you when it's back", closing-soon alerts in a form hint | In-app notifications (plus optional web push) for outbid, highest bidder, watched-lot activity, auction won and payment missed. No SMS sender, no closing-soon or back-in-stock alerts | "You'll get a notification if someone outbids you"; SMS, closing-soon and back-in-stock promises removed; sold-out items link to similar items |
+| Auction completion | "Complete payment within 24 hours" after Buy Now; the 24-hour line in the live room; "Reserved for checkout" | The 24-hour window applies to timed-auction wins only; Buy Now is paid at checkout; live wins have no deadline; a cart does not reserve stock | Buy Now: "choose delivery or pickup at checkout"; live room: "Bids are binding once placed"; "Added to your cart" (G rows 21, 28) |
+| Live automatic progression | "One lot every 45 seconds", "Next lot in 5 s" | The operator starts each lot | Timing claims removed; "Waiting for the next lot" (production's own wording). The demo still advances by itself (G row 11) |
+| Shipping and delivery | "Delivery across the Kingdom", "Kingdom-wide delivery", "same-week delivery", "ships or collects today", "freight delivery", "ready within 24 hours of payment", city-based delivery estimates | Delivery is priced for the address at checkout; pickup where offered | "Delivery is priced for your address at checkout"; "Pickup or delivery" |
+| Other legal or marketing wording | "Market open", "The numbers behind every safe deal", "Every storefront is an inspected, verified Saudi warehouse", "most watched on Khazna" | No market hours; figures are hard-coded on the current About page | Reworded; the stats band is labelled as About-page figures (G row 18). The brand tagline and K-H-A-Z-N-A-H values are kept as the client's own brand content, flagged for LEGAL review (G row 31) |
+| Khazna Direct sample content | "Processed at our Riyadh fulfilment centre … every unit tested"; a specific logistics-park pickup address | Not in production data | Neutral description; pickup shown as "Riyadh · Sun–Thu 9:00–18:00", matching the hours on the current contact page |
+
+The remaining sample sellers (Rawabi, Red Sea Trading, Dar Al Majd, Sahel) are
+fictional and described without service promises.
+
+### Concept ideas shown for demonstration only
+
+These appear in one or more concepts to show a design idea. **None of them
+exists in production today**, and approving a concept does not approve them.
+Each needs the decision or work named in `CUSTOMER_REDESIGN_FILE_MAP.md`,
+section G.
+
+| Concept idea | Where | Needs | G row |
+|---|---|---|---|
+| Live-event reminders ("Remind me") | A, B, C, D | Backend notifications and a channel decision | 29 (API) |
+| Newsletter / closing-soon email round-up | A, B, C, D | Business decision and an email backend | 18 (B) |
+| Stats band (current About-page figures) | A, B, C, D | A real data source, or approval of fixed figures | 18 (B) |
+| Seller storefront content: tagline, description, cover, pickup address and hours | A, B, C, D | New fields or a curated content map | 2 (API) |
+| Seller directory; "Across the Kingdom" city index | A–D; C | A seller-list endpoint or curated list | 3 (API) |
+| Live schedule with start times and presenter | A, B, C, D | New event fields | 12 (API) |
+| Sold results and sold-out product pages | A, B, C, D | Decision to show outcomes publicly | 5 (B) |
+| "Deliver to" city picker | B | Must not imply city-level filtering | 19 (F) |
+| Mini-cart, live search suggestions, lightbox, quick bids, command palette | B, all, all, all, D | Client confirmation of each addition | 26 (B) |
+| Price-history charts, bid velocity, activity heat, live-bid ticker | D | Aggregate bid-activity endpoint | 30 (API) |
+| Dark appearance | A, B, C, D | New scope for the customer site | 23 (B) |
+| Automatic advance between live lots | A, B, C, D (demo only) | Nothing — production stays operator-driven | 11 (P) |
+
+### Comparability of the four options
+
+- **Same content everywhere.** All four concepts read the same sample files
+  (`design-preview/data/`):
+  - 29 lots: 18 Buy Now, 10 timed auctions and 1 auction with Buy Now;
+  - 8 categories, 5 sellers, 1 live event with 10 lots and 2 upcoming events;
+  - the same site-wide copy (hero, trust points, how it works, navigation,
+    footer, stats).
+- **Same screens.** The Product, Auction, Seller and Live screens open the same
+  featured lot, auction, storefront and event in every concept. Browse lists
+  the same catalogue with the same filters.
+- **Deliberate differences, all design-driven:**
+  - **Home page composition.** Each concept picks which shared sections to show
+    and in what order. Concept A hand-picks four Buy Now lots for "Selected this
+    week"; A and B feature the two pallet lots. Every item comes from the shared
+    catalogue.
+  - **Section titles and helper lines.** These are written in each concept's
+    own voice (`components/concept-x/copy.js`). Factual statements about
+    deposits, delivery, returns, payments and notifications were aligned in
+    Phase 1B, so all four say the same thing.
+  - **Concept-specific treatments:**
+    - C sets key headings in both languages and shows Hijri dates.
+    - D derives bid velocity and price-history charts from the same sample bid
+      history.
+    - B adds a "Deliver to" picker.
+    - D opens in dark appearance and A–C open in light; all four offer both.
+  - **Why they remain:** these differences express each direction's navigation,
+    hierarchy and interaction style. They do not change the inventory, so the
+    client compares design, not products.
 
 ---
 

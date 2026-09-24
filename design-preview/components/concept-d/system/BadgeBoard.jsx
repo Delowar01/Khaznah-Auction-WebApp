@@ -15,7 +15,7 @@ export function BadgeBoard() {
   const c = useCopy();
   const photo = getProduct("tv-43").images[0];
   return (
-    <div className="grid gap-5 lg:grid-cols-2">
+    <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
       <div className="d-panel space-y-6 p-5">
         <Specimen label={c("sysSoftChips")}>
           {STATUSES.map((status) => (

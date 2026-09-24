@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ArrowLeft, Languages, MonitorSmartphone, Layers, Smartphone } from "lucide-react";
+import { ArrowRight, ArrowLeft, Info, Languages, Layers, MonitorSmartphone, MousePointerClick, PanelTopClose, Smartphone } from "lucide-react";
 import { CONCEPTS } from "@/data/concepts";
 import { PAGES } from "@/lib/routes";
 import { fill, tr } from "@/lib/i18n";
@@ -7,7 +7,7 @@ import { Logo } from "@/components/shared/brand/Logo";
 import { Img } from "@/components/shared/ui/Img";
 import { S } from "./selector-copy";
 
-const HOW_ICONS = [Layers, Languages, MonitorSmartphone];
+const HOW_ICONS = [MousePointerClick, Layers, Languages, MonitorSmartphone];
 
 const shot = (id, lang, kind) =>
   kind === "desktop"
@@ -98,16 +98,13 @@ function ConceptCard({ concept, lang, index }) {
           </ul>
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-line pt-5">
-          <div className="flex items-center gap-2" aria-label={tr(S.palette, lang)} role="img">
+        <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-line pt-5">
+          <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-fg-3 rtl:text-[13px] rtl:normal-case rtl:tracking-normal">{tr(S.palette, lang)}</p>
+          <div className="flex items-center gap-2" aria-label={`${tr(S.palette, lang)} — ${name}`} role="img">
             {concept.swatches.map((hex) => (
               <span key={hex} className="size-6 rounded-full border border-black/10" style={{ background: hex }} />
             ))}
           </div>
-          <p className="min-w-0 text-[13px] text-fg-2">
-            <span className="text-fg-3">{tr(S.typefaces, lang)}: </span>
-            {tr(concept.type, lang)}
-          </p>
         </div>
 
         <div className="mt-auto pt-7">
@@ -128,7 +125,8 @@ function ConceptCard({ concept, lang, index }) {
             </Link>
           </div>
           <nav aria-label={`${tr(S.screens, lang)} — ${name}`} className="mt-5">
-            <ul className="flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] text-fg-2">
+            <p className="text-[12px] text-fg-3 rtl:text-[13px]">{tr(S.screens, lang)}</p>
+            <ul className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] text-fg-2">
               {PAGES.map((page) => (
                 <li key={page.key}>
                   <Link href={`${base}${page.path}`} className="underline-offset-4 hover:text-fg hover:underline">
@@ -187,6 +185,19 @@ export function ConceptSelector({ lang }) {
                 </li>
               ))}
             </ul>
+            <aside
+              aria-labelledby="preview-note-title"
+              className="kz-fade-up mt-8 flex max-w-3xl gap-3.5 rounded-[18px] border border-line bg-surface/70 px-5 py-4"
+              style={{ animationDelay: "240ms" }}
+            >
+              <Info aria-hidden="true" className="mt-0.5 size-[18px] shrink-0 text-fg-3" strokeWidth={1.75} />
+              <div>
+                <h2 id="preview-note-title" className="text-[13px] font-semibold text-fg rtl:text-[14px]">
+                  {tr(S.noticeTitle, lang)}
+                </h2>
+                <p className="mt-1 text-[13.5px] leading-relaxed text-fg-2 rtl:text-[14px] rtl:leading-7">{tr(S.notice, lang)}</p>
+              </div>
+            </aside>
           </div>
           <nav aria-label={tr(S.options, lang)} className="hidden lg:col-span-4 lg:block">
             <ol className="divide-y divide-line border-y border-line">
@@ -221,20 +232,26 @@ export function ConceptSelector({ lang }) {
               <h2 className="text-[30px] font-semibold leading-tight text-fg sm:text-[36px]" style={{ fontStretch: "112%" }}>
                 {tr(S.howTitle, lang)}
               </h2>
-              <p className="mt-4 text-[15px] leading-relaxed text-fg-2 rtl:leading-8">{tr(S.interactive, lang)}</p>
+              <p className="mt-4 text-[15px] leading-relaxed text-fg-2 rtl:leading-8">{tr(S.howLead, lang)}</p>
             </div>
-            <ol className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:col-span-8">
-              {S.how.map((step, i) => {
-                const Icon = HOW_ICONS[i];
-                return (
-                  <li key={step.title.en} className="rounded-[20px] border border-line bg-surface p-6">
-                    <Icon aria-hidden="true" className="size-6 text-primary" strokeWidth={1.5} />
-                    <h3 className="mt-5 text-[17px] font-semibold text-fg">{tr(step.title, lang)}</h3>
-                    <p className="mt-2 text-[14px] leading-relaxed text-fg-2 rtl:text-[15px] rtl:leading-7">{tr(step.text, lang)}</p>
-                  </li>
-                );
-              })}
-            </ol>
+            <div className="lg:col-span-8">
+              <ol className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                {S.how.map((step, i) => {
+                  const Icon = HOW_ICONS[i];
+                  return (
+                    <li key={step.title.en} className="rounded-[20px] border border-line bg-surface p-6">
+                      <Icon aria-hidden="true" className="size-6 text-primary" strokeWidth={1.5} />
+                      <h3 className="mt-5 text-[17px] font-semibold text-fg">{tr(step.title, lang)}</h3>
+                      <p className="mt-2 text-[14px] leading-relaxed text-fg-2 rtl:text-[15px] rtl:leading-7">{tr(step.text, lang)}</p>
+                    </li>
+                  );
+                })}
+              </ol>
+              <p className="mt-6 flex gap-3 rounded-[18px] border border-line bg-surface/70 px-5 py-4 text-[14px] leading-relaxed text-fg-2 rtl:text-[15px] rtl:leading-7">
+                <PanelTopClose aria-hidden="true" className="mt-0.5 size-[18px] shrink-0 text-fg-3" strokeWidth={1.75} />
+                <span>{tr(S.barNote, lang)}</span>
+              </p>
+            </div>
           </div>
         </section>
       </main>

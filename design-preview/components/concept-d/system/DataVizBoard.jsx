@@ -35,7 +35,7 @@ export function DataVizBoard() {
   const pallet = getProduct("electronics-pallet");
 
   return (
-    <div className="grid gap-5 lg:grid-cols-2">
+    <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
       <div className="d-panel space-y-7 p-5">
         <Specimen label={c("sysRings")}>
           {RINGS.map((ring) => (

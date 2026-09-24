@@ -91,6 +91,8 @@ export const UI = {
   confirmYourBid: { en: "Confirm your bid", ar: "أكّد مزايدتك" },
   youAreBidding: { en: "You are bidding on", ar: "أنت تزايد على" },
   bindingBid: { en: "Bids are binding. If you win, payment is due within 24 hours.", ar: "المزايدات ملزمة. عند الفوز، يجب الدفع خلال 24 ساعة." },
+  bindingBidLive: { en: "Bids are binding once placed.", ar: "المزايدات ملزمة بعد تقديمها." },
+  buyNowCheckoutNote: { en: "You'll choose delivery or pickup and pay at checkout.", ar: "ستختار التوصيل أو الاستلام وتدفع عند إتمام الشراء." },
   setMaxBid: { en: "Set a maximum bid", ar: "حدّد حداً أقصى للمزايدة" },
   maxBid: { en: "Maximum bid", ar: "الحد الأقصى للمزايدة" },
   yourMaxBid: { en: "Your maximum bid", ar: "حدّك الأقصى" },

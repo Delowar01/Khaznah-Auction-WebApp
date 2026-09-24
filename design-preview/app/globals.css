@@ -115,7 +115,7 @@
   --pbar-bg: #0b0d12;
   --pbar-fg: #e9eaee;
   --pbar-muted: #8c909c;
-  --pbar-line: rgb(255 255 255 / 0.09);
+  --pbar-line: rgb(255 255 255 / 0.16);
 }
 
 html[lang="ar"] {
