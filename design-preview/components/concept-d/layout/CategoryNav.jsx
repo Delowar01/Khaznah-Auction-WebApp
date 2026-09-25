@@ -37,7 +37,7 @@ function LiveNavLink({ current }) {
       aria-current={current ? "page" : undefined}
       className={cx(
         "inline-flex h-8 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 kb-sm font-bold ring-1 ring-inset transition-colors",
-        current ? "bg-live text-white ring-transparent" : "bg-live/10 text-live ring-live/25 hover:bg-live/15",
+        current ? "kb-tag-live ring-transparent" : "kb-live-soft bg-live/10 ring-live/25 hover:bg-live/15",
       )}
     >
       <span aria-hidden="true" className={cx("kz-live-dot", current && "bg-white!")} />

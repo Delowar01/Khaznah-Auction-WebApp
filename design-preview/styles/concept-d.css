@@ -364,6 +364,13 @@
 /* Auction urgency chip fill (used on plates for ending/critical states). */
 .kb-tag-auction { background: #cf4318; color: #ffffff; }
 
+/* Non-current "live" nav pill sits on a 10% live tint. In light the mid-red
+   text is legible on that pale tint, but on the dark surface it drops below
+   AA, so dark lifts the text to a lighter coral-red (still unmistakably live). */
+.kb-live-soft { color: var(--live); }
+:root[data-concept="d"][data-theme="dark"] .kb-live-soft,
+[data-concept="d"] .kb-force-dark .kb-live-soft { color: #ff9d94; }
+
 /* Seller monogram avatars sit on the seller's own tone. */
 .kb-avatar {
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14);
