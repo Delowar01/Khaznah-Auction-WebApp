@@ -55,7 +55,7 @@ function Frame({ children }) {
   );
 }
 
-/** Concept B chrome: utility strip, three-tier header, footer, mobile tab bar and overlays. */
+/** Concept C chrome: utility strip, three-tier header, footer, mobile tab bar and overlays. */
 export function Chrome({ children }) {
   return (
     <ChromeProvider>

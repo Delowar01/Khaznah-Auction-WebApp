@@ -1,7 +1,8 @@
-// Concept B — Modern Commerce: copy unique to this concept.
+// Concept C — Saudi Modern Commerce: copy unique to this concept.
 // Shared labels come from data/ui.js through useLang().ui(); everything here
-// is specific to B's layouts. Arabic is written as natural MSA for a Saudi
-// audience, not translated word for word.
+// is specific to C's Arabic-first layouts. The concept is designed in Arabic
+// first and mirrored to English, so Arabic is written as natural, confident
+// MSA for a Saudi audience — never translated word for word.
 
 export const COPY = {
   // ── Chrome ────────────────────────────────────────────────────────────────
@@ -94,7 +95,8 @@ export const COPY = {
   dealsSubtitle: { en: "Fixed prices and disclosed grades, ready to ship or collect", ar: "أسعار ثابتة ودرجات معلنة، جاهزة للشحن أو الاستلام" },
   bulkSubtitle: { en: "Pallets and cartons with full manifests, sold as one lot", ar: "طبليات وكراتين ببيانات كاملة، تُباع كدفعة واحدة" },
   sellersTitle: { en: "Shop by seller", ar: "تسوّق حسب البائع" },
-  sellersSubtitle: { en: "Saudi warehouses and outlets on Khazna", ar: "مستودعات ومنافذ سعودية على خزنة" },
+  sellersSubtitle: { en: "Warehouses and outlets across the Kingdom", ar: "مستودعات ومنافذ في مختلف مناطق المملكة" },
+  warehouseCities: { en: "Warehouse cities", ar: "مدن المستودعات" },
   howSubtitle: { en: "From sign-up to collection in four steps", ar: "من التسجيل إلى الاستلام في أربع خطوات" },
   gradesTitle: { en: "Condition grades", ar: "درجات الحالة" },
   fullGradeGuide: { en: "Full grade guide", ar: "دليل الدرجات الكامل" },
@@ -180,8 +182,8 @@ export const COPY = {
 
   // ── System board ──────────────────────────────────────────────────────────
   systemIntro: {
-    en: "The Modern Commerce kit: tokens, type and every interactive state used across the concept.",
-    ar: "مكوّنات التجارة الحديثة: الرموز والطباعة وكل الحالات التفاعلية المستخدمة في هذا المفهوم.",
+    en: "The Saudi Modern Commerce kit: an Arabic-first system of tokens, bilingual type and every interactive state used across the concept.",
+    ar: "مكوّنات التجارة السعودية الحديثة: نظامٌ يبدأ بالعربية من الرموز والطباعة الثنائية اللغة وكل الحالات التفاعلية المستخدمة في هذا المفهوم.",
   },
   systemEyebrow: { en: "Design system", ar: "نظام التصميم" },
   sysColour: { en: "Colour", ar: "الألوان" },

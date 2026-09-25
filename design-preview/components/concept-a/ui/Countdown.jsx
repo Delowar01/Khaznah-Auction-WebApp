@@ -80,17 +80,17 @@ export function ClockDigits({ seconds, tone = "default", className = "" }) {
     { key: "seconds", value: parts.seconds },
   ];
   return (
-    <div dir="ltr" className={cx("flex items-stretch gap-1.5", className)}>
+    <div dir="ltr" className={cx("flex items-stretch gap-2", className)}>
       {cells.map((cell) => (
         <div
           key={cell.key}
           className={cx(
-            "flex min-w-[3.25rem] flex-1 flex-col items-center rounded-lg px-1 py-1.5",
+            "flex min-w-[3.5rem] flex-1 flex-col items-center rounded-xl px-1.5 py-2.5",
             tone === "critical" ? "bg-danger/10 text-danger" : tone === "urgent" ? "bg-warning/10 text-warning" : "bg-surface-2 text-fg",
           )}
         >
-          <span className="kb-xl font-extrabold tabular">{String(cell.value).padStart(2, "0")}</span>
-          <span dir={lang === "ar" ? "rtl" : "ltr"} className={cx("kb-2xs font-medium", tone === "critical" || tone === "urgent" ? "" : "opacity-80")}>
+          <span className="text-[22px] leading-none font-bold tabular">{String(cell.value).padStart(2, "0")}</span>
+          <span dir={lang === "ar" ? "rtl" : "ltr"} className={cx("mt-1 kb-2xs font-medium", tone === "critical" || tone === "urgent" ? "" : "opacity-70")}>
             {units[cell.key]}
           </span>
         </div>

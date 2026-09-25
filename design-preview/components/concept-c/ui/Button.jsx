@@ -4,8 +4,8 @@ import Link from "next/link";
 import { LoaderCircle } from "lucide-react";
 import { cx } from "./cx";
 
-// B's action system: indigo carries every primary action, ink and outline
-// support it, gold is reserved for value moments. `data-state` lets the
+// C's action system: green carries every primary action, deep-green ink and
+// outline support it, gold is reserved for value moments. `data-state` lets the
 // components board force hover/active/focus without a pointer.
 const BASE =
   "relative inline-flex select-none items-center justify-center whitespace-nowrap rounded-control font-semibold transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-out active:translate-y-px data-[state=active]:translate-y-px data-[state=focus]:outline-2 data-[state=focus]:outline-offset-2 data-[state=focus]:outline-focus disabled:cursor-not-allowed disabled:border-transparent disabled:bg-muted disabled:text-fg-3 disabled:shadow-none disabled:active:translate-y-0";

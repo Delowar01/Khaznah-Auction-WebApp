@@ -1,10 +1,13 @@
 /*
- * Concept slot c — Round 2 (scaffolded from Concept B; redesigned separately)
+ * Concept C — Saudi Modern Commerce
  * ─────────────────────────────────────────────────────────────────────────
- * Bright, efficient marketplace tokens. Brand indigo carries every action,
- * brand gold marks value (always as a background with dark text), ink grounds
- * the utility strip and footer. Status colours are tuned one step deeper than
- * the brief so they pass WCAG AA as small text on white and on surface-2.
+ * An Arabic-first, locally-relevant evolution of Modern Commerce. A sand /
+ * paper canvas, white surfaces, a deep modern green ink, a green action colour
+ * and a restrained gold accent. Cairo drives every heading in both scripts
+ * (confident Arabic hierarchy that mirrors cleanly to Latin); Inter keeps the
+ * Latin body and figures crisp. Crisp warm borders and medium radii carry the
+ * structure — subtle shadows over heavy elevation. Status colours are tuned so
+ * they clear WCAG AA as small text on white and on the warm surface-2.
  */
 
 /* ── Light (default) ─────────────────────────────────────────────────────── */
@@ -12,34 +15,34 @@
 [data-concept="c"] .kb-force-light {
   color-scheme: light;
 
-  --bg: #f4f5f7;
+  --bg: #f3f1ea;
   --surface: #ffffff;
-  --surface-2: #eef0f4;
+  --surface-2: #ece8dc;
   --surface-elevated: #ffffff;
-  --plate: #f6f7f9;
-  --border: #e3e6eb;
-  --border-strong: #cdd2da;
+  --plate: #f5f2ea;
+  --border: #e2dccc;
+  --border-strong: #cdc3ac;
 
-  --text-primary: #101828;
-  --text-secondary: #475467;
-  --text-tertiary: #5d6679;
+  --text-primary: #15241d;
+  --text-secondary: #4b5a50;
+  --text-tertiary: #566459;
 
-  --primary: #3d4d9b;
-  --primary-hover: #33418a;
+  --primary: #1f6f5c;
+  --primary-hover: #195c4c;
   --primary-contrast: #ffffff;
-  --secondary: #101828;
-  --secondary-contrast: #ffffff;
-  --accent: #d8a535;
-  --accent-contrast: #1a1406;
+  --secondary: #0e3b2e;
+  --secondary-contrast: #f4f1e8;
+  --accent: #c79a3b;
+  --accent-contrast: #241905;
 
-  --success: #067647;
-  --warning: #a54107;
-  --danger: #c01f14;
-  --live: #d1242f;
-  --auction: #3d4d9b;
-  --muted: #eef0f4;
-  --focus: #3d4d9b;
-  --overlay: rgb(16 24 40 / 0.56);
+  --success: #0f7a4d;
+  --warning: #a2540f;
+  --danger: #bc231a;
+  --live: #cb2130;
+  --auction: #1f6f5c;
+  --muted: #ece8dc;
+  --focus: #1f6f5c;
+  --overlay: rgb(14 34 26 / 0.55);
 
   --grade-new: #175cd3;
   --grade-a: #067647;
@@ -47,35 +50,35 @@
   --grade-c: #a54107;
   --grade-d: #c4320a;
   --grade-r: #6941c6;
-  --grade-f: #c01f14;
+  --grade-f: #bc231a;
 
   --r-xs: 4px;
-  --r-sm: 6px;
-  --r-md: 8px;
-  --r-lg: 12px;
-  --r-xl: 16px;
-  --r-card: 12px;
-  --r-control: 10px;
+  --r-sm: 8px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 18px;
+  --r-card: 14px;
+  --r-control: 12px;
 
-  --sh-card: 0 1px 2px rgb(16 24 40 / 0.05);
-  --sh-raised: 0 1px 3px rgb(16 24 40 / 0.06), 0 16px 32px -14px rgb(16 24 40 / 0.2);
-  --sh-overlay: 0 2px 6px rgb(16 24 40 / 0.06), 0 28px 64px -18px rgb(16 24 40 / 0.34);
-  --kb-sh-bar: 0 -10px 30px -20px rgb(16 24 40 / 0.45);
+  --sh-card: 0 1px 2px rgb(20 36 29 / 0.05);
+  --sh-raised: 0 1px 2px rgb(20 36 29 / 0.05), 0 18px 34px -16px rgb(20 36 29 / 0.22);
+  --sh-overlay: 0 2px 8px rgb(20 36 29 / 0.07), 0 30px 64px -20px rgb(14 34 26 / 0.34);
+  --kb-sh-bar: 0 -10px 30px -20px rgb(14 34 26 / 0.4);
 
-  --font-display-stack: "Riyal", var(--font-inter), var(--font-cairo), system-ui, sans-serif;
+  --font-display-stack: "Riyal", var(--font-cairo), var(--font-inter), system-ui, sans-serif;
   --font-body-stack: "Riyal", var(--font-inter), var(--font-cairo), system-ui, sans-serif;
   --font-mono-stack: "Riyal", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   /* Concept extras (brand panels, logo colourways) */
-  --logo-mark: #d8a535;
-  --logo-word: #3d4d9b;
-  --kb-indigo-950: #0f1538;
-  --kb-indigo-900: #18205a;
-  --kb-indigo-800: #242e78;
-  --kb-indigo-600: #3d4d9b;
-  --kb-gold-soft: #f3d98f;
+  --logo-mark: #c79a3b;
+  --logo-word: #0e3b2e;
+  --kb-green-950: #072019;
+  --kb-green-900: #0e3b2e;
+  --kb-green-800: #12503d;
+  --kb-green-600: #1f6f5c;
+  --kb-gold-soft: #e7c979;
   --kb-on-brand: #ffffff;
-  --kb-tick: rgb(16 24 40 / 0.06);
+  --kb-tick: rgb(14 34 26 / 0.06);
 }
 
 /* ── Dark ────────────────────────────────────────────────────────────────── */
@@ -83,34 +86,34 @@
 [data-concept="c"] .kb-force-dark {
   color-scheme: dark;
 
-  --bg: #0c111d;
-  --surface: #161b26;
-  --surface-2: #1f242f;
-  --surface-elevated: #1f242f;
-  --plate: #f2f3f5;
-  --border: #2a303c;
-  --border-strong: #3b4252;
+  --bg: #0c130f;
+  --surface: #14201a;
+  --surface-2: #1c2a23;
+  --surface-elevated: #1c2a23;
+  --plate: #ece7da;
+  --border: #29372e;
+  --border-strong: #3b4d42;
 
-  --text-primary: #f5f5f6;
-  --text-secondary: #a4a7ae;
-  --text-tertiary: #8b8f98;
+  --text-primary: #f1eee3;
+  --text-secondary: #aeb9ae;
+  --text-tertiary: #94a097;
 
-  --primary: #8190e6;
-  --primary-hover: #95a2ee;
-  --primary-contrast: #0c111d;
-  --secondary: #070a12;
-  --secondary-contrast: #f5f5f6;
-  --accent: #e0b04a;
-  --accent-contrast: #1a1406;
+  --primary: #46b892;
+  --primary-hover: #59c7a2;
+  --primary-contrast: #062017;
+  --secondary: #081712;
+  --secondary-contrast: #eee9dc;
+  --accent: #d9b057;
+  --accent-contrast: #241905;
 
   --success: #47cd89;
-  --warning: #fdb022;
+  --warning: #f0a83a;
   --danger: #f97066;
-  --live: #d1242f;
-  --auction: #8190e6;
-  --muted: #1f242f;
-  --focus: #95a2ee;
-  --overlay: rgb(3 5 10 / 0.72);
+  --live: #e5534b;
+  --auction: #46b892;
+  --muted: #1c2a23;
+  --focus: #59c7a2;
+  --overlay: rgb(3 8 6 / 0.74);
 
   --grade-new: #84adff;
   --grade-a: #47cd89;
@@ -120,17 +123,22 @@
   --grade-r: #b69cff;
   --grade-f: #f97066;
 
-  --sh-card: 0 1px 2px rgb(0 0 0 / 0.3);
-  --sh-raised: 0 1px 3px rgb(0 0 0 / 0.35), 0 18px 36px -14px rgb(0 0 0 / 0.6);
-  --sh-overlay: 0 2px 8px rgb(0 0 0 / 0.4), 0 30px 70px -18px rgb(0 0 0 / 0.75);
+  --sh-card: 0 1px 2px rgb(0 0 0 / 0.32);
+  --sh-raised: 0 1px 3px rgb(0 0 0 / 0.36), 0 18px 36px -14px rgb(0 0 0 / 0.6);
+  --sh-overlay: 0 2px 8px rgb(0 0 0 / 0.42), 0 30px 70px -18px rgb(0 0 0 / 0.76);
   --kb-sh-bar: 0 -10px 30px -18px rgb(0 0 0 / 0.8);
 
-  --logo-mark: #e0b04a;
-  --logo-word: #f5f5f6;
+  --logo-mark: #d9b057;
+  --logo-word: #f1eee3;
+  --kb-green-950: #061711;
+  --kb-green-900: #0c2f24;
+  --kb-green-800: #113f30;
+  --kb-green-600: #1f6f5c;
+  --kb-gold-soft: #ebce82;
   --kb-tick: rgb(255 255 255 / 0.06);
 }
 
-/* ── Arabic: Almarai first, Figtree for Latin runs and digits ────────────── */
+/* ── Arabic-first type: Cairo leads both scripts; Latin body stays on Inter ─ */
 :root[data-concept="c"][lang="ar"] {
   --font-display-stack: "Riyal", var(--font-cairo), var(--font-inter), system-ui, sans-serif;
   --font-body-stack: "Riyal", var(--font-cairo), var(--font-inter), system-ui, sans-serif;
@@ -138,17 +146,18 @@
 
 :root[data-concept="c"] body {
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 :root[data-concept="c"][lang="ar"] body {
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 /* ── Type roles ──────────────────────────────────────────────────────────
-   Compact commerce scale in Latin; Arabic runs one step larger with taller
-   leading and never uses tracking. */
+   Cairo carries every heading and kicker in both scripts for a confident,
+   Arabic-native hierarchy; Arabic runs one step larger with taller leading
+   and no Latin-style tracking. */
 @layer components {
   .kb-2xs { font-size: 11px; line-height: 14px; }
   .kb-xs { font-size: 12px; line-height: 16px; }
@@ -157,35 +166,44 @@
   .kb-lg { font-size: 16px; line-height: 24px; }
   .kb-xl { font-size: 18px; line-height: 26px; }
 
+  .kb-display,
+  .kb-hero-title,
+  .kb-h1,
+  .kb-h2,
+  .kb-h3,
+  .kb-eyebrow {
+    font-family: var(--font-display-stack);
+  }
+
   .kb-eyebrow {
     font-size: 11px;
     line-height: 14px;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
-  .kb-h3 { font-size: 17px; line-height: 23px; font-weight: 700; letter-spacing: -0.01em; }
-  .kb-h2 { font-size: 20px; line-height: 26px; font-weight: 800; letter-spacing: -0.02em; }
-  .kb-h1 { font-size: 24px; line-height: 30px; font-weight: 800; letter-spacing: -0.02em; }
-  .kb-display { font-size: 32px; line-height: 36px; font-weight: 800; letter-spacing: -0.03em; }
+  .kb-h3 { font-size: 17px; line-height: 24px; font-weight: 700; letter-spacing: -0.005em; }
+  .kb-h2 { font-size: 20px; line-height: 27px; font-weight: 800; letter-spacing: -0.012em; }
+  .kb-h1 { font-size: 25px; line-height: 32px; font-weight: 800; letter-spacing: -0.018em; }
+  .kb-display { font-size: 33px; line-height: 38px; font-weight: 800; letter-spacing: -0.024em; }
 
-  .kb-hero-title { font-size: 34px; line-height: 38px; font-weight: 800; letter-spacing: -0.03em; }
+  .kb-hero-title { font-size: 35px; line-height: 40px; font-weight: 800; letter-spacing: -0.024em; }
 
   .kb-price-sm { font-size: 15px; line-height: 20px; font-weight: 700; letter-spacing: -0.01em; }
   .kb-price { font-size: 18px; line-height: 24px; font-weight: 800; letter-spacing: -0.01em; }
   .kb-price-lg { font-size: 28px; line-height: 32px; font-weight: 800; letter-spacing: -0.02em; }
 
   @media (min-width: 768px) {
-    .kb-h2 { font-size: 22px; line-height: 28px; }
-    .kb-h1 { font-size: 28px; line-height: 34px; }
-    .kb-display { font-size: 42px; line-height: 46px; }
+    .kb-h2 { font-size: 22px; line-height: 29px; }
+    .kb-h1 { font-size: 29px; line-height: 36px; }
+    .kb-display { font-size: 44px; line-height: 48px; }
   }
 
   @media (min-width: 1280px) {
-    .kb-display { font-size: 50px; line-height: 54px; }
+    .kb-display { font-size: 52px; line-height: 56px; }
     .kb-price-lg { font-size: 32px; line-height: 36px; }
-    .kb-hero-title { font-size: 42px; line-height: 46px; }
+    .kb-hero-title { font-size: 44px; line-height: 48px; }
   }
 
   :root[lang="ar"] .kb-2xs { font-size: 12px; line-height: 17px; }
@@ -194,26 +212,26 @@
   :root[lang="ar"] .kb-md { font-size: 15px; line-height: 24px; }
   :root[lang="ar"] .kb-lg { font-size: 17px; line-height: 28px; }
   :root[lang="ar"] .kb-xl { font-size: 19px; line-height: 30px; }
-  :root[lang="ar"] .kb-eyebrow { font-size: 12px; line-height: 17px; letter-spacing: 0; text-transform: none; }
-  :root[lang="ar"] .kb-h3 { font-size: 18px; line-height: 28px; letter-spacing: 0; }
-  :root[lang="ar"] .kb-h2 { font-size: 21px; line-height: 32px; letter-spacing: 0; }
-  :root[lang="ar"] .kb-h1 { font-size: 25px; line-height: 38px; letter-spacing: 0; }
-  :root[lang="ar"] .kb-display { font-size: 32px; line-height: 48px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-eyebrow { font-size: 12px; line-height: 17px; letter-spacing: 0; text-transform: none; font-weight: 800; }
+  :root[lang="ar"] .kb-h3 { font-size: 18px; line-height: 29px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-h2 { font-size: 21px; line-height: 34px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-h1 { font-size: 26px; line-height: 40px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-display { font-size: 34px; line-height: 50px; letter-spacing: 0; }
   :root[lang="ar"] :is(.kb-price-sm, .kb-price, .kb-price-lg) { letter-spacing: 0; }
-  :root[lang="ar"] .kb-hero-title { font-size: 32px; line-height: 50px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-hero-title { font-size: 34px; line-height: 52px; letter-spacing: 0; }
 
   @media (min-width: 1280px) {
-    :root[lang="ar"] .kb-hero-title { font-size: 40px; line-height: 60px; }
+    :root[lang="ar"] .kb-hero-title { font-size: 42px; line-height: 62px; }
   }
 
   @media (min-width: 768px) {
-    :root[lang="ar"] .kb-h2 { font-size: 23px; line-height: 34px; }
-    :root[lang="ar"] .kb-h1 { font-size: 29px; line-height: 42px; }
-    :root[lang="ar"] .kb-display { font-size: 40px; line-height: 58px; }
+    :root[lang="ar"] .kb-h2 { font-size: 23px; line-height: 36px; }
+    :root[lang="ar"] .kb-h1 { font-size: 30px; line-height: 44px; }
+    :root[lang="ar"] .kb-display { font-size: 42px; line-height: 60px; }
   }
 
   @media (min-width: 1280px) {
-    :root[lang="ar"] .kb-display { font-size: 46px; line-height: 66px; }
+    :root[lang="ar"] .kb-display { font-size: 48px; line-height: 68px; }
   }
 
   /* Layout container */
@@ -254,25 +272,57 @@
   transition: top 0.3s var(--ease-out-soft);
 }
 
+/* ── Bilingual heading lockup ─────────────────────────────────────────────
+   Fixed UI headings can carry both scripts: the current language leads at
+   full size, the mirrored language sits beneath as a small muted line. A
+   short gold rule marks the block. Signature of the Arabic-first system. */
+.kb-bi-alt {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-display-stack);
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text-tertiary);
+}
+
+.kb-rule {
+  display: inline-block;
+  block-size: 3px;
+  inline-size: 28px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+/* ── Kingdom / city presence ──────────────────────────────────────────────
+   A restrained, non-map treatment for warehouse-city credibility cues. */
+.kb-city {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
 /* ── Brand surfaces ──────────────────────────────────────────────────────── */
 .kb-brand-panel {
   background:
-    radial-gradient(120% 90% at 85% 40%, color-mix(in oklab, var(--kb-indigo-600) 70%, transparent) 0%, transparent 60%),
-    radial-gradient(60% 60% at 0% 100%, color-mix(in oklab, var(--kb-indigo-800) 80%, transparent) 0%, transparent 70%),
-    linear-gradient(135deg, var(--kb-indigo-900) 0%, var(--kb-indigo-950) 100%);
+    radial-gradient(120% 95% at 88% 32%, color-mix(in oklab, var(--kb-green-600) 60%, transparent) 0%, transparent 58%),
+    radial-gradient(75% 75% at 2% 100%, color-mix(in oklab, var(--kb-green-800) 85%, transparent) 0%, transparent 72%),
+    linear-gradient(142deg, var(--kb-green-900) 0%, var(--kb-green-950) 100%);
   color: var(--kb-on-brand);
 }
 
 .kb-brand-grid {
   background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(80% 80% at 80% 50%, #000 0%, transparent 75%);
+    linear-gradient(to right, rgb(255 255 255 / 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.055) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(82% 82% at 82% 46%, #000 0%, transparent 74%);
 }
 
 .kb-glow {
-  background: radial-gradient(closest-side, color-mix(in oklab, var(--kb-gold-soft) 55%, transparent), transparent);
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--kb-gold-soft) 58%, transparent), transparent);
 }
 
 .kb-on-dark {
@@ -287,31 +337,31 @@
 
 .kb-btn-on-brand {
   background: var(--kb-on-brand);
-  color: var(--kb-indigo-950);
+  color: var(--kb-green-950);
 }
 
 .kb-btn-on-brand:hover {
-  background: color-mix(in oklab, var(--kb-on-brand) 88%, var(--kb-gold-soft));
+  background: color-mix(in oklab, var(--kb-on-brand) 90%, var(--kb-gold-soft));
 }
 
-/* Product photography: white packshots melt into the light plate. */
+/* Product photography: white packshots melt into the warm plate. */
 .kb-pack {
   mix-blend-mode: multiply;
 }
 
 /* Badges that sit on product plates. The plate is light in both themes, so
    these fills are fixed (each pair clears 4.5:1 on its own). */
-.kb-tag-indigo { background: #3d4d9b; color: #ffffff; }
-.kb-tag-ink { background: #101828; color: #ffffff; }
-.kb-tag-new { background: #067647; color: #ffffff; }
-.kb-tag-warn { background: #b54708; color: #ffffff; }
-.kb-tag-live { background: #d1242f; color: #ffffff; }
-.kb-tag-gold { background: #d8a535; color: #1a1406; }
-.kb-tag-muted { background: #475467; color: #ffffff; }
+.kb-tag-green { background: #1f6f5c; color: #ffffff; }
+.kb-tag-ink { background: #0e3b2e; color: #ffffff; }
+.kb-tag-new { background: #0f7a4d; color: #ffffff; }
+.kb-tag-warn { background: #a2540f; color: #ffffff; }
+.kb-tag-live { background: #c42030; color: #ffffff; }
+.kb-tag-gold { background: #c79a3b; color: #241905; }
+.kb-tag-muted { background: #4b5a50; color: #ffffff; }
 
 /* Seller monogram avatars sit on the seller's own tone. */
 .kb-avatar {
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16);
   color: #ffffff;
 }
 

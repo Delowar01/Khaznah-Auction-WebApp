@@ -48,7 +48,7 @@ function FeaturedLotChip() {
   );
 }
 
-/** Slide 1 — brand promise on a deep indigo panel with the fridge and TV cut-outs. */
+/** Slide 1 — brand promise on a deep green panel with the fridge and TV cut-outs. */
 export function BrandSlide() {
   const { t } = useLang();
   return (

@@ -51,7 +51,7 @@ export function BuyNowCard({ product, sizes = "(min-width: 1280px) 20vw, (min-wi
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-3">
-        <SellerLine seller={meta.seller} name={meta.sellerName} />
+        <SellerLine seller={meta.seller} name={meta.sellerName} city={meta.cityLabel} />
         <h3 className="min-h-[2lh] kb-md font-semibold">
           <TitleLink href={href}>{meta.title}</TitleLink>
         </h3>

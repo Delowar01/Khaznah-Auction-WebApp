@@ -55,7 +55,7 @@ function Frame({ children }) {
   );
 }
 
-/** Concept B chrome: utility strip, three-tier header, footer, mobile tab bar and overlays. */
+/** Premium Commerce chrome: utility strip, three-tier header, footer, mobile tab bar and overlays. */
 export function Chrome({ children }) {
   return (
     <ChromeProvider>

@@ -21,12 +21,12 @@ function StatusBadge({ phase, isNew, both }) {
   const { ui } = useLang();
   if (phase === "sold") return <Badge tone="tag-ink">{ui("sold")}</Badge>;
   if (phase === "ended") return <Badge tone="tag-muted">{ui("ended")}</Badge>;
-  if (phase === "upcoming") return <Badge tone="tag-indigo">{ui("upcoming")}</Badge>;
+  if (phase === "upcoming") return <Badge tone="tag-green">{ui("upcoming")}</Badge>;
   if (phase === "critical") return <Badge tone="tag-live" dot>{ui("closingNow")}</Badge>;
   if (phase === "urgent") return <Badge tone="tag-warn">{ui("endingSoon")}</Badge>;
   if (isNew) return <Badge tone="tag-new">{ui("newListing")}</Badge>;
   return (
-    <Badge tone="tag-indigo" icon={Gavel}>
+    <Badge tone="tag-green" icon={Gavel}>
       {ui("auction")}
       {both ? <span className="@max-[14rem]:hidden">+ {ui("buyNow")}</span> : null}
     </Badge>
@@ -73,7 +73,7 @@ export function AuctionCard({ product, sizes = "(min-width: 1280px) 20vw, (min-w
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-3">
-        <SellerLine seller={meta.seller} name={meta.sellerName} />
+        <SellerLine seller={meta.seller} name={meta.sellerName} city={meta.cityLabel} />
         <h3 className="min-h-[2lh] kb-md font-semibold">
           <TitleLink href={href}>{meta.title}</TitleLink>
         </h3>

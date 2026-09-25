@@ -2,7 +2,7 @@
 
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { ITEM_TYPES, SOURCE_TYPES } from "@/data/grades";
-import { getSeller } from "@/data/sellers";
+import { CITIES, getSeller } from "@/data/sellers";
 import { discountPercent, isNewListing } from "@/lib/catalog";
 import { COPY } from "../copy";
 
@@ -10,6 +10,7 @@ import { COPY } from "../copy";
 export function useLotMeta(product) {
   const { t, pl } = useLang();
   const seller = getSeller(product.seller);
+  const city = seller && CITIES[seller.city] ? CITIES[seller.city] : null;
 
   let typeLine;
   if (product.itemType === "pallet" && product.quantity) {
@@ -26,6 +27,7 @@ export function useLotMeta(product) {
     title: t(product.title),
     seller,
     sellerName: seller ? t(seller.name) : "",
+    cityLabel: city ? t(city) : "",
     typeLine,
     discount: discountPercent(product),
     isNew: isNewListing(product),

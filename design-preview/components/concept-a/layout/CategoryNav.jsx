@@ -93,8 +93,8 @@ export function CategoryNav({ collapsed }) {
           aria-controls={open ? panelId : undefined}
           onClick={toggle}
           className={cx(
-            "inline-flex h-8 items-center gap-2 rounded-md px-3 kb-sm font-bold transition-colors",
-            open ? "bg-primary text-on-primary" : "bg-primary/10 text-primary hover:bg-primary/15",
+            "inline-flex h-9 items-center gap-2 rounded-full border px-4 kb-sm font-semibold transition-colors",
+            open ? "border-primary bg-primary text-on-primary" : "border-line-strong bg-surface text-fg hover:border-primary hover:text-primary",
           )}
         >
           <LayoutGrid aria-hidden="true" className="size-4" />

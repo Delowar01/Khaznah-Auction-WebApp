@@ -37,7 +37,7 @@ function ScopeSelect({ value, onChange }) {
 }
 
 /**
- * The dominant header search: category scope + input + indigo button, with
+ * The dominant header search: category scope + input + green button, with
  * an autocomplete panel (popular searches, categories, lots). ↑/↓ move,
  * Enter opens the highlighted row or searches, Esc closes.
  */

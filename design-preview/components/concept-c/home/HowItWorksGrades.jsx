@@ -6,6 +6,7 @@ import { useLang } from "@/components/shared/providers/LangProvider";
 import { Money } from "@/components/shared/ui/Money";
 import { Reveal } from "@/components/shared/ui/Reveal";
 import { AUCTION_POLICY, HERO, HOW_IT_WORKS, TRUST_POINTS } from "@/data/site";
+import { UI } from "@/data/ui";
 import { GradeGuideModal, GradeTable } from "../product/GradeGuide";
 import { Button, buttonClass } from "../ui/Button";
 import { SectionHeader } from "../ui/SectionHeader";
@@ -21,7 +22,7 @@ export function HowItWorksGrades() {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
       <Reveal as="section" id="how-it-works" aria-labelledby="kb-how" className="flex scroll-mt-10 flex-col rounded-xl border border-line bg-surface p-5 sm:p-6">
-        <SectionHeader id="kb-how" icon={ListOrdered} title={ui("howItWorks")} subtitle={t(COPY.howSubtitle)} />
+        <SectionHeader id="kb-how" icon={ListOrdered} bi={UI.howItWorks} subtitle={t(COPY.howSubtitle)} />
         <ol className="relative grid gap-5 sm:grid-cols-2">
           {HOW_IT_WORKS.map((step) => (
             <li key={step.step} className="flex gap-3">
@@ -57,7 +58,7 @@ export function HowItWorksGrades() {
         <SectionHeader
           id="kb-grades"
           icon={BadgeCheck}
-          title={t(COPY.gradesTitle)}
+          bi={COPY.gradesTitle}
           subtitle={ui("gradeGuideText")}
           actions={
             <div className="hidden sm:block">

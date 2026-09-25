@@ -24,13 +24,13 @@ export function AuctionsRail() {
 
   return (
     <section aria-labelledby="kb-auctions-rail">
-      <div className="mb-4 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
+      <div className="mb-5 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
         <div className="min-w-0">
-          <h2 id="kb-auctions-rail" className="flex items-center gap-2 kb-h2 text-fg">
-            <Timer aria-hidden="true" className="size-5 text-primary" strokeWidth={2.25} />
+          <h2 id="kb-auctions-rail" className="flex items-center gap-2.5 kb-h2 text-fg">
+            <Timer aria-hidden="true" className="size-5 text-accent" strokeWidth={2} />
             {t(COPY.auctionsRailTitle)}
           </h2>
-          <p className="mt-1 kb-sm text-fg-2">{t(COPY.auctionsRailSubtitle)}</p>
+          <p className="mt-1.5 kb-sm text-fg-2">{t(COPY.auctionsRailSubtitle)}</p>
         </div>
         <div className="flex w-full items-center justify-between gap-2 sm:w-auto">
           <Segmented
@@ -51,7 +51,7 @@ export function AuctionsRail() {
       </div>
       <RailTrack trackRef={trackRef} label={view === "ending" ? ui("endingSoonTitle") : ui("featuredAuctions")}>
         {items.map((product, i) => (
-          <li key={product.slug} className="w-[46%] shrink-0 sm:w-[31%] lg:w-[calc((100%-48px)/5)]">
+          <li key={product.slug} className="w-[70%] shrink-0 sm:w-[42%] lg:w-[calc((100%-36px)/4)]">
             <AuctionCard product={product} priority={i < 2} />
           </li>
         ))}

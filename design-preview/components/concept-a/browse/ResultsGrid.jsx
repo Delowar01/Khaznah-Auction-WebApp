@@ -11,7 +11,7 @@ import { EmptyState } from "../ui/EmptyState";
 import { cx } from "../ui/cx";
 import { COPY } from "../copy";
 
-export const GRID_COLS = "grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-4";
+export const GRID_COLS = "grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-5 xl:grid-cols-4";
 
 /** Grid or list of lots with loading skeletons and a helpful empty state. */
 export function ResultsGrid({ browse, items, view = "grid", skeletons = 8, gridClassName = GRID_COLS, suggestions = true }) {

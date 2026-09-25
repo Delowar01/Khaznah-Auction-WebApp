@@ -6,13 +6,13 @@ import { Money } from "@/components/shared/ui/Money";
 import { SellerAvatar } from "../ui/SellerAvatar";
 import { cx } from "../ui/cx";
 
-/** Card frame: crisp 1px border, lifts on hover, keeps focus visible. */
+/** Card frame: soft warm border, resting lift, elevates gently on hover. */
 export function CardShell({ as: Tag = "article", className = "", children, ...props }) {
   return (
     <Tag
       className={cx(
-        "group/card @container relative flex h-full flex-col overflow-hidden rounded-card border border-line bg-surface transition-[box-shadow,border-color,transform] duration-200 ease-out",
-        "hover:-translate-y-0.5 hover:border-line-strong hover:shadow-raised focus-within:border-line-strong",
+        "group/card @container relative flex h-full flex-col overflow-hidden rounded-card border border-line bg-surface shadow-card transition-[box-shadow,border-color,transform] duration-300 ease-out",
+        "hover:-translate-y-1 hover:border-line-strong hover:shadow-raised focus-within:border-line-strong",
         className,
       )}
       {...props}
@@ -62,7 +62,7 @@ export function SoldOverlay({ amount }) {
   );
 }
 
-/** Label above a price ("Current bid", "Starting bid" …). */
+/** Label above a price ("Current bid", "Starting bid" …), set as a refined eyebrow. */
 export function PriceLabel({ children }) {
-  return <p className="kb-2xs font-semibold text-fg-3">{children}</p>;
+  return <p className="kb-eyebrow text-fg-3">{children}</p>;
 }

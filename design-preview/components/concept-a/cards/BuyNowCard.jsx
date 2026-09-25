@@ -50,9 +50,9 @@ export function BuyNowCard({ product, sizes = "(min-width: 1280px) 20vw, (min-wi
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col gap-2 p-3">
+      <div className="flex flex-1 flex-col gap-2.5 p-4">
         <SellerLine seller={meta.seller} name={meta.sellerName} />
-        <h3 className="min-h-[2lh] kb-md font-semibold">
+        <h3 className="min-h-[2lh] kb-lg font-medium">
           <TitleLink href={href}>{meta.title}</TitleLink>
         </h3>
         <div className="flex min-w-0 flex-wrap items-center gap-1.5">
@@ -60,13 +60,13 @@ export function BuyNowCard({ product, sizes = "(min-width: 1280px) 20vw, (min-wi
           <span className="truncate kb-xs text-fg-3">{meta.typeLine}</span>
         </div>
 
-        <div className="mt-auto pt-1">
+        <div className="mt-auto pt-1.5">
           <div className="flex flex-wrap items-baseline gap-x-2">
-            <Money value={product.price} className={cx("kb-price", soldOut ? "text-fg-3" : "text-fg")} symbolClassName="text-[0.8em]" />
+            <Money value={product.price} className={cx("kb-price", soldOut ? "text-fg-3" : "text-fg")} symbolClassName="text-[0.72em]" />
             {meta.discount > 0 ? <Money value={product.originalPrice} strike className="kb-xs text-fg-3" /> : null}
             {product.unitLabel ? <span className="kb-xs text-fg-3">{t(product.unitLabel)}</span> : null}
           </div>
-          <StockMeter stock={product.stock} className="mt-1.5" />
+          <StockMeter stock={product.stock} className="mt-2" />
         </div>
 
         <Button
@@ -76,7 +76,7 @@ export function BuyNowCard({ product, sizes = "(min-width: 1280px) 20vw, (min-wi
           icon={soldOut ? undefined : ShoppingCart}
           disabled={soldOut}
           onClick={() => add(product, 1)}
-          className="relative z-10 mt-1"
+          className="relative z-10 mt-1.5"
         >
           {soldOut ? ui("outOfStock") : ui("addToCart")}
           {soldOut ? null : <span className="sr-only">: {meta.title}</span>}

@@ -41,14 +41,14 @@ export function HomePage() {
         <TrustStrip className="mt-3" />
       </div>
 
-      <div className="kb-container mt-10 space-y-12 lg:mt-12 lg:space-y-14">
+      <div className="kb-container mt-12 space-y-12 lg:mt-16 lg:space-y-20">
         <CategoryTiles />
         <AuctionsRail />
       </div>
 
-      <LiveBand live={live} className="mt-12 lg:mt-14" />
+      <LiveBand live={live} className="mt-12 lg:mt-16" />
 
-      <div className="kb-container mt-12 space-y-12 pb-16 lg:mt-14 lg:space-y-14 lg:pb-20">
+      <div className="kb-container mt-12 space-y-12 pb-20 lg:mt-16 lg:space-y-20 lg:pb-28">
         <DealsGrid />
         <BulkSection />
         <SellerShelf />

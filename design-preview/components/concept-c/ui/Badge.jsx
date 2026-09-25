@@ -15,7 +15,7 @@ const TONES = {
   glass: "bg-black/60 text-white backdrop-blur-sm",
   outline: "border border-line bg-surface text-fg-2",
   // Fixed fills for badges placed on product plates (light in both themes).
-  "tag-indigo": "kb-tag-indigo",
+  "tag-green": "kb-tag-green",
   "tag-ink": "kb-tag-ink",
   "tag-new": "kb-tag-new",
   "tag-warn": "kb-tag-warn",

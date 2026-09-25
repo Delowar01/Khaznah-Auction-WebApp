@@ -1,9 +1,9 @@
 "use client";
 
-import { Store } from "lucide-react";
+import { MapPin, Store } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { Reveal } from "@/components/shared/ui/Reveal";
-import { SELLERS } from "@/data/sellers";
+import { CITIES, SELLERS } from "@/data/sellers";
 import { STATS } from "@/data/site";
 import { RIYAL, formatNumber } from "@/lib/format";
 import { SectionHeader } from "../ui/SectionHeader";
@@ -37,7 +37,18 @@ export function SellerShelf() {
   const { t, ui } = useLang();
   return (
     <Reveal as="section" aria-labelledby="kb-sellers">
-      <SectionHeader id="kb-sellers" icon={Store} title={t(COPY.sellersTitle)} subtitle={t(COPY.sellersSubtitle)} href="/seller" hrefLabel={ui("sellers")} />
+      <SectionHeader id="kb-sellers" icon={Store} bi={COPY.sellersTitle} subtitle={t(COPY.sellersSubtitle)} href="/seller" hrefLabel={ui("sellers")} />
+      <ul aria-label={t(COPY.warehouseCities)} className="mb-4 flex flex-wrap gap-2">
+        {Object.values(CITIES).map((city) => (
+          <li
+            key={city.en}
+            className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1 kb-xs font-semibold text-fg-2"
+          >
+            <MapPin aria-hidden="true" className="size-3.5 text-primary" strokeWidth={2.25} />
+            {t(city)}
+          </li>
+        ))}
+      </ul>
       <dl className="mb-4 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-4">
         {STATS.map((stat) => (
           <div key={stat.key} className="flex flex-col-reverse gap-1 bg-surface px-4 py-4 sm:px-5">

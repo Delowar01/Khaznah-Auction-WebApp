@@ -27,9 +27,9 @@ function ScopeSelect({ value, onChange }) {
       label={t(COPY.searchScope)}
       align="start"
       className="hidden h-full shrink-0 lg:block"
-      buttonClassName="flex h-full max-w-[12rem] items-center gap-1.5 rounded-s-[8px] border-e border-line bg-surface-2 ps-3 pe-2 kb-sm font-semibold text-fg-2 transition-colors hover:text-fg"
+      buttonClassName="flex h-full max-w-[12rem] items-center gap-1.5 rounded-s-full border-e border-line bg-surface-2/70 ps-5 pe-3 kb-sm font-semibold text-fg-2 transition-colors hover:text-fg"
       renderButton={(current) => <span className="truncate">{current?.label}</span>}
-      menuClassName="kb-focus-reset max-h-80 w-60 overflow-y-auto rounded-xl border border-line bg-elevated p-1 shadow-overlay"
+      menuClassName="kb-focus-reset max-h-80 w-60 overflow-y-auto rounded-xl border border-line bg-elevated p-1.5 shadow-overlay"
       optionClassName="rounded-lg px-3 py-2 kb-sm text-fg"
       activeOptionClassName="bg-surface-2"
     />
@@ -124,10 +124,10 @@ export function SearchBar({ className = "" }) {
       }}
       className={cx("relative", className)}
     >
-      <div className="flex h-11 items-stretch rounded-control border-2 border-primary bg-surface shadow-card transition-shadow focus-within:ring-4 focus-within:ring-primary/15">
+      <div className="flex h-12 items-stretch rounded-full border border-line-strong bg-surface shadow-card transition-[box-shadow,border-color] focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/12">
         <ScopeSelect value={scope} onChange={setScope} />
         <div className="relative flex min-w-0 flex-1 items-center">
-          <Search aria-hidden="true" className="pointer-events-none ms-3 size-4 shrink-0 text-fg-3 lg:hidden" />
+          <Search aria-hidden="true" className="pointer-events-none ms-4 size-4 shrink-0 text-fg-3 lg:hidden" />
           <label htmlFor={`${id}-input`} className="sr-only">
             {ui("search")}
           </label>
@@ -152,7 +152,7 @@ export function SearchBar({ className = "" }) {
             }}
             onFocus={openPanel}
             onKeyDown={onKeyDown}
-            className="kb-search h-full min-w-0 flex-1 bg-transparent px-3 kb-md text-fg outline-none placeholder:text-fg-3"
+            className="kb-search h-full min-w-0 flex-1 bg-transparent px-4 kb-md text-fg outline-none placeholder:text-fg-3"
           />
           {query ? (
             <button
@@ -171,7 +171,7 @@ export function SearchBar({ className = "" }) {
         <button
           type="submit"
           aria-label={ui("search")}
-          className="flex shrink-0 items-center gap-2 rounded-e-[8px] bg-primary px-3.5 font-semibold text-on-primary transition-colors hover:bg-primary-hover lg:px-4"
+          className="flex shrink-0 items-center gap-2 rounded-e-full bg-primary ps-4 pe-5 font-semibold text-on-primary transition-colors hover:bg-primary-hover lg:pe-6"
         >
           <Search aria-hidden="true" className="size-[18px]" strokeWidth={2.25} />
           <span className="hidden kb-md xl:inline">{ui("search")}</span>

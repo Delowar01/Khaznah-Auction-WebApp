@@ -17,7 +17,7 @@ export function DealsGrid() {
       <SectionHeader
         id="kb-deals"
         icon={BadgePercent}
-        title={t(COPY.dealsTitle)}
+        bi={COPY.dealsTitle}
         subtitle={t(COPY.dealsSubtitle)}
         href="/browse?tab=buy_now&has_discount=true"
         hrefLabel={t(COPY.shopAllDeals)}

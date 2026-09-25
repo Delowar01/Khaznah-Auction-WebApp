@@ -5,6 +5,7 @@ import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { Money } from "@/components/shared/ui/Money";
 import { getProduct, isAuction } from "@/data/products";
+import { UI } from "@/data/ui";
 import { detailPath } from "@/lib/catalog";
 import { CardShell, PriceLabel, TitleLink } from "../cards/CardParts";
 import { MiniCard } from "../cards/MiniCard";
@@ -106,10 +107,10 @@ function PalletFeature({ product }) {
 
 /** Pallets and cartons: two wide manifest cards plus the smaller bulk lots. */
 export function BulkSection() {
-  const { t, ui } = useLang();
+  const { t } = useLang();
   return (
     <section aria-labelledby="kb-bulk">
-      <SectionHeader id="kb-bulk" icon={Boxes} title={ui("bulkLots")} subtitle={t(COPY.bulkSubtitle)} href="/browse?category=bulk-pallets" />
+      <SectionHeader id="kb-bulk" icon={Boxes} bi={UI.bulkLots} subtitle={t(COPY.bulkSubtitle)} href="/browse?category=bulk-pallets" />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_320px]">
         <PalletFeature product={getProduct("electronics-pallet")} />
         <PalletFeature product={getProduct("kitchen-pallet")} />

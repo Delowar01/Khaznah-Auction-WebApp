@@ -6,7 +6,7 @@ import { useLang } from "@/components/shared/providers/LangProvider";
 import { endingSoon, hotAuctions } from "@/lib/catalog";
 import { AuctionCard } from "../cards/AuctionCard";
 import { RailControls, RailTrack, useRail } from "../ui/Rail";
-import { ViewAllLink } from "../ui/SectionHeader";
+import { BilingualHeading, ViewAllLink } from "../ui/SectionHeader";
 import { Segmented } from "../ui/Segmented";
 import { COPY } from "../copy";
 
@@ -26,11 +26,10 @@ export function AuctionsRail() {
     <section aria-labelledby="kb-auctions-rail">
       <div className="mb-4 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
         <div className="min-w-0">
-          <h2 id="kb-auctions-rail" className="flex items-center gap-2 kb-h2 text-fg">
-            <Timer aria-hidden="true" className="size-5 text-primary" strokeWidth={2.25} />
-            {t(COPY.auctionsRailTitle)}
+          <h2 id="kb-auctions-rail" className="kb-h2 text-fg">
+            <BilingualHeading bi={COPY.auctionsRailTitle} icon={Timer} />
           </h2>
-          <p className="mt-1 kb-sm text-fg-2">{t(COPY.auctionsRailSubtitle)}</p>
+          <p className="mt-1.5 kb-sm text-fg-2">{t(COPY.auctionsRailSubtitle)}</p>
         </div>
         <div className="flex w-full items-center justify-between gap-2 sm:w-auto">
           <Segmented

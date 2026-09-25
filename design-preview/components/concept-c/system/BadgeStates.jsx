@@ -36,10 +36,10 @@ export function BadgeStates() {
           <Badge tone="tag-muted" size="md">
             {ui("unavailable")}
           </Badge>
-          <Badge tone="tag-indigo" size="md" icon={Gavel}>
+          <Badge tone="tag-green" size="md" icon={Gavel}>
             {ui("auction")}
           </Badge>
-          <Badge tone="tag-indigo" size="md" icon={CalendarClock}>
+          <Badge tone="tag-green" size="md" icon={CalendarClock}>
             {ui("upcoming")}
           </Badge>
           <Badge tone="tag-gold" size="md">

@@ -1,7 +1,8 @@
-// Concept B — Modern Commerce: copy unique to this concept.
+// Concept A — Premium Commerce: copy unique to this concept.
 // Shared labels come from data/ui.js through useLang().ui(); everything here
-// is specific to B's layouts. Arabic is written as natural MSA for a Saudi
-// audience, not translated word for word.
+// is specific to A's layouts. The voice is warm, considered and boutique —
+// an elevated department store — while staying plain and claims-safe. Arabic
+// is written as natural MSA for a Saudi audience, not translated word for word.
 
 export const COPY = {
   // ── Chrome ────────────────────────────────────────────────────────────────
@@ -52,14 +53,14 @@ export const COPY = {
   closePanel: { en: "Close", ar: "إغلاق" },
   buyerAccount: { en: "Buyer account", ar: "حساب مشترٍ" },
   footerBlurb: {
-    en: "The Saudi marketplace for graded surplus, returned and liquidation stock — timed auctions, Buy Now and live sales from Saudi warehouses.",
-    ar: "السوق السعودي للمخزون الفائض والمرتجع ودفعات التصفية المصنّفة — مزادات محددة المدة وشراء فوري ومزادات مباشرة من مستودعات سعودية.",
+    en: "A refined Saudi marketplace for graded surplus, returned and liquidation stock — timed auctions, Buy Now and presenter-led live sales from Saudi warehouses.",
+    ar: "سوق سعودي راقٍ للمخزون الفائض والمرتجع ودفعات التصفية المصنّفة — مزادات محددة المدة، وشراء فوري، ومزادات مباشرة يقدّمها مقدّمون من مستودعات سعودية.",
   },
   weAccept: { en: "We accept", ar: "نقبل الدفع عبر" },
   newsletterLabel: { en: "Email address", ar: "البريد الإلكتروني" },
 
   // ── Home ──────────────────────────────────────────────────────────────────
-  heroLabel: { en: "Featured on Khazna", ar: "أبرز ما في خزنة" },
+  heroLabel: { en: "The Khazna edit", ar: "مختارات خزنة" },
   slideOf: { en: "{n} of {total}", ar: "{n} من {total}" },
   pauseSlides: { en: "Pause slideshow", ar: "إيقاف العرض المتحرك" },
   playSlides: { en: "Play slideshow", ar: "تشغيل العرض المتحرك" },
@@ -70,8 +71,8 @@ export const COPY = {
   palletsTitle: { en: "Bulk pallets, sold as one lot", ar: "طبليات بالجملة تُباع كدفعة واحدة" },
   palletsFrom: { en: "From", ar: "ابتداءً من" },
   palletsBody: {
-    en: "Full pallets and sealed cartons with line-by-line manifests — built for resellers, workshops and offices.",
-    ar: "طبليات كاملة وكراتين مختومة مع بيان تفصيلي لكل بند — مناسبة لتجار التجزئة والورش والمكاتب.",
+    en: "Full pallets and sealed cartons with line-by-line manifests — considered lots for resellers, workshops and offices.",
+    ar: "طبليات كاملة وكراتين مختومة مع بيان تفصيلي لكل بند — دفعات مدروسة لتجار التجزئة والورش والمكاتب.",
   },
   palletsCta: { en: "Shop bulk & pallets", ar: "تسوّق الجملة والطبليات" },
   palletsPoints: [
@@ -82,20 +83,20 @@ export const COPY = {
   liveSlideLot: { en: "On the block now", ar: "المعروض الآن" },
   biggestSaving: { en: "Biggest saving today", ar: "أكبر توفير اليوم" },
   shopAllDeals: { en: "Shop all deals", ar: "تسوّق كل العروض" },
-  categoriesSubtitle: { en: "Graded stock across eight departments", ar: "مخزون مصنّف في ثماني فئات" },
+  categoriesSubtitle: { en: "Graded stock, curated across eight departments", ar: "مخزون مصنّف، منتقى عبر ثماني فئات" },
   auctionsRailTitle: { en: "Auctions closing soon", ar: "مزادات تُغلق قريباً" },
   auctionsRailSubtitle: {
     en: "Prices update live — a bid in the final 5 minutes extends the clock.",
     ar: "الأسعار تتحدّث مباشرة — والمزايدة في آخر 5 دقائق تمدّد الوقت.",
   },
-  liveBandSubtitle: { en: "Presenter-led sales streamed from Saudi warehouses", ar: "مزادات يقدّمها مقدّمون ببث مباشر من مستودعات سعودية" },
+  liveBandSubtitle: { en: "Presenter-led sales, streamed live from Saudi warehouses", ar: "مزادات يقدّمها مقدّمون، ببث مباشر من مستودعات سعودية" },
   comingUp: { en: "Coming up", ar: "القادم" },
   dealsTitle: { en: "Deals on Buy Now", ar: "عروض الشراء الفوري" },
   dealsSubtitle: { en: "Fixed prices and disclosed grades, ready to ship or collect", ar: "أسعار ثابتة ودرجات معلنة، جاهزة للشحن أو الاستلام" },
-  bulkSubtitle: { en: "Pallets and cartons with full manifests, sold as one lot", ar: "طبليات وكراتين ببيانات كاملة، تُباع كدفعة واحدة" },
+  bulkSubtitle: { en: "Pallets and cartons with full manifests, sold as a single lot", ar: "طبليات وكراتين ببيانات كاملة، تُباع كدفعة واحدة" },
   sellersTitle: { en: "Shop by seller", ar: "تسوّق حسب البائع" },
-  sellersSubtitle: { en: "Saudi warehouses and outlets on Khazna", ar: "مستودعات ومنافذ سعودية على خزنة" },
-  howSubtitle: { en: "From sign-up to collection in four steps", ar: "من التسجيل إلى الاستلام في أربع خطوات" },
+  sellersSubtitle: { en: "A considered selection of Saudi warehouses and outlets", ar: "مجموعة منتقاة من المستودعات والمنافذ السعودية" },
+  howSubtitle: { en: "From sign-up to collection in four considered steps", ar: "من التسجيل إلى الاستلام في أربع خطوات مدروسة" },
   gradesTitle: { en: "Condition grades", ar: "درجات الحالة" },
   fullGradeGuide: { en: "Full grade guide", ar: "دليل الدرجات الكامل" },
   statMillion: { en: "{value} million Saudi riyals", ar: "{value} مليون ريال سعودي" },
@@ -180,8 +181,8 @@ export const COPY = {
 
   // ── System board ──────────────────────────────────────────────────────────
   systemIntro: {
-    en: "The Modern Commerce kit: tokens, type and every interactive state used across the concept.",
-    ar: "مكوّنات التجارة الحديثة: الرموز والطباعة وكل الحالات التفاعلية المستخدمة في هذا المفهوم.",
+    en: "The Premium Commerce kit: tokens, serif-led type and every interactive state used across the concept.",
+    ar: "مكوّنات التجارة الفاخرة: الرموز، والطباعة بحروف مذيّلة، وكل الحالات التفاعلية المستخدمة في هذا المفهوم.",
   },
   systemEyebrow: { en: "Design system", ar: "نظام التصميم" },
   sysColour: { en: "Colour", ar: "الألوان" },

@@ -2,6 +2,7 @@
 
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { CATEGORIES } from "@/data/categories";
+import { UI } from "@/data/ui";
 import { Plate } from "../ui/Plate";
 import { SectionHeader } from "../ui/SectionHeader";
 import { BrowseLink } from "../utils/navigation";
@@ -12,7 +13,7 @@ export function CategoryTiles() {
   const { t, ui, pl } = useLang();
   return (
     <section aria-labelledby="kb-categories">
-      <SectionHeader id="kb-categories" title={ui("shopByCategory")} subtitle={t(COPY.categoriesSubtitle)} href="/browse" hrefLabel={ui("allLots")} />
+      <SectionHeader id="kb-categories" bi={UI.shopByCategory} subtitle={t(COPY.categoriesSubtitle)} href="/browse" hrefLabel={ui("allLots")} />
       <ul className="kb-rail no-scrollbar -mx-4 flex gap-3 overflow-x-auto px-4 pb-1 sm:-mx-6 sm:px-6 lg:mx-0 lg:grid lg:grid-cols-8 lg:overflow-visible lg:px-0 lg:pb-0">
         {CATEGORIES.map((category) => (
           <li key={category.slug} className="w-[112px] shrink-0 lg:w-auto">

@@ -1,10 +1,15 @@
 /*
- * Concept slot a — Round 2 (scaffolded from Concept B; redesigned separately)
+ * Concept A — Premium Commerce
  * ─────────────────────────────────────────────────────────────────────────
- * Bright, efficient marketplace tokens. Brand indigo carries every action,
- * brand gold marks value (always as a background with dark text), ink grounds
- * the utility strip and footer. Status colours are tuned one step deeper than
- * the brief so they pass WCAG AA as small text on white and on surface-2.
+ * A refined, boutique department-store evolution of Modern Commerce. The
+ * marketplace machinery is intact — prominent search, visible filters, dense
+ * organised browsing — but the finish is elevated: warm paper backgrounds,
+ * cream surfaces, espresso ink, a deep-indigo primary and a brass accent.
+ * Display type is set in Fraunces (an elegant serif); the UI and body run in
+ * Manrope. Surfaces carry larger radii and soft, diffuse warm shadows.
+ *
+ * Colour choices are tuned for WCAG AA: body and secondary text clear 4.5:1
+ * on both the paper background and the cream surfaces, in light and dark.
  */
 
 /* ── Light (default) ─────────────────────────────────────────────────────── */
@@ -12,70 +17,70 @@
 [data-concept="a"] .kb-force-light {
   color-scheme: light;
 
-  --bg: #f4f5f7;
-  --surface: #ffffff;
-  --surface-2: #eef0f4;
-  --surface-elevated: #ffffff;
-  --plate: #f6f7f9;
-  --border: #e3e6eb;
-  --border-strong: #cdd2da;
+  --bg: #f6f3ec;              /* warm paper */
+  --surface: #fffdf9;         /* cream card */
+  --surface-2: #efe8db;       /* warm sand — wells, chips, inputs */
+  --surface-elevated: #ffffff;/* menus & popovers lift to pure white */
+  --plate: #f2ece1;           /* warm plate for packshots (multiply blend) */
+  --border: #e7ddca;          /* soft warm hairline */
+  --border-strong: #d3c6ac;
 
-  --text-primary: #101828;
-  --text-secondary: #475467;
-  --text-tertiary: #5d6679;
+  --text-primary: #221d16;    /* espresso ink */
+  --text-secondary: #6b6151;  /* warm taupe */
+  --text-tertiary: #736950;   /* muted taupe (AA on paper) */
 
-  --primary: #3d4d9b;
-  --primary-hover: #33418a;
-  --primary-contrast: #ffffff;
-  --secondary: #101828;
-  --secondary-contrast: #ffffff;
-  --accent: #d8a535;
-  --accent-contrast: #1a1406;
+  --primary: #2e3a66;         /* deep indigo */
+  --primary-hover: #26315a;
+  --primary-contrast: #fffdf9;
+  --secondary: #221d16;       /* espresso — footer / utility strip */
+  --secondary-contrast: #f6f1e6;
+  --accent: #8a6d3b;          /* brass / gold */
+  --accent-contrast: #fff9ef;
 
-  --success: #067647;
-  --warning: #a54107;
-  --danger: #c01f14;
-  --live: #d1242f;
-  --auction: #3d4d9b;
-  --muted: #eef0f4;
-  --focus: #3d4d9b;
-  --overlay: rgb(16 24 40 / 0.56);
+  --success: #2c6e42;
+  --warning: #9a5b1a;
+  --danger: #b23324;
+  --live: #c0362a;
+  --auction: #2e3a66;
+  --muted: #efe8db;
+  --focus: #2e3a66;
+  --overlay: rgb(30 22 12 / 0.52);
 
-  --grade-new: #175cd3;
-  --grade-a: #067647;
-  --grade-b: #0e7090;
-  --grade-c: #a54107;
-  --grade-d: #c4320a;
-  --grade-r: #6941c6;
-  --grade-f: #c01f14;
+  --grade-new: #285fc2;
+  --grade-a: #2c6e42;
+  --grade-b: #156a80;
+  --grade-c: #9a5b1a;
+  --grade-d: #b0491d;
+  --grade-r: #6a4bb0;
+  --grade-f: #b23324;
 
-  --r-xs: 4px;
-  --r-sm: 6px;
-  --r-md: 8px;
-  --r-lg: 12px;
-  --r-xl: 16px;
-  --r-card: 12px;
-  --r-control: 10px;
+  --r-xs: 6px;
+  --r-sm: 9px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+  --r-card: 16px;
+  --r-control: 12px;
 
-  --sh-card: 0 1px 2px rgb(16 24 40 / 0.05);
-  --sh-raised: 0 1px 3px rgb(16 24 40 / 0.06), 0 16px 32px -14px rgb(16 24 40 / 0.2);
-  --sh-overlay: 0 2px 6px rgb(16 24 40 / 0.06), 0 28px 64px -18px rgb(16 24 40 / 0.34);
-  --kb-sh-bar: 0 -10px 30px -20px rgb(16 24 40 / 0.45);
+  --sh-card: 0 1px 2px rgb(58 42 18 / 0.05), 0 14px 30px -20px rgb(58 42 18 / 0.24);
+  --sh-raised: 0 2px 6px rgb(58 42 18 / 0.06), 0 26px 52px -22px rgb(58 42 18 / 0.30);
+  --sh-overlay: 0 4px 14px rgb(40 28 12 / 0.10), 0 44px 96px -26px rgb(40 28 12 / 0.42);
+  --kb-sh-bar: 0 -12px 34px -22px rgb(58 42 18 / 0.42);
 
-  --font-display-stack: "Riyal", var(--font-manrope), var(--font-readex), system-ui, sans-serif;
+  --font-display-stack: "Riyal", var(--font-fraunces), var(--font-readex), Georgia, "Times New Roman", serif;
   --font-body-stack: "Riyal", var(--font-manrope), var(--font-readex), system-ui, sans-serif;
   --font-mono-stack: "Riyal", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   /* Concept extras (brand panels, logo colourways) */
-  --logo-mark: #d8a535;
-  --logo-word: #3d4d9b;
-  --kb-indigo-950: #0f1538;
-  --kb-indigo-900: #18205a;
-  --kb-indigo-800: #242e78;
-  --kb-indigo-600: #3d4d9b;
-  --kb-gold-soft: #f3d98f;
-  --kb-on-brand: #ffffff;
-  --kb-tick: rgb(16 24 40 / 0.06);
+  --logo-mark: #8a6d3b;
+  --logo-word: #2e3a66;
+  --kb-indigo-950: #14182e;
+  --kb-indigo-900: #1c2242;
+  --kb-indigo-800: #262e54;
+  --kb-indigo-600: #2e3a66;
+  --kb-gold-soft: #dcbd7f;
+  --kb-on-brand: #fdf7ec;
+  --kb-tick: rgb(58 42 18 / 0.05);
 }
 
 /* ── Dark ────────────────────────────────────────────────────────────────── */
@@ -83,54 +88,56 @@
 [data-concept="a"] .kb-force-dark {
   color-scheme: dark;
 
-  --bg: #0c111d;
-  --surface: #161b26;
-  --surface-2: #1f242f;
-  --surface-elevated: #1f242f;
-  --plate: #f2f3f5;
-  --border: #2a303c;
-  --border-strong: #3b4252;
+  --bg: #17140f;              /* warm charcoal */
+  --surface: #201c16;
+  --surface-2: #2a251d;
+  --surface-elevated: #2a251d;
+  --plate: #ede6d8;           /* plate stays warm-light so packshots multiply */
+  --border: #362f24;
+  --border-strong: #4a4233;
 
-  --text-primary: #f5f5f6;
-  --text-secondary: #a4a7ae;
-  --text-tertiary: #8b8f98;
+  --text-primary: #f4ecdd;    /* warm off-white */
+  --text-secondary: #b8ad98;
+  --text-tertiary: #9a8f7b;
 
-  --primary: #8190e6;
-  --primary-hover: #95a2ee;
-  --primary-contrast: #0c111d;
-  --secondary: #070a12;
-  --secondary-contrast: #f5f5f6;
-  --accent: #e0b04a;
-  --accent-contrast: #1a1406;
+  --primary: #8ea0d8;         /* lightened indigo */
+  --primary-hover: #a2b2e4;
+  --primary-contrast: #17140f;
+  --secondary: #100d09;
+  --secondary-contrast: #f4ecdd;
+  --accent: #c99f57;          /* brighter brass */
+  --accent-contrast: #1c1509;
 
-  --success: #47cd89;
-  --warning: #fdb022;
-  --danger: #f97066;
-  --live: #d1242f;
-  --auction: #8190e6;
-  --muted: #1f242f;
-  --focus: #95a2ee;
-  --overlay: rgb(3 5 10 / 0.72);
+  --success: #6cc48c;
+  --warning: #e0a94a;
+  --danger: #eb8378;
+  --live: #d9584c;
+  --auction: #8ea0d8;
+  --muted: #2a251d;
+  --focus: #a2b2e4;
+  --overlay: rgb(8 6 3 / 0.74);
 
-  --grade-new: #84adff;
-  --grade-a: #47cd89;
-  --grade-b: #5cc8e0;
-  --grade-c: #fdb022;
-  --grade-d: #fb9a6b;
-  --grade-r: #b69cff;
-  --grade-f: #f97066;
+  --grade-new: #94b3ff;
+  --grade-a: #6cc48c;
+  --grade-b: #64c6dd;
+  --grade-c: #e0a94a;
+  --grade-d: #f0a071;
+  --grade-r: #c1a8ff;
+  --grade-f: #eb8378;
 
-  --sh-card: 0 1px 2px rgb(0 0 0 / 0.3);
-  --sh-raised: 0 1px 3px rgb(0 0 0 / 0.35), 0 18px 36px -14px rgb(0 0 0 / 0.6);
-  --sh-overlay: 0 2px 8px rgb(0 0 0 / 0.4), 0 30px 70px -18px rgb(0 0 0 / 0.75);
-  --kb-sh-bar: 0 -10px 30px -18px rgb(0 0 0 / 0.8);
+  --sh-card: 0 1px 2px rgb(0 0 0 / 0.34);
+  --sh-raised: 0 2px 6px rgb(0 0 0 / 0.4), 0 26px 52px -20px rgb(0 0 0 / 0.66);
+  --sh-overlay: 0 4px 14px rgb(0 0 0 / 0.46), 0 44px 96px -24px rgb(0 0 0 / 0.78);
+  --kb-sh-bar: 0 -12px 34px -20px rgb(0 0 0 / 0.82);
 
-  --logo-mark: #e0b04a;
-  --logo-word: #f5f5f6;
-  --kb-tick: rgb(255 255 255 / 0.06);
+  --logo-mark: #c99f57;
+  --logo-word: #f4ecdd;
+  --kb-gold-soft: #e2c286;
+  --kb-on-brand: #fdf7ec;
+  --kb-tick: rgb(255 255 255 / 0.05);
 }
 
-/* ── Arabic: Almarai first, Figtree for Latin runs and digits ────────────── */
+/* ── Arabic: Readex leads (Fraunces has no Arabic glyphs); Manrope for Latin runs ── */
 :root[data-concept="a"][lang="ar"] {
   --font-display-stack: "Riyal", var(--font-readex), var(--font-manrope), system-ui, sans-serif;
   --font-body-stack: "Riyal", var(--font-readex), var(--font-manrope), system-ui, sans-serif;
@@ -138,17 +145,19 @@
 
 :root[data-concept="a"] body {
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 :root[data-concept="a"][lang="ar"] body {
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 /* ── Type roles ──────────────────────────────────────────────────────────
-   Compact commerce scale in Latin; Arabic runs one step larger with taller
-   leading and never uses tracking. */
+   Display and headings are set in the serif display stack with calm weights
+   and refined tracking; prices borrow the serif for an editorial feel. Body
+   UI text stays in the sans body stack. Arabic runs one step larger with
+   taller leading and never uses tracking. */
 @layer components {
   .kb-2xs { font-size: 11px; line-height: 14px; }
   .kb-xs { font-size: 12px; line-height: 16px; }
@@ -157,35 +166,37 @@
   .kb-lg { font-size: 16px; line-height: 24px; }
   .kb-xl { font-size: 18px; line-height: 26px; }
 
+  .kb-serif { font-family: var(--font-display-stack); }
+
   .kb-eyebrow {
     font-size: 11px;
     line-height: 14px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+    font-weight: 600;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
-  .kb-h3 { font-size: 17px; line-height: 23px; font-weight: 700; letter-spacing: -0.01em; }
-  .kb-h2 { font-size: 20px; line-height: 26px; font-weight: 800; letter-spacing: -0.02em; }
-  .kb-h1 { font-size: 24px; line-height: 30px; font-weight: 800; letter-spacing: -0.02em; }
-  .kb-display { font-size: 32px; line-height: 36px; font-weight: 800; letter-spacing: -0.03em; }
+  .kb-h3 { font-family: var(--font-display-stack); font-size: 19px; line-height: 25px; font-weight: 600; letter-spacing: -0.005em; }
+  .kb-h2 { font-family: var(--font-display-stack); font-size: 23px; line-height: 30px; font-weight: 600; letter-spacing: -0.01em; }
+  .kb-h1 { font-family: var(--font-display-stack); font-size: 27px; line-height: 33px; font-weight: 600; letter-spacing: -0.015em; }
+  .kb-display { font-family: var(--font-display-stack); font-size: 35px; line-height: 39px; font-weight: 600; letter-spacing: -0.02em; }
 
-  .kb-hero-title { font-size: 34px; line-height: 38px; font-weight: 800; letter-spacing: -0.03em; }
+  .kb-hero-title { font-family: var(--font-display-stack); font-size: 37px; line-height: 41px; font-weight: 620; letter-spacing: -0.02em; }
 
-  .kb-price-sm { font-size: 15px; line-height: 20px; font-weight: 700; letter-spacing: -0.01em; }
-  .kb-price { font-size: 18px; line-height: 24px; font-weight: 800; letter-spacing: -0.01em; }
-  .kb-price-lg { font-size: 28px; line-height: 32px; font-weight: 800; letter-spacing: -0.02em; }
+  .kb-price-sm { font-family: var(--font-display-stack); font-size: 16px; line-height: 21px; font-weight: 600; letter-spacing: 0; }
+  .kb-price { font-family: var(--font-display-stack); font-size: 20px; line-height: 25px; font-weight: 600; letter-spacing: -0.005em; }
+  .kb-price-lg { font-family: var(--font-display-stack); font-size: 31px; line-height: 35px; font-weight: 600; letter-spacing: -0.01em; }
 
   @media (min-width: 768px) {
-    .kb-h2 { font-size: 22px; line-height: 28px; }
-    .kb-h1 { font-size: 28px; line-height: 34px; }
-    .kb-display { font-size: 42px; line-height: 46px; }
+    .kb-h2 { font-size: 26px; line-height: 33px; }
+    .kb-h1 { font-size: 32px; line-height: 39px; }
+    .kb-display { font-size: 46px; line-height: 50px; }
   }
 
   @media (min-width: 1280px) {
-    .kb-display { font-size: 50px; line-height: 54px; }
-    .kb-price-lg { font-size: 32px; line-height: 36px; }
-    .kb-hero-title { font-size: 42px; line-height: 46px; }
+    .kb-display { font-size: 56px; line-height: 60px; }
+    .kb-price-lg { font-size: 35px; line-height: 39px; }
+    .kb-hero-title { font-size: 52px; line-height: 56px; }
   }
 
   :root[lang="ar"] .kb-2xs { font-size: 12px; line-height: 17px; }
@@ -194,42 +205,42 @@
   :root[lang="ar"] .kb-md { font-size: 15px; line-height: 24px; }
   :root[lang="ar"] .kb-lg { font-size: 17px; line-height: 28px; }
   :root[lang="ar"] .kb-xl { font-size: 19px; line-height: 30px; }
-  :root[lang="ar"] .kb-eyebrow { font-size: 12px; line-height: 17px; letter-spacing: 0; text-transform: none; }
-  :root[lang="ar"] .kb-h3 { font-size: 18px; line-height: 28px; letter-spacing: 0; }
-  :root[lang="ar"] .kb-h2 { font-size: 21px; line-height: 32px; letter-spacing: 0; }
-  :root[lang="ar"] .kb-h1 { font-size: 25px; line-height: 38px; letter-spacing: 0; }
-  :root[lang="ar"] .kb-display { font-size: 32px; line-height: 48px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-eyebrow { font-size: 12px; line-height: 17px; letter-spacing: 0.04em; text-transform: none; }
+  :root[lang="ar"] .kb-h3 { font-size: 20px; line-height: 30px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-h2 { font-size: 24px; line-height: 36px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-h1 { font-size: 28px; line-height: 42px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-display { font-size: 36px; line-height: 54px; letter-spacing: 0; }
   :root[lang="ar"] :is(.kb-price-sm, .kb-price, .kb-price-lg) { letter-spacing: 0; }
-  :root[lang="ar"] .kb-hero-title { font-size: 32px; line-height: 50px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-hero-title { font-size: 34px; line-height: 52px; letter-spacing: 0; }
 
   @media (min-width: 1280px) {
-    :root[lang="ar"] .kb-hero-title { font-size: 40px; line-height: 60px; }
+    :root[lang="ar"] .kb-hero-title { font-size: 46px; line-height: 66px; }
   }
 
   @media (min-width: 768px) {
-    :root[lang="ar"] .kb-h2 { font-size: 23px; line-height: 34px; }
-    :root[lang="ar"] .kb-h1 { font-size: 29px; line-height: 42px; }
-    :root[lang="ar"] .kb-display { font-size: 40px; line-height: 58px; }
+    :root[lang="ar"] .kb-h2 { font-size: 26px; line-height: 40px; }
+    :root[lang="ar"] .kb-h1 { font-size: 32px; line-height: 48px; }
+    :root[lang="ar"] .kb-display { font-size: 44px; line-height: 64px; }
   }
 
   @media (min-width: 1280px) {
-    :root[lang="ar"] .kb-display { font-size: 46px; line-height: 66px; }
+    :root[lang="ar"] .kb-display { font-size: 52px; line-height: 74px; }
   }
 
-  /* Layout container */
+  /* Layout container — a touch more generous side gutter for an airier feel */
   .kb-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1360px;
     margin-inline: auto;
     padding-inline: 16px;
   }
 
   @media (min-width: 640px) {
-    .kb-container { padding-inline: 24px; }
+    .kb-container { padding-inline: 28px; }
   }
 
   @media (min-width: 1280px) {
-    .kb-container { padding-inline: 32px; }
+    .kb-container { padding-inline: 40px; }
   }
 }
 
@@ -250,34 +261,34 @@
 
 .kb-sticky {
   position: sticky;
-  top: calc(var(--pbar-h) + var(--kb-head) + 16px);
+  top: calc(var(--pbar-h) + var(--kb-head) + 20px);
   transition: top 0.3s var(--ease-out-soft);
 }
 
 /* ── Brand surfaces ──────────────────────────────────────────────────────── */
 .kb-brand-panel {
   background:
-    radial-gradient(120% 90% at 85% 40%, color-mix(in oklab, var(--kb-indigo-600) 70%, transparent) 0%, transparent 60%),
-    radial-gradient(60% 60% at 0% 100%, color-mix(in oklab, var(--kb-indigo-800) 80%, transparent) 0%, transparent 70%),
-    linear-gradient(135deg, var(--kb-indigo-900) 0%, var(--kb-indigo-950) 100%);
+    radial-gradient(115% 95% at 82% 32%, color-mix(in oklab, var(--kb-indigo-600) 62%, transparent) 0%, transparent 58%),
+    radial-gradient(80% 70% at 4% 104%, color-mix(in oklab, var(--accent) 34%, transparent) 0%, transparent 66%),
+    linear-gradient(140deg, var(--kb-indigo-900) 0%, var(--kb-indigo-950) 100%);
   color: var(--kb-on-brand);
 }
 
 .kb-brand-grid {
   background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(80% 80% at 80% 50%, #000 0%, transparent 75%);
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(82% 82% at 80% 46%, #000 0%, transparent 76%);
 }
 
 .kb-glow {
-  background: radial-gradient(closest-side, color-mix(in oklab, var(--kb-gold-soft) 55%, transparent), transparent);
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--kb-gold-soft) 58%, transparent), transparent);
 }
 
 .kb-on-dark {
   --focus: var(--kb-gold-soft);
-  --logo-word: #ffffff;
+  --logo-word: #fdf7ec;
 }
 
 /* Light popovers opened from dark bars get the normal focus colour back. */
@@ -291,27 +302,32 @@
 }
 
 .kb-btn-on-brand:hover {
-  background: color-mix(in oklab, var(--kb-on-brand) 88%, var(--kb-gold-soft));
+  background: color-mix(in oklab, var(--kb-on-brand) 84%, var(--kb-gold-soft));
 }
 
-/* Product photography: white packshots melt into the light plate. */
+/* Product photography: white packshots melt into the warm plate. */
 .kb-pack {
   mix-blend-mode: multiply;
 }
 
-/* Badges that sit on product plates. The plate is light in both themes, so
-   these fills are fixed (each pair clears 4.5:1 on its own). */
-.kb-tag-indigo { background: #3d4d9b; color: #ffffff; }
-.kb-tag-ink { background: #101828; color: #ffffff; }
-.kb-tag-new { background: #067647; color: #ffffff; }
-.kb-tag-warn { background: #b54708; color: #ffffff; }
-.kb-tag-live { background: #d1242f; color: #ffffff; }
-.kb-tag-gold { background: #d8a535; color: #1a1406; }
-.kb-tag-muted { background: #475467; color: #ffffff; }
+/* Hairline divider with a soft warm tone (used to separate calm sections). */
+.kb-hairline {
+  border-color: color-mix(in oklab, var(--border) 80%, transparent);
+}
+
+/* Badges that sit on product plates. The plate is warm-light in both themes,
+   so these fills are fixed (each pair clears 4.5:1 on the plate). */
+.kb-tag-indigo { background: #2e3a66; color: #fdf7ec; }
+.kb-tag-ink { background: #221d16; color: #fdf7ec; }
+.kb-tag-new { background: #2c6e42; color: #ffffff; }
+.kb-tag-warn { background: #9a5b1a; color: #ffffff; }
+.kb-tag-live { background: #c0362a; color: #ffffff; }
+.kb-tag-gold { background: #8a6d3b; color: #fff9ef; }
+.kb-tag-muted { background: #6b6151; color: #ffffff; }
 
 /* Seller monogram avatars sit on the seller's own tone. */
 .kb-avatar {
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16);
   color: #ffffff;
 }
 
@@ -375,7 +391,7 @@
 }
 
 @media (min-width: 640px) {
-  .kb-rail { scroll-padding-inline: 24px; }
+  .kb-rail { scroll-padding-inline: 28px; }
 }
 
 @media (min-width: 1024px) {

@@ -36,14 +36,14 @@ export function ViewAllLink({ href, label, className = "" }) {
 /** Section title row: title + subtitle on the start side, actions on the end. */
 export function SectionHeader({ title, subtitle, href, hrefLabel, id, icon: Icon, actions, eyebrow, className = "", as: Heading = "h2" }) {
   return (
-    <div className={cx("mb-4 flex items-end justify-between gap-4", className)}>
+    <div className={cx("mb-5 flex items-end justify-between gap-4", className)}>
       <div className="min-w-0">
-        {eyebrow ? <p className="mb-1 kb-eyebrow text-primary">{eyebrow}</p> : null}
-        <Heading id={id} className="flex items-center gap-2 kb-h2 text-fg">
-          {Icon ? <Icon aria-hidden="true" className="size-5 shrink-0 text-primary" strokeWidth={2.25} /> : null}
+        {eyebrow ? <p className="mb-1.5 kb-eyebrow text-fg-3">{eyebrow}</p> : null}
+        <Heading id={id} className="flex items-center gap-2.5 kb-h2 text-fg">
+          {Icon ? <Icon aria-hidden="true" className="size-5 shrink-0 text-accent" strokeWidth={2} /> : null}
           {title}
         </Heading>
-        {subtitle ? <p className="mt-1 kb-sm text-fg-2">{subtitle}</p> : null}
+        {subtitle ? <p className="mt-1.5 kb-sm text-fg-2">{subtitle}</p> : null}
       </div>
       {actions || href ? (
         <div className="flex shrink-0 items-center gap-2">

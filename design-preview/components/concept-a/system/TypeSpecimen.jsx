@@ -9,16 +9,21 @@ import { COPY } from "../copy";
 const FRIDGE = getProduct("fridge-690");
 const LAMP = getProduct("task-lamp");
 
-const LATIN = { fontFamily: '"Riyal", var(--font-b-sans), system-ui, sans-serif' };
-const ARABIC = { fontFamily: '"Riyal", var(--font-b-sans-ar), var(--font-b-sans), system-ui, sans-serif' };
+// Display and prices are set in Fraunces (serif); UI/body in Manrope; Arabic in
+// Readex. Stacks are pinned here so each row shows its true face regardless of
+// the page's current language.
+const SERIF = { fontFamily: '"Riyal", var(--font-fraunces), Georgia, "Times New Roman", serif' };
+const SANS = { fontFamily: '"Riyal", var(--font-manrope), system-ui, sans-serif' };
+const ARABIC = { fontFamily: '"Riyal", var(--font-readex), var(--font-manrope), system-ui, sans-serif' };
 
-// Each role: Latin size/leading/weight, Arabic size/leading (one step larger, taller, no tracking).
+// Each role: Latin size/leading/weight, Arabic size/leading (one step larger,
+// taller, no tracking), plus which Latin face carries it.
 const ROLES = [
-  { key: "display", copy: COPY.typeDisplay, en: [50, 54, 800, "-0.03em"], ar: [46, 66, 800], sample: HERO.titleLines[0] },
-  { key: "title", copy: COPY.typeTitle, en: [22, 28, 800, "-0.02em"], ar: [23, 34, 800], sample: COPY.dealsTitle },
-  { key: "card", copy: COPY.typeCard, en: [14, 20, 600], ar: [15, 24, 700], sample: LAMP.title },
-  { key: "body", copy: COPY.typeBody, en: [14, 21, 400], ar: [15, 26, 400], sample: HERO.body },
-  { key: "meta", copy: COPY.typeMeta, en: [12, 16, 500], ar: [13, 20, 400], sample: LAMP.conditionNote },
+  { key: "display", copy: COPY.typeDisplay, face: SERIF, latin: "Fraunces", en: [56, 60, 600, "-0.02em"], ar: [52, 74, 600], sample: HERO.titleLines[0] },
+  { key: "title", copy: COPY.typeTitle, face: SERIF, latin: "Fraunces", en: [26, 33, 600, "-0.01em"], ar: [26, 40, 600], sample: COPY.dealsTitle },
+  { key: "card", copy: COPY.typeCard, face: SANS, latin: "Manrope", en: [16, 24, 500], ar: [17, 28, 500], sample: LAMP.title },
+  { key: "body", copy: COPY.typeBody, face: SANS, latin: "Manrope", en: [14, 22, 400], ar: [15, 26, 400], sample: HERO.body },
+  { key: "meta", copy: COPY.typeMeta, face: SANS, latin: "Manrope", en: [12, 16, 500], ar: [13, 20, 400], sample: LAMP.conditionNote },
 ];
 
 function Line({ spec, style, lang, children }) {
@@ -35,7 +40,7 @@ function Line({ spec, style, lang, children }) {
   );
 }
 
-/** Figtree + Almarai scale, each role shown in both scripts. */
+/** Fraunces (display + price) + Manrope (UI) + Readex (Arabic) scale, each role in both scripts. */
 export function TypeSpecimen() {
   const { t } = useLang();
   return (
@@ -46,11 +51,11 @@ export function TypeSpecimen() {
             <p className="kb-sm font-bold text-fg">{t(role.copy)}</p>
             <p className="font-mono kb-2xs text-fg-3">
               <span dir="ltr">
-                Figtree {role.en[0]}/{role.en[1]} · Almarai {role.ar[0]}/{role.ar[1]}
+                {role.latin} {role.en[0]}/{role.en[1]} · Readex {role.ar[0]}/{role.ar[1]}
               </span>
             </p>
           </div>
-          <Line spec={role.en} style={LATIN} lang="en">
+          <Line spec={role.en} style={role.face} lang="en">
             {role.sample.en}
           </Line>
           <Line spec={role.ar} style={ARABIC} lang="ar">
@@ -62,22 +67,22 @@ export function TypeSpecimen() {
         <div>
           <p className="kb-sm font-bold text-fg">{t(COPY.typePrice)}</p>
           <p className="font-mono kb-2xs text-fg-3">
-            <span dir="ltr">tabular-nums · 28/32 · 800</span>
+            <span dir="ltr">Fraunces · tabular-nums · 31/35 · 600</span>
           </p>
         </div>
-        <p className="flex flex-wrap items-baseline gap-x-3 tabular" style={LATIN}>
+        <p className="flex flex-wrap items-baseline gap-x-3 tabular" style={SERIF}>
           <span dir="ltr" className="kb-price-lg text-fg">
             {RIYAL} {formatNumber(FRIDGE.currentBid)}
           </span>
-          <span dir="ltr" className="kb-lg font-bold text-fg-3">
+          <span dir="ltr" className="kb-lg font-bold text-fg-3" style={SANS}>
             05:40:12
           </span>
         </p>
-        <p className="flex flex-wrap items-baseline gap-x-3 tabular" style={LATIN}>
+        <p className="flex flex-wrap items-baseline gap-x-3 tabular" style={SERIF}>
           <span dir="ltr" className="kb-price-lg text-primary">
             {RIYAL} {formatNumber(LAMP.price)}
           </span>
-          <s dir="ltr" className="kb-lg font-semibold text-fg-3">
+          <s dir="ltr" className="kb-lg font-semibold text-fg-3" style={SANS}>
             {RIYAL} {formatNumber(LAMP.originalPrice)}
           </s>
         </p>

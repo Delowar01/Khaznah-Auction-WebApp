@@ -72,9 +72,9 @@ export function AuctionCard({ product, sizes = "(min-width: 1280px) 20vw, (min-w
         {phase === "sold" ? <SoldOverlay amount={product.currentBid} /> : null}
       </div>
 
-      <div className="flex flex-1 flex-col gap-2 p-3">
+      <div className="flex flex-1 flex-col gap-2.5 p-4">
         <SellerLine seller={meta.seller} name={meta.sellerName} />
-        <h3 className="min-h-[2lh] kb-md font-semibold">
+        <h3 className="min-h-[2lh] kb-lg font-medium">
           <TitleLink href={href}>{meta.title}</TitleLink>
         </h3>
         <div className="flex min-w-0 flex-wrap items-center gap-1.5">
@@ -82,15 +82,15 @@ export function AuctionCard({ product, sizes = "(min-width: 1280px) 20vw, (min-w
           <span className="truncate kb-xs text-fg-3">{meta.typeLine}</span>
         </div>
 
-        <div className="mt-auto pt-1">
+        <div className="mt-auto pt-1.5">
           <PriceLabel>{priceLabel}</PriceLabel>
-          <div className="flex items-baseline justify-between gap-2">
-            <Money value={product.currentBid} className="kb-price text-fg" symbolClassName="text-[0.8em]" />
+          <div className="mt-0.5 flex items-baseline justify-between gap-2">
+            <Money value={product.currentBid} className="kb-price text-fg" symbolClassName="text-[0.72em]" />
             {!upcoming ? <span className="shrink-0 kb-xs text-fg-3">{pl("bids", product.bidCount)}</span> : null}
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-line pt-2.5">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-line pt-3">
           <CountdownPill phase={phase} remaining={remaining} prefix={upcoming ? ui("startsIn") : undefined} />
           {upcoming ? (
             <button

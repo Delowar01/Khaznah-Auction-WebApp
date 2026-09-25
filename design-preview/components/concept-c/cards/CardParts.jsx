@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { MapPin } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { Money } from "@/components/shared/ui/Money";
 import { SellerAvatar } from "../ui/SellerAvatar";
@@ -38,13 +39,23 @@ export function TitleLink({ href, children, className = "", lines = 2 }) {
   );
 }
 
-/** Tiny monogram + seller name. */
-export function SellerLine({ seller, name, className = "" }) {
+/** Seller credibility line: monogram + storefront name, with the warehouse
+ * city carried as a modern local cue (no trust claim). */
+export function SellerLine({ seller, name, city, className = "" }) {
   if (!seller) return null;
   return (
-    <p className={cx("flex min-w-0 items-center gap-1.5 kb-2xs font-medium text-fg-3", className)}>
+    <p className={cx("flex min-w-0 items-center gap-1.5 kb-2xs font-semibold text-fg-3", className)}>
       <SellerAvatar seller={seller} size="xs" />
       <span className="truncate">{name}</span>
+      {city ? (
+        <>
+          <span aria-hidden="true" className="text-fg-3/60">·</span>
+          <span className="kb-city shrink-0 text-fg-3">
+            <MapPin aria-hidden="true" className="size-3 text-primary" strokeWidth={2.25} />
+            <span className="truncate">{city}</span>
+          </span>
+        </>
+      ) : null}
     </p>
   );
 }
