@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { Money } from "@/components/shared/ui/Money";
+import { GradeChip } from "../ui/GradeChip";
 import { SellerAvatar } from "../ui/SellerAvatar";
 import { cx } from "../ui/cx";
 
@@ -19,6 +20,22 @@ export function CardShell({ as: Tag = "article", className = "", children, ...pr
     >
       {children}
     </Tag>
+  );
+}
+
+/**
+ * The packshot as a curated, framed object: a warm sand mat with an inset
+ * hairline ring lifts the photo off the card, and a full-width rule underneath
+ * divides the object from its caption. This matted presentation — rather than a
+ * flat, edge-to-edge thumbnail — is the concept's product-card signature.
+ */
+export function CardFrame({ className = "", children }) {
+  return (
+    <div className={cx("border-b border-line p-3", className)}>
+      <div className="relative overflow-hidden rounded-md bg-surface-2 p-2 ring-1 ring-inset ring-line">
+        {children}
+      </div>
+    </div>
   );
 }
 
@@ -49,6 +66,20 @@ export function SellerLine({ seller, name, className = "" }) {
   );
 }
 
+/**
+ * Quiet, hairline-ruled caption footer: provenance (seller) at the start,
+ * condition (grade) at the end. Pushed to the base of the caption with mt-auto
+ * so a row of cards keeps its actions aligned.
+ */
+export function CardMeta({ seller, name, grade, className = "" }) {
+  return (
+    <div className={cx("mt-auto flex items-center justify-between gap-2 border-t border-line pt-3", className)}>
+      <SellerLine seller={seller} name={name} className="flex-1" />
+      <GradeChip grade={grade} />
+    </div>
+  );
+}
+
 /** Grey "Sold for …" veil over a closed lot's photo. */
 export function SoldOverlay({ amount }) {
   const { ui } = useLang();
@@ -62,7 +93,7 @@ export function SoldOverlay({ amount }) {
   );
 }
 
-/** Label above a price ("Current bid", "Starting bid" …), set as a refined eyebrow. */
+/** Brass eyebrow above the focal price ("Current bid", "Starting bid" …). */
 export function PriceLabel({ children }) {
-  return <p className="kb-eyebrow text-fg-3">{children}</p>;
+  return <p className="kb-eyebrow text-accent">{children}</p>;
 }

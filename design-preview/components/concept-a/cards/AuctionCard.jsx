@@ -8,13 +8,12 @@ import { Money } from "@/components/shared/ui/Money";
 import { detailPath } from "@/lib/catalog";
 import { Badge } from "../ui/Badge";
 import { buttonClass } from "../ui/Button";
-import { CountdownPill, useLotClock } from "../ui/Countdown";
-import { GradeChip } from "../ui/GradeChip";
+import { Duration, useLotClock } from "../ui/Countdown";
 import { Plate } from "../ui/Plate";
 import { WatchButton } from "../ui/WatchButton";
 import { cx } from "../ui/cx";
 import { COPY } from "../copy";
-import { CardShell, PriceLabel, SellerLine, SoldOverlay, TitleLink } from "./CardParts";
+import { CardFrame, CardMeta, CardShell, PriceLabel, SoldOverlay, TitleLink } from "./CardParts";
 import { useLotMeta } from "./useLotMeta";
 
 function StatusBadge({ phase, isNew, both }) {
@@ -33,7 +32,37 @@ function StatusBadge({ phase, isNew, both }) {
   );
 }
 
-/** Timed-auction card: live price, bid count, urgency-coloured countdown, one-tap bid. */
+// Phase-coloured tones for the countdown: neutral while calm, amber under an
+// hour, red at the close, indigo before the lot opens.
+const CLOCK_TEXT = { live: "text-fg-2", urgent: "text-warning", critical: "text-danger", upcoming: "text-primary" };
+const CLOCK_RULE = { live: "bg-line-strong", urgent: "bg-warning", critical: "bg-danger", upcoming: "bg-primary" };
+
+/**
+ * The concept's countdown: a small tracked time figure resting on a thin
+ * phase-coloured baseline rule — a refined, gallery-label alternative to a
+ * filled pill or a boxed clock strip. The rule warms and pulses as time runs out.
+ */
+function LotCountdown({ phase, remaining, prefix }) {
+  const { ui } = useLang();
+  const done = phase === "ended" || phase === "sold";
+  const text = done ? "text-fg-3" : CLOCK_TEXT[phase] || CLOCK_TEXT.live;
+  const rule = done ? "bg-line-strong" : CLOCK_RULE[phase] || CLOCK_RULE.live;
+  return (
+    <div className="min-w-0 flex-1">
+      <div className="flex items-baseline gap-1.5 whitespace-nowrap">
+        {prefix ? <span className="kb-eyebrow text-fg-3">{prefix}</span> : null}
+        {done ? (
+          <span className={cx("kb-sm font-semibold tabular", text)}>{ui(phase === "sold" ? "sold" : "ended")}</span>
+        ) : (
+          <Duration seconds={remaining} className={cx("kb-sm font-semibold", text)} />
+        )}
+      </div>
+      <div aria-hidden="true" className={cx("mt-1.5 h-px w-full", rule, phase === "critical" && "kb-pulse")} />
+    </div>
+  );
+}
+
+/** Timed-auction card: framed lot, focal serif bid, baseline-rule countdown, one-tap bid. */
 export function AuctionCard({ product, sizes = "(min-width: 1280px) 20vw, (min-width: 768px) 30vw, 46vw", priority = false, className = "" }) {
   const { ui, t, pl } = useLang();
   const { link } = useConcept();
@@ -54,13 +83,13 @@ export function AuctionCard({ product, sizes = "(min-width: 1280px) 20vw, (min-w
 
   return (
     <CardShell className={className}>
-      <div className="relative">
+      <CardFrame>
         <Plate
           image={meta.image}
           alt={meta.title}
           sizes={sizes}
           priority={priority}
-          className="aspect-square"
+          className="aspect-square rounded-sm"
           imgClassName={cx("transition-transform duration-300 ease-out group-hover/card:scale-[1.045]", closed && "opacity-80 grayscale-[55%]")}
         />
         <div className="pointer-events-none absolute inset-x-2 top-2 z-[3] flex items-start justify-between gap-2">
@@ -70,19 +99,10 @@ export function AuctionCard({ product, sizes = "(min-width: 1280px) 20vw, (min-w
           <WatchButton product={product} className="pointer-events-auto" />
         </div>
         {phase === "sold" ? <SoldOverlay amount={product.currentBid} /> : null}
-      </div>
+      </CardFrame>
 
-      <div className="flex flex-1 flex-col gap-2.5 p-4">
-        <SellerLine seller={meta.seller} name={meta.sellerName} />
-        <h3 className="min-h-[2lh] kb-lg font-medium">
-          <TitleLink href={href}>{meta.title}</TitleLink>
-        </h3>
-        <div className="flex min-w-0 flex-wrap items-center gap-1.5">
-          <GradeChip grade={product.grade} />
-          <span className="truncate kb-xs text-fg-3">{meta.typeLine}</span>
-        </div>
-
-        <div className="mt-auto pt-1.5">
+      <div className="flex flex-1 flex-col p-4">
+        <div>
           <PriceLabel>{priceLabel}</PriceLabel>
           <div className="mt-0.5 flex items-baseline justify-between gap-2">
             <Money value={product.currentBid} className="kb-price text-fg" symbolClassName="text-[0.72em]" />
@@ -90,8 +110,17 @@ export function AuctionCard({ product, sizes = "(min-width: 1280px) 20vw, (min-w
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-line pt-3">
-          <CountdownPill phase={phase} remaining={remaining} prefix={upcoming ? ui("startsIn") : undefined} />
+        <div className="mt-3">
+          <h3 className="min-h-[2lh] kb-lg font-medium">
+            <TitleLink href={href}>{meta.title}</TitleLink>
+          </h3>
+          <p className="mt-1 truncate kb-xs text-fg-3">{meta.typeLine}</p>
+        </div>
+
+        <CardMeta seller={meta.seller} name={meta.sellerName} grade={product.grade} />
+
+        <div className="mt-3 flex flex-wrap items-end justify-between gap-x-3 gap-y-2.5">
+          <LotCountdown phase={phase} remaining={remaining} prefix={upcoming ? ui("startsIn") : undefined} />
           {upcoming ? (
             <button
               type="button"
