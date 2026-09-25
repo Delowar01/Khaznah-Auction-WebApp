@@ -4,7 +4,7 @@ import { Chrome } from "@/components/concept-d/Chrome";
 
 export default function ConceptLayout({ children }) {
   return (
-    <ConceptShell concept="d" defaultTheme="dark">
+    <ConceptShell concept="d" defaultTheme="light">
       <Chrome>{children}</Chrome>
     </ConceptShell>
   );

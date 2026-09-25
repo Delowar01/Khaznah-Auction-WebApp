@@ -59,7 +59,7 @@ export function Footer() {
         <div className="col-span-2 md:col-span-4 lg:col-span-1">
           <Logo variant="lockup" title={t(BRAND.name)} className="h-12 w-auto" />
           <p className="mt-4 max-w-sm kb-sm opacity-75">{t(COPY.footerBlurb)}</p>
-          <p className="mt-4 kb-sm font-bold text-accent">{t(BRAND.tagline)}</p>
+          <p className="mt-4 kb-sm font-bold text-[#c99f57]">{t(BRAND.tagline)}</p>
         </div>
         {FOOTER_COLUMNS.map((column) => (
           <nav key={column.title.en} aria-label={t(column.title)}>

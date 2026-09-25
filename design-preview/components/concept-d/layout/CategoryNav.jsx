@@ -43,7 +43,7 @@ function LiveNavLink({ current }) {
       <span aria-hidden="true" className={cx("kz-live-dot", current && "bg-white!")} />
       {ui("live")}
       <span aria-hidden="true" className="mx-0.5 h-3 w-px bg-current opacity-25" />
-      <span className="tabular font-bold opacity-90">{pl("viewers", LIVE_EVENT.viewers)}</span>
+      <span className="tabular font-bold">{pl("viewers", LIVE_EVENT.viewers)}</span>
     </Link>
   );
 }

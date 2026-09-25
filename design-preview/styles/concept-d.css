@@ -41,7 +41,7 @@
   --success: #067647;
   --warning: #a2440a;
   --danger: #c0311a;
-  --live: #d81f2a;
+  --live: #c31824;
   /* The auction identity itself wears the energetic accent (B used indigo). */
   --auction: #cf4318;
   --muted: #eceff4;
@@ -356,7 +356,7 @@
 .kb-tag-ink { background: #12141a; color: #ffffff; }
 .kb-tag-new { background: #067647; color: #ffffff; }
 .kb-tag-warn { background: #a2440a; color: #ffffff; }
-.kb-tag-live { background: #d81f2a; color: #ffffff; }
+.kb-tag-live { background: #c31824; color: #ffffff; }
 /* "Value" chip (discounts / bulk) — a bronze that stays legible on both
    light and dark surfaces and never collides with the urgency orange. */
 .kb-tag-gold { background: #96690f; color: #ffffff; }
@@ -480,12 +480,20 @@
 
 /* Recent-bids ticker: track is duplicated in markup, scrolls one copy width. */
 .kb-ticker {
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 1.9rem;
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
 }
 
 .kb-ticker-track {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
   display: inline-flex;
+  align-items: center;
   flex: none;
   width: max-content;
   animation: kb-marquee var(--kb-ticker-dur, 40s) linear infinite;

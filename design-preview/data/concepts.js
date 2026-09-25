@@ -46,7 +46,7 @@ export const CONCEPTS = [
       { en: "Larger, refined product and lot cards", ar: "بطاقات منتجات ومنتجات مزاد أكبر وأكثر رقياً" },
       { en: "Calmer spacing with strong product imagery", ar: "تباعد أهدأ مع صور منتجات قوية" },
     ],
-    swatches: ["#F6F3EC", "#1E1B17", "#8A6D3B", "#2E3A66"],
+    swatches: ["#F6F3EC", "#221D16", "#2E3A66", "#8A6D3B"],
     defaultTheme: "light",
   },
   {
@@ -88,7 +88,7 @@ export const CONCEPTS = [
       { en: "Clear bid activity and urgency cues", ar: "نشاط مزايدة واضح وإشارات إلحاح" },
       { en: "Confident display type with tabular figures", ar: "خط عناوين واثق مع أرقام متساوية العرض" },
     ],
-    swatches: ["#F5F6F8", "#12141A", "#2E3A66", "#E4562A"],
+    swatches: ["#F4F6F9", "#12141A", "#2E3A66", "#CF4318"],
     defaultTheme: "light",
   },
 ];

@@ -6,7 +6,7 @@ const TONES = {
   neutral: "bg-surface-2 text-fg-2",
   primary: "bg-primary/10 text-primary",
   solid: "bg-primary text-on-primary",
-  live: "bg-live text-white",
+  live: "kb-tag-live",
   success: "bg-success/10 text-success",
   warning: "bg-warning/10 text-warning",
   danger: "bg-danger/10 text-danger",

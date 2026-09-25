@@ -145,7 +145,7 @@ export function BidForm({ auction, onRequest, disabled = false, testId, compact 
       <Button size="lg" block icon={Gavel} disabled={disabled} onClick={() => submit()} data-testid={testId}>
         {ui("placeBid")}
         {!disabled && value >= minNext ? (
-          <span className="tabular opacity-90" dir="ltr">
+          <span className="tabular" dir="ltr">
             · {RIYAL} {formatNumber(value)}
           </span>
         ) : null}

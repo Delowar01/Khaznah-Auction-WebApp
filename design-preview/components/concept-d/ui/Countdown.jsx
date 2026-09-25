@@ -23,7 +23,7 @@ export function useLotClock(product) {
 export const PHASE_STYLES = {
   live: "bg-surface-2 text-fg-2 ring-1 ring-inset ring-line",
   urgent: "bg-warning/12 text-warning ring-1 ring-inset ring-warning/25",
-  critical: "bg-live text-white shadow-card",
+  critical: "kb-tag-live shadow-card",
   upcoming: "bg-primary/10 text-primary ring-1 ring-inset ring-primary/20",
   ended: "bg-muted text-fg-3",
   sold: "bg-secondary text-on-secondary",
@@ -68,7 +68,7 @@ export function CountdownPill({ phase, remaining, size = "sm", prefix, className
       ) : Icon ? (
         <Icon aria-hidden="true" className="size-3.5" strokeWidth={2.25} />
       ) : null}
-      {prefix ? <span className="font-semibold opacity-90">{prefix}</span> : null}
+      {prefix ? <span className="font-semibold">{prefix}</span> : null}
       {done ? <span>{ui(phase === "sold" ? "sold" : "ended")}</span> : <Duration seconds={remaining} className="font-bold" />}
     </span>
   );

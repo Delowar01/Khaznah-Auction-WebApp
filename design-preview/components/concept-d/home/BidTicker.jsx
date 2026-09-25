@@ -16,6 +16,7 @@ function TickerRow({ events, ariaHidden }) {
         <li key={`${ariaHidden ? "b" : "a"}-${event.slug}`} className="shrink-0">
           <Link
             href={event.href}
+            tabIndex={ariaHidden ? -1 : undefined}
             className="mx-1 inline-flex items-center gap-2 rounded-md px-2.5 py-1 kb-xs text-fg-2 transition-colors hover:bg-surface-2"
           >
             <Gavel aria-hidden="true" className="size-3.5 shrink-0 text-accent" strokeWidth={2.25} />
@@ -55,12 +56,12 @@ export function BidTicker({ className = "" }) {
   });
 
   return (
-    <div className={`flex items-stretch overflow-hidden rounded-lg border border-line bg-surface ${className}`}>
+    <div className={`flex min-w-0 max-w-full items-stretch overflow-clip rounded-lg border border-line bg-surface ${className}`}>
       <p className="flex shrink-0 items-center gap-1.5 border-e border-line bg-surface-2 px-3 kb-2xs font-bold uppercase tracking-[0.08em] text-fg-2">
         <span aria-hidden="true" className="kz-live-dot" />
         <span className="whitespace-nowrap">{t(COPY.recentBids)}</span>
       </p>
-      <div className="kb-ticker min-w-0 flex-1 self-center py-1">
+      <div className="kb-ticker min-w-0 flex-1">
         <div className="kb-ticker-track">
           <TickerRow events={events} />
           <TickerRow events={events} ariaHidden />

@@ -32,5 +32,5 @@ export function Specimen({ label, children, className = "" }) {
 
 /** White board panel. */
 export function Panel({ children, className = "" }) {
-  return <div className={cx("rounded-xl border border-line bg-surface p-5 sm:p-6", className)}>{children}</div>;
+  return <div className={cx("min-w-0 rounded-xl border border-line bg-surface p-5 sm:p-6", className)}>{children}</div>;
 }
