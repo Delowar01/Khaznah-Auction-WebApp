@@ -6,7 +6,7 @@ import { GRADE_ORDER } from "@/data/grades";
 import { getProduct } from "@/data/products";
 import { marketSaving } from "@/lib/catalog";
 import { Badge, LiveBadge } from "../ui/Badge";
-import { CountdownPill } from "../ui/Countdown";
+import { ClockDigits, CountdownPill } from "../ui/Countdown";
 import { GradeChip } from "../ui/GradeChip";
 import { COPY } from "../copy";
 import { Panel, Specimen } from "./SystemSection";
@@ -81,6 +81,11 @@ export function BadgeStates() {
           <CountdownPill phase="upcoming" remaining={30 * 3600} size="md" prefix={ui("startsIn")} />
           <CountdownPill phase="ended" size="md" />
           <CountdownPill phase="sold" size="md" />
+        </div>
+        <div className="grid gap-2 rounded-lg bg-plate p-3">
+          <ClockDigits seconds={5 * 3600 + 40 * 60 + 12} tone="default" />
+          <ClockDigits seconds={42 * 60 + 8} tone="urgent" />
+          <ClockDigits seconds={7 * 60 + 21} tone="critical" />
         </div>
       </Specimen>
     </Panel>

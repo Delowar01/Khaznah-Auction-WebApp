@@ -15,20 +15,26 @@ export function useLotClock(product) {
   return { remaining, phase: auctionPhase(product, scheduled ? null : remaining) };
 }
 
+/**
+ * Countdown-pill colourways. Urgency reads through colour AND weight: calm
+ * neutral while live → amber under an hour → a solid red "closing now" chip
+ * with a pulsing dot in the final ten minutes.
+ */
 export const PHASE_STYLES = {
-  live: "bg-surface-2 text-fg-2",
-  urgent: "bg-warning/10 text-warning",
-  critical: "bg-danger/10 text-danger",
-  upcoming: "bg-primary/10 text-primary",
+  live: "bg-surface-2 text-fg-2 ring-1 ring-inset ring-line",
+  urgent: "bg-warning/12 text-warning ring-1 ring-inset ring-warning/25",
+  critical: "bg-live text-white shadow-card",
+  upcoming: "bg-primary/10 text-primary ring-1 ring-inset ring-primary/20",
   ended: "bg-muted text-fg-3",
-  sold: "bg-muted text-fg-3",
+  sold: "bg-secondary text-on-secondary",
 };
 
 const ICONS = { live: Clock, urgent: Timer, upcoming: CalendarClock };
 
 /**
  * Remaining time as text. Short form ("2h 14m" / "2س 14د") follows the
- * reading direction; clock form ("02:14:36") is always left-to-right.
+ * reading direction; clock form ("02:14:36") is always left-to-right. The
+ * concept renders every tabular figure in JetBrains Mono.
  */
 export function Duration({ seconds, style = "short", className = "" }) {
   const { lang } = useLang();
@@ -41,8 +47,8 @@ export function Duration({ seconds, style = "short", className = "" }) {
 }
 
 /**
- * Countdown pill coloured by urgency: neutral → amber under an hour →
- * red and pulsing under ten minutes.
+ * Countdown pill coloured by urgency. `prefix` prints a small label ("Starts")
+ * before the time for upcoming lots.
  */
 export function CountdownPill({ phase, remaining, size = "sm", prefix, className = "" }) {
   const { ui } = useLang();
@@ -51,7 +57,7 @@ export function CountdownPill({ phase, remaining, size = "sm", prefix, className
   return (
     <span
       className={cx(
-        "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full font-semibold tabular",
+        "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-md font-bold",
         size === "sm" ? "h-6 px-2 kb-xs" : "h-7 px-2.5 kb-sm",
         PHASE_STYLES[phase] || PHASE_STYLES.live,
         className,
@@ -60,16 +66,27 @@ export function CountdownPill({ phase, remaining, size = "sm", prefix, className
       {phase === "critical" ? (
         <span aria-hidden="true" className="kb-pulse size-1.5 rounded-full bg-current" />
       ) : Icon ? (
-        <Icon aria-hidden="true" className="size-3.5" strokeWidth={2} />
+        <Icon aria-hidden="true" className="size-3.5" strokeWidth={2.25} />
       ) : null}
-      {prefix ? <span className="font-medium">{prefix}</span> : null}
-      {done ? <span>{ui(phase === "sold" ? "sold" : "ended")}</span> : <Duration seconds={remaining} />}
+      {prefix ? <span className="font-semibold opacity-90">{prefix}</span> : null}
+      {done ? <span>{ui(phase === "sold" ? "sold" : "ended")}</span> : <Duration seconds={remaining} className="font-bold" />}
     </span>
   );
 }
 
-/** Large segmented clock (days · hours · minutes · seconds) for detail pages. */
-export function ClockDigits({ seconds, tone = "default", className = "" }) {
+const SEG_TONE = {
+  default: "kb-seg text-fg",
+  urgent: "kb-seg-urgent text-warning",
+  critical: "kb-seg-critical text-danger",
+};
+
+/**
+ * Large segmented clock (days · hours · minutes · seconds) for detail pages
+ * and the auction hero. Big JetBrains Mono digits sit in individual cells with
+ * colon separators; urgent time warms to amber, the final minutes glow red and
+ * the block breathes a soft ring.
+ */
+export function ClockDigits({ seconds, tone = "default", size = "md", className = "" }) {
   const { lang } = useLang();
   const parts = durationParts(seconds ?? 0);
   const units = UNIT_LABELS[lang] || UNIT_LABELS.en;
@@ -79,20 +96,37 @@ export function ClockDigits({ seconds, tone = "default", className = "" }) {
     { key: "minutes", value: parts.minutes },
     { key: "seconds", value: parts.seconds },
   ];
+  const segTone = SEG_TONE[tone] || SEG_TONE.default;
+  const big = size === "lg";
   return (
-    <div dir="ltr" className={cx("flex items-stretch gap-1.5", className)}>
-      {cells.map((cell) => (
-        <div
-          key={cell.key}
-          className={cx(
-            "flex min-w-[3.25rem] flex-1 flex-col items-center rounded-lg px-1 py-1.5",
-            tone === "critical" ? "bg-danger/10 text-danger" : tone === "urgent" ? "bg-warning/10 text-warning" : "bg-surface-2 text-fg",
-          )}
-        >
-          <span className="kb-xl font-extrabold tabular">{String(cell.value).padStart(2, "0")}</span>
-          <span dir={lang === "ar" ? "rtl" : "ltr"} className={cx("kb-2xs font-medium", tone === "critical" || tone === "urgent" ? "" : "opacity-80")}>
-            {units[cell.key]}
-          </span>
+    <div
+      dir="ltr"
+      className={cx("flex items-stretch", big ? "gap-1.5" : "gap-1", tone === "critical" && "kb-breathe rounded-xl", className)}
+    >
+      {cells.map((cell, i) => (
+        <div key={cell.key} className="flex items-stretch" style={{ gap: big ? "6px" : "4px" }}>
+          <div
+            className={cx(
+              "flex flex-1 flex-col items-center justify-center rounded-lg",
+              big ? "min-w-[3.75rem] px-2 py-2" : "min-w-[3.15rem] px-1.5 py-1.5",
+              segTone,
+            )}
+          >
+            <span dir="ltr" className={cx("kb-num font-bold leading-none", big ? "text-[30px]" : "text-[22px]")}>
+              {String(cell.value).padStart(2, "0")}
+            </span>
+            <span
+              dir={lang === "ar" ? "rtl" : "ltr"}
+              className={cx("mt-1 font-semibold uppercase", big ? "kb-2xs tracking-[0.08em]" : "text-[9px] leading-none tracking-[0.06em]", tone === "default" && "text-fg-3")}
+            >
+              {units[cell.key]}
+            </span>
+          </div>
+          {i < cells.length - 1 ? (
+            <span aria-hidden="true" className={cx("kb-colon kb-num self-center font-bold leading-none", big ? "text-2xl" : "text-lg")}>
+              :
+            </span>
+          ) : null}
         </div>
       ))}
     </div>

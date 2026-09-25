@@ -4,6 +4,7 @@ import { useLang } from "@/components/shared/providers/LangProvider";
 import { HERO } from "@/data/site";
 import { useLiveEvent } from "@/lib/useLiveEvent";
 import { AuctionsRail } from "../home/AuctionsRail";
+import { BidTicker } from "../home/BidTicker";
 import { BulkSection } from "../home/BulkSection";
 import { CategoryTiles } from "../home/CategoryTiles";
 import { DealsGrid } from "../home/DealsGrid";
@@ -38,17 +39,19 @@ export function HomePage() {
             <PromoTiles />
           </div>
         </div>
+        <BidTicker className="mt-3" />
         <TrustStrip className="mt-3" />
       </div>
 
-      <div className="kb-container mt-10 space-y-12 lg:mt-12 lg:space-y-14">
-        <CategoryTiles />
+      {/* Auctions lead the floor: the closing/most-bid rail, then the live room. */}
+      <div className="kb-container mt-10 space-y-5 lg:mt-12">
         <AuctionsRail />
       </div>
 
       <LiveBand live={live} className="mt-12 lg:mt-14" />
 
       <div className="kb-container mt-12 space-y-12 pb-16 lg:mt-14 lg:space-y-14 lg:pb-20">
+        <CategoryTiles />
         <DealsGrid />
         <BulkSection />
         <SellerShelf />

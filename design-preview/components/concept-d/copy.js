@@ -1,7 +1,8 @@
-// Concept B — Modern Commerce: copy unique to this concept.
+// Concept D — Auction-Forward Commerce: copy unique to this concept.
 // Shared labels come from data/ui.js through useLang().ui(); everything here
-// is specific to B's layouts. Arabic is written as natural MSA for a Saudi
-// audience, not translated word for word.
+// is specific to D's auction-led layouts. The voice is confident and floor-
+// paced — it leads with the clock and the bid. Arabic is written as natural
+// MSA for a Saudi audience, not translated word for word.
 
 export const COPY = {
   // ── Chrome ────────────────────────────────────────────────────────────────
@@ -60,6 +61,8 @@ export const COPY = {
 
   // ── Home ──────────────────────────────────────────────────────────────────
   heroLabel: { en: "Featured on Khazna", ar: "أبرز ما في خزنة" },
+  recentBids: { en: "Live bids", ar: "مزايدات مباشرة" },
+  onTheClock: { en: "On the clock", ar: "على المؤقّت" },
   slideOf: { en: "{n} of {total}", ar: "{n} من {total}" },
   pauseSlides: { en: "Pause slideshow", ar: "إيقاف العرض المتحرك" },
   playSlides: { en: "Play slideshow", ar: "تشغيل العرض المتحرك" },
@@ -180,10 +183,10 @@ export const COPY = {
 
   // ── System board ──────────────────────────────────────────────────────────
   systemIntro: {
-    en: "The Modern Commerce kit: tokens, type and every interactive state used across the concept.",
-    ar: "مكوّنات التجارة الحديثة: الرموز والطباعة وكل الحالات التفاعلية المستخدمة في هذا المفهوم.",
+    en: "The Auction-Forward kit: tokens, mono numerics, the countdown and status system, and every interactive state used across the concept.",
+    ar: "مكوّنات المزاد أولاً: الرموز والأرقام أحادية العرض ونظام العد التنازلي والحالات وكل العناصر التفاعلية المستخدمة في هذا المفهوم.",
   },
-  systemEyebrow: { en: "Design system", ar: "نظام التصميم" },
+  systemEyebrow: { en: "Auction-Forward system", ar: "نظام المزاد أولاً" },
   sysColour: { en: "Colour", ar: "الألوان" },
   sysType: { en: "Typography", ar: "الطباعة" },
   sysButtons: { en: "Buttons", ar: "الأزرار" },

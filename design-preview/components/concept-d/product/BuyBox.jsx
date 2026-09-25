@@ -32,7 +32,7 @@ export function BuyBox({ product, qty, setQty, onAdd, onBuyNow, className = "" }
       <div className="mt-0.5 flex flex-wrap items-center gap-2">
         <Money value={product.price} className={cx("kb-price-lg", soldOut ? "text-fg-3" : "text-fg")} symbolClassName="text-[0.7em]" />
         {discount ? (
-          <Badge tone="accent" size="md">
+          <Badge tone="tag-gold" size="md">
             <span dir="ltr">−{discount}%</span>
           </Badge>
         ) : null}

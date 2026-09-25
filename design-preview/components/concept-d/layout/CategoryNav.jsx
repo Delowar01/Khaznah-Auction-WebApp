@@ -3,10 +3,11 @@
 import { Suspense, useCallback, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { ChevronDown, LayoutGrid } from "lucide-react";
+import { ChevronDown, Gavel, LayoutGrid } from "lucide-react";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useDismiss } from "@/components/shared/ui/hooks";
+import { LIVE_EVENT } from "@/data/live";
 import { cx } from "../ui/cx";
 import { BrowseLink } from "../utils/navigation";
 import { COPY } from "../copy";
@@ -25,6 +26,28 @@ const LINKS = [
 const ITEM =
   "relative inline-flex h-11 items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 kb-sm font-semibold text-fg-2 transition-colors hover:text-fg aria-[current=page]:text-primary aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-2.5 aria-[current=page]:after:bottom-0 aria-[current=page]:after:h-0.5 aria-[current=page]:after:rounded-full aria-[current=page]:after:bg-primary";
 
+/** The Live entry is a standing indicator — a red pill with a pulsing dot and
+ *  the sample live-event viewer count, so the auction floor is always visible. */
+function LiveNavLink({ current }) {
+  const { ui, pl } = useLang();
+  const { link } = useConcept();
+  return (
+    <Link
+      href={link("/live-auction")}
+      aria-current={current ? "page" : undefined}
+      className={cx(
+        "inline-flex h-8 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 kb-sm font-bold ring-1 ring-inset transition-colors",
+        current ? "bg-live text-white ring-transparent" : "bg-live/10 text-live ring-live/25 hover:bg-live/15",
+      )}
+    >
+      <span aria-hidden="true" className={cx("kz-live-dot", current && "bg-white!")} />
+      {ui("live")}
+      <span aria-hidden="true" className="mx-0.5 h-3 w-px bg-current opacity-25" />
+      <span className="tabular font-bold opacity-90">{pl("viewers", LIVE_EVENT.viewers)}</span>
+    </Link>
+  );
+}
+
 function NavLinks({ params }) {
   const { ui } = useLang();
   const { link } = useConcept();
@@ -35,9 +58,12 @@ function NavLinks({ params }) {
     let current = false;
     if (item.match) current = onBrowse && Object.entries(item.match).every(([k, v]) => params?.get(k) === v);
     else current = pathname.startsWith(link(item.href));
+
+    if (item.live) return <LiveNavLink key={item.key} current={current} />;
+
     const label = (
       <>
-        {item.live ? <span aria-hidden="true" className="kz-live-dot" /> : null}
+        {item.key === "auctions" ? <Gavel aria-hidden="true" className="size-4 text-accent" strokeWidth={2.25} /> : null}
         {ui(item.ui)}
       </>
     );

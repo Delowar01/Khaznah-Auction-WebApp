@@ -40,17 +40,21 @@ export function AuctionClock({ product, auction }) {
   const progress = closed ? 1 : upcoming ? 0 : lotProgress(product, elapsed);
 
   if (closed) return null;
+  const labelTone = phase === "critical" ? "text-danger" : phase === "urgent" ? "text-warning" : "text-fg-2";
   return (
-    <div>
-      <div className="mb-2 flex items-center justify-between">
-        <p className="kb-xs font-bold text-fg-2">{upcoming ? ui("startsIn") : ui("endsIn")}</p>
+    <div className="rounded-xl kb-clock p-3.5 ring-1 ring-line">
+      <div className="mb-2.5 flex items-center justify-between gap-2">
+        <p className={cx("flex items-center gap-1.5 kb-eyebrow", labelTone)}>
+          <span aria-hidden="true" className={cx("size-1.5 rounded-full bg-current", phase === "critical" && "kb-pulse")} />
+          {upcoming ? ui("startsIn") : ui("endsIn")}
+        </p>
         {auction.extended ? <Badge tone="warning">{ui("timeExtended")}</Badge> : null}
       </div>
-      <ClockDigits seconds={seconds} tone={tone} />
+      <ClockDigits seconds={seconds} tone={tone} size="lg" />
       {!upcoming ? (
-        <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-surface-2" role="presentation">
+        <div className="mt-3.5 h-1.5 overflow-hidden rounded-full bg-surface-2" role="presentation">
           <div
-            className={cx("h-full rounded-full transition-[width] duration-1000 ease-linear", phase === "critical" ? "bg-danger" : phase === "urgent" ? "bg-warning" : "bg-primary")}
+            className={cx("h-full rounded-full transition-[width] duration-1000 ease-linear", phase === "critical" ? "bg-live" : phase === "urgent" ? "bg-warning" : "bg-accent")}
             style={{ width: `${Math.max(2, progress * 100)}%` }}
           />
         </div>

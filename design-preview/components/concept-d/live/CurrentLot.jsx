@@ -81,7 +81,7 @@ export function CurrentLot({ live }) {
         </div>
         <div className="h-2 overflow-hidden rounded-full bg-line">
           <div
-            className={cx("h-full rounded-full transition-[width] duration-1000 ease-linear", live.remaining <= 5 ? "bg-live" : live.remaining <= 10 ? "bg-warning" : "bg-primary")}
+            className={cx("h-full rounded-full transition-[width] duration-1000 ease-linear", live.remaining <= 5 ? "bg-live" : live.remaining <= 10 ? "bg-warning" : "bg-accent")}
             style={{ width: `${pct * 100}%` }}
           />
         </div>
