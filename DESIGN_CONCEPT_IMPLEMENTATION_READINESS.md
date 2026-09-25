@@ -1,10 +1,14 @@
 # Design concept implementation readiness
 
-**Phase 1, updated in Phase 1B — for client review.** This document describes the four design
+**Phase 1, updated in Phase 1B, revised for Round 2 — for client review.** This document describes the four design
 directions built in `design-preview/` and what each would mean for the real
-Khazna customer website if it were approved. The concepts are listed A to D in
-the order they were briefed. **They are not ranked and no concept is
-recommended** — the choice is the client's.
+Khazna customer website if it were approved. The sections below are organised by
+internal route slot (**Concept A–D = slots `concept-a`…`concept-d`**); the
+client-facing labels are **Options 1–4**. After the first review the client kept
+one direction and asked for three new alternatives in the same commercial
+family; see *Round 2* below for what changed and the current slot-to-option
+mapping. **They are not ranked and no concept is recommended** — the choice is
+the client's.
 
 > Acceptance baseline for any concept: **visual redesign only. Existing
 > functional behaviour is the acceptance baseline unless a functional change is
@@ -94,9 +98,9 @@ section G.
 | Seller directory; "Across the Kingdom" city index | A–D; C | A seller-list endpoint or curated list | 3 (API) |
 | Live schedule with start times and presenter | A, B, C, D | New event fields | 12 (API) |
 | Sold results and sold-out product pages | A, B, C, D | Decision to show outcomes publicly | 5 (B) |
-| "Deliver to" city picker | B | Must not imply city-level filtering | 19 (F) |
-| Mini-cart, live search suggestions, lightbox, quick bids, command palette | B, all, all, all, D | Client confirmation of each addition | 26 (B) |
-| Price-history charts, bid velocity, activity heat, live-bid ticker | D | Aggregate bid-activity endpoint | 30 (API) |
+| "Deliver to" city picker | A, B, C, D | Must not imply city-level filtering | 19 (F) |
+| Mini-cart, live search suggestions, lightbox, quick bids | A, B, C, D | Client confirmation of each addition | 26 (B) |
+| "Live bids" ticker (home) | D | Aggregate bid-activity endpoint | 30 (API) |
 | Dark appearance | A, B, C, D | New scope for the customer site | 23 (B) |
 | Automatic advance between live lots | A, B, C, D (demo only) | Nothing — production stays operator-driven | 11 (P) |
 
@@ -112,23 +116,73 @@ section G.
   featured lot, auction, storefront and event in every concept. Browse lists
   the same catalogue with the same filters.
 - **Deliberate differences, all design-driven:**
-  - **Home page composition.** Each concept picks which shared sections to show
-    and in what order. Concept A hand-picks four Buy Now lots for "Selected this
-    week"; A and B feature the two pallet lots. Every item comes from the shared
-    catalogue.
+  - **Home page composition.** All four home pages draw on the same shared
+    sections (a promo carousel and side promo tiles, a trust strip, category
+    tiles, an auctions rail, the live band, a Buy Now deals grid, the two pallet
+    feature cards, a seller shelf and how-it-works with the grade scale). Concept
+    D reorders them so auctions lead the floor (the auctions rail first) and adds
+    a "Live bids" ticker under the hero; Premium Commerce (A) uses more generous
+    spacing. Every item comes from the shared catalogue.
   - **Section titles and helper lines.** These are written in each concept's
     own voice (`components/concept-x/copy.js`). Factual statements about
     deposits, delivery, returns, payments and notifications were aligned in
     Phase 1B, so all four say the same thing.
   - **Concept-specific treatments:**
-    - C sets key headings in both languages and shows Hijri dates.
-    - D derives bid velocity and price-history charts from the same sample bid
-      history.
-    - B adds a "Deliver to" picker.
-    - D opens in dark appearance and A–C open in light; all four offer both.
-  - **Why they remain:** these differences express each direction's navigation,
-    hierarchy and interaction style. They do not change the inventory, so the
-    client compares design, not products.
+    - **A (Premium Commerce)** sets display headings and prices in a serif
+      (Fraunces) and rests packshots on warm plates.
+    - **C (Saudi Modern Commerce)** sets fixed interface headings bilingually —
+      the current language leads and the other sits beneath in a small muted line
+      — and adds an "Across the Kingdom" warehouse-cities treatment on the seller
+      shelf.
+    - **D (Auction-Forward Commerce)** leads its auction cards with a full-width
+      mono countdown that warms with urgency, shows a large segmented countdown
+      clock on detail pages, and runs a "Live bids" ticker on the home page.
+    - The "Deliver to" delivery-city picker, the dominant search with suggestions
+      and the mobile bottom tab bar are shared by all four — they are part of the
+      retained Modern Commerce chrome.
+    - **All four default to light appearance and offer both light and dark.**
+  - **Why they remain:** these differences express each direction's finish,
+    hierarchy and emphasis. They do not change the inventory, so the client
+    compares design, not products.
+
+---
+
+## Round 2 — retained one direction, replaced three
+
+The first set of four directions was reviewed with the client. One direction —
+**Modern Commerce** — was kept; the other three were replaced with new
+alternatives in the **same commercial family**, so all four options now read as
+serious, realistic Khazna marketplaces built on one shared platform rather than
+four different genres.
+
+- **Option 1 — Modern Commerce** (slot `concept-b`): retained from the first
+  round, unchanged.
+- **Option 2 — Premium Commerce** (slot `concept-a`): new — a refined, elevated
+  evolution of Modern Commerce (serif display, more generous space, softer
+  premium surfaces).
+- **Option 3 — Saudi Modern Commerce** (slot `concept-c`): new — an Arabic-first,
+  locally relevant take, modern rather than traditional or decorative.
+- **Option 4 — Auction-Forward Commerce** (slot `concept-d`): new — auction-led,
+  with countdown and urgency emphasis and richer live / ending-soon / sold /
+  upcoming states.
+
+The retired first-round directions (the earlier Premium Marketplace, Saudi
+Contemporary and Digital / Auction Marketplace) remain in git history at tag
+`round1-concepts`. The **route-slot letters were reused** — slots `concept-a`,
+`concept-c` and `concept-d` were redesigned in place — so no routing, links or
+preview tooling changed; only the client-facing labels and the visual layer did.
+These three slots were **fully redesigned** (new visual language, layout,
+typography, palette and components, all on the same shared behaviour layer), not
+merely recoloured. Because all four now build on Modern Commerce's information
+architecture, they share the same chrome, home-page section set, browse kit and
+detail/live/seller kits; the differences are in finish, hierarchy and emphasis
+(see *Comparability of the four options* above).
+
+The per-concept sections below keep their internal slot letters (A–D) and now
+carry each slot's Round-2 name and Option number. The production-mapping in
+*D. Existing production areas affected later* and *E. Existing logic that should
+be retained* is unchanged by the redesign — it describes the shared behaviour
+layer and production endpoints, which every option maps onto the same way.
 
 ---
 
@@ -216,69 +270,81 @@ reports, RBAC, billing and settings are excluded entirely.
 
 ---
 
-## Concept A — Premium Marketplace
+## Concept A — Premium Commerce (Option 2)
 
 ### A. Summary
 
-A modern auction house. Warm ivory "paper", ink navy, Khazna indigo and an
-antique-brass accent; an editorial serif for display (Instrument Serif, with
-Markazi Text for Arabic) and a precise grotesque for data (Instrument Sans /
-IBM Plex Sans Arabic). Packshots sit on warm stone plates like objects in a
-catalogue, each lot is introduced like a catalogue entry ("About this lot",
-numbered highlights, a condition report, a two-column specification table), and
-motion is slow and precise. The live room is a dark "stage". Dark mode keeps the
-plates light, like a gallery at night.
+A refined, boutique department-store evolution of Modern Commerce. It keeps the
+same marketplace machinery — a prominent search, visible filters and dense,
+organised browsing — but lifts the finish: a warm paper background, cream card
+surfaces and warm-sand wells, espresso ink, a deep-indigo primary for actions
+and a brass/gold accent. Display headings are set in an elegant serif (Fraunces),
+the UI and body run in a humanist sans (Manrope) and Readex Pro carries Arabic;
+prices borrow the serif for an editorial feel. Its product cards are the
+concept's own signature rather than Modern Commerce's cards restyled: instead of
+an edge-to-edge thumbnail over a tight text stack, each packshot sits matted in a
+hairline-ruled frame, the price leads as a focal serif figure under a small brass
+label, a quiet hairline-ruled footer carries seller and grade, and auction cards
+read time as a tracked figure over a thin phase-coloured baseline rule (in place
+of a filled pill). Surfaces use larger radii (16 px cards) and soft, diffuse warm
+shadows, packshots rest on warm plates (multiply blend), and spacing is more
+generous than Modern Commerce. Light by default, with a warm-charcoal dark theme;
+the plates stay warm-light in dark so packshots keep reading.
 
-Screens: a centred-logo header with a live-now utility line, full-screen search
-overlay, bag and watchlist drawers; an editorial home (featured-lot placard,
-numbers band, closing soon, departments, live room band, ready-to-own, grade
-explainer, pallets, sellers, how it works); browse with a sidebar of filters,
-tabs and department chips, grid/list and progressive loading; detail pages with
-a sticky gallery and a single purchase/bid column; a seller masthead with the
+Screens: the shared Modern Commerce chrome (an ink utility strip with the
+delivery-city picker and a trust ticker; a sticky header with a dominant,
+category-scoped search and live suggestions, an account menu, a mini-cart and a
+watchlist drawer; a category bar with a mega menu; a mobile bottom tab bar),
+rendered in the premium palette with larger, calmer cards; a home page of a promo
+carousel and side promo tiles, a trust strip, category tiles, an auctions rail, a
+live band, a Buy Now deals grid, the pallet feature, a seller shelf and
+how-it-works with the grade scale; browse with a facet sidebar, quick chips,
+grid/list and numbered pagination; product and auction pages with a sticky
+buy/bid box in a side column (from tablet up); a seller storefront with a
 warehouse cover.
 
 ### B. Strengths
 
-- **Perceived value and trust.** Graded returns and surplus are presented with
-  the care of high-value inventory; condition, grade and seller credentials are
-  given as much space as price.
-- **A calm, legible bidding panel.** One column: current bid, countdown blocks
-  with the absolute closing time, bidder state, quick bids, a custom amount with
+- **Perceived value and trust.** The elevated finish — serif display, generous
+  space, warm surfaces — makes graded returns and surplus feel like high-value
+  inventory; condition, grade and seller credentials are given room next to price.
+- **Everyday usability is intact.** It keeps Modern Commerce's findability: the
+  dominant, category-scoped search, visible facets and dense browsing remain, so
+  a large mixed catalogue is still easy to scan and narrow.
+- **A calm, legible buy/bid box.** A sticky side box keeps price, stock or
+  countdown and the primary action in view; the bid panel is a single column —
+  current bid, countdown, bidder state, quick bids, a custom amount with an
   increment stepper and inline validation, a proxy-bid disclosure, deposit and
-  anti-sniping explained in plain language, and the Buy Now box on "both" lots.
-- **Strong Arabic typography.** Markazi Text gives Arabic headlines the same
-  editorial voice as the English serif; labels switch from tracked capitals to
-  bold Arabic rather than being mirrored.
-- **Small component vocabulary.** A few card types, one button family and one
-  status label cover every state, which keeps an implementation compact.
+  anti-sniping in plain language, and the Buy Now box on "both" lots.
+- **Strong Arabic typography.** Readex Pro carries Arabic headings and body;
+  Arabic runs one step larger with taller leading and no Latin-style tracking.
 
 ### C. Considerations
 
-- **Density.** The lowest of the four (three columns on desktop browse, generous
-  spacing). Buyers scanning hundreds of lots may want the list view by default,
-  or four columns on very wide screens.
-- **Photography dependence.** The plate treatment (multiply blend) assumes
+- **Density.** The most generous of the four (larger cards, more spacing and
+  wider gutters). Buyers scanning hundreds of lots can switch to the list view;
+  the grade/seller-forward cards trade some density for finish.
+- **Photography dependence.** The warm-plate treatment (multiply blend) assumes
   white-background packshots. Seller photos with busy backgrounds need the cover
-  fallback, and the home hero's featured-lot cut-out needs a cut-out step or a
-  plate fallback.
-- **Typefaces beyond the brand pair.** The display serifs are an addition to the
-  brand's Archivo and Alexandria; they need brand sign-off. Instrument Serif has a
-  single weight (regular + italic).
-- **Progressive loading.** Browse uses "load more" with a progress line; this
-  maps directly onto production's paged list endpoint (`page`, `page_size=20`)
-  with an infinite query.
-- **New surfaces.** The bag drawer is a new mini-cart view over the existing cart
-  provider; the search overlay replaces the navbar search box (same search
-  parameter).
+  fallback, and any cut-out imagery needs a cut-out step or a plate fallback.
+- **Typefaces beyond the brand pair.** Fraunces (a variable serif with
+  optical-size and SOFT axes) and Manrope are additions to the brand's Archivo
+  and Alexandria; they need brand sign-off.
+- **Numbered pagination.** Browse uses numbered pages (as Modern Commerce does),
+  mapping directly onto production's paged list endpoint (`page`, `page_size=20`).
+- **New surfaces.** The mini-cart is a new view over the existing cart provider;
+  the search suggestions and mega menu use the existing search and categories
+  endpoints (same search parameter).
 
 ### D. Existing production areas affected later
 
-- Global chrome: navbar (utility line, centred logo, search overlay, account
-  menu, bag/watchlist drawers), mobile menu, footer.
+- Global chrome: navbar (utility strip with the delivery-city picker, dominant
+  search with suggestions, mega menu, account menu, mini-cart and watchlist
+  drawers, category bar), mobile menu, mobile bottom tab bar, footer.
 - Homepage sections and their data hooks (hero, featured, ending soon, hot,
   Buy Now, live events).
-- Browse page (filter sidebar, tabs, category chips, results, load more, mobile
-  filter drawer).
+- Browse page (filter sidebar, tabs, category chips, results, numbered
+  pagination, mobile filter drawer).
 - Auction detail (gallery, bid column, confirm modal, max-bid panel, Buy Now
   box, market comparison, bid history, pallet contents, terms).
 - Buy Now / shop detail (gallery with lightbox, purchase column, quantity and
@@ -295,14 +361,14 @@ warehouse cover.
 Everything in *Logic that stays untouched in every case*, and in particular for
 this concept: the auction-detail bidding flow feeding the new bid column and
 confirm modal; proxy-bid save/remove; Buy Now on "both" lots; the wallet-deposit
-prompt when a bid fails for deposit reasons; paged bid history (shown six at a
-time with "show all"); the live viewer's WebSocket state and per-item deadline;
-cart provider actions behind "Add to bag" and "Buy it now"; the browse URL
-parameters behind every filter chip.
+prompt when a bid fails for deposit reasons; paged bid history (numbered, five
+rows a page); the live viewer's WebSocket state and per-item deadline; cart
+provider actions behind "Add to cart" and "Buy Now"; the browse URL parameters
+behind every filter chip.
 
 ---
 
-## Concept B — Modern Commerce
+## Concept B — Modern Commerce (Option 1)
 
 ### A. Summary
 
@@ -385,192 +451,198 @@ history endpoint; wallet balance and deposit checks; the live event socket.
 
 ---
 
-## Concept C — Saudi Contemporary
+## Concept C — Saudi Modern Commerce (Option 3)
 
 ### A. Summary
 
-A confident, Arabic-first identity with the calm, architectural restraint of
-contemporary Riyadh design — local character without stereotypes (no geometric
-patterns, arches, lanterns, calligraphy flourishes or gold-everywhere luxury).
-It was designed right-to-left first and mirrored into English. The locality comes
-from the brand itself: the diamond from the خ mark (bullets, active navigation,
-live indicators, timelines), the diagonal of its stroke (chamfered corners on
-frames and cards, thin gold diagonal rules) and the square-Kufic grid of the
-wordmark (hairline architectural grids). Warm limestone and sand neutrals, night
-indigo text, brand indigo for action and saffron gold as a sparing accent. The
-brand typefaces carry it: Alexandria for Arabic and Archivo (with its width axis
-for expanded display) for Latin. Key headings are bilingual — the primary
-language large, the other small beneath.
+An Arabic-first, locally relevant evolution of Modern Commerce — modern and
+confident rather than traditional or decorative (no geometric patterns, arches,
+lanterns or calligraphy flourishes). It is designed in Arabic first and mirrored
+into English, and keeps Modern Commerce's search, filtering and browsing while
+giving the site a contemporary Saudi character. The signature is a bilingual
+heading lockup on fixed interface headings: the current language leads at full
+size and the other language sits beneath as a small muted line, marked by a short
+gold rule. Cairo carries every heading and kicker in both scripts for a confident,
+Arabic-native hierarchy; Inter keeps the Latin body and figures crisp. The palette
+is a warm sand/paper canvas, white surfaces, a deep modern-green ink, a green
+primary for actions and a restrained saffron-gold accent; crisp warm borders and
+medium radii carry the structure over heavy elevation. Light by default, with a
+dark-green dark theme.
 
-Screens: a utility line with today's Hijri and Gregorian dates; a centred
-navigation with a diamond active indicator and a search field that opens a
-full-width search panel; a home
-page with an asymmetric hero (warehouse photograph in a chamfered frame with a
-floating live card), an "Across the Kingdom" typographic city index of sellers,
-a bento category grid, ending-soon cards with saffron time bars, a live band with
-a diamond lot timeline, the grade scale, the brand's K-H-A-Z-N-A-H values and
-the trust/how-it-works section; browse with a horizontal filter rail; detail
-pages with architectural specification tables; a live room with a vertical
-diamond timeline; and a storefront with a diamond monogram.
+Screens: the shared Modern Commerce chrome (a utility strip with the delivery-city
+picker and a trust ticker; a sticky header with a dominant, category-scoped search
+and live suggestions; a category bar with a mega menu; a mobile bottom tab bar),
+rendered in the green/sand palette with bilingual section headings; a home page of
+a promo carousel and side promo tiles, a trust strip, category tiles, an auctions
+rail, a live band, a Buy Now deals grid, the pallet feature, a seller shelf with
+an "Across the Kingdom" warehouse-cities treatment, and how-it-works with the
+grade scale; browse, product, auction, live and seller screens on the shared kit,
+with strong seller/warehouse credibility cues (city, member-since).
 
 ### B. Strengths
 
-- **The strongest brand expression.** It uses the 2026 brand system directly —
-  typefaces, colours, the mark's geometry and the values — so the site and the
-  brand read as one.
-- **Arabic typography of the highest standard.** Alexandria in Arabic sets the
-  hierarchy; English is a considered mirror rather than the source.
-- **Distinctly Saudi without clichés**: city index, Hijri dates, bilingual
-  compositions and architectural rhythm give local relevance that feels current.
-- **Calm, trustworthy commerce**: generous but efficient layouts, clear grade
-  scale, and strong seller/place signals (city, warehouse) that support trust.
+- **Local relevance without clichés.** Arabic-first layouts, bilingual interface
+  headings and a contemporary Saudi palette (sand, deep green, saffron) give the
+  site local character while staying modern and non-decorative.
+- **Arabic typography of the highest standard.** Cairo sets the hierarchy in
+  Arabic and mirrors cleanly to Latin; Arabic runs one step larger with taller
+  leading, so Arabic is the source rather than an afterthought.
+- **Seller and place credibility.** The "Across the Kingdom" warehouse-cities
+  treatment and seller facts (city, member-since, counts) give strong local trust
+  signals.
+- **Practical marketplace, kept.** It retains Modern Commerce's search, filters
+  and dense browsing, so it stays a usable everyday marketplace.
 
 ### C. Considerations
 
 - **Bilingual headings need copy in both languages.** Product titles and
   descriptions in production are single-language with optional Arabic fields; the
-  bilingual treatment should be limited to fixed interface headings and degrade
+  bilingual lockup is limited to fixed interface headings and must degrade
   gracefully when a lot has no Arabic title.
-- **Hijri date formatting** uses the browser's Umm al-Qura calendar support; it
-  should render only on the client (as in the preview) to avoid hydration
-  mismatches.
 - **"Across the Kingdom" needs seller cities and counts.** The seller endpoint
   returns city and counts per seller, but there is no public seller-list
-  endpoint; the city index needs a curated list of seller codes or an approved
-  endpoint.
-- **Chamfered corners use `clip-path`** computed per direction; focus rings and
-  shadows on clipped elements need care (the preview draws them inside the
-  shape).
-- **Archivo's width axis and Alexandria's heavier weights** add font weight
-  budget; subsetting and `font-display: swap` are required.
-- **The KHAZNAH values section** is brand storytelling content that needs owner
-  approval of the final wording.
+  endpoint; the warehouse-cities treatment needs a curated list of seller codes or
+  an approved endpoint.
+- **Cairo across both scripts** adds font-weight budget at its heavier heading
+  weights; subsetting (Arabic + Latin) and `font-display: swap` are required.
+- **Palette sign-off.** The green action/ink and saffron accent were tuned to
+  clear WCAG AA as small text on white and on the warm surface; brand sign-off on
+  those values is needed.
 
 ### D. Existing production areas affected later
 
-- Global chrome: utility line with dates, navbar with diamond indicators and the
-  search panel, mobile drawer menu, night-indigo footer with the stacked logo.
-- Homepage: hero, city index (new), bento categories, ending-soon band, live band
-  with timeline, Buy Now grid, grade scale, brand values (new), trust and how it
+- Global chrome: navbar (utility strip with the delivery-city picker, dominant
+  search with suggestions, mega menu, category bar) with bilingual section
+  headings, mobile menu, mobile bottom tab bar, footer.
+- Homepage: hero carousel and promo tiles, trust strip, category tiles, an
+  auctions rail, live band, Buy Now deals grid, the pallet feature, a seller shelf
+  with the "Across the Kingdom" warehouse-cities treatment, grade scale and how it
   works.
-- Browse: bilingual page head and category band, horizontal filter rail with
-  anchored panels, sort, active chips, load more with progress, mobile filter
-  drawer.
-- Auction and Buy Now detail pages (chamfered gallery, definition-table specs,
-  bid panel with labelled countdown blocks, manifest grid, similar items), live
-  viewer (stream frame, current lot, bid panel, feed, diamond timeline), seller
-  storefront (wide chamfered cover, diamond monogram), shared cards, grade guide.
+- Browse: bilingual page head, filters (facet panel and quick chips), sort,
+  active chips, numbered pagination, mobile filter drawer.
+- Auction and Buy Now detail pages (gallery, specification table, bid panel with a
+  countdown, manifest, similar items), live viewer (stream, current lot, bid
+  panel, feed, lot sequence), seller storefront (cover, monogram, seller facts),
+  shared cards, grade guide.
 
 ### E. Existing logic that should be retained
 
 Everything in *Logic that stays untouched in every case*, and in particular: the
 existing language preference and RTL handling (this concept depends on them
-most), the browse URL contract behind the filter rail, bidding and proxy flows
-behind the bid panel, the live event socket behind the timeline and feed, the
-seller endpoint for city and counts, and cart/watch actions on cards.
+most), the browse URL contract behind the filters, bidding and proxy flows behind
+the bid panel, the live event socket behind the live view and feed, the seller
+endpoint for city and counts, and cart/watch actions on cards.
 
 ---
 
-## Concept D — Digital / Auction Marketplace
+## Concept D — Auction-Forward Commerce (Option 4)
 
 ### A. Summary
 
-A real-time auction platform with the calm finish of a premium technology
-product. Dark-first (a polished light variant is included): deep navy layered
-surfaces with hairline tinted borders, Khazna indigo for action and gold reserved
-for "your bid", "winning" and the key call to action. Geist for the interface
-with Geist Mono for every number (prices, clocks, lot numbers, counts), and
-Readex Pro for Arabic. Every auction surface shows its state as data: countdown
-rings, time bars, bid step charts drawn from the bid history, "bids in the last
-10 minutes" velocity, heat indicators, delta chips and a live activity feed.
-Crypto, gaming and neon aesthetics are deliberately avoided.
+An auction-led evolution of Modern Commerce. It keeps the same clarity and
+conversion focus but puts auctions front and centre. A clean cool base and white
+surfaces keep it commercially trustworthy; a deep indigo carries every action; an
+energetic orange-red accent is spent only on time, urgency, live and the auction
+identity itself. Space Grotesk gives a confident geometric display, Inter carries
+the body, and JetBrains Mono renders every countdown, bid amount and figure
+(tabular) — the monospaced numerics are the signature; IBM Plex Sans Arabic leads
+Arabic. Corners are crisper than Modern Commerce (10 px cards). Crypto, gaming and
+neon aesthetics are deliberately avoided — the fine background grid reads as an
+auction board, not a crypto matrix, and the dark theme is clean and elevated
+rather than neon-on-black. Light by default, with a dark theme.
 
-Screens: a sticky glass app bar with a command-palette search (⌘K / Ctrl K), a
-live pill, wallet chip, cart drawer and avatar menu, a section tab row and a
-live bid ticker; a home "live board" (featured-lot terminal, closing-soon board,
-live events, trending, categories, instant buy, pallets with manifest bars,
-warehouses table, platform metrics); browse with grid and board (table) views;
-an auction "bid terminal"; a three-column live floor (lot queue · stage ·
-console); a seller profile with stat cards; and a mobile bottom dock with a
-raised Live button.
+The auction card's signature is a full-width mono countdown strip that stays
+neutral while live, warms to amber under an hour and turns to a red "closing now"
+chip with a pulsing dot in the final minutes; urgent and critical cards carry a
+thin accent rail, and busy lots show a "hot" flame. Detail pages and the auction
+hero use a large segmented countdown clock (day/hour/minute/second cells with
+colon separators; the block breathes a soft ring when critical). The home page
+leads with auctions (the closing / most-bid rail first, then the live band) and
+runs a muted "Live bids" ticker under the hero, built from the sample catalogue,
+that pauses on hover and stops under reduced motion.
+
+Screens: the shared Modern Commerce chrome (a utility strip with the delivery-city
+picker and a trust ticker; a sticky header with a dominant search and live
+suggestions, an account menu, a mini-cart and a watchlist drawer; a category bar
+with a mega menu; a mobile bottom tab bar), rendered in the auction-forward palette
+with a home "Live bids" ticker; an auctions-led home page; browse with grid and
+list views; product and auction detail with a sticky buy/bid box; a live viewer
+(stage, current lot, console, feed, lot sequence); a seller storefront.
 
 ### B. Strengths
 
-- **Built for active bidders.** Price, time and competition are readable at a
-  glance, and the board view lets frequent buyers scan closing lots like a
-  watch list.
-- **The strongest live experience.** The live floor keeps the queue, the stream,
-  the current lot, one-tap bids and the feed on one screen, which suits
-  presenter-led sales.
-- **Clear bidder feedback.** Winning and outbid states, price flashes and the
-  step chart make the auction's momentum visible without extra copy.
-- **Command-palette search** gives fast, keyboard-first access to lots,
-  categories and sellers.
+- **Built for bidders.** Price, time and competition read at a glance: the
+  full-width countdown strip and the segmented clock make each lot's urgency
+  obvious, and the home "Live bids" ticker keeps auction activity in view.
+- **Clear bidder feedback.** Status escalates from calm to "ending soon" to a
+  red "closing now" with a pulse in the final minutes; winning and outbid states
+  and the sold overlay make momentum visible without extra copy.
+- **Still commercially trustworthy.** The urgency accent is disciplined (time,
+  live and the auction identity only), so the site reads as a serious marketplace
+  rather than a flashy or gimmicky one.
+- **Practical marketplace, kept.** It retains Modern Commerce's search-led
+  browsing and conversion focus; auctions simply lead the hierarchy.
 
 ### C. Considerations
 
-- **Data-heavy components.** Step charts, sparklines, velocity and heat need bid
-  history for many lots at once. Per-lot history exists
-  (`GET marketplace/sale-lots/<pk>/bids/`), but fetching it for every card is
-  expensive; cards should use cheap signals (`bid_count`, `recent_bid_count` from
-  the homepage feed) and keep full charts for the detail page.
-- **The cross-lot live ticker has no aggregate feed.** Production's sockets are
-  per lot (`/ws/auctions/<id>/`) and per live event. The ticker can be fed from
-  the homepage sections and the sockets of lots already on screen; a site-wide
-  bid feed would be a backend change needing approval.
-- **Dark-first means a full dark palette** for every customer surface, including
-  cart, checkout and account, which are not designed in this phase. Product
-  photos stay on light plates in both themes.
-- **Sticky terminal on shorter screens.** The bid terminal is taller than many
-  laptop viewports; it is sticky only on tall screens and scrolls normally
-  elsewhere.
-- **Motion budget.** Tickers, rings and flashes must respect reduced-motion
-  (already done in the preview: the ticker becomes a static list) and be
-  throttled so frequent socket frames do not cause constant re-rendering.
-- **Monospaced numerals** are new to the brand typography and need sign-off; the
-  Riyal glyph comes from the bundled Riyal font as elsewhere.
+- **The "Live bids" ticker has no aggregate feed.** In the preview it is built
+  from the sample catalogue. Production's sockets are per lot
+  (`/ws/auctions/<id>/`) and per live event; a real marketplace-wide bid ticker
+  would be a backend change needing approval (see file map G, row 30). It can
+  otherwise be fed from the homepage sections and the sockets of lots on screen.
+- **Monospaced numerals** (JetBrains Mono) are new to the brand typography and
+  need sign-off; the Riyal glyph still comes from the bundled Riyal font.
+- **Space Grotesk** for display is an addition to the brand's Archivo and
+  Alexandria and needs brand sign-off.
+- **Motion budget.** The ticker, the countdown pulse and the critical "breathe"
+  ring must respect reduced motion (already done in the preview: the ticker goes
+  static and the animations stop) and be throttled so frequent socket frames do
+  not cause constant re-rendering.
+- **Dark theme scope.** A full dark palette covers every customer surface,
+  including cart, checkout and account, which are not designed in this phase.
+  Product photos stay on light plates in both themes.
 
 ### D. Existing production areas affected later
 
-- Global chrome: navbar (app bar, command palette, live pill, wallet chip,
-  account menu, cart drawer), a new section tab row and ticker, mobile bottom
-  dock, footer.
-- Homepage: every section, including a new closing-soon board and warehouses
-  table (seller data from the seller endpoint).
-- Browse: header, grid and board views, filter panel and mobile filter drawer,
+- Global chrome: navbar (utility strip with the delivery-city picker, dominant
+  search with suggestions, mega menu, account menu, mini-cart and watchlist
+  drawers, category bar), a home "Live bids" ticker, mobile bottom tab bar,
+  footer.
+- Homepage: every section, reordered so the auctions rail leads, plus the "Live
+  bids" ticker under the hero.
+- Browse: header, grid and list views, filter panel and mobile filter drawer,
   pagination.
-- Auction detail: the bid terminal (clock ring, price block, bidder banner, bid
-  ladder, custom amount, confirm modal, max-bid control, Buy Now option, deposit
-  and anti-snipe notes, market meter), tabs for history / details / manifest /
-  seller, and the mobile bid sheet.
-- Buy Now detail, live viewer (queue, stage, console, feed, mobile tabs), seller
-  storefront, shared cards and the board row, grade guide and wallet deposit
-  modal styling, toasts.
+- Auction detail: the bid panel (segmented countdown clock, price block, bidder
+  banner, bid form with quick bids, custom amount, confirm modal, max-bid
+  control, Buy Now box, deposit and anti-snipe notes, market comparison), bid
+  history, pallet manifest, and the mobile bid bar.
+- Buy Now detail, live viewer (current lot, stage, console, feed, lot sequence,
+  mobile tabs), seller storefront, shared cards and list row, grade guide and
+  wallet deposit modal styling, toasts.
 
 ### E. Existing logic that should be retained
 
 Everything in *Logic that stays untouched in every case*, and in particular: the
-auction WebSocket state and polling as the single source for the terminal's
-price, clock and bidder state (charts derive from the same history the page
-already loads); bid, confirm and proxy flows; the live event socket for the
-queue, console and feed; the existing search parameter behind the command
-palette; the cart provider behind the cart drawer; wallet balance from the
-existing wallet endpoint.
+auction WebSocket state and polling as the single source for the bid panel's
+price, clock and bidder state; bid, confirm and proxy flows; the live event
+socket for the current lot, console and feed; the existing search parameter
+behind the header search; the cart provider behind the mini-cart; wallet balance
+from the existing wallet endpoint.
 
 ---
 
 ## Side-by-side reference (not a ranking)
 
-| | A — Premium Marketplace | B — Modern Commerce | C — Saudi Contemporary | D — Digital / Auction Marketplace |
+| | A — Premium Commerce (Option 2) | B — Modern Commerce (Option 1) | C — Saudi Modern Commerce (Option 3) | D — Auction-Forward Commerce (Option 4) |
 |---|---|---|---|---|
-| Default appearance | Light (dark available) | Light (dark available) | Light (dark available) | Dark (light available) |
-| Density | Low | High | Medium | Medium–high |
-| Typefaces | Instrument Serif + Instrument Sans; Markazi Text + IBM Plex Sans Arabic | Figtree; Almarai | Archivo (brand); Alexandria (brand) | Geist + Geist Mono; Readex Pro |
-| Header model | Utility line, centred logo, search overlay | Three tiers: utility strip, dominant search, category bar + mega menu | Utility line with dates, centred navigation, search panel | App bar with command palette, tab row, live ticker |
-| Mobile navigation | Menu drawer + sticky detail bars | Bottom tab bar + collapsing search | Menu drawer + sticky detail bars | Bottom dock with raised Live button |
-| Browse paging | Load more | Numbered pages | Load more with progress | Load more (grid and board views) |
-| Signature auction element | Catalogue placard and countdown blocks | Sticky bid box | Labelled countdown blocks with diamond status | Countdown ring, step chart, bid ladder |
-| New surfaces vs today | Search overlay, bag drawer | Autocomplete, mega menu, mini-cart, tab bar | Search panel, city index, brand values section | Command palette, ticker, board view, cart drawer, dock |
+| Default appearance | Light (dark available) | Light (dark available) | Light (dark available) | Light (dark available) |
+| Density | Comfortable | High | High | High |
+| Typefaces | Fraunces + Manrope; Readex Pro | Figtree; Almarai | Cairo (both scripts); Inter | Space Grotesk + Inter + JetBrains Mono; IBM Plex Sans Arabic |
+| Header model | As Modern Commerce, premium finish | Three tiers: utility strip, dominant search, category bar + mega menu | As Modern Commerce, bilingual headings | As Modern Commerce + home "Live bids" ticker |
+| Mobile navigation | Bottom tab bar + collapsing search | Bottom tab bar + collapsing search | Bottom tab bar + collapsing search | Bottom tab bar + collapsing search |
+| Browse paging | Numbered pages | Numbered pages | Numbered pages | Numbered pages |
+| Signature auction element | Matted "catalogue object" cards; focal serif prices; baseline-rule countdown | Sticky bid box | Bilingual headings; countdown pill | Full-width mono countdown strip + segmented clock |
+| New surfaces vs today | As B + serif display, warm plates, matted product cards | Autocomplete, mega menu, mini-cart, tab bar | As B + bilingual headings, "Across the Kingdom" cities | As B + "Live bids" ticker, segmented countdown clock |
 
 The client chooses; any of the four can be implemented on the current
 architecture with the preparation described in *Common ground*.
