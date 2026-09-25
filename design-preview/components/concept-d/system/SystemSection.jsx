@@ -1,14 +1,18 @@
-/** A titled block on the components board. */
-export function SystemSection({ id, index, title, description, children, className = "" }) {
+"use client";
+
+import { cx } from "../ui/cx";
+
+/** Board section: numbered title, optional note, content card. */
+export function SystemSection({ id, index, title, note, children, className = "" }) {
   return (
-    <section aria-labelledby={id} className={`scroll-mt-40 border-t border-line py-10 md:py-14 ${className}`}>
-      <div className="mb-6 flex items-baseline gap-3">
-        <span className="d-num text-xs text-fg-3">{String(index).padStart(2, "0")}</span>
+    <section id={id} aria-labelledby={`${id}-title`} className={cx("scroll-mt-44", className)}>
+      <div className="mb-4 flex items-baseline gap-3">
+        <span className="kb-sm font-extrabold text-primary tabular">{String(index).padStart(2, "0")}</span>
         <div>
-          <h2 id={id} className="d-tight text-xl font-semibold text-fg md:text-2xl">
+          <h2 id={`${id}-title`} className="kb-h2 text-fg">
             {title}
           </h2>
-          {description ? <p className="mt-1 text-sm text-fg-2">{description}</p> : null}
+          {note ? <p className="mt-0.5 kb-sm text-fg-2">{note}</p> : null}
         </div>
       </div>
       {children}
@@ -16,12 +20,17 @@ export function SystemSection({ id, index, title, description, children, classNa
   );
 }
 
-/** Caption under a specimen. */
+/** Labelled cell used across the board (state name above the specimen). */
 export function Specimen({ label, children, className = "" }) {
   return (
-    <figure className={`flex flex-col gap-2.5 ${className}`}>
-      <div className="flex min-h-12 flex-wrap items-center gap-3">{children}</div>
-      <figcaption className="text-[11.5px] text-fg-3">{label}</figcaption>
-    </figure>
+    <div className={cx("flex flex-col gap-2", className)}>
+      <p className="kb-eyebrow text-fg-3">{label}</p>
+      {children}
+    </div>
   );
+}
+
+/** White board panel. */
+export function Panel({ children, className = "" }) {
+  return <div className={cx("rounded-xl border border-line bg-surface p-5 sm:p-6", className)}>{children}</div>;
 }

@@ -1,46 +1,47 @@
 "use client";
 
-import { forwardRef } from "react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { getGrade } from "@/data/grades";
+import { cx } from "./cx";
 
+// Static class map so Tailwind can see every grade colour.
 const TONE = {
-  new: "text-grade-new bg-grade-new/12 ring-grade-new/30",
-  a: "text-grade-a bg-grade-a/12 ring-grade-a/30",
-  b: "text-grade-b bg-grade-b/12 ring-grade-b/30",
-  c: "text-grade-c bg-grade-c/12 ring-grade-c/30",
-  d: "text-grade-d bg-grade-d/12 ring-grade-d/30",
-  r: "text-grade-r bg-grade-r/12 ring-grade-r/30",
-  f: "text-grade-f bg-grade-f/12 ring-grade-f/30",
+  new: "bg-grade-new/10 text-grade-new ring-grade-new/25",
+  A: "bg-grade-a/10 text-grade-a ring-grade-a/25",
+  B: "bg-grade-b/10 text-grade-b ring-grade-b/25",
+  C: "bg-grade-c/10 text-grade-c ring-grade-c/25",
+  D: "bg-grade-d/10 text-grade-d ring-grade-d/25",
+  R: "bg-grade-r/10 text-grade-r ring-grade-r/25",
+  F: "bg-grade-f/10 text-grade-f ring-grade-f/25",
 };
 
-/**
- * Condition grade pill. `label` shows "Grade A" instead of "A".
- * Pass onClick to make it open the grade guide.
- */
-export const GradeChip = forwardRef(function GradeChip({ grade, label = false, size = "md", onClick, className = "", ...props }, ref) {
-  const { t, ui } = useLang();
+export const GRADE_DOT = {
+  new: "bg-grade-new",
+  A: "bg-grade-a",
+  B: "bg-grade-b",
+  C: "bg-grade-c",
+  D: "bg-grade-d",
+  R: "bg-grade-r",
+  F: "bg-grade-f",
+};
+
+/** "Grade A" / "New" chip in the grade's own colour. `letter` renders just the key. */
+export function GradeChip({ grade, size = "sm", letter = false, className = "" }) {
+  const { t } = useLang();
   const info = getGrade(grade);
-  const text = label ? t(info.label) : t(info.short);
-  const sizing = size === "sm" ? "h-5 px-1.5 text-[11px]" : size === "lg" ? "h-8 px-3 text-sm" : "h-6 px-2 text-xs";
-  const cls = `inline-flex shrink-0 items-center gap-1 rounded-md font-semibold ring-1 ring-inset ${sizing} ${TONE[info.tone]} ${className}`;
-  const inner = (
-    <>
-      <span aria-hidden="true" className="size-1.5 rounded-[2px] bg-current opacity-80" />
-      <span className={grade === "new" || label ? "" : "d-num"}>{text}</span>
-    </>
-  );
-  if (onClick) {
-    return (
-      <button ref={ref} type="button" onClick={onClick} className={`${cls} transition-[filter] hover:brightness-110`} aria-label={`${t(info.label)} — ${ui("gradeGuide")}`} {...props}>
-        {inner}
-      </button>
-    );
-  }
+  const label = letter ? t(info.short) : grade === "new" ? t(info.short) : t(info.label);
   return (
-    <span ref={ref} className={cls} title={t(info.text)} {...props}>
-      {!label && grade !== "new" ? <span className="sr-only">{ui("grade")} </span> : null}
-      {inner}
+    <span
+      className={cx(
+        "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md font-bold ring-1 ring-inset",
+        TONE[grade] || TONE.A,
+        size === "sm" && "h-5 px-1.5 kb-2xs",
+        size === "md" && "h-6 px-2 kb-xs",
+        size === "lg" && "h-8 min-w-8 px-2 kb-md",
+        className,
+      )}
+    >
+      {label}
     </span>
   );
-});
+}

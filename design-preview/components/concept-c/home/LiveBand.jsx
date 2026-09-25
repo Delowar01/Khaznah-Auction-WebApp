@@ -1,110 +1,118 @@
 "use client";
 
 import Link from "next/link";
-import { Eye, Mic, Radio } from "lucide-react";
-import { useLang } from "@/components/shared/providers/LangProvider";
+import { Eye, Radio } from "lucide-react";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
+import { useLang } from "@/components/shared/providers/LangProvider";
 import { Img } from "@/components/shared/ui/Img";
 import { Money } from "@/components/shared/ui/Money";
+import { LIVE_EVENT, OTHER_EVENTS } from "@/data/live";
 import { getSeller } from "@/data/sellers";
-import { formatNumber } from "@/lib/format";
-import { COPY } from "../copy";
-import { BiHeading } from "../ui/Bi";
+import { LiveBadge } from "../ui/Badge";
 import { ButtonLink } from "../ui/Button";
-import { Diamond } from "../ui/Diamond";
-import { ChamferFrame } from "../ui/Frame";
-import { Reveal } from "@/components/shared/ui/Reveal";
-import { LotStrip } from "../live/LotStrip";
+import { GradeChip } from "../ui/GradeChip";
+import { SellerAvatar } from "../ui/SellerAvatar";
+import { cx } from "../ui/cx";
+import { COPY } from "../copy";
+import { EventCard } from "../live/EventCard";
+import { useEventReminders } from "../live/useEventReminders";
 
-function Fact({ label, children }) {
+function LiveEventCard({ live }) {
+  const { t, ui, pl } = useLang();
+  const { link } = useConcept();
+  const host = getSeller(LIVE_EVENT.host);
+  const lot = live.current;
+  const progress = live.intermission > 0 ? 0 : Math.max(0, Math.min(1, live.remaining / live.duration));
   return (
-    <div className="bg-bg px-4 py-3.5">
-      <dt className="text-xs text-fg-3">{label}</dt>
-      <dd className="mt-1 text-sm font-semibold text-fg">{children}</dd>
-    </div>
+    <article className="grid overflow-hidden rounded-xl bg-surface ring-1 ring-line md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
+      <Link href={link("/live-auction")} className="group relative block aspect-video overflow-hidden md:aspect-auto md:min-h-[300px]">
+        <Img image={LIVE_EVENT.stream} alt={t(LIVE_EVENT.title)} sizes="(min-width: 1024px) 40vw, 100vw" className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+        <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/85 via-black/10 to-black/30" />
+        <div className="absolute start-3 top-3 flex items-center gap-2">
+          <LiveBadge size="md">{ui("liveNow")}</LiveBadge>
+          <span className="inline-flex h-6 items-center gap-1.5 rounded-md bg-black/55 px-2 kb-xs font-semibold text-white backdrop-blur">
+            <Eye aria-hidden="true" className="size-3.5" />
+            <span className="tabular">{pl("viewers", live.viewers)}</span>
+          </span>
+        </div>
+        <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+          <p className="kb-lg font-extrabold">{t(LIVE_EVENT.title)}</p>
+          <p className="mt-1 flex items-center gap-2 kb-xs text-white/80">
+            <SellerAvatar seller={host} size="xs" />
+            {t(LIVE_EVENT.presenter)} · {t(host.name)}
+          </p>
+        </div>
+      </Link>
+      <div className="flex flex-col gap-3 p-4 sm:p-5">
+        <p className="kb-eyebrow text-accent">{t(COPY.liveSlideLot)}</p>
+        {lot ? (
+          <>
+            <div className="flex items-center gap-3">
+              <span className="size-16 shrink-0 overflow-hidden rounded-lg bg-plate">
+                <Img image={lot.image} alt="" sizes="64px" className="kb-pack size-full object-contain p-1" />
+              </span>
+              <div className="min-w-0">
+                <p className="line-clamp-2 kb-sm font-bold text-fg">{t(lot.title)}</p>
+                {lot.grade ? <GradeChip grade={lot.grade} className="mt-1" /> : null}
+              </div>
+            </div>
+            <div className="flex items-end justify-between gap-3">
+              <div>
+                <p className="kb-2xs text-fg-3">{ui("currentBid")}</p>
+                <Money key={lot.currentBid} value={lot.currentBid} className="kz-flash -mx-1 rounded px-1 kb-price-lg text-fg" symbolClassName="text-[0.7em]" />
+              </div>
+              <p className="kb-xs text-fg-3">{pl("bids", lot.bidCount)}</p>
+            </div>
+            <div>
+              <div className="mb-1 flex justify-between kb-2xs text-fg-3">
+                <span>{t(COPY.lotClock)}</span>
+                <span className="tabular">{t(COPY.secondsShort, { n: live.remaining })}</span>
+              </div>
+              <div className="h-1.5 overflow-hidden rounded-full bg-surface-2">
+                <div className={cx("h-full rounded-full transition-[width] duration-1000 ease-linear", live.remaining <= 10 ? "bg-live" : "bg-accent")} style={{ width: `${progress * 100}%` }} />
+              </div>
+            </div>
+          </>
+        ) : null}
+        <ButtonLink href={link("/live-auction")} variant="brand" size="lg" icon={Radio} className="mt-auto">
+          {ui("joinLive")}
+        </ButtonLink>
+      </div>
+    </article>
   );
 }
 
-/** Deep indigo band with the live sale: poster, facts and the lot timeline. */
-export function LiveBand({ live }) {
+/** Full-bleed ink band: the live room now, then what's coming up. */
+export function LiveBand({ live, className = "" }) {
   const { t, ui } = useLang();
   const { link } = useConcept();
-  const { event, current, viewers, items, currentIndex } = live;
-  const host = getSeller(event.host);
+  const reminders = useEventReminders();
 
   return (
-    <section aria-labelledby="live-title" className="c-night relative overflow-hidden py-16 sm:py-20 lg:py-24">
-      <span className="c-gridlines" style={{ "--grid": "4.5rem", "--grid-mask": "radial-gradient(90% 80% at 50% 40%, black 30%, transparent 80%)" }} />
-      <Reveal className="c-container relative">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
-          <div className="lg:col-span-5">
-            <div className="mb-6 flex items-center gap-4">
-              <span className="c-eyebrow text-live">
-                <Diamond variant="live" size={8} />
-                {ui("liveNow")}
-              </span>
-              <span aria-hidden="true" className="h-px flex-1 bg-line" />
-            </div>
-            <BiHeading id="live-title" content={event.title} titleClassName="text-[1.625rem] sm:text-[2rem] lg:text-[2.25rem]" />
-            <p className="mt-4 flex items-center gap-2 text-sm font-medium text-fg-2">
-              <Mic aria-hidden="true" className="size-4 text-accent" />
-              {t(event.presenter)}
-            </p>
-            <p className="c-prose mt-4 max-w-lg">{t(COPY.liveBandText)}</p>
-            <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-line bg-line">
-              <Fact label={ui("hostedBy")}>
-                <Link href={link(`/seller/${host.code}`)} className="c-link">
-                  {t(host.name)}
-                </Link>
-              </Fact>
-              <Fact label={ui("currentLot")}>{ui("lotOf", { n: currentIndex + 1, total: items.length })}</Fact>
-              <Fact label={ui("viewers")}>
-                <span className="c-num">{formatNumber(viewers)}</span>
-              </Fact>
-              <Fact label={ui("depositAmount")}>
-                <Money value={event.depositAmount} className="c-num" />
-              </Fact>
-            </dl>
-            <ButtonLink href={link("/live-auction")} variant="gold" size="lg" arrow className="mt-8">
-              {ui("enterLiveRoom")}
-            </ButtonLink>
+    <section aria-labelledby="kb-live-band" className={cx("kb-force-dark bg-bg text-fg", className)}>
+      <div className="kb-container py-10 lg:py-12">
+        <div className="mb-5 flex items-end justify-between gap-4">
+          <div>
+            <h2 id="kb-live-band" className="flex items-center gap-2.5 kb-h2">
+              <span aria-hidden="true" className="kz-live-dot" />
+              {ui("liveAuctions")}
+            </h2>
+            <p className="mt-1 kb-sm text-fg-2">{t(COPY.liveBandSubtitle)}</p>
           </div>
-
-          <div className="lg:col-span-7">
-            <ChamferFrame size="lg" gold frameClassName="relative aspect-video bg-bg">
-              <Img image={event.stream} alt={`${ui("liveStream")}: ${t(event.title)}`} sizes="(min-width: 1024px) 55vw, 100vw" className="size-full origin-[28%_38%] scale-[1.45] object-cover" />
-              <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/25" />
-              <div className="absolute end-4 top-4 flex items-center gap-2">
-                <span className="c-badge c-badge--live">
-                  <Diamond variant="live" />
-                  {ui("live")}
-                </span>
-                <span className="flex h-[1.625rem] items-center gap-1.5 rounded-xs bg-black/55 px-2 text-xs font-semibold text-on-secondary">
-                  <Eye aria-hidden="true" className="size-3.5" />
-                  <span className="c-num">{formatNumber(viewers)}</span>
-                </span>
-              </div>
-              {current ? (
-                <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-4 text-on-secondary">
-                  <div className="min-w-0">
-                    <p className="flex items-center gap-1.5 text-xs opacity-85">
-                      <Radio aria-hidden="true" className="size-3.5" />
-                      {ui("currentLot")}
-                    </p>
-                    <p className="mt-1 line-clamp-1 font-semibold">{t(current.title)}</p>
-                  </div>
-                  <Money value={current.currentBid} className="c-num shrink-0 text-2xl font-semibold" />
-                </div>
-              ) : null}
-            </ChamferFrame>
+          <Link href={link("/live-auction")} className="hidden h-9 items-center rounded-control px-3 kb-sm font-bold text-accent hover:bg-surface sm:inline-flex">
+            {ui("enterLiveRoom")}
+          </Link>
+        </div>
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)]">
+          <LiveEventCard live={live} />
+          <div className="grid content-start gap-3">
+            <p className="kb-eyebrow text-fg-3">{t(COPY.comingUp)}</p>
+            {OTHER_EVENTS.map((event) => (
+              <EventCard key={event.slug} event={event} reminded={reminders.isOn(event)} onRemind={() => reminders.toggle(event)} />
+            ))}
           </div>
         </div>
-
-        <div className="mt-14 border-t border-line pt-8">
-          <p className="c-caps mb-6 text-fg-2">{ui("lotsInSale")}</p>
-          <LotStrip items={items} label={ui("lotsInSale")} />
-        </div>
-      </Reveal>
+      </div>
     </section>
   );
 }

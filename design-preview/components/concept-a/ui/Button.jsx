@@ -1,72 +1,117 @@
-import { Loader2 } from "lucide-react";
+"use client";
 
-const VARIANTS = {
+import Link from "next/link";
+import { LoaderCircle } from "lucide-react";
+import { cx } from "./cx";
+
+// B's action system: indigo carries every primary action, ink and outline
+// support it, gold is reserved for value moments. `data-state` lets the
+// components board force hover/active/focus without a pointer.
+const BASE =
+  "relative inline-flex select-none items-center justify-center whitespace-nowrap rounded-control font-semibold transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-out active:translate-y-px data-[state=active]:translate-y-px data-[state=focus]:outline-2 data-[state=focus]:outline-offset-2 data-[state=focus]:outline-focus disabled:cursor-not-allowed disabled:border-transparent disabled:bg-muted disabled:text-fg-3 disabled:shadow-none disabled:active:translate-y-0";
+
+export const BUTTON_VARIANTS = {
   primary:
-    "bg-secondary text-on-secondary hover:bg-primary hover:text-on-primary active:translate-y-px disabled:bg-surface-2 disabled:text-fg-3",
+    "bg-primary text-on-primary shadow-card hover:bg-primary-hover data-[state=hover]:bg-primary-hover data-[state=active]:bg-primary-hover",
+  soft: "bg-primary/10 text-primary hover:bg-primary/15 data-[state=hover]:bg-primary/15 data-[state=active]:bg-primary/15",
   outline:
-    "border border-fg/80 text-fg hover:bg-fg hover:text-bg active:translate-y-px disabled:border-line disabled:text-fg-3 disabled:bg-transparent",
-  quiet: "border border-line bg-surface text-fg hover:border-fg active:translate-y-px disabled:text-fg-3",
-  ghost: "text-fg hover:bg-surface-2 disabled:text-fg-3",
-  stage: "bg-[var(--stage-fg)] text-[var(--stage)] hover:bg-white active:translate-y-px disabled:opacity-50",
-  brass: "bg-accent text-on-accent hover:brightness-105 active:translate-y-px disabled:opacity-50",
+    "border border-line-strong bg-surface text-fg hover:border-fg-3 hover:bg-surface-2 data-[state=hover]:border-fg-3 data-[state=hover]:bg-surface-2 data-[state=active]:bg-surface-2",
+  "outline-primary":
+    "border border-primary/40 bg-surface text-primary hover:border-primary hover:bg-primary/5 data-[state=hover]:border-primary data-[state=hover]:bg-primary/5",
+  ghost: "text-fg-2 hover:bg-surface-2 hover:text-fg data-[state=hover]:bg-surface-2 data-[state=hover]:text-fg",
+  ink: "bg-secondary text-on-secondary hover:opacity-90 data-[state=hover]:opacity-90",
+  accent: "bg-accent text-on-accent hover:brightness-95 data-[state=hover]:brightness-95",
+  brand: "kb-btn-on-brand shadow-card",
+  "on-dark": "border border-white/35 text-white hover:border-white/60 hover:bg-white/10",
 };
 
-const FORCED = {
-  hover: {
-    primary: "!bg-primary !text-on-primary",
-    outline: "!bg-fg !text-bg",
-    quiet: "!border-fg",
-    ghost: "!bg-surface-2",
-    stage: "!bg-white",
-    brass: "brightness-105",
-  },
-  active: { primary: "translate-y-px !bg-primary", outline: "translate-y-px !bg-fg !text-bg", quiet: "translate-y-px", ghost: "!bg-surface-2", stage: "translate-y-px", brass: "translate-y-px" },
-  focus: { all: "outline-2 outline-offset-2 outline-focus outline" },
+export const BUTTON_SIZES = {
+  xs: "h-7 gap-1 px-2.5 kb-xs",
+  sm: "h-9 gap-1.5 px-3 kb-sm",
+  md: "h-10 gap-2 px-4 kb-md",
+  lg: "h-12 gap-2 px-5 kb-lg",
 };
 
-const SIZES = {
-  sm: "h-9 px-4 text-[11px] rtl:text-[13px]",
-  md: "h-11 px-6 text-[12px] rtl:text-sm",
-  lg: "h-[52px] px-8 text-[13px] rtl:text-[15px]",
-};
+const ICON_SIZES = { xs: "size-3.5", sm: "size-4", md: "size-4", lg: "size-5" };
 
-/** Concept A button: rectangular, small-caps label in English, calm hover. */
-export function Button({
-  as: Tag = "button",
-  variant = "primary",
-  size = "md",
-  className = "",
-  loading = false,
-  forceState,
-  children,
-  type,
-  ...props
-}) {
-  const forced = forceState ? FORCED[forceState]?.[variant] || FORCED[forceState]?.all || "" : "";
+export function buttonClass({ variant = "primary", size = "md", block = false, className = "" } = {}) {
+  return cx(BASE, BUTTON_VARIANTS[variant], BUTTON_SIZES[size], block && "w-full", className);
+}
+
+function Content({ icon: Icon, iconEnd: IconEnd, loading, size, children }) {
+  const iconClass = cx("shrink-0", ICON_SIZES[size]);
   return (
-    <Tag
-      type={Tag === "button" ? type || "button" : type}
-      className={`inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-control font-semibold uppercase tracking-[0.14em] transition-[background-color,color,border-color,transform,filter] duration-200 rtl:normal-case rtl:tracking-normal disabled:cursor-not-allowed ${VARIANTS[variant]} ${SIZES[size]} ${forced} ${className}`}
-      aria-busy={loading || undefined}
-      {...props}
-    >
-      {loading ? <Loader2 aria-hidden="true" className="size-4 animate-spin" /> : null}
+    <>
+      {loading ? (
+        <LoaderCircle aria-hidden="true" className={cx(iconClass, "animate-spin")} />
+      ) : Icon ? (
+        <Icon aria-hidden="true" className={iconClass} />
+      ) : null}
       {children}
-    </Tag>
+      {IconEnd ? <IconEnd aria-hidden="true" className={iconClass} /> : null}
+    </>
   );
 }
 
-export function IconButton({ label, className = "", children, pressed, ...props }) {
+export function Button({
+  variant = "primary",
+  size = "md",
+  block = false,
+  loading = false,
+  icon,
+  iconEnd,
+  className = "",
+  type = "button",
+  children,
+  onClick,
+  ...props
+}) {
+  return (
+    <button
+      type={type}
+      aria-busy={loading || undefined}
+      aria-disabled={loading || undefined}
+      onClick={loading ? undefined : onClick}
+      className={buttonClass({ variant, size, block, className: cx(loading && "cursor-progress", className) })}
+      {...props}
+    >
+      <Content icon={icon} iconEnd={iconEnd} loading={loading} size={size}>
+        {children}
+      </Content>
+    </button>
+  );
+}
+
+export function ButtonLink({ href, variant = "primary", size = "md", block = false, icon, iconEnd, className = "", children, ...props }) {
+  return (
+    <Link href={href} className={buttonClass({ variant, size, block, className })} {...props}>
+      <Content icon={icon} iconEnd={iconEnd} size={size}>
+        {children}
+      </Content>
+    </Link>
+  );
+}
+
+/** Square icon-only button (always pass an aria-label). */
+export function IconButton({ icon: Icon, label, className = "", size = "md", variant = "ghost", badge, ...props }) {
+  const dims = { sm: "size-9", md: "size-10", lg: "size-11" }[size];
   return (
     <button
       type="button"
       aria-label={label}
       title={label}
-      aria-pressed={pressed}
-      className={`inline-grid size-11 shrink-0 place-items-center rounded-full text-fg transition-colors hover:bg-surface-2 ${className}`}
+      className={cx(
+        "relative inline-grid shrink-0 place-items-center rounded-control transition-colors duration-150",
+        variant === "ghost" && "text-fg-2 hover:bg-surface-2 hover:text-fg",
+        variant === "outline" && "border border-line bg-surface text-fg-2 hover:border-line-strong hover:text-fg",
+        variant === "glass" && "bg-surface/90 text-fg shadow-card backdrop-blur hover:bg-surface",
+        dims,
+        className,
+      )}
       {...props}
     >
-      {children}
+      <Icon aria-hidden="true" className="size-5" strokeWidth={1.75} />
+      {badge}
     </button>
   );
 }

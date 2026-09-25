@@ -1,94 +1,142 @@
 "use client";
 
-import { Bell, Bookmark, ChevronDown, Gavel, LogOut, Package } from "lucide-react";
+import { useCallback, useRef, useState } from "react";
+import { BadgeCheck, ChevronDown, UserRound } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
-import { useStore } from "@/components/shared/providers/PreviewStore";
+import { Money } from "@/components/shared/ui/Money";
+import { useDismiss } from "@/components/shared/ui/hooks";
 import { DEMO_USER } from "@/data/site";
-import { Popover } from "../ui/Popover";
-import { useCopy } from "../lib/useCopy";
+import { cx } from "../ui/cx";
+import { COPY } from "../copy";
+import { useChrome } from "./ChromeContext";
+import { useAccountActions, useFirstName } from "./useAccountActions";
 
-export function UserInitials({ className = "" }) {
-  const { t } = useLang();
+/** Signed-in identity block used at the top of account menus. */
+export function AccountSummary({ className = "" }) {
+  const { t, ui } = useLang();
   return (
-    <span aria-hidden="true" className={`grid shrink-0 place-items-center rounded-full bg-primary/20 font-semibold d-ink ring-1 ring-inset ring-primary/40 ${className}`}>
-      {t(DEMO_USER.initials)}
-    </span>
+    <div className={cx("flex items-center gap-3", className)}>
+      <span aria-hidden="true" className="grid size-11 shrink-0 place-items-center rounded-full bg-primary kb-md font-extrabold text-on-primary">
+        {t(DEMO_USER.initials)}
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="truncate kb-md font-bold text-fg">{t(DEMO_USER.name)}</p>
+        <p className="flex items-center gap-1 kb-xs font-semibold text-success">
+          <BadgeCheck aria-hidden="true" className="size-3.5" />
+          {t(COPY.buyerAccount)}
+        </p>
+      </div>
+      <div className="text-end">
+        <p className="kb-2xs text-fg-3">{ui("wallet")}</p>
+        <Money value={DEMO_USER.walletBalance} className="kb-sm font-extrabold text-fg" />
+      </div>
+    </div>
   );
 }
 
-/** Account items respond with short, informative toasts in the preview. */
-export function useAccountItems() {
-  const { ui } = useLang();
-  const { toast, watched } = useStore();
-  const c = useCopy();
-  return [
-    { key: "bids", icon: Gavel, label: ui("myBids"), run: () => toast({ tone: "info", title: ui("myBids"), description: c("myBidsToast") }) },
-    { key: "watch", icon: Bookmark, label: ui("watchlist"), count: watched.size, run: () => toast({ tone: "info", title: ui("watchlist"), description: c("watchlistToast", { n: watched.size }) }) },
-    { key: "orders", icon: Package, label: ui("orders"), run: () => toast({ tone: "info", title: ui("orders"), description: c("ordersToast") }) },
-    { key: "alerts", icon: Bell, label: ui("notifications"), run: () => toast({ tone: "info", title: ui("notifications"), description: c("notificationsToast") }) },
-  ];
-}
+/** Desktop "Hello, Faisal / My account ▾" button with its dropdown menu. */
+export function AccountMenu() {
+  const { t, ui } = useLang();
+  const { signedIn, open: openPanel } = useChrome();
+  const firstName = useFirstName();
+  const actions = useAccountActions();
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  const triggerRef = useRef(null);
+  const close = useCallback(() => setOpen(false), []);
+  useDismiss(open, close, ref);
 
-export function AccountMenu({ className = "" }) {
-  const { t } = useLang();
-  const { toast } = useStore();
-  const c = useCopy();
-  const items = useAccountItems();
+  const focusItem = (index) => {
+    const items = ref.current?.querySelectorAll('[role="menuitem"]');
+    if (!items?.length) return;
+    items[(index + items.length) % items.length].focus();
+  };
+
+  const onMenuKey = (event) => {
+    const items = [...(ref.current?.querySelectorAll('[role="menuitem"]') || [])];
+    const current = items.indexOf(document.activeElement);
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      focusItem(current + 1);
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      focusItem(current - 1);
+    } else if (event.key === "Escape") {
+      event.preventDefault();
+      setOpen(false);
+      triggerRef.current?.focus();
+    } else if (event.key === "Tab") {
+      setOpen(false);
+    }
+  };
+
+  if (!signedIn) {
+    return (
+      <button
+        type="button"
+        onClick={() => openPanel("signin")}
+        className="flex h-11 items-center gap-2 rounded-control px-2 text-start transition-colors hover:bg-surface-2"
+      >
+        <UserRound aria-hidden="true" className="size-5 text-fg-2" />
+        <span className="flex flex-col leading-tight">
+          <span className="kb-2xs text-fg-3">{t(COPY.helloGuest)}</span>
+          <span className="kb-sm font-bold text-fg">{ui("signIn")}</span>
+        </span>
+      </button>
+    );
+  }
 
   return (
-    <Popover
-      className={className}
-      panelClassName="w-[260px] p-1.5"
-      button={(props) => (
-        <button type="button" {...props} aria-label={c("accountMenu")} className="flex h-10 items-center gap-1 rounded-full p-0.5 pe-1.5 transition-colors hover:bg-surface-2">
-          <UserInitials className="size-8 text-xs" />
-          <ChevronDown aria-hidden="true" className="size-3.5 text-fg-3" />
-        </button>
-      )}
-    >
-      {({ close }) => (
-        <div>
-          <div className="flex items-center gap-3 px-2.5 pb-3 pt-2">
-            <UserInitials className="size-10 text-sm" />
-            <div className="min-w-0">
-              <p className="truncate text-sm font-semibold text-fg">{t(DEMO_USER.name)}</p>
-              <p className="text-xs text-fg-3">{c("buyerAccount")}</p>
-            </div>
-          </div>
-          <div className="d-hairline mb-1" />
-          <ul>
-            {items.map((item) => (
-              <li key={item.key}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    close();
-                    item.run();
-                  }}
-                  className="flex h-10 w-full items-center gap-3 rounded-lg px-2.5 text-sm text-fg-2 transition-colors hover:bg-surface-2 hover:text-fg"
-                >
-                  <item.icon aria-hidden="true" className="size-4" />
-                  <span className="flex-1 text-start">{item.label}</span>
-                  {item.count ? <span className="d-num text-xs text-fg-3">{item.count}</span> : null}
-                </button>
-              </li>
-            ))}
-            <li>
+    <div ref={ref} className="relative">
+      <button
+        ref={triggerRef}
+        type="button"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => {
+          setOpen((v) => !v);
+          window.requestAnimationFrame(() => focusItem(0));
+        }}
+        className="flex h-11 items-center gap-2 rounded-control px-1.5 text-start transition-colors hover:bg-surface-2"
+      >
+        <span aria-hidden="true" className="grid size-8 place-items-center rounded-full bg-primary/10 kb-xs font-extrabold text-primary">
+          {t(DEMO_USER.initials)}
+        </span>
+        <span className="hidden flex-col leading-tight xl:flex">
+          <span className="kb-2xs text-fg-3">{t(COPY.hello, { name: firstName })}</span>
+          <span className="kb-sm font-bold text-fg">{ui("account")}</span>
+        </span>
+        <span className="sr-only xl:hidden">{ui("account")}</span>
+        <ChevronDown aria-hidden="true" className={cx("size-4 text-fg-3 transition-transform", open && "rotate-180")} />
+      </button>
+      {open ? (
+        <div className="kb-focus-reset kz-fade-up absolute end-0 top-[calc(100%+8px)] z-[60] w-80 rounded-xl border border-line bg-elevated p-2 shadow-overlay">
+          <AccountSummary className="border-b border-line p-2 pb-3" />
+          <div role="menu" aria-label={ui("account")} onKeyDown={onMenuKey} className="pt-1.5">
+            {actions.map((action) => (
               <button
+                key={action.key}
                 type="button"
+                role="menuitem"
+                tabIndex={-1}
                 onClick={() => {
-                  close();
-                  toast({ tone: "neutral", title: c("signOut"), description: c("signedOutToast") });
+                  setOpen(false);
+                  action.onSelect();
                 }}
-                className="flex h-10 w-full items-center gap-3 rounded-lg px-2.5 text-sm text-fg-2 transition-colors hover:bg-surface-2 hover:text-fg"
+                className={cx(
+                  "flex h-10 w-full items-center gap-3 rounded-lg px-2.5 text-start kb-sm font-medium text-fg outline-none transition-colors hover:bg-surface-2 focus-visible:bg-surface-2",
+                  action.divider && "mt-1 border-t border-line pt-1",
+                )}
               >
-                <LogOut aria-hidden="true" className="flip-rtl size-4" />
-                <span className="flex-1 text-start">{c("signOut")}</span>
+                <action.icon aria-hidden="true" className="size-4 text-fg-3" />
+                <span className="flex-1">{action.label}</span>
+                {action.count ? <span className="rounded-full bg-surface-2 px-2 kb-2xs font-bold text-fg-2 tabular">{action.count}</span> : null}
+                {action.money != null ? <Money value={action.money} className="kb-xs font-bold text-fg-2" /> : null}
               </button>
-            </li>
-          </ul>
+            ))}
+          </div>
         </div>
-      )}
-    </Popover>
+      ) : null}
+    </div>
   );
 }

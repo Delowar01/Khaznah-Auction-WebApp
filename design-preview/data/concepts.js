@@ -1,30 +1,15 @@
-// The four design directions presented to the client.
+// The four design directions presented to the client (Round 2).
+//
+// All four are serious, commercially credible marketplace directions in the
+// same family. Option 1 (Modern Commerce) is the direction the client kept
+// from the first round; Options 2–4 are new alternatives created in response
+// to that review. The `id` is the internal route slot; `letter` is the
+// client-facing option number. Order here is the order shown in the selector.
 
 export const CONCEPTS = [
   {
-    id: "a",
-    letter: "A",
-    name: { en: "Premium Marketplace", ar: "السوق الفاخر" },
-    oneLiner: {
-      en: "Refined, spacious and editorial. Designed to give Khazna the character of a premium marketplace and a modern auction house.",
-      ar: "راقٍ وفسيح بطابع تحريري. صُمّم ليمنح خزنة طابع السوق الراقي ودار المزادات العصرية.",
-    },
-    philosophy: {
-      en: "Every lot is presented like an entry in an auction catalogue: generous space, elegant headlines and clear lot details, so buyers feel confident about what they are bidding on.",
-      ar: "يُعرض كل منتج كأنه مدخل في كتالوج مزادات: مساحات واسعة وعناوين أنيقة وتفاصيل واضحة، ليشعر المشتري بالثقة فيما يزايد عليه.",
-    },
-    traits: [
-      { en: "Elegant headlines with clean, easy-to-read details", ar: "عناوين أنيقة وتفاصيل واضحة سهلة القراءة" },
-      { en: "Warm ivory, deep navy and antique brass", ar: "عاجي دافئ وكحلي عميق ونحاسي عتيق" },
-      { en: "Catalogue-style lot cards and placards", ar: "بطاقات منتجات بأسلوب كتالوجات المزادات" },
-      { en: "A calm pace, with fewer and larger items per screen", ar: "إيقاع هادئ مع منتجات أقل وأكبر في كل شاشة" },
-    ],
-    swatches: ["#F6F2EA", "#16192A", "#2B377A", "#B08A3E"],
-    defaultTheme: "light",
-  },
-  {
     id: "b",
-    letter: "B",
+    letter: "1",
     name: { en: "Modern Commerce", ar: "التجارة الحديثة" },
     oneLiner: {
       en: "Search-led, practical and focused on conversion. Designed for customers who want to find products, categories and auctions quickly.",
@@ -44,46 +29,67 @@ export const CONCEPTS = [
     defaultTheme: "light",
   },
   {
-    id: "c",
-    letter: "C",
-    name: { en: "Saudi Contemporary", ar: "سعودي معاصر" },
+    id: "a",
+    letter: "2",
+    name: { en: "Premium Commerce", ar: "التجارة الفاخرة" },
     oneLiner: {
-      en: "A modern Saudi visual direction with strong bilingual presentation and a distinctive local identity.",
-      ar: "اتجاه بصري سعودي معاصر بحضور قوي للغتين وهوية محلية مميزة.",
+      en: "The same practical marketplace, elevated — a refined, high-end shopping experience.",
+      ar: "السوق العملي نفسه، بلمسة أرقى — تجربة تسوّق راقية ومصقولة.",
     },
     philosophy: {
-      en: "Designed in Arabic first and carefully mirrored into English. Architectural lines, warm limestone tones and the diamond from the Khazna logo give a local character that feels contemporary rather than decorative.",
-      ar: "صُمّم بالعربية أولاً ثم عُكس إلى الإنجليزية بعناية. خطوط معمارية ودرجات حجرية دافئة والمعيّن المستوحى من شعار خزنة تصنع طابعاً محلياً معاصراً بعيداً عن الزخرفة.",
+      en: "Keeps Modern Commerce's strong search, filtering and browsing, then raises the finish: elegant serif headlines, generous space, softer surfaces and larger, more polished product cards. It should feel like a premium department store online, without losing everyday marketplace usability.",
+      ar: "يحافظ على قوة البحث والتصفية والتصفّح في التجارة الحديثة، ثم يرتقي بالإخراج: عناوين أنيقة بحروف مذيّلة، ومساحات سخيّة، وأسطح أنعم، وبطاقات منتجات أكبر وأكثر صقلاً. يُفترض أن يشعرك بمتجر راقٍ على الإنترنت دون التفريط في سهولة استخدام السوق اليومية.",
     },
     traits: [
-      { en: "Arabic-first layouts in the Khazna brand fonts", ar: "تصاميم تبدأ بالعربية بخطوط هوية خزنة" },
-      { en: "Limestone, night indigo and saffron gold", ar: "حجر جيري ونيلي ليلي وذهبي زعفراني" },
-      { en: "Diamond and diagonal details from the logo", ar: "تفاصيل المعيّن والخط المائل المستوحاة من الشعار" },
-      { en: "Headings in both languages, and Hijri dates", ar: "عناوين باللغتين وتواريخ هجرية" },
+      { en: "Elegant serif headlines with a clean, modern body", ar: "عناوين أنيقة بحروف مذيّلة مع نص حديث واضح" },
+      { en: "Warm, soft surfaces with gentle elevation", ar: "أسطح دافئة ناعمة مع ارتفاعات هادئة" },
+      { en: "Larger, refined product and lot cards", ar: "بطاقات منتجات ومنتجات مزاد أكبر وأكثر رقياً" },
+      { en: "Calmer spacing with strong product imagery", ar: "تباعد أهدأ مع صور منتجات قوية" },
     ],
-    swatches: ["#F3EEE6", "#1B2150", "#3D4D9B", "#D8A535"],
+    swatches: ["#F6F3EC", "#1E1B17", "#8A6D3B", "#2E3A66"],
+    defaultTheme: "light",
+  },
+  {
+    id: "c",
+    letter: "3",
+    name: { en: "Saudi Modern Commerce", ar: "التجارة السعودية الحديثة" },
+    oneLiner: {
+      en: "A confident, Arabic-first take on the same marketplace, built for the Saudi market.",
+      ar: "رؤية واثقة تبدأ بالعربية للسوق نفسه، مصمّمة للسوق السعودي.",
+    },
+    philosophy: {
+      en: "Designed in Arabic first and mirrored into English, with a modern local character: clear bilingual headings, a contemporary Saudi palette and strong seller-credibility cues. It keeps Modern Commerce's browsing and search while feeling distinctly local and current — modern, not traditional or decorative.",
+      ar: "صُمّم بالعربية أولاً ثم عُكس إلى الإنجليزية، بطابع محلي معاصر: عناوين ثنائية اللغة واضحة، ولوحة ألوان سعودية معاصرة، وإشارات قوية لمصداقية البائع. يحافظ على تصفّح وبحث التجارة الحديثة مع حضور محلي واضح ومعاصر — حديث لا تقليدي ولا زخرفي.",
+    },
+    traits: [
+      { en: "Arabic-first layouts with clear bilingual headings", ar: "تصاميم تبدأ بالعربية مع عناوين ثنائية اللغة واضحة" },
+      { en: "A contemporary local palette and tone", ar: "لوحة ألوان ونبرة محلية معاصرة" },
+      { en: "Strong seller and warehouse credibility", ar: "مصداقية قوية للبائع والمستودع" },
+      { en: "Modern, non-decorative visual character", ar: "طابع بصري حديث بعيد عن الزخرفة" },
+    ],
+    swatches: ["#F3F1EA", "#0E3B2E", "#1F6F5C", "#C79A3B"],
     defaultTheme: "light",
   },
   {
     id: "d",
-    letter: "D",
-    name: { en: "Digital / Auction Marketplace", ar: "سوق المزادات الرقمي" },
+    letter: "4",
+    name: { en: "Auction-Forward Commerce", ar: "تجارة المزادات" },
     oneLiner: {
-      en: "A dynamic, technology-led direction with a stronger emphasis on auctions, live activity and bidding.",
-      ar: "اتجاه ديناميكي بطابع تقني يركّز أكثر على المزادات والنشاط المباشر والمزايدة.",
+      en: "The same marketplace, tuned for bidding — auctions, live sales and countdowns take the lead.",
+      ar: "السوق نفسه مهيّأ للمزايدة — المزادات والبث المباشر والعد التنازلي في المقدمة.",
     },
     philosophy: {
-      en: "Auctions are about time and movement. Price charts, countdown rings and a live activity feed put buyers in the middle of the action, with the calm, polished finish of a modern technology product.",
-      ar: "المزاد وقت وحركة. رسوم بيانية للأسعار وحلقات عدّ تنازلي وسجل نشاط مباشر تضع المشتري في قلب الحدث، بلمسة هادئة ومصقولة لمنتج تقني حديث.",
+      en: "Keeps Modern Commerce's clarity and conversion focus, then puts auctions front and centre: countdown-forward cards, prominent live and ending-soon rails, clear bid activity and strong status for live, ending soon, sold and upcoming. Energetic and time-aware, but still calm and commercially trustworthy — never flashy.",
+      ar: "يحافظ على وضوح التجارة الحديثة وتركيزها على إتمام الشراء، ثم يضع المزادات في الصدارة: بطاقات يتصدّرها العد التنازلي، وأشرطة بارزة للمزادات المباشرة والقريبة من الإغلاق، ونشاط مزايدة واضح، وحالات قوية للمباشر والقريب من الإغلاق والمُباع والقادم. حيويّ وواعٍ بالوقت، لكنه هادئ وموثوق تجارياً — دون مبالغة.",
     },
     traits: [
-      { en: "Dark appearance by default, with a light option", ar: "مظهر داكن افتراضياً مع خيار فاتح" },
-      { en: "Price charts, countdowns and live bid activity", ar: "رسوم للأسعار وعدّ تنازلي ونشاط مزايدات مباشر" },
-      { en: "Clear, evenly spaced figures for prices and times", ar: "أرقام واضحة ومتساوية العرض للأسعار والأوقات" },
-      { en: "A board view of auctions closing soon", ar: "لوحة للمزادات القريبة من الإغلاق" },
+      { en: "Countdown-forward auction cards", ar: "بطاقات مزاد يتصدّرها العد التنازلي" },
+      { en: "Prominent live and ending-soon emphasis", ar: "إبراز واضح للمزادات المباشرة والقريبة من الإغلاق" },
+      { en: "Clear bid activity and urgency cues", ar: "نشاط مزايدة واضح وإشارات إلحاح" },
+      { en: "Confident display type with tabular figures", ar: "خط عناوين واثق مع أرقام متساوية العرض" },
     ],
-    swatches: ["#080C1A", "#141A30", "#5B6CE0", "#E0B04A"],
-    defaultTheme: "dark",
+    swatches: ["#F5F6F8", "#12141A", "#2E3A66", "#E4562A"],
+    defaultTheme: "light",
   },
 ];
 

@@ -1,65 +1,113 @@
 "use client";
 
-import Link from "next/link";
-import { useLang } from "@/components/shared/providers/LangProvider";
+import { Gavel } from "lucide-react";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
-import { useRemaining } from "@/lib/clock";
-import { auctionPhase, detailPath, getCategory } from "@/lib/catalog";
+import { useLang } from "@/components/shared/providers/LangProvider";
+import { useStore } from "@/components/shared/providers/PreviewStore";
 import { Money } from "@/components/shared/ui/Money";
-import { CardImage } from "./CardImage";
-import { StatusLabel } from "../ui/Status";
-import { CountdownText } from "../ui/Countdown";
-import { WatchButton } from "../ui/Actions";
+import { detailPath } from "@/lib/catalog";
+import { Badge } from "../ui/Badge";
+import { buttonClass } from "../ui/Button";
+import { CountdownPill, useLotClock } from "../ui/Countdown";
+import { GradeChip } from "../ui/GradeChip";
+import { Plate } from "../ui/Plate";
+import { WatchButton } from "../ui/WatchButton";
+import { cx } from "../ui/cx";
+import { COPY } from "../copy";
+import { CardShell, PriceLabel, SellerLine, SoldOverlay, TitleLink } from "./CardParts";
+import { useLotMeta } from "./useLotMeta";
 
-/** Catalogue-entry card for timed auctions (live, ending soon, upcoming, sold). */
-export function AuctionCard({ product, priority = false, ratio, className = "", forceWatched }) {
-  const { t, ui, pl } = useLang();
+function StatusBadge({ phase, isNew, both }) {
+  const { ui } = useLang();
+  if (phase === "sold") return <Badge tone="tag-ink">{ui("sold")}</Badge>;
+  if (phase === "ended") return <Badge tone="tag-muted">{ui("ended")}</Badge>;
+  if (phase === "upcoming") return <Badge tone="tag-indigo">{ui("upcoming")}</Badge>;
+  if (phase === "critical") return <Badge tone="tag-live" dot>{ui("closingNow")}</Badge>;
+  if (phase === "urgent") return <Badge tone="tag-warn">{ui("endingSoon")}</Badge>;
+  if (isNew) return <Badge tone="tag-new">{ui("newListing")}</Badge>;
+  return (
+    <Badge tone="tag-indigo" icon={Gavel}>
+      {ui("auction")}
+      {both ? <span className="@max-[14rem]:hidden">+ {ui("buyNow")}</span> : null}
+    </Badge>
+  );
+}
+
+/** Timed-auction card: live price, bid count, urgency-coloured countdown, one-tap bid. */
+export function AuctionCard({ product, sizes = "(min-width: 1280px) 20vw, (min-width: 768px) 30vw, 46vw", priority = false, className = "" }) {
+  const { ui, t, pl } = useLang();
   const { link } = useConcept();
-  const upcoming = product.status === "scheduled";
-  const remaining = useRemaining(upcoming ? product.startsIn : product.endsIn);
-  const phase = auctionPhase(product, remaining);
+  const { isWatched, toggleWatch, toast } = useStore();
+  const meta = useLotMeta(product);
+  const { remaining, phase } = useLotClock(product);
+  const closed = phase === "sold" || phase === "ended";
+  const upcoming = phase === "upcoming";
   const href = link(detailPath(product));
-  const category = getCategory(product.category);
-  const statusKey = phase === "critical" ? "critical" : phase === "urgent" ? "urgent" : phase;
-  const done = phase === "sold" || phase === "ended";
+
+  const priceLabel = phase === "sold" ? ui("soldFor") : closed ? ui("winningBid") : upcoming || !product.bidCount ? ui("startingBid") : ui("currentBid");
+
+  const remind = (event) => {
+    event.preventDefault();
+    const now = toggleWatch(product.slug);
+    toast({ tone: now ? "success" : "neutral", title: ui(now ? "addedToWatchlist" : "removedFromWatchlist"), description: meta.title });
+  };
 
   return (
-    <article className={`group relative ${className}`}>
-      <Link href={href} className="block" tabIndex={-1} aria-hidden="true">
-        <CardImage image={product.images[0]} alt="" priority={priority} ratio={ratio}>
-          <div className="absolute start-3 top-3 rounded-full bg-surface/92 px-3 py-1.5 backdrop-blur">
-            <StatusLabel status={statusKey} />
+    <CardShell className={className}>
+      <div className="relative">
+        <Plate
+          image={meta.image}
+          alt={meta.title}
+          sizes={sizes}
+          priority={priority}
+          className="aspect-square"
+          imgClassName={cx("transition-transform duration-300 ease-out group-hover/card:scale-[1.045]", closed && "opacity-80 grayscale-[55%]")}
+        />
+        <div className="pointer-events-none absolute inset-x-2 top-2 z-[3] flex items-start justify-between gap-2">
+          <div className="flex flex-wrap gap-1">
+            <StatusBadge phase={phase} isNew={meta.isNew} both={product.saleType === "both"} />
           </div>
-          {done ? <div className="absolute inset-0 bg-bg/35" aria-hidden="true" /> : null}
-        </CardImage>
-      </Link>
-      <WatchButton slug={product.slug} className="absolute end-3 top-3" forcePressed={forceWatched} />
-      <div className="pt-4">
-        <p className="a-eyebrow !text-fg-3">
-          {ui("lotNumber")} {product.lot.replace("KZ-", "")} · {t(category?.name)}
-        </p>
-        <h3 className="a-serif mt-2 min-h-[2.36em] text-[21px] leading-[1.18] text-fg rtl:min-h-[2.9em] rtl:leading-[1.45]">
-          <Link href={href} className="a-underline-hover line-clamp-2 outline-none focus-visible:underline">
-            {t(product.title)}
-          </Link>
+          <WatchButton product={product} className="pointer-events-auto" />
+        </div>
+        {phase === "sold" ? <SoldOverlay amount={product.currentBid} /> : null}
+      </div>
+
+      <div className="flex flex-1 flex-col gap-2 p-3">
+        <SellerLine seller={meta.seller} name={meta.sellerName} />
+        <h3 className="min-h-[2lh] kb-md font-semibold">
+          <TitleLink href={href}>{meta.title}</TitleLink>
         </h3>
-        <div className="mt-4 flex items-end justify-between gap-3 border-t border-line pt-3">
-          <div className="min-w-0">
-            <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-fg-3 rtl:text-xs rtl:normal-case rtl:tracking-normal">
-              {phase === "sold" ? ui("soldFor") : upcoming ? ui("startingBid") : ui("currentBid")}
-            </p>
-            <p className="a-serif mt-1 text-[26px] leading-none text-fg">
-              <Money value={product.currentBid} symbolClassName="text-[0.8em]" />
-            </p>
-          </div>
-          <div className="text-end text-[13px] leading-tight">
-            <p className="text-fg-3">{upcoming ? ui("startsIn") : done ? pl("bids", product.bidCount) : pl("bids", product.bidCount)}</p>
-            <p className="mt-1 font-semibold text-fg">
-              {done ? ui(phase === "sold" ? "sold" : "ended") : <CountdownText seconds={remaining} />}
-            </p>
+        <div className="flex min-w-0 flex-wrap items-center gap-1.5">
+          <GradeChip grade={product.grade} />
+          <span className="truncate kb-xs text-fg-3">{meta.typeLine}</span>
+        </div>
+
+        <div className="mt-auto pt-1">
+          <PriceLabel>{priceLabel}</PriceLabel>
+          <div className="flex items-baseline justify-between gap-2">
+            <Money value={product.currentBid} className="kb-price text-fg" symbolClassName="text-[0.8em]" />
+            {!upcoming ? <span className="shrink-0 kb-xs text-fg-3">{pl("bids", product.bidCount)}</span> : null}
           </div>
         </div>
+
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-line pt-2.5">
+          <CountdownPill phase={phase} remaining={remaining} prefix={upcoming ? ui("startsIn") : undefined} />
+          {upcoming ? (
+            <button
+              type="button"
+              onClick={remind}
+              aria-pressed={isWatched(product.slug)}
+              className={buttonClass({ variant: "soft", size: "xs", className: "relative z-10 @max-[13rem]:w-full" })}
+            >
+              {isWatched(product.slug) ? ui("watching") : ui("remindMe")}
+            </button>
+          ) : (
+            <span aria-hidden="true" className={buttonClass({ variant: closed ? "outline" : "primary", size: "xs", className: "@max-[13rem]:w-full" })}>
+              {closed ? t(COPY.viewResult) : ui("bidNow")}
+            </span>
+          )}
+        </div>
       </div>
-    </article>
+    </CardShell>
   );
 }

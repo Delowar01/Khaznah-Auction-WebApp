@@ -1,91 +1,59 @@
 "use client";
 
-import Link from "next/link";
-import { Menu, Search, ShoppingCart } from "lucide-react";
-import { Logo } from "@/components/shared/brand/Logo";
-import { useConcept } from "@/components/shared/providers/ConceptProvider";
+import { Menu } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
-import { useStore } from "@/components/shared/providers/PreviewStore";
-import { Container } from "../ui/Layout";
-import { useCopy } from "../lib/useCopy";
+import { cx } from "../ui/cx";
+import { CategoryNav } from "./CategoryNav";
+import { LogoLink } from "./ChromeBits";
 import { useChrome } from "./ChromeContext";
-import { SearchTrigger } from "./SearchTrigger";
-import { LivePill } from "./LivePill";
-import { WalletMenu } from "./WalletMenu";
-import { AccountMenu } from "./AccountMenu";
-import { SectionTabs } from "./SectionTabs";
-import { MarketStatus } from "./MarketStatus";
+import { HeaderActions } from "./HeaderActions";
+import { SearchBar } from "./SearchBar";
 
-function IconButton({ label, onClick, children, className = "", ...props }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label={label}
-      className={`relative grid size-11 shrink-0 place-items-center rounded-control text-fg-2 transition-colors hover:bg-surface-2 hover:text-fg ${className}`}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-}
-
-function CartButton() {
-  const { cartCount } = useStore();
-  const { openCart } = useChrome();
-  const c = useCopy();
-  return (
-    <IconButton label={c("cartButton", { n: cartCount })} onClick={openCart}>
-      <ShoppingCart aria-hidden="true" className="size-5" />
-      {cartCount > 0 ? (
-        <span className="d-num absolute end-1 top-1 grid h-[18px] min-w-[18px] place-items-center rounded-full bg-accent px-1 text-[10.5px] font-semibold text-on-accent kz-fade-up">
-          {cartCount}
-        </span>
-      ) : null}
-    </IconButton>
-  );
-}
-
+/**
+ * Sticky header. One search instance lives in a CSS grid: inline in the
+ * main bar on desktop, its own full-width row on phones and tablets.
+ * Scrolling down tucks the secondary row (mobile search / category nav)
+ * under the main bar with a transform, so the layout never jumps.
+ */
 export function Header() {
-  const { link } = useConcept();
-  const { ui, isRTL } = useLang();
-  const { openMenu, openPalette } = useChrome();
-  const c = useCopy();
+  const { ui } = useLang();
+  const { collapsed, open, panel } = useChrome();
 
   return (
-    <header className="d-glass sticky top-pbar z-40 border-b border-line">
-      <Container className="flex h-[var(--d-header-h)] items-center gap-2 lg:gap-4">
-        <IconButton label={ui("openMenu")} onClick={openMenu} className="-ms-2 lg:hidden" data-testid="mobile-menu-button">
-          <Menu aria-hidden="true" className="size-5" />
-        </IconButton>
-
-        <Link href={link("/")} aria-label={c("homeLink")} className="flex shrink-0 items-center gap-2.5 rounded-md py-1">
-          <Logo variant="mark" decorative className="h-8 w-auto" />
-          <Logo variant={isRTL ? "wordmark-ar" : "wordmark-en"} decorative className={isRTL ? "h-5 w-auto" : "h-[13px] w-auto"} />
-        </Link>
-
-        <div className="hidden min-w-0 flex-1 justify-center px-2 md:flex">
-          <SearchTrigger />
+    <header className="pointer-events-none sticky top-pbar z-40">
+      <div aria-hidden="true" className="pointer-events-auto absolute inset-x-0 top-0 z-10 h-14 border-b border-line bg-surface lg:h-[68px]" />
+      <div className="kb-container relative grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-2 lg:gap-x-8">
+        <div className="pointer-events-auto relative z-20 flex h-14 items-center gap-1 lg:h-[68px]">
+          <button
+            type="button"
+            data-testid="mobile-menu-button"
+            aria-label={ui("openMenu")}
+            aria-expanded={panel === "menu"}
+            onClick={() => open("menu")}
+            className="-ms-2 grid size-11 place-items-center rounded-control text-fg transition-colors hover:bg-surface-2 lg:hidden"
+          >
+            <Menu aria-hidden="true" className="size-6" strokeWidth={1.75} />
+          </button>
+          <LogoLink />
         </div>
-        <div className="flex-1 md:hidden" />
 
-        <div className="flex items-center gap-1 lg:gap-2">
-          <LivePill className="hidden lg:inline-flex" />
-          <IconButton label={c("openSearch")} onClick={openPalette} className="md:hidden">
-            <Search aria-hidden="true" className="size-5" />
-          </IconButton>
-          <WalletMenu className="hidden sm:block" />
-          <CartButton />
-          <AccountMenu className="hidden md:block" />
+        <div
+          className={cx(
+            "relative col-span-3 row-start-2 -mx-4 border-b border-line bg-surface px-4 py-1.5 transition-[transform,opacity] duration-300 ease-out sm:-mx-6 sm:px-6",
+            "lg:z-20 lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:mx-0 lg:border-0 lg:bg-transparent lg:px-0 lg:py-0",
+            collapsed
+              ? "pointer-events-none -translate-y-full opacity-0 lg:pointer-events-auto lg:translate-y-0 lg:opacity-100"
+              : "pointer-events-auto",
+          )}
+        >
+          <SearchBar className="mx-auto w-full lg:max-w-[800px]" />
         </div>
-      </Container>
 
-      <div className="hidden border-t border-line lg:block">
-        <Container className="flex h-11 items-center justify-between gap-6">
-          <SectionTabs />
-          <MarketStatus />
-        </Container>
+        <div className="pointer-events-auto relative z-20 col-start-3 row-start-1 flex h-14 items-center justify-end lg:h-[68px]">
+          <HeaderActions />
+        </div>
       </div>
+      <CategoryNav collapsed={collapsed} />
     </header>
   );
 }

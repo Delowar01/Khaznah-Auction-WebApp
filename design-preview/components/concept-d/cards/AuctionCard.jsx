@@ -1,114 +1,111 @@
 "use client";
 
-import { Check, Eye, Gavel } from "lucide-react";
+import { Gavel } from "lucide-react";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
+import { useStore } from "@/components/shared/providers/PreviewStore";
 import { Money } from "@/components/shared/ui/Money";
 import { detailPath } from "@/lib/catalog";
-import { formatNumber } from "@/lib/format";
-import { LotImage } from "../ui/LotImage";
-import { OverlayChip, DeltaChip, LotTag } from "../ui/Chips";
+import { Badge } from "../ui/Badge";
+import { buttonClass } from "../ui/Button";
+import { CountdownPill, useLotClock } from "../ui/Countdown";
 import { GradeChip } from "../ui/GradeChip";
-import { CountdownRing } from "../ui/CountdownRing";
-import { TimeBar } from "../ui/TimeBar";
-import { Sparkline } from "../ui/Sparkline";
-import { HeatMeter } from "../ui/Meters";
-import { WatchButton } from "../ui/Actions";
-import { compactTime } from "../lib/data";
-import { useCopy } from "../lib/useCopy";
-import { CardShell, CardTitle } from "./CardShell";
-import { auctionChip, useAuctionView } from "./useLotView";
+import { Plate } from "../ui/Plate";
+import { WatchButton } from "../ui/WatchButton";
+import { cx } from "../ui/cx";
+import { COPY } from "../copy";
+import { CardShell, PriceLabel, SellerLine, SoldOverlay, TitleLink } from "./CardParts";
+import { useLotMeta } from "./useLotMeta";
 
-const RING_TEXT = { ink: "text-fg", warning: "text-warning", danger: "text-live", upcoming: "d-ink", muted: "text-fg-3" };
+function StatusBadge({ phase, isNew, both }) {
+  const { ui } = useLang();
+  if (phase === "sold") return <Badge tone="tag-ink">{ui("sold")}</Badge>;
+  if (phase === "ended") return <Badge tone="tag-muted">{ui("ended")}</Badge>;
+  if (phase === "upcoming") return <Badge tone="tag-indigo">{ui("upcoming")}</Badge>;
+  if (phase === "critical") return <Badge tone="tag-live" dot>{ui("closingNow")}</Badge>;
+  if (phase === "urgent") return <Badge tone="tag-warn">{ui("endingSoon")}</Badge>;
+  if (isNew) return <Badge tone="tag-new">{ui("newListing")}</Badge>;
+  return (
+    <Badge tone="tag-indigo" icon={Gavel}>
+      {ui("auction")}
+      {both ? <span className="@max-[14rem]:hidden">+ {ui("buyNow")}</span> : null}
+    </Badge>
+  );
+}
 
-/** Auction listing card: status, ring, time bar, live price, sparkline, activity. */
-export function AuctionCard({ product, override, priority = false, sizes, emphasis }) {
+/** Timed-auction card: live price, bid count, urgency-coloured countdown, one-tap bid. */
+export function AuctionCard({ product, sizes = "(min-width: 1280px) 20vw, (min-width: 768px) 30vw, 46vw", priority = false, className = "" }) {
+  const { ui, t, pl } = useLang();
   const { link } = useConcept();
-  const { t, ui, lang, pl } = useLang();
-  const c = useCopy();
-  const v = useAuctionView(product, override);
-  const closed = v.phase === "sold" || v.phase === "ended";
-  const upcoming = v.phase === "upcoming";
-  const seconds = upcoming ? v.startsIn : v.remaining;
-  const timeText = compactTime(seconds, lang);
+  const { isWatched, toggleWatch, toast } = useStore();
+  const meta = useLotMeta(product);
+  const { remaining, phase } = useLotClock(product);
+  const closed = phase === "sold" || phase === "ended";
+  const upcoming = phase === "upcoming";
+  const href = link(detailPath(product));
+
+  const priceLabel = phase === "sold" ? ui("soldFor") : closed ? ui("winningBid") : upcoming || !product.bidCount ? ui("startingBid") : ui("currentBid");
+
+  const remind = (event) => {
+    event.preventDefault();
+    const now = toggleWatch(product.slug);
+    toast({ tone: now ? "success" : "neutral", title: ui(now ? "addedToWatchlist" : "removedFromWatchlist"), description: meta.title });
+  };
 
   return (
-    <CardShell>
-      <div className="d-card-media relative aspect-[5/4]">
-        <LotImage
-          image={product.images[0]}
-          alt={t(product.title)}
+    <CardShell className={className}>
+      <div className="relative">
+        <Plate
+          image={meta.image}
+          alt={meta.title}
+          sizes={sizes}
           priority={priority}
-          sizes={sizes || "(min-width: 1280px) 22vw, (min-width: 768px) 30vw, 46vw"}
-          fill
-          className={closed ? "grayscale-[0.5]" : ""}
+          className="aspect-square"
+          imgClassName={cx("transition-transform duration-300 ease-out group-hover/card:scale-[1.045]", closed && "opacity-80 grayscale-[55%]")}
         />
-        <div className="absolute inset-x-2.5 top-2.5 flex items-start justify-between gap-2">
-          {v.isNew && v.phase === "live" ? <OverlayChip status="new" label={ui("justListed")} /> : <OverlayChip status={auctionChip(v.phase)} />}
-          <WatchButton product={product} className="relative z-[2] size-9" />
-        </div>
-        <div className="absolute -bottom-7 end-3 z-[2] rounded-full bg-surface p-1 shadow-card">
-          <CountdownRing fraction={v.fraction} size={52} stroke={3.5} tone={v.tone}>
-            {v.phase === "sold" ? (
-              <Check aria-hidden="true" className="size-5 text-success" />
-            ) : v.phase === "ended" ? (
-              <span className="d-num text-[10px] text-fg-3">00:00</span>
-            ) : (
-              <span className={`d-num text-[10.5px] font-medium leading-none ${RING_TEXT[v.tone]}`}>{timeText}</span>
-            )}
-          </CountdownRing>
-          <span className="sr-only">{upcoming ? c("startsInAria", { time: timeText }) : closed ? ui(v.phase === "sold" ? "sold" : "ended") : c("timeLeftAria", { time: timeText })}</span>
-        </div>
-      </div>
-      <TimeBar fraction={v.fraction} tone={v.tone} thickness="h-[2px]" className="rounded-none" />
-
-      <div className="flex flex-1 flex-col p-3.5 sm:p-4">
-        <div className="flex min-h-6 flex-wrap items-center gap-1.5 pe-14">
-          {emphasis === "heat" ? (
-            <span className="inline-flex h-6 items-center gap-1.5 rounded-md bg-warning/12 px-1.5">
-              <HeatMeter level={v.heat} showLabel={false} />
-              <span className="d-num text-[11px] font-medium text-warning">{pl("bids", v.bidCount)}</span>
-            </span>
-          ) : (
-            <LotTag lot={product.lot} />
-          )}
-          <GradeChip grade={product.grade} size="sm" />
-        </div>
-        <CardTitle href={link(detailPath(product))} className="mt-2.5">
-          {t(product.title)}
-        </CardTitle>
-
-        <div className="mt-auto flex items-end justify-between gap-3 pt-4">
-          <div className="min-w-0 flex-1">
-            <p className="d-label truncate text-fg-3">{upcoming ? ui("openingBid") : v.phase === "sold" ? ui("soldFor") : ui("currentBid")}</p>
-            <p key={v.flash} className={`d-num mt-1 inline-block px-0.5 text-lg font-medium sm:text-xl ${v.own ? "text-auction" : "text-fg"} ${v.flash ? "d-flash" : ""}`}>
-              <Money value={v.currentBid} />
-            </p>
+        <div className="pointer-events-none absolute inset-x-2 top-2 z-[3] flex items-start justify-between gap-2">
+          <div className="flex flex-wrap gap-1">
+            <StatusBadge phase={phase} isNew={meta.isNew} both={product.saleType === "both"} />
           </div>
-          <Sparkline values={v.spark} tone={v.own ? "gold" : v.tone === "danger" ? "danger" : "ink"} className="mb-1.5 hidden sm:block" />
+          <WatchButton product={product} className="pointer-events-auto" />
+        </div>
+        {phase === "sold" ? <SoldOverlay amount={product.currentBid} /> : null}
+      </div>
+
+      <div className="flex flex-1 flex-col gap-2 p-3">
+        <SellerLine seller={meta.seller} name={meta.sellerName} />
+        <h3 className="min-h-[2lh] kb-md font-semibold">
+          <TitleLink href={href}>{meta.title}</TitleLink>
+        </h3>
+        <div className="flex min-w-0 flex-wrap items-center gap-1.5">
+          <GradeChip grade={product.grade} />
+          <span className="truncate kb-xs text-fg-3">{meta.typeLine}</span>
         </div>
 
-        <div className="mt-3 flex items-center gap-3 border-t border-line pt-3 text-xs text-fg-3">
-          <span className="d-num inline-flex items-center gap-1" title={ui("bidHistory")}>
-            <Gavel aria-hidden="true" className="size-3.5" />
-            <span className="sr-only">{ui("bidHistory")}: </span>
-            {formatNumber(v.bidCount)}
-          </span>
-          <span className="d-num inline-flex items-center gap-1">
-            <Eye aria-hidden="true" className="size-3.5" />
-            <span className="sr-only">{c("watchingLabel")}: </span>
-            {formatNumber(v.watchers)}
-          </span>
-          {!closed && !upcoming ? (
-            <span className="hidden sm:inline-flex">
-              <HeatMeter level={v.heat} showLabel={false} />
+        <div className="mt-auto pt-1">
+          <PriceLabel>{priceLabel}</PriceLabel>
+          <div className="flex items-baseline justify-between gap-2">
+            <Money value={product.currentBid} className="kb-price text-fg" symbolClassName="text-[0.8em]" />
+            {!upcoming ? <span className="shrink-0 kb-xs text-fg-3">{pl("bids", product.bidCount)}</span> : null}
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-line pt-2.5">
+          <CountdownPill phase={phase} remaining={remaining} prefix={upcoming ? ui("startsIn") : undefined} />
+          {upcoming ? (
+            <button
+              type="button"
+              onClick={remind}
+              aria-pressed={isWatched(product.slug)}
+              className={buttonClass({ variant: "soft", size: "xs", className: "relative z-10 @max-[13rem]:w-full" })}
+            >
+              {isWatched(product.slug) ? ui("watching") : ui("remindMe")}
+            </button>
+          ) : (
+            <span aria-hidden="true" className={buttonClass({ variant: closed ? "outline" : "primary", size: "xs", className: "@max-[13rem]:w-full" })}>
+              {closed ? t(COPY.viewResult) : ui("bidNow")}
             </span>
-          ) : null}
-          {v.step > 0 && !closed ? (
-            <span className="ms-auto hidden sm:inline-flex">
-              <DeltaChip amount={v.step} className="h-5" />
-            </span>
-          ) : null}
+          )}
         </div>
       </div>
     </CardShell>

@@ -1,96 +1,92 @@
 "use client";
 
+import { useState } from "react";
+import { ChevronLeft, ChevronRight, History } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
+import { DirIcon } from "@/components/shared/ui/DirIcon";
 import { Money } from "@/components/shared/ui/Money";
-import { AUCTION_POLICY } from "@/data/site";
-import { UI } from "@/data/ui";
 import { useElapsed } from "@/lib/clock";
 import { formatAgo } from "@/lib/format";
 import { bidAge } from "@/lib/useAuction";
-import { COPY } from "../copy";
-import { Badge } from "../ui/Badges";
-import { Diamond } from "../ui/Diamond";
-import { DiamondList } from "../ui/Misc";
-import { EyebrowRule } from "../ui/Section";
+import { Badge } from "../ui/Badge";
 import { cx } from "../ui/cx";
+import { COPY } from "../copy";
 
-/** Bid history as a clean table; the leading bid carries a gold diamond. */
-export function BidHistory({ auction }) {
+const PER_PAGE = 5;
+const PAGER = "grid size-8 place-items-center rounded-md border border-line text-fg-2 transition-colors hover:bg-surface-2 disabled:opacity-35";
+
+/** Bid history, five rows a page; own bids highlighted, proxy bids tagged. */
+export function BidHistory({ auction, className = "" }) {
   const { t, ui, pl, lang } = useLang();
   const elapsed = useElapsed();
+  const [page, setPage] = useState(1);
   const rows = auction.history;
+  const pageCount = Math.max(1, Math.ceil(rows.length / PER_PAGE));
+  const current = Math.min(page, pageCount);
+  const visible = rows.slice((current - 1) * PER_PAGE, current * PER_PAGE);
+  const from = rows.length ? (current - 1) * PER_PAGE + 1 : 0;
+  const to = Math.min(rows.length, current * PER_PAGE);
+
   return (
-    <section aria-labelledby="history-title">
-      <EyebrowRule content={UI.bidHistory} className="mb-5" />
-      <h2 id="history-title" className="sr-only">
-        {ui("bidHistory")}
-      </h2>
+    <section aria-labelledby="kb-bid-history" className={cx("rounded-xl border border-line bg-surface", className)}>
+      <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-3">
+        <h2 id="kb-bid-history" className="flex items-center gap-2 kb-md font-bold text-fg">
+          <History aria-hidden="true" className="size-4 text-primary" />
+          {ui("bidHistory")}
+        </h2>
+        <span className="kb-xs text-fg-3">{pl("bids", auction.bidCount)}</span>
+      </div>
       {rows.length ? (
-        <p className="mb-4 text-sm text-fg-2">
-          {pl("bids", auction.bidCount)} · {pl("bidders", auction.bidderCount)}
-        </p>
-      ) : null}
-      {rows.length ? (
-        <div role="region" aria-labelledby="history-title" tabIndex={0} className="overflow-x-auto rounded-md border border-line bg-surface outline-none focus-visible:ring-2 focus-visible:ring-focus">
-          <table className="w-full min-w-[18rem] border-collapse text-sm">
-            <thead>
-              <tr className="border-b border-line-strong text-fg-3">
-                <th scope="col" className="px-3 py-3 text-start font-medium sm:px-4">
-                  {t(COPY.bidderCol)}
+        <>
+          <table className="w-full border-collapse">
+            <thead className="bg-surface-2/60 kb-2xs text-fg-3">
+              <tr>
+                <th scope="col" className="px-4 py-2 text-start font-bold">
+                  {ui("bidder")}
                 </th>
-                <th scope="col" className="px-3 py-3 text-start font-medium sm:px-4">
-                  {t(COPY.amountCol)}
+                <th scope="col" className="px-2 py-2 text-end font-bold">
+                  {t(COPY.amount)}
                 </th>
-                <th scope="col" className="px-3 py-3 text-end font-medium sm:px-4">
-                  {t(COPY.timeCol)}
+                <th scope="col" className="px-4 py-2 text-end font-bold">
+                  {t(COPY.time)}
                 </th>
               </tr>
             </thead>
-            <tbody>
-              {rows.map((row) => (
-                <tr key={row.id} className={cx("border-b border-line last:border-b-0", row.isOwn && "bg-primary/6")}>
-                  <td className="px-3 py-3 sm:px-4">
-                    <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <Diamond size={6} className={row.isWinning ? "text-accent" : "text-line-strong"} />
-                      <span className={cx("font-medium", row.isOwn ? "text-primary" : "text-fg")}>{t(row.label)}</span>
-                      {row.isWinning ? <span className="text-xs font-semibold text-success">{ui("highest")}</span> : null}
-                      {row.type === "proxy_auto" ? <Badge tone="muted">{ui("autoBid")}</Badge> : null}
+            <tbody className="divide-y divide-line">
+              {visible.map((row) => (
+                <tr key={row.id} className={cx(row.isOwn && "bg-primary/5")}>
+                  <td className="px-4 py-2.5">
+                    <span className="flex flex-wrap items-center gap-1.5 kb-sm">
+                      <span className={cx("font-semibold", row.isOwn ? "text-primary" : "text-fg")}>{row.isOwn ? ui("you") : t(row.label)}</span>
+                      {row.type === "proxy_auto" ? <Badge tone="neutral">{ui("autoBid")}</Badge> : null}
+                      {row.isWinning ? <Badge tone="success">{ui("highest")}</Badge> : null}
                     </span>
                   </td>
-                  <td className="px-3 py-3 sm:px-4">
-                    <Money value={row.amount} className={cx("c-num", row.isWinning ? "font-semibold text-fg" : "text-fg-2")} />
+                  <td className="px-2 py-2.5 text-end">
+                    <Money value={row.amount} className={cx("kb-sm", row.isWinning ? "font-extrabold text-fg" : "font-semibold text-fg-2")} />
                   </td>
-                  <td className="whitespace-nowrap px-3 py-3 text-end text-fg-3 sm:px-4">{formatAgo(bidAge(row, elapsed), lang)}</td>
+                  <td className="px-4 py-2.5 text-end kb-xs text-fg-3">{formatAgo(bidAge(row, elapsed), lang)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+          {pageCount > 1 ? (
+            <div className="flex items-center justify-between gap-2 border-t border-line px-4 py-2.5">
+              <span className="kb-xs text-fg-3">{t(COPY.showingRange, { from, to, total: rows.length })}</span>
+              <span className="flex gap-1.5">
+                <button type="button" className={PAGER} disabled={current <= 1} onClick={() => setPage(current - 1)} aria-label={ui("previous")}>
+                  <DirIcon icon={ChevronLeft} className="size-4" />
+                </button>
+                <button type="button" className={PAGER} disabled={current >= pageCount} onClick={() => setPage(current + 1)} aria-label={ui("next")}>
+                  <DirIcon icon={ChevronRight} className="size-4" />
+                </button>
+              </span>
+            </div>
+          ) : null}
+        </>
       ) : (
-        <p className="rounded-md border border-dashed border-line-strong px-4 py-6 text-center text-fg-2">{ui("noBidsYet")}</p>
+        <p className="px-4 py-8 text-center kb-sm text-fg-3">{ui("noBidsYet")}</p>
       )}
-    </section>
-  );
-}
-
-/** Auction terms with diamond bullets. */
-export function AuctionTerms() {
-  const { t, ui, money } = useLang();
-  return (
-    <section aria-labelledby="terms-title">
-      <EyebrowRule content={UI.auctionTerms} className="mb-5" />
-      <h2 id="terms-title" className="sr-only">
-        {ui("auctionTerms")}
-      </h2>
-      <DiamondList
-        className="text-[0.9375rem] text-fg-2"
-        items={[
-          t(COPY.depositTerm, { amount: money(AUCTION_POLICY.depositAmount) }),
-          ui("antiSnipe"),
-          ui("bindingBid"),
-          t(COPY.paymentWindow, { n: AUCTION_POLICY.paymentWindowHours }),
-        ]}
-      />
     </section>
   );
 }

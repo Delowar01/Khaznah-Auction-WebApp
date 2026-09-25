@@ -1,66 +1,86 @@
 "use client";
 
+import { ShoppingCart } from "lucide-react";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { Money } from "@/components/shared/ui/Money";
-import { detailPath, discountPercent, isNewListing } from "@/lib/catalog";
-import { LotImage } from "../ui/LotImage";
-import { OverlayChip, DeltaChip, LotTag } from "../ui/Chips";
+import { detailPath } from "@/lib/catalog";
+import { Badge } from "../ui/Badge";
+import { Button } from "../ui/Button";
 import { GradeChip } from "../ui/GradeChip";
-import { StockMeter } from "../ui/Meters";
-import { WatchButton } from "../ui/Actions";
-import { CardShell, CardTitle } from "./CardShell";
+import { Plate } from "../ui/Plate";
+import { StockMeter } from "../ui/StockMeter";
+import { WatchButton } from "../ui/WatchButton";
+import { cx } from "../ui/cx";
+import { useAddToCart } from "../utils/useAddToCart";
+import { CardShell, SellerLine, TitleLink } from "./CardParts";
+import { useLotMeta } from "./useLotMeta";
 
-/** Buy Now card: fixed price (mono), discount delta, stock meter. */
-export function BuyNowCard({ product, priority = false, sizes }) {
+/** Fixed-price card: gold saving badge, price vs. was, stock signal, add to cart. */
+export function BuyNowCard({ product, sizes = "(min-width: 1280px) 20vw, (min-width: 768px) 30vw, 46vw", priority = false, className = "" }) {
+  const { ui, t } = useLang();
   const { link } = useConcept();
-  const { t, ui } = useLang();
+  const meta = useLotMeta(product);
+  const add = useAddToCart();
   const soldOut = product.stock <= 0;
-  const pct = discountPercent(product);
-  const chip = soldOut ? "unavailable" : isNewListing(product) ? "new" : "buyNow";
+  const href = link(detailPath(product));
 
   return (
-    <CardShell>
-      <div className="d-card-media relative aspect-[5/4]">
-        <LotImage
-          image={product.images[0]}
-          alt={t(product.title)}
+    <CardShell className={className}>
+      <div className="relative">
+        <Plate
+          image={meta.image}
+          alt={meta.title}
+          sizes={sizes}
           priority={priority}
-          sizes={sizes || "(min-width: 1280px) 22vw, (min-width: 768px) 30vw, 46vw"}
-          fill
-          className={soldOut ? "opacity-70 grayscale" : ""}
+          className="aspect-square"
+          imgClassName={cx("transition-transform duration-300 ease-out group-hover/card:scale-[1.045]", soldOut && "opacity-70 grayscale")}
         />
-        <div className="absolute inset-x-2.5 top-2.5 flex items-start justify-between gap-2">
-          <OverlayChip status={chip} label={chip === "new" ? ui("justListed") : undefined} />
-          <WatchButton product={product} className="relative z-[2] size-9" />
+        <div className="pointer-events-none absolute inset-x-2 top-2 z-[3] flex items-start justify-between gap-2">
+          <div className="flex flex-wrap gap-1">
+            {soldOut ? <Badge tone="tag-muted">{ui("outOfStock")}</Badge> : null}
+            {!soldOut && meta.discount > 0 ? (
+              <Badge tone="tag-gold">
+                <span dir="ltr">−{meta.discount}%</span>
+              </Badge>
+            ) : null}
+            {!soldOut && meta.isNew ? <Badge tone="tag-new">{ui("newListing")}</Badge> : null}
+          </div>
+          <WatchButton product={product} className="pointer-events-auto" />
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col p-3.5 sm:p-4">
-        <div className="flex min-h-6 flex-wrap items-center gap-1.5">
-          <LotTag lot={product.lot} />
-          <GradeChip grade={product.grade} size="sm" />
+      <div className="flex flex-1 flex-col gap-2 p-3">
+        <SellerLine seller={meta.seller} name={meta.sellerName} />
+        <h3 className="min-h-[2lh] kb-md font-semibold">
+          <TitleLink href={href}>{meta.title}</TitleLink>
+        </h3>
+        <div className="flex min-w-0 flex-wrap items-center gap-1.5">
+          <GradeChip grade={product.grade} />
+          <span className="truncate kb-xs text-fg-3">{meta.typeLine}</span>
         </div>
-        <CardTitle href={link(detailPath(product))} className="mt-2.5">
-          {t(product.title)}
-        </CardTitle>
 
-        <div className="mt-auto pt-4">
-          <p className="d-label text-fg-3">
-            {ui("price")}
-            {product.unitLabel ? <span className="normal-case tracking-normal"> · {t(product.unitLabel)}</span> : null}
-          </p>
-          <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-            <Money value={product.price} className={`d-num text-lg font-medium sm:text-xl ${soldOut ? "text-fg-2" : "text-fg"}`} />
-            {pct > 0 ? (
-              <>
-                <Money value={product.originalPrice} strike className="d-num text-xs text-fg-3" />
-                <DeltaChip percent={pct} tone="down" className="h-5" />
-              </>
-            ) : null}
+        <div className="mt-auto pt-1">
+          <div className="flex flex-wrap items-baseline gap-x-2">
+            <Money value={product.price} className={cx("kb-price", soldOut ? "text-fg-3" : "text-fg")} symbolClassName="text-[0.8em]" />
+            {meta.discount > 0 ? <Money value={product.originalPrice} strike className="kb-xs text-fg-3" /> : null}
+            {product.unitLabel ? <span className="kb-xs text-fg-3">{t(product.unitLabel)}</span> : null}
           </div>
+          <StockMeter stock={product.stock} className="mt-1.5" />
         </div>
-        <StockMeter stock={product.stock} className="mt-3 border-t border-line pt-3" compact />
+
+        <Button
+          variant="outline-primary"
+          size="sm"
+          block
+          icon={soldOut ? undefined : ShoppingCart}
+          disabled={soldOut}
+          onClick={() => add(product, 1)}
+          className="relative z-10 mt-1"
+        >
+          {soldOut ? ui("outOfStock") : ui("addToCart")}
+          {soldOut ? null : <span className="sr-only">: {meta.title}</span>}
+        </Button>
       </div>
     </CardShell>
   );

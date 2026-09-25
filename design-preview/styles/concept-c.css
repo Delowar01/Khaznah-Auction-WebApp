@@ -1,1269 +1,419 @@
 /*
- * Concept C — Saudi Contemporary
+ * Concept slot c — Round 2 (scaffolded from Concept B; redesigned separately)
  * ─────────────────────────────────────────────────────────────────────────
- * Limestone neutrals, night indigo and saffron gold, set in the brand
- * typefaces (Alexandria for Arabic, Archivo with its width axis for Latin).
- * The brand's own geometry carries the character: the diamond (the dot of
- * the خ mark), the ~62° diagonal of its stroke (chamfers and rules) and the
- * square-Kufic grid of the wordmark (hairline architectural grids).
- *
- * Text colours are tuned so every text pairing clears WCAG AA (4.5:1).
+ * Bright, efficient marketplace tokens. Brand indigo carries every action,
+ * brand gold marks value (always as a background with dark text), ink grounds
+ * the utility strip and footer. Status colours are tuned one step deeper than
+ * the brief so they pass WCAG AA as small text on white and on surface-2.
  */
 
-/* ── Tokens · light ("Limestone") ─────────────────────────────────────── */
+/* ── Light (default) ─────────────────────────────────────────────────────── */
 :root[data-concept="c"],
-:root[data-concept="c"] .c-scope-light {
-  --bg: #f3eee6;
-  --surface: #fbf8f3;
-  --surface-2: #ede5d8;
-  --surface-elevated: #fdfbf7;
-  --plate: #f7f2ea;
-  --border: #e2d8c8;
-  --border-strong: #cdbfa9;
-  --text-primary: #1b2150;
-  --text-secondary: #545a7a;
-  --text-tertiary: #5f637f;
-  --primary: #3d4d9b;
-  --primary-hover: #2f3d86;
-  --primary-contrast: #ffffff;
-  --secondary: #1b2150;
-  --secondary-contrast: #f6f1e8;
-  --accent: #d8a535;
-  --accent-contrast: #1b2150;
-  --success: #276e50;
-  --warning: #8f5500;
-  --danger: #b3261e;
-  --live: #b9322a;
-  --auction: #d8a535;
-  --muted: #ede5d8;
-  --focus: #3d4d9b;
-  --overlay: rgb(14 16 36 / 0.52);
-  --grade-new: #3552a6;
-  --grade-a: #2a7456;
-  --grade-b: #75650f;
-  --grade-c: #955515;
-  --grade-d: #9e4a33;
-  --grade-r: #6a58a6;
-  --grade-f: #a8342c;
-  --r-xs: 2px;
-  --r-sm: 3px;
-  --r-md: 4px;
-  --r-lg: 6px;
-  --r-xl: 8px;
-  --r-card: 4px;
-  --r-control: 3px;
-  --sh-card: 0 1px 0 rgb(27 33 80 / 0.04);
-  --sh-raised: 0 22px 48px -30px rgb(27 33 80 / 0.38);
-  --sh-overlay: 0 36px 90px -30px rgb(14 16 36 / 0.5);
-
-  /* Concept-only tokens */
-  --c-gold-ink: #7e5d12;
-  --c-on-live: #ffffff;
-  --c-grid: rgb(27 33 80 / 0.07);
-  --c-grid-strong: rgb(27 33 80 / 0.11);
-  --c-logo-word: #3d4d9b;
-  --c-night-bg: #1b2150;
-  --c-night-card: #232a5e;
-  --c-night-card-2: #2a3269;
-  --c-night-fg: #f6f1e8;
-  --c-night-fg-2: #bdbbd3;
-  --c-night-line: rgb(246 241 232 / 0.14);
-  --c-night-line-strong: rgb(246 241 232 / 0.28);
-  --c-night-primary: #aab4f4;
-  --c-night-primary-hover: #c0c8f8;
-  --c-night-live: #f0665a;
-  --c-night-grid: rgb(246 241 232 / 0.06);
-  --c-sand-deep: #e4d9c7;
-  --c-plate-line: #e6dccb;
-  --c-tile-glow: rgb(255 253 248 / 0.7);
-
+[data-concept="c"] .kb-force-light {
   color-scheme: light;
+
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #eef0f4;
+  --surface-elevated: #ffffff;
+  --plate: #f6f7f9;
+  --border: #e3e6eb;
+  --border-strong: #cdd2da;
+
+  --text-primary: #101828;
+  --text-secondary: #475467;
+  --text-tertiary: #5d6679;
+
+  --primary: #3d4d9b;
+  --primary-hover: #33418a;
+  --primary-contrast: #ffffff;
+  --secondary: #101828;
+  --secondary-contrast: #ffffff;
+  --accent: #d8a535;
+  --accent-contrast: #1a1406;
+
+  --success: #067647;
+  --warning: #a54107;
+  --danger: #c01f14;
+  --live: #d1242f;
+  --auction: #3d4d9b;
+  --muted: #eef0f4;
+  --focus: #3d4d9b;
+  --overlay: rgb(16 24 40 / 0.56);
+
+  --grade-new: #175cd3;
+  --grade-a: #067647;
+  --grade-b: #0e7090;
+  --grade-c: #a54107;
+  --grade-d: #c4320a;
+  --grade-r: #6941c6;
+  --grade-f: #c01f14;
+
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-card: 12px;
+  --r-control: 10px;
+
+  --sh-card: 0 1px 2px rgb(16 24 40 / 0.05);
+  --sh-raised: 0 1px 3px rgb(16 24 40 / 0.06), 0 16px 32px -14px rgb(16 24 40 / 0.2);
+  --sh-overlay: 0 2px 6px rgb(16 24 40 / 0.06), 0 28px 64px -18px rgb(16 24 40 / 0.34);
+  --kb-sh-bar: 0 -10px 30px -20px rgb(16 24 40 / 0.45);
+
+  --font-display-stack: "Riyal", var(--font-inter), var(--font-cairo), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-inter), var(--font-cairo), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Concept extras (brand panels, logo colourways) */
+  --logo-mark: #d8a535;
+  --logo-word: #3d4d9b;
+  --kb-indigo-950: #0f1538;
+  --kb-indigo-900: #18205a;
+  --kb-indigo-800: #242e78;
+  --kb-indigo-600: #3d4d9b;
+  --kb-gold-soft: #f3d98f;
+  --kb-on-brand: #ffffff;
+  --kb-tick: rgb(16 24 40 / 0.06);
 }
 
-/* ── Tokens · dark ("Riyadh night") ───────────────────────────────────── */
+/* ── Dark ────────────────────────────────────────────────────────────────── */
 :root[data-concept="c"][data-theme="dark"],
-:root[data-concept="c"] .c-scope-dark {
-  --bg: #0e1024;
-  --surface: #151936;
-  --surface-2: #1c2142;
-  --surface-elevated: #20264b;
-  --plate: #efe8dc;
-  --border: #2a2f55;
-  --border-strong: #3b4170;
-  --text-primary: #f1ebe0;
-  --text-secondary: #b7b3c9;
-  --text-tertiary: #9c98b3;
-  --primary: #8e9bea;
-  --primary-hover: #a3aef0;
-  --primary-contrast: #0e1024;
-  --secondary: #262d63;
-  --secondary-contrast: #f1ebe0;
-  --accent: #e2b34c;
-  --accent-contrast: #0e1024;
-  --success: #5cc08f;
-  --warning: #e5a04a;
-  --danger: #f07a70;
-  --live: #f0665a;
-  --auction: #e2b34c;
-  --muted: #1c2142;
-  --focus: #a3aef0;
-  --overlay: rgb(4 5 14 / 0.68);
-  --grade-new: #8fa6f0;
-  --grade-a: #5cc08f;
-  --grade-b: #c9b458;
-  --grade-c: #e0a060;
-  --grade-d: #e48a6e;
-  --grade-r: #b3a2ee;
-  --grade-f: #f07a70;
-  --sh-card: 0 1px 0 rgb(0 0 0 / 0.25);
-  --sh-raised: 0 26px 52px -30px rgb(0 0 0 / 0.75);
-  --sh-overlay: 0 40px 100px -30px rgb(0 0 0 / 0.8);
-
-  --c-gold-ink: #e2b34c;
-  --c-on-live: #0e1024;
-  --c-grid: rgb(241 235 224 / 0.055);
-  --c-grid-strong: rgb(241 235 224 / 0.09);
-  --c-logo-word: #f1ebe0;
-  --c-night-bg: #161b40;
-  --c-night-card: #1f2550;
-  --c-night-card-2: #262d5c;
-  --c-night-fg: #f1ebe0;
-  --c-night-fg-2: #b7b3c9;
-  --c-night-line: rgb(241 235 224 / 0.12);
-  --c-night-line-strong: rgb(241 235 224 / 0.24);
-  --c-night-primary: #a3aef0;
-  --c-night-primary-hover: #bcc4f6;
-  --c-night-live: #f0665a;
-  --c-night-grid: rgb(241 235 224 / 0.05);
-  --c-sand-deep: #232a52;
-  --c-plate-line: #d9cfbe;
-  --c-tile-glow: rgb(241 235 224 / 0.2);
-
+[data-concept="c"] .kb-force-dark {
   color-scheme: dark;
+
+  --bg: #0c111d;
+  --surface: #161b26;
+  --surface-2: #1f242f;
+  --surface-elevated: #1f242f;
+  --plate: #f2f3f5;
+  --border: #2a303c;
+  --border-strong: #3b4252;
+
+  --text-primary: #f5f5f6;
+  --text-secondary: #a4a7ae;
+  --text-tertiary: #8b8f98;
+
+  --primary: #8190e6;
+  --primary-hover: #95a2ee;
+  --primary-contrast: #0c111d;
+  --secondary: #070a12;
+  --secondary-contrast: #f5f5f6;
+  --accent: #e0b04a;
+  --accent-contrast: #1a1406;
+
+  --success: #47cd89;
+  --warning: #fdb022;
+  --danger: #f97066;
+  --live: #d1242f;
+  --auction: #8190e6;
+  --muted: #1f242f;
+  --focus: #95a2ee;
+  --overlay: rgb(3 5 10 / 0.72);
+
+  --grade-new: #84adff;
+  --grade-a: #47cd89;
+  --grade-b: #5cc8e0;
+  --grade-c: #fdb022;
+  --grade-d: #fb9a6b;
+  --grade-r: #b69cff;
+  --grade-f: #f97066;
+
+  --sh-card: 0 1px 2px rgb(0 0 0 / 0.3);
+  --sh-raised: 0 1px 3px rgb(0 0 0 / 0.35), 0 18px 36px -14px rgb(0 0 0 / 0.6);
+  --sh-overlay: 0 2px 8px rgb(0 0 0 / 0.4), 0 30px 70px -18px rgb(0 0 0 / 0.75);
+  --kb-sh-bar: 0 -10px 30px -18px rgb(0 0 0 / 0.8);
+
+  --logo-mark: #e0b04a;
+  --logo-word: #f5f5f6;
+  --kb-tick: rgb(255 255 255 / 0.06);
 }
 
-/* ── Type stacks ──────────────────────────────────────────────────────── */
-:root[data-concept="c"] {
-  --c-monogram-fg: #ffffff;
-  --c-font-latin: "Riyal", var(--font-brand-latin), var(--font-brand-arabic), system-ui, sans-serif;
-  --c-font-arabic: "Riyal", var(--font-brand-arabic), var(--font-brand-latin), system-ui, sans-serif;
-  --font-display-stack: var(--c-font-latin);
-  --font-body-stack: var(--c-font-latin);
-  --font-mono-stack: "Riyal", var(--font-brand-latin), ui-monospace, monospace;
-}
-
+/* ── Arabic: Almarai first, Figtree for Latin runs and digits ────────────── */
 :root[data-concept="c"][lang="ar"] {
-  --font-display-stack: var(--c-font-arabic);
-  --font-body-stack: var(--c-font-arabic);
+  --font-display-stack: "Riyal", var(--font-cairo), var(--font-inter), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-cairo), var(--font-inter), system-ui, sans-serif;
 }
 
-@layer base {
-  :root[data-concept="c"] body {
-    line-height: 1.6;
-    font-kerning: normal;
-  }
-
-  :root[data-concept="c"][lang="ar"] body {
-    line-height: 1.75;
-  }
-
-  /* Islands in the other script (echoes, specimens, language links) keep
-     their own brand face — including headings inside them. */
-  :root[data-concept="c"] [lang="en"] {
-    --font-display-stack: var(--c-font-latin);
-    --font-body-stack: var(--c-font-latin);
-    font-family: var(--c-font-latin);
-  }
-
-  :root[data-concept="c"] [lang="ar"] {
-    --font-display-stack: var(--c-font-arabic);
-    --font-body-stack: var(--c-font-arabic);
-    font-family: var(--c-font-arabic);
-  }
-
-  :root[data-concept="c"] ::selection {
-    background: color-mix(in oklab, var(--accent) 38%, transparent);
-    color: var(--text-primary);
-  }
+:root[data-concept="c"] body {
+  font-size: 14px;
+  line-height: 1.5;
 }
 
+:root[data-concept="c"][lang="ar"] body {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── Type roles ──────────────────────────────────────────────────────────
+   Compact commerce scale in Latin; Arabic runs one step larger with taller
+   leading and never uses tracking. */
 @layer components {
-  /* ── Layout ─────────────────────────────────────────────────────────── */
-  .c-container {
+  .kb-2xs { font-size: 11px; line-height: 14px; }
+  .kb-xs { font-size: 12px; line-height: 16px; }
+  .kb-sm { font-size: 13px; line-height: 18px; }
+  .kb-md { font-size: 14px; line-height: 20px; }
+  .kb-lg { font-size: 16px; line-height: 24px; }
+  .kb-xl { font-size: 18px; line-height: 26px; }
+
+  .kb-eyebrow {
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .kb-h3 { font-size: 17px; line-height: 23px; font-weight: 700; letter-spacing: -0.01em; }
+  .kb-h2 { font-size: 20px; line-height: 26px; font-weight: 800; letter-spacing: -0.02em; }
+  .kb-h1 { font-size: 24px; line-height: 30px; font-weight: 800; letter-spacing: -0.02em; }
+  .kb-display { font-size: 32px; line-height: 36px; font-weight: 800; letter-spacing: -0.03em; }
+
+  .kb-hero-title { font-size: 34px; line-height: 38px; font-weight: 800; letter-spacing: -0.03em; }
+
+  .kb-price-sm { font-size: 15px; line-height: 20px; font-weight: 700; letter-spacing: -0.01em; }
+  .kb-price { font-size: 18px; line-height: 24px; font-weight: 800; letter-spacing: -0.01em; }
+  .kb-price-lg { font-size: 28px; line-height: 32px; font-weight: 800; letter-spacing: -0.02em; }
+
+  @media (min-width: 768px) {
+    .kb-h2 { font-size: 22px; line-height: 28px; }
+    .kb-h1 { font-size: 28px; line-height: 34px; }
+    .kb-display { font-size: 42px; line-height: 46px; }
+  }
+
+  @media (min-width: 1280px) {
+    .kb-display { font-size: 50px; line-height: 54px; }
+    .kb-price-lg { font-size: 32px; line-height: 36px; }
+    .kb-hero-title { font-size: 42px; line-height: 46px; }
+  }
+
+  :root[lang="ar"] .kb-2xs { font-size: 12px; line-height: 17px; }
+  :root[lang="ar"] .kb-xs { font-size: 13px; line-height: 20px; }
+  :root[lang="ar"] .kb-sm { font-size: 14px; line-height: 22px; }
+  :root[lang="ar"] .kb-md { font-size: 15px; line-height: 24px; }
+  :root[lang="ar"] .kb-lg { font-size: 17px; line-height: 28px; }
+  :root[lang="ar"] .kb-xl { font-size: 19px; line-height: 30px; }
+  :root[lang="ar"] .kb-eyebrow { font-size: 12px; line-height: 17px; letter-spacing: 0; text-transform: none; }
+  :root[lang="ar"] .kb-h3 { font-size: 18px; line-height: 28px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-h2 { font-size: 21px; line-height: 32px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-h1 { font-size: 25px; line-height: 38px; letter-spacing: 0; }
+  :root[lang="ar"] .kb-display { font-size: 32px; line-height: 48px; letter-spacing: 0; }
+  :root[lang="ar"] :is(.kb-price-sm, .kb-price, .kb-price-lg) { letter-spacing: 0; }
+  :root[lang="ar"] .kb-hero-title { font-size: 32px; line-height: 50px; letter-spacing: 0; }
+
+  @media (min-width: 1280px) {
+    :root[lang="ar"] .kb-hero-title { font-size: 40px; line-height: 60px; }
+  }
+
+  @media (min-width: 768px) {
+    :root[lang="ar"] .kb-h2 { font-size: 23px; line-height: 34px; }
+    :root[lang="ar"] .kb-h1 { font-size: 29px; line-height: 42px; }
+    :root[lang="ar"] .kb-display { font-size: 40px; line-height: 58px; }
+  }
+
+  @media (min-width: 1280px) {
+    :root[lang="ar"] .kb-display { font-size: 46px; line-height: 66px; }
+  }
+
+  /* Layout container */
+  .kb-container {
     width: 100%;
     max-width: 1400px;
     margin-inline: auto;
-    padding-inline: 1rem;
+    padding-inline: 16px;
   }
 
   @media (min-width: 640px) {
-    .c-container {
-      padding-inline: 1.5rem;
-    }
+    .kb-container { padding-inline: 24px; }
   }
 
-  @media (min-width: 1024px) {
-    .c-container {
-      padding-inline: 2.5rem;
-    }
-  }
-
-  .c-skip {
-    position: fixed;
-    inset-inline-start: 1rem;
-    top: calc(var(--pbar-h) + 0.75rem);
-    z-index: 500;
-    padding: 0.75rem 1rem;
-    border-radius: var(--r-control);
-    background: var(--secondary);
-    color: var(--secondary-contrast);
-    font-weight: 600;
-    transform: translateY(-200%);
-    transition: transform 0.2s var(--ease-out-soft);
-  }
-
-  .c-skip:focus-visible {
-    transform: none;
-  }
-
-  /* ── Typography roles ───────────────────────────────────────────────── */
-  .c-display {
-    font-family: var(--font-display-stack);
-    color: var(--text-primary);
-    text-wrap: balance;
-  }
-
-  .c-display:lang(en) {
-    font-weight: 700;
-    font-stretch: 112%;
-    letter-spacing: -0.02em;
-    line-height: 1.02;
-  }
-
-  .c-display:lang(ar) {
-    font-weight: 800;
-    letter-spacing: 0;
-    line-height: 1.24;
-  }
-
-  .c-hero-title:lang(ar) {
-    font-size: clamp(2.5rem, 1.25rem + 4vw, 4.75rem);
-  }
-
-  .c-hero-title:lang(en) {
-    font-size: clamp(2.375rem, 1.35rem + 3.1vw, 3.875rem);
-  }
-
-  .c-h2 {
-    font-family: var(--font-display-stack);
-    font-size: clamp(1.75rem, 1.2rem + 1.5vw, 2.625rem);
-    color: var(--text-primary);
-    text-wrap: balance;
-  }
-
-  .c-h2:lang(en) {
-    font-weight: 700;
-    font-stretch: 110%;
-    letter-spacing: -0.015em;
-    line-height: 1.06;
-  }
-
-  .c-h2:lang(ar) {
-    font-weight: 700;
-    line-height: 1.32;
-  }
-
-  .c-h3 {
-    font-family: var(--font-display-stack);
-    font-size: 1.25rem;
-    font-weight: 650;
-    color: var(--text-primary);
-    text-wrap: balance;
-  }
-
-  .c-h3:lang(en) {
-    font-stretch: 106%;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-  }
-
-  .c-h3:lang(ar) {
-    font-weight: 700;
-    line-height: 1.45;
-  }
-
-  /* The echo: the same words in the other language, set small. */
-  /* dir is set to the echo's own language, so "end" keeps it aligned with
-     the primary line (right in Arabic pages, left in English pages). */
-  .c-echo {
-    display: block;
-    color: var(--text-tertiary);
-    text-align: end;
-  }
-
-  .c-echo:lang(en) {
-    font-family: var(--c-font-latin);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    font-stretch: 118%;
-    letter-spacing: 0.2em;
-    line-height: 1.5;
-    text-transform: uppercase;
-  }
-
-  .c-echo:lang(ar) {
-    font-family: var(--c-font-arabic);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    line-height: 1.6;
-  }
-
-  /* Arabic headings carry deep descenders; give the echo a little air. */
-  .c-display:lang(ar) + .c-echo,
-  .c-h2:lang(ar) + .c-echo,
-  .c-h3:lang(ar) + .c-echo {
-    margin-top: 0.3rem;
-  }
-
-  .c-echo--lg:lang(en) {
-    font-size: 0.8125rem;
-    letter-spacing: 0.22em;
-  }
-
-  .c-echo--lg:lang(ar) {
-    font-size: 1.125rem;
-  }
-
-  .c-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
-    color: var(--primary);
-    font-weight: 600;
-  }
-
-  .c-eyebrow:lang(en) {
-    font-size: 0.75rem;
-    font-stretch: 112%;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-
-  .c-eyebrow:lang(ar) {
-    font-size: 0.875rem;
-    font-weight: 700;
-  }
-
-  /* Latin numerals in Archivo's expanded width — prices, stats, clocks. */
-  .c-num {
-    font-family: var(--c-font-latin);
-    font-stretch: 116%;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: -0.01em;
-  }
-
-  .c-prose {
-    color: var(--text-secondary);
-    text-wrap: pretty;
-  }
-
-  .c-prose:lang(en) {
-    font-size: 1rem;
-    line-height: 1.65;
-  }
-
-  .c-prose:lang(ar) {
-    font-size: 1.03125rem;
-    line-height: 1.85;
-  }
-
-  .c-label {
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--text-tertiary);
-  }
-
-  .c-label:lang(en) {
-    font-stretch: 106%;
-  }
-
-  .c-caps:lang(en) {
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    font-stretch: 114%;
-  }
-
-  .c-caps:lang(ar) {
-    font-size: 0.8125rem;
-    font-weight: 700;
-  }
-
-  .c-link {
-    background-image: linear-gradient(currentColor, currentColor);
-    background-repeat: no-repeat;
-    background-size: 0% 1px;
-    background-position: 0 100%;
-    transition: background-size 0.25s var(--ease-out-soft);
-  }
-
-  [dir="rtl"] .c-link {
-    background-position: 100% 100%;
-  }
-
-  .c-link:hover,
-  .c-link:focus-visible {
-    background-size: 100% 1px;
-  }
-
-  /* ── Brand geometry: the diamond ────────────────────────────────────── */
-  .c-dia {
-    --d: 0.5rem;
-    position: relative;
-    display: inline-block;
-    flex: none;
-    width: var(--d);
-    height: var(--d);
-    background: currentColor;
-    transform: rotate(45deg);
-  }
-
-  .c-dia--outline {
-    background: transparent;
-    box-shadow: inset 0 0 0 1.5px currentColor;
-  }
-
-  .c-dia--live {
-    color: var(--live);
-  }
-
-  .c-dia--live::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: currentColor;
-    animation: c-dia-pulse 1.8s var(--ease-out-soft) infinite;
-  }
-
-  .c-dia--ring {
-    background: transparent;
-    box-shadow:
-      inset 0 0 0 1.5px currentColor,
-      inset 0 0 0 3.5px var(--bg),
-      inset 0 0 0 10px currentColor;
-  }
-
-  /* Diamond loader */
-  .c-loader {
-    display: inline-block;
-    flex: none;
-    width: 0.7em;
-    height: 0.7em;
-    border: 1.5px solid currentColor;
-    transform: rotate(45deg);
-    animation: c-loader 1.1s var(--ease-in-out-soft) infinite;
-  }
-
-  /* ── Brand geometry: the 62° chamfer (inline-start top corner) ─────── */
-  .c-chamfer {
-    --cut: 1.25rem;
-    clip-path: polygon(var(--cut) 0, 100% 0, 100% 100%, 0 100%, 0 calc(var(--cut) * 1.88));
-  }
-
-  [dir="rtl"] .c-chamfer {
-    clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% calc(var(--cut) * 1.88), 100% 100%, 0 100%);
-  }
-
-  .c-chamfer--sm,
-  .c-cutline--sm {
-    --cut: 0.875rem;
-  }
-
-  .c-chamfer--lg,
-  .c-cutline--lg {
-    --cut: 2rem;
-  }
-
-  .c-chamfer--xl,
-  .c-cutline--xl {
-    --cut: 3rem;
-  }
-
-  /* A hairline parallel to the chamfer — turns gold on hover. */
-  .c-cutline {
-    --cut: 1.25rem;
-    position: absolute;
-    top: 0;
-    inset-inline-start: 0;
-    width: calc(var(--cut) * 0.7);
-    height: calc(var(--cut) * 1.88 * 0.7);
-    pointer-events: none;
-    color: var(--border-strong);
-    background: linear-gradient(
-      to bottom right,
-      transparent calc(50% - 0.75px),
-      currentColor calc(50% - 0.75px),
-      currentColor calc(50% + 0.75px),
-      transparent calc(50% + 0.75px)
-    );
-    transition: color 0.3s var(--ease-out-soft);
-  }
-
-  [dir="rtl"] .c-cutline {
-    background: linear-gradient(
-      to bottom left,
-      transparent calc(50% - 0.75px),
-      currentColor calc(50% - 0.75px),
-      currentColor calc(50% + 0.75px),
-      transparent calc(50% + 0.75px)
-    );
-  }
-
-  .group:hover .c-cutline,
-  .group:focus-within .c-cutline,
-  .c-cutline--gold {
-    color: var(--accent);
-  }
-
-  /* ── Brand geometry: the square-Kufic hairline grid ─────────────────── */
-  .c-gridlines {
-    --grid: 4rem;
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-      linear-gradient(to right, var(--c-grid) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--c-grid) 1px, transparent 1px);
-    background-size: var(--grid) var(--grid);
-    background-position: center top;
-    -webkit-mask-image: var(--grid-mask, linear-gradient(to bottom, black 0%, black 55%, transparent 100%));
-    mask-image: var(--grid-mask, linear-gradient(to bottom, black 0%, black 55%, transparent 100%));
-  }
-
-  .c-gridlines--fade-x {
-    --grid-mask: radial-gradient(120% 90% at 50% 0%, black 30%, transparent 78%);
-  }
-
-  /* ── Night band (live band, footer): re-scoped tokens ───────────────── */
-  .c-night {
-    --bg: var(--c-night-bg);
-    --surface: var(--c-night-card);
-    --surface-2: var(--c-night-card-2);
-    --surface-elevated: var(--c-night-card-2);
-    --border: var(--c-night-line);
-    --border-strong: var(--c-night-line-strong);
-    --text-primary: var(--c-night-fg);
-    --text-secondary: var(--c-night-fg-2);
-    --text-tertiary: var(--c-night-fg-2);
-    --primary: var(--c-night-primary);
-    --primary-hover: var(--c-night-primary-hover);
-    --primary-contrast: var(--c-night-bg);
-    --live: var(--c-night-live);
-    --c-on-live: #0e1024;
-    --focus: var(--accent);
-    --c-gold-ink: var(--accent);
-    --c-grid: var(--c-night-grid);
-    --c-logo-word: var(--c-night-fg);
-    background: var(--c-night-bg);
-    color: var(--c-night-fg);
-  }
-
-  .c-logo {
-    --logo-mark: var(--accent);
-    --logo-word: var(--c-logo-word);
-  }
-
-  /* Seller monogram (background comes from the seller's own tone). */
-  .c-monogram {
-    color: var(--c-monogram-fg);
-    font-family: var(--c-font-latin);
-    font-stretch: 112%;
-    letter-spacing: 0.02em;
-  }
-
-  /* ── Buttons ───────────────────────────────────────────────────────── */
-  .c-btn {
-    --btn-h: 3rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.55rem;
-    min-height: var(--btn-h);
-    padding-inline: 1.25rem;
-    border: 1px solid transparent;
-    border-radius: var(--r-control);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    line-height: 1.2;
-    white-space: nowrap;
-    text-decoration: none;
-    user-select: none;
-    transition:
-      background-color 0.18s ease,
-      border-color 0.18s ease,
-      color 0.18s ease,
-      transform 0.12s ease;
-  }
-
-  .c-btn:lang(en) {
-    font-stretch: 104%;
-  }
-
-  .c-btn:lang(ar) {
-    font-size: 1rem;
-  }
-
-  .c-btn:active:not(:disabled),
-  .c-btn.is-active {
-    transform: translateY(1px);
-  }
-
-  .c-btn:focus-visible,
-  .c-btn.is-focus {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
-  }
-
-  .c-btn:disabled,
-  .c-btn[aria-disabled="true"] {
-    opacity: 0.45;
-    cursor: not-allowed;
-  }
-
-  .c-btn--sm {
-    --btn-h: 2.5rem;
-    padding-inline: 0.9rem;
-    font-size: 0.875rem;
-  }
-
-  .c-btn--sm:lang(ar) {
-    font-size: 0.9rem;
-  }
-
-  .c-btn--lg {
-    --btn-h: 3.5rem;
-    padding-inline: 1.75rem;
-    font-size: 1rem;
-  }
-
-  .c-btn--lg:lang(ar) {
-    font-size: 1.0625rem;
-  }
-
-  .c-btn--icon {
-    width: var(--btn-h);
-    padding-inline: 0;
-  }
-
-  .c-btn--block {
-    width: 100%;
-  }
-
-  .c-btn--primary {
-    background: var(--primary);
-    color: var(--primary-contrast);
-  }
-
-  .c-btn--primary:hover:not(:disabled),
-  .c-btn--primary.is-hover {
-    background: var(--primary-hover);
-  }
-
-  .c-btn--night {
-    background: var(--secondary);
-    color: var(--secondary-contrast);
-  }
-
-  .c-btn--night:hover:not(:disabled),
-  .c-btn--night.is-hover {
-    background: color-mix(in oklab, var(--secondary) 82%, var(--primary));
-  }
-
-  .c-btn--gold {
-    background: var(--accent);
-    color: var(--accent-contrast);
-  }
-
-  .c-btn--gold:hover:not(:disabled),
-  .c-btn--gold.is-hover {
-    background: color-mix(in oklab, var(--accent) 86%, var(--text-primary));
-  }
-
-  .c-btn--outline {
-    background: transparent;
-    border-color: var(--border-strong);
-    color: var(--text-primary);
-  }
-
-  .c-btn--outline:hover:not(:disabled),
-  .c-btn--outline.is-hover {
-    border-color: var(--text-primary);
-    background: color-mix(in oklab, var(--text-primary) 4%, transparent);
-  }
-
-  .c-btn--ghost {
-    background: transparent;
-    color: var(--text-primary);
-  }
-
-  .c-btn--ghost:hover:not(:disabled),
-  .c-btn--ghost.is-hover {
-    background: color-mix(in oklab, var(--text-primary) 6%, transparent);
-  }
-
-  .c-btn--danger {
-    background: transparent;
-    border-color: color-mix(in oklab, var(--danger) 40%, transparent);
-    color: var(--danger);
-  }
-
-  /* Icon button used in headers and on cards */
-  .c-iconbtn {
-    position: relative;
-    display: inline-grid;
-    place-items: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: var(--r-control);
-    color: var(--text-primary);
-    transition:
-      background-color 0.18s ease,
-      color 0.18s ease;
-  }
-
-  .c-iconbtn:hover {
-    background: color-mix(in oklab, var(--text-primary) 6%, transparent);
-  }
-
-  .c-count {
-    position: absolute;
-    top: 0.2rem;
-    inset-inline-end: 0.15rem;
-    display: grid;
-    place-items: center;
-    min-width: 1.15rem;
-    height: 1.15rem;
-    padding-inline: 0.25rem;
-    border-radius: var(--r-xs);
-    background: var(--accent);
-    color: var(--accent-contrast);
-    font-family: var(--c-font-latin);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  /* ── Form controls ─────────────────────────────────────────────────── */
-  .c-input {
-    width: 100%;
-    min-height: 3rem;
-    padding-inline: 1rem;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--r-control);
-    background: var(--surface);
-    color: var(--text-primary);
-    font-size: 1rem;
-    transition:
-      border-color 0.15s ease,
-      box-shadow 0.15s ease;
-  }
-
-  .c-input::placeholder {
-    color: var(--text-tertiary);
-    opacity: 1;
-  }
-
-  /* Search fields carry their own clear button. */
-  :root[data-concept="c"] input[type="search"]::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  .c-input:hover:not(:disabled) {
-    border-color: color-mix(in oklab, var(--border-strong) 55%, var(--text-primary));
-  }
-
-  .c-input:focus,
-  .c-input:focus-visible,
-  .c-input.is-focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 20%, transparent);
-  }
-
-  .c-input[aria-invalid="true"] {
-    border-color: var(--danger);
-  }
-
-  .c-input[aria-invalid="true"]:focus {
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--danger) 18%, transparent);
-  }
-
-  .c-input:disabled {
-    background: var(--muted);
-    color: var(--text-tertiary);
-    cursor: not-allowed;
-  }
-
-  .c-check {
-    appearance: none;
-    -webkit-appearance: none;
-    flex: none;
-    display: inline-grid;
-    place-content: center;
-    width: 1.125rem;
-    height: 1.125rem;
-    margin: 0;
-    border: 1.5px solid var(--border-strong);
-    border-radius: var(--r-xs);
-    background: var(--surface);
-    cursor: pointer;
-    transition:
-      background-color 0.15s ease,
-      border-color 0.15s ease;
-  }
-
-  .c-check::after {
-    content: "";
-    width: 0.42rem;
-    height: 0.42rem;
-    background: var(--primary-contrast);
-    transform: rotate(45deg) scale(0);
-    transition: transform 0.18s var(--ease-out-soft);
-  }
-
-  .c-check:checked {
-    border-color: var(--primary);
-    background: var(--primary);
-  }
-
-  .c-check:checked::after {
-    transform: rotate(45deg) scale(1);
-  }
-
-  .c-radio {
-    appearance: none;
-    -webkit-appearance: none;
-    flex: none;
-    display: inline-grid;
-    place-content: center;
-    width: 0.9rem;
-    height: 0.9rem;
-    margin: 0.15rem;
-    border: 1.5px solid var(--border-strong);
-    background: var(--surface);
-    transform: rotate(45deg);
-    cursor: pointer;
-  }
-
-  .c-radio::after {
-    content: "";
-    width: 0.34rem;
-    height: 0.34rem;
-    background: var(--primary);
-    transform: scale(0);
-    transition: transform 0.18s var(--ease-out-soft);
-  }
-
-  .c-radio:checked {
-    border-color: var(--primary);
-  }
-
-  .c-radio:checked::after {
-    transform: scale(1);
-  }
-
-  .c-check:focus-visible,
-  .c-radio:focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 3px;
-  }
-
-  /* ── Badges & chips ────────────────────────────────────────────────── */
-  .c-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    height: 1.625rem;
-    padding-inline: 0.55rem;
-    border: 1px solid transparent;
-    border-radius: var(--r-xs);
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  .c-badge:lang(ar) {
-    font-size: 0.8125rem;
-    font-weight: 600;
-  }
-
-  .c-badge .c-dia {
-    --d: 0.4rem;
-  }
-
-  .c-badge--neutral {
-    background: var(--surface);
-    border-color: var(--border);
-    color: var(--text-primary);
-  }
-
-  .c-badge--live {
-    background: var(--live);
-    color: var(--c-on-live);
-  }
-
-  .c-badge--live .c-dia--live {
-    color: var(--c-on-live);
-  }
-
-  .c-badge--warning {
-    background: color-mix(in oklab, var(--warning) 12%, var(--surface));
-    border-color: color-mix(in oklab, var(--warning) 32%, transparent);
-    color: var(--warning);
-  }
-
-  .c-badge--danger {
-    background: color-mix(in oklab, var(--live) 10%, var(--surface));
-    border-color: color-mix(in oklab, var(--live) 34%, transparent);
-    color: var(--live);
-  }
-
-  .c-badge--night {
-    background: var(--secondary);
-    color: var(--secondary-contrast);
-  }
-
-  .c-badge--gold {
-    background: color-mix(in oklab, var(--accent) 20%, var(--surface));
-    border-color: color-mix(in oklab, var(--accent) 50%, transparent);
-    color: var(--c-gold-ink);
-  }
-
-  .c-badge--primary {
-    background: color-mix(in oklab, var(--primary) 9%, var(--surface));
-    border-color: color-mix(in oklab, var(--primary) 26%, transparent);
-    color: var(--primary);
-  }
-
-  .c-badge--success {
-    background: color-mix(in oklab, var(--success) 10%, var(--surface));
-    border-color: color-mix(in oklab, var(--success) 30%, transparent);
-    color: var(--success);
-  }
-
-  .c-badge--muted {
-    background: var(--muted);
-    border-color: var(--border);
-    color: var(--text-secondary);
-  }
-
-  .c-grade {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    height: 1.625rem;
-    padding-inline: 0.5rem 0.6rem;
-    border: 1px solid var(--border);
-    border-radius: var(--r-xs);
-    background: var(--surface);
-    color: var(--text-primary);
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  .c-grade:lang(ar) {
-    font-size: 0.8125rem;
-  }
-
-  .c-grade .c-dia {
-    --d: 0.45rem;
-    color: var(--g, var(--primary));
-  }
-
-  .c-grade--lg {
-    height: 2rem;
-    padding-inline: 0.65rem 0.8rem;
-    font-size: 0.875rem;
-  }
-
-  .c-grade--lg:lang(ar) {
-    font-size: 0.9375rem;
-  }
-
-  .c-grade--lg .c-dia {
-    --d: 0.55rem;
-  }
-
-  /* Filter chips (active filters, popular searches) */
-  .c-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-height: 2.25rem;
-    padding-inline: 0.8rem;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--r-control);
-    background: var(--surface);
-    color: var(--text-primary);
-    font-size: 0.875rem;
-    font-weight: 500;
-    transition:
-      border-color 0.15s ease,
-      background-color 0.15s ease;
-  }
-
-  .c-chip:hover {
-    border-color: var(--text-primary);
-  }
-
-  .c-chip[aria-pressed="true"] {
-    border-color: var(--primary);
-    background: color-mix(in oklab, var(--primary) 10%, var(--surface));
-    color: var(--primary);
-  }
-
-  /* ── Auction time bar: saffron, proportional to time left (24 h = full) */
-  .c-timebar {
-    position: absolute;
-    inset-inline: 0;
-    bottom: 0;
-    height: 3px;
-    background: color-mix(in oklab, var(--accent) 18%, transparent);
-  }
-
-  .c-timebar > span {
-    display: block;
-    height: 100%;
-    background: var(--accent);
-    transition:
-      inline-size 0.95s linear,
-      background-color 0.4s ease;
-  }
-
-  .c-timebar[data-urgency="critical"] > span {
-    background: var(--live);
-  }
-
-  .c-timebar--static {
-    position: relative;
-    height: 4px;
-  }
-
-  /* ── Horizontal scrollers (contained, never scroll the page) ────────── */
-  .c-scroller {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-  }
-
-  .c-scroller::-webkit-scrollbar {
-    display: none;
-  }
-
-  .c-scroller > * {
-    flex: none;
-    scroll-snap-align: start;
-  }
-
-  /* ── Product plates ────────────────────────────────────────────────── */
-  .c-plate {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    background: var(--plate);
-  }
-
-  .c-plate-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    mix-blend-mode: multiply;
-    transition: transform 0.6s var(--ease-out-soft);
-  }
-
-  .c-plate-img--scene {
-    object-fit: cover;
-    mix-blend-mode: normal;
-  }
-
-  .group:hover .c-plate-img--zoom {
-    transform: scale(1.03);
-  }
-
-  /* A soft stage behind product cut-outs on sand / indigo tiles. */
-  .c-tile-glow {
-    background: radial-gradient(closest-side, var(--c-tile-glow), transparent);
-  }
-
-  /* Card */
-  .c-card {
-    transition:
-      border-color 0.25s ease,
-      background-color 0.25s ease;
-  }
-
-  .c-card:hover {
-    border-color: var(--border-strong);
-  }
-
-  .c-card-title {
-    font-weight: 600;
-    color: var(--text-primary);
-    text-wrap: pretty;
-  }
-
-  .c-card-title:lang(en) {
-    font-size: 0.9375rem;
-    font-stretch: 102%;
-    line-height: 1.4;
-  }
-
-  .c-card-title:lang(ar) {
-    font-size: 0.96875rem;
-    line-height: 1.65;
-  }
-
-  /* Stretched link: the whole card is one link target. */
-  .c-stretch::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    border-radius: var(--r-card);
-  }
-
-  .c-stretch:focus-visible {
-    outline: none;
-  }
-
-  .c-stretch:focus-visible::after {
-    outline: 2px solid var(--focus);
-    outline-offset: -2px;
-  }
-
-  /* Sticky detail panels — only when the viewport is tall enough to show them whole. */
-  @media (min-width: 1024px) and (min-height: 760px) {
-    .c-sticky-aside {
-      position: sticky;
-      top: calc(var(--pbar-h) + 6.5rem);
-    }
-  }
-
-  @media (min-width: 1024px) and (min-height: 940px) {
-    .c-sticky-aside--tall {
-      position: sticky;
-      top: calc(var(--pbar-h) + 6.5rem);
-    }
-  }
-
-  /* Price flash when a bid lands */
-  .c-flash {
-    animation: kz-flash 1.4s ease-out;
-    border-radius: var(--r-xs);
-  }
-
-  /* ── Hero diagonal rule (drawn on load) ─────────────────────────────── */
-  .c-draw {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: c-draw 1.6s 0.35s var(--ease-out-soft) forwards;
-  }
-
-  [dir="rtl"] .c-mirror {
-    transform: scaleX(-1);
-  }
-
-  /* City index: names are revealed on hover/focus (a monogram preview holds
-     the space); touch and small screens always show the names. */
-  .c-reveal-preview {
-    display: none;
-  }
-
-  @media (hover: hover) and (min-width: 1024px) {
-    .c-reveal-preview {
-      display: flex;
-      transition: opacity 0.25s ease;
-    }
-
-    .c-reveal-names {
-      position: absolute;
-      inset-inline: 0;
-      top: 0;
-      opacity: 0;
-      transform: translate3d(0, 6px, 0);
-      pointer-events: none;
-      transition:
-        opacity 0.35s var(--ease-out-soft),
-        transform 0.35s var(--ease-out-soft);
-    }
-
-    .group:hover .c-reveal-preview,
-    .group:focus-within .c-reveal-preview {
-      opacity: 0;
-    }
-
-    .group:hover .c-reveal-names,
-    .group:focus-within .c-reveal-names {
-      opacity: 1;
-      transform: none;
-      pointer-events: auto;
-    }
-  }
-
-  /* Outlined display letters (values section) */
-  .c-outline-letter {
-    color: transparent;
-    -webkit-text-stroke: 1.25px var(--primary);
-    transition:
-      color 0.35s var(--ease-out-soft),
-      -webkit-text-stroke-color 0.35s var(--ease-out-soft);
-  }
-
-  .group:hover .c-outline-letter {
-    color: var(--primary);
-  }
-
-  @supports not (-webkit-text-stroke: 1px black) {
-    .c-outline-letter {
-      color: var(--primary);
-    }
+  @media (min-width: 1280px) {
+    .kb-container { padding-inline: 32px; }
   }
 }
 
-@keyframes c-dia-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.65;
-  }
-  80%,
-  100% {
-    transform: scale(2.8);
-    opacity: 0;
-  }
+/* ── Shell: sticky offsets follow the header as it collapses ─────────────── */
+.kb-shell {
+  --kb-head: 113px;
+  --kb-tabbar: calc(60px + env(safe-area-inset-bottom, 0px));
 }
 
-@keyframes c-loader {
-  0% {
-    transform: rotate(45deg) scale(1);
-  }
-  50% {
-    transform: rotate(225deg) scale(0.7);
-  }
-  100% {
-    transform: rotate(405deg) scale(1);
-  }
+.kb-shell[data-head="collapsed"] {
+  --kb-head: 56px;
 }
 
-@keyframes c-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
+@media (min-width: 1024px) {
+  .kb-shell { --kb-head: 113px; --kb-tabbar: 0px; }
+  .kb-shell[data-head="collapsed"] { --kb-head: 68px; }
+}
+
+.kb-sticky {
+  position: sticky;
+  top: calc(var(--pbar-h) + var(--kb-head) + 16px);
+  transition: top 0.3s var(--ease-out-soft);
+}
+
+/* ── Brand surfaces ──────────────────────────────────────────────────────── */
+.kb-brand-panel {
+  background:
+    radial-gradient(120% 90% at 85% 40%, color-mix(in oklab, var(--kb-indigo-600) 70%, transparent) 0%, transparent 60%),
+    radial-gradient(60% 60% at 0% 100%, color-mix(in oklab, var(--kb-indigo-800) 80%, transparent) 0%, transparent 70%),
+    linear-gradient(135deg, var(--kb-indigo-900) 0%, var(--kb-indigo-950) 100%);
+  color: var(--kb-on-brand);
+}
+
+.kb-brand-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(80% 80% at 80% 50%, #000 0%, transparent 75%);
+}
+
+.kb-glow {
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--kb-gold-soft) 55%, transparent), transparent);
+}
+
+.kb-on-dark {
+  --focus: var(--kb-gold-soft);
+  --logo-word: #ffffff;
+}
+
+/* Light popovers opened from dark bars get the normal focus colour back. */
+.kb-focus-reset {
+  --focus: var(--primary);
+}
+
+.kb-btn-on-brand {
+  background: var(--kb-on-brand);
+  color: var(--kb-indigo-950);
+}
+
+.kb-btn-on-brand:hover {
+  background: color-mix(in oklab, var(--kb-on-brand) 88%, var(--kb-gold-soft));
+}
+
+/* Product photography: white packshots melt into the light plate. */
+.kb-pack {
+  mix-blend-mode: multiply;
+}
+
+/* Badges that sit on product plates. The plate is light in both themes, so
+   these fills are fixed (each pair clears 4.5:1 on its own). */
+.kb-tag-indigo { background: #3d4d9b; color: #ffffff; }
+.kb-tag-ink { background: #101828; color: #ffffff; }
+.kb-tag-new { background: #067647; color: #ffffff; }
+.kb-tag-warn { background: #b54708; color: #ffffff; }
+.kb-tag-live { background: #d1242f; color: #ffffff; }
+.kb-tag-gold { background: #d8a535; color: #1a1406; }
+.kb-tag-muted { background: #475467; color: #ffffff; }
+
+/* Seller monogram avatars sit on the seller's own tone. */
+.kb-avatar {
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14);
+  color: #ffffff;
+}
+
+/* ── Motion ──────────────────────────────────────────────────────────────── */
+@keyframes kb-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes kb-bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.28); }
+  100% { transform: scale(1); }
+}
+
+@keyframes kb-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes kb-drift {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to { transform: scale(1.09) translate3d(-1.5%, -1%, 0); }
+}
+
+.kb-pulse {
+  animation: kb-pulse 1.1s ease-in-out infinite;
+}
+
+/* Slow drift on the live-stream poster so the stage never feels frozen. */
+.kb-drift {
+  animation: kb-drift 22s ease-in-out infinite alternate;
+}
+
+.kb-bump {
+  animation: kb-bump 0.4s var(--ease-out-soft);
+}
+
+.kb-autoplay-bar {
+  transform-origin: left center;
+  animation: kb-progress var(--kb-autoplay, 6s) linear both;
+}
+
+[dir="rtl"] .kb-autoplay-bar {
+  transform-origin: right center;
+}
+
+.kb-autoplay-bar[data-paused="true"] {
+  animation-play-state: paused;
+}
+
+/* Horizontal rails: contained scrolling, no page overflow. */
+.kb-rail {
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: 16px;
+}
+
+.kb-rail > * {
+  scroll-snap-align: start;
+}
+
+@media (min-width: 640px) {
+  .kb-rail { scroll-padding-inline: 24px; }
+}
+
+@media (min-width: 1024px) {
+  .kb-rail { scroll-padding-inline: 0px; }
+}
+
+/* Skip link */
+.kb-skip {
+  position: fixed;
+  inset-inline-start: 12px;
+  top: calc(var(--pbar-h) + 8px);
+  z-index: 450;
+  transform: translateY(calc(-100% - var(--pbar-h) - 24px));
+  transition: transform 0.2s var(--ease-out-soft);
+}
+
+.kb-skip:focus-visible {
+  transform: none;
+}
+
+/* Number inputs without spinners (steppers provide their own buttons). */
+.kb-no-spin::-webkit-outer-spin-button,
+.kb-no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.kb-no-spin {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="search"].kb-search::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/* Forced states for the components board. */
+.kb-force-focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
 }

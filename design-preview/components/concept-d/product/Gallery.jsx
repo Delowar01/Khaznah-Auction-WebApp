@@ -2,100 +2,128 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, Expand } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
-import { useGallery } from "@/components/shared/ui/hooks";
 import { DirIcon } from "@/components/shared/ui/DirIcon";
-import { Img } from "@/components/shared/ui/Img";
-import { useCopy } from "../lib/useCopy";
-import { GalleryImage } from "./GalleryImage";
+import { useGallery, useMediaQuery } from "@/components/shared/ui/hooks";
+import { Plate } from "../ui/Plate";
+import { cx } from "../ui/cx";
+import { COPY } from "../copy";
 import { Lightbox } from "./Lightbox";
 
-const NAV_BTN = "d-ov-chip absolute top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full transition-colors hover:bg-black/85";
+const NAV = "absolute top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-surface/95 text-fg shadow-raised ring-1 ring-line backdrop-blur transition-[opacity,background-color] hover:bg-surface";
 
-/** Stage + thumbnails; arrows, keyboard, swipe and a zoom lightbox. */
-export function Gallery({ images, title, overlay, className = "" }) {
-  const { ui } = useLang();
-  const c = useCopy();
+/**
+ * Detail gallery: vertical thumbnails beside the main image on desktop, a
+ * thumbnail strip below on phones. Hover zooms under the pointer, click
+ * opens the lightbox, arrows / swipe / keyboard move between images.
+ */
+export function Gallery({ product, badges, className = "" }) {
+  const { t, ui } = useLang();
+  const images = product.images;
   const gallery = useGallery(images.length);
-  const [zoom, setZoom] = useState(false);
-  const { index } = gallery;
-  const many = images.length > 1;
+  const [lightbox, setLightbox] = useState(false);
+  const [zoom, setZoom] = useState(null);
+  const canHover = useMediaQuery("(hover: hover) and (pointer: fine)");
+  const title = t(product.title);
+  const image = images[gallery.index];
+
+  const onMove = (event) => {
+    if (!canHover || image?.kind === "scene") return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    setZoom({ x: ((event.clientX - rect.left) / rect.width) * 100, y: ((event.clientY - rect.top) / rect.height) * 100 });
+  };
 
   return (
-    <div className={className}>
-      <div
-        role="region"
-        aria-roledescription="carousel"
-        aria-label={c("imageStage")}
-        tabIndex={0}
-        onKeyDown={gallery.onKeyDown}
-        {...gallery.swipeHandlers}
-        className="d-stage group relative aspect-square overflow-hidden rounded-card border border-line outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)] sm:aspect-[4/3]"
-      >
-        <div aria-hidden="true" className="d-dotgrid pointer-events-none absolute inset-0 opacity-70" />
-        <AnimatePresence initial={false} mode="popLayout">
-          <motion.div
-            key={index}
-            role="group"
-            aria-roledescription="slide"
-            aria-label={ui("imageOf", { n: index + 1, total: images.length })}
-            className="absolute inset-0"
-            initial={{ opacity: 0, scale: 0.985 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <GalleryImage image={images[index]} alt={index === 0 ? title : `${title} — ${ui("imageOf", { n: index + 1, total: images.length })}`} priority={index === 0} />
-          </motion.div>
-        </AnimatePresence>
-
-        {overlay ? <div className="pointer-events-none absolute inset-x-3 top-3 z-10 flex items-start gap-2">{overlay}</div> : null}
-        <span className="d-ov-chip d-num absolute bottom-3 start-3 z-10 rounded-md px-2 py-1 text-[11px]">
-          <span dir="ltr">
-            {index + 1} / {images.length}
-          </span>
-        </span>
-        <button type="button" onClick={() => setZoom(true)} aria-label={ui("zoom")} className="d-ov-chip absolute bottom-3 end-3 z-10 grid size-10 place-items-center rounded-full transition-colors hover:bg-black/85">
-          <Maximize2 aria-hidden="true" className="size-4" />
-        </button>
-        {many ? (
-          <>
-            <button type="button" onClick={gallery.prev} aria-label={ui("previous")} data-testid="gallery-prev" className={`${NAV_BTN} start-3`}>
-              <DirIcon icon={ChevronLeft} className="size-5" />
-            </button>
-            <button type="button" onClick={gallery.next} aria-label={ui("next")} data-testid="gallery-next" className={`${NAV_BTN} end-3`}>
-              <DirIcon icon={ChevronRight} className="size-5" />
-            </button>
-          </>
-        ) : null}
-      </div>
-
-      {many ? (
-        <div className="no-scrollbar relative mt-3 flex gap-2 overflow-x-auto p-0.5" role="group" aria-label={c("thumbnails")}>
-          {images.map((image, i) => (
+    <div className={cx("flex flex-col-reverse gap-3 lg:flex-row", className)}>
+      <ul className="no-scrollbar flex gap-2 overflow-x-auto p-0.5 lg:max-h-[560px] lg:w-[76px] lg:shrink-0 lg:flex-col lg:overflow-y-auto">
+        {images.map((img, i) => (
+          <li key={`${img?.sources?.[0]?.src}-${i}`} className="shrink-0">
             <button
-              key={image.sources[0].src}
               type="button"
               onClick={() => gallery.setIndex(i)}
               aria-label={ui("showImage", { n: i + 1 })}
-              aria-current={i === index ? "true" : undefined}
-              className={`d-plate relative size-16 shrink-0 overflow-hidden rounded-xl transition-[box-shadow,opacity] sm:size-[72px] ${
-                i === index ? "ring-2 ring-[var(--d-ink)] ring-offset-2 ring-offset-bg" : "opacity-70 ring-1 ring-line hover:opacity-100"
-              }`}
+              aria-current={i === gallery.index ? "true" : undefined}
+              className={cx(
+                "block size-16 overflow-hidden rounded-lg border-2 transition-colors lg:size-[72px]",
+                i === gallery.index ? "border-primary" : "border-line hover:border-line-strong",
+              )}
             >
-              <Img
-                image={image}
-                alt=""
-                sizes="80px"
-                className={`absolute inset-0 size-full ${image.kind === "scene" ? "object-cover" : "object-contain p-1.5 mix-blend-multiply"}`}
-              />
+              <Plate image={img} alt="" sizes="72px" pad="p-1" className="size-full" />
             </button>
-          ))}
-        </div>
-      ) : null}
+          </li>
+        ))}
+      </ul>
 
-      <Lightbox open={zoom} onClose={() => setZoom(false)} images={images} title={title} startIndex={index} onIndex={gallery.setIndex} />
+      <div className="relative min-w-0 flex-1">
+        <div
+          role="group"
+          aria-roledescription="gallery"
+          aria-label={t(COPY.galleryLabel, { title })}
+          tabIndex={0}
+          onKeyDown={gallery.onKeyDown}
+          {...gallery.swipeHandlers}
+          className="relative aspect-square overflow-hidden rounded-xl border border-line bg-plate outline-offset-4"
+        >
+          <button
+            type="button"
+            onClick={() => setLightbox(true)}
+            onMouseMove={onMove}
+            onMouseLeave={() => setZoom(null)}
+            aria-label={ui("zoom")}
+            className="absolute inset-0 cursor-zoom-in"
+          >
+            <AnimatePresence initial={false} mode="popLayout">
+              <motion.span
+                key={gallery.index}
+                className="absolute inset-0 block"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                <span
+                  className="block size-full transition-transform duration-200 ease-out"
+                  style={zoom ? { transform: "scale(2)", transformOrigin: `${zoom.x}% ${zoom.y}%` } : undefined}
+                >
+                  <Plate
+                    image={image}
+                    alt={`${title} — ${ui("imageOf", { n: gallery.index + 1, total: images.length })}`}
+                    sizes="(min-width: 1280px) 40vw, (min-width: 1024px) 55vw, 100vw"
+                    priority={gallery.index === 0}
+                    pad="p-[7%]"
+                    className="size-full"
+                  />
+                </span>
+              </motion.span>
+            </AnimatePresence>
+          </button>
+
+          {badges ? <div className="pointer-events-none absolute start-3 top-3 z-10 flex flex-wrap gap-1.5">{badges}</div> : null}
+
+          {images.length > 1 ? (
+            <>
+              <button type="button" data-testid="gallery-prev" onClick={gallery.prev} aria-label={ui("previous")} className={cx(NAV, "start-3")}>
+                <DirIcon icon={ChevronLeft} className="size-5" />
+              </button>
+              <button type="button" data-testid="gallery-next" onClick={gallery.next} aria-label={ui("next")} className={cx(NAV, "end-3")}>
+                <DirIcon icon={ChevronRight} className="size-5" />
+              </button>
+            </>
+          ) : null}
+
+          <div className="pointer-events-none absolute inset-x-3 bottom-3 z-10 flex items-center justify-between">
+            <span className="rounded-full bg-black/60 px-2.5 py-1 kb-xs font-semibold text-white tabular" dir="ltr">
+              {gallery.index + 1} / {images.length}
+            </span>
+            <span className="grid size-9 place-items-center rounded-full bg-surface/95 text-fg shadow-card ring-1 ring-line">
+              <Expand aria-hidden="true" className="size-4" />
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <Lightbox open={lightbox} onClose={() => setLightbox(false)} images={images} title={title} gallery={gallery} />
     </div>
   );
 }

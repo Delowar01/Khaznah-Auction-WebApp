@@ -1,44 +1,55 @@
 "use client";
 
+import { AnimatePresence, motion } from "motion/react";
 import { useLang } from "@/components/shared/providers/LangProvider";
-import { Money } from "@/components/shared/ui/Money";
+import { DEMO_USER } from "@/data/site";
 import { formatAgo } from "@/lib/format";
 import { feedAge } from "@/lib/useLiveEvent";
-import { COPY } from "../copy";
-import { Diamond } from "../ui/Diamond";
 import { cx } from "../ui/cx";
 
-/** Running list of bids in the room; your own bids are tinted. */
-export function ActivityFeed({ live }) {
-  const { t, ui, lang } = useLang();
-  const { feed } = live;
+/** Chat-style bid feed; your own bids are highlighted. */
+export function ActivityFeed({ live, className = "" }) {
+  const { t, ui, money, lang } = useLang();
   return (
-    <section aria-labelledby="feed-title" className="overflow-hidden rounded-md border border-line bg-surface">
-      <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-3.5">
-        <h2 id="feed-title" className="font-semibold text-fg">
-          {ui("activity")}
-        </h2>
-        <span className="flex items-center gap-2 text-xs font-medium text-success">
-          <span className="kz-live-dot bg-success!" />
-          {ui("connected")}
-        </span>
+    <section aria-labelledby="kb-activity" className={cx("overflow-hidden rounded-xl border border-line bg-surface", className)}>
+      <h2 id="kb-activity" className="flex items-center gap-2 border-b border-line px-4 py-3 kb-md font-bold text-fg">
+        <span aria-hidden="true" className="kz-live-dot" />
+        {ui("activity")}
+      </h2>
+      <div role="region" aria-label={ui("activity")} tabIndex={0} className="max-h-[340px] overflow-y-auto overscroll-contain outline-offset-[-2px]">
+        <ol className="p-2">
+          <AnimatePresence initial={false}>
+            {live.feed.map((row) => {
+              const who = row.own ? ui("you") : `${ui("bidder")} ${row.who}`;
+              return (
+                <motion.li
+                  key={row.id}
+                  layout
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className={cx("flex items-center gap-3 rounded-lg px-2 py-2", row.own && "bg-primary/10")}
+                >
+                  <span
+                    aria-hidden="true"
+                    className={cx(
+                      "grid size-8 shrink-0 place-items-center rounded-full kb-2xs font-extrabold",
+                      row.own ? "bg-primary text-on-primary" : "bg-surface-2 text-fg-2",
+                    )}
+                  >
+                    {row.own ? t(DEMO_USER.initials) : row.who.slice(0, 3)}
+                  </span>
+                  <p className="min-w-0 flex-1 kb-sm text-fg">
+                    <span className={cx("font-semibold", row.own && "text-primary")}>{ui("bidFrom", { who, amount: money(row.amount) })}</span>
+                  </p>
+                  <span className="shrink-0 kb-2xs text-fg-3">{formatAgo(feedAge(row), lang)}</span>
+                </motion.li>
+              );
+            })}
+          </AnimatePresence>
+        </ol>
       </div>
-      <ol tabIndex={0} aria-labelledby="feed-title" className="max-h-[16rem] divide-y divide-line overflow-y-auto outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-focus">
-        {feed.length ? (
-          feed.map((row) => (
-            <li key={row.id} className={cx("kz-fade-up grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-3 px-5 py-2.5 text-sm", row.own && "bg-primary/6")}>
-              <span className="flex min-w-0 items-center gap-2.5">
-                <Diamond size={5} className={row.own ? "text-primary" : "text-line-strong"} />
-                <span className={cx("truncate", row.own ? "font-semibold text-primary" : "text-fg")}>{row.own ? ui("you") : `${ui("bidder")} ${row.who}`}</span>
-              </span>
-              <Money value={row.amount} className="c-num font-semibold text-fg" />
-              <span className="w-16 text-end text-xs text-fg-3">{formatAgo(feedAge(row), lang)}</span>
-            </li>
-          ))
-        ) : (
-          <li className="px-5 py-8 text-center text-sm text-fg-3">{t(COPY.feedEmpty)}</li>
-        )}
-      </ol>
     </section>
   );
 }
