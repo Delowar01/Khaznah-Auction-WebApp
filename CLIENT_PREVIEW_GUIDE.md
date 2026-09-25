@@ -8,14 +8,21 @@ the comparison is about design and experience, not about products.
 
 The options are not ranked, and none is recommended over the others.
 
+> **This is the second round.** After reviewing the first set, the Modern
+> Commerce direction was kept as the starting point, and three new
+> alternatives were created in the same commercially-focused family so all
+> four options now feel like serious, realistic Khazna marketplaces. This note
+> is background for the review team; the preview itself simply shows the four
+> options below.
+
 ## Options
 
 | Option | Direction | In short |
 |---|---|---|
-| **A** | Premium Marketplace | Refined, spacious and editorial. Designed to give Khazna the character of a premium marketplace and a modern auction house. |
-| **B** | Modern Commerce | Search-led, practical and focused on conversion. Designed for customers who want to find products, categories and auctions quickly. |
-| **C** | Saudi Contemporary | A modern Saudi visual direction with strong bilingual presentation and a distinctive local identity. |
-| **D** | Digital / Auction Marketplace | A dynamic, technology-led direction with a stronger emphasis on auctions, live activity and bidding. |
+| **1** | Modern Commerce | Search-led, practical and focused on conversion. Designed for customers who want to find products, categories and auctions quickly. |
+| **2** | Premium Commerce | The same practical marketplace, elevated — a refined, high-end shopping experience with elegant typography and more spacious, polished product presentation. |
+| **3** | Saudi Modern Commerce | A confident, Arabic-first take on the same marketplace, built for the Saudi market — clear bilingual hierarchy, a contemporary local palette and strong seller credibility. |
+| **4** | Auction-Forward Commerce | The same marketplace, tuned for bidding — auctions, live sales and countdowns take the lead, with clear urgency and status, while staying calm and trustworthy. |
 
 ## Using the preview
 

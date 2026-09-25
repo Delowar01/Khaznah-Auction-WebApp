@@ -3,12 +3,19 @@
 An isolated, interactive preview of **four design directions** for the Khazna
 customer website, built for client review:
 
-| Option | Direction | Default appearance |
-|---|---|---|
-| A | Premium Marketplace — a modern auction house: editorial, calm, catalogue-like | Light |
-| B | Modern Commerce — a fast, dense, search-first marketplace | Light |
-| C | Saudi Contemporary — Arabic-first, architectural, built from the brand's own geometry | Light |
-| D | Digital / Auction Marketplace — real-time data, charts and a live "auction floor" | Dark |
+| Option | Direction | Route slot | Default appearance |
+|---|---|---|---|
+| 1 | Modern Commerce — search-led, practical, conversion-focused | `concept-b` | Light |
+| 2 | Premium Commerce — refined, elevated, high-end retail feel | `concept-a` | Light |
+| 3 | Saudi Modern Commerce — Arabic-first, locally relevant, modern | `concept-c` | Light |
+| 4 | Auction-Forward Commerce — auction-led, countdown-forward, urgency-aware | `concept-d` | Light |
+
+> **Round 2.** After the first review, Modern Commerce (Option 1) was kept and
+> three new alternatives in the same commercial family replaced the other
+> first-round directions. The retired first-round concepts (Premium
+> Marketplace, Saudi Contemporary, Digital/Auction) remain in git history at
+> tag `round1-concepts`. Route slots keep their internal letters; the
+> client-facing labels are Options 1–4.
 
 Every option implements the same six customer screens — **Home, Browse, Buy Now
 product detail, Auction detail, Live auction, Seller storefront** — plus a
