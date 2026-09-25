@@ -31,6 +31,11 @@ This revision:
   brief's 11 questions and for all 24 structural dimensions it lists;
 - draws every wireframe from the shared sample data.
 
+A second independent review then checked this revision's first draft. It
+found data slips, three wording issues and verdicts that were still too
+generous. Its corrections are included, and section 9 summarises both
+reviews.
+
 ---
 
 ## 1. What this plan proposes
@@ -119,6 +124,7 @@ client-facing selector keeps its current labels until the new designs are built.
 | `(+)` | Add to bag or cart |
 | `[░]`, `[░░]` | Small photo |
 | `[=]` | Menu |
+| `!` | Notification badge (for example, when you are outbid) |
 
 Numbers in the wireframes come from the shared sample data (`data/`). Lot
 titles are placeholders.
@@ -143,24 +149,24 @@ Option 1 already has.
 ├──────────────────────────────────────────────────┬─────────────────────────┤
 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ ENDING UNDER AN HOUR    │
 │ ░░░░░ HERO CAROUSEL  (8/12 width, 436px+) ░░░░░░ │ ░ lot  SAR 180    9m    │
-│ ░░░░░░░░ brand · live · pallets slides ░░░░░░░░░ │ ░ lot  SAR 1,480 18m    │
+│ ░░ slides: brand (cut-outs) · live · pallets ░░░ │ ░ lot  SAR 1,480 18m    │
 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ ░ lot  SAR 540   46m    │
 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ├─────────────────────────┤
 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ BUY NOW DEAL            │
 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ ░░ -33%  SAR 175 [Add]  │
 ├──────────────────────────────────────────────────┴─────────────────────────┤
-│ TRUST STRIP   deposit | condition graded | secure payment | delivery       │
+│ TRUST STRIP   condition graded | deposit | secure payment | delivery       │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ CATEGORY TILES   [░][░][░][░][░][░][░][░]   all 8 in one row               │
 │ AUCTIONS RAIL    [card][card][card][card][card] >   ending | most bid      │
 ├────────────────────────────────────────────────────────────────────────────┤
-│ ▒▒▒▒▒▒▒▒▒▒ LIVE BAND:  live lot photo | now bidding + coming up ▒▒▒▒▒▒▒▒▒▒ │
+│ ▒▒▒▒▒▒▒▒▒▒ LIVE BAND:  stream | now bidding + coming up | Join ▒▒▒▒▒▒▒▒▒▒▒ │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ BUY NOW DEALS    [card][card][card][card][card]   5 across                 │
 │ PALLETS & BULK   [wide manifest card][wide manifest card][small lots]      │
 │ SELLERS          stats band + seller tiles (cover · monogram · counts)     │
 │ HOW IT WORKS (4 steps)  |  CONDITION GRADES                                │
-│ FOOTER                                                                     │
+│ FOOTER (with a newsletter band)                                            │
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -177,22 +183,30 @@ Option 1 already has.
 - **Hero:** an 8/12 carousel beside two stacked 4/12 tiles.
   - The carousel is at least 436px tall on desktop (it stretches to match the
     tiles), 500px on phones and 420px on small tablets.
+  - It has three slides:
+    - a brand slide, with start-aligned copy beside fridge and TV cut-outs;
+    - a live slide, with the stream, the current lot and Join;
+    - a pallet slide, using the warehouse-floor photo.
   - The first tile, "Ending in under an hour", holds three thumbnail rows.
   - The second tile shows the biggest Buy Now saving.
 - **Below the hero, in order:**
-  - a trust strip;
-  - 8 equal category tiles in one row (a round-tile rail on phones);
-  - an auctions rail;
-  - a full-bleed dark live band;
+  - a trust strip (condition graded, deposit, secure payment, delivery);
+  - 8 equal category tiles in one row, which become a swipeable rail of 112px
+    square photo cards on phones;
+  - an auctions rail (ending soonest or most bids);
+  - a full-bleed dark live band (stream, now bidding, coming up, Join — no bid
+    button);
   - a five-across deals grid;
   - wide pallet cards with manifest thumbnails;
   - a stats band with seller tiles (80px cover, monogram, city, counts);
-  - "How it works" beside the condition grades.
-- **Three card formats:**
+  - "How it works" beside the condition grades;
+  - a footer with a newsletter band.
+- **Four card formats:**
   - the vertical `AuctionCard` / `BuyNowCard`;
   - the list-view `LotRow` (88–128px thumbnail, seller, title, grade and type,
     price, bids and countdown, then watch and Bid or Add);
-  - `CompactLot` thumbnail rows.
+  - `CompactLot` thumbnail rows;
+  - `MiniCard`, a horizontal card with a 104px photo (in the bulk section).
 
   Option 1 also has a segmented countdown and an auction progress bar.
 
@@ -215,7 +229,7 @@ Option 1 already has.
 │ Item type            │                                                     │
 │ Ending within        │  grid 2 / 3 / 4 across; list view = wide            │
 │ Availability         │  row cards (photo · facts · price · action)         │
-│                      │             < 1  2  3 >   numbered pages            │
+│                      │  8 per page; numbered pages beyond one page         │
 └──────────────────────┴─────────────────────────────────────────────────────┘
 ```
 
@@ -223,7 +237,7 @@ Option 1 already has.
   Ending < 1h, Discounted, Grade A.
 - A sticky 240px facet sidebar.
 - A grid 2, 3 or 4 across (3 at 1024–1279px), or the `LotRow` list view.
-- Numbered pages.
+- 8 lots per page, with numbered pages once there is more than one page.
 - On phones, a filter sheet with "Show N results".
 
 ### Option 1 product and auction detail
@@ -268,7 +282,7 @@ Option 1 already has.
 ├──────────────────────────────────────────────────┬─────────────────────────┤
 │ ░░░░░░░░░░░░░ LIVE STAGE (stream) ░░░░░░░░░░░░░░ │ BID PANEL               │
 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ current bid             │
-│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ [ Bid SAR 1,265 ]       │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ [ Bid SAR 1,875 ]       │
 │ CURRENT LOT  title · bid · lot clock             ├─────────────────────────┤
 │   · up next                                      │ ACTIVITY FEED           │
 ├──────────────────────────────────────────────────┤ bidder · amount · time  │
@@ -340,7 +354,8 @@ Option 1 already has.
 
 - The header has the menu, logo, Account and Cart. The search row below it
   hides on scroll.
-- A five-tab bottom bar: Home · Categories · Live · Cart · Account.
+- A five-tab bottom bar: Home · Categories · Live · Cart · Account. The
+  Categories tab opens a sheet of the 8 categories as photo cards.
 - The tab bar is hidden on product, auction and live pages, which have their
   own fixed action bars.
 
@@ -366,16 +381,16 @@ well-merchandised store. Search, filters, auctions, live sales, the bag and the
 watchlist stay one step away.
 
 It must remain a usable marketplace, not an editorial magazine. The home page
-shows **17 lots without using a carousel**:
+shows **19 different lots, none repeated, with no carousel**:
 
 | Section | Lots |
 |---|---|
 | Featured now | 4 |
 | Featured marketplace | 6 |
-| On the block (per view) | 2 |
+| On the block | 4 |
 | Ready to buy | 5 |
 
-The On the block carousel also holds all 9 open auctions.
+"See all 9 auctions" and "Shop all 18" lead on from the home page.
 
 ### B. Desktop homepage wireframe
 ```text
@@ -387,7 +402,7 @@ The On the block carousel also holds all 9 open auctions.
 │ ░░░░░░░░░░░░░░      Graded returns, surplus & pallets       ░░░░░░░░░░░░░░ │
 │ ░░░░░░░░░░░░░░             HEADLINE (two lines)             ░░░░░░░░░░░░░░ │
 │ ░░░░░░░░░░░░░░  [ What are you looking for?  (Q) Search ]   ░░░░░░░░░░░░░░ │
-│ ░░░░░░░░░░░░░░  Popular: air conditioner · pallet · fridge  ░░░░░░░░░░░░░░ │
+│ ░░░░░░░░░░░░░░Popular: Refrigerator · Pallet · Coffee maker ░░░░░░░░░░░░░░ │
 │ ░░░░░░░░░░░░░░   (░)Appliances (░)Kitchen (░)Furniture  >   ░░░░░░░░░░░░░░ │
 │ ░░░░░░░░░░░░░░  Graded lots · delivery priced at checkout   ░░░░░░░░░░░░░░ │
 │ ░░░░░░░░░░░░░░    Shop Buy Now ->    Browse auctions ->     ░░░░░░░░░░░░░░ │
@@ -396,7 +411,7 @@ The On the block carousel also holds all 9 open auctions.
 ├────────────────────────────────────────────────────────────────────────────┤
 │    │░░░░░░░░░░░░░│  │░░░░░░░░░░░░░│  │░░░░░░░░░░░░░│  │░░░░░░░░░░░░░│      │
 │    │▒ Lot title ▒│  │▒ Lot title ▒│  │▒ Lot title ▒│  │▒ Lot title ▒│      │
-│    │▒SAR 175 (+)▒│  │▒ 540 · 46m ▒│  │▒SAR 349 (+)▒│  │▒1,480 · 18m▒│   >  │
+│    │▒SAR 149 (+)▒│  │▒890 · 1d 3h▒│  │▒SAR 159 (+)▒│  │▒620 · 2d 4h▒│   >  │
 │    └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘      │
 │    ^ FEATURED NOW: four square tiles overlap the hero's lower edge (~96px) │
 ├────────────────────────────────────────────────────────────────────────────┤
@@ -422,14 +437,20 @@ The On the block carousel also holds all 9 open auctions.
 ├──────────────────┬──────────────────┼──────────────────┴───────────────────┤
 │ ░░░░░░░░░░░░░░░░ │ ░░░░░░░░░░░░░░░░ │ ░░░ FEATURE 1/2: lifestyle photo ░░░ │
 │ ▒ Lot title ▒▒▒▒ │ ▒ Lot title ▒▒▒▒ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
-│ ▒ SAR 189 (+) ▒▒ │ ▒ SAR 119 (+) ▒▒ │ ▒ Lot title · SAR 399 (+) ▒▒▒▒▒▒▒▒▒▒ │
+│ ▒ SAR 189 (+) ▒▒ │ ▒ SAR 249 (+) ▒▒ │ ▒ Lot title · SAR 399 (+) ▒▒▒▒▒▒▒▒▒▒ │
 ├──────────────────┴──────────────────┴──────────────────────────────────────┤
-│ ON THE BLOCK   two wide showcases per view, closing soonest           <  > │
+│ ON THE BLOCK   four wide showcases, soonest first    See all 9 auctions -> │
 ├─────────────────────────────────────┬──────────────────────────────────────┤
 │ ░░░░░░░░░░░░░░░░  OPEN FOR BIDS     │ ░░░░░░░░░░░░░░░░  OPEN FOR BIDS      │
 │ ░░░░░░░░░░░░░░░░  Closes in 9 min   │ ░░░░░░░░░░░░░░░░  Closes in 18 min   │
 │ ░░░░░░░░░░░░░░░░  SAR 180 · 11 bids │ ░░░░░░░░░░░░░░░░  SAR 1,480 · 31 bids│
 │ ░░░░░░░░░░░░░░░░  Grade A · Seller  │ ░░░░░░░░░░░░░░░░  Grade A · Seller   │
+│ ░░░░░░░░░░░░░░░░  [ Place bid ]     │ ░░░░░░░░░░░░░░░░  [ Place bid ]      │
+├─────────────────────────────────────┼──────────────────────────────────────┤
+│ ░░░░░░░░░░░░░░░░  OPEN FOR BIDS     │ ░░░░░░░░░░░░░░░░  OPEN FOR BIDS      │
+│ ░░░░░░░░░░░░░░░░  Closes in 46 min  │ ░░░░░░░░░░░░░░░░  Closes in 2h 14m   │
+│ ░░░░░░░░░░░░░░░░  SAR 540 · 9 bids  │ ░░░░░░░░░░░░░░░░  SAR 1,240 · 18 bids│
+│ ░░░░░░░░░░░░░░░░  Grade C · Seller  │ ░░░░░░░░░░░░░░░░  Grade B · Seller   │
 │ ░░░░░░░░░░░░░░░░  [ Place bid ]     │ ░░░░░░░░░░░░░░░░  [ Place bid ]      │
 ├─────────────────────────────────────┴──────────────────────────────────────┤
 │ READY TO BUY   Buy Now as square tiles, two rows            Shop all 18 -> │
@@ -460,10 +481,15 @@ The On the block carousel also holds all 9 open auctions.
      searches, category photo chips, one trust line ("Graded lots · delivery
      priced at checkout") and two text links.
    - The text sits on a neutral field, never on a photo.
+   - Option 1's brand slide also uses cut-outs (a fridge and a TV beside
+     start-aligned copy). The difference here is structural: one full-width
+     block rather than a carousel with side tiles; centred search; cut-outs on
+     both sides; tiles overlapping its edge.
 3. **Featured now**: four square tiles that overlap the hero's lower edge by
-   about 96px. They show production's moderated Featured placements
-   (known-gap row G18 in `CUSTOMER_REDESIGN_FILE_MAP.md`, section G: "Keep
-   Featured").
+   about 96px (in the preview: the coffee maker, the swivel chair, the floor
+   lamp and the laptop-bag carton). In production they would show the
+   moderated Featured placements (known-gap row G18 in
+   `CUSTOMER_REDESIGN_FILE_MAP.md`, section G).
 4. **Shop by category, or by seller**: one photo mosaic.
    - Home Appliances takes a 2×2 tile and Home & Kitchen a tall 1×2 tile.
    - Furniture and Fashion are stacked.
@@ -475,8 +501,9 @@ The On the block carousel also holds all 9 open auctions.
      and two 1/4 tiles.
    - Second row, mirrored: two 1/4 tiles and a 1/2 feature with a lifestyle
      photo.
-6. **On the block**: wide auction showcases, two per view, closing soonest
-   first.
+6. **On the block**: a static block of four wide auction showcases in two
+   rows, closing soonest first, with "See all 9 auctions". It is not a
+   scrolling rail.
 7. **Ready to buy**: Buy Now as a mosaic of four square tiles around a 2×2
    feature tile, in two rows, with "Shop all 18".
 8. **Condition grades**: the seven-grade band (New, A, B, C, D, R, F), with
@@ -506,7 +533,8 @@ move into the category mosaic, and live becomes the mini-player.
 - **Other header items production has:**
   - The notification bell is a badge on Account, with the list inside the
     account menu.
-  - The country switcher (G19) is in the menu overlay and the footer.
+  - The country switcher (G19) is in the Account menu and the footer on
+    desktop, and in the full-screen menu on phones.
 - There is no utility strip, no category bar and no header search field.
 - **vs Option 1:** one bar instead of three tiers. Categories open a
   full-screen overlay instead of a dropdown mega menu, and search leaves the
@@ -517,8 +545,8 @@ move into the category mosaic, and live becomes the mini-player.
 ### E. Search structure
 
 - **Home:** the labelled discovery field in the hero. Below it are popular
-  searches from the shared list (air conditioner, pallet, fridge…) and
-  category photo chips.
+  searches from the shared list (Air conditioner, Pallet, Leather chair,
+  Refrigerator, Coffee maker) and category photo chips.
 - **Elsewhere:** "Search" in the bar opens a full-screen visual search.
   - Before typing, it shows popular searches and category photos.
   - While typing, it shows lot thumbnails with the price or current bid and
@@ -539,9 +567,10 @@ move into the category mosaic, and live becomes the mini-player.
 - **Mobile:** a stories rail of category photos, and the full-screen menu.
 - **Images:** see the image-source table in section 11.
 - **vs Option 1:** a mosaic with unequal sizes and seller tiles, not a row of
-  8 equal tiles. The overlay and the stories rail still echo Option 1's photo
-  mega menu and round-tile phone rail. Section 9 records category discovery as
-  partially similar.
+  8 equal tiles. But the overlay and the stories rail still echo three Option 1
+  pieces: the photo mega menu, the mobile category sheet of 8 photo cards, and
+  the phone rail of square photo cards. Section 9 records category discovery
+  as partially similar.
 
 ### G. Card architecture — "square image tile with an in-image band"
 
@@ -567,10 +596,12 @@ move into the category mosaic, and live becomes the mini-player.
   - A **wide showcase** for auctions: the photo takes about 40% at the start,
     followed by Open for bids, time left, the current bid and bid count, grade
     and seller, and Place bid.
-- **States** (drawn in the browse wireframe):
-  - Sold out (`tyre-inflator`);
-  - Upcoming, "Opens in 30h" (`leather-sofa`);
+- **States:**
+  - Upcoming, "Opens in 30h" (`leather-sofa`), drawn in the browse wireframe;
+  - Sold out (`tyre-inflator`), with no add button;
   - Sold, "Sold SAR 610" (`robot-vacuum`).
+
+  Sold-out and sold tiles sort to the end of every list.
 - **Grid composition:** mosaics in which feature tiles break the grid, not
   uniform rows.
 
@@ -586,20 +617,20 @@ move into the category mosaic, and live becomes the mini-player.
 ├────────────────────────────────────────────────────────────────────────────┤
 │ (░)All (░)Appliances (░)Kitchen (░)Furniture (░)Fashion (░)Tools (░)Auto > │
 │ [All | Buy Now | Auctions]   Grade: [New][A][B][C][D][R][F]   [All filters]│
-│ Price: [ <100 ] [ 100-500 ] [ 500-1,000 ] [ 1,000+ ]              Sort v   │
+│ Price: [ <100 ] [ 100-500 ] [ 500-1,000 ] [ 1,000+ ]      Sort: Newest v   │
 │   (a visual filter tray; All filters opens a drawer from the end side)     │
 ├──────────────────┬─────────────────────────────────────┬───────────────────┤
-│ Auction ░░░░░(W) │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ -25% ░░░░░░░░░(W) │
+│ -27% ░░░░░░░░(W) │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ Upcoming ░░░░░(W) │
 │ ░░░░░░░░░░░░░░░░ │  FEATURE TILE 2x2 (every 8 tiles) ░ │ ░░░░░░░░░░░░░░░░░ │
 │ ▒ Lot title ▒▒▒▒ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ ▒ Lot title ▒▒▒▒▒ │
-│ ▒ 540 · 46 min ▒ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ ▒ SAR 149 (+) ▒▒▒ │
+│ ▒ SAR 329 (+) ▒▒ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ ▒ OPENS IN 30H ▒▒ │
 ├──────────────────┤ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ├───────────────────┤
-│ -24% ░░░░░░░░(W) │ ▒ Lot title · Grade A · Seller ▒▒▒▒ │ New ░░░░░░░░░░(W) │
-│ ▒ SAR 189 (+) ▒▒ │ ▒ SAR 175 was 260 [ Add to bag ] ▒▒ │ ▒ SAR 89 (+) ▒▒▒▒ │
+│ Auction ░░░░░(W) │ ▒ Lot title · Grade A · Seller ▒▒▒▒ │ -30% ░░░░░░░░░(W) │
+│ ▒ 620 · 2d 4h ▒▒ │ ▒ SAR 139          [ Add to bag ] ▒ │ ▒ SAR 119 (+) ▒▒▒ │
 ├──────────────────┼──────────────────┬──────────────────┼───────────────────┤
 │ ░░░░░░░░░░░░░░░░ │ ░░░░░░░░░░░░░░░░ │ ░░░░░░░░░░░░░░░░ │ ░░░░░░░░░░░░░░░░░ │
 │ ▒ Lot title ▒▒▒▒ │ ▒ Lot title ▒▒▒▒ │ ▒ Lot title ▒▒▒▒ │ ▒ Lot title ▒▒▒▒▒ │
-│ ▒ SAR 399 (+) ▒▒ │ ▒ SOLD OUT ▒▒▒▒▒ │ ▒ OPENS IN 30H ▒ │ ▒ SOLD SAR 610 ▒▒ │
+│ ▒ SAR 149 (+) ▒▒ │ ▒ SAR 2,900 (+)  │ ▒ SAR 175 (+) ▒▒ │ ▒ 890 · 1d 3h ▒▒▒ │
 ├──────────────────┴──────────────────┴──────────────────┴───────────────────┤
 │                                                                            │
 │            Showing 12 of 29   ─────────o───────   [ Load more ]            │
@@ -619,7 +650,10 @@ move into the category mosaic, and live becomes the mini-player.
 
   There is no sidebar.
 - **Results:** a square-tile mosaic with a 2×2 feature tile every 8 tiles.
-- **Paging:** "Load more" with a progress line; no numbered pages.
+  The wireframe shows the first page of "All lots" sorted by Newest, in the
+  order the shared browse logic returns it.
+- **Paging:** "Load more" (12 at a time) with a progress line; no numbered
+  pages.
 
 ### I. Product-detail wireframe
 ```text
@@ -654,7 +688,7 @@ move into the category mosaic, and live becomes the mini-player.
 │ MORE LIKE THIS   square tiles                                              │
 ├──────────────────┬──────────────────┬──────────────────┬───────────────────┤
 │ ░░░░░░░░░░░░░░░░ │ ░░░░░░░░░░░░░░░░ │ ░░░░░░░░░░░░░░░░ │ ░░░░░░░░░░░░░░░░░ │
-│ ▒ SAR 229 (+) ▒▒ │ ▒ SAR 149 (+) ▒▒ │ ▒ SAR 399 (+) ▒▒ │ ▒ SAR 159 (+) ▒▒▒ │
+│ ▒ SAR 229 (+) ▒▒ │ ▒ SAR 399 (+) ▒▒ │ ▒ SAR 149 (+) ▒▒ │ ▒ SAR 119 (+) ▒▒▒ │
 └──────────────────┴──────────────────┴──────────────────┴───────────────────┘
 ```
 
@@ -749,7 +783,7 @@ move into the category mosaic, and live becomes the mini-player.
 │ ░░░░░ LIVE STREAM fills the stage (capped at ~21:9); lot photo inset ░░░░░ │
 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
 │ ▒ Lot 5 · Mid-Century Leather Recliner · Grade A · CURRENT SAR 1,850 ▒▒▒▒▒ │
-│ ▒ You: not bidding   [1,875] [1,900]   [ Bid SAR 1,875 ]   (pinned) ▒▒▒▒▒▒ │
+│ ▒ You: not bidding   [1,900] [1,950]   [ Bid SAR 1,875 ]   (pinned) ▒▒▒▒▒▒ │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ LOT REEL   all 10 lots in order of sale                               <  > │
 │ [░░░]  [░░░]  [░░░]  [░░░]  [▓▓▓]  [░░░]  [░░░]  [░░░]  [░░░]  [░░░]       │
@@ -757,9 +791,10 @@ move into the category mosaic, and live becomes the mini-player.
 │ sold   sold   unsold sold   NOW    next                                    │
 ├─────────────────────────────────────────────┬──────────────────────────────┤
 │ ACTIVITY                                    │ ABOUT THIS EVENT             │
-│ Bidder 7   SAR 1,850   now                  │ Status set by the auctioneer │
-│ Bidder 3   SAR 1,825   22s                  │ Bids are binding once placed │
-│ Bidder 5   SAR 1,800   41s                  │ Deposit SAR 200 from wallet  │
+│ Bidder K27   SAR 1,850   just now           │ Status set by the auctioneer │
+│ Bidder A09   SAR 1,825   11s                │ Bids are binding once placed │
+│ Bidder M55   SAR 1,800   18s                │ SAR 200 bidding deposit,     │
+│                                             │   covered by your wallet     │
 │                                             │ UP NEXT ON KHAZNA            │
 │                                             │ Pallet Hour - Bulk Returns   │
 │                                             │   in 20 h · 12 lots          │
@@ -772,13 +807,14 @@ move into the category mosaic, and live becomes the mini-player.
   21:9, so the controls stay above the fold. The current lot's photo is inset
   at the top start.
 - **Bid band:** a solid band under the stream with the lot, grade and current
-  bid, then your status, two quick bids and the Bid button. When the stage
-  scrolls away, this band **pins to the bottom of the screen**.
+  bid, then your status, two more quick bids (SAR 1,900 and 1,950) and the
+  "Bid SAR 1,875" button. When the stage scrolls away, this band **pins to the
+  bottom of the screen**.
 - **Lot reel:** all 10 lots, each marked Sold, Unsold, NOW or next.
 - **Below the reel:**
-  - Activity: the last bids.
+  - Activity: the last bids, from the preview's live feed (K27, A09, M55).
   - About: status set by the auctioneer, bids binding once placed, a SAR 200
-    deposit.
+    bidding deposit covered by your wallet.
   - The next events: Pallet Hour in 20 h (12 lots) and Thursday Furniture
     Clearance in 2 days (24 lots).
 - Live bids are one tap, as in Option 1.
@@ -825,9 +861,9 @@ move into the category mosaic, and live becomes the mini-player.
 ### M. Mobile homepage wireframe
 ```text
 ┌──────────────────────────────────┐
-│ [=]*          LOGO  (W)2 (Q) Bag │
+│ [=]!          LOGO  (W)2 (Q) Bag │
 │  (transparent over the hero; the │
-│   menu badge shows when outbid)  │
+│   menu badge ! shows when outbid)│
 ├──────────────────────────────────┤
 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
 │ ░░░░░ PRODUCT COMPOSITION ░░░░░░ │
@@ -867,8 +903,9 @@ move into the category mosaic, and live becomes the mini-player.
 
 Mobile strategy: **an image-led feed.**
 
-- **Top bar:** transparent over the hero. It holds the menu (badged when you
-  are outbid), the logo, the watchlist heart with a count, search and the bag.
+- **Top bar:** transparent over the hero. It holds the menu (with a `!` badge
+  when you are outbid), the logo, the watchlist heart with a count, search and
+  the bag.
 - **Home, in order:**
   - a full-screen hero with the headline and search;
   - category stories;
@@ -921,14 +958,14 @@ the admin dashboard.
 ### B. Desktop homepage wireframe
 ```text
 ┌──────────────────────┬─────────────────────────────────────────────────────┐
-│ KHAZNA               │ Home                         Bell 3   Cart 1   Acct │
+│ KHAZNA               │ Home                             Bell   Cart   Acct │
 │  marketplace         ├─────────────────────────────────────────────────────┤
 │ (search docks here   │ * LIVE  Tuesday Evening Live · lot 5/10  [Join]     │
 │  on scroll)          ├─────────────────────────────────────────────────────┤
 │ Home                 │ FIND ANYTHING ON KHAZNA                             │
 │ All lots         29  │ [All] [Auctions] [Buy Now] [Sellers] [Live]         │
 │ Auctions         11  │ [ Search lots, brands, sellers...    ] [Search]     │
-│ Buy Now          18  │ Popular: air conditioner · pallet · fridge          │
+│ Buy Now          18  │ Popular: Air conditioner · Pallet · Leather chair   │
 │                      ├────────────┬────────────┬─────────────┬─────────────┤
 │ * Live now        1  │ LIVE NOW   │ ENDING <1H │ DEALS       │ NEW TODAY   │
 │ Ending soon       3  │ 1 event    │ 3 lots     │ 14 lots     │ 10 lots     │
@@ -943,23 +980,24 @@ the admin dashboard.
 │ > [░] Kitchen     4  │ 3 lots     │ 3 lots     │ 1 lot       │ 4 lots      │
 │                      ├────────────┴────┬───────┴─────────┬───┴─────────────┤
 │ > [░] Furniture   4  │ DEALS · BUY NOW │ ENDING SOON     │ POPULAR NOW     │
-│ > [░] Fashion     4  │ ░ Lot    -33%   │ ░ Lot     9 min │ ░ Lot   42 bids │
-│ > [░] Tools & DIY 3  │   SAR 175   [+] │   SAR 180  [Bid]│   SAR 7,850 [>] │
-│ > [░] Automotive  3  │ ░ Lot    -33%   │ ░ Lot    18 min │ ░ Lot   31 bids │
-│ > [░] Electronics 1  │   SAR 349   [+] │   SAR 1,480[Bid]│   SAR 1,480 [>] │
-│ > [░] Pallets     4  │ ░ Lot    -31%   │ ░ Lot    46 min │ ░ Lot   23 bids │
-│ SELLERS              │   SAR 219   [+] │   SAR 540  [Bid]│   SAR 3,150 [>] │
-│  * Red Sea Trading   │ View all 14 ->  │ View all 9 ->   │ View all ->     │
+│ > [░] Fashion     4  │                 │ [15m | 1h | 24h]│                 │
+│ > [░] Tools & DIY 3  │ OFF  LOT     SAR│ LEFT LOT     BID│ BIDS LOT     BID│
+│ > [░] Automotive  3  ├─────────────────┼─────────────────┼─────────────────┤
+│ > [░] Electronics 1  │ -33% Lot     175│ 9m   Lot     180│ 42   Lot   7,850│
+│ > [░] Pallets     4  │ -33% Lot     349│ 18m  Lot   1,480│ 31   Lot   1,480│
+│ SELLERS              │ -31% Lot     219│ 46m  Lot     540│ 23   Lot   3,150│
+│  * Red Sea Trading   │ -30% Lot     119│ 2h14 Lot   1,240│ 18   Lot   1,240│
+│  Rawabi Home Outlet  │ View all 14 ->  │ View all 9 ->   │ View all ->     │
 │                      ├─────────────────┴────────┬────────┴─────────────────┤
-│  Rawabi Home Outlet  │ SELLERS                  │ LIVE & UPCOMING          │
-│  + 3 more sellers    │ (RS) Red Sea     * LIVE  │ * LIVE Tuesday Evening   │
-│ MY KHAZNA            │   Jeddah · 1 auction     │   lot 5/10 · 1,284 [Join]│
-│  Watchlist & bids    │ (RH) Rawabi Home Outlet  │ Pallet Hour · in 20 h    │
-│  Orders · Wallet     │   Riyadh · 4 auctions    │   12 lots   [ Remind me ]│
-│  Account             │ (DM) Dar Al Majd ...     │ Thursday Furniture · 2 d │
-│ Buying on Khazna >   │ All 5 sellers ->         │   24 lots   [ Remind me ]│
+│  + 3 more sellers    │ SELLERS                  │ LIVE & UPCOMING          │
+│ MY KHAZNA            │ (RS) Red Sea     * LIVE  │ * LIVE Tuesday Evening   │
+│  Watchlist & bids    │   Jeddah · 1 auction     │   lot 5/10 · 1,284 [Join]│
+│  Orders · Wallet     │ (RH) Rawabi Home Outlet  │ Pallet Hour · in 20 h    │
+│  Account             │   Riyadh · 4 auctions    │   12 lots   [ Remind me ]│
+│ Buying on Khazna >   │ (DM) Dar Al Majd ...     │ Thursday Furniture · 2 d │
+│ Country & language   │ All 5 sellers ->         │   24 lots   [ Remind me ]│
 │                      ├──────────────────────────┴──────────────────────────┤
-│ Country & language   │ RECENTLY ADDED   compact tiles, 6 across            │
+│                      │ RECENTLY ADDED   compact tiles, 6 across            │
 │                      │ [░░░] [░░░] [░░░] [░░░] [░░░] [░░░]                 │
 │                      │ title title title title title title                 │
 │                      ├─────────────────────────────────────────────────────┤
@@ -981,10 +1019,13 @@ the admin dashboard.
 4. **Hub counters:** Live now 1 · Ending < 1 hour 3 · Deals 14 (up to −33%) ·
    New today 10.
 5. **Category grid:** 4×2 compact tiles with counts.
-6. **Three list modules in a row:**
-   - Deals · Buy Now, largest discount first;
-   - Ending soon: 9 min, 18 min, 46 min;
-   - Popular now, by most bids: 42, 31, 23.
+6. **Three mini-tables in a row**, each with a header row and four
+   single-line rows. A row opens the quick view, which holds Bid or Add.
+   - Deals · Buy Now: discount | lot | price, largest discount first
+     (−33%, −33%, −31%, −30%).
+   - Ending soon: time left | lot | bid, with a window switch
+     (15m | 1h | 24h). Rows close in 9m, 18m, 46m and 2h 14m.
+   - Popular now: bids | lot | bid, by most bids (42, 31, 23, 18).
 7. **Two list modules in a row:**
    - Sellers;
    - Live & upcoming: Tuesday Evening Live now; Pallet Hour in 20 h; Thursday
@@ -1044,8 +1085,9 @@ There is no image hero. The deck fills the main column's width, is about
 - **Home:** the 4×2 category grid.
 - **Mobile:** the home category grid, and a full-screen filter page led by the
   category tree.
-- **vs Option 1:** a persistent tree with sale-type branches. The 4×2 grid is
-  the one element that echoes Option 1's category tiles.
+- **vs Option 1:** a persistent tree with sale-type branches. The 4×2 grid,
+  which the brief's suggested order asks for, echoes Option 1's category
+  tiles; section 9 records category discovery as partially similar.
 
 ### G. Card architecture — "table row", "module item" and "compact tile"
 
@@ -1060,12 +1102,12 @@ There is no image hero. The deck fills the main column's width, is about
   quick view.
 - The city comes from the seller lookup (G4).
 
-**Module item** (home and the seller overview): a thumbnail, the title, one
-data point (discount, time left or bid count), the price or bid, and an
-action.
+**Mini-table row** (home modules and the seller overview): one key figure
+(discount, time left or bid count), then the lot and its price or bid, under a
+header row. The row opens the quick view.
 
-**Compact tile** (Recently added, New from this seller): a 1:1 image, the
-title, and the price or bid.
+**Compact tile** (Recently added, New from this seller, and the browse Tiles
+view): a 1:1 image, the title, and the price or bid.
 
 **States:**
 
@@ -1074,13 +1116,14 @@ title, and the price or bid.
 - Sold out: no Add.
 
 **vs Option 1:** the table row is a table, not Option 1's bordered `LotRow`
-card. The module item is close to Option 1's `CompactLot` rows; section 9
-records this as partially similar.
+card, and the mini-tables replace revision 1's thumbnail list items. The
+compact tile is still a small image-top card, like Option 1's vertical card;
+section 9 records this as partially similar.
 
 ### H. Browse-page wireframe
 ```text
 ┌──────┬─────────────────────────────────────────────────────────────────────┐
-│ [░]A │ Browse > Home Appliances                     Bell 3   Cart 1   Acct │
+│ [░]A │ Browse > Home Appliances                         Bell   Cart   Acct │
 │ [░]K ├─────────────────────────────────────────────────────────────────────┤
 │ [░]F │ HOME APPLIANCES · 6 results      [ All 6 | Auctions 5 | Buy Now 1 ] │
 │ [░]S │ View [ Table | Tiles ]    < 1/1 >    per page 20 v                  │
@@ -1171,7 +1214,7 @@ records this as partially similar.
 │ [░]K │ ░ LOT TITLE · OPEN FOR BIDS · Grade A · Rawabi (Riyadh)    [Watch]  │
 │ [░]F │ Closes in 5h 40m · current SAR 3,150 · 23 bids · 118 watching       │
 │ [░]S │ Bid [3,200] [3,250] [3,400] [Custom] [Max bid] · each confirms      │
-│ [░]T │ Or buy now SAR 4,600 · delivery priced at checkout · pickup         │
+│ [░]T │ Buy now 4,600 · Delivery priced at checkout · Pickup where offered  │
 │ [░]C │   ^ LOT SUMMARY STRIP (sticky) with the bid ladder built in         │
 │      ├─────────────────┬────────────────────────┬──────────────────────────┤
 │ [░]E │ ON THIS PAGE    │ ░░░░░░░░░░░░░░░░░░░░░░ │ KEY FACTS                │
@@ -1183,9 +1226,9 @@ records this as partially similar.
 │      │   Terms         │                        │ Grade      A             │
 │      │   Compare       │                        │                          │
 │      │                 ├────────────────────────┴──────────────────────────┤
-│      │                 │ BID HISTORY   BIDDER     AMOUNT     TIME   TYPE   │
-│      │                 │               Bidder 7   SAR 3,150  2m     normal │
-│      │                 │               Bidder 3   SAR 3,100  5m     maximum│
+│      │                 │ BID HISTORY   BIDDER  AMOUNT     TIME  TYPE       │
+│      │                 │               K27     SAR 3,150  34s   normal     │
+│      │                 │               2048    SAR 3,050  12m   maximum    │
 │      │                 │ CONDITION · SPECIFICATIONS · TERMS                │
 │      │                 │ DELIVERY & PICKUP                                 │
 │      │                 ├───────────────────────────────────────────────────┤
@@ -1198,15 +1241,17 @@ records this as partially similar.
 - **Sticky summary strip:**
   - the **bid ladder**: 3,200 · 3,250 · 3,400 · Custom · Max bid. Each rung
     opens the confirm step;
-  - a second line: or buy now SAR 4,600 · delivery priced at checkout ·
-    pickup.
+  - a second line: Buy now SAR 4,600 · Delivery priced at checkout · Pickup
+    where offered.
 - **A three-part band:**
   - the index;
   - the photo, with 3 thumbnails;
   - key facts: deposit covered, timed with a late bid adding 5 minutes, Buy
     Now, delivery, pickup, grade.
 - **Below the band:**
-  - bid history as a data table (bidder, amount, time, type);
+  - bid history as a data table (bidder, amount, time, type), from the
+    preview's seeded history: K27 SAR 3,150, then 2048 SAR 3,050 (a maximum
+    bid), and so on;
   - condition, specifications and terms;
   - delivery & pickup;
   - compare similar (closing time, current bid).
@@ -1226,14 +1271,14 @@ records this as partially similar.
 │ (Q)  │ 4   Loveseat         SAR 800    SAR 1,350      19   Sold            │
 │      ├──────────────────┬─────────────────┬────────────────┬───────────────┤
 │ Me   │ ░░░░░░░░░░░░░░░░ │ 5 · Recliner    │ CURRENT        │ LAST BIDS     │
-│      │ ░ LIVE STREAM ░░ │ Grade A         │ SAR 1,850      │ B7 1,850 now  │
-│      │ [lot photo]░░░░░ │ 16 bids         │ [Bid 1,875]    │ B3 1,825 22s  │
-│      │ ░░░░░░░░░░░░░░░░ │ status set by   │ [1,900]        │ B5 1,800 41s  │
+│      │ ░ LIVE STREAM ░░ │ Grade A         │ SAR 1,850      │ K27 1,850 now │
+│      │ [lot photo]░░░░░ │ 16 bids         │ [Bid 1,875]    │ A09 1,825 11s │
+│      │ ░░░░░░░░░░░░░░░░ │ status set by   │ [1,900]        │ M55 1,800 18s │
 │      │                  │ the auctioneer  │ you: no bids   │               │
 │      ├──────────────────┴─────────────────┴────────────────┴───────────────┤
 │      │   ^ the live row expands in place inside the order of sale          │
 │      │ 6   Dining chairs    SAR 400    -               -   Next            │
-│      │ 7-10 ...                                            Staged          │
+│      │ 7-10 ...                                            Coming up       │
 │      ├─────────────────────────────────────────────────────────────────────┤
 │      │ [ Activity log v ]   [ Event info & rules v ]                       │
 └──────┴─────────────────────────────────────────────────────────────────────┘
@@ -1248,9 +1293,14 @@ records this as partially similar.
   - the **stream, with the lot photo inset**;
   - the lot: grade, bids, and a status set by the auctioneer;
   - the current bid, "Bid SAR 1,875" and the next amount;
-  - the last bids.
+  - the last bids (K27, A09, M55 in the preview's feed).
+- Lots 7–10 read "Coming up".
 - The activity log and event information are expanders below the table.
 - Live bids are one tap, as in Option 1.
+- **vs Option 1:** the four cells are the same four live modules Option 1 has
+  (stream, current lot, bid panel, activity), and Option 1 also lists the
+  order of sale. Here they sit inside one table row instead of a stage with a
+  side panel. Section 9 records this as partially similar.
 
 ### L. Seller-storefront wireframe — "seller profile"
 ```text
@@ -1288,11 +1338,14 @@ records this as partially similar.
 - The Auctions and Buy Now tabs use the sortable table and quick view, limited
   to this seller.
 - "Other sellers" is a table.
+- **vs Option 1:** Option 1's storefront also runs identity with counts, then
+  sale-type tabs with counts, then listings and About. There is no cover here
+  and no sidebar, but section 9 records the storefront as partially similar.
 
 ### M. Mobile homepage wireframe
 ```text
 ┌──────────────────────────────────┐
-│ LOGO  Home          Bell 3  Acct │
+│ LOGO  Home            Bell  Acct │
 ├────────────────┬─────────────────┤
 │ LIVE NOW     1 │ ENDING <1H    3 │
 │ DEALS       14 │ NEW TODAY    10 │
@@ -1402,7 +1455,7 @@ look like crypto, trading, gaming or cyberpunk:
 │ SOLD  SAR 1,350  │ Lot 5 · Leather Recliner             │ starts SAR 400   │
 │                  │ CURRENT BID  SAR 1,850 · 16 bids     │                  │
 │                  │ Bidding open · set by auctioneer     │                  │
-│                  │ [ Bid SAR 1,875 ] [ Enter room ]     │                  │
+│                  │ [ Enter the room to bid ]            │                  │
 ├──────────────────┴──────────────────────────────────────┴──────────────────┤
 │   nothing live: the next timed lot to close takes the stage                │
 ├────────────────────────────────────────────────────────────────────────────┤
@@ -1423,7 +1476,7 @@ look like crypto, trading, gaming or cyberpunk:
 ├────────────────────────┼─────────────────────────┼─────────────────────────┤
 │ [ Bid SAR 185 ]   (W)  │ [ Bid SAR 1,500 ] (W)   │ [ Bid SAR 550 ]   (W)   │
 ├────────────────────────┴─────────────────────────┴─────────────────────────┤
-│ ACTIVE AUCTIONS   bid tickets, soonest first    [Most bids]  View all 9 -> │
+│ ACTIVE AUCTIONS   bid tickets, soonest first                 View all 9 -> │
 ├────────────────────────┬─────────────────────────┬─────────────────────────┤
 │ OPEN FOR BIDS · 18 bids│ OPEN FOR BIDS · 42 bids │ OPEN FOR BIDS · 23 bids │
 │ CLOSES IN 2H 14M       │ CLOSES IN 3H 05M        │ CLOSES IN 5H 40M        │
@@ -1468,9 +1521,10 @@ look like crypto, trading, gaming or cyberpunk:
 │   each pin is a lot photo; > marks lots closing later this week            │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ HOW BIDDING WORKS                                                          │
-│ 1 Refundable deposit from your wallet -> 2 Bid, or set a maximum ->        │
-│   3 Timed lots: a bid in the last 5 min adds 5 min -> 4 Win and pay        │
-│   (timed wins: payment window) -> 5 Delivery or pickup, after payment      │
+│ 1 Refundable bidding deposit, covered by your wallet -> 2 Bid, or set      │
+│   a maximum -> 3 Timed lots: a bid in the last 5 min adds 5 min ->         │
+│   4 Win and pay (timed wins: payment window) -> 5 Delivery or pickup,      │
+│   arranged after payment                                                   │
 │ GRADES  [New] [A] [B] [C] [D] [R] [F]   one line of meaning each           │
 │ FOOTER   country · language · help                                         │
 └────────────────────────────────────────────────────────────────────────────┘
@@ -1481,9 +1535,13 @@ look like crypto, trading, gaming or cyberpunk:
 1. **One header bar** with the floor switcher.
 2. **Live auction stage:** a previous · now · next triptych.
    - The stream fills the centre, with the lot photo inset.
-   - "Bid SAR 1,875" and "Enter room" sit under it.
+   - The current bid (SAR 1,850, 16 bids) and "Enter the room to bid" sit
+     under it. One-tap live bids happen only inside the room, where the
+     deposit is checked; the home stage has no bid button.
    - When nothing is live, the next timed lot to close takes the stage (the
      seat covers, 9 min), with the next live event's start time.
+   - Option 1 also shows the live event in its hero, as one slide of the
+     carousel. Here the live stage is the whole hero, and it is permanent.
 3. **Ending soon:**
    - a time axis (NOW · 15m · 1h · 3h · 12h · 24h) with a photo pin at each
      lot's closing time;
@@ -1587,7 +1645,8 @@ card; the data leads.
 ├─────────┴──────────────────────────────────────────┴───────────────────────┤
 │   (the floor switcher is the tab set: Ending is active here)               │
 │ WITHIN:  [15 min 1]  [1 hour 3]  [3 hours 4]  [24 hours 7]  [All 9]        │
-│ [+ More filters]  category · condition · type · price · stock · seller     │
+│ [+ More filters] opens an inline panel under the chips: category ·         │
+│   condition · item type · price · availability · seller                    │
 │ Sort: closing time v   (other sorts show one flat grid, no buckets)        │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ CLOSING WITHIN 15 MINUTES (1)               the most urgent bucket, larger │
@@ -1626,8 +1685,8 @@ card; the data leads.
 - **Controls:**
   - the switcher is the tab set (Ending is active);
   - window chips: 15 min 1 · 1 hour 3 · 3 hours 4 · 24 hours 7 · All 9;
-  - a "More filters" drawer (category, condition, item type, price,
-    availability, seller);
+  - "More filters", which opens an inline panel under the chips (category,
+    condition, item type, price, availability, seller), not a drawer;
   - sort.
 - **Time buckets:** when sorted by closing time, results fall into exclusive
   buckets:
@@ -1648,106 +1707,124 @@ card; the data leads.
 ```text
 ┌─────────┬──────────────────────────────────────────┬───────────────────────┐
 │ [=] LOGO│ [Live 5/10|Ending 9m|Upcoming|Buy Now 18]│ (Q) ? Bids2 Cart Me AR│
-├─────────┴──────────────────────────────────┬───────┴───────────────────────┤
-│ 14 IN STOCK    LOT TITLE                   │ SAR 189  was 249  -24%        │
-│ Grade A · Rawabi Home Outlet               │ [ Add to cart ]  [ Buy now ]  │
-│ [ Watch ]  [ Share ]                       │ Delivery priced at checkout   │
-├────────────────────────────────────────────┴───────────────────────────────┤
+├─────────┴──────────────────────────────────────────┴───────────────────────┤
 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
 │ ░░░░░░░░░░░░░░░░░░ STAGE: main photo on a neutral stage ░░░░░░░░░░░░░░░░░░ │
 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+│ ▒ 14 IN STOCK · SAR 189 was 249 · -24%   [ Add to cart ]  [ Buy now ] ▒▒▒▒ │
+│ LOT TITLE · Grade A · Rawabi Home Outlet (Riyadh)        [Watch] [Share]   │
+│ Delivery priced at checkout · Pickup where offered                         │
 │ [░] [░] [░] [░] [░]   thumbnails under the stage                           │
+│   ^ the stage's lower third (a solid band) carries stock, price, actions   │
 ├────────────────────────┬─────────────────────────┬─────────────────────────┤
 │ CONDITION              │ SPECIFICATIONS          │ DELIVERY & PICKUP       │
 │ Grade A                │ spec · value            │ Delivery priced at      │
 │ notes on this lot      │ spec · value            │   checkout              │
 │ [ Grade guide ]        │ spec · value            │ Pickup where offered    │
 ├────────────────────────┴─────────────────────────┴─────────────────────────┤
-│ ALSO AT AUCTION   lots being bid on now, on a time line                    │
-│  |---------o-------------o----------------o----------------------------->  │
-│  [░] Lot · SAR 180 · 9m  [░] Lot · SAR 540 · 46m  [░] Lot · SAR 1,240 · 2h │
+│ ALSO AT AUCTION   the lots closing soonest, on a time line                 │
+│  |-o------------------------o--------------------------o---------------->  │
+│  [░] Lot · SAR 180 · 9m  [░] Lot · SAR 1,480 · 18m  [░] Lot · SAR 540 · 46m│
 ├──────────────────────┬──────────────────────────────┬──────────────────────┤
 │ SAR 189   was 249    │ Qty  [ -  1  + ]             │ [ Add to cart ]      │
 │ -24%  ·  14 left     │ Delivery priced at checkout  │ [ Buy now ]          │
 │                      │ Pickup where offered         │                      │
 ├──────────────────────┴──────────────────────────────┴──────────────────────┤
-│ ^ PURCHASE CONSOLE: docks at the bottom only after the header bar has      │
-│   scrolled away; collapsed height 72px or less                             │
+│ ^ PURCHASE CONSOLE: docks at the bottom only after the stage's status      │
+│   band has scrolled away; collapsed height 72px or less                    │
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
-- **Lot header bar:**
-  - start: stock, title, grade and seller;
-  - end: price, was-price and saving, Add to cart, Buy now, delivery.
-- **Gallery:** a stage, with the 5 thumbnails under it.
+- **The stage comes first:** the main photo, full width, on a neutral stage.
+- **Lower third:** a solid status band at the stage's foot, like a broadcast
+  caption. It carries stock (14 in stock), price, was-price and saving, Add to
+  cart and Buy now.
+- Under the stage: the title, grade, seller and city; delivery priced at
+  checkout and pickup where offered; the 5 thumbnails.
 - **Three fact columns:** condition, specifications, delivery & pickup.
-- **"Also at auction":** auctions closing soon, on a time line.
-- **Purchase console:** it **docks at the bottom only after the header bar
+- **"Also at auction":** the auctions closing soonest (9m, 18m, 46m), on a
+  time line.
+- **Purchase console:** it **docks at the bottom only after the lower third
   scrolls away**, and its collapsed height is 72px or less.
 
 ### J. Auction-detail wireframe — "bidding workspace"
 ```text
 ┌─────────┬──────────────────────────────────────────┬───────────────────────┐
 │ [=] LOGO│ [Live 5/10|Ending 9m|Upcoming|Buy Now 18]│ (Q) ? Bids2 Cart Me AR│
-├─────────┴──────────────────────────────────────┬───┴───────────────────────┤
-│ OPEN FOR BIDS   LOT KZ-0388   LOT TITLE        │ CLOSES IN 5H 40M          │
-│ Grade A · Rawabi Home Outlet · 118 watching    │ Current SAR 3,150         │
-│ 23 bids · 9 bidders · or buy now SAR 4,600     │ [ Bid SAR 3,200 ]         │
-│ [ Watch ]  [ Share ]  [ Rules ]                │ You: outbid               │
-├────────────────────────────────────────────────┴───────────────────────────┤
+├─────────┴──────────────────────────────────────────┴───────────────────────┤
 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░ STAGE: main photo ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+│ ▒ OPEN FOR BIDS · CLOSES IN 5H 40M · CURRENT 3,150 · [ Bid SAR 3,200 ] ▒▒▒ │
+│ LOT KZ-0388 · LOT TITLE · Grade A · Rawabi Home Outlet     [Watch] [Rules] │
+│ 23 bids · 9 bidders · 118 watching · buy now SAR 4,600 · not bidding yet   │
 │ [░] [░] [░]   thumbnails under the stage                                   │
 ├────────────────────────────────────────────────────────────────────────────┤
-│ AUCTION TIMELINE                                                           │
+│ AUCTION TIMELINE   the lot's whole life, with its bids on the line         │
 │  OPENED          BIDS              NOW         CLOSE    PAYMENT*  DELIVERY │
 │  o---------------|--|-|---|--|-----*-----------[####]---o----------o       │
 │  30 h ago        23 bids           SAR 3,150   in 5h 40m          or pickup│
+│ LAST BIDS  K27 SAR 3,150 · 34s   2048 SAR 3,050 · 12m (maximum bid)        │
+│            1190 SAR 2,950 · 14m                     [ Full history ]       │
 │  [####] timed auctions: a bid in the last 5 minutes extends the close by 5 │
 │  * payment window applies to timed-auction wins; delivery or pickup is     │
 │    arranged after payment (no date shown)                                  │
-├─────────────────────────────────────┬──────────────────────────────────────┤
-│ BID ACTIVITY (live)                 │ LOT FACTS                            │
-│ Bidder 7   SAR 3,150    2m          │ [Condition] [Specs] [Terms]          │
-│ You        SAR 3,100    5m          │ [Delivery & pickup]                  │
-│ Bidder 3   SAR 3,050    9m          │ Grade A: grade guide line            │
-│ [ Full history ]                    │ (+ Contents on pallet/bulk lots)     │
-├─────────────────────────────────────┴──────────────────────────────────────┤
-│ CLOSING AROUND THE SAME TIME  [ticket] [ticket] [ticket] [ticket]  >       │
+├────────────────────────┬─────────────────────────┬─────────────────────────┤
+│ CONDITION              │ SPECIFICATIONS          │ DELIVERY & PICKUP       │
+│ Grade A                │ spec · value            │ Delivery priced at      │
+│ notes on this lot      │ spec · value            │   checkout              │
+│ [ Grade guide ]        │ spec · value            │ Pickup where offered    │
+├────────────────────────┴─────────────────────────┴─────────────────────────┤
+│ TERMS   deposit covered by your wallet · timed: a late bid adds 5 min ·    │
+│   payment window for timed wins · [ Full terms ]  (+ contents on bulk lots)│
+│ CLOSING AROUND THE SAME TIME   on a time line                              │
+│  |-o-----------------------o------------------------o------------------->  │
+│  [░] SAR 1,240 · 2h 14m  [░] SAR 7,850 · 3h 05m  [░] SAR 1,120 · 7h 20m    │
 ├──────────────────────┬──────────────────────────────┬──────────────────────┤
-│ YOU'RE OUTBID        │ Quick bid                    │ [ Set maximum bid ]  │
+│ NOT BIDDING YET      │ Quick bid                    │ [ Set maximum bid ]  │
 │ Current SAR 3,150    │ [3,200] [3,250] [3,400]      │ [ Buy now SAR 4,600 ]│
 │ Next    SAR 3,200    │ [ SAR ______ ]  [ Bid ]      │ Deposit covered (ok) │
 │ each bid confirms    │ Delivery priced at checkout  │ Pickup where offered │
 ├──────────────────────┴──────────────────────────────┴──────────────────────┤
-│ ^ BIDDING CONSOLE: docks at the bottom once the header bar scrolls away    │
+│ ^ BIDDING CONSOLE: docks once the stage's status band scrolls away;        │
+│   its status line reads not bidding · winning · outbid                     │
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
-- **Lot header bar:**
-  - start: Open for bids, lot KZ-0388, title, grade, seller, 118 watching,
-    23 bids, 9 bidders, or buy now SAR 4,600;
-  - end: Closes in 5h 40m, current bid SAR 3,150, "Bid SAR 3,200", and your
-    status (outbid).
-- **Stage:** 3 photos, with the thumbnails under it.
-- **Auction timeline**, the whole life of the lot:
+- **The stage comes first**, with 3 photos and the thumbnails under it.
+- **Lower third:** the status band at the stage's foot reads "Open for bids ·
+  Closes in 5h 40m · Current 3,150 · Bid SAR 3,200".
+- Under the stage:
+  - lot KZ-0388, the title, grade and seller, with Watch and Rules;
+  - 23 bids, 9 bidders, 118 watching, Buy now SAR 4,600, and your status (not
+    bidding yet).
+- **Auction timeline**, the whole life of the lot, with its bids on the line:
   - opened 30 h ago → bids → now;
   - → close, with the 5-minute extension window (timed auctions only);
   - → payment window (timed wins only);
   - → delivery or pickup, arranged after payment, with no date shown.
 
-  A list alternative serves screen readers.
-- **Bid activity** beside the lot facts: Condition · Specs · Terms · Delivery
-  & pickup, plus Contents on pallet and bulk lots.
-- **"Closing around the same time":** bid tickets.
-- **Bidding console:** it docks once the header bar scrolls away. It holds:
-  - your status;
+  The last bids sit under the line, from the preview's seeded history: K27 SAR
+  3,150 (34s ago), 2048 SAR 3,050 (a maximum bid, 12m ago), 1190 SAR 2,950.
+  A "Full history" link follows. A list alternative serves screen readers.
+- **Three fact columns:** condition, specifications, delivery & pickup. The
+  same three columns appear on the Buy Now page.
+- **Terms line:** deposit covered by your wallet · a late bid adds 5 minutes
+  on timed auctions · payment window for timed wins · Full terms. Contents
+  appear on pallet and bulk lots.
+- **"Closing around the same time":** the nearest closes (2h 14m, 3h 05m,
+  7h 20m) on a time line, not a rail.
+- **Bidding console:** it docks once the lower third scrolls away. It holds:
+  - your status (not bidding yet, winning or outbid);
   - quick bids (3,200 · 3,250 · 3,400), a custom amount and a maximum bid;
   - Buy now SAR 4,600;
   - the deposit;
   - delivery priced at checkout, and pickup where offered.
 
   Every bid goes through the confirm step.
+- **vs Option 1:** there is no side bid box. There is also no "bid history
+  beside terms, then a similar-lots rail" block: history lives on the timeline
+  and similar lots on a time line.
 
 ### K. Live-auction wireframe — "auction room: past · now · next"
 ```text
@@ -1762,14 +1839,14 @@ card; the data leads.
 │   SOLD 1,350     │ ░░░ LIVE STREAM (the auctioneer) ░░░ │   starts SAR 400 │
 │ #3 Keyboard      │ [lot photo]░░░░░░░░░░░░░░░░░░░░░░░░░ │ #7 Speaker       │
 │   UNSOLD         │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │   starts SAR 90  │
-│ #2 Coffee maker  │ ▒ B7 1,850 · B3 1,825 · B5 1,800 ▒▒▒ │ #8 Tool kit      │
+│ #2 Coffee maker  │ ▒ K27 1,850 · A09 1,825 · M55 1,800  │ #8 Tool kit      │
 │   SOLD 120       │ Lot 5 · Leather Recliner · Grade A   │   starts SAR 60  │
 │ #1 Stick vacuum  │ CURRENT BID  SAR 1,850 · 16 bids     │ #9 Casserole     │
 │   SOLD 310       │ Open > Countdown > Sold/Unsold       │   starts SAR 110 │
 │                  │   each status set by the auctioneer  │ #10 Boots · 70   │
 ├──────────────────┴───┬──────────────────────────────┬───┴──────────────────┤
-│ Current SAR 1,850    │ [    BID  SAR 1,875    ]     │ [1,900]  [1,925]     │
-│ You: not bidding     │ Bids are binding once placed │ Deposit SAR 200 (ok) │
+│ Current SAR 1,850    │ [    BID  SAR 1,875    ]     │ [1,900]  [1,950]     │
+│ You: not bidding     │ Bids are binding once placed │ Deposit: covered     │
 ├──────────────────────┴──────────────────────────────┴──────────────────────┤
 │ ^ BIDDING CONSOLE (same component as lot pages), docked to the bottom      │
 │   the room reads through time: results at the start, the queue at the end  │
@@ -1781,16 +1858,21 @@ The room is a symmetric triptych that reads through time:
 - **Past:** the results so far — Sold 1,350, Unsold, Sold 120, Sold 310.
 - **Now:**
   - the stream fills the stage, with the lot photo inset;
-  - the last three bids in the lower third;
+  - the last three bids in the lower third (K27, A09, M55 in the preview's
+    feed);
   - the lot, its grade and the current bid;
   - the status sequence Open → Countdown → Sold / Unsold, each step set by
     the auctioneer.
 - **Next:** the queue, with starting bids.
 
 There is no side column. The same bidding console as on lot pages is docked at
-the bottom: current bid, your status, "Bid SAR 1,875", the next amounts, and
-the SAR 200 deposit. Live bids are one tap and binding once placed, as in
-Option 1.
+the bottom. It shows:
+
+- the current bid and your status;
+- "Bid SAR 1,875", with the next quick bids, 1,900 and 1,950;
+- the SAR 200 deposit, covered by your wallet.
+
+Live bids are one tap and binding once placed, as in Option 1.
 
 ### L. Seller-storefront wireframe — "auction house"
 ```text
@@ -1868,7 +1950,7 @@ Option 1.
 │ SELLERS                     >    │
 │ HOW BIDDING WORKS (5 steps)      │
 │                                  │
-│    ( 2 winning · 1 outbid  ^ )   │
+│    ( 1 winning · 1 outbid  ^ )   │
 │  floating My bids pill: hidden   │
 │  when signed out, with no bids,  │
 │  and where the console docks     │
@@ -1884,8 +1966,9 @@ Mobile strategy: **auction status first.**
   - "Within 15 minutes" bid tickets, as a carousel;
   - within 1 hour and within 24 hours, as rows;
   - Categories on the floor, sellers, and How bidding works.
-- **My bids pill:** a floating pill ("2 winning · 1 outbid"). It is hidden
-  when you are signed out, when you have no bids, and where a console docks.
+- **My bids pill:** a floating pill ("1 winning · 1 outbid", matching "Bids 2"
+  in the header). It is hidden when you are signed out, when you have no bids,
+  and where a console docks.
 - **Lot pages:** the bidding console docks at the bottom and expands upwards
   into a sheet.
 
@@ -1894,13 +1977,14 @@ Mobile strategy: **auction status first.**
 1. The one-bar floor switcher and the live stage triptych.
 2. The ending-soon timeline with photo pins, and the time-bucketed finder.
 3. The bid ticket and stock ticket (data first).
-4. The docked bidding console, shared by lot pages and the live room.
-5. An auction timeline on every lot, the past · now · next live room, and
-   hosts on a shared time axis.
+4. The lot stage with a lower-third status band, and the docked bidding
+   console shared by lot pages and the live room.
+5. An auction timeline on every lot (with its bids on the line), the past ·
+   now · next live room, and hosts on a shared time axis.
 
 Visual personality (secondary): confident and time-aware, with restrained
-colour, a single urgency accent reserved for time and live state, tabular
-figures and minimal motion.
+colour, a single urgency accent kept for time and live state, tabular figures
+and minimal motion.
 
 ---
 
@@ -1919,7 +2003,7 @@ type.
 ├────────────────┤  ├────────────────┤  │srch├───────────┤  ├───┼────────┬┴──┤
 │ LOGO [search]  │  │ ░░ HEADLINE ░░ │  │ nav│ SEARCH    │  │ ░ │  NOW ░ │ ░ │
 ├────────────────┤  │ ░░[search..]░░ │  │rail│ DECK [___]│  │ pv│ ░░░░░░ │ nx│
-│ category bar   │  │ ░░ popular  ░░ │  │    ├──┬──┬──┬──┤  │   │ [BID]  │   │
+│ category bar   │  │ ░░ popular  ░░ │  │    ├──┬──┬──┬──┤  │   │ [ROOM] │   │
 ├──────────┬─────┤  │ ░[▓][▓][▓][▓]░ │  │tree│ct│ct│ct│ct│  ├───┴────────┴───┤
 │ ░ HERO ░ │ END │  ├───────┬───┬────┤  │    ├──┴──┴──┴──┤  │ |--o-o--o----> │
 │ ░░░░░░░░ ├─────┤  │ ░░░░░ │ ░ │ ░░ │  │    │ categories│  │ [] [] [] []    │
@@ -1970,14 +2054,15 @@ type.
      OPTION 1            OPTION 2            OPTION 3            OPTION 4
 ┌────────────────┐  ┌────────────────┐  ┌─┬──────────────┐  ┌───┬─────────┬──┐
 │ header x3      │  │ nav LOGO nav ic│  │░│ < 2/4 >      │  │LG │[L|E|U|B]│ic│
-├─┬─────┬────┬───┤  ├────┬────┬──────┤  │░│ STRIP $ [Add]│  ├───┴─────┬───┴──┤
-│░│ ░░░ │ txt│ BX│  │ ░░ │ ░░ │ ░░░░ │  │ ├────┬────┬────┤  │ TITLE   │ $ [+]│
-│░│ ░░░ │ txt│ BX│  ├────┴────┼──────┤  │░│ idx│ ░░ │ kv │  ├─────────┴──────┤
-│░│     │ txt│   │  │ TITLE   │ $ [+]│  │░│ idx│    │ kv │  │ ░░░ STAGE ░░░░ │
-├─┴─────┴────┴───┤  ├─────────┴──────┤  │ │    ├────┴────┤  │ [][][]         │
-│ tabs           │  │   ───────      │  │░│    │ ─────── │  ├────┬─────┬─────┤
-│ rails > >      │  │   ───────      │  │░│    │ compare │  │ con│ spec│ dlvy│
-│                │  │   ─────  [$+]  │  │ │    │         │  ├────┴─────┴─────┤
+├─┬─────┬────┬───┤  ├────┬────┬──────┤  │░│ STRIP $ [Add]│  ├───┴─────────┴──┤
+│░│ ░░░ │ txt│ BX│  │ ░░ │ ░░ │ ░░░░ │  │ ├────┬────┬────┤  │ ░░░ STAGE ░░░░ │
+│░│ ░░░ │ txt│ BX│  ├────┴────┼──────┤  │░│ idx│ ░░ │ kv │  │ ░░░░░░░░░░░░░░ │
+│░│     │ txt│   │  │ TITLE   │ $ [+]│  │░│ idx│    │ kv │  │ ▒ $ [+] [BUY]  │
+├─┴─────┴────┴───┤  ├─────────┴──────┤  │ │    ├────┴────┤  │ title · seller │
+│ tabs           │  │   ───────      │  │░│    │ ─────── │  │ [][][]         │
+│ rails > >      │  │   ───────      │  │░│    │ compare │  ├────┬─────┬─────┤
+│                │  │   ─────  [$+]  │  │ │    │         │  │ con│ spec│ dlvy│
+│                │  │                │  │ │    │         │  ├────┴─────┴─────┤
 │                │  │                │  │ │    │         │  │ |--o--o--o-->  │
 │                │  │                │  │ │    │         │  ├────────────────┤
 │                │  │                │  │ │    │         │  │ ▒▒ CONSOLE ▒▒▒ │
@@ -1989,14 +2074,19 @@ type.
      OPTION 1            OPTION 2            OPTION 3            OPTION 4
 ┌────────────────┐  ┌────────────────┐  ┌─┬──────────────┐  ┌───┬─────────┬──┐
 │ header x3      │  │ nav LOGO nav ic│  │░│ < 3/6 >      │  │LG │[L|E|U|B]│ic│
-├─┬─────┬────┬───┤  ├───────┬────────┤  │░│ STRIP [1][2] │  ├───┴─────┬───┴──┤
-│░│ ░░░ │ txt│BID│  │ ░░░░░ │ ░░░░░░ │  │ ├────┬────┬────┤  │ TITLE   │ 5h40 │
-│░│ ░░░ │ txt│BOX│  ├───────┴─┬──────┤  │░│ idx│ ░░ │ kv │  ├─────────┴──────┤
-├─┴─────┼────┴───┤  │ TITLE   │ BID  │  │░│ idx│    │ kv │  │ ░░░ STAGE ░░░░ │
-│ hist. │ terms  │  │         │[1][2]│  │ │    ├────┴────┤  │ o--|-|*-[#]-o  │
-├───────┴────────┤  ├─────────┴──────┤  │░│    │ history │  ├───────┬────────┤
-│ similar >      │  │   ───────      │  │░│    │ compare │  │ activ │ facts  │
-│                │  │   ─────  [BID] │  │ │    │         │  ├───────┴────────┤
+├─┬─────┬────┬───┤  ├───────┬────────┤  │░│ STRIP [1][2] │  ├───┴─────────┴──┤
+│░│ ░░░ │ txt│BID│  │ ░░░░░ │ ░░░░░░ │  │ ├────┬────┬────┤  │ ░░░ STAGE ░░░░ │
+│░│ ░░░ │ txt│BOX│  ├───────┴─┬──────┤  │░│ idx│ ░░ │ kv │  │ ░░░░░░░░░░░░░░ │
+├─┴─────┼────┴───┤  │ TITLE   │ BID  │  │░│ idx│    │ kv │  │ ▒ 5h40 [BID] ▒ │
+│ hist. │ terms  │  │         │[1][2]│  │ │    ├────┴────┤  │ title · seller │
+├───────┴────────┤  ├─────────┴──────┤  │░│    │ history │  ├────────────────┤
+│ similar >      │  │   ───────      │  │░│    │ compare │  │ o--|-|*-[#]-o  │
+│                │  │   ─────  [BID] │  │ │    │         │  │ last bids      │
+│                │  │                │  │ │    │         │  ├────┬─────┬─────┤
+│                │  │                │  │ │    │         │  │ con│ spec│ dlvy│
+│                │  │                │  │ │    │         │  ├────┴─────┴─────┤
+│                │  │                │  │ │    │         │  │ |--o--o--o-->  │
+│                │  │                │  │ │    │         │  ├────────────────┤
 │                │  │                │  │ │    │         │  │ ▒▒ CONSOLE ▒▒▒ │
 └────────────────┘  └────────────────┘  └─┴────┴─────────┘  └────────────────┘
 ```
@@ -2039,7 +2129,7 @@ type.
 ```text
      OPTION 1            OPTION 2            OPTION 3            OPTION 4
 ┌────────────────┐  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐
-│ [=] LOGO  cart │  │ [=]* LOGO W Q B│  │ LOGO Home Bell │  │ [=]LOGO Q Bids │
+│ [=] LOGO  cart │  │ [=]! LOGO W Q B│  │ LOGO Home Bell │  │ [=]LOGO Q Bids │
 ├────────────────┤  ├────────────────┤  ├───────┬────────┤  ├────────────────┤
 │ [search....]   │  │ ░░░░░░░░░░░░░░ │  │ ct    │ ct     │  │ [Liv][END][Up] │
 ├────────────────┤  │ ░░░░ FULL ░░░░ │  │ ct    │ ct     │  ├────────────────┤
@@ -2055,7 +2145,7 @@ type.
 │ ▒▒▒▒ live ▒▒▒▒ │  ├───────┬────────┤  ├───┬────────┬───┤  │ WITHIN 1 HOUR  │
 │ grid [][]      │  │ ░░░░░ │ ░░░░░░ │  │[=]│[search]│Ct │  │ ░ row  [Bid]   │
 ├──┬──┬──┬──┬────┤  ├───────┴────────┤  │   │        │   │  ├────────────────┤
-│H │C │L │Ct│Acct│  │     [LIVE mini]│  │   │        │   │  │  (2 win·1 out) │
+│H │C │L │Ct│Acct│  │     [LIVE mini]│  │   │        │   │  │  (1 win·1 out) │
 └──┴──┴──┴──┴────┘  └────────────────┘  └───┴────────┴───┘  └────────────────┘
 ```
 
@@ -2066,7 +2156,8 @@ type.
   marketplace needs: a gallery, a price or bid, facts, and an identity block
   on storefronts.
 - Section 9 lists every place where a new option remains partially similar to
-  Option 1. None is substantially the same.
+  Option 1: 6, 7 and 6 of the 24 dimensions for Options 2, 3 and 4. None is
+  substantially the same.
 
 ---
 
@@ -2080,15 +2171,15 @@ The Option 1 column was redrawn from the code after the review.
 |---|---|---|---|---|
 | **Header** | Three tiers: dark utility strip; logo + scoped search + actions; category bar with a photo mega menu | One bar: links either side of a centred logo; labelled search; no utility strip or category bar | App shell: vertical navigation rail + slim top bar | One bar: menu + logo, centred floor switcher (Live · Ending · Upcoming · Buy Now), icons |
 | **Search** | Scoped bar in the header centre; its own row on phones, hiding on scroll | In-hero discovery field + full-screen visual search | Home search deck that docks into the rail; "/" shortcut; bottom command bar on phones | Collapsed icon; discovery by time-window chips |
-| **Hero** | 8/12 carousel (≥436px) beside two stacked 4/12 tiles (ending soon, top deal) | Full-width centred discovery block framed by product cut-outs (~480px); four tiles straddle its edge | No image hero: search deck + hub counters | Live stage triptych: previous · now · next, centred controls |
-| **Category discovery** | Photo mega menu (8 photos, counts, quick links, live card) + one row of 8 equal tiles + round-tile rail on phones | Mosaic of categories and sellers with unequal tile sizes + full-screen Categories overlay + browse photo-chip tray + mobile stories | Always-visible tree with thumbnails, counts and sale-type branches + 4×2 grid | Chips with open auctions, Buy Now count and next close, below the auction content; category filter in a drawer |
-| **Homepage structure** | Hero + tiles → trust → categories → auctions rail → live band → deals → pallets → sellers → how it works + grades | Hero → featured now → category/seller mosaic → featured marketplace → on the block → ready to buy → grades → how it works; live as a floating mini-player | Search deck → counters → categories → three list modules → sellers + live → recently added → pallets → buying on Khazna | Stage → ending-soon timeline → active → upcoming → Buy Now → categories → hosts on a time axis → how bidding works |
-| **Product cards** | Vertical card (square plated image, text, button footer) + `LotRow` list rows + `CompactLot` rows | Square image tile; information on a solid band inside the image; 2×2 feature tiles | Table row (single line, columns) + module item + compact tile | Stock ticket: stock, price and saving first; small photo row; Add |
-| **Auctions** | Rails of vertical cards; ending tile beside the hero; sticky bid box on detail | Wide showcases two per view; time and bid on the tile band; bid module in the purchase band | Ending-soon module; time column in the table; bid ladder in the summary strip | Bid tickets (status, time, current bid first); timeline; time buckets; docked console |
-| **Live auctions** | Full-bleed live band on home; stage + 380px side panel; lots table | Floating mini-player on every page; full-width theatre stage, pinned bid band, lot reel | Live line and module; one order-of-sale table whose live row expands in place | Live stage as the home hero; room as a past · now · next triptych + docked console |
-| **Browse** | Quick filters (sale type + 3 chips) + sticky facet sidebar + grid 2/3/4 or list view + numbered pages | Category banner + visual filter tray + drawer + tile mosaic + load more | Collapsed rail + scope switch + sortable table with column filters + quick-view pane | Floor switcher + window chips + drawer + time buckets |
-| **Product detail** | Three columns from 1280px (vertical thumbnails · gallery · details · sticky box) + tabs + two rails | Filmstrip → purchase band → centred column → floating card | Result navigation → sticky summary strip → index · photo · facts → spec sheet → compare table | Lot header bar → stage → three fact columns → also at auction → console after scroll |
-| **Auction detail** | Same frame with a sticky bid box; bid history + terms side by side; manifest; similar rail | Filmstrip → band with the bid module → centred column → floating bid card | Summary strip with the bid ladder → index · photo · facts → bid history table → compare | Lot header bar with countdown → stage → auction timeline → activity + facts → console after scroll |
+| **Hero** | 8/12 carousel (≥436px; brand, live and pallet slides) beside two stacked 4/12 tiles (ending soon, top deal) | Full-width centred discovery block framed by product cut-outs (~480px); four tiles straddle its edge | No image hero: search deck + hub counters | Live stage triptych: previous · now · next, centred controls; "Enter the room to bid" |
+| **Category discovery** | Photo mega menu (8 photos, counts, quick links, live card) + one row of 8 equal tiles; on phones a rail of square photo cards and a category sheet | Mosaic of categories and sellers with unequal tile sizes + full-screen Categories overlay + browse photo-chip tray + mobile stories | Always-visible tree with thumbnails, counts and sale-type branches + 4×2 grid | Chips with open auctions, Buy Now count and next close, below the auction content; category filter in a drawer |
+| **Homepage structure** | Hero + tiles → trust → categories → auctions rail → live band → deals → pallets → sellers → how it works + grades | Hero → featured now → category/seller mosaic → featured marketplace → on the block (2×2) → ready to buy → grades → how it works; live as a floating mini-player | Search deck → counters → categories → three list modules → sellers + live → recently added → pallets → buying on Khazna | Stage → ending-soon timeline → active → upcoming → Buy Now → categories → hosts on a time axis → how bidding works |
+| **Product cards** | Vertical card (square plated image, text, button footer) + `LotRow` list rows + `CompactLot` rows + `MiniCard` | Square image tile; information on a solid band inside the image; 2×2 feature tiles | Table row (single line, columns) + mini-table row + compact tile | Stock ticket: stock, price and saving first; small photo row; Add |
+| **Auctions** | Rails of vertical cards; ending tile beside the hero; sticky bid box on detail | A static block of four wide showcases; time and bid on the tile band; bid module in the purchase band | Ending-soon mini-table with a window switch; time column in the table; bid ladder in the summary strip | Bid tickets (status, time, current bid first); timeline; time buckets; docked console |
+| **Live auctions** | Live slide in the hero carousel; full-bleed live band on home; stage + 380px side panel; lots table | Floating mini-player on every page; full-width theatre stage, pinned bid band, lot reel | Live line and module; one order-of-sale table whose live row expands in place | Live stage as the home hero; room as a past · now · next triptych + docked console |
+| **Browse** | Quick filters (sale type + 3 chips) + sticky facet sidebar + grid 2/3/4 or list view + numbered pages | Category banner + visual filter tray + drawer + tile mosaic + load more | Collapsed rail + scope switch + sortable table with column filters + quick-view pane | Floor switcher + window chips + inline filter panel + time buckets |
+| **Product detail** | Three columns from 1280px (vertical thumbnails · gallery · details · sticky box) + tabs + two rails | Filmstrip → purchase band → centred column → floating card | Result navigation → sticky summary strip → index · photo · facts → spec sheet → compare table | Stage with a lower-third status band → three fact columns → also at auction → console after scroll |
+| **Auction detail** | Same frame with a sticky bid box; bid history + terms side by side; manifest; similar rail | Filmstrip → band with the bid module → centred column → floating bid card | Summary strip with the bid ladder → index · photo · facts → bid history table → compare | Stage with a lower-third status band → auction timeline with the bids → fact columns + terms → similar lots on a time line → console |
 | **Seller page** | Cover (176–256px) + overlapping identity card + tabs, search, sort + sidebar + grid + About/Pickup columns | Full-bleed cover with the name on a band + profile strip with an About & pickup expander + photo chips + tile mosaic | Rail + compact profile header + tabs (Overview modules · Auctions · Buy Now · About) + table | Status first (live band or next close) + identity line + seller timeline + tickets + results |
 | **Mobile navigation** | Menu, logo, Account, Cart; search row; five-tab bottom bar, swapped for action bars on lot pages | No bottom bar: transparent top bar, full-screen menu, floating live mini-player | Bottom command bar (menu · search · cart; Add or Bid on lot pages) | Top bar + sticky floor switcher + floating My bids pill; console on lot pages |
 
@@ -2096,36 +2187,42 @@ The Option 1 column was redrawn from the code after the review.
 
 | Dimension | Option 1 | Option 2 | Option 3 | Option 4 |
 |---|---|---|---|---|
-| **Navigation architecture** | Categories first (mega menu), then sale-type links | Same destinations; categories in a full-screen overlay | Marketplace views with counts, category tree, sellers, My Khazna in a rail | Sale mode and time first (switcher); categories and sellers in the menu |
+| **Navigation architecture** | Categories first (mega menu), then sale-type links | Same destinations; categories in a full-screen overlay | Marketplace views with counts, category tree, sellers, My Khazna in a rail | Sale mode and time first (switcher: Live, Ending, Upcoming, Buy Now); categories and sellers in the menu |
 | **Hero proportions** | 8/12 width × ≥436px | 100% width × ~480px | Main column × ~240px deck | Container width × ~480px |
 | **Hero content position** | Start-aligned inside each slide | Centred between cut-out columns | Top-start in the deck | Centred triptych; controls centred under the stream |
 | **Section ordering** | Categories → auctions → live → deals → sellers → how it works | Categories (with sellers) → featured → auctions → Buy Now → how it works | Search → counters → categories → deals · ending · popular → sellers · live | Live → ending → active → upcoming → Buy Now → categories → hosts → how bidding works |
 | **Product-grid composition** | Uniform grids and rails, 4–5 across | Mosaics with 2×2 features; mirrored 1/2 + 1/4 + 1/4 rows | Table rows; list modules; compact tiles six across | Rows of tickets (3 and 4 across); time buckets on browse |
 | **Buy Now presentation** | Top-deal tile in the hero + five-across deals grid | Ready-to-buy mosaic around a 2×2 feature | Deals list module; Buy Now rows in the table | Stock tickets, four across, after Upcoming |
-| **Ending Soon presentation** | Thumbnail-row tile beside the hero + auctions rail | On the block showcases, closing soonest first | Ending-soon list module + counter | Timeline with photo pins + window chips + buckets |
-| **Live presentation** | Full-bleed band after the auctions rail | Floating mini-player on every page | One line + one module | The home stage + the switcher's Live segment |
+| **Ending Soon presentation** | Thumbnail-row tile beside the hero + auctions rail | On the block: a static 2×2 block of wide showcases, closing soonest first | Ending-soon mini-table with a window switch + counter | Timeline with photo pins + window chips + buckets |
+| **Live presentation** | A hero carousel slide + a full-bleed band after the auctions rail | Floating mini-player on every page | One line + one module | The home stage (the whole hero) + the switcher's Live segment |
 | **Seller/store presentation (home)** | Stats band + seller tiles with covers | Two seller tiles inside the category mosaic | Seller directory list module | Sellers as rows on a shared time axis |
 | **Trust-information presentation** | Utility-strip ticker + trust strip under the hero + footer | One line under the hero search + grade band + text steps | "Buying on Khazna" link in the rail and a link row | How bidding works + the rules link + console notes |
-| **Filter UX** | Sale-type switch + 3 chips + sticky facet sidebar + mobile sheet | Visual tray (photo chips, grade chips, price bands) + drawer | Column-header filters + scope switch + tree; full-screen filter page on phones | Switcher + window chips + drawer |
+| **Filter UX** | Sale-type switch + 3 chips + sticky facet sidebar + mobile sheet | Visual tray (photo chips, grade chips, price bands) + drawer | Column-header filters + scope switch + tree; full-screen filter page on phones | Switcher + window chips + inline filter panel |
 | **Mobile page composition** | Search row, carousel, stacked tiles, rails, tab bar | Full-screen hero, stories, single-column tile feed | Counters, category grid, dense lists, command bar | Switcher, live strip, ticket carousel, time rows, My bids pill |
 
 ---
 
-## 9. Similarity audit (revised after the independent review)
+## 9. Similarity audit (revised after two independent reviews)
 
 Each new option is compared with the Option 1 code, area by area. Three
 verdicts are used:
 
 - **DIFFERENT:** the area's structure differs.
 - **PARTIALLY SIMILAR:** a significant structural element or arrangement is
-  shared.
+  shared. An area where one aspect differs but another is shared counts as
+  partially similar.
 - **SUBSTANTIALLY SAME:** the area's main structure is Option 1's.
 
-Conventions every marketplace needs are noted but do not change a verdict:
-a sale-type switch, a gallery, a price, a grade line, and an action anchored
-at the bottom of mobile lot pages. None of these counts as differentiation:
-colour, font, radius, shadow, button colour, accent colour, icon style,
-spacing, background tone or badges.
+Some conventions are noted but do not change a verdict:
+
+- things every marketplace needs: a sale-type switch, a gallery, a price, a
+  grade line, a closing "how it works" section, and an action anchored at the
+  bottom of mobile lot pages;
+- filters built from the same shared data, such as grade, price, category and
+  time left.
+
+None of these counts as differentiation: colour, font, radius, shadow, button
+colour, accent colour, icon style, spacing, background tone or badges.
 
 **The brief's rule:** if more than two major areas remain substantially the
 same as Option 1, the wireframe is redesigned before presenting.
@@ -2134,32 +2231,42 @@ same as Option 1, the wireframe is redesigned before presenting.
 
 | Option | 11 questions: same / partial / different | 24 dimensions: same / partial / different | Rule |
 |---|---|---|---|
-| 2 — Visual Marketplace | **0** / 1 / 10 | **0** / 4 / 20 | Passes |
-| 3 — Marketplace Hub | **0** / 1 / 10 | **0** / 3 / 21 | Passes |
-| 4 — Auction Commerce | **0** / 1 / 10 | **0** / 4 / 20 | Passes |
+| 2 — Visual Marketplace | **0** / 3 / 8 | **0** / 6 / 18 | Passes |
+| 3 — Marketplace Hub | **0** / 3 / 8 | **0** / 7 / 17 | Passes |
+| 4 — Auction Commerce | **0** / 2 / 9 | **0** / 6 / 18 | Passes |
 
-For comparison, the review's count against revision 1 was:
+How the counts developed:
 
-| Option | Substantially same | Partially similar |
-|---|---|---|
-| 2 | 0 | 3 |
-| 3 | 1 | 5 |
-| 4 | 0 | 4 |
+- **The first review, of revision 1:**
+
+  | Option | Substantially same | Partially similar |
+  |---|---|---|
+  | 2 | 0 | 3 |
+  | 3 | 1 | 5 |
+  | 4 | 0 | 4 |
+
+- **The second review, of this revision's first draft:** it found no area
+  substantially the same in any option. It judged that the draft undercounted
+  partial similarities, estimating about 6–7 of 24 for Option 2, 7–8 for
+  Option 3 (with one arguably substantially the same) and 6–7 for Option 4.
+
+The counts above apply the definition strictly. Where a sensible change
+existed, the design was changed instead (see "Independent review" below).
 
 ### Option 2 — Visual Marketplace vs Option 1 (the 11 questions)
 
 | Question | Verdict | Evidence |
 |---|---|---|
 | Header | DIFFERENT | One bar with links either side of a centred logo, versus three tiers (`UtilityStrip`, `Header`, `CategoryNav`) |
-| Hero | DIFFERENT | Full-width centred discovery block framed by cut-outs, with tiles overlapping its edge, versus an 8/12 carousel beside two stacked tiles |
+| Hero | DIFFERENT | One full-width centred discovery block framed by cut-outs, with tiles overlapping its edge, versus an 8/12 carousel with side tiles. Option 1's brand slide also uses cut-outs: that is shared imagery, not structure |
 | Search placement | DIFFERENT | In the hero and a full-screen layer; no header search bar |
-| Category discovery | **PARTIALLY SIMILAR** | The unequal mosaic with seller tiles is new. The full-screen overlay (a grid of category photos) and the mobile stories rail echo `MegaMenu` and `CategoryTiles`' round-tile phone rail |
-| Homepage composition | DIFFERENT | Overlapping featured tiles, a mosaic, mirrored feature rows, showcases and a tile mosaic; no trust strip, auctions rail, live band, deals grid or seller shelf. The closing grades/how-it-works section is a convention |
-| Product cards | DIFFERENT | Square tile with the information on a band inside the image and no footer, versus image + text + button card. Tag and heart placement is a convention |
-| Browse | DIFFERENT | Banner, visual tray and drawer, tile mosaic, load more; no sidebar, no numbered pages. The sale-type switch is a convention |
+| Category discovery | **PARTIALLY SIMILAR** | The unequal mosaic with seller tiles is new. The full-screen overlay and the mobile stories rail echo `MegaMenu`, the mobile category sheet of 8 photo cards, and the phone rail of square photo cards |
+| Homepage composition | **PARTIALLY SIMILAR** | The top half is new: the centred hero, overlapping tiles, the category-and-seller mosaic and the mirrored feature rows. The lower half keeps Option 1's section types in re-composed forms: an auctions block (four wide showcases, not a rail), a Buy Now deals block (a mosaic, not a grid), and how it works with the grades |
+| Product cards | DIFFERENT | A square tile with the information on a band inside the image and no footer, versus an image + text + button card. Tag and heart placement is a convention |
+| Browse | DIFFERENT | Banner, visual tray and drawer, tile mosaic, load more; no sidebar, no numbered pages |
 | Product detail | DIFFERENT | Filmstrip → purchase band → centred column → floating card; no three-column layout, tabs or rails |
-| Auction detail | DIFFERENT | The same frame with the bid module in the band; no side bid box |
-| Live auction | DIFFERENT | Full-width stream with a pinned bid band and a lot reel; no side panel or lots table |
+| Auction detail | DIFFERENT | The same frame, with the bid module in the band; no side bid box, no history-beside-terms block |
+| Live auction | **PARTIALLY SIMILAR** | The side panel is gone and the stream is full width with a pinned bid band. But the main column keeps Option 1's order: event header → stage → current lot → order of sale → other events |
 | Mobile UX | DIFFERENT | No tab bar; full-screen menu; single-column tile feed; mini-player. The stories rail is counted under category discovery |
 
 ### Option 3 — Marketplace Hub vs Option 1 (the 11 questions)
@@ -2168,30 +2275,30 @@ For comparison, the review's count against revision 1 was:
 |---|---|---|
 | Header | DIFFERENT | Navigation rail + slim top bar |
 | Hero | DIFFERENT | No image hero; search deck + counters |
-| Search placement | DIFFERENT | Deck and rail on desktop; bottom command bar on phones (revision 1 kept a top search bar on phones) |
-| Category discovery | DIFFERENT | Persistent tree with thumbnails and sale-type branches. The 4×2 grid echoes `CategoryTiles` |
-| Homepage composition | DIFFERENT | Dashboard of list modules. The ending-soon module is related to Option 1's ending tile (see the dimensions below) |
-| Product cards | **PARTIALLY SIMILAR** | The browse row is now a real table (not `LotRow`), but the home module items are close to Option 1's `CompactLot` rows |
+| Search placement | DIFFERENT | Deck and rail on desktop; bottom command bar on phones |
+| Category discovery | **PARTIALLY SIMILAR** | The persistent tree with sale-type branches is new. The 4×2 grid, which the brief's suggested order asks for, echoes `CategoryTiles` |
+| Homepage composition | DIFFERENT | A dashboard of mini-tables in module rows; no hero, rails or grids of cards. The ending-soon mini-table is counted under dimension 14 |
+| Product cards | **PARTIALLY SIMILAR** | Table rows and mini-table rows are new. The compact tile (Recently added, the browse Tiles view) is a small image-top card like Option 1's |
 | Browse | DIFFERENT | Sortable table with column filters and a quick-view pane; no chip row, no sidebar. The scope switch, view switch and pager are conventions |
-| Product detail | DIFFERENT | Sticky summary strip, in-page index, spec sheet without tabs, compare table; no side purchase box or rails |
+| Product detail | DIFFERENT | Sticky summary strip, in-page index, a spec sheet without tabs, a compare table; no side purchase box or rails |
 | Auction detail | DIFFERENT | Bid ladder in the sticky strip; bid history table; no side bid box |
-| Live auction | DIFFERENT | One order-of-sale table whose live row expands with the stream; no stage + side panel. An order-of-sale table also exists in Option 1, as a secondary panel |
-| Mobile UX | DIFFERENT | Bottom command bar, full-screen filter page led by the tree; no chip row, no tab bar, no filter sheet |
+| Live auction | **PARTIALLY SIMILAR** | One order-of-sale table whose live row expands in place. But the row holds Option 1's four live modules (stream, current lot, bid panel, activity), and Option 1 also lists the order of sale |
+| Mobile UX | DIFFERENT | Bottom command bar and a full-screen filter page led by the tree; no chip row, no tab bar, no filter sheet |
 
 ### Option 4 — Auction Commerce vs Option 1 (the 11 questions)
 
 | Question | Verdict | Evidence |
 |---|---|---|
-| Header | DIFFERENT | One bar with a centred floor switcher, versus three tiers. The destinations overlap with Option 1's category-bar links |
-| Hero | DIFFERENT | Centred triptych stage with the stream. Its height class (~480px vs ≥436px) is recorded under hero proportions |
-| Search placement | DIFFERENT | Collapsed icon; time windows lead discovery |
-| Category discovery | DIFFERENT | Chips with auction state, low on the page; menu list |
-| Homepage composition | **PARTIALLY SIMILAR** | The top half (stage, timeline) is new and hosts are on a time axis. But the middle is rows of tickets, which still reads as rows of cards, and the Buy Now grid and the closing how-it-works section are shared with Option 1 |
-| Product cards | DIFFERENT | Data-first ticket with a small photo row, versus an image-top card |
-| Browse | DIFFERENT | Switcher tabs, window chips and time buckets; no sidebar, no flat grid by default |
-| Product detail | DIFFERENT | Lot header bar, stage with thumbnails under it, three fact columns, console after scroll |
-| Auction detail | DIFFERENT | Countdown in the header bar, auction timeline, activity beside the facts, console |
-| Live auction | DIFFERENT | Symmetric past · now · next triptych with no side column (revision 1 kept a right-hand activity column) |
+| Header | DIFFERENT | One bar with a centred floor switcher, versus three tiers. Its destinations overlap Option 1's category-bar links (counted under navigation architecture) |
+| Hero | **PARTIALLY SIMILAR** | The permanent previous · now · next stage is new. But Option 1 already puts the live event in its hero, as one carousel slide, and the height class is the same (~480px vs ≥436px) |
+| Search placement | DIFFERENT | A collapsed icon; time windows lead discovery |
+| Category discovery | DIFFERENT | Chips with auction state, low on the page; a list in the menu |
+| Homepage composition | **PARTIALLY SIMILAR** | The top half (stage, timeline) is new, and the hosts sit on a time axis. But the middle is rows of tickets, which still reads as rows of cards, plus a Buy Now grid |
+| Product cards | DIFFERENT | A data-first ticket with a small photo row, versus an image-top card |
+| Browse | DIFFERENT | Switcher tabs, window chips, an inline filter panel and time buckets; no sidebar, and no flat grid by default |
+| Product detail | DIFFERENT | A stage with a lower-third status band, three fact columns, a time line, and the console after scroll |
+| Auction detail | DIFFERENT | Bids on the auction timeline; fact columns and a terms line; similar lots on a time line; no side bid box, no history-beside-terms block, no similar-lots rail |
+| Live auction | DIFFERENT | A symmetric past · now · next triptych with no side column |
 | Mobile UX | DIFFERENT | Switcher, live strip, ticket carousel, My bids pill. The bottom console on lot pages is the convention shared by all four options |
 
 ### All 24 dimensions of the brief
@@ -2199,91 +2306,114 @@ For comparison, the review's count against revision 1 was:
 | # | Dimension | Option 2 | Option 3 | Option 4 |
 |---|---|---|---|---|
 | 1 | Header structure | DIFFERENT | DIFFERENT | DIFFERENT |
-| 2 | Navigation architecture | **PARTIAL** — same destinations as Option 1, categories first | DIFFERENT | DIFFERENT — time and sale mode first; overlapping destinations |
+| 2 | Navigation architecture | **PARTIAL** — Option 1's destinations, with categories first | DIFFERENT | **PARTIAL** — the switcher's Live, Ending and Buy Now are Option 1's category-bar links; categories move to the menu |
 | 3 | Search placement | DIFFERENT | DIFFERENT | DIFFERENT |
-| 4 | Category discovery | **PARTIAL** — overlay and stories echo the mega menu and phone rail | DIFFERENT — the 4×2 grid echoes the tile row | DIFFERENT |
-| 5 | Homepage composition | DIFFERENT | DIFFERENT | **PARTIAL** — rows of tickets and a Buy Now grid in the middle |
-| 6 | Hero structure | DIFFERENT | DIFFERENT | DIFFERENT |
-| 7 | Hero proportions | DIFFERENT — full width, not 8/12 | DIFFERENT | **PARTIAL** — same height class (~480px vs ≥436px) |
+| 4 | Category discovery | **PARTIAL** — overlay and stories echo the mega menu, mobile sheet and phone rail | **PARTIAL** — the 4×2 grid echoes the tile row | DIFFERENT |
+| 5 | Homepage composition | **PARTIAL** — the lower half keeps Option 1's section types, re-composed | DIFFERENT | **PARTIAL** — rows of tickets and a Buy Now grid |
+| 6 | Hero structure | DIFFERENT | DIFFERENT | DIFFERENT — a permanent stage, not a carousel (Option 1 has a live slide) |
+| 7 | Hero proportions | DIFFERENT — full width, not 8/12 | DIFFERENT | **PARTIAL** — same height class |
 | 8 | Hero content position | DIFFERENT — centred, not start-aligned | DIFFERENT | DIFFERENT |
-| 9 | Section ordering | **PARTIAL** — categories → auctions → Buy Now → how it works, as the brief suggested | DIFFERENT | DIFFERENT — shares only the closing hosts → how-it-works tail |
+| 9 | Section ordering | **PARTIAL** — categories → auctions → Buy Now → how it works, as the brief suggested | **PARTIAL** — categories → deals and ending → sellers and live → pallets → buying guide, close to Option 1's sequence | DIFFERENT — live first, categories late; shares only the hosts → how-it-works tail |
 | 10 | Product-grid composition | DIFFERENT | DIFFERENT | **PARTIAL** — tickets in uniform 3- and 4-across rows on home |
-| 11 | Product-card layout | DIFFERENT | **PARTIAL** — module items ≈ `CompactLot` | DIFFERENT |
-| 12 | Auction-card layout | DIFFERENT | **PARTIAL** — same module item with time and Bid | DIFFERENT |
-| 13 | Buy Now presentation | DIFFERENT | DIFFERENT | **PARTIAL** — a section grid of discounted Buy Now lots with "Shop all" |
-| 14 | Ending Soon presentation | DIFFERENT | **PARTIAL** — three thumbnail rows, like Option 1's ending tile, moved into a module | DIFFERENT |
+| 11 | Product-card layout | DIFFERENT | **PARTIAL** — compact tile ≈ a small vertical card | DIFFERENT |
+| 12 | Auction-card layout | DIFFERENT | **PARTIAL** — the compact tile with bid and time | DIFFERENT |
+| 13 | Buy Now presentation | DIFFERENT — a mosaic, not a uniform grid | DIFFERENT | **PARTIAL** — a uniform grid of discounted Buy Now lots with "Shop all" |
+| 14 | Ending Soon presentation | DIFFERENT — a static 2×2 block of wide showcases | **PARTIAL** — a small panel of the next-closing lots, like Option 1's ending tile (now a mini-table with a window switch) | DIFFERENT |
 | 15 | Live Auction presentation | DIFFERENT | DIFFERENT | DIFFERENT |
 | 16 | Seller/store presentation | DIFFERENT | DIFFERENT | DIFFERENT |
 | 17 | Trust-information presentation | DIFFERENT | DIFFERENT | DIFFERENT |
 | 18 | Product-detail structure | DIFFERENT | DIFFERENT | DIFFERENT |
 | 19 | Auction-detail structure | DIFFERENT | DIFFERENT | DIFFERENT |
-| 20 | Live-auction structure | DIFFERENT | DIFFERENT — shares an order-of-sale table | DIFFERENT |
-| 21 | Seller-storefront structure | **PARTIAL** — cover → identity → listings, as in Option 1 | DIFFERENT — Option 1 also has sale-type tabs | DIFFERENT |
-| 22 | Filter UX | DIFFERENT | DIFFERENT | DIFFERENT |
+| 20 | Live-auction structure | **PARTIAL** — the main-column order is kept | **PARTIAL** — Option 1's four live modules in one row | DIFFERENT |
+| 21 | Seller-storefront structure | **PARTIAL** — cover → identity → listings | **PARTIAL** — identity with counts → sale-type tabs → listings → About | DIFFERENT |
+| 22 | Filter UX | DIFFERENT — a visual tray and drawer replace the sidebar | DIFFERENT | **PARTIAL** — the window chips promote Option 1's "Ending within" facet and its "Ending < 1h" chip |
 | 23 | Mobile navigation | DIFFERENT | DIFFERENT | DIFFERENT |
 | 24 | Mobile page composition | DIFFERENT | DIFFERENT | DIFFERENT |
-| | **Totals (same / partial / different)** | **0 / 4 / 20** | **0 / 3 / 21** | **0 / 4 / 20** |
+| | **Totals (same / partial / different)** | **0 / 6 / 18** | **0 / 7 / 17** | **0 / 6 / 18** |
 
-The partial similarities above are deliberate trade-offs. Changing them further
-would cost usability or break the brief's suggested section order. They are
-listed so the client can judge them.
+Most of these partial similarities come from three sources:
+
+- the brief's own suggested section orders;
+- elements it asks for, such as Option 3's category grid;
+- features every live page and storefront needs.
+
+They are listed so the client can judge them. Any of them can be pushed
+further before implementation (decision 9 in section 13).
 
 ### New options against each other
 
-| Pair | Overlap found in revision 1 | Status in revision 2 |
+| Pair | Overlap found in revision 1 or in the second review | Status |
 |---|---|---|
-| 2, 3, 4 | All three browse pages had a row of dropdown filters above the results | Resolved: visual tray (2), column-header filters (3), window chips + drawer (4). Options 2 and 4 both keep a chip row above the results (minor) |
+| 2, 3, 4 | All three browse pages had a row of dropdown filters above the results | Resolved: visual tray + drawer (2), column-header filters (3), window chips + inline panel (4). Options 2 and 4 both keep a chip row and sort above the results (minor) |
 | 2 vs 3 | Same mobile navigation model (menu, full-screen menu, cart at the top) | Resolved: Option 3 uses a bottom command bar |
 | 3 vs 4 | Both had a sticky chip row under the mobile top bar | Resolved: Option 3 dropped its chip row |
 | 2 vs 4 | Both used vertical image-top cards in 3–4-across grids | Resolved: square tiles with an in-image band (2) vs data-first tickets (4). Both still arrange cards in grids |
 | 3 vs 4 | Both opened the storefront with a compact profile block and no cover | Partly resolved: Option 4 leads with live or next-close status and its own timeline (minor) |
 | 3 vs 4 | Option 4's Buy Now rows were Option 3's row card | Resolved: Option 4 uses stock tickets |
-| 2 vs 4 | Both centre content at the top of the home page, and both have a stream-led live stage | Minor: a cut-out field with a search block vs a stage triptych; a full-width theatre vs a past · now · next room |
+| 2, 3, 4 | Lot pages replaced the side box with a two-part "title \| price + actions" band, and Options 3 and 4 both opened with it above the photo | Option 4 now leads with the stage and a lower-third band. Options 2 and 3 keep two-part bands: under a filmstrip (2) vs a sticky strip above an index (3) (minor) |
+| 2, 3, 4 | Every live room insets the lot photo on the stream; Options 2 and 4 both pin a bid bar | The inset is a rule of this plan. The rooms differ: theatre + reel (2), one table row (3), past · now · next (4) (minor) |
+| 3 vs 4 | Both list live and upcoming events with "Remind me" | Minor; driven by the same data |
+| 2 vs 4 | Both centre content at the top of the home page | Minor: a cut-out field with a search block vs a stage triptych |
 | 2 vs 4 | Both float an element on phones | Minor: live mini-player (2) vs My bids pill (4) |
 | All four | Bottom-anchored action on mobile lot pages | Platform convention, shared with Option 1 |
 
 ### Independent review
 
-A separate reviewer with read-only access audited revision 1. It checked the
-plan against three sources:
+Two separate reviewers with read-only access checked this plan against three
+sources:
 
 - the Option 1 code (`components/concept-b`);
-- the shared sample data (`data/`);
-- the production reference.
+- the shared sample data (`data/`, `lib/`);
+- the production reference (`CUSTOMER_REDESIGN_FILE_MAP.md`, section G).
 
-The reviewer confirmed that no option broke the brief's rule (more than two
-areas substantially the same). It also found that revision 1 overstated how
-different the options were. Every finding was checked against the code before
-this revision was made:
+Every finding was checked against the code before a change was made.
+
+**First review (of revision 1).** It confirmed that no option broke the
+brief's rule, but found that revision 1 overstated how different the options
+were:
 
 | # | Review finding | Change in revision 2 |
 |---|---|---|
-| 1 | The Option 1 reference understated Option 1: it has a photo mega menu (not a text menu), a hero at least 436px tall, three card formats, vertical desktop thumbnails, an auction page without tabs, a live page with the lots table in the main column, storefront tabs, seller tiles with covers, and Account + Cart in the mobile header | Section 3 and the matrix's Option 1 column were redrawn from the code |
+| 1 | The Option 1 reference understated Option 1: it has a photo mega menu (not a text menu), a hero at least 436px tall, several card formats, vertical desktop thumbnails, an auction page without tabs, a live page with the lots table in the main column, storefront tabs, seller tiles with covers, and Account + Cart in the mobile header | Section 3 and the matrix's Option 1 column were redrawn from the code |
 | 2 | "0 of 11" overclaimed. The review counted: Option 2 0 same, 3 partial; Option 3 1 same, 5 partial; Option 4 0 same, 4 partial | Replaced by the verdict tables above, covering the 11 questions and all 24 dimensions |
 | 3 | The cards in Options 2 and 4 were still vertical image-top cards, the kind of change the client rejected in Round 2 | Option 2 uses square tiles with the information on a band inside the image, plus 2×2 feature tiles. Option 4 uses data-first bid and stock tickets |
 | 4 | Option 3's row card was Option 1's list-view `LotRow`, and its browse page kept Option 1's quick-filter chips and mobile filter sheet | Option 3 now has a real sortable table with filters in the column headers and a quick view. The chip row was removed, and a full-screen filter page led by the category tree replaces the sheet |
 | 5 | Option 2's "Shop ▾" photo panel had the same structure as `MegaMenu`; there was no Buy Now link, no language switch and no label on search | Categories opens a full-screen overlay. A Buy Now link, a labelled Search and the language switch were added |
 | 6 | Option 2's photo-led idea was not supported by the images. There are 128 photos, mostly square studio shots, and the only hero-width photo is Option 1's pallet slide | The hero is now a cut-out composition, with lifestyle photos used where they exist. Section 11 has the image-source table and the corrected counts |
-| 7 | No auction-detail page showed delivery or pickup | Delivery and pickup were added to all three auction pages |
-| 8 | Navigation gaps: Option 4 had no mobile cart or menu, no desktop language switch and no rules link; Option 2 had no language switch; the bell and country switcher (G19) were not placed | All added. Each option's header now places the bell and the country switcher |
+| 7 | No auction-detail page showed delivery or pickup | Added to all three auction pages |
+| 8 | Navigation gaps: Option 4 had no mobile cart or menu, no desktop language switch and no rules link; Option 2 had no language switch; the bell and country switcher (G19) were not placed | All added |
 | 9 | Live video was not placed, and Option 3 had no stream | Every live page now shows where the stream goes, with the lot photo inset |
-| 10 | "LIVE" and `*` appeared on timed lots, and the live stepper implied automatic selling | Timed lots say "Open for bids"; LIVE marks live events only. The live status is described as set by the auctioneer |
-| 11 | The confirm step for binding bids was never mentioned | Added as ground rule 7, and to every bid control |
-| 12 | Option 4's two-row header and its live room (stage plus a right-hand activity column) stayed close to Option 1 | Option 4 now has one bar with a floor switcher, a past · now · next live room with no side column, and hosts on a time axis instead of seller cards |
-| 13 | The wireframes did not match the sample data: Red Sea's counts, the time buckets (1/2/4/2), event names, the 7-grade scale, gallery counts and bidder states | Every wireframe was redrawn from the data. The default product has 5 photos and the default auction has 3; Rawabi Home Outlet has 4 auctions and 4 Buy Now; the live lot stands at SAR 1,850 |
-| 14 | Overlaps between the new options (browse filter rows, mobile navigation, chip rows, image-top cards, storefront headers, Buy Now rows) | See "New options against each other" above |
-| 15 | Section 11 classified several items as F that should be B or API: G16 for counters, time windows and new sorts; G26/G8 for the bid ladder; G3 for seller lists in all three options; G12 for presenter names; REST polling for live bands | Reclassified in section 11 |
+| 10 | "LIVE" and `*` appeared on timed lots, and the live stepper implied automatic selling | Timed lots say "Open for bids"; LIVE marks live events only; the live status is set by the auctioneer |
+| 11 | The confirm step for binding bids was never mentioned | Added as ground rule 7, and to every timed-bid control |
+| 12 | Option 4's two-row header and its live room (stage plus a right-hand activity column) stayed close to Option 1 | Option 4 now has one bar with a floor switcher and a past · now · next live room with no side column. Its hosts sit on a time axis instead of seller cards |
+| 13 | The wireframes did not match the sample data: Red Sea's counts, the time buckets (1/2/4/2), event names, the 7-grade scale, gallery counts and bidder states | Every wireframe was redrawn from the data |
+| 14 | Overlaps between the new options | See "New options against each other" above |
+| 15 | Section 11 classified several items as F that should be B or API: G16, G26/G8, G3, G12, and REST polling for live bands | Reclassified in section 11 |
 
-After revision 2, no area of any option is substantially the same as
-Option 1:
+**Second review (of revision 2's first draft).** It confirmed that no option
+has an area substantially the same as Option 1, and that the lot, seller,
+live-event and photo figures were right. It found:
 
-| Option | Partial similarities (of the 24 dimensions) |
+| # | Review finding | Change |
+|---|---|---|
+| 1 | Data slips: Option 1's live bid is SAR 1,875; the shared live quick bids are 1,875 / 1,900 / 1,950; 26 lots (not 27) have a cut-out; Option 2's home repeated four lots; the popular searches were not the shared list; the bidder names and times were not the seeded ones; the related lots were in the wrong order | All corrected. Option 2's home now shows 19 different lots, and the seeded rows are used: K27, 2048 and 1190 on the default auction; K27, A09 and M55 in the live room |
+| 2 | Wording: `*` was used for an outbid badge; "deposit from your wallet" should be "covered by your wallet"; Option 4's home stage had a one-tap live bid outside the room | `!` is now the badge; Option 1's deposit wording is used; the home stage says "Enter the room to bid" |
+| 3 | The audit undercounted partial similarities: the 4×2 category grid, the live row's four modules, the storefront order and the section order in Option 3; the auctions and Buy Now blocks, live column order and navigation in Option 2; the live hero slide, navigation, auction-detail lower half and window chips in Option 4 | Re-graded with one strict rule (section 9). Where a sensible change existed, the design was changed instead: Option 3's modules became mini-tables; Option 2's On the block became a static 2×2 block; Option 4's lot pages now lead with a stage and a lower-third band, with the bids on the timeline and similar lots on a time line; Option 4's secondary filters became an inline panel |
+| 4 | The Option 1 reference missed: its brand slide already uses cut-outs; it has a live hero slide; the phone category rail uses square cards; there is a mobile category sheet; there is a fourth card format (`MiniCard`), a newsletter band, and 8 lots per browse page | Section 3 and the matrix were corrected, and the audit now counts these echoes |
+| 5 | Overlaps between the new options: two-part lot bands, chip rows, pinned live bid bars, upcoming-event lists | Option 4's lot pages moved to the stage and lower-third layout; the rest are listed above |
+| 6 | Section 11 gaps: G18 is class B; the rail counts depend on G16 and G5; G2 covers pickup details; G15 covers structured specs; G21 covers deposit and payment wording; My bids needs G9 and G14; Option 4's new tabs are G16; the sample live stream is the Riyadh warehouse photo | All added |
+
+**Result:** no area of any option is substantially the same as Option 1, so
+all three pass the brief's rule. The remaining partial similarities, out of
+the 24 dimensions, are:
+
+| Option | Partial similarities |
 |---|---|
-| 2 | 4 |
-| 3 | 3 |
-| 4 | 4 |
+| 2 | 6 |
+| 3 | 7 |
+| 4 | 6 |
 
-Each partial similarity is listed above with its reason.
+Each one is listed above with its reason.
 
 ---
 
@@ -2291,19 +2421,19 @@ Each partial similarity is listed above with its reason.
 
 | Feature | Option 2 — Visual Marketplace | Option 3 — Marketplace Hub | Option 4 — Auction Commerce |
 |---|---|---|---|
-| Buy Now | Square tiles, Ready to buy mosaic, purchase band + floating card, bag drawer | Deals module, table rows, summary strip with quantity, Add and Buy now | Stock tickets, Buy Now floor, lot header bar + docked purchase console |
-| Timed auctions | On the block showcases, auction tiles, bid module in the band, floating bid card | Ending-soon module, table time column, bid ladder in the summary strip | Timeline, bid tickets, time buckets, bidding console |
+| Buy Now | Square tiles, Ready to buy mosaic, purchase band + floating card, bag drawer | Deals mini-table, table rows, summary strip with quantity, Add and Buy now | Stock tickets, Buy Now floor, lot stage with a lower-third band + docked purchase console |
+| Timed auctions | On the block showcases, auction tiles, bid module in the band, floating bid card | Ending-soon mini-table, table time column, bid ladder in the summary strip | Timeline, bid tickets, time buckets, lower-third band, bidding console |
 | Live auctions | Floating mini-player on every page, Live link, theatre page with a pinned bid band | Live line, Live & upcoming module, Live now in the rail, schedule table with the live row expanded | Live segment in the switcher, live stage on home, past · now · next room |
 | Search | In-hero field + full-screen visual search | Home deck + rail search + suggestion panel; command bar on phones | Expanding search + window chips |
 | Categories | Mosaic, Categories overlay, browse tray, mobile stories | Category tree, category grid, mobile filter page | Categories on the floor, More filters, menu |
-| Filters | Visual tray + All filters drawer | Column-header filters, scope switch, tree; full-screen filter page on phones | Floor switcher + window chips + More filters drawer |
+| Filters | Visual tray + All filters drawer | Column-header filters, scope switch, tree; full-screen filter page on phones | Floor switcher + window chips + inline More filters panel |
 | Sellers | Seller tiles in the mosaic, boutique storefront | Seller module, rail list, profile with tabs, sellers table | Hosts on a shared time axis, status-led storefront |
 | Cart | Bag in the bar → bag drawer | Cart in the top bar (command bar on phones) → cart drawer | Cart in the bar → drawer |
 | Watchlist | Heart on tiles; Watchlist in the bar (with a count on phones) | Watch in the quick view and summary strip; Watchlist & bids in My Khazna | Heart on tickets; My bids & watching drawer |
 | Customer account | Account in the bar (bell badge) | My Khazna in the rail + account in the top bar | Account in the bar; My bids links to the account's bids tab |
 | Timed bidding (quick bids, custom amount, maximum bid, deposit, Buy Now on "both" lots, 5-minute extension) | Bid module in the band, floating bid card, mobile bid sheet | Bid ladder in the strip, Bid in the quick view and table, mobile ladder sheet | Bid tickets, docked console, mobile console sheet |
 | Confirm step (timed bids) | On every bid control | On every rung and Bid button | On every amount button |
-| Live bidding | One tap, binding once placed; deposit checked; status set by the auctioneer | Same | Same |
+| Live bidding | One tap inside the live room, binding once placed; the deposit (covered by your wallet) is checked; status set by the auctioneer. Outside the room, live elements link into it | Same | Same |
 | Condition grading | Grade on feature tiles and lot pages; 7-grade band on home; grade chips in the tray | GR column, grade filter, condition report | Grade on tickets, lot facts, grades in How bidding works |
 | Delivery / pickup | Purchase band (product and auction), centred section, seller's About & pickup | Summary strip line (product and auction), key facts, spec-sheet section | Header bar and console lines, facts column or tab, auction timeline (arranged after payment) |
 | Lot states (upcoming, sold, sold out) | On tiles | In table rows | On tickets |
@@ -2334,9 +2464,15 @@ unchanged:
 - **Images:**
   - **128 catalogue photos**: 96 studio shots on white and 32 lifestyle
     shots;
-  - **39 cut-outs**: 27 of the 29 lots have a cut-out of their main shot;
-  - 2 brand photos: the warehouse-floor photo, which is Option 1's pallet
-    slide, and the Riyadh warehouse photo, which is the Khazna Direct cover.
+  - **39 cut-outs**: 26 of the 29 lots have a cut-out of their main shot.
+    The seat covers, the wrench set and the kitchen pallet lead with other
+    images;
+  - 2 brand photos:
+    - the warehouse-floor photo, which is Option 1's pallet slide;
+    - the Riyadh warehouse photo. It is the Khazna Direct cover and also the
+      sample live stream (`data/live.js`), so it is behind Option 1's live
+      slide and live band. Every option's live stage will show it in the
+      preview.
 
   Revision 1 said "410 photos"; that figure counted image files, including
   responsive sizes.
@@ -2354,7 +2490,7 @@ No product, seller, price or image is added or changed.
 | Stories rail, browse chips | Category images | Round crops of the cut-out |
 | Browse banner | Category cut-outs | A composition, as in the hero |
 | How Khazna works | No photos | Text steps with icons |
-| Live mini-player and theatre | The live stream + the lot photo | The stream, with the lot photo inset |
+| Live mini-player and theatre | The live stream + the lot photo | The stream (in the preview, the sample stream photo) with the lot photo inset |
 
 **In production**, lot images are seller uploads with mixed backgrounds. The
 cut-out treatment needs either an image pipeline or curated assets, which is a
@@ -2374,17 +2510,19 @@ The P/F/B/API/LEGAL codes and the row numbers (G2, G3, …) come from
 
 | Component | Option | Source | Class |
 |---|---|---|---|
-| Featured now, Featured marketplace | 2 | Production's moderated Featured placements | F (G18: keep Featured) |
+| Featured now, Featured marketplace | 2 | Production's moderated Featured placements | B (G18: keep Featured) |
 | Full-screen visual search with lot thumbnails | 2 | `sale-lots/?search=` | B (G26, additive) |
 | Categories overlay, mosaic, stories, tray | 2 | Category images + cut-out treatment | F; cut-outs in production B/API |
 | Seller tiles in the mosaic; cover storefront | 2 | Seller cover and tagline are not production fields; there is no seller list | API (G2, G3) |
+| Seller pickup address and hours (About & pickup, Pickup & hours, Pickup & terms) | 2, 3, 4 | Not public seller fields | API (G2) |
+| Structured specs, highlights and condition notes (spec sheets, key facts, fact columns) | 2, 3, 4 | Production has a single-language title and description, and no highlight or condition-note fields | API (G15) |
 | Floating live mini-player | 2 | Public live-event REST, polled | F |
 | Sold tiles and results (ended lots) | 2, 3, 4 | Ended lots return 404 in production | B (G5) |
 | Upcoming lot states | 2, 3, 4 | Scheduled lots are public and watchable | F (G6) |
-| Rail counts and sale-type branches | 3 | List endpoint counts per query | F |
+| Rail counts and sale-type branches | 3 | List endpoint counts per query. "Ending soon" and "New today" are new filters; category counts depend on slug filtering; counts that include sold lots depend on G5 | B (G16; G5) |
 | Hub counters (ending < 1 h, deals, new today), Popular now | 3 | Filters and sorts production does not offer | B (G16) |
 | Sortable table: new sorts (grade, seller) and column filters | 3 | Production sorts: ending, price | B (G16) for new sorts; F for the table |
-| SELLER · CITY column | 3 | City via the seller lookup, or a serializer change | F / API (G4) |
+| City on lots (Option 3's table and strips, Option 2's purchase band) | 2, 3 | City via the seller lookup, or a serializer change | F / API (G4) |
 | Quick-view pane, comparison tables | 3 | Existing lot data | B (G26, additive) |
 | Previous / next lot | 3 | Current result set; category fallback | F |
 | Bid ladder and quick bids | 2, 3, 4 | Minimum next bid + increment | B (G26); first-bid rule F (G8) |
@@ -2392,10 +2530,12 @@ The P/F/B/API/LEGAL codes and the row numbers (G2, G3, …) come from
 | Presenter names, event start times | 2, 3, 4 | Not event fields in production | API (G12) |
 | "Remind me" on upcoming live events | 3, 4 | No reminder backend | API (G29), concept idea |
 | Floor switcher counts | 4 | Live REST + list counts; the "Ending 9m" segment needs the next close | F; window counts B (G16) |
+| New switcher tabs (Ending, Upcoming) | 4 | Production's tabs are auction, buy_now and live | B (G16) |
 | Window chips and time buckets | 4 | "Ending within" windows are not a production filter | B (G16) |
 | Ending-soon, seller and host timelines | 4 | Lot end times; the host rows need the seller list | F; B (G16) for windows; API (G3) for host rows |
 | Auction timeline on the lot page | 4 | Start and end times, bid history, the server-side extension (G7), the payment-window policy | F; payment wording LEGAL (G21) |
-| My bids drawer and pill | 4 | The account watchlist tab (alias `bids`); the preview keeps simulated bids inside Option 4's own layer | F |
+| Deposit, extension and payment-window wording (How bidding works, auction terms, terms lines) | 2, 3, 4 | Policy wording | LEGAL (G21) |
+| My bids drawer and pill | 4 | The account watchlist tab (alias `bids`); the preview keeps simulated bids inside Option 4's own layer | F; bidder-state mapping F (G9); counts across pages API (G14) |
 | Docked bidding console | 4 | The same bid flows as today; Buy Now on "both" lots through the cart | F (G28) |
 | Live stage on home, Live segment | 4 | Public live-event REST, polled | F |
 
@@ -2411,7 +2551,9 @@ endpoint:
 - the switcher's Live segment and the home stage (Option 4).
 
 Production's live socket needs a fresh ticket for every connection by a
-signed-in user, so it is used only inside the live room.
+signed-in user, so it is used only inside the live room. That is also why
+one-tap live bids happen only inside the room: everywhere else, live elements
+link into it.
 
 ---
 
@@ -2461,7 +2603,7 @@ signed-in user, so it is used only inside the live room.
 3. **Option 3:** is a persistent navigation rail on every page OK? And the
    bottom command bar on phones?
 4. **Option 4:** is the docked bidding console OK on desktop as well as
-   mobile? It appears only after the lot header bar scrolls away.
+   mobile? It appears only after the stage's status band scrolls away.
 5. **Option 4:** should Buy Now stay after Upcoming, as in the brief's order?
    Or move up to straight after the timeline, as the review suggested?
 6. **Options 2 and 3:** is no bottom tab bar on phones OK?
@@ -2470,3 +2612,5 @@ signed-in user, so it is used only inside the live room.
 8. **Concept ideas:** some ideas need backend or business decisions (section
    11). May they appear in the preview as design ideas, labelled as in
    earlier rounds?
+9. **Partial similarities (section 9):** accept them as listed, or name any
+   you want pushed further before implementation.
