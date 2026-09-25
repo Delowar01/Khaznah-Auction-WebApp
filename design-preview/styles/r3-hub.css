@@ -1,0 +1,283 @@
+/*
+ * Option 3 — Marketplace Hub (Round 3, slot c)
+ * ─────────────────────────────────────────────────────────────────────────
+ * Tokens apply only while a Round 3 page is mounted (html[data-r3]); the
+ * Round 2 screens of this slot keep styles/concept-c.css.
+ *
+ * An app shell: a cool paper canvas, white modules with hairline borders,
+ * one green action colour, an orange for price drops and small radii.
+ * Inter sets Latin text with tabular figures; Cairo sets Arabic.
+ */
+
+:root[data-concept="c"][data-r3] {
+  color-scheme: light;
+
+  --bg: #f2f3f0;
+  --surface: #ffffff;
+  --surface-2: #eceee9;
+  --surface-elevated: #ffffff;
+  --plate: #f3f4f1;
+  --border: #dfe2dc;
+  --border-strong: #c6cbc3;
+
+  --text-primary: #111814;
+  --text-secondary: #46514a;
+  --text-tertiary: #59645d;
+
+  --primary: #13684f;
+  --primary-hover: #0e5541;
+  --primary-contrast: #ffffff;
+  --secondary: #111814;
+  --secondary-contrast: #f2f3f0;
+  --accent: #b1441a;
+  --accent-contrast: #ffffff;
+
+  --success: #107a45;
+  --warning: #955508;
+  --danger: #c0271d;
+  --live: #cf2530;
+  --auction: #13684f;
+  --muted: #eceee9;
+  --focus: #13684f;
+  --overlay: rgb(12 20 16 / 0.5);
+
+  --grade-new: #175cd3;
+  --grade-a: #05633a;
+  --grade-b: #0b6076;
+  --grade-c: #a54107;
+  --grade-d: #c4320a;
+  --grade-r: #6941c6;
+  --grade-f: #bc231a;
+
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 10px;
+  --r-xl: 14px;
+  --r-card: 12px;
+  --r-control: 8px;
+
+  --sh-card: 0 1px 1px rgb(17 24 20 / 0.04);
+  --sh-raised: 0 1px 2px rgb(17 24 20 / 0.06), 0 12px 28px -14px rgb(17 24 20 / 0.24);
+  --sh-overlay: 0 2px 8px rgb(17 24 20 / 0.08), 0 28px 64px -20px rgb(12 20 16 / 0.36);
+
+  --font-display-stack: "Riyal", var(--font-inter), var(--font-cairo), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-inter), var(--font-cairo), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --logo-mark: #c79a3b;
+  --logo-word: #0f3b2e;
+
+  /* Option-specific */
+  --hb-top-h: 56px;
+  --hb-row: #f6f7f4;          /* zebra / hover row */
+  --hb-rail-bg: #fbfbfa;
+  --hb-deal: #b1441a;         /* discount figures */
+}
+
+:root[data-concept="c"][data-r3][data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0d1310;
+  --surface: #141c18;
+  --surface-2: #1b2520;
+  --surface-elevated: #1b2520;
+  --plate: #eceee8;
+  --border: #26302b;
+  --border-strong: #37443d;
+
+  --text-primary: #eef2ee;
+  --text-secondary: #b0bbb3;
+  --text-tertiary: #97a39b;
+
+  --primary: #44bd93;
+  --primary-hover: #58cba3;
+  --primary-contrast: #06190f;
+  --secondary: #070c0a;
+  --secondary-contrast: #eef2ee;
+  --accent: #f08a5d;
+  --accent-contrast: #1d0b03;
+
+  --success: #47cd89;
+  --warning: #f0a83a;
+  --danger: #f97066;
+  --live: #ee5a55;
+  --auction: #44bd93;
+  --muted: #1b2520;
+  --focus: #58cba3;
+  --overlay: rgb(2 6 4 / 0.72);
+
+  --grade-new: #84adff;
+  --grade-a: #47cd89;
+  --grade-b: #5cc8e0;
+  --grade-c: #fdb022;
+  --grade-d: #fb9a6b;
+  --grade-r: #b69cff;
+  --grade-f: #f97066;
+
+  --sh-card: 0 1px 1px rgb(0 0 0 / 0.3);
+  --sh-raised: 0 1px 3px rgb(0 0 0 / 0.36), 0 16px 34px -14px rgb(0 0 0 / 0.6);
+  --sh-overlay: 0 2px 8px rgb(0 0 0 / 0.42), 0 30px 70px -18px rgb(0 0 0 / 0.76);
+
+  --logo-mark: #d9b057;
+  --logo-word: #eef2ee;
+
+  --hb-row: #18211d;
+  --hb-rail-bg: #111814;
+  --hb-deal: #f08a5d;
+}
+
+:root[data-concept="c"][data-r3][lang="ar"] {
+  --font-display-stack: "Riyal", var(--font-cairo), var(--font-inter), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-cairo), var(--font-inter), system-ui, sans-serif;
+}
+
+:root[data-concept="c"][data-r3] body {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+:root[data-concept="c"][data-r3][lang="ar"] body {
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* ── Type roles: compact and data-legible ─────────────────────────────── */
+@layer components {
+  .hb-2xs { font-size: 11px; line-height: 14px; }
+  .hb-xs { font-size: 12px; line-height: 16px; }
+  .hb-sm { font-size: 13px; line-height: 18px; }
+  .hb-md { font-size: 14px; line-height: 20px; }
+  .hb-lg { font-size: 16px; line-height: 22px; }
+  .hb-eyebrow { font-size: 11px; line-height: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .hb-h2 { font-family: var(--font-display-stack); font-size: 15px; line-height: 20px; font-weight: 700; letter-spacing: -0.005em; }
+  .hb-title { font-family: var(--font-display-stack); font-size: 20px; line-height: 26px; font-weight: 750; letter-spacing: -0.02em; }
+  .hb-figure { font-size: 26px; line-height: 30px; font-weight: 750; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .hb-num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+
+  @media (min-width: 1024px) {
+    .hb-title { font-size: 22px; line-height: 28px; }
+  }
+
+  :root[lang="ar"] .hb-2xs { font-size: 12px; line-height: 16px; }
+  :root[lang="ar"] .hb-xs { font-size: 13px; line-height: 18px; }
+  :root[lang="ar"] .hb-sm { font-size: 14px; line-height: 20px; }
+  :root[lang="ar"] .hb-md { font-size: 15px; line-height: 22px; }
+  :root[lang="ar"] .hb-lg { font-size: 17px; line-height: 26px; }
+  :root[lang="ar"] .hb-eyebrow { font-size: 12px; line-height: 16px; letter-spacing: 0; text-transform: none; }
+  :root[lang="ar"] .hb-h2 { font-size: 16px; line-height: 24px; letter-spacing: 0; }
+  :root[lang="ar"] .hb-title { font-size: 21px; line-height: 32px; letter-spacing: 0; }
+  :root[lang="ar"] .hb-figure { letter-spacing: 0; }
+  @media (min-width: 1024px) {
+    :root[lang="ar"] .hb-title { font-size: 23px; line-height: 34px; }
+  }
+}
+
+@layer components {
+/* ── App shell: rail + main column ────────────────────────────────────── */
+  .hb-shell {
+    --hb-rail-w: 0px;
+    display: grid;
+    grid-template-columns: var(--hb-rail-w) minmax(0, 1fr);
+  }
+  @media (min-width: 1024px) {
+    .hb-shell { --hb-rail-w: 72px; }
+  }
+  @media (min-width: 1280px) {
+    .hb-shell { --hb-rail-w: 248px; }
+  }
+  
+  .hb-rail {
+    position: sticky;
+    top: var(--pbar-h);
+    height: calc(100dvh - var(--pbar-h));
+    background: var(--hb-rail-bg);
+    border-inline-end: 1px solid var(--border);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+  
+  /* Main column content width */
+  .hb-main {
+    width: 100%;
+    max-width: 1220px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 768px) {
+    .hb-main { padding-inline: 24px; }
+  }
+  @media (min-width: 1280px) {
+    .hb-main { padding-inline: 32px; }
+  }
+  
+  /* Modules: white panels with hairline borders */
+  .hb-module {
+    position: relative; /* contains visually-hidden text inside clipped rows */
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+  }
+  
+  /* Mini-tables */
+  .hb-table { width: 100%; border-collapse: collapse; }
+  .hb-table th {
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    text-align: start;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  :root[lang="ar"] .hb-table th { font-size: 12px; letter-spacing: 0; text-transform: none; }
+  .hb-table td {
+    padding: 0 12px;
+    height: 48px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .hb-table tbody tr:last-child td { border-bottom: 0; }
+  .hb-table tbody tr { cursor: pointer; transition: background-color 0.15s; }
+  .hb-table tbody tr:hover { background: var(--hb-row); }
+  
+  /* Search field: no native clear glyph */
+  .hb-search::-webkit-search-cancel-button,
+  .hb-search::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  /* Collapsed-rail labels (hover and keyboard focus) */
+  .hb-tip {
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.15s, transform 0.15s;
+  }
+  [dir="rtl"] .hb-tip { transform: translateX(4px); }
+  .group:hover > .hb-tip,
+  .group:focus-visible > .hb-tip {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Bottom command bar: phones and tablets */
+.hb-cmdbar {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* The collapsed rail shows labels beside it, so it does not clip; very short
+   screens scroll it instead. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .hb-rail { overflow: visible; }
+}
+@media (min-width: 1024px) and (max-width: 1279px) and (max-height: 700px) {
+  .hb-rail { overflow-y: auto; }
+}

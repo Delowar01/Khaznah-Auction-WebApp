@@ -1,4 +1,4 @@
-import { HomePage } from "@/components/concept-a/pages/HomePage";
+import { VisualHome } from "@/components/concept-a/r3/VisualHome";
 import { conceptMetadata } from "@/lib/meta";
 
 export async function generateMetadata({ params }) {
@@ -7,5 +7,5 @@ export async function generateMetadata({ params }) {
 }
 
 export default function Page() {
-  return <HomePage />;
+  return <VisualHome />;
 }

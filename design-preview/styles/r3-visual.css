@@ -1,0 +1,287 @@
+/*
+ * Option 2 — Visual Marketplace (Round 3, slot a)
+ * ─────────────────────────────────────────────────────────────────────────
+ * Tokens apply only while a Round 3 page is mounted (html[data-r3]); the
+ * Round 2 screens of this slot keep styles/concept-a.css.
+ *
+ * Product imagery carries the page: a warm gallery white canvas, near-black
+ * ink for actions, one clay accent for price drops, and generous rounding.
+ * Manrope sets both display and body in Latin; Readex Pro in Arabic.
+ * Colours are tuned for WCAG AA on the canvas and on surfaces, light and dark.
+ */
+
+:root[data-concept="a"][data-r3] {
+  color-scheme: light;
+
+  --bg: #faf8f5;
+  --surface: #ffffff;
+  --surface-2: #f1ede7;
+  --surface-elevated: #ffffff;
+  --plate: #f2eee8;
+  --border: #e6e0d7;
+  --border-strong: #cdc5b9;
+
+  --text-primary: #181614;
+  --text-secondary: #57524b;
+  --text-tertiary: #6b655c;
+
+  --primary: #181614;
+  --primary-hover: #34302b;
+  --primary-contrast: #ffffff;
+  --secondary: #181614;
+  --secondary-contrast: #f4f0ea;
+  --accent: #b0512a;
+  --accent-contrast: #ffffff;
+
+  --success: #2d7a4e;
+  --warning: #9c5410;
+  --danger: #b5322a;
+  --live: #c6372d;
+  --auction: #181614;
+  --muted: #f1ede7;
+  --focus: #181614;
+  --overlay: rgb(24 22 20 / 0.52);
+
+  --grade-new: #2b5fc4;
+  --grade-a: #2d7a4e;
+  --grade-b: #1c6a80;
+  --grade-c: #9c5410;
+  --grade-d: #b0491d;
+  --grade-r: #6a4bb0;
+  --grade-f: #b5322a;
+
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-card: 20px;
+  --r-control: 999px;
+
+  --sh-card: 0 1px 2px rgb(24 22 20 / 0.05), 0 18px 40px -26px rgb(24 22 20 / 0.28);
+  --sh-raised: 0 2px 6px rgb(24 22 20 / 0.06), 0 28px 60px -28px rgb(24 22 20 / 0.34);
+  --sh-overlay: 0 6px 18px rgb(24 22 20 / 0.10), 0 48px 100px -30px rgb(24 22 20 / 0.45);
+
+  --font-display-stack: "Riyal", var(--font-manrope), var(--font-readex), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-manrope), var(--font-readex), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --logo-mark: #d8a535;
+  --logo-word: #3d4d9b;
+
+  /* Option-specific */
+  --vm-field: #efeae3;        /* the neutral field behind cut-out compositions */
+  --vm-band: rgb(22 20 18 / 0.78); /* solid-enough band for text inside images */
+  --vm-band-fg: #ffffff;
+  --vm-tone-1: #ece6dc;
+  --vm-tone-2: #e4e7e2;
+  --vm-tone-3: #e9e3e8;
+  --vm-tone-4: #e2e6eb;
+  --vm-header-h: 72px;
+}
+
+:root[data-concept="a"][data-r3][data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #121110;
+  --surface: #1b1a18;
+  --surface-2: #25231f;
+  --surface-elevated: #262420;
+  --plate: #ebe6de;
+  --border: #34312c;
+  --border-strong: #4b4740;
+
+  --text-primary: #f4f1ec;
+  --text-secondary: #bfb8ae;
+  --text-tertiary: #a49d93;
+
+  --primary: #f4f1ec;
+  --primary-hover: #ffffff;
+  --primary-contrast: #121110;
+  --secondary: #0a0908;
+  --secondary-contrast: #f4f1ec;
+  --accent: #e2835a;
+  --accent-contrast: #1a0e08;
+
+  --success: #6cc390;
+  --warning: #e2a553;
+  --danger: #ee8479;
+  --live: #ec6a5d;
+  --auction: #f4f1ec;
+  --muted: #25231f;
+  --focus: #f4f1ec;
+  --overlay: rgb(6 5 4 / 0.72);
+
+  --grade-new: #93b2ff;
+  --grade-a: #6cc390;
+  --grade-b: #6cc2d6;
+  --grade-c: #e2a553;
+  --grade-d: #ef9a6c;
+  --grade-r: #b9a2f2;
+  --grade-f: #ee8479;
+
+  --sh-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 18px 40px -26px rgb(0 0 0 / 0.7);
+  --sh-raised: 0 2px 6px rgb(0 0 0 / 0.4), 0 28px 60px -28px rgb(0 0 0 / 0.8);
+  --sh-overlay: 0 6px 18px rgb(0 0 0 / 0.4), 0 48px 100px -30px rgb(0 0 0 / 0.85);
+
+  --logo-mark: #d8a535;
+  --logo-word: #f4f1ec;
+
+  --vm-field: #1f1d1a;
+  --vm-band: rgb(10 9 8 / 0.80);
+  --vm-tone-1: #2a2621;
+  --vm-tone-2: #232723;
+  --vm-tone-3: #29242a;
+  --vm-tone-4: #22262b;
+}
+
+:root[data-concept="a"][data-r3][lang="ar"] {
+  --font-display-stack: "Riyal", var(--font-readex), var(--font-manrope), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-readex), var(--font-manrope), system-ui, sans-serif;
+}
+
+:root[data-concept="a"][data-r3] body {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+:root[data-concept="a"][data-r3][lang="ar"] body {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* ── Type roles ────────────────────────────────────────────────────────── */
+@layer components {
+  .vm-eyebrow { font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .vm-xs { font-size: 12px; line-height: 16px; }
+  .vm-sm { font-size: 13px; line-height: 19px; }
+  .vm-md { font-size: 15px; line-height: 22px; }
+  .vm-lg { font-size: 17px; line-height: 26px; }
+  .vm-h3 { font-family: var(--font-display-stack); font-size: 18px; line-height: 24px; font-weight: 700; letter-spacing: -0.01em; }
+  .vm-h2 { font-family: var(--font-display-stack); font-size: 26px; line-height: 32px; font-weight: 800; letter-spacing: -0.025em; }
+  .vm-hero { font-family: var(--font-display-stack); font-size: 36px; line-height: 40px; font-weight: 800; letter-spacing: -0.035em; }
+  .vm-price { font-size: 17px; line-height: 22px; font-weight: 800; letter-spacing: -0.01em; }
+  .vm-price-lg { font-size: 26px; line-height: 30px; font-weight: 800; letter-spacing: -0.02em; }
+
+  @media (min-width: 768px) {
+    .vm-h2 { font-size: 32px; line-height: 38px; }
+    .vm-hero { font-size: 52px; line-height: 56px; }
+  }
+  @media (min-width: 1280px) {
+    .vm-hero { font-size: 60px; line-height: 64px; }
+  }
+
+  :root[lang="ar"] .vm-eyebrow { font-size: 13px; line-height: 20px; letter-spacing: 0; text-transform: none; }
+  :root[lang="ar"] .vm-xs { font-size: 13px; line-height: 20px; }
+  :root[lang="ar"] .vm-sm { font-size: 14px; line-height: 22px; }
+  :root[lang="ar"] .vm-md { font-size: 16px; line-height: 26px; }
+  :root[lang="ar"] .vm-lg { font-size: 18px; line-height: 30px; }
+  :root[lang="ar"] .vm-h3 { font-size: 19px; line-height: 30px; letter-spacing: 0; }
+  :root[lang="ar"] .vm-h2 { font-size: 26px; line-height: 40px; letter-spacing: 0; }
+  :root[lang="ar"] .vm-hero { font-size: 34px; line-height: 52px; letter-spacing: 0; }
+  :root[lang="ar"] :is(.vm-price, .vm-price-lg) { letter-spacing: 0; }
+  @media (min-width: 768px) {
+    :root[lang="ar"] .vm-h2 { font-size: 30px; line-height: 46px; }
+    :root[lang="ar"] .vm-hero { font-size: 46px; line-height: 68px; }
+  }
+  @media (min-width: 1280px) {
+    :root[lang="ar"] .vm-hero { font-size: 52px; line-height: 78px; }
+  }
+
+  .vm-container {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 640px) {
+    .vm-container { padding-inline: 28px; }
+  }
+  @media (min-width: 1280px) {
+    .vm-container { padding-inline: 44px; }
+  }
+}
+
+/* ── Header: transparent over the hero, solid once the page scrolls ──── */
+.vm-header {
+  transition: background-color 0.25s var(--ease-out-soft), box-shadow 0.25s var(--ease-out-soft), border-color 0.25s;
+  border-bottom: 1px solid transparent;
+}
+.vm-header[data-solid="true"] {
+  background: color-mix(in oklab, var(--bg) 94%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom-color: var(--border);
+}
+
+/* Studio shots sit on a warm plate; white backdrops multiply into it. */
+.vm-plate {
+  background: var(--plate);
+}
+.vm-plate img.vm-multiply {
+  mix-blend-mode: multiply;
+}
+
+/* Text inside images always sits on a solid band. */
+.vm-band {
+  background: var(--vm-band);
+  color: var(--vm-band-fg);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Soft floor shadow under cut-outs */
+.vm-floor {
+  filter: drop-shadow(0 22px 22px rgb(24 22 20 / 0.18)) drop-shadow(0 2px 3px rgb(24 22 20 / 0.10));
+}
+:root[data-theme="dark"] .vm-floor {
+  filter: drop-shadow(0 22px 24px rgb(0 0 0 / 0.55)) drop-shadow(0 2px 3px rgb(0 0 0 / 0.4));
+}
+
+/* Mosaic: named areas keep the unequal tile sizes explicit. */
+.vm-mosaic {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(150px, auto);
+}
+@media (min-width: 768px) {
+  .vm-mosaic {
+    gap: 14px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: 190px 190px 170px;
+    grid-template-areas:
+      "big big tall a"
+      "big big tall b"
+      "c d e f";
+  }
+  .vm-mosaic > [data-area="big"] { grid-area: big; }
+  .vm-mosaic > [data-area="tall"] { grid-area: tall; }
+  .vm-mosaic > [data-area="a"] { grid-area: a; }
+  .vm-mosaic > [data-area="b"] { grid-area: b; }
+  .vm-mosaic > [data-area="c"] { grid-area: c; }
+  .vm-mosaic > [data-area="d"] { grid-area: d; }
+  .vm-mosaic > [data-area="e"] { grid-area: e; }
+  .vm-mosaic > [data-area="f"] { grid-area: f; }
+}
+@media (min-width: 1024px) {
+  .vm-mosaic { gap: 16px; grid-template-rows: 230px 230px 190px; }
+}
+@media (min-width: 1280px) {
+  .vm-mosaic { grid-template-rows: 260px 260px 210px; }
+}
+
+/* Search fields: no native clear glyph (the layer has its own controls). */
+.vm-search::-webkit-search-cancel-button,
+.vm-search::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Live mini-player entrance */
+@keyframes vm-rise {
+  from { opacity: 0; transform: translate3d(0, 16px, 0) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.vm-rise {
+  animation: vm-rise 0.45s var(--ease-out-soft) both;
+}

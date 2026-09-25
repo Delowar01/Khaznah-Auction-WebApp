@@ -35,8 +35,9 @@ export const viewport = {
 };
 
 // Runs before first paint: applies the concept's saved light/dark choice,
+// the Round 3 home-page marker (data-r3, Options 2–4 home only),
 // embedded-frame mode and the presentation-bar visibility, so nothing flashes.
-const PREPAINT = `(function(){var d=document.documentElement;d.dataset.js="1";try{var l=location,m=l.pathname.match(/\\/concept-([a-d])(\\/|$)/),defs={a:"light",b:"light",c:"light",d:"light"},c=m?m[1]:null,q=new URLSearchParams(l.search),t="light";if(c){d.dataset.concept=c;t=defs[c];var s=localStorage.getItem("kz-theme-"+c);if(s)t=s;var qt=q.get("theme");if(qt==="dark"||qt==="light"){t=qt;localStorage.setItem("kz-theme-"+c,t)}}d.dataset.theme=t;if(q.get("embed")==="1"||window.self!==window.top)d.dataset.embed="1";if(localStorage.getItem("kz-pbar")==="hidden")d.dataset.pbar="hidden"}catch(e){}})();`;
+const PREPAINT = `(function(){var d=document.documentElement;d.dataset.js="1";try{var l=location,m=l.pathname.match(/\\/concept-([a-d])(\\/|$)/),defs={a:"light",b:"light",c:"light",d:"light"},c=m?m[1]:null,q=new URLSearchParams(l.search),t="light";if(c){d.dataset.concept=c;if(c!=="b"&&/\\/concept-[acd]\\/?$/.test(l.pathname))d.dataset.r3="1";t=defs[c];var s=localStorage.getItem("kz-theme-"+c);if(s)t=s;var qt=q.get("theme");if(qt==="dark"||qt==="light"){t=qt;localStorage.setItem("kz-theme-"+c,t)}}d.dataset.theme=t;if(q.get("embed")==="1"||window.self!==window.top)d.dataset.embed="1";if(localStorage.getItem("kz-pbar")==="hidden")d.dataset.pbar="hidden"}catch(e){}})();`;
 
 export default async function LocaleLayout({ children, params }) {
   const { lang } = await params;

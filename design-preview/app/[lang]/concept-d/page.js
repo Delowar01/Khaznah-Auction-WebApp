@@ -1,4 +1,4 @@
-import { HomePage } from "@/components/concept-d/pages/HomePage";
+import { AuctionHome } from "@/components/concept-d/r3/AuctionHome";
 import { conceptMetadata } from "@/lib/meta";
 
 export async function generateMetadata({ params }) {
@@ -7,5 +7,5 @@ export async function generateMetadata({ params }) {
 }
 
 export default function Page() {
-  return <HomePage />;
+  return <AuctionHome />;
 }
