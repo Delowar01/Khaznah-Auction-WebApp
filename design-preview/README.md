@@ -6,15 +6,25 @@ customer website, built for client review:
 | Option | Direction | Route slot | Default appearance |
 |---|---|---|---|
 | 1 | Modern Commerce — search-led, practical, conversion-focused | `concept-b` | Light |
-| 2 | Premium Commerce — refined, elevated, high-end retail feel | `concept-a` | Light |
-| 3 | Saudi Modern Commerce — Arabic-first, locally relevant, modern | `concept-c` | Light |
-| 4 | Auction-Forward Commerce — auction-led, countdown-forward, urgency-aware | `concept-d` | Light |
+| 2 | Visual Marketplace — image-led discovery, one-bar header, full-screen category/search layers | `concept-a` | Light |
+| 3 | Marketplace Hub — navigation rail, search deck and dense modules instead of a hero | `concept-c` | Light |
+| 4 | Auction Commerce — auction status leads: live stage, ending-soon timeline, bid tickets | `concept-d` | Light |
 
+> **Round 3A (current).** Option 1 is unchanged. Options 2–4 now use the
+> structurally different designs approved in `ROUND3_STRUCTURAL_DESIGN_PLAN.md`
+> — **for the home page only**. Their other screens are still the Round 2
+> versions (served through the `(round2)` route group in each slot, with the
+> Round 2 chrome) until Round 3B replaces them. Round 3 home pages render their
+> own shell and scope their tokens to `html[data-r3]` (see
+> `styles/r3-*.css` and `components/shared/r3/R3Root.jsx`), so they never
+> change the Round 2 screens or Option 1.
+>
 > **Round 2.** After the first review, Modern Commerce (Option 1) was kept and
 > three new alternatives in the same commercial family replaced the other
 > first-round directions. The retired first-round concepts (Premium
 > Marketplace, Saudi Contemporary, Digital/Auction) remain in git history at
-> tag `round1-concepts`. Route slots keep their internal letters; the
+> tag `round1-concepts`. The Round 2 versions of Options 2–4 are recoverable
+> from commit `886b32c`. Route slots keep their internal letters; the
 > client-facing labels are Options 1–4.
 
 Every option implements the same six customer screens — **Home, Browse, Buy Now

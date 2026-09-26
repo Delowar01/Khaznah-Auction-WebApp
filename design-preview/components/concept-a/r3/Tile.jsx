@@ -158,7 +158,7 @@ export function FeatureTile({ product, shape = "wide", manifest = false, sizes =
               <span className="sr-only">: {t(product.title)}</span>
             </Link>
           ) : (
-            <AddButton product={product} label className="relative z-[3] h-11" />
+            <AddButton product={product} label size="lg" className="relative z-[3]" />
           )}
         </div>
       </div>

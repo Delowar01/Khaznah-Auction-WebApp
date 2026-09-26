@@ -257,7 +257,7 @@ export function SearchOverlay() {
             placeholder={t(COPY.searchPlaceholder)}
             className="vm-search h-12 min-w-0 flex-1 bg-transparent vm-lg font-semibold text-fg outline-none placeholder:font-normal placeholder:text-fg-3"
           />
-          <button type="submit" className={pillClass("solid", "md", "h-12")}>
+          <button type="submit" className={pillClass("solid", "lg")}>
             {t(COPY.searchTitle)}
           </button>
         </form>

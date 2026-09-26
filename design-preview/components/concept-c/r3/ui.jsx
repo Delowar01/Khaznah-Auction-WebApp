@@ -13,7 +13,7 @@ const VARIANT = {
   secondary: "border border-line-strong bg-surface text-fg hover:border-fg-3",
   soft: "bg-surface-2 text-fg hover:bg-[color-mix(in_oklab,var(--surface-2)_85%,var(--text-primary))]",
   ghost: "text-fg hover:bg-surface-2",
-  live: "bg-live text-white hover:brightness-110",
+  live: "bg-[var(--hb-live-badge)] text-white hover:brightness-110",
 };
 const SIZE = {
   xs: "h-7 px-2.5 hb-xs font-semibold gap-1",

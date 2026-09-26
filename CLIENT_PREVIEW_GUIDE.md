@@ -20,9 +20,13 @@ The options are not ranked, and none is recommended over the others.
 | Option | Direction | In short |
 |---|---|---|
 | **1** | Modern Commerce | Search-led, practical and focused on conversion. Designed for customers who want to find products, categories and auctions quickly. |
-| **2** | Premium Commerce | The same practical marketplace, elevated — a refined, high-end shopping experience with elegant typography and more spacious, polished product presentation. |
-| **3** | Saudi Modern Commerce | A confident, Arabic-first take on the same marketplace, built for the Saudi market — clear bilingual hierarchy, a contemporary local palette and strong seller credibility. |
-| **4** | Auction-Forward Commerce | The same marketplace, tuned for bidding — auctions, live sales and countdowns take the lead, with clear urgency and status, while staying calm and trustworthy. |
+| **2** | Visual Marketplace | Image-led discovery — the marketplace browsed like a well-merchandised store: one header bar, full-screen categories and search, large product imagery and a floating live mini-player. |
+| **3** | Marketplace Hub | A search- and discovery-first hub: a navigation rail with the category tree, a search deck, and dense modules (deals, ending soon, popular, sellers, live) instead of a large hero. |
+| **4** | Auction Commerce | Auction status leads — a live stage, an ending-soon timeline and data-first bid tickets, then upcoming lots and Buy Now. |
+
+> **Round 3A:** for Options 2–4 only the **home page** has the new design so
+> far. Their other screens (Browse, product, auction, live, seller, components)
+> still show the previous round's design until the next stage.
 
 ## Using the preview
 

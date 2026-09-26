@@ -19,7 +19,7 @@ const PILL = {
 const SIZE = {
   sm: "h-9 px-4 vm-sm font-bold",
   md: "h-11 px-5 vm-sm font-bold",
-  lg: "h-13 px-7 vm-md font-bold",
+  lg: "h-12 px-6 vm-md font-bold",
 };
 
 export function pillClass(variant = "solid", size = "md", extra = "") {
@@ -120,7 +120,7 @@ export function useAddToBag() {
   };
 }
 
-export function AddButton({ product, className = "", label = false }) {
+export function AddButton({ product, className = "", label = false, size = "md" }) {
   const { t } = useLang();
   const add = useAddToBag();
   const soldOut = product.stock <= 0;
@@ -132,7 +132,7 @@ export function AddButton({ product, className = "", label = false }) {
       aria-label={t(COPY.addNamed, { title: t(product.title) })}
       className={cx(
         "z-10 inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full bg-white font-bold text-[#181614] transition-transform hover:scale-[1.04] disabled:opacity-40 disabled:hover:scale-100",
-        label ? "h-10 px-4 vm-sm" : "size-10",
+        label ? (size === "lg" ? "h-11 px-4 vm-sm" : "h-10 px-4 vm-sm") : "size-10",
         className,
       )}
     >

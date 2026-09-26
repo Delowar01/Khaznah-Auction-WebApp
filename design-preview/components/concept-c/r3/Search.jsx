@@ -395,7 +395,7 @@ export const SearchBox = forwardRef(function SearchBox({ variant = "deck", onDon
                             )}
                             <span className={cx("min-w-0 flex-1 truncate", item.kind === "search" ? "font-semibold text-fg" : "text-fg")}>{item.label}</span>
                             {item.sub ? <span className="hb-xs text-fg-3">{item.sub}</span> : null}
-                            {item.live ? <span className="rounded-[4px] bg-live px-1.5 hb-2xs font-bold uppercase text-white">{lang === "ar" ? "مباشر" : "Live"}</span> : null}
+                            {item.live ? <span className="rounded-[4px] bg-[var(--hb-live-badge)] px-1.5 hb-2xs font-bold uppercase text-white">{lang === "ar" ? "مباشر" : "Live"}</span> : null}
                             {item.kind === "category" || item.kind === "seller" ? <ArrowUpRight aria-hidden="true" className="flip-rtl size-3.5 text-fg-3" /> : null}
                           </>
                         )}

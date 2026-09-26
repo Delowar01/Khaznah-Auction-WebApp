@@ -51,8 +51,8 @@ export function LiveLine({ live }) {
   if (!item) return null;
   return (
     <div className="hb-module mt-4 hidden items-center gap-3 overflow-hidden py-2 pe-2 ps-3 md:flex">
-      <span className="inline-flex h-6 shrink-0 items-center gap-1.5 rounded-[5px] bg-live px-2 hb-2xs font-bold uppercase tracking-wide text-white">
-        <LiveDot className="bg-white" />
+      <span className="inline-flex h-6 shrink-0 items-center gap-1.5 rounded-[5px] bg-[var(--hb-live-badge)] px-2 hb-2xs font-bold uppercase tracking-wide text-white">
+        <span aria-hidden="true" className="size-1.5 rounded-full bg-white" />
         {t(COPY.live)}
       </span>
       <p className="min-w-0 flex-1 truncate hb-sm text-fg-2">
@@ -381,13 +381,13 @@ export function SellersAndLive({ live }) {
           {SELLER_ROWS.slice(0, 4).map(({ seller, stats }) => (
             <li key={seller.code}>
               <Link href={link(`/seller/${seller.code}`)} className="flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-[var(--hb-row)]">
-                <span aria-hidden="true" className="grid size-9 shrink-0 place-items-center rounded-full hb-xs font-bold text-white" style={{ background: seller.tone }}>
+                <span aria-hidden="true" className="grid size-9 shrink-0 place-items-center rounded-full hb-xs font-bold text-white" style={{ background: `color-mix(in oklab, ${seller.tone} 80%, black)` }}>
                   {seller.monogram}
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="flex items-center gap-2">
                     <span className="truncate hb-sm font-semibold text-fg">{t(seller.name)}</span>
-                    {seller.liveNow ? <span className="shrink-0 rounded-[4px] bg-live px-1.5 hb-2xs font-bold uppercase text-white">{t(COPY.live)}</span> : null}
+                    {seller.liveNow ? <span className="shrink-0 rounded-[4px] bg-[var(--hb-live-badge)] px-1.5 hb-2xs font-bold uppercase text-white">{t(COPY.live)}</span> : null}
                   </span>
                   <span className="block truncate hb-xs text-fg-3">
                     {t(CITIES[seller.city])} · {plural(stats.activeAuctions, PL.auctions, lang)} · {plural(stats.buyNowCount, PL.buyNow, lang)}
@@ -413,7 +413,7 @@ export function SellersAndLive({ live }) {
               </span>
               <span className="min-w-0 flex-1">
                 <span className="flex items-center gap-2">
-                  <span className="shrink-0 rounded-[4px] bg-live px-1.5 hb-2xs font-bold uppercase text-white">{t(COPY.live)}</span>
+                  <span className="shrink-0 rounded-[4px] bg-[var(--hb-live-badge)] px-1.5 hb-2xs font-bold uppercase text-white">{t(COPY.live)}</span>
                   <span className="truncate hb-sm font-semibold text-fg">{t(live.event.title)}</span>
                 </span>
                 <span className="block truncate hb-xs text-fg-3">

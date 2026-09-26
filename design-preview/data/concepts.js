@@ -1,9 +1,10 @@
-// The four design directions presented to the client (Round 2).
+// The four design directions presented to the client (Round 3A).
 //
-// All four are serious, commercially credible marketplace directions in the
-// same family. Option 1 (Modern Commerce) is the direction the client kept
-// from the first round; Options 2–4 are new alternatives created in response
-// to that review. The `id` is the internal route slot; `letter` is the
+// Option 1 (Modern Commerce) is the direction the client kept from the first
+// round and is unchanged. Options 2–4 are the structurally different
+// directions approved in the Round 3 plan: in Round 3A only their home pages
+// use the new structures; their other screens are still the Round 2 versions
+// until Round 3B. The `id` is the internal route slot; `letter` is the
 // client-facing option number. Order here is the order shown in the selector.
 
 export const CONCEPTS = [
@@ -31,64 +32,64 @@ export const CONCEPTS = [
   {
     id: "a",
     letter: "2",
-    name: { en: "Premium Commerce", ar: "التجارة الفاخرة" },
+    name: { en: "Visual Marketplace", ar: "السوق المرئي" },
     oneLiner: {
-      en: "The same practical marketplace, elevated — a refined, high-end shopping experience.",
-      ar: "السوق العملي نفسه، بلمسة أرقى — تجربة تسوّق راقية ومصقولة.",
+      en: "Image-led discovery — the marketplace browsed like a well-merchandised store.",
+      ar: "اكتشاف تقوده الصور — تصفّح السوق كما تتصفّح متجراً حسن العرض.",
     },
     philosophy: {
-      en: "Keeps Modern Commerce's strong search, filtering and browsing, then raises the finish: elegant serif headlines, generous space, softer surfaces and larger, more polished product cards. It should feel like a premium department store online, without losing everyday marketplace usability.",
-      ar: "يحافظ على قوة البحث والتصفية والتصفّح في التجارة الحديثة، ثم يرتقي بالإخراج: عناوين أنيقة بحروف مذيّلة، ومساحات سخيّة، وأسطح أنعم، وبطاقات منتجات أكبر وأكثر صقلاً. يُفترض أن يشعرك بمتجر راقٍ على الإنترنت دون التفريط في سهولة استخدام السوق اليومية.",
+      en: "Product imagery leads. One bar with a centred logo; search sits in a centred discovery hero framed by product cut-outs, with four featured tiles over its edge. Categories and sellers form a photo mosaic, auctions appear as wide showcases and Buy Now as a mosaic, and live sales run in a floating mini-player. Search, the bag and the watchlist stay one step away. (Round 3A: home page only.)",
+      ar: "الصور في المقدمة. شريط واحد بشعار في المنتصف، والبحث داخل واجهة اكتشاف مركزية تحيط بها صور المنتجات، وأربع بطاقات مميزة على حافتها. الفئات والبائعون في فسيفساء من الصور، والمزادات في عروض عريضة، والشراء الفوري في فسيفساء، والمزاد المباشر في مشغّل عائم صغير. البحث والحقيبة وقائمة المتابعة على بعد خطوة. (الجولة 3أ: الصفحة الرئيسية فقط.)",
     },
     traits: [
-      { en: "Elegant serif headlines with a clean, modern body", ar: "عناوين أنيقة بحروف مذيّلة مع نص حديث واضح" },
-      { en: "Warm, soft surfaces with gentle elevation", ar: "أسطح دافئة ناعمة مع ارتفاعات هادئة" },
-      { en: "Larger, refined product and lot cards", ar: "بطاقات منتجات ومنتجات مزاد أكبر وأكثر رقياً" },
-      { en: "Calmer spacing with strong product imagery", ar: "تباعد أهدأ مع صور منتجات قوية" },
+      { en: "One-bar header with a centred logo", ar: "شريط علوي واحد بشعار في المنتصف" },
+      { en: "Full-screen visual Categories and Search", ar: "فئات وبحث مرئيان بملء الشاشة" },
+      { en: "Square image tiles with in-image price bands", ar: "بطاقات صور مربعة مع شريط السعر داخل الصورة" },
+      { en: "Floating live mini-player; no bottom tab bar on phones", ar: "مشغّل مباشر عائم؛ دون شريط تبويب سفلي على الجوال" },
     ],
-    swatches: ["#F6F3EC", "#221D16", "#2E3A66", "#8A6D3B"],
+    swatches: ["#FAF8F5", "#181614", "#EFEAE3", "#B0512A"],
     defaultTheme: "light",
   },
   {
     id: "c",
     letter: "3",
-    name: { en: "Saudi Modern Commerce", ar: "التجارة السعودية الحديثة" },
+    name: { en: "Marketplace Hub", ar: "مركز السوق" },
     oneLiner: {
-      en: "A confident, Arabic-first take on the same marketplace, built for the Saudi market.",
-      ar: "رؤية واثقة تبدأ بالعربية للسوق نفسه، مصمّمة للسوق السعودي.",
+      en: "A search- and discovery-first hub — any lot, auction, seller or deal in one or two actions.",
+      ar: "مركز يقوده البحث والاكتشاف — أي منتج أو مزاد أو بائع أو عرض بخطوة أو خطوتين.",
     },
     philosophy: {
-      en: "Designed in Arabic first and mirrored into English, with a modern local character: clear bilingual headings, a contemporary Saudi palette and strong seller-credibility cues. It keeps Modern Commerce's browsing and search while feeling distinctly local and current — modern, not traditional or decorative.",
-      ar: "صُمّم بالعربية أولاً ثم عُكس إلى الإنجليزية، بطابع محلي معاصر: عناوين ثنائية اللغة واضحة، ولوحة ألوان سعودية معاصرة، وإشارات قوية لمصداقية البائع. يحافظ على تصفّح وبحث التجارة الحديثة مع حضور محلي واضح ومعاصر — حديث لا تقليدي ولا زخرفي.",
+      en: "Works like a marketplace application: a navigation rail holds the full category tree, a search deck with scopes is the first thing you use, and dense modules — counters, mini-tables, sellers and live — take the place of a hero. Fast, practical and commercial, without looking like an admin dashboard. (Round 3A: home page only.)",
+      ar: "يعمل كتطبيق سوق: شريط تنقل جانبي يضم شجرة الفئات كاملة، ولوحة بحث بنطاقات هي أول ما تستخدمه، ووحدات كثيفة — عدّادات وجداول مصغّرة وبائعون ومباشر — بدلاً من الواجهة الكبيرة. سريع وعملي وتجاري، دون أن يبدو كلوحة إدارة. (الجولة 3أ: الصفحة الرئيسية فقط.)",
     },
     traits: [
-      { en: "Arabic-first layouts with clear bilingual headings", ar: "تصاميم تبدأ بالعربية مع عناوين ثنائية اللغة واضحة" },
-      { en: "A contemporary local palette and tone", ar: "لوحة ألوان ونبرة محلية معاصرة" },
-      { en: "Strong seller and warehouse credibility", ar: "مصداقية قوية للبائع والمستودع" },
-      { en: "Modern, non-decorative visual character", ar: "طابع بصري حديث بعيد عن الزخرفة" },
+      { en: "Navigation rail with the category tree", ar: "شريط تنقل جانبي مع شجرة الفئات" },
+      { en: "Search deck with scopes, suggestions and a / shortcut", ar: "لوحة بحث بنطاقات واقتراحات واختصار /" },
+      { en: "Mini-tables with a quick view", ar: "جداول مصغّرة مع عرض سريع" },
+      { en: "Bottom command bar on phones: Menu · Search · Cart", ar: "شريط أوامر سفلي على الجوال: القائمة · البحث · السلة" },
     ],
-    swatches: ["#F3F1EA", "#0E3B2E", "#1F6F5C", "#C79A3B"],
+    swatches: ["#F2F3F0", "#111814", "#13684F", "#B1441A"],
     defaultTheme: "light",
   },
   {
     id: "d",
     letter: "4",
-    name: { en: "Auction-Forward Commerce", ar: "تجارة المزادات" },
+    name: { en: "Auction Commerce", ar: "تجارة المزادات" },
     oneLiner: {
-      en: "The same marketplace, tuned for bidding — auctions, live sales and countdowns take the lead.",
-      ar: "السوق نفسه مهيّأ للمزايدة — المزادات والبث المباشر والعد التنازلي في المقدمة.",
+      en: "Auction status leads — live, ending, upcoming, then Buy Now.",
+      ar: "حالة المزاد في المقدمة — المباشر، ثم ما ينتهي، ثم القادم، ثم الشراء الفوري.",
     },
     philosophy: {
-      en: "Keeps Modern Commerce's clarity and conversion focus, then puts auctions front and centre: countdown-forward cards, prominent live and ending-soon rails, clear bid activity and strong status for live, ending soon, sold and upcoming. Energetic and time-aware, but still calm and commercially trustworthy — never flashy.",
-      ar: "يحافظ على وضوح التجارة الحديثة وتركيزها على إتمام الشراء، ثم يضع المزادات في الصدارة: بطاقات يتصدّرها العد التنازلي، وأشرطة بارزة للمزادات المباشرة والقريبة من الإغلاق، ونشاط مزايدة واضح، وحالات قوية للمباشر والقريب من الإغلاق والمُباع والقادم. حيويّ وواعٍ بالوقت، لكنه هادئ وموثوق تجارياً — دون مبالغة.",
+      en: "Organised around time: a floor switcher (Live · Ending · Upcoming · Buy Now) leads navigation, the live auction stage is the hero, an ending-soon timeline pins each lot at its closing time, and data-first bid tickets put time and the current bid ahead of the photo. Calm and professional — one urgency colour, plain-language times, nothing that moves on its own. (Round 3A: home page only.)",
+      ar: "منظّم حول الوقت: مبدّل القاعة (مباشر · تنتهي · القادمة · شراء فوري) يقود التنقل، ومنصة المزاد المباشر هي الواجهة، وخط زمني يثبّت كل منتج عند موعد إغلاقه، وتذاكر مزايدة تقدّم الوقت والمزايدة الحالية على الصورة. هادئ ومهني — لون إلحاح واحد، وأوقات بلغة بسيطة، ولا شيء يتحرك من تلقاء نفسه. (الجولة 3أ: الصفحة الرئيسية فقط.)",
     },
     traits: [
-      { en: "Countdown-forward auction cards", ar: "بطاقات مزاد يتصدّرها العد التنازلي" },
-      { en: "Prominent live and ending-soon emphasis", ar: "إبراز واضح للمزادات المباشرة والقريبة من الإغلاق" },
-      { en: "Clear bid activity and urgency cues", ar: "نشاط مزايدة واضح وإشارات إلحاح" },
-      { en: "Confident display type with tabular figures", ar: "خط عناوين واثق مع أرقام متساوية العرض" },
+      { en: "Floor switcher: Live · Ending · Upcoming · Buy Now", ar: "مبدّل القاعة: مباشر · تنتهي · القادمة · شراء فوري" },
+      { en: "Live stage: previous · now · next", ar: "منصة مباشرة: السابق · الآن · التالي" },
+      { en: "Ending-soon timeline and data-first bid tickets", ar: "خط زمني لما ينتهي قريباً وتذاكر مزايدة تبدأ بالبيانات" },
+      { en: "My bids drawer, with a pill on phones", ar: "لوحة «مزايداتي» مع زر عائم على الجوال" },
     ],
-    swatches: ["#F4F6F9", "#12141A", "#2E3A66", "#CF4318"],
+    swatches: ["#F5F5F2", "#0E1118", "#16213A", "#C2410C"],
     defaultTheme: "light",
   },
 ];

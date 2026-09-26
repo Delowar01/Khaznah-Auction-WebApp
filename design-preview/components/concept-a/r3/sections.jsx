@@ -99,7 +99,7 @@ function SellerTile({ code }) {
           </span>
         ) : null}
         <span className="vm-band absolute bottom-3 start-3 flex max-w-[calc(100%-24px)] items-center gap-3 rounded-[16px] py-2.5 pe-4 ps-2.5">
-          <span aria-hidden="true" className="grid size-11 shrink-0 place-items-center rounded-full vm-sm font-extrabold text-white" style={{ background: seller.tone }}>
+          <span aria-hidden="true" className="grid size-11 shrink-0 place-items-center rounded-full vm-sm font-extrabold text-white" style={{ background: `color-mix(in oklab, ${seller.tone} 80%, black)` }}>
             {seller.monogram}
           </span>
           <span className="min-w-0">
@@ -178,7 +178,7 @@ export function Stories() {
                     <Img image={seller.cover} alt="" sizes="70px" className="size-full object-cover" />
                   </span>
                   {seller.liveNow ? (
-                    <span className="absolute -bottom-1 rounded-[6px] bg-live px-1.5 text-[10px] font-extrabold uppercase leading-4 tracking-wide text-white">{t(COPY.live)}</span>
+                    <span className="absolute -bottom-1 rounded-[6px] bg-[#b3281f] px-1.5 text-[10px] font-extrabold uppercase leading-4 tracking-wide text-white">{t(COPY.live)}</span>
                   ) : null}
                 </span>
                 <span className="line-clamp-2 vm-xs font-semibold text-fg">{t(seller.name)}</span>
@@ -279,11 +279,11 @@ export function GradesBand() {
       <div className="vm-container">
         <div className="rounded-[28px] bg-[var(--vm-field)] px-5 py-10 sm:px-8 lg:px-12 lg:py-14">
           <SectionHead id={titleId} title={t(COPY.gradesTitle)} sub={t(COPY.gradesSub)} />
-          <ol className="no-scrollbar -mx-5 mt-8 flex snap-x scroll-px-5 gap-3 overflow-x-auto px-5 sm:mx-0 sm:grid sm:grid-cols-4 sm:overflow-visible sm:px-0 xl:grid-cols-7">
+          <ol className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 xl:grid-cols-7">
             {GRADE_ORDER.map((key) => {
               const grade = GRADES[key];
               return (
-                <li key={key} className="w-[168px] shrink-0 snap-start rounded-[20px] bg-surface p-4 sm:w-auto">
+                <li key={key} className="rounded-[20px] bg-surface p-4">
                   <span
                     aria-hidden="true"
                     className="grid h-12 min-w-12 place-items-center justify-self-start rounded-full px-3 vm-md font-extrabold text-bg"

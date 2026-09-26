@@ -88,7 +88,7 @@ export function LiveMiniPlayer() {
               <span className="grid size-full place-items-center overflow-hidden rounded-full border-2 border-white bg-white">
                 <Img image={item.image} alt="" sizes="56px" className="size-full object-contain p-1" />
               </span>
-              <span className="absolute -bottom-1.5 rounded-[6px] bg-live px-1.5 text-[10px] font-extrabold uppercase leading-4 tracking-wide text-white ring-2 ring-bg">
+              <span className="absolute -bottom-1.5 rounded-[6px] bg-[#b3281f] px-1.5 text-[10px] font-extrabold uppercase leading-4 tracking-wide text-white ring-2 ring-bg">
                 {t(COPY.live)}
               </span>
             </button>

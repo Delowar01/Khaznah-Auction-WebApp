@@ -173,7 +173,7 @@ function QuickBody({ product, onClose }) {
         </p>
         {seller ? (
           <Link href={link(`/seller/${seller.code}`)} onClick={onClose} className="mt-2 inline-flex items-center gap-2 hb-sm text-fg-2 hover:text-fg">
-            <span aria-hidden="true" className="grid size-6 place-items-center rounded-full text-[10px] font-bold text-white" style={{ background: seller.tone }}>
+            <span aria-hidden="true" className="grid size-6 place-items-center rounded-full text-[10px] font-bold text-white" style={{ background: `color-mix(in oklab, ${seller.tone} 80%, black)` }}>
               {seller.monogram}
             </span>
             {t(seller.name)} · {t(CITIES[seller.city])}

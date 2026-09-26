@@ -207,7 +207,7 @@ export function RailContent({ onNavigate, showSearch = false, inMenu = false }) 
                 onClick={onNavigate}
                 className="flex h-10 items-center gap-2.5 rounded-[8px] px-2.5 text-fg-2 transition-colors hover:bg-surface-2 hover:text-fg"
               >
-                <span aria-hidden="true" className="grid size-6 shrink-0 place-items-center rounded-full text-[10px] font-bold text-white" style={{ background: seller.tone }}>
+                <span aria-hidden="true" className="grid size-6 shrink-0 place-items-center rounded-full text-[10px] font-bold text-white" style={{ background: `color-mix(in oklab, ${seller.tone} 80%, black)` }}>
                   {seller.monogram}
                 </span>
                 <span className="min-w-0 flex-1">
@@ -216,7 +216,7 @@ export function RailContent({ onNavigate, showSearch = false, inMenu = false }) 
                     {t(CITIES[seller.city])} · {plural(stats.total, { en: { one: "{n} lot", other: "{n} lots" }, ar: { zero: "لا منتجات", one: "منتج واحد", two: "منتجان", few: "{n} منتجات", many: "{n} منتجاً", other: "{n} منتج" } }, lang)}
                   </span>
                 </span>
-                {seller.liveNow ? <span className="rounded-[4px] bg-live px-1.5 hb-2xs font-bold uppercase text-white">{t(COPY.live)}</span> : null}
+                {seller.liveNow ? <span className="rounded-[4px] bg-[var(--hb-live-badge)] px-1.5 hb-2xs font-bold uppercase text-white">{t(COPY.live)}</span> : null}
               </Link>
             </li>
           ))}

@@ -73,6 +73,7 @@
   --hb-row: #f6f7f4;          /* zebra / hover row */
   --hb-rail-bg: #fbfbfa;
   --hb-deal: #b1441a;         /* discount figures */
+  --hb-live-badge: #c42330;   /* solid LIVE badges and Join buttons (white text) */
 }
 
 :root[data-concept="c"][data-r3][data-theme="dark"] {
@@ -125,6 +126,7 @@
   --hb-row: #18211d;
   --hb-rail-bg: #111814;
   --hb-deal: #f08a5d;
+  --hb-live-badge: #c42330;
 }
 
 :root[data-concept="c"][data-r3][lang="ar"] {

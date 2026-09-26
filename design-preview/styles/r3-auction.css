@@ -1,5 +1,229 @@
 /*
  * Option 4 — Auction Commerce (Round 3, slot d)
- * Tokens apply only while a Round 3 page is mounted (html[data-r3]).
- * (Work in progress — filled in with the Round 3A home.)
+ * ─────────────────────────────────────────────────────────────────────────
+ * Tokens apply only while a Round 3 page is mounted (html[data-r3]); the
+ * Round 2 screens of this slot keep styles/concept-d.css.
+ *
+ * Time-aware but calm: a neutral canvas, white tickets, deep navy ink for
+ * every action and ONE urgency colour for time and live state (no green/red
+ * flashing). Space Grotesk sets display and large times; Inter sets text
+ * with tabular figures; IBM Plex Sans Arabic sets Arabic.
  */
+
+:root[data-concept="d"][data-r3] {
+  color-scheme: light;
+
+  --bg: #f5f5f2;
+  --surface: #ffffff;
+  --surface-2: #eeeeea;
+  --surface-elevated: #ffffff;
+  --plate: #f3f3f0;
+  --border: #deded8;
+  --border-strong: #c6c6be;
+
+  --text-primary: #101318;
+  --text-secondary: #464b55;
+  --text-tertiary: #5a5f69;
+
+  --primary: #16213a;
+  --primary-hover: #0c1528;
+  --primary-contrast: #ffffff;
+  --secondary: #0e1118;
+  --secondary-contrast: #f3f2ee;
+  --accent: #b53d0b;          /* the single urgency colour: time + live */
+  --accent-contrast: #ffffff;
+
+  --success: #16213a;         /* "winning" stays ink — no green/red swing */
+  --warning: #9a4a07;
+  --danger: #b42318;
+  --live: #b53d0b;
+  --auction: #16213a;
+  --muted: #eeeeea;
+  --focus: #16213a;
+  --overlay: rgb(8 11 18 / 0.55);
+
+  --grade-new: #175cd3;
+  --grade-a: #05633a;
+  --grade-b: #0b6076;
+  --grade-c: #a54107;
+  --grade-d: #c4320a;
+  --grade-r: #6941c6;
+  --grade-f: #b42318;
+
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 10px;
+  --r-xl: 14px;
+  --r-card: 12px;
+  --r-control: 8px;
+
+  --sh-card: 0 1px 2px rgb(16 19 24 / 0.05);
+  --sh-raised: 0 1px 2px rgb(16 19 24 / 0.06), 0 14px 30px -16px rgb(16 19 24 / 0.28);
+  --sh-overlay: 0 2px 8px rgb(16 19 24 / 0.08), 0 30px 64px -20px rgb(8 11 18 / 0.4);
+
+  --font-display-stack: "Riyal", var(--font-space), var(--font-inter), var(--font-plex-ar), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-inter), var(--font-plex-ar), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", var(--font-inter), var(--font-plex-ar), system-ui, sans-serif;
+
+  --logo-mark: #d8a535;
+  --logo-word: #16213a;
+
+  /* Option-specific */
+  --ac-bar-h: 64px;
+  --ac-stage: #0e1118;        /* the live stage is always dark */
+  --ac-stage-2: #171b24;
+  --ac-stage-line: rgb(255 255 255 / 0.12);
+  --ac-stage-fg: #f3f2ee;
+  --ac-stage-dim: #b9bcc6;
+  --ac-urgent-soft: color-mix(in oklab, #b53d0b 12%, transparent);
+  --ac-stage-accent: #fb8a4c;  /* the urgency colour on the dark stage */
+}
+
+:root[data-concept="d"][data-r3][data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0c0e12;
+  --surface: #151820;
+  --surface-2: #1d212b;
+  --surface-elevated: #1d212b;
+  --plate: #ecece7;
+  --border: #272c37;
+  --border-strong: #394050;
+
+  --text-primary: #f1f1ed;
+  --text-secondary: #b6bac4;
+  --text-tertiary: #9aa0ab;
+
+  --primary: #e9ebf2;
+  --primary-hover: #ffffff;
+  --primary-contrast: #0c0e12;
+  --secondary: #07080b;
+  --secondary-contrast: #f1f1ed;
+  --accent: #fb8a4c;
+  --accent-contrast: #1c0b02;
+
+  --success: #e9ebf2;
+  --warning: #f0a83a;
+  --danger: #f97066;
+  --live: #fb8a4c;
+  --auction: #e9ebf2;
+  --muted: #1d212b;
+  --focus: #e9ebf2;
+  --overlay: rgb(3 4 7 / 0.74);
+
+  --grade-new: #84adff;
+  --grade-a: #47cd89;
+  --grade-b: #5cc8e0;
+  --grade-c: #fdb022;
+  --grade-d: #fb9a6b;
+  --grade-r: #b69cff;
+  --grade-f: #f97066;
+
+  --sh-card: 0 1px 2px rgb(0 0 0 / 0.36);
+  --sh-raised: 0 1px 3px rgb(0 0 0 / 0.4), 0 16px 34px -14px rgb(0 0 0 / 0.66);
+  --sh-overlay: 0 2px 8px rgb(0 0 0 / 0.44), 0 30px 70px -18px rgb(0 0 0 / 0.8);
+
+  --logo-mark: #d8a535;
+  --logo-word: #f1f1ed;
+
+  --ac-stage: #07080b;
+  --ac-stage-2: #11141b;
+  --ac-urgent-soft: color-mix(in oklab, #fb8a4c 14%, transparent);
+}
+
+:root[data-concept="d"][data-r3][lang="ar"] {
+  --font-display-stack: "Riyal", var(--font-plex-ar), var(--font-space), var(--font-inter), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-plex-ar), var(--font-inter), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", var(--font-plex-ar), var(--font-inter), system-ui, sans-serif;
+}
+
+:root[data-concept="d"][data-r3] body {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+:root[data-concept="d"][data-r3][lang="ar"] body {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Round 2 slot D sets every .tabular figure in a monospace; the Round 3
+   home keeps Inter with tabular figures instead (calm, not a terminal). */
+:root[data-concept="d"][data-r3] .tabular {
+  font-family: inherit;
+  letter-spacing: normal;
+}
+
+/* ── Type roles ──────────────────────────────────────────────────────── */
+@layer components {
+  .ac-2xs { font-size: 11px; line-height: 14px; }
+  .ac-xs { font-size: 12px; line-height: 16px; }
+  .ac-sm { font-size: 13px; line-height: 18px; }
+  .ac-md { font-size: 14px; line-height: 20px; }
+  .ac-lg { font-size: 16px; line-height: 22px; }
+  .ac-label { font-size: 11px; line-height: 14px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .ac-h2 { font-family: var(--font-display-stack); font-size: 22px; line-height: 28px; font-weight: 700; letter-spacing: -0.015em; }
+  .ac-h3 { font-family: var(--font-display-stack); font-size: 16px; line-height: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .ac-time { font-family: var(--font-display-stack); font-size: 22px; line-height: 26px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .ac-figure { font-family: var(--font-display-stack); font-size: 20px; line-height: 24px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .ac-hero-figure { font-family: var(--font-display-stack); font-size: 34px; line-height: 38px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .ac-num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+
+  @media (min-width: 1024px) {
+    .ac-h2 { font-size: 26px; line-height: 32px; }
+    .ac-hero-figure { font-size: 40px; line-height: 44px; }
+  }
+
+  :root[lang="ar"] .ac-2xs { font-size: 12px; line-height: 16px; }
+  :root[lang="ar"] .ac-xs { font-size: 13px; line-height: 18px; }
+  :root[lang="ar"] .ac-sm { font-size: 14px; line-height: 20px; }
+  :root[lang="ar"] .ac-md { font-size: 15px; line-height: 22px; }
+  :root[lang="ar"] .ac-lg { font-size: 17px; line-height: 26px; }
+  :root[lang="ar"] .ac-label { font-size: 12px; line-height: 16px; letter-spacing: 0; text-transform: none; }
+  :root[lang="ar"] .ac-h2 { font-size: 23px; line-height: 34px; letter-spacing: 0; }
+  :root[lang="ar"] .ac-h3 { font-size: 17px; line-height: 26px; letter-spacing: 0; }
+  :root[lang="ar"] :is(.ac-time, .ac-figure, .ac-hero-figure) { letter-spacing: 0; }
+  @media (min-width: 1024px) {
+    :root[lang="ar"] .ac-h2 { font-size: 27px; line-height: 40px; }
+  }
+
+  .ac-container {
+    width: 100%;
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 768px) {
+    .ac-container { padding-inline: 24px; }
+  }
+  @media (min-width: 1280px) {
+    .ac-container { padding-inline: 40px; }
+  }
+
+  /* Tickets: data panel on top, photo row, action row */
+  .ac-ticket {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    overflow: hidden;
+  }
+  .ac-ticket > * + * { border-top: 1px dashed var(--border-strong); }
+
+  /* Timeline axis */
+  .ac-axis {
+    position: relative;
+    height: 2px;
+    background: var(--border-strong);
+    border-radius: 2px;
+  }
+
+  .ac-search::-webkit-search-cancel-button,
+  .ac-search::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
