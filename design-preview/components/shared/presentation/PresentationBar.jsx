@@ -32,6 +32,14 @@ const LABELS = {
 // renders after an interaction (never during the server render).
 const liveUrl = (pathname) => `${pathname}${window.location.search}`;
 
+// Leaving the current concept (another option, the selector or the device
+// preview) is a full page load, deliberately a plain <a> or location.assign
+// rather than a client-side route change. The concepts' stylesheets share
+// class names, and a client-side change keeps the previous concept's CSS in
+// the document, so the next concept would not look exactly as it does on a
+// fresh load. Pages within one concept and the language switch stay
+// client-side.
+
 // Language links render the bare path (identical on server and client) and
 // carry the live query string (filters, theme) only at click time.
 function switchLanguage(event, router, pathname, lang) {
@@ -74,7 +82,9 @@ export function PresentationBar({ concept }) {
   };
 
   const openDevice = (device) => {
-    router.push(`/${lang}/preview?device=${device}&src=${encodeURIComponent(liveUrl(pathname))}`);
+    // A full page load on purpose (see the note at the top of this file).
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+    window.location.assign(`/${lang}/preview?device=${device}&src=${encodeURIComponent(liveUrl(pathname))}`);
   };
 
   // Keyboard shortcut for presenters: "." toggles the bar.
@@ -96,14 +106,14 @@ export function PresentationBar({ concept }) {
         style={{ fontFamily: "var(--font-brand-latin), var(--font-brand-arabic), system-ui, sans-serif" }}
         dir={lang === "ar" ? "rtl" : "ltr"}
       >
-        <Link
+        <a
           href={`/${lang}`}
           className="flex h-8 shrink-0 items-center gap-1.5 rounded-md px-2 font-medium text-[var(--pbar-fg)] hover:bg-white/10"
           aria-label={L("backToConcepts")}
         >
           <ArrowLeft aria-hidden="true" className="flip-rtl size-4" />
           <span className="hidden md:inline">{L("concepts")}</span>
-        </Link>
+        </a>
 
         <span aria-hidden="true" className="h-5 w-px shrink-0 bg-white/12" />
 
@@ -126,7 +136,7 @@ export function PresentationBar({ concept }) {
           {menuOpen ? (
             <div role="menu" className="kz-fade-up absolute start-0 top-[calc(100%+8px)] w-72 overflow-hidden rounded-xl border border-white/10 bg-[#12151d] p-1.5 shadow-2xl">
               {CONCEPTS.map((c) => (
-                <Link
+                <a
                   key={c.id}
                   role="menuitem"
                   href={withConcept(liveUrl(pathname), c.id)}
@@ -143,7 +153,7 @@ export function PresentationBar({ concept }) {
                       ))}
                     </span>
                   </span>
-                </Link>
+                </a>
               ))}
               <div aria-hidden="true" className="mx-1 my-1.5 h-px bg-white/10" />
               <button

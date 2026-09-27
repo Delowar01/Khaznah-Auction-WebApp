@@ -85,6 +85,10 @@ deploy to a live Khazna domain; use a temporary preview subdomain.
 - **Presentation bar** (top of every concept): back to concepts, switch concept,
   jump between screens, **EN / العربية**, **light / dark**, and **desktop /
   tablet / mobile** device frames. Press **`.`** to hide or show the bar.
+  Switching concept (and leaving for the selector or a device frame) is a full
+  page load, so no concept's styles carry into the next one; the in-memory
+  demo cart and watchlist start fresh. Screens within a concept and the
+  language switch stay instant.
 - Useful URL options:
   - `?theme=dark` or `?theme=light` — force the appearance (remembered per concept).
   - `/{lang}/preview?device=mobile&src=/en/concept-b/browse` — device frame for any screen.

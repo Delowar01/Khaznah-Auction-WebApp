@@ -62,9 +62,12 @@ function ConceptCard({ concept, lang, index }) {
       className="kz-fade-up group flex scroll-mt-6 flex-col rounded-[24px] border border-line bg-surface p-3 shadow-card sm:p-4"
       style={{ animationDelay: `${120 + index * 90}ms` }}
     >
-      <Link href={base} tabIndex={-1} aria-hidden="true" className="block">
+      {/* Links into an option are plain <a> (a full page load), so each
+          option always opens exactly as a fresh load, whichever option was
+          visited before (see PresentationBar). */}
+      <a href={base} tabIndex={-1} aria-hidden="true" className="block">
         <Preview concept={concept} lang={lang} name={name} />
-      </Link>
+      </a>
       <div className="flex flex-1 flex-col px-2 pb-3 pt-7 sm:px-4 sm:pb-4">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
@@ -109,13 +112,13 @@ function ConceptCard({ concept, lang, index }) {
 
         <div className="mt-auto pt-7">
           <div className="flex flex-wrap items-center gap-3">
-            <Link
+            <a
               href={base}
               className="inline-flex h-12 items-center gap-2.5 rounded-full bg-secondary px-6 text-[15px] font-semibold text-on-secondary transition-[background-color,transform] hover:bg-primary active:translate-y-px"
             >
               {fill(tr(S.explore, lang), { id: concept.letter })}
               <Arrow aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
-            </Link>
+            </a>
             <Link
               href={`/${lang}/preview?device=mobile&src=${encodeURIComponent(base)}`}
               className="inline-flex h-12 items-center gap-2 rounded-full border border-line-strong px-5 text-[14px] font-medium text-fg transition-colors hover:border-fg"
@@ -129,9 +132,9 @@ function ConceptCard({ concept, lang, index }) {
             <ul className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] text-fg-2">
               {PAGES.map((page) => (
                 <li key={page.key}>
-                  <Link href={`${base}${page.path}`} className="underline-offset-4 hover:text-fg hover:underline">
+                  <a href={`${base}${page.path}`} className="underline-offset-4 hover:text-fg hover:underline">
                     {tr(page.label, lang)}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

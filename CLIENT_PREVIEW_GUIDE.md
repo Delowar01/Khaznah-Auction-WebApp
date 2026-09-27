@@ -42,6 +42,9 @@ The options are not ranked, and none is recommended over the others.
   - change the appearance (sun / moon button);
   - open a tablet or mobile frame;
   - return to the start page (**Concepts**).
+- **Switching options** loads the page afresh, so every option always
+  appears exactly as designed. Anything added to the demo cart or watchlist
+  starts again in each option.
 - **To see a design on its own**, hide the bar with its hide button or the
   full-stop key (**.**). Bring it back with the small tab at the side of the
   screen.

@@ -69,10 +69,12 @@ export function DevicePreview({ lang }) {
           <ArrowLeft aria-hidden="true" className="flip-rtl size-4" />
           <span className="hidden md:inline">{tr(T.concepts, lang)}</span>
         </Link>
-        <Link href={src} className="flex h-9 shrink-0 items-center gap-2 rounded-md px-2.5 font-medium hover:bg-white/10" aria-label={tr(T.close, lang)}>
+        {/* Back to the option itself is a full page load (plain <a>), so it
+            opens exactly as a fresh load (see PresentationBar). */}
+        <a href={src} className="flex h-9 shrink-0 items-center gap-2 rounded-md px-2.5 font-medium hover:bg-white/10" aria-label={tr(T.close, lang)}>
           <X aria-hidden="true" className="size-4" />
           <span className="hidden sm:inline">{tr(T.back, lang)}</span>
-        </Link>
+        </a>
         {conceptInfo ? (
           <p className="hidden min-w-0 truncate text-[#8c909c] lg:block">
             <span className="me-2 rounded bg-[#D8A535] px-1.5 py-0.5 text-[11px] font-bold text-[#141006]">{conceptInfo.letter}</span>
@@ -81,9 +83,9 @@ export function DevicePreview({ lang }) {
           </p>
         ) : null}
         <div className="mx-auto flex shrink-0 items-center rounded-lg border border-white/10 p-0.5" role="group" aria-label={tr(T.device, lang)}>
-          <Link href={src} className="grid h-8 w-10 place-items-center rounded-md text-[#8c909c] hover:bg-white/10 hover:text-white" aria-label={tr(T.desktop, lang)}>
+          <a href={src} className="grid h-8 w-10 place-items-center rounded-md text-[#8c909c] hover:bg-white/10 hover:text-white" aria-label={tr(T.desktop, lang)}>
             <Monitor aria-hidden="true" className="size-4" />
-          </Link>
+          </a>
           <Link href={deviceHref("tablet")} aria-current={deviceKey === "tablet" ? "true" : undefined} className={`grid h-8 w-10 place-items-center rounded-md ${deviceKey === "tablet" ? "bg-white/15 text-white" : "text-[#8c909c] hover:bg-white/10 hover:text-white"}`} aria-label={tr(T.tablet, lang)}>
             <Tablet aria-hidden="true" className="size-4" />
           </Link>
