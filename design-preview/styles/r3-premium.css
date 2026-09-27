@@ -1,0 +1,272 @@
+/*
+ * Option 3 — Premium Marketplace (Round 3B, slot c)
+ * ─────────────────────────────────────────────────────────────────────────
+ * Tokens apply only while the Round 3 home page is mounted (html[data-r3]);
+ * the Round 2 screens of this slot keep styles/concept-c.css.
+ *
+ * A refined, customer-facing store: warm ivory and stone surfaces, espresso
+ * ink for actions, one bronze accent used sparingly, crisp 4px corners and
+ * generous space. Fraunces sets display type, Inter sets text; IBM Plex Sans
+ * Arabic sets Arabic. Colours are tuned for WCAG AA, light and dark.
+ */
+
+:root[data-concept="c"][data-r3] {
+  color-scheme: light;
+
+  --bg: #f7f5f1;
+  --surface: #ffffff;
+  --surface-2: #efebe4;
+  --surface-elevated: #ffffff;
+  --plate: #f1ede6;
+  --border: #e3ddd3;
+  --border-strong: #cbc3b6;
+
+  --text-primary: #1c1a17;
+  --text-secondary: #5b554c;
+  --text-tertiary: #6b655b;
+
+  --primary: #1c1a17;
+  --primary-hover: #3a352e;
+  --primary-contrast: #ffffff;
+  --secondary: #1c1a17;
+  --secondary-contrast: #f7f5f1;
+  --accent: #83633a;
+  --accent-contrast: #ffffff;
+
+  --success: #2f6b4f;
+  --warning: #8f5314;
+  --danger: #a3262a;
+  --live: #a3262a;
+  --auction: #1c1a17;
+  --muted: #efebe4;
+  --focus: #1c1a17;
+  --overlay: rgb(28 26 23 / 0.5);
+
+  --grade-new: #2b5fc4;
+  --grade-a: #2f6b4f;
+  --grade-b: #1c6a80;
+  --grade-c: #8f5314;
+  --grade-d: #a8471c;
+  --grade-r: #6a4bb0;
+  --grade-f: #a3262a;
+
+  --r-xs: 2px;
+  --r-sm: 3px;
+  --r-md: 4px;
+  --r-lg: 6px;
+  --r-xl: 8px;
+  --r-card: 4px;
+  --r-control: 2px;
+
+  --sh-card: 0 1px 2px rgb(28 26 23 / 0.04);
+  --sh-raised: 0 1px 2px rgb(28 26 23 / 0.05), 0 24px 48px -30px rgb(28 26 23 / 0.35);
+  --sh-overlay: 0 4px 14px rgb(28 26 23 / 0.08), 0 40px 90px -30px rgb(28 26 23 / 0.45);
+
+  --font-display-stack: "Riyal", var(--font-fraunces), var(--font-plex-ar), Georgia, "Times New Roman", serif;
+  --font-body-stack: "Riyal", var(--font-inter), var(--font-plex-ar), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", var(--font-inter), var(--font-plex-ar), system-ui, sans-serif;
+
+  --logo-mark: #b08a3e;
+  --logo-word: #1c1a17;
+
+  /* Option-specific */
+  --pm-header-h: 76px;
+  --pm-live-badge: #a3262a;   /* white text on it stays above 7:1 in both themes */
+  --pm-hero-field: #e9e3d9;
+}
+
+:root[data-concept="c"][data-r3][data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #12110f;
+  --surface: #1b1a17;
+  --surface-2: #24221e;
+  --surface-elevated: #24221e;
+  --plate: #ece7de;
+  --border: #33302a;
+  --border-strong: #4a463e;
+
+  --text-primary: #f2efe9;
+  --text-secondary: #c2bbb0;
+  --text-tertiary: #a79f94;
+
+  --primary: #f2efe9;
+  --primary-hover: #ffffff;
+  --primary-contrast: #12110f;
+  --secondary: #0b0a09;
+  --secondary-contrast: #f2efe9;
+  --accent: #cfae7e;
+  --accent-contrast: #1a130a;
+
+  --success: #79c39a;
+  --warning: #e0a55a;
+  --danger: #ef8a80;
+  --live: #ef8a80;
+  --auction: #f2efe9;
+  --muted: #24221e;
+  --focus: #f2efe9;
+  --overlay: rgb(6 5 4 / 0.72);
+
+  --grade-new: #93b2ff;
+  --grade-a: #79c39a;
+  --grade-b: #6cc2d6;
+  --grade-c: #e0a55a;
+  --grade-d: #ef9a6c;
+  --grade-r: #b9a2f2;
+  --grade-f: #ef8a80;
+
+  --sh-card: 0 1px 2px rgb(0 0 0 / 0.4);
+  --sh-raised: 0 1px 2px rgb(0 0 0 / 0.4), 0 24px 48px -30px rgb(0 0 0 / 0.8);
+  --sh-overlay: 0 4px 14px rgb(0 0 0 / 0.4), 0 40px 90px -30px rgb(0 0 0 / 0.85);
+
+  --logo-mark: #cfae7e;
+  --logo-word: #f2efe9;
+
+  --pm-hero-field: #22201c;
+}
+
+:root[data-concept="c"][data-r3][lang="ar"] {
+  --font-display-stack: "Riyal", var(--font-plex-ar), var(--font-fraunces), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-plex-ar), var(--font-inter), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", var(--font-plex-ar), var(--font-inter), system-ui, sans-serif;
+}
+
+:root[data-concept="c"][data-r3] body {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+:root[data-concept="c"][data-r3][lang="ar"] body {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* ── Type roles ────────────────────────────────────────────────────────── */
+@layer components {
+  .pm-eyebrow { font-size: 11px; line-height: 16px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+  .pm-xs { font-size: 12px; line-height: 18px; }
+  .pm-sm { font-size: 13px; line-height: 20px; }
+  .pm-md { font-size: 15px; line-height: 24px; }
+  .pm-lg { font-size: 17px; line-height: 28px; }
+  .pm-h3 { font-family: var(--font-display-stack); font-size: 21px; line-height: 27px; font-weight: 450; letter-spacing: -0.01em; font-variation-settings: "opsz" 48; }
+  .pm-h2 { font-family: var(--font-display-stack); font-size: 30px; line-height: 36px; font-weight: 400; letter-spacing: -0.02em; font-variation-settings: "opsz" 96; }
+  .pm-display { font-family: var(--font-display-stack); font-size: 42px; line-height: 46px; font-weight: 380; letter-spacing: -0.025em; font-variation-settings: "opsz" 144, "SOFT" 30; }
+  .pm-numeral { font-family: var(--font-display-stack); font-size: 34px; line-height: 38px; font-weight: 380; letter-spacing: -0.02em; font-variant-numeric: lining-nums tabular-nums; font-variation-settings: "opsz" 96; }
+  .pm-price { font-size: 16px; line-height: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .pm-price-lg { font-size: 24px; line-height: 30px; font-weight: 600; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .pm-label { font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  @media (min-width: 768px) {
+    .pm-h2 { font-size: 38px; line-height: 44px; }
+    .pm-display { font-size: 58px; line-height: 62px; }
+    .pm-numeral { font-size: 42px; line-height: 46px; }
+  }
+  @media (min-width: 1280px) {
+    .pm-display { font-size: 70px; line-height: 72px; }
+  }
+
+  :root[lang="ar"] .pm-eyebrow { font-size: 13px; line-height: 20px; letter-spacing: 0; text-transform: none; }
+  :root[lang="ar"] .pm-label { font-size: 13px; line-height: 20px; letter-spacing: 0; text-transform: none; }
+  :root[lang="ar"] .pm-xs { font-size: 13px; line-height: 21px; }
+  :root[lang="ar"] .pm-sm { font-size: 14px; line-height: 23px; }
+  :root[lang="ar"] .pm-md { font-size: 16px; line-height: 27px; }
+  :root[lang="ar"] .pm-lg { font-size: 18px; line-height: 31px; }
+  :root[lang="ar"] .pm-h3 { font-size: 20px; line-height: 32px; font-weight: 500; letter-spacing: 0; }
+  :root[lang="ar"] .pm-h2 { font-size: 28px; line-height: 44px; font-weight: 500; letter-spacing: 0; }
+  :root[lang="ar"] .pm-display { font-size: 36px; line-height: 56px; font-weight: 500; letter-spacing: 0; }
+  :root[lang="ar"] .pm-numeral { letter-spacing: 0; font-weight: 500; }
+  :root[lang="ar"] :is(.pm-price, .pm-price-lg) { letter-spacing: 0; }
+  @media (min-width: 768px) {
+    :root[lang="ar"] .pm-h2 { font-size: 34px; line-height: 52px; }
+    :root[lang="ar"] .pm-display { font-size: 48px; line-height: 74px; }
+  }
+  @media (min-width: 1280px) {
+    :root[lang="ar"] .pm-display { font-size: 56px; line-height: 86px; }
+  }
+
+  .pm-container {
+    width: 100%;
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+  @media (min-width: 768px) {
+    .pm-container { padding-inline: 32px; }
+  }
+  @media (min-width: 1280px) {
+    .pm-container { padding-inline: 48px; }
+  }
+
+  /* Studio shots multiply into the stone plate. */
+  .pm-plate { background: var(--plate); }
+  .pm-plate img.pm-multiply { mix-blend-mode: multiply; }
+
+  /* Understated text link with a hairline that thickens on hover. */
+  .pm-link {
+    text-decoration: underline;
+    text-decoration-color: var(--border-strong);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+    transition: text-decoration-color 0.2s;
+  }
+  .pm-link:hover { text-decoration-color: currentColor; }
+
+  .pm-search::-webkit-search-cancel-button,
+  .pm-search::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+/* ── Header ───────────────────────────────────────────────────────────── */
+.pm-header {
+  background: color-mix(in oklab, var(--surface) 96%, transparent);
+  -webkit-backdrop-filter: saturate(1.3) blur(10px);
+  backdrop-filter: saturate(1.3) blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Curated category grid: named areas keep the editorial rhythm ─────── */
+.pm-categories {
+  display: grid;
+  gap: 16px 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.pm-categories > :first-child { grid-column: 1 / -1; }
+@media (min-width: 1024px) {
+  .pm-categories {
+    gap: 28px 20px;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-areas:
+      "a a a a a a b b b b b b"
+      "a a a a a a c c c d d d"
+      "e e e f f f g g g h h h";
+  }
+  .pm-categories > :first-child { grid-column: auto; }
+  .pm-categories > [data-area="a"] { grid-area: a; }
+  .pm-categories > [data-area="b"] { grid-area: b; }
+  .pm-categories > [data-area="c"] { grid-area: c; }
+  .pm-categories > [data-area="d"] { grid-area: d; }
+  .pm-categories > [data-area="e"] { grid-area: e; }
+  .pm-categories > [data-area="f"] { grid-area: f; }
+  .pm-categories > [data-area="g"] { grid-area: g; }
+  .pm-categories > [data-area="h"] { grid-area: h; }
+}
+
+/* Slow, subtle image lift on hover (reduced motion: none) */
+.pm-zoom img {
+  transition: transform 0.9s var(--ease-out-soft);
+}
+.pm-zoom:hover img,
+.pm-zoom:focus-visible img {
+  transform: scale(1.03);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pm-zoom img { transition: none; }
+  .pm-zoom:hover img, .pm-zoom:focus-visible img { transform: none; }
+}
+
+/* Mobile accordions in "Buying on Khazna" */
+.pm-accordion > summary { list-style: none; cursor: pointer; }
+.pm-accordion > summary::-webkit-details-marker { display: none; }
+.pm-accordion[open] .pm-accordion-icon { transform: rotate(45deg); }

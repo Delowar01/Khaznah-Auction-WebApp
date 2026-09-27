@@ -9,47 +9,47 @@ import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { Img } from "@/components/shared/ui/Img";
 import { Money } from "@/components/shared/ui/Money";
 import { useMediaQuery } from "@/components/shared/ui/hooks";
-import { useLiveEvent } from "@/lib/useLiveEvent";
 import { COPY } from "./copy";
 import { useVisual } from "./state";
 import { LiveDot } from "./ui";
 
-/** Hides the player while the hero or the footer is on screen. */
+/** Hides the player while the hero, the live block or the footer is on screen. */
 function useClearOfHeroAndFooter() {
   const [heroVisible, setHeroVisible] = useState(true);
+  const [liveVisible, setLiveVisible] = useState(false);
   const [footerVisible, setFooterVisible] = useState(false);
   useEffect(() => {
-    const hero = document.getElementById("vm-hero");
-    const footer = document.getElementById("vm-footer");
+    const watch = [
+      ["vm-hero", setHeroVisible, { rootMargin: "0px 0px -35% 0px" }],
+      ["vm-live", setLiveVisible, {}],
+      ["vm-footer", setFooterVisible, {}],
+    ];
     const observers = [];
-    if (hero) {
-      const io = new IntersectionObserver(([entry]) => setHeroVisible(entry.isIntersecting), { rootMargin: "0px 0px -35% 0px" });
-      io.observe(hero);
-      observers.push(io);
-    }
-    if (footer) {
-      const io = new IntersectionObserver(([entry]) => setFooterVisible(entry.isIntersecting));
-      io.observe(footer);
+    for (const [id, set, options] of watch) {
+      const node = document.getElementById(id);
+      if (!node) continue;
+      const io = new IntersectionObserver(([entry]) => set(entry.isIntersecting), options);
+      io.observe(node);
       observers.push(io);
     }
     return () => observers.forEach((io) => io.disconnect());
   }, []);
-  return !heroVisible && !footerVisible;
+  return !heroVisible && !liveVisible && !footerVisible;
 }
 
 /**
  * Floating live mini-player (bottom-end corner) while an event is live.
  * It stays out of the way: it waits until the hero has scrolled away, hides
- * over the footer and while any overlay is open, and can be minimised.
+ * while the live block or the footer is on screen and while any overlay is
+ * open, and can be minimised.
  * Phones start with a 56px round "live" button (the lot photo in a live
  * ring) that opens into the price + Join pill only when tapped. Bidding
  * happens inside the room, so the player only shows the lot and links in.
  */
-export function LiveMiniPlayer() {
+export function LiveMiniPlayer({ live }) {
   const { t, pl } = useLang();
   const { link } = useConcept();
   const { layer } = useVisual();
-  const live = useLiveEvent();
   const clear = useClearOfHeroAndFooter();
   const roomy = useMediaQuery("(min-width: 768px)", false);
   // desktop: "card" ⇄ "pill"; phones: "dot" ⇄ "pill"

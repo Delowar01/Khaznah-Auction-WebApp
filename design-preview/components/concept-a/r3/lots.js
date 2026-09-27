@@ -1,17 +1,24 @@
 // Option 2 — which shared lots each home-page section shows, plus small
-// helpers. Every lot comes from the shared sample catalogue; no lot is
-// repeated on the page (19 different lots).
+// helpers. Every lot comes from the shared sample catalogue, and each section
+// uses the same selection rule as Option 1 (soonest-closing auctions, most-bid
+// auctions, biggest Buy Now savings, bulk lots).
 import { PRODUCTS, getProduct, isAuction, isBuyNow } from "@/data/products";
 import { photo } from "@/data/media";
-import { discountPercent } from "@/lib/catalog";
+import { discountPercent, endingSoon, hotAuctions } from "@/lib/catalog";
+import { dealProducts } from "@/components/concept-a/utils/lots";
 
 const pick = (...slugs) => slugs.map(getProduct).filter(Boolean);
 
-export const FEATURED_NOW = pick("capsule-coffee", "swivel-chair", "floor-lamp", "laptop-bags-24");
-export const FEATURE_ROW_A = { feature: getProduct("electronics-pallet"), tiles: pick("dutch-oven-blue", "fridge-690") };
-export const FEATURE_ROW_B = { feature: getProduct("stand-mixer"), tiles: pick("task-lamp", "car-cooler") };
-export const ON_THE_BLOCK = pick("seat-covers", "split-ac", "washer-front", "tv-43");
-export const READY_TO_BUY = { feature: getProduct("hairpin-desk"), tiles: pick("suede-tote", "microwave", "knit-sneakers", "hardside-spinner") };
+export const FEATURED_NOW = pick("capsule-coffee", "swivel-chair", "floor-lamp", "car-cooler");
+export const CLOSING_SOON = endingSoon(8);
+export const MOST_BID = hotAuctions(8);
+// Buy Now deals: the biggest saving is the feature, the next four surround it.
+const DEALS = dealProducts(5);
+export const DEALS_MOSAIC = { feature: DEALS[0], tiles: DEALS.slice(1, 5) };
+// Bulk & pallets: two mirrored rows — a pallet feature with its manifest
+// beside the pallet story, then the two carton lots beside the second pallet.
+export const BULK_ROW_A = { feature: getProduct("electronics-pallet") };
+export const BULK_ROW_B = { feature: getProduct("kitchen-pallet"), tiles: pick("laptop-bags-24", "monitor-stands-5") };
 
 export const OPEN_AUCTION_COUNT = PRODUCTS.filter((p) => isAuction(p) && p.status === "live").length;
 export const BUY_NOW_COUNT = PRODUCTS.filter(isBuyNow).length;
@@ -53,8 +60,8 @@ export const CATEGORY_ART = {
   "bulk-pallets": { cutouts: ["boxes-stack", "laptop-bags-24"], tone: 1 },
 };
 
-// The two seller tiles in the mosaic (covers come from the seller data).
-export const MOSAIC_SELLERS = ["RAWABI", "REDSEA"];
+// Seller showcase order: the live host first, then the rest.
+export const SELLER_ORDER = ["REDSEA", "RAWABI", "KHAZNA", "MAJD", "SAHEL"];
 
 /** The lifestyle photo when the lot has one, otherwise its studio shot. */
 export function sceneOf(product) {

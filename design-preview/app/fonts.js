@@ -14,6 +14,7 @@ import {
   Inter,
   JetBrains_Mono,
   Manrope,
+  Plus_Jakarta_Sans,
   Readex_Pro,
   Space_Grotesk,
 } from "next/font/google";
@@ -41,6 +42,10 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jet", display: "swap", preload: false });
 const plexArabic = IBM_Plex_Sans_Arabic({ subsets: ["arabic"], weight: ["300", "400", "500", "600", "700"], variable: "--font-plex-ar", display: "swap", preload: false });
 
+// Round 3B Option 4 — Discovery Commerce (slot d home): Plus Jakarta Sans for
+// Latin, with Cairo (above) for Arabic
+const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta", display: "swap", preload: false });
+
 export const fontVariables = [
   archivo,
   alexandria,
@@ -54,6 +59,7 @@ export const fontVariables = [
   spaceGrotesk,
   jetbrainsMono,
   plexArabic,
+  jakarta,
 ]
   .map((font) => font.variable)
   .join(" ");

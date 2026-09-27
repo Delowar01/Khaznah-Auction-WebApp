@@ -1,5 +1,11 @@
 # Khazna Customer Website Redesign — Round 3 Structural Design Plan
 
+> **Later note (Round 3B).** This plan was built as the Round 3A homepages
+> (commit `b5aec01`). After that review, Option 2 kept its visual concept and
+> gained Option 1's full section coverage, and Options 3 and 4 (Marketplace
+> Hub, Auction Commerce) were replaced by Premium Marketplace and Discovery
+> Commerce. See `ROUND3B_HOMEPAGE_PLAN.md` for the current homepage plan.
+
 > **Status: structural plan for approval — revision 2. Nothing has been implemented.**
 > The preview app is unchanged: `concept-a`, `concept-c` and `concept-d` still
 > hold their Round 2 versions, and Option 1 (`concept-b`) is read-only.

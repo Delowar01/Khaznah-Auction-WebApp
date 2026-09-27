@@ -20,13 +20,13 @@ The options are not ranked, and none is recommended over the others.
 | Option | Direction | In short |
 |---|---|---|
 | **1** | Modern Commerce | Search-led, practical and focused on conversion. Designed for customers who want to find products, categories and auctions quickly. |
-| **2** | Visual Marketplace | Image-led discovery — the marketplace browsed like a well-merchandised store: one header bar, full-screen categories and search, large product imagery and a floating live mini-player. |
-| **3** | Marketplace Hub | A search- and discovery-first hub: a navigation rail with the category tree, a search deck, and dense modules (deals, ending soon, popular, sellers, live) instead of a large hero. |
-| **4** | Auction Commerce | Auction status leads — a live stage, an ending-soon timeline and data-first bid tickets, then upcoming lots and Buy Now. |
+| **2** | Visual Marketplace | Image-led discovery — the marketplace browsed like a well-merchandised store: a centred search hero framed by product photos, and the same sections as Option 1 told with large photography, plus a floating live mini-player. |
+| **3** | Premium Marketplace | A refined, high-end store: a simple header, a split hero with large lifestyle photography, an editorial category grid, tall product cards and an elegant guide to buying on Khazna. |
+| **4** | Discovery Commerce | Built for exploring: a wide search with shortcut chips, a discovery board, colourful category cards, deal and auction rails, themed collections and a "New in" feed. |
 
-> **Round 3A:** for Options 2–4 only the **home page** has the new design so
-> far. Their other screens (Browse, product, auction, live, seller, components)
-> still show the previous round's design until the next stage.
+> **This round:** for Options 2–4 only the **home page** has the new design
+> so far. Their other screens (Browse, product, auction, live, seller,
+> components) still show the previous round's design until the next stage.
 
 ## Using the preview
 

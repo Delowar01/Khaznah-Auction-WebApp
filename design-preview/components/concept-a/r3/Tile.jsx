@@ -12,6 +12,7 @@ import { GRADES } from "@/data/grades";
 import { isAuction } from "@/data/products";
 import { useRemaining } from "@/lib/clock";
 import { formatDuration, moneyLabel } from "@/lib/format";
+import { manifestUnits } from "@/components/concept-a/utils/lots";
 import { COPY } from "./copy";
 import { AddButton, SaleTag, TimeLeft, WatchButton, cx, pillClass } from "./ui";
 import { isStudio, mainImage, saleTag, sceneOf } from "./lots";
@@ -132,7 +133,7 @@ export function FeatureTile({ product, shape = "wide", manifest = false, sizes =
           <p className="truncate vm-xs font-semibold opacity-75">
             {grade ? t(grade.label) : null}
             {seller ? ` · ${t(seller.name)}` : null}
-            {manifest && product.images.length > 1 ? ` · ${t(COPY.manifest, { n: 64 })}` : null}
+            {manifest && manifestUnits(product) > 0 ? ` · ${t(COPY.manifest, { n: manifestUnits(product) })}` : null}
           </p>
           <p className="mt-0.5 line-clamp-2 vm-md font-bold">{t(product.title)}</p>
         </div>
@@ -167,48 +168,51 @@ export function FeatureTile({ product, shape = "wide", manifest = false, sizes =
   );
 }
 
-/** Wide auction showcase: photo on the start side, the bid story beside it. */
-export function Showcase({ product }) {
-  const { t, ui, lang, pl } = useLang();
+/**
+ * Wide landscape card for the closing-soon rail: the photo fills the card,
+ * the countdown sits on top and the bid story on a band inside the image.
+ */
+export function RailCard({ product, priority = false }) {
+  const { t, lang, pl } = useLang();
   const { link } = useConcept();
   const seller = getSeller(product.seller);
   const grade = GRADES[product.grade];
   const remaining = useRemaining(product.endsIn);
   const urgent = remaining != null && remaining <= 3600;
   return (
-    <article className="group relative grid w-full grid-cols-[minmax(0,42%)_minmax(0,1fr)] overflow-hidden rounded-card border border-line bg-surface shadow-card lg:grid-cols-[minmax(0,36%)_minmax(0,1fr)] xl:grid-cols-[minmax(0,40%)_minmax(0,1fr)]">
-      <div className="relative min-h-[196px] sm:min-h-[232px]">
-        <Photo image={mainImage(product)} sizes="(min-width: 1024px) 20vw, 40vw" pad="p-[11%]" />
-        <span className="absolute start-3 top-3 z-[2] inline-flex h-7 items-center gap-1.5 whitespace-nowrap rounded-full bg-[#181614] px-2.5 vm-xs font-extrabold text-white sm:px-3">
-          <Gavel aria-hidden="true" className="hidden size-3.5 sm:block" />
-          {t(COPY.openForBids)}
+    <article className="group relative aspect-[4/3] w-full overflow-hidden rounded-card bg-surface-2">
+      <Photo image={sceneOf(product)} sizes="(min-width: 1024px) 32vw, (min-width: 640px) 46vw, 84vw" priority={priority} pad="px-[18%] pt-[12%] pb-[34%]" />
+      <Link href={link(detailPath(product))} aria-label={ariaFor(product, lang, t)} className="absolute inset-0 z-[1] rounded-card outline-offset-[3px]" />
+      <span
+        className={cx(
+          "pointer-events-none absolute start-3 top-3 z-[2] inline-flex h-8 items-center gap-1.5 rounded-full px-3 vm-xs font-extrabold text-white",
+          urgent ? "bg-[#b3281f]" : "bg-[#181614]",
+        )}
+      >
+        <Timer aria-hidden="true" className="size-3.5" />
+        <span className="sr-only">{t(COPY.closesIn, { time: "" })}</span>
+        <span dir={lang === "ar" ? "rtl" : "ltr"} className="tabular">
+          {formatDuration(remaining ?? 0, lang)}
         </span>
-      </div>
-      <div className="flex min-w-0 flex-col p-4 sm:p-6 lg:p-5 xl:p-6">
-        <p className={cx("inline-flex items-center gap-1.5 vm-sm font-bold", urgent ? "text-live" : "text-fg-2")}>
-          <Timer aria-hidden="true" className="size-4" />
-          {t(COPY.closesIn, { time: formatDuration(remaining ?? 0, lang) })}
-        </p>
-        <h3 className="mt-2 line-clamp-2 vm-h3">
-          <Link href={link(detailPath(product))} className="after:absolute after:inset-0 after:content-[''] hover:underline">
-            {t(product.title)}
-          </Link>
-        </h3>
-        <p className="mt-1 vm-sm text-fg-2">
-          {grade ? t(grade.label) : null}
-          {seller ? ` · ${t(seller.name)}` : null}
-        </p>
-        <div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-4">
-          <div>
-            <p className="vm-xs font-semibold text-fg-3">{ui("currentBid")}</p>
-            <Money value={product.currentBid} className="vm-price-lg text-fg" />
-            <p className="vm-xs text-fg-3">{pl("bids", product.bidCount)}</p>
-          </div>
-          <span className={pillClass("solid", "md", "relative z-[2] pointer-events-none")}>
-            {t(COPY.placeBid)}
-            <ArrowUpRight aria-hidden="true" className="flip-rtl size-4" />
-          </span>
+      </span>
+      <WatchButton product={product} className="absolute end-3 top-3 z-[3]" />
+      <div className="vm-band absolute inset-x-2.5 bottom-2.5 z-[2] flex items-end justify-between gap-3 rounded-[16px] py-3 pe-3 ps-4">
+        <div aria-hidden="true" className="pointer-events-none min-w-0">
+          <p className="truncate vm-xs font-semibold opacity-75">
+            {grade ? t(grade.label) : null}
+            {seller ? ` · ${t(seller.name)}` : null}
+          </p>
+          <p className="truncate vm-md font-bold">{t(product.title)}</p>
+          <p className="mt-0.5 flex flex-wrap items-baseline gap-x-2">
+            <Money value={product.currentBid} className="vm-price" />
+            <span className="vm-xs opacity-75">{pl("bids", product.bidCount)}</span>
+          </p>
         </div>
+        <Link href={link(detailPath(product))} className={pillClass("light", "sm", "relative z-[3]")}>
+          <Gavel aria-hidden="true" className="size-4" />
+          {t(COPY.placeBid)}
+          <span className="sr-only">: {t(product.title)}</span>
+        </Link>
       </div>
     </article>
   );

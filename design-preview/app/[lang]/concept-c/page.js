@@ -1,4 +1,4 @@
-import { HubHome } from "@/components/concept-c/r3/HubHome";
+import { PremiumHome } from "@/components/concept-c/premium/PremiumHome";
 import { conceptMetadata } from "@/lib/meta";
 
 export async function generateMetadata({ params }) {
@@ -7,5 +7,5 @@ export async function generateMetadata({ params }) {
 }
 
 export default function Page() {
-  return <HubHome />;
+  return <PremiumHome />;
 }

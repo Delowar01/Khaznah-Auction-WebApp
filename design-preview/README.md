@@ -6,18 +6,24 @@ customer website, built for client review:
 | Option | Direction | Route slot | Default appearance |
 |---|---|---|---|
 | 1 | Modern Commerce — search-led, practical, conversion-focused | `concept-b` | Light |
-| 2 | Visual Marketplace — image-led discovery, one-bar header, full-screen category/search layers | `concept-a` | Light |
-| 3 | Marketplace Hub — navigation rail, search deck and dense modules instead of a hero | `concept-c` | Light |
-| 4 | Auction Commerce — auction status leads: live stage, ending-soon timeline, bid tickets | `concept-d` | Light |
+| 2 | Visual Marketplace — image-led: centred search hero, Option 1's sections told with large photography | `concept-a` | Light |
+| 3 | Premium Marketplace — refined store: split photographic hero, editorial categories, portrait product cards | `concept-c` | Light |
+| 4 | Discovery Commerce — built for exploring: discovery board, colourful categories, rails, collections, feed | `concept-d` | Light |
 
-> **Round 3A (current).** Option 1 is unchanged. Options 2–4 now use the
-> structurally different designs approved in `ROUND3_STRUCTURAL_DESIGN_PLAN.md`
-> — **for the home page only**. Their other screens are still the Round 2
-> versions (served through the `(round2)` route group in each slot, with the
-> Round 2 chrome) until Round 3B replaces them. Round 3 home pages render their
-> own shell and scope their tokens to `html[data-r3]` (see
+> **Round 3B (current).** Option 1 is unchanged. After the Round 3A review,
+> Option 2 kept its visual concept and gained Option 1's full section coverage,
+> and Options 3 and 4 were rebuilt from scratch as Premium Marketplace and
+> Discovery Commerce (see `ROUND3B_HOMEPAGE_PLAN.md`). This covers the
+> **home page only**. Their other screens are still the Round 2 versions
+> (served through the `(round2)` route group in each slot, with the Round 2
+> chrome) until the inner pages are redesigned. Round 3 home pages render
+> their own shell and scope their tokens to `html[data-r3]` (see
 > `styles/r3-*.css` and `components/shared/r3/R3Root.jsx`), so they never
 > change the Round 2 screens or Option 1.
+>
+> **Round 3A.** The first structural homepages for Options 2–4 (Visual
+> Marketplace, Marketplace Hub, Auction Commerce) are in git history at commit
+> `b5aec01`.
 >
 > **Round 2.** After the first review, Modern Commerce (Option 1) was kept and
 > three new alternatives in the same commercial family replaced the other
@@ -220,6 +226,6 @@ node scripts/capture-concepts.mjs --base http://localhost:3100
   (`scripts/process-images.py`).
 - Warehouse photography, logo and the Riyal webfont: Khazna's own brand assets.
 - Typefaces via Google Fonts (SIL Open Font License): Archivo, Alexandria,
-  Instrument Serif, Instrument Sans, Markazi Text, IBM Plex Sans Arabic,
-  Figtree, Almarai, Geist, Geist Mono, Readex Pro.
+  Figtree, Almarai, Manrope, Readex Pro, Fraunces, Inter, IBM Plex Sans
+  Arabic, Plus Jakarta Sans, Cairo, Space Grotesk, JetBrains Mono.
 - Icons: Lucide (ISC licence).

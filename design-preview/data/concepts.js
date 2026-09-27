@@ -1,11 +1,13 @@
-// The four design directions presented to the client (Round 3A).
+// The four design directions presented to the client (Round 3B).
 //
 // Option 1 (Modern Commerce) is the direction the client kept from the first
 // round and is unchanged. Options 2–4 are the structurally different
-// directions approved in the Round 3 plan: in Round 3A only their home pages
-// use the new structures; their other screens are still the Round 2 versions
-// until Round 3B. The `id` is the internal route slot; `letter` is the
-// client-facing option number. Order here is the order shown in the selector.
+// directions: after the Round 3A review, Option 2 kept its visual concept
+// with Option 1's full section coverage, Option 3 became Premium Marketplace
+// and Option 4 became Discovery Commerce. Only their home pages use the new
+// structures; their other screens are still the Round 2 versions. The `id`
+// is the internal route slot; `letter` is the client-facing option number.
+// Order here is the order shown in the selector.
 
 export const CONCEPTS = [
   {
@@ -38,13 +40,13 @@ export const CONCEPTS = [
       ar: "اكتشاف تقوده الصور — تصفّح السوق كما تتصفّح متجراً حسن العرض.",
     },
     philosophy: {
-      en: "Product imagery leads. One bar with a centred logo; search sits in a centred discovery hero framed by product cut-outs, with four featured tiles over its edge. Categories and sellers form a photo mosaic, auctions appear as wide showcases and Buy Now as a mosaic, and live sales run in a floating mini-player. Search, the bag and the watchlist stay one step away. (Round 3A: home page only.)",
-      ar: "الصور في المقدمة. شريط واحد بشعار في المنتصف، والبحث داخل واجهة اكتشاف مركزية تحيط بها صور المنتجات، وأربع بطاقات مميزة على حافتها. الفئات والبائعون في فسيفساء من الصور، والمزادات في عروض عريضة، والشراء الفوري في فسيفساء، والمزاد المباشر في مشغّل عائم صغير. البحث والحقيبة وقائمة المتابعة على بعد خطوة. (الجولة 3أ: الصفحة الرئيسية فقط.)",
+      en: "Product imagery leads. One bar with a centred logo; search sits in a centred discovery hero framed by product cut-outs, with four featured tiles over its edge. Every business section of Option 1 is here, told visually: a category photo mosaic, an immersive live-auction block, a wide closing-soon rail, a Buy Now deals mosaic, large seller photographs, mirrored bulk and pallet rows, and the trust points on photography. (Round 3B: home page only.)",
+      ar: "الصور في المقدمة. شريط واحد بشعار في المنتصف، والبحث داخل واجهة اكتشاف مركزية تحيط بها صور المنتجات، وأربع بطاقات مميزة على حافتها. كل أقسام الخيار 1 موجودة هنا بأسلوب مرئي: فسيفساء صور للفئات، وكتلة غامرة للمزاد المباشر، وشريط عريض لما يُغلق قريباً، وفسيفساء لعروض الشراء الفوري، وصور كبيرة للبائعين، وصفوف متقابلة للجملة والطبليات، ونقاط الثقة على الصور. (الجولة 3ب: الصفحة الرئيسية فقط.)",
     },
     traits: [
       { en: "One-bar header with a centred logo", ar: "شريط علوي واحد بشعار في المنتصف" },
-      { en: "Full-screen visual Categories and Search", ar: "فئات وبحث مرئيان بملء الشاشة" },
-      { en: "Square image tiles with in-image price bands", ar: "بطاقات صور مربعة مع شريط السعر داخل الصورة" },
+      { en: "Search inside a centred, image-framed hero", ar: "البحث داخل واجهة مركزية تحيط بها الصور" },
+      { en: "Option 1's sections, told with large photography", ar: "أقسام الخيار 1 معروضة بصور كبيرة" },
       { en: "Floating live mini-player; no bottom tab bar on phones", ar: "مشغّل مباشر عائم؛ دون شريط تبويب سفلي على الجوال" },
     ],
     swatches: ["#FAF8F5", "#181614", "#EFEAE3", "#B0512A"],
@@ -53,43 +55,43 @@ export const CONCEPTS = [
   {
     id: "c",
     letter: "3",
-    name: { en: "Marketplace Hub", ar: "مركز السوق" },
+    name: { en: "Premium Marketplace", ar: "السوق الراقي" },
     oneLiner: {
-      en: "A search- and discovery-first hub — any lot, auction, seller or deal in one or two actions.",
-      ar: "مركز يقوده البحث والاكتشاف — أي منتج أو مزاد أو بائع أو عرض بخطوة أو خطوتين.",
+      en: "A refined, high-end store — calm, elegant and product-focused.",
+      ar: "متجر راقٍ ومصقول — هادئ وأنيق ويركّز على المنتج.",
     },
     philosophy: {
-      en: "Works like a marketplace application: a navigation rail holds the full category tree, a search deck with scopes is the first thing you use, and dense modules — counters, mini-tables, sellers and live — take the place of a hero. Fast, practical and commercial, without looking like an admin dashboard. (Round 3A: home page only.)",
-      ar: "يعمل كتطبيق سوق: شريط تنقل جانبي يضم شجرة الفئات كاملة، ولوحة بحث بنطاقات هي أول ما تستخدمه، ووحدات كثيفة — عدّادات وجداول مصغّرة وبائعون ومباشر — بدلاً من الواجهة الكبيرة. سريع وعملي وتجاري، دون أن يبدو كلوحة إدارة. (الجولة 3أ: الصفحة الرئيسية فقط.)",
+      en: "Feels like a premium online store: a solid, simplified header with search that expands in the bar, a split hero pairing a serif headline with large lifestyle photography and the featured lot, an editorial category grid, tall portrait product cards, a featured auction beside related lots, storefront previews, a live-sale salon and an elegant \u201cBuying on Khazna\u201d guide. Warm neutral surfaces, generous space and crisp corners. (Round 3B: home page only.)",
+      ar: "يشبه متجراً إلكترونياً راقياً: شريط علوي بسيط وثابت مع بحث يتمدد داخله، وواجهة منقسمة تجمع عنواناً أنيقاً مع صور حياتية كبيرة والمنتج المميز، وشبكة فئات تحريرية، وبطاقات منتجات طولية، ومزاد مميز بجانب منتجات ذات صلة، ومعاينات لمتاجر البائعين، وصالة للمزاد المباشر، ودليل أنيق «الشراء عبر خزنة». أسطح محايدة دافئة، ومساحات سخية، وزوايا حادة. (الجولة 3ب: الصفحة الرئيسية فقط.)",
     },
     traits: [
-      { en: "Navigation rail with the category tree", ar: "شريط تنقل جانبي مع شجرة الفئات" },
-      { en: "Search deck with scopes, suggestions and a / shortcut", ar: "لوحة بحث بنطاقات واقتراحات واختصار /" },
-      { en: "Mini-tables with a quick view", ar: "جداول مصغّرة مع عرض سريع" },
-      { en: "Bottom command bar on phones: Menu · Search · Cart", ar: "شريط أوامر سفلي على الجوال: القائمة · البحث · السلة" },
+      { en: "Simplified header with search that expands in the bar", ar: "شريط علوي بسيط مع بحث يتمدد داخله" },
+      { en: "Split hero with large lifestyle photography", ar: "واجهة منقسمة بصور حياتية كبيرة" },
+      { en: "Editorial category grid and portrait product cards", ar: "شبكة فئات تحريرية وبطاقات منتجات طولية" },
+      { en: "Drawer menu and accordions on phones", ar: "قائمة جانبية وأقسام قابلة للطي على الجوال" },
     ],
-    swatches: ["#F2F3F0", "#111814", "#13684F", "#B1441A"],
+    swatches: ["#F7F5F1", "#1C1A17", "#EFEBE4", "#83633A"],
     defaultTheme: "light",
   },
   {
     id: "d",
     letter: "4",
-    name: { en: "Auction Commerce", ar: "تجارة المزادات" },
+    name: { en: "Discovery Commerce", ar: "تجارة الاكتشاف" },
     oneLiner: {
-      en: "Auction status leads — live, ending, upcoming, then Buy Now.",
-      ar: "حالة المزاد في المقدمة — المباشر، ثم ما ينتهي، ثم القادم، ثم الشراء الفوري.",
+      en: "Built for exploring — categories, collections and rails that make browsing easy.",
+      ar: "مصمّم للاستكشاف — فئات ومجموعات وشرائط تجعل التصفّح سهلاً.",
     },
     philosophy: {
-      en: "Organised around time: a floor switcher (Live · Ending · Upcoming · Buy Now) leads navigation, the live auction stage is the hero, an ending-soon timeline pins each lot at its closing time, and data-first bid tickets put time and the current bid ahead of the photo. Calm and professional — one urgency colour, plain-language times, nothing that moves on its own. (Round 3A: home page only.)",
-      ar: "منظّم حول الوقت: مبدّل القاعة (مباشر · تنتهي · القادمة · شراء فوري) يقود التنقل، ومنصة المزاد المباشر هي الواجهة، وخط زمني يثبّت كل منتج عند موعد إغلاقه، وتذاكر مزايدة تقدّم الوقت والمزايدة الحالية على الصورة. هادئ ومهني — لون إلحاح واحد، وأوقات بلغة بسيطة، ولا شيء يتحرك من تلقاء نفسه. (الجولة 3أ: الصفحة الرئيسية فقط.)",
+      en: "Discovery comes first: a compact header with a wide search, a Discover menu and shortcut chips; a discovery board pairing a collection with a deal, new arrivals, the live sale and a closing lot; colourful category cards; price-drop, auction and seller rails; themed collections and a mixed-size \u201cNew in\u201d feed. Buy Now and auctions sit side by side. (Round 3B: home page only.)",
+      ar: "الاكتشاف أولاً: شريط علوي مدمج مع بحث واسع وقائمة «اكتشف» واختصارات سريعة؛ ولوحة اكتشاف تجمع مجموعة مع عرض اليوم والوافد حديثاً والمزاد المباشر ومنتج يقترب إغلاقه؛ وبطاقات فئات ملوّنة؛ وشرائط لانخفاض الأسعار والمزادات والبائعين؛ ومجموعات موضوعية وتغذية «وصل حديثاً» بأحجام مختلفة. الشراء الفوري والمزادات جنباً إلى جنب. (الجولة 3ب: الصفحة الرئيسية فقط.)",
     },
     traits: [
-      { en: "Floor switcher: Live · Ending · Upcoming · Buy Now", ar: "مبدّل القاعة: مباشر · تنتهي · القادمة · شراء فوري" },
-      { en: "Live stage: previous · now · next", ar: "منصة مباشرة: السابق · الآن · التالي" },
-      { en: "Ending-soon timeline and data-first bid tickets", ar: "خط زمني لما ينتهي قريباً وتذاكر مزايدة تبدأ بالبيانات" },
-      { en: "My bids drawer, with a pill on phones", ar: "لوحة «مزايداتي» مع زر عائم على الجوال" },
+      { en: "Wide search, Discover menu and shortcut chips", ar: "بحث واسع وقائمة اكتشاف واختصارات سريعة" },
+      { en: "Discovery board and colourful category cards", ar: "لوحة اكتشاف وبطاقات فئات ملوّنة" },
+      { en: "Rails, themed collections and a mixed-size feed", ar: "شرائط ومجموعات موضوعية وتغذية بأحجام مختلفة" },
+      { en: "Pinned search and shortcuts on phones", ar: "بحث واختصارات مثبّتة على الجوال" },
     ],
-    swatches: ["#F5F5F2", "#0E1118", "#16213A", "#C2410C"],
+    swatches: ["#FFFFFF", "#14161C", "#FFE6DA", "#D13D17"],
     defaultTheme: "light",
   },
 ];
