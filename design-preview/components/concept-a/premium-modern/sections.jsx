@@ -186,7 +186,7 @@ export function Selected() {
   const { t, ui } = useLang();
   const titleId = useId();
   return (
-    <section data-ref="07" aria-labelledby={titleId} className="pr-container pb-5 pt-6 dt:pb-[26px] dt:pt-[19px]">
+    <section data-ref="07" aria-labelledby={titleId} className="pr-container pb-5 pt-6 dt:pb-6 dt:pt-[19px]">
       <SectionHead id={titleId} title={t(COPY.selectedTitle)} sub={t(COPY.selectedSub)} href="/browse?tab=buy_now" linkLabel={ui("viewAll")} />
       <ul className="mt-4 grid gap-4 lg:grid-cols-2 dt:mt-[19px] dt:gap-5">
         {SELECTED.map((item) => (
@@ -207,11 +207,11 @@ export function LiveSection({ live }) {
   const lot = live.current;
   const host = SELLER_BY_CODE[LIVE_EVENT.host];
   return (
-    <section data-ref="08" aria-labelledby={titleId} className="pr-container pb-6 pt-4 dt:pb-[29px] dt:pt-[19px]">
+    <section data-ref="08" aria-labelledby={titleId} className="pr-container pb-6 pt-4 dt:pb-[27px] dt:pt-1.5">
       <SectionHead id={titleId} title={t(COPY.liveTitle)} sub={t(COPY.liveSub)} />
-      <div className="mt-4 grid gap-4 lg:grid-cols-[56.3%_minmax(0,1fr)] dt:mt-[18px] dt:gap-5">
+      <div className="mt-4 grid gap-4 lg:grid-cols-[56.3%_minmax(0,1fr)] dt:mt-3.5 dt:gap-5">
         {/* Event: warehouse preview with status, play and title */}
-        <Link href={link("/live-auction")} className="group relative block aspect-[16/9] overflow-hidden rounded-[4px] bg-[#2a2926] outline-offset-2 lg:aspect-auto lg:h-[293px]">
+        <Link href={link("/live-auction")} className="group relative block aspect-[16/9] overflow-hidden rounded-[4px] bg-[#2a2926] outline-offset-2 lg:aspect-auto lg:h-[293px] dt:h-[296px]">
           <Img image={LIVE_STREAM} alt="" sizes="(min-width: 1024px) 1200px, 100vw" className="absolute inset-y-0 right-0 h-full w-[170%] max-w-none object-cover transition-transform duration-500 group-hover:scale-[1.02]" style={{ objectPosition: "100% 38%" }} />
           <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/75 via-black/20 to-black/10" />
           <span className="absolute start-5 top-4 inline-flex h-9 items-center gap-2 rounded-[4px] bg-[var(--pr-live)] px-3 pr-md font-bold uppercase tracking-[0.02em] text-white dt:start-[37px] dt:top-[15px]">
@@ -319,9 +319,9 @@ export function BulkRows() {
   const { t, ui } = useLang();
   const titleId = useId();
   return (
-    <section data-ref="09" aria-labelledby={titleId} className="pr-container pb-5 pt-3 dt:pb-[21px] dt:pt-[13px]">
+    <section data-ref="09" aria-labelledby={titleId} className="pr-container pb-5 pt-3 dt:pb-[21px] dt:pt-[9px]">
       <SectionHead id={titleId} title={t(COPY.bulkTitle)} sub={t(COPY.bulkSub)} href="/browse?category=bulk-pallets" linkLabel={ui("viewAll")} />
-      <ul className="mt-4 grid gap-3 dt:mt-[18px]">
+      <ul className="mt-4 grid gap-3 dt:mt-3">
         {PALLETS.map((product) => (
           <li key={product.slug}>
             <PalletRow product={product} />
@@ -338,7 +338,7 @@ export function Sellers() {
   const { link } = useConcept();
   const titleId = useId();
   return (
-    <section data-ref="10" aria-labelledby={titleId} className="pr-container pb-10 pt-2 dt:pb-[39px] dt:pt-5">
+    <section data-ref="10" aria-labelledby={titleId} className="pr-container pb-10 pt-2 dt:pb-9 dt:pt-3">
       <SectionHead id={titleId} title={t(COPY.sellersTitle)} sub={t(COPY.sellersSub)} href="/seller" linkLabel={t(COPY.viewAllSellers)} />
       <ul className="pr-rail -mx-[var(--pr-gutter)] mt-4 flex snap-x gap-3 overflow-x-auto px-[var(--pr-gutter)] md:grid md:grid-cols-3 md:overflow-visible dt:mx-0 dt:mt-[18px] dt:grid-cols-5 dt:px-0">
         {SELLER_CARDS.map(({ code, seller, cover, focus, plate }) => (
@@ -401,7 +401,7 @@ function GradeGuide() {
             <span aria-hidden="true" className="pr-dash" />
             <h2 className="pr-h2 !text-[26px] !leading-8 text-fg">{t(COPY.gradesTitle)}</h2>
           </div>
-          <p className="mt-1 ps-11 pr-sm text-fg-2">{t(COPY.gradesSub)}</p>
+          <p className="mt-1 ps-11 pr-sm text-fg-2 dt:mt-0">{t(COPY.gradesSub)}</p>
         </div>
         <button type="button" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-controls={panelId} className="pr-link mt-1.5 inline-flex shrink-0 items-center gap-1.5 pr-md font-medium text-[var(--pr-bronze)]">
           {t(COPY.gradeGuide)}
@@ -416,7 +416,7 @@ function GradeGuide() {
           </li>
         ))}
       </ul>
-      <dl className="mt-3 space-y-[7px]">
+      <dl className="mt-3 space-y-[7px] dt:mt-[9px] dt:space-y-1.5">
         {described.map((grade) => (
           <div key={grade} className="flex items-center gap-3">
             <dt className={cx("grid h-[22px] min-w-[38px] place-items-center rounded-full px-2 pr-label", grade === "new" ? "text-fg" : gradeTone(grade))}>
@@ -472,7 +472,7 @@ function HowItWorks() {
 
 export function GuidanceSplit() {
   return (
-    <section data-ref="12" className="pr-container grid gap-10 py-8 lg:grid-cols-[minmax(0,665fr)_minmax(0,634fr)] lg:gap-0 dt:pb-[42px] dt:pt-[30px]">
+    <section data-ref="12" className="pr-container grid gap-10 py-8 lg:grid-cols-[minmax(0,665fr)_minmax(0,634fr)] lg:gap-0 dt:pb-[37px] dt:pt-[23px]">
       <div className="lg:pe-9">
         <GradeGuide />
       </div>

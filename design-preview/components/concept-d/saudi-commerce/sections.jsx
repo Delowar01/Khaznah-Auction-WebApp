@@ -372,7 +372,7 @@ export function HowItWorks() {
           const Icon = STEP_ICONS[i];
           return (
             <li key={step.title.en} className={cx("flex items-start gap-5 dt:gap-0 dt:pe-4", i === 0 ? "dt:ps-[5px]" : "dt:border-s dt:border-[var(--sc-line)] dt:ps-[25px]")}>
-              <span aria-hidden="true" className="sc-step w-[62px] shrink-0 text-[var(--sc-sage)] md:w-[78px] dt:w-[71px]">
+              <span aria-hidden="true" className="sc-step w-[62px] shrink-0 text-[var(--sc-step)] md:w-[78px] dt:w-[71px]">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <Icon aria-hidden="true" className="mt-1 size-10 shrink-0 text-[var(--sc-green)] dt:ms-[30px] dt:mt-[8px] dt:size-[50px]" strokeWidth={1.4} />

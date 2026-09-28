@@ -26,9 +26,11 @@ The options are not ranked, and none is recommended over the others.
 
 > **This round:** Options 2–4 now show the approved work designs, on the
 > **home page only** so far. Their other screens (Browse, product, auction,
-> live, seller, components) still show the previous round's design until the
-> next stage. The approved designs are light only, so the appearance button
-> does not change these three home pages.
+> live, seller, components) are **earlier prototypes** from the previous round
+> and have not been redesigned yet; each of them carries an "Earlier
+> prototype" note at the top, and the start page marks Home as the new
+> design. The approved designs are light only: on these three home pages the
+> bar shows **Light only** (a sun) instead of the sun / moon button.
 
 ## Using the preview
 
@@ -41,7 +43,8 @@ The options are not ranked, and none is recommended over the others.
     and Components & states);
   - switch to another option;
   - change the language (**EN / العربية**);
-  - change the appearance (sun / moon button);
+  - change the appearance (sun / moon button — Option 1 and the earlier
+    prototype screens; the new home pages of Options 2–4 are light only);
   - open a tablet or mobile frame;
   - return to the start page (**Concepts**).
 - **Switching options** loads the page afresh, so every option always

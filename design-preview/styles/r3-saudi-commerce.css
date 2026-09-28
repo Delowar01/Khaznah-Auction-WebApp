@@ -9,8 +9,8 @@
  * a centred bilingual hero with a segmented search, and a green combined
  * newsletter/footer band above a white brand base. Inter sets Latin, IBM
  * Plex Sans Arabic sets Arabic. Light only; handoff colours are approximate
- * and muted text, timers, the LIVE badge and the pink grade letters are
- * nudged darker within their hue for WCAG AA.
+ * and muted text, timers, the LIVE badge, the pink grade letters and the
+ * large step numerals are nudged darker within their hue for WCAG AA.
  */
 
 :root[data-concept="d"][data-r3],
@@ -79,6 +79,9 @@
   --sc-deep: #143c2e;
   --sc-sage: #b6cdc0;
   --sc-sage-hover: #a5c0b1;
+  /* 01/02/03 step numerals: the design's sage, darkened within its hue just
+     enough for 3:1 large-text contrast on white (#B6CDC0 is 1.7:1). */
+  --sc-step: #719d84;
   --sc-soft: #edf4f0;
   --sc-cream: #ede3d5;
   --sc-utility: #ecebe2;

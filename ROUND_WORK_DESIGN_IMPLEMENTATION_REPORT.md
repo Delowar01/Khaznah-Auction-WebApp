@@ -4,8 +4,11 @@ Implementation report for the approved ChatGPT work designs from
 `KHAZNAH_HOMEPAGE_DEVELOPER_HANDOFF.zip`, built inside the isolated
 `design-preview/` app. **Option 1 (Modern Commerce) is unchanged.** Nothing in
 the production frontend, backend, APIs, admin, seller dashboard or warehouse
-site was touched, and nothing was deployed; every check below ran on a local
-production build (`next build` + `next start`).
+site was touched. Every check below ran on a local production build
+(`next build` + `next start`). **Deployment:** this branch is connected to a
+Vercel project that deploys every push automatically, so each pushed commit
+(including `a2a83f1`) has been published there — see §16. No deployment was
+made by hand and no domain setting was changed.
 
 | | |
 |---|---|
@@ -18,6 +21,26 @@ This is a faithful implementation, **not a pixel-perfect one**. Section
 geometry at 1440 px matches the references closely (see §4), but some
 photography does not exist in the asset library and was substituted (see §5),
 and real catalogue data replaces some raster text.
+
+---
+
+## 0. Visual correction gate (update on top of `a2a83f1`)
+
+The review of `a2a83f1` approved the structure with conditions; final visual
+approval is not yet granted. This update makes only the corrections that were
+asked for. Nothing was redesigned, no functionality was added, and Option 1 is
+unchanged (§14).
+
+| Correction | What changed |
+|---|---|
+| Missing assets | New `WORK_DESIGN_MISSING_ASSETS.md` (repository root). It holds production briefs for 7 priority-1 assets: the tan recliner photograph and cut-out, the Option 2 hero and its Arabic companion, the Option 3 furniture scene, and the Option 4 limestone hero and its phone companion. It also covers 18 priority-2 assets — two pallets on timber bases, drill and tyre cut-outs, the Option 3 lifestyle and product photographs, the warehouse live stills and the seller photographs — and 3 optional ones. Each brief has the nine requested fields and a prompt ready for ChatGPT Work. No stand-in was replaced and no reference crop was used. |
+| Option 4 step numerals | 01 / 02 / 03 now use `--sc-step: #719D84`. This is the design's sage darkened within its own hue (146°, same saturation) from #B6CDC0 (1.68:1 on white) to 3.06:1, which meets the 3:1 rule for large text. Size, weight and placement are unchanged. |
+| Option 2 vertical spacing | Changes apply at desktop widths (≥ 1200 px) only. Header rows go from 86 to 85 px and from 58 to 57 px. Section paddings of Recommended, Live auction, Bulk & Pallets, Featured sellers and the grades / How it works split are tightened toward the reference, and the grade list and footer rows follow the reference rhythm. The live preview is 3 px taller to match. No content is hidden, no font size changed and nothing is truncated. Page height at 1440 px is now **3780 px against 3789 px** in the reference (was 3861, +72). |
+| Light-only home pages | On the new home pages of Options 2–4, the presentation bar replaces the sun / moon button with a static **Light only** indicator. It shows a sun, the words where the bar has room, and a tooltip and screen-reader text ("this home page design has no dark version"). Nothing suggests a dark theme there any more. Option 1's controls, and the toggle on the earlier-prototype screens, are unchanged. |
+| Earlier-prototype screens | Every Browse, Product, Auction, Live auction, Seller and Components screen of Options 2–4 opens under a slim **Earlier prototype** note in English and Arabic. The note stays visible with the bar hidden and inside the device preview. The bar's page list separates Home (new design) from the earlier prototypes: on desktop with a divider, tooltips and screen-reader text, and in the tablet and phone page menu with "New design" and "Earlier prototypes" groups. On the start page, each Option 2–4 card marks Home as **New design** and adds a one-line note. The notice and the facts now say that Options 2–4 have new home pages only, and the how-to steps mention the labels. The client guide and README are updated. |
+| Deployment statement | The header and §16 are corrected: pushes of this branch are published automatically by the connected Vercel project. |
+
+Files changed in this update: `components/concept-a/premium-modern/{Header,sections,Footer}.jsx`, `components/concept-d/saudi-commerce/sections.jsx`, `styles/r3-saudi-commerce.css`, `components/shared/presentation/{PresentationBar,ConceptSelector,PrototypeNotice}.jsx` and `selector-copy.js`, `app/[lang]/concept-{a,c,d}/(round2)/layout.js`, the Option 2 desktop thumbnails (`public/images/concepts/a-{en,ar}-desktop-{960,1440}.webp`, recaptured because the header is 2 px shorter), README, `CLIENT_PREVIEW_GUIDE.md`, this report, `WORK_DESIGN_MISSING_ASSETS.md` and `docs/work-design-review/` (recaptured).
 
 ---
 
@@ -57,13 +80,13 @@ Not invented: no discounts, crossed-out prices, ratings, “verified” badges, 
 
 Full-page screenshots were compared with each reference scaled to 1440 px wide, section by section: the rectangles in `DESIGN_MEASUREMENTS.json` against the matching `data-ref` sections of the page. Δy = implementation top − reference top.
 
-**Option 2** — page 3861 px vs 3789 px (+72).
+**Option 2** — page 3780 px vs 3789 px (−9; before the correction gate 3861 px, +72).
 | Section | Δy | Δh |
 |---|---|---|
-| 01 masthead / 02 search row / 03 hero / 04 categories | 0 / +1 / +3 / +2 | +1 / +1 / 0 / +1 |
-| 05 Buy Now / 06 Ending soon / 07 Recommended | +4 / +4 / +4 | 0 / 0 / 0 |
-| 08 Live / 09 Pallets / 10 Sellers | +4 / +19 / +29 | +14 / +11 / +10 |
-| 11 Trust / 12 Grades + How / 14 Newsletter / 15 Footer | +39 / +39 / +58 / +57 | 0 / +19 / −1 / +15 |
+| 01 masthead / 02 search row / 03 hero / 04 categories | 0 / 0 / +1 / 0 | 0 / 0 / 0 / +1 |
+| 05 Buy Now / 06 Ending soon / 07 Recommended | +2 / +2 / +2 | 0 / 0 / −2 |
+| 08 Live / 09 Pallets / 10 Sellers | 0 / −1 / −1 | −2 / +1 / −1 |
+| 11 Trust / 12 Grades + How / 14 Newsletter / 15 Footer | −2 / −2 / −5 / −6 | 0 / −3 / −1 / −3 |
 
 **Option 3** — page 3843 px vs 3836 px (+7).
 | Section | Δy | Δh |
@@ -87,7 +110,7 @@ Side-by-side images (reference | implementation) and the three full-page screens
 
 ## 5. Asset audit
 
-EXACT = the same item exists · SUITABLE = close existing asset · MISSING = not in the library (stand-in used, reported here, no parity claimed). No screenshot of a reference was used as a background.
+EXACT = the same item exists · SUITABLE = close existing asset · MISSING = not in the library (stand-in used, reported here, no parity claimed). No screenshot of a reference was used as a background. Production briefs for every MISSING and SUITABLE photograph below are in `WORK_DESIGN_MISSING_ASSETS.md` (correction gate).
 
 | Where | Needed | Used | Status |
 |---|---|---|---|
@@ -131,7 +154,7 @@ Automated matrix on the production build (`scripts/verify.mjs --pages home`, all
 | Console errors | 0 |
 | Failed requests / broken images | 0 / 0 |
 | Horizontal overflow | 0 on Options 2, 3 and 4. One on **Option 1** (EN, 320 px, 12 px) — identical at the starting checkpoint `0166ba8`, so it is pre-existing and was left alone because Option 1 must not change. |
-| axe serious / critical | Only `color-contrast` on Option 4’s three decorative step numerals (01 / 02 / 03, pale sage #B6CDC0 ≈ 1.7:1, `aria-hidden`; each step is also announced as “Step n” in its heading). Flagged on 7 of Option 4’s 10 loads. Kept to match the approved design; #789A87 would pass (3.1:1) if you prefer accessibility over the exact pale tone. |
+| axe serious / critical | **0** after the correction gate. (At `a2a83f1`, `color-contrast` flagged Option 4’s pale step numerals on 7 of its 10 loads; they now use #719D84, 3.06:1 — see §0.) |
 
 Visual passes: every option was screenshotted and reviewed at all five widths in both languages during the build (the phone and tablet layouts follow each option’s handoff recommendations).
 
@@ -158,26 +181,34 @@ Scripted on the production build for Options 2, 3 and 4 × EN / AR × desktop (1
 
 ## 10. Presentation selector and toolbar
 
+Correction gate: the bar shows a static “Light only” indicator on the new home pages, separates Home (new design) from the earlier-prototype screens, and the selector cards, notice and facts say that Options 2–4 have new home pages only (§0). Before that:
+
 `data/concepts.js`: Options 2–4 renamed to **Premium Modern Marketplace**, **Visual Discovery Marketplace** and **Contemporary Saudi Commerce** (EN / AR), with new one-liners, design ideas, key characteristics and palettes. Option 1’s entry is byte-for-byte unchanged. The toolbar and page titles read the same data. Thumbnails for slots a, c and d (desktop 1440 / 960, mobile 780 / 390, EN / AR) were recaptured from the implemented pages on the production build with `scripts/capture-concepts.mjs`; Option 1’s thumbnails were not touched. Switching options is still a full page load (see §12).
 
 ## 11. Light only
 
-The approved designs are light only, so these three home pages keep their light tokens when the appearance toggle is used (Option 1 and all Round 2 inner screens still switch). README and the client guide say so.
+The approved designs are light only, so these three home pages keep their light tokens whatever appearance is stored. Since the correction gate the presentation bar no longer offers the sun / moon button on them: it shows a static **Light only** indicator instead (§0). Option 1 and all Round 2 inner screens keep the working toggle. README and the client guide say so.
 
 ## 12. QA summary
+
+Re-run in full on the final production build of the correction gate:
 
 | Check | Result |
 |---|---|
 | `npm run lint` | pass (0 problems) |
 | `npm run build` | pass (all routes prerendered) |
-| Home matrix: 4 options × EN / AR × 1440 / 1024 / 768 / 390 / 320 | 40 loads: 0 console errors, 0 failed requests, 0 broken images; overflow and axe findings as in §7 |
+| Home matrix: 4 options × EN / AR × 1440 / 1024 / 768 / 390 / 320 (bar visible) | 40 loads: 0 console errors, 0 failed requests, 0 broken images, **0 axe serious / critical**; overflow only on Option 1 EN 320 px (pre-existing, §7) |
+| Earlier-prototype screens of Options 2–4 (Browse, Product, Auction, Live auction, Seller, Components) × EN / AR × 1440 / 768 / 390 / 320, with the new note | 144 loads: 0 axe serious / critical, 0 console errors, 0 failed requests, 0 broken images. 9 horizontal overflows at 320 px on Live auction / Components screens are identical at `a2a83f1` (pre-existing Round 2 behaviour, left as is) |
+| Extra axe pass: selector EN / AR at 1440 and 390, device preview of a prototype screen (EN / AR), light-only homes with the bar | 9 pages, 0 serious / critical |
 | Homepage interactions (Options 2–4) | 202 checks, 0 failing (§9) |
 | Option switching (full page load, same stylesheets, same computed styles and pixels as a fresh load; 9 pairs × EN / AR × desktop / phone) | 36 transitions, 0 failing — no style leakage between options |
-| Other routes between options, language switch, theme toggle, hide / show controls, device preview | 36 checks, 0 failing |
+| Other routes between options, language switch, theme toggle (Option 1 and prototype screens), **Light only indicator and no toggle on the three new home pages**, hide / show controls, device preview | 46 checks, 0 failing |
 | Selector (names and one-liners match the data, every preview image loads and is the current file) | 24 checks, 0 failing |
 | Option 1 regression gate | see §14 |
 
 ## 13. Screenshots
+
+Recaptured on the correction-gate build:
 
 - `docs/work-design-review/option-2-implemented-1440.png`
 - `docs/work-design-review/option-3-implemented-1440.png`
@@ -186,7 +217,12 @@ The approved designs are light only, so these three home pages keep their light 
 
 ## 14. Option 1 regression gate
 
-**Passed.**
+**Correction gate — passed, against `a2a83f1`.** `git diff a2a83f1` is empty for `components/concept-b/`, the Option 1 routes and styles, `data/`, `lib/`, the shared UI and providers, `globals.css`, the root layout and Option 1’s thumbnails. The shared presentation components did change, so their Option 1 output was compared with a separate build of `a2a83f1`:
+- 70 full-page Option 1 screenshots (7 routes × EN / AR × 1440 / 1024 / 768 / 390 / 320, frozen clock, seeded random numbers, photographs masked): **70 identical, 0 differing pixels**. No console errors.
+- The presentation bar on every Option 1 route (7 routes × EN / AR × 1440 / 1280 / 1024 / 768 / 390 / 320, bar visible): **84 of 84 identical** in markup and pixels, including the working sun / moon button.
+- The Option 1 card on the selector: identical markup in EN and AR.
+
+**Original implementation — passed, against `0166ba8`.**
 - Code: `git diff 0166ba8` is empty for `components/concept-b/`, the shared UI, providers and presentation components, `lib/`, and the product / UI data. Option 1’s selector entry and its thumbnails are byte-for-byte unchanged. Shared changes are additive only: two new breakpoints (`dt` 1200 px, `wd` 1440 px — no `container` class is used anywhere, so no existing utility changes), three new font variables (preload off), and the Options 2–4 entries in `data/concepts.js`.
 - Pixels: the starting checkpoint was built separately (git worktree at `0166ba8`) and served next to the final build. 7 Option 1 routes (Home, Browse, Product, Auction, Live auction, Seller, Components) × EN / AR × 1440 / 1024 / 768 / 390 / 320 = 70 full-page screenshots per build, with a frozen clock, seeded random numbers and photographs masked (their boxes are still compared). Result: 60 identical; 10 differ by 5–13 pixels, all at 390 px, in two spots — the top edge of the sticky phone search bar and a 1–2 px line on the live-auction page. Comparing the checkpoint with itself the same way gives the same kind of 5–13 pixel differences in the same two spots (5 of 70), so this is capture noise, not a change. No Option 1 console errors.
 
@@ -195,7 +231,7 @@ The approved designs are light only, so these three home pages keep their light 
 **Option 2**
 - Hero photograph: catalogue room shot of an olive recliner instead of the panoramic room with a tan recliner, desk and lamp; the crop is tighter and warmer-grey.
 - Recliner colour everywhere (olive, not tan); pallets without timber bases; drill → tool backpack and tyre → tyre inflator in the category row; fridge is black, TV screen is the catalogue’s blue wave.
-- Lower half runs 40–70 px longer than the reference (seller names and grade definitions wrap in Inter; the grade definitions use the shared production wording).
+- Vertical rhythm now matches the reference to within a few pixels (page 3780 vs 3789 px; every section within −6 / +2 px). Seller names and grade definitions still wrap slightly differently in Inter, and the grade definitions use the shared production wording.
 - Seller covers are substitutes; the kitchen pallet shows its real seller (Sahel Lifestyle).
 
 **Option 3**
@@ -209,14 +245,18 @@ The approved designs are light only, so these three home pages keep their light 
 - Live scene: brand warehouse aisle (with the Riyadh skyline through the door and a forklift) and the olive recliner, instead of a tan recliner in a shelving aisle.
 - Seller rows show each seller’s own products, so some thumbnails differ from the picture (e.g. Khazna Direct shows the Dutch oven, not the microwave, which belongs to Red Sea Trading).
 - Grade strip colours follow the picture (B blue, C amber), which differs from the card pills (B amber, C pink) — the reference itself uses both.
+- The 01 / 02 / 03 step numerals are a darker sage (#719D84) than the picture’s pale #B6CDC0, so that they meet the large-text contrast rule (correction gate).
 
 **All three**
 - Titles are longer than the raster where the catalogue title is longer; prices use the Riyal sign; timers show live values.
+- Only the home pages use the new designs. The other screens are the Round 2 prototypes, now labelled “Earlier prototype” in the preview (§0).
 
-## 16. Production untouched
+## 16. Production untouched — and what is published
 
-Only files under `design-preview/`, the preview’s docs, this report and `docs/work-design-review/` changed. No production frontend, backend, API, admin, seller-dashboard or warehouse code was modified; nothing was deployed and the production Khazna domain was not used.
+Only files under `design-preview/`, the preview’s docs, this report, `WORK_DESIGN_MISSING_ASSETS.md` and `docs/work-design-review/` changed. No production frontend, backend, API, admin, seller-dashboard or warehouse code was modified.
+
+**Correction to the earlier statement “nothing was deployed”.** The repository has no Vercel configuration file, but this branch is connected to the Vercel project `khaznah-auction-web-app` (team `mohammad-hossains-projects`). That project builds and publishes pushed commits automatically. GitHub holds 13 Vercel deployment records for commits of this branch, from the initial commit `6374466` (25 Sep 2026, the only failed one) to `a2a83f1` (28 Sep 2026, 02:35 UTC, successful). All of them are under that project’s “Production” environment, on `*.vercel.app` addresses. The commit that adds this section will be published the same way when it is pushed. No deployment was made by hand, no Vercel or domain setting was changed, and the real Khaznah production domain was not connected or used.
 
 ## 17. Next step
 
-Homepage visual review → corrections if needed → approval → inner-page implementation.
+Missing-asset production (`WORK_DESIGN_MISSING_ASSETS.md`) → asset integration on the three home pages → final homepage visual approval → inner-page implementation.

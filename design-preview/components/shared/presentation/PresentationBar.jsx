@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ChevronDown, ChevronsUp, Monitor, Moon, SlidersHorizontal, Smartphone, Sun, Tablet } from "lucide-react";
 import { CONCEPTS } from "@/data/concepts";
 import { PAGES, pageKeyOf, parsePath, withConcept, withLang } from "@/lib/routes";
@@ -18,6 +18,11 @@ const LABELS = {
   tablet: { en: "Tablet", ar: "جهاز لوحي" },
   mobile: { en: "Mobile", ar: "جوال" },
   theme: { en: "Toggle light or dark appearance", ar: "تبديل المظهر الفاتح أو الداكن" },
+  lightOnly: { en: "Light only", ar: "فاتح فقط" },
+  lightOnlyHint: { en: "Light only: this home page design has no dark version", ar: "المظهر الفاتح فقط: لا توجد نسخة داكنة من تصميم هذه الصفحة الرئيسية" },
+  newDesign: { en: "New design", ar: "التصميم الجديد" },
+  prototypes: { en: "Earlier prototypes", ar: "نماذج أولية سابقة" },
+  prototype: { en: "earlier prototype", ar: "نموذج أولي سابق" },
   hide: { en: "Hide presentation controls", ar: "إخفاء أدوات العرض" },
   hideShort: { en: "Hide controls", ar: "إخفاء الأدوات" },
   hideHint: { en: "Bring them back with the side tab or the . key", ar: "أعدها عبر اللسان الجانبي أو بمفتاح النقطة" },
@@ -65,6 +70,11 @@ export function PresentationBar({ concept }) {
   const { lang, rest } = parsePath(pathname);
   const active = pageKeyOf(rest);
   const current = CONCEPTS.find((c) => c.id === concept);
+  // Options 2–4 have their new approved design on the home page only: those
+  // home pages are light only, and their other screens are earlier
+  // prototypes. Option 1's controls are unchanged.
+  const split = concept !== "b";
+  const lightOnly = split && active === "home";
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   useDismiss(menuOpen, () => setMenuOpen(false), menuRef);
@@ -178,15 +188,20 @@ export function PresentationBar({ concept }) {
         <nav aria-label={L("pages")} className="mx-auto hidden items-center gap-0.5 xl:flex">
           {PAGES.map((page) => {
             const isActive = page.key === active;
+            const status = split ? L(page.key === "home" ? "newDesign" : "prototype") : null;
             return (
-              <Link
-                key={page.key}
-                href={`/${lang}/concept-${concept}${page.path}`}
-                aria-current={isActive ? "page" : undefined}
-                className={`whitespace-nowrap rounded-md px-2.5 py-1.5 font-medium transition-colors ${isActive ? "bg-white text-[#0b0d12]" : "text-[var(--pbar-muted)] hover:bg-white/10 hover:text-white"}`}
-              >
-                {tr(page.label, lang)}
-              </Link>
+              <Fragment key={page.key}>
+                <Link
+                  href={`/${lang}/concept-${concept}${page.path}`}
+                  aria-current={isActive ? "page" : undefined}
+                  title={status ? `${tr(page.label, lang)} — ${status}` : undefined}
+                  className={`whitespace-nowrap rounded-md px-2.5 py-1.5 font-medium transition-colors ${isActive ? "bg-white text-[#0b0d12]" : "text-[var(--pbar-muted)] hover:bg-white/10 hover:text-white"}`}
+                >
+                  {tr(page.label, lang)}
+                  {status ? <span className="sr-only"> ({status})</span> : null}
+                </Link>
+                {split && page.key === "home" ? <span aria-hidden="true" className="mx-1 h-4 w-px shrink-0 bg-white/20" /> : null}
+              </Fragment>
             );
           })}
         </nav>
@@ -201,11 +216,30 @@ export function PresentationBar({ concept }) {
             }}
             className="h-8 w-full min-w-0 max-w-[15rem] appearance-none truncate rounded-md border border-white/12 bg-white/5 pe-7 ps-2.5 font-medium text-white outline-none focus-visible:ring-2 focus-visible:ring-[#D8A535]"
           >
-            {PAGES.map((page) => (
-              <option key={page.key} value={page.key} className="bg-[#12151d]">
-                {tr(page.label, lang)}
-              </option>
-            ))}
+            {split ? (
+              <>
+                <optgroup label={L("newDesign")} className="bg-[#12151d]">
+                  {PAGES.filter((page) => page.key === "home").map((page) => (
+                    <option key={page.key} value={page.key} className="bg-[#12151d]">
+                      {tr(page.label, lang)}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label={L("prototypes")} className="bg-[#12151d]">
+                  {PAGES.filter((page) => page.key !== "home").map((page) => (
+                    <option key={page.key} value={page.key} className="bg-[#12151d]">
+                      {tr(page.label, lang)}
+                    </option>
+                  ))}
+                </optgroup>
+              </>
+            ) : (
+              PAGES.map((page) => (
+                <option key={page.key} value={page.key} className="bg-[#12151d]">
+                  {tr(page.label, lang)}
+                </option>
+              ))
+            )}
           </select>
           <ChevronDown aria-hidden="true" className="pointer-events-none absolute end-2 size-3.5 opacity-70" />
         </label>
@@ -245,16 +279,28 @@ export function PresentationBar({ concept }) {
           </Link>
         </div>
 
-        <button
-          type="button"
-          onClick={() => toggleTheme(concept)}
-          aria-label={L("theme")}
-          title={L("theme")}
-          className="grid size-8 shrink-0 place-items-center rounded-md text-[var(--pbar-muted)] hover:bg-white/10 hover:text-white"
-        >
-          <Sun aria-hidden="true" className="kz-theme-sun size-4" />
-          <Moon aria-hidden="true" className="kz-theme-moon size-4" />
-        </button>
+        {lightOnly ? (
+          // Not a control: these home pages have no dark version, so there is
+          // nothing to toggle. The label shows wherever the bar has room.
+          <span title={L("lightOnlyHint")} className="kz-light-only flex h-8 min-w-8 shrink-0 cursor-default items-center justify-center gap-1.5 rounded-full bg-white/[0.07] px-2 text-[var(--pbar-muted)]">
+            <Sun aria-hidden="true" className="size-4 shrink-0" />
+            <span aria-hidden="true" className="hidden whitespace-nowrap text-xs font-semibold lg:inline xl:max-[1360px]:hidden">
+              {L("lightOnly")}
+            </span>
+            <span className="sr-only">{L("lightOnlyHint")}</span>
+          </span>
+        ) : (
+          <button
+            type="button"
+            onClick={() => toggleTheme(concept)}
+            aria-label={L("theme")}
+            title={L("theme")}
+            className="grid size-8 shrink-0 place-items-center rounded-md text-[var(--pbar-muted)] hover:bg-white/10 hover:text-white"
+          >
+            <Sun aria-hidden="true" className="kz-theme-sun size-4" />
+            <Moon aria-hidden="true" className="kz-theme-moon size-4" />
+          </button>
+        )}
 
         <button
           type="button"

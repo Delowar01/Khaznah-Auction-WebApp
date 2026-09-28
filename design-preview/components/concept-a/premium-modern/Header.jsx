@@ -370,7 +370,7 @@ export function Header() {
     <header className="bg-bg">
       {/* Row 1: shopping modes · centred logo · wishlist, account, cart */}
       <div data-ref="01" className="border-b border-line">
-        <div className="pr-container grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-3 md:h-[76px] dt:h-[86px]">
+        <div className="pr-container grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-3 md:h-[76px] dt:h-[85px]">
           <div className="flex items-center justify-self-start">
             <button type="button" onClick={() => open("menu")} aria-label={t(COPY.openMenu)} className="-ms-2 grid size-11 place-items-center rounded-[4px] text-fg dt:hidden">
               <Menu aria-hidden="true" className="size-6" strokeWidth={1.7} />
@@ -428,7 +428,7 @@ export function Header() {
 
       {/* Row 2: all categories · broad search · city · language */}
       <div data-ref="02" className="border-b border-line">
-        <div className="pr-container grid h-[60px] grid-cols-[auto_minmax(0,1fr)] items-center gap-2 dt:h-[58px] dt:grid-cols-[242px_minmax(0,1fr)_248px] dt:gap-0">
+        <div className="pr-container grid h-[60px] grid-cols-[auto_minmax(0,1fr)] items-center gap-2 dt:h-[57px] dt:grid-cols-[242px_minmax(0,1fr)_248px] dt:gap-0">
           <div className="hidden dt:block">
             <CategoryMenu />
           </div>

@@ -97,15 +97,15 @@ export function Footer() {
             <Link href={link("/")} className="inline-block rounded-[4px] outline-offset-4">
               <Logo variant="lockup" title={t(COPY.home)} className="h-[52px] w-auto dt:h-[64px]" />
             </Link>
-            <p className="mt-3 pr-sm text-fg-2">{t(COPY.footerTag)}</p>
+            <p className="mt-3 pr-sm text-fg-2 dt:mt-1.5">{t(COPY.footerTag)}</p>
           </div>
           <nav aria-label={t(COPY.footerNav)} className="grid grid-cols-2 gap-x-6 gap-y-7 dt:contents">
             {columns.map((column) => (
-              <div key={column.title.en} className="dt:pt-[3px]">
+              <div key={column.title.en}>
                 <h2 className="pr-md font-medium text-fg">{t(column.title)}</h2>
                 <ul className="mt-2.5 space-y-[9px]">
                   {column.links.map((item) => (
-                    <li key={item.label}>
+                    <li key={item.label} className="dt:leading-[18px]">
                       <SiteLink href={item.href} label={item.label} className="pr-link pr-sm text-fg-2 hover:text-fg">
                         {item.label}
                       </SiteLink>
@@ -116,7 +116,7 @@ export function Footer() {
             ))}
           </nav>
         </div>
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-line py-6 dt:mt-[36px] dt:h-[86px] dt:py-0">
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-line py-6 dt:mt-[36px] dt:h-[86px] dt:items-start dt:py-0 dt:pt-[23px]">
           <p className="pr-xs text-fg-2">{t(COPY.copyright)}</p>
           <PremiumLanguage />
         </div>
