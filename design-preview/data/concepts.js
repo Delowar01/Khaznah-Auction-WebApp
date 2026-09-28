@@ -1,13 +1,12 @@
-// The four design directions presented to the client (Round 3B).
+// The four design directions presented to the client.
 //
 // Option 1 (Modern Commerce) is the direction the client kept from the first
-// round and is unchanged. Options 2–4 are the structurally different
-// directions: after the Round 3A review, Option 2 kept its visual concept
-// with Option 1's full section coverage, Option 3 became Premium Marketplace
-// and Option 4 became Discovery Commerce. Only their home pages use the new
-// structures; their other screens are still the Round 2 versions. The `id`
-// is the internal route slot; `letter` is the client-facing option number.
-// Order here is the order shown in the selector.
+// round and is unchanged. Options 2–4 are the approved ChatGPT work designs
+// (Premium Modern Marketplace, Visual Discovery Marketplace, Contemporary
+// Saudi Commerce), implemented from the homepage handoff. Only their home
+// pages use the approved designs; their other screens are still the Round 2
+// versions. The `id` is the internal route slot; `letter` is the
+// client-facing option number. Order here is the order shown in the selector.
 
 export const CONCEPTS = [
   {
@@ -34,64 +33,64 @@ export const CONCEPTS = [
   {
     id: "a",
     letter: "2",
-    name: { en: "Visual Marketplace", ar: "السوق المرئي" },
+    name: { en: "Premium Modern Marketplace", ar: "السوق العصري الراقي" },
     oneLiner: {
-      en: "Image-led discovery — the marketplace browsed like a well-merchandised store.",
-      ar: "اكتشاف تقوده الصور — تصفّح السوق كما تتصفّح متجراً حسن العرض.",
+      en: "A calm, premium storefront in warm ivory, charcoal and restrained brass.",
+      ar: "واجهة متجر هادئة وراقية بألوان العاجي والفحمي ولمسات نحاسية هادئة.",
     },
     philosophy: {
-      en: "Product imagery leads. One bar with a centred logo; search sits in a centred discovery hero framed by product cut-outs, with four featured tiles over its edge. Every business section of Option 1 is here, told visually: a category photo mosaic, an immersive live-auction block, a wide closing-soon rail, a Buy Now deals mosaic, large seller photographs, mirrored bulk and pallet rows, and the trust points on photography. (Round 3B: home page only.)",
-      ar: "الصور في المقدمة. شريط واحد بشعار في المنتصف، والبحث داخل واجهة اكتشاف مركزية تحيط بها صور المنتجات، وأربع بطاقات مميزة على حافتها. كل أقسام الخيار 1 موجودة هنا بأسلوب مرئي: فسيفساء صور للفئات، وكتلة غامرة للمزاد المباشر، وشريط عريض لما يُغلق قريباً، وفسيفساء لعروض الشراء الفوري، وصور كبيرة للبائعين، وصفوف متقابلة للجملة والطبليات، ونقاط الثقة على الصور. (الجولة 3ب: الصفحة الرئيسية فقط.)",
+      en: "A centred-logo masthead over a broad search row, then a panoramic room hero with an inset copy card and a pinned live lot. Eight photographic category cut-outs, four Buy Now cards with full-width charcoal buttons, an Ending soon stone band, two recommendation panels, a split live auction, pallet rows, five seller cards, a trust strip, grades beside How Khaznah works, a charcoal newsletter and a light footer. (Home page only.)",
+      ar: "شريط علوي بشعار في المنتصف فوق صف بحث عريض، ثم واجهة غرفة بانورامية مع بطاقة نص داخلية ومنتج مزاد مباشر مثبّت. ثماني صور فئات مقصوصة، وأربع بطاقات للشراء الفوري بأزرار فحمية بعرض كامل، وشريط حجري لما ينتهي قريباً، ولوحتا توصيات، ومزاد مباشر منقسم، وصفوف للطبليات، وخمس بطاقات بائعين، وشريط ثقة، ودرجات الحالة بجانب «كيف تعمل خزنة»، ونشرة بريدية فحمية وتذييل فاتح. (الصفحة الرئيسية فقط.)",
     },
     traits: [
-      { en: "One-bar header with a centred logo", ar: "شريط علوي واحد بشعار في المنتصف" },
-      { en: "Search inside a centred, image-framed hero", ar: "البحث داخل واجهة مركزية تحيط بها الصور" },
-      { en: "Option 1's sections, told with large photography", ar: "أقسام الخيار 1 معروضة بصور كبيرة" },
-      { en: "Floating live mini-player; no bottom tab bar on phones", ar: "مشغّل مباشر عائم؛ دون شريط تبويب سفلي على الجوال" },
+      { en: "Centred logo with a separate search row", ar: "شعار في المنتصف مع صف بحث مستقل" },
+      { en: "Panoramic room hero with a pinned live lot", ar: "واجهة غرفة بانورامية مع منتج مزاد مباشر مثبّت" },
+      { en: "Charcoal buttons with restrained brass accents", ar: "أزرار فحمية مع لمسات نحاسية هادئة" },
+      { en: "Grades and How Khaznah works side by side", ar: "درجات الحالة و«كيف تعمل خزنة» جنباً إلى جنب" },
     ],
-    swatches: ["#FAF8F5", "#181614", "#EFEAE3", "#B0512A"],
+    swatches: ["#F8F7F3", "#302F2C", "#ECE8E1", "#B28A43"],
     defaultTheme: "light",
   },
   {
     id: "c",
     letter: "3",
-    name: { en: "Premium Marketplace", ar: "السوق الراقي" },
+    name: { en: "Visual Discovery Marketplace", ar: "سوق الاكتشاف المرئي" },
     oneLiner: {
-      en: "A refined, high-end store — calm, elegant and product-focused.",
-      ar: "متجر راقٍ ومصقول — هادئ وأنيق ويركّز على المنتج.",
+      en: "A bright, image-first marketplace for browsing and discovering — white, indigo and navy with gold.",
+      ar: "سوق مشرق تقوده الصور للتصفّح والاكتشاف — أبيض ونيلي وكحلي مع لمسات ذهبية.",
     },
     philosophy: {
-      en: "Feels like a premium online store: a solid, simplified header with search that expands in the bar, a split hero pairing a serif headline with large lifestyle photography and the featured lot, an editorial category grid, tall portrait product cards, a featured auction beside related lots, storefront previews, a live-sale salon and an elegant \u201cBuying on Khazna\u201d guide. Warm neutral surfaces, generous space and crisp corners. (Round 3B: home page only.)",
-      ar: "يشبه متجراً إلكترونياً راقياً: شريط علوي بسيط وثابت مع بحث يتمدد داخله، وواجهة منقسمة تجمع عنواناً أنيقاً مع صور حياتية كبيرة والمنتج المميز، وشبكة فئات تحريرية، وبطاقات منتجات طولية، ومزاد مميز بجانب منتجات ذات صلة، ومعاينات لمتاجر البائعين، وصالة للمزاد المباشر، ودليل أنيق «الشراء عبر خزنة». أسطح محايدة دافئة، ومساحات سخية، وزوايا حادة. (الجولة 3ب: الصفحة الرئيسية فقط.)",
+      en: "A logo and pill-search masthead over a Discover row, then a mosaic hero: a copy tile with a handwritten line, a furniture scene with an overlapping product card, and stacked category photographs. Eight outlined category pills, a mixed-height product wall with circular cart buttons, a navy live banner before Ending soon, image-first auction cards, photographic seller shelves, two tinted pallet panels, a compact clarity row, an ivory newsletter and a white footer. (Home page only.)",
+      ar: "شريط علوي بشعار وبحث على شكل كبسولة فوق صف «اكتشف»، ثم واجهة فسيفسائية: بطاقة نص بسطر مكتوب بخط اليد، ومشهد أثاث مع بطاقة منتج متداخلة، وصور فئات متراصّة. ثماني كبسولات فئات، وجدار منتجات بارتفاعات مختلفة وأزرار سلة دائرية، وشريط كحلي للمزاد المباشر قبل «تنتهي قريباً»، وبطاقات مزادات تتقدمها الصور، ورفوف بائعين مصوّرة، ولوحتان ملونتان للطبليات، وصف توضيحي مختصر، ونشرة بريدية عاجية وتذييل أبيض. (الصفحة الرئيسية فقط.)",
     },
     traits: [
-      { en: "Simplified header with search that expands in the bar", ar: "شريط علوي بسيط مع بحث يتمدد داخله" },
-      { en: "Split hero with large lifestyle photography", ar: "واجهة منقسمة بصور حياتية كبيرة" },
-      { en: "Editorial category grid and portrait product cards", ar: "شبكة فئات تحريرية وبطاقات منتجات طولية" },
-      { en: "Drawer menu and accordions on phones", ar: "قائمة جانبية وأقسام قابلة للطي على الجوال" },
+      { en: "Pill search in the masthead, Discover row below", ar: "بحث على شكل كبسولة في الشريط العلوي وصف «اكتشف» أسفله" },
+      { en: "Mosaic hero with an overlapping product card", ar: "واجهة فسيفسائية مع بطاقة منتج متداخلة" },
+      { en: "Mixed-height product wall with circular cart buttons", ar: "جدار منتجات بارتفاعات مختلفة وأزرار سلة دائرية" },
+      { en: "Navy live banner before Ending soon", ar: "شريط كحلي للمزاد المباشر قبل «تنتهي قريباً»" },
     ],
-    swatches: ["#F7F5F1", "#1C1A17", "#EFEBE4", "#83633A"],
+    swatches: ["#FFFFFF", "#06213F", "#183997", "#E1A932"],
     defaultTheme: "light",
   },
   {
     id: "d",
     letter: "4",
-    name: { en: "Discovery Commerce", ar: "تجارة الاكتشاف" },
+    name: { en: "Contemporary Saudi Commerce", ar: "التجارة السعودية المعاصرة" },
     oneLiner: {
-      en: "Built for exploring — categories, collections and rails that make browsing easy.",
-      ar: "مصمّم للاستكشاف — فئات ومجموعات وشرائط تجعل التصفّح سهلاً.",
+      en: "A green and cream storefront with a centred bilingual hero and the marketplace search at its heart.",
+      ar: "واجهة متجر بالأخضر والكريمي مع واجهة ثنائية اللغة في المنتصف والبحث في قلبها.",
     },
     philosophy: {
-      en: "Discovery comes first: a compact header with a wide search, a Discover menu and shortcut chips; a discovery board pairing a collection with a deal, new arrivals, the live sale and a closing lot; colourful category cards; price-drop, auction and seller rails; themed collections and a mixed-size \u201cNew in\u201d feed. Buy Now and auctions sit side by side. (Round 3B: home page only.)",
-      ar: "الاكتشاف أولاً: شريط علوي مدمج مع بحث واسع وقائمة «اكتشف» واختصارات سريعة؛ ولوحة اكتشاف تجمع مجموعة مع عرض اليوم والوافد حديثاً والمزاد المباشر ومنتج يقترب إغلاقه؛ وبطاقات فئات ملوّنة؛ وشرائط لانخفاض الأسعار والمزادات والبائعين؛ ومجموعات موضوعية وتغذية «وصل حديثاً» بأحجام مختلفة. الشراء الفوري والمزادات جنباً إلى جنب. (الجولة 3ب: الصفحة الرئيسية فقط.)",
+      en: "A cream utility bar and a white navigation row, then a centred bilingual hero with a segmented category search. Trust points follow at once; a local category rail sits beside four horizontal Buy Now cards; Ending soon runs beside one integrated live-auction scene; five seller rows show each store's products; two sage pallet panels, large 01/02/03 steps, a seven-cell grade strip, and one green newsletter and footer band above a white brand base. (Home page only.)",
+      ar: "شريط خدمات كريمي وصف تنقل أبيض، ثم واجهة ثنائية اللغة في المنتصف مع بحث مقسّم حسب الفئة. تليها نقاط الثقة مباشرة؛ وقائمة فئات محلية بجانب أربع بطاقات أفقية للشراء الفوري؛ و«تنتهي قريباً» بجانب مشهد واحد للمزاد المباشر؛ وخمسة صفوف للبائعين تعرض منتجات كل متجر؛ ولوحتان بلون المريمية للطبليات، وخطوات كبيرة 01/02/03، وشريط درجات من سبع خانات، وشريط أخضر واحد للنشرة البريدية والتذييل فوق قاعدة بيضاء للعلامة. (الصفحة الرئيسية فقط.)",
     },
     traits: [
-      { en: "Wide search, Discover menu and shortcut chips", ar: "بحث واسع وقائمة اكتشاف واختصارات سريعة" },
-      { en: "Discovery board and colourful category cards", ar: "لوحة اكتشاف وبطاقات فئات ملوّنة" },
-      { en: "Rails, themed collections and a mixed-size feed", ar: "شرائط ومجموعات موضوعية وتغذية بأحجام مختلفة" },
-      { en: "Pinned search and shortcuts on phones", ar: "بحث واختصارات مثبّتة على الجوال" },
+      { en: "Centred bilingual hero with a segmented search", ar: "واجهة ثنائية اللغة في المنتصف مع بحث مقسّم" },
+      { en: "Category rail beside horizontal Buy Now cards", ar: "قائمة فئات بجانب بطاقات أفقية للشراء الفوري" },
+      { en: "Ending soon beside one live-auction scene", ar: "«تنتهي قريباً» بجانب مشهد المزاد المباشر" },
+      { en: "Seller directory rows with each store's products", ar: "صفوف دليل البائعين مع منتجات كل متجر" },
     ],
-    swatches: ["#FFFFFF", "#14161C", "#FFE6DA", "#D13D17"],
+    swatches: ["#ECEBE2", "#174B38", "#EDF4F0", "#294C9B"],
     defaultTheme: "light",
   },
 ];

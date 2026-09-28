@@ -6,20 +6,31 @@ customer website, built for client review:
 | Option | Direction | Route slot | Default appearance |
 |---|---|---|---|
 | 1 | Modern Commerce — search-led, practical, conversion-focused | `concept-b` | Light |
-| 2 | Visual Marketplace — image-led: centred search hero, Option 1's sections told with large photography | `concept-a` | Light |
-| 3 | Premium Marketplace — refined store: split photographic hero, editorial categories, portrait product cards | `concept-c` | Light |
-| 4 | Discovery Commerce — built for exploring: discovery board, colourful categories, rails, collections, feed | `concept-d` | Light |
+| 2 | Premium Modern Marketplace — warm ivory, charcoal and brass: centred-logo masthead, panoramic room hero, full section coverage | `concept-a` | Light |
+| 3 | Visual Discovery Marketplace — white, indigo and navy: pill-search masthead, mosaic hero, mixed-height product wall | `concept-c` | Light |
+| 4 | Contemporary Saudi Commerce — green and cream: centred bilingual hero with segmented search, category rail, seller directory | `concept-d` | Light |
 
-> **Round 3B (current).** Option 1 is unchanged. After the Round 3A review,
-> Option 2 kept its visual concept and gained Option 1's full section coverage,
-> and Options 3 and 4 were rebuilt from scratch as Premium Marketplace and
-> Discovery Commerce (see `ROUND3B_HOMEPAGE_PLAN.md`). This covers the
-> **home page only**. Their other screens are still the Round 2 versions
-> (served through the `(round2)` route group in each slot, with the Round 2
-> chrome) until the inner pages are redesigned. Round 3 home pages render
+> **Approved work designs (current).** Option 1 is unchanged. Options 2–4
+> home pages implement the approved ChatGPT work designs from the homepage
+> handoff: Premium Modern Marketplace (`components/concept-a/premium-modern`,
+> `styles/r3-premium-modern.css`), Visual Discovery Marketplace
+> (`components/concept-c/visual-discovery`, `styles/r3-visual-discovery.css`)
+> and Contemporary Saudi Commerce (`components/concept-d/saudi-commerce`,
+> `styles/r3-saudi-commerce.css`). Shared behaviour (search, language, city,
+> cart, saving, newsletter, drawers) lives in `components/shared/r3/`. See
+> `ROUND_WORK_DESIGN_IMPLEMENTATION_REPORT.md` at the repository root for the
+> comparison with the approved images, the asset audit and known differences.
+> This covers the **home page only**. Their other screens are still the Round
+> 2 versions (served through the `(round2)` route group in each slot, with the
+> Round 2 chrome) until the inner pages are redesigned. The home pages render
 > their own shell and scope their tokens to `html[data-r3]` (see
 > `styles/r3-*.css` and `components/shared/r3/R3Root.jsx`), so they never
-> change the Round 2 screens or Option 1.
+> change the Round 2 screens or Option 1. The approved designs are light only,
+> so the appearance toggle does not change these three home pages.
+>
+> **Round 3B.** The previous homepages for Options 2–4 (Visual Marketplace,
+> Premium Marketplace, Discovery Commerce) are in git history at commit
+> `0166ba8`.
 >
 > **Round 3A.** The first structural homepages for Options 2–4 (Visual
 > Marketplace, Marketplace Hub, Auction Commerce) are in git history at commit

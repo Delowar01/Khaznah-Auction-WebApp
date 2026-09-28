@@ -7,6 +7,14 @@
  * the raw values for light and dark appearance, so the same component API
  * can express four very different visual identities.
  */
+/* 1200px: desktop composition of the approved Option 2–4 homepage designs
+   (tablet adaptations run below it); 1440px: the reference width, where a
+   composition is drawn at full size. Sorted with the default breakpoints. */
+@theme {
+  --breakpoint-dt: 75rem;
+  --breakpoint-wd: 90rem;
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);

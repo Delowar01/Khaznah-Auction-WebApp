@@ -7,14 +7,16 @@ import {
   Alexandria,
   Almarai,
   Archivo,
+  Aref_Ruqaa,
   Cairo,
+  Caveat,
   Figtree,
   Fraunces,
   IBM_Plex_Sans_Arabic,
   Inter,
   JetBrains_Mono,
   Manrope,
-  Plus_Jakarta_Sans,
+  Noto_Sans_Arabic,
   Readex_Pro,
   Space_Grotesk,
 } from "next/font/google";
@@ -42,9 +44,13 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jet", display: "swap", preload: false });
 const plexArabic = IBM_Plex_Sans_Arabic({ subsets: ["arabic"], weight: ["300", "400", "500", "600", "700"], variable: "--font-plex-ar", display: "swap", preload: false });
 
-// Round 3B Option 4 — Discovery Commerce (slot d home): Plus Jakarta Sans for
-// Latin, with Cairo (above) for Arabic
-const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta", display: "swap", preload: false });
+// Approved homepage designs (Options 2–4 home pages). Latin uses Inter and
+// Manrope (above); Arabic uses Noto Sans Arabic (Options 2 and 3) and IBM Plex
+// Sans Arabic (Option 4, above). Caveat and Aref Ruqaa set only Option 3's
+// handwritten hero line, in English and Arabic.
+const notoArabic = Noto_Sans_Arabic({ subsets: ["arabic"], variable: "--font-noto-ar", display: "swap", preload: false });
+const caveat = Caveat({ subsets: ["latin"], variable: "--font-caveat", display: "swap", preload: false });
+const arefRuqaa = Aref_Ruqaa({ subsets: ["arabic"], weight: ["400", "700"], variable: "--font-ruqaa", display: "swap", preload: false });
 
 export const fontVariables = [
   archivo,
@@ -59,7 +65,9 @@ export const fontVariables = [
   spaceGrotesk,
   jetbrainsMono,
   plexArabic,
-  jakarta,
+  notoArabic,
+  caveat,
+  arefRuqaa,
 ]
   .map((font) => font.variable)
   .join(" ");

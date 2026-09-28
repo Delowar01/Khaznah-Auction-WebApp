@@ -1,0 +1,233 @@
+/*
+ * Option 4 — Contemporary Saudi Commerce (approved design, slot d home)
+ * ─────────────────────────────────────────────────────────────────────────
+ * Tokens apply only while the home page is mounted (html[data-r3]); the
+ * Round 2 screens of this slot keep styles/concept-d.css.
+ *
+ * White storefront with pale-sage panels, forest-green commerce actions,
+ * dark ink headings and prices, and blue text links. A cream utility bar,
+ * a centred bilingual hero with a segmented search, and a green combined
+ * newsletter/footer band above a white brand base. Inter sets Latin, IBM
+ * Plex Sans Arabic sets Arabic. Light only; handoff colours are approximate
+ * and muted text, timers, the LIVE badge and the pink grade letters are
+ * nudged darker within their hue for WCAG AA.
+ */
+
+:root[data-concept="d"][data-r3],
+:root[data-concept="d"][data-r3][data-theme="dark"] {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #edf4f0;
+  --surface-elevated: #ffffff;
+  --plate: #f3f4f5;
+  --border: #e3ebe9;
+  --border-strong: #cfdcd7;
+
+  --text-primary: #102139;
+  --text-secondary: #5e6b7d;
+  --text-tertiary: #5e6b7d;
+
+  --primary: #174b38;
+  --primary-hover: #113a2b;
+  --primary-contrast: #ffffff;
+  --secondary: #143c2e;
+  --secondary-contrast: #ffffff;
+  --accent: #b6cdc0;
+  --accent-contrast: #102139;
+
+  --success: #225d4d;
+  --warning: #936121;
+  --danger: #d2332a;
+  --live: #d2332a;
+  --auction: #174b38;
+  --muted: #edf4f0;
+  --focus: #174b38;
+  --overlay: rgb(16 33 57 / 0.5);
+
+  --grade-new: #294c9b;
+  --grade-a: #225d4d;
+  --grade-b: #936121;
+  --grade-c: #b23c3a;
+  --grade-d: #b23c3a;
+  --grade-r: #294c9b;
+  --grade-f: #b23c3a;
+
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 10px;
+  --r-xl: 14px;
+  --r-card: 9px;
+  --r-control: 7px;
+
+  --sh-card: 0 1px 2px rgb(16 33 57 / 0.04);
+  --sh-raised: 0 2px 6px rgb(16 33 57 / 0.06), 0 16px 36px -18px rgb(16 33 57 / 0.22);
+  --sh-overlay: 0 6px 16px rgb(16 33 57 / 0.08), 0 36px 72px -28px rgb(16 33 57 / 0.35);
+
+  --font-display-stack: "Riyal", var(--font-inter), var(--font-plex-ar), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-inter), var(--font-plex-ar), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", var(--font-inter), var(--font-plex-ar), system-ui, sans-serif;
+
+  --logo-mark: #d8a535;
+  --logo-word: #3d4d9b;
+
+  /* Option-specific */
+  --sc-green: #174b38;
+  --sc-green-hover: #113a2b;
+  --sc-deep: #143c2e;
+  --sc-sage: #b6cdc0;
+  --sc-sage-hover: #a5c0b1;
+  --sc-soft: #edf4f0;
+  --sc-cream: #ede3d5;
+  --sc-utility: #ecebe2;
+  --sc-panel: #f1f3f5;
+  --sc-plate: #f3f4f5;
+  --sc-ink: #102139;
+  --sc-muted: #5e6b7d;
+  --sc-link: #294c9b;
+  --sc-line: #e3ebe9;
+  --sc-red: #d2332a;
+  --sc-grade-a: #225d4d;
+  --sc-grade-a-bg: #d5efe6;
+  --sc-grade-b: #936121;
+  --sc-grade-b-bg: #ffebc8;
+  --sc-grade-c: #b23c3a;
+  --sc-grade-c-bg: #ffe0de;
+  --sc-guide-blue: #294c9b;
+  --sc-guide-blue-bg: #e4ecf9;
+  --sc-guide-pink: #b23c3a;
+  --sc-guide-pink-bg: #fbe2e5;
+  --sc-gutter: 16px;
+  --sc-head-gutter: 16px;
+}
+
+:root[data-concept="d"][data-r3][lang="ar"] {
+  --font-display-stack: "Riyal", var(--font-plex-ar), var(--font-inter), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-plex-ar), var(--font-inter), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", var(--font-plex-ar), var(--font-inter), system-ui, sans-serif;
+}
+
+:root[data-concept="d"][data-r3] body {
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+:root[data-concept="d"][data-r3][lang="ar"] body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  :root[data-concept="d"][data-r3] { --sc-gutter: 28px; --sc-head-gutter: 28px; }
+}
+@media (min-width: 1200px) {
+  :root[data-concept="d"][data-r3] { --sc-gutter: 37.5px; --sc-head-gutter: 53px; }
+}
+
+/* ── Type roles ────────────────────────────────────────────────────────── */
+@layer components {
+  .sc-2xs { font-size: 11px; line-height: 15px; }
+  .sc-xs { font-size: 12px; line-height: 16px; }
+  .sc-sm { font-size: 13px; line-height: 18px; }
+  .sc-md { font-size: 14px; line-height: 20px; }
+  .sc-body { font-size: 15px; line-height: 21px; }
+  .sc-lg { font-size: 16px; line-height: 23px; }
+  .sc-nav { font-size: 15px; line-height: 21px; font-weight: 500; }
+  .sc-title { font-size: 15px; line-height: 20px; font-weight: 600; }
+  .sc-label { font-size: 12px; line-height: 16px; font-weight: 600; }
+  .sc-h3 { font-size: 17px; line-height: 23px; font-weight: 650; }
+  .sc-h2 { font-size: 24px; line-height: 30px; font-weight: 750; letter-spacing: -0.015em; }
+  .sc-news { font-size: 24px; line-height: 30px; font-weight: 700; letter-spacing: -0.01em; }
+  .sc-eyebrow { font-size: 20px; line-height: 28px; font-weight: 600; }
+  .sc-hero { font-size: 34px; line-height: 38px; font-weight: 800; letter-spacing: -0.02em; }
+  .sc-hero-sub { font-size: 16px; line-height: 23px; }
+  .sc-price { font-size: 22px; line-height: 26px; font-weight: 750; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .sc-step { font-size: 44px; line-height: 44px; font-weight: 750; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+
+  @media (min-width: 768px) {
+    .sc-h2 { font-size: 27px; line-height: 33px; }
+    .sc-news { font-size: 27px; line-height: 33px; }
+    .sc-eyebrow { font-size: 24px; line-height: 32px; }
+    .sc-hero { font-size: 44px; line-height: 50px; }
+    .sc-hero-sub { font-size: 18px; line-height: 26px; }
+    .sc-price { font-size: 25px; line-height: 29px; }
+    .sc-step { font-size: 58px; line-height: 58px; }
+  }
+  @media (min-width: 1200px) {
+    .sc-nav { font-size: 17px; line-height: 23px; }
+    .sc-title { font-size: 17px; line-height: 23px; }
+    .sc-h3 { font-size: 18px; line-height: 24px; }
+    .sc-h2 { font-size: 30px; line-height: 36px; }
+    .sc-news { font-size: 29px; line-height: 35px; }
+    .sc-eyebrow { font-size: 30px; line-height: 38px; }
+    .sc-hero { font-size: 57px; line-height: 64px; letter-spacing: -0.028em; }
+    .sc-hero-sub { font-size: 20px; line-height: 28px; }
+    .sc-price { font-size: 27px; line-height: 31px; }
+    .sc-step { font-size: 70px; line-height: 70px; }
+  }
+
+  :root[lang="ar"] .sc-2xs { font-size: 12px; line-height: 18px; }
+  :root[lang="ar"] .sc-xs { font-size: 13px; line-height: 20px; }
+  :root[lang="ar"] .sc-sm { font-size: 14px; line-height: 21px; }
+  :root[lang="ar"] .sc-md { font-size: 15px; line-height: 23px; }
+  :root[lang="ar"] .sc-body { font-size: 16px; line-height: 25px; }
+  :root[lang="ar"] .sc-lg { font-size: 17px; line-height: 27px; }
+  :root[lang="ar"] .sc-nav { font-size: 16px; line-height: 25px; }
+  :root[lang="ar"] .sc-title { font-size: 16px; line-height: 24px; }
+  :root[lang="ar"] .sc-label { font-size: 13px; line-height: 19px; }
+  :root[lang="ar"] .sc-h3 { font-size: 18px; line-height: 28px; }
+  :root[lang="ar"] .sc-h2 { font-size: 25px; line-height: 38px; letter-spacing: 0; }
+  :root[lang="ar"] .sc-news { font-size: 25px; line-height: 38px; letter-spacing: 0; }
+  :root[lang="ar"] .sc-eyebrow { font-size: 19px; line-height: 27px; }
+  :root[lang="ar"] .sc-hero { font-size: 34px; line-height: 50px; letter-spacing: 0; font-weight: 700; }
+  :root[lang="ar"] .sc-hero-sub { font-size: 17px; line-height: 28px; }
+  :root[lang="ar"] .sc-price { letter-spacing: 0; }
+  @media (min-width: 768px) {
+    :root[lang="ar"] .sc-h2 { font-size: 28px; line-height: 42px; }
+    :root[lang="ar"] .sc-news { font-size: 27px; line-height: 40px; }
+    :root[lang="ar"] .sc-eyebrow { font-size: 22px; line-height: 30px; }
+    :root[lang="ar"] .sc-hero { font-size: 44px; line-height: 64px; }
+    :root[lang="ar"] .sc-hero-sub { font-size: 19px; line-height: 30px; }
+  }
+  @media (min-width: 1200px) {
+    :root[lang="ar"] .sc-nav { font-size: 17px; line-height: 26px; }
+    :root[lang="ar"] .sc-title { font-size: 17px; line-height: 26px; }
+    :root[lang="ar"] .sc-h2 { font-size: 29px; line-height: 44px; }
+    :root[lang="ar"] .sc-news { font-size: 28px; line-height: 42px; }
+    :root[lang="ar"] .sc-eyebrow { font-size: 26px; line-height: 34px; }
+    :root[lang="ar"] .sc-hero { font-size: 52px; line-height: 72px; }
+    :root[lang="ar"] .sc-hero-sub { font-size: 20px; line-height: 32px; }
+  }
+
+  /* Main content ≈1365px with ≈37.5px margins; header rows use ≈53px. */
+  .sc-container {
+    width: 100%;
+    max-width: calc(1365px + 2 * var(--sc-gutter));
+    margin-inline: auto;
+    padding-inline: var(--sc-gutter);
+  }
+  .sc-head {
+    width: 100%;
+    max-width: calc(1334px + 2 * var(--sc-head-gutter));
+    margin-inline: auto;
+    padding-inline: var(--sc-head-gutter);
+  }
+
+  .sc-multiply { mix-blend-mode: multiply; }
+  .sc-link { text-underline-offset: 3px; }
+  .sc-link:hover { text-decoration: underline; }
+  .sc-rail { scrollbar-width: none; }
+  .sc-rail::-webkit-scrollbar { display: none; }
+  .sc-search::placeholder { color: #6b7686; opacity: 1; }
+  .sc-search::-webkit-search-cancel-button { display: none; }
+
+  /* Hero stage: calm limestone backdrop built from soft planes (the
+     approved photograph is not in the asset library). */
+  .sc-stage {
+    background:
+      radial-gradient(ellipse 46% 60% at 50% 42%, #f7f1e8 0%, rgb(247 241 232 / 0) 72%),
+      linear-gradient(180deg, #ece2d4 0%, #efe6da 62%, #e6dccd 62.2%, #eee6db 100%);
+  }
+}

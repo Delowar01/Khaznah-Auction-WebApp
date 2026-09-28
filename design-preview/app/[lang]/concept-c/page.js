@@ -1,4 +1,4 @@
-import { PremiumHome } from "@/components/concept-c/premium/PremiumHome";
+import { VisualDiscoveryHome } from "@/components/concept-c/visual-discovery/VisualDiscoveryHome";
 import { conceptMetadata } from "@/lib/meta";
 
 export async function generateMetadata({ params }) {
@@ -7,5 +7,5 @@ export async function generateMetadata({ params }) {
 }
 
 export default function Page() {
-  return <PremiumHome />;
+  return <VisualDiscoveryHome />;
 }

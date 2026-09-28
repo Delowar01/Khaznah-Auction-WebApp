@@ -1,0 +1,217 @@
+/*
+ * Option 2 — Premium Modern Marketplace (approved design, slot a home)
+ * ─────────────────────────────────────────────────────────────────────────
+ * Tokens apply only while the home page is mounted (html[data-r3]); the
+ * Round 2 screens of this slot keep styles/concept-a.css.
+ *
+ * Warm ivory storefront, charcoal commerce buttons, restrained brass accents,
+ * very dark ink headings, small 4–6px corners and almost no shadow. Inter
+ * sets Latin, Noto Sans Arabic sets Arabic. The approved design is light
+ * only, so the tokens do not change with the presentation theme toggle.
+ * Handoff colours are approximate; muted text, bronze links, timer red and
+ * the pink grade letters are nudged darker within their hue for WCAG AA.
+ */
+
+:root[data-concept="a"][data-r3],
+:root[data-concept="a"][data-r3][data-theme="dark"] {
+  color-scheme: light;
+
+  --bg: #f8f7f3;
+  --surface: #ffffff;
+  --surface-2: #ece8e1;
+  --surface-elevated: #ffffff;
+  --plate: #f2efe9;
+  --border: #e4e2dc;
+  --border-strong: #d3cfc6;
+
+  --text-primary: #171b27;
+  --text-secondary: #61656f;
+  --text-tertiary: #61656f;
+
+  --primary: #302f2c;
+  --primary-hover: #1e1d1b;
+  --primary-contrast: #ffffff;
+  --secondary: #171b27;
+  --secondary-contrast: #ffffff;
+  --accent: #b28a43;
+  --accent-contrast: #171b27;
+
+  --success: #216a52;
+  --warning: #895d1c;
+  --danger: #c82239;
+  --live: #c82239;
+  --auction: #302f2c;
+  --muted: #ece8e1;
+  --focus: #302f2c;
+  --overlay: rgb(23 27 39 / 0.5);
+
+  --grade-new: #214391;
+  --grade-a: #216a52;
+  --grade-b: #895d1c;
+  --grade-c: #895d1c;
+  --grade-d: #b3323d;
+  --grade-r: #b3323d;
+  --grade-f: #b3323d;
+
+  --r-xs: 3px;
+  --r-sm: 4px;
+  --r-md: 5px;
+  --r-lg: 6px;
+  --r-xl: 8px;
+  --r-card: 5px;
+  --r-control: 4px;
+
+  --sh-card: 0 1px 2px rgb(23 27 39 / 0.04);
+  --sh-raised: 0 2px 6px rgb(23 27 39 / 0.06), 0 16px 36px -18px rgb(23 27 39 / 0.22);
+  --sh-overlay: 0 6px 16px rgb(23 27 39 / 0.08), 0 36px 72px -28px rgb(23 27 39 / 0.35);
+
+  --font-display-stack: "Riyal", var(--font-inter), var(--font-noto-ar), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-inter), var(--font-noto-ar), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", var(--font-inter), var(--font-noto-ar), system-ui, sans-serif;
+
+  --logo-mark: #d8a535;
+  --logo-word: #3d4d9b;
+
+  /* Option-specific */
+  --pr-charcoal: #302f2c;
+  --pr-stone: #ece8e1;
+  --pr-brass: #b28a43;
+  --pr-brass-hover: #a17a36;
+  --pr-bronze: #80602c;
+  --pr-timer: #d51f28;
+  --pr-live: #c82239;
+  --pr-grade-a: #216a52;
+  --pr-grade-a-bg: #d9f2e8;
+  --pr-grade-b: #895d1c;
+  --pr-grade-b-bg: #ffe8bc;
+  --pr-guide-blue: #214391;
+  --pr-guide-blue-bg: #e3edfc;
+  --pr-guide-green-bg: #dcefe3;
+  --pr-guide-pink: #b3323d;
+  --pr-guide-pink-bg: #f8dfe2;
+  --pr-search: #f1f0ec;
+  --pr-panel: #f3f0ea;
+  --pr-gutter: 16px;
+}
+
+:root[data-concept="a"][data-r3][lang="ar"] {
+  --font-display-stack: "Riyal", var(--font-noto-ar), var(--font-inter), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-noto-ar), var(--font-inter), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", var(--font-noto-ar), var(--font-inter), system-ui, sans-serif;
+}
+
+:root[data-concept="a"][data-r3] body {
+  font-size: 15px;
+  line-height: 1.45;
+  font-feature-settings: "cv11" 1;
+}
+
+:root[data-concept="a"][data-r3][lang="ar"] body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  :root[data-concept="a"][data-r3] { --pr-gutter: 28px; }
+}
+@media (min-width: 1200px) {
+  :root[data-concept="a"][data-r3] { --pr-gutter: 52px; }
+}
+
+/* ── Type roles ────────────────────────────────────────────────────────── */
+@layer components {
+  .pr-2xs { font-size: 11px; line-height: 15px; }
+  .pr-xs { font-size: 12px; line-height: 16px; }
+  .pr-sm { font-size: 13px; line-height: 18px; }
+  .pr-md { font-size: 14px; line-height: 20px; }
+  .pr-body { font-size: 15px; line-height: 22px; }
+  .pr-lg { font-size: 16px; line-height: 23px; }
+  .pr-title { font-size: 15px; line-height: 20px; font-weight: 550; }
+  .pr-label { font-size: 12px; line-height: 16px; font-weight: 600; }
+  .pr-eyebrow { font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+  .pr-h3 { font-size: 17px; line-height: 23px; font-weight: 600; letter-spacing: -0.005em; }
+  .pr-h2 { font-size: 24px; line-height: 30px; font-weight: 700; letter-spacing: -0.012em; }
+  .pr-news { font-size: 26px; line-height: 32px; font-weight: 700; letter-spacing: -0.015em; }
+  .pr-hero { font-size: 38px; line-height: 41px; font-weight: 780; letter-spacing: -0.018em; }
+  .pr-hero-sub { font-size: 17px; line-height: 24px; }
+  .pr-price { font-size: 22px; line-height: 26px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .pr-price-sm { font-size: 19px; line-height: 23px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .pr-step { font-size: 15px; line-height: 20px; font-weight: 650; }
+
+  @media (min-width: 768px) {
+    .pr-h2 { font-size: 27px; line-height: 33px; }
+    .pr-news { font-size: 30px; line-height: 36px; }
+    .pr-hero { font-size: 48px; line-height: 51px; }
+    .pr-hero-sub { font-size: 19px; line-height: 26px; }
+    .pr-price { font-size: 24px; line-height: 28px; }
+  }
+  @media (min-width: 1200px) {
+    .pr-title { font-size: 16px; line-height: 21px; }
+    .pr-h2 { font-size: 28px; line-height: 32px; }
+    .pr-news { font-size: 35px; line-height: 42px; }
+    .pr-hero { font-size: 58px; line-height: 61px; }
+    .pr-hero-sub { font-size: 18.5px; line-height: 26px; }
+    .pr-price { font-size: 26px; line-height: 30px; }
+    .pr-price-sm { font-size: 23px; line-height: 27px; }
+  }
+
+  :root[lang="ar"] .pr-2xs { font-size: 12px; line-height: 18px; }
+  :root[lang="ar"] .pr-xs { font-size: 13px; line-height: 20px; }
+  :root[lang="ar"] .pr-sm { font-size: 14px; line-height: 21px; }
+  :root[lang="ar"] .pr-md { font-size: 15px; line-height: 23px; }
+  :root[lang="ar"] .pr-body { font-size: 16px; line-height: 25px; }
+  :root[lang="ar"] .pr-lg { font-size: 17px; line-height: 27px; }
+  :root[lang="ar"] .pr-title { font-size: 16px; line-height: 24px; }
+  :root[lang="ar"] .pr-label { font-size: 13px; line-height: 19px; }
+  :root[lang="ar"] .pr-eyebrow { font-size: 13px; line-height: 19px; letter-spacing: 0; text-transform: none; font-weight: 600; }
+  :root[lang="ar"] .pr-h3 { font-size: 18px; line-height: 28px; letter-spacing: 0; }
+  :root[lang="ar"] .pr-h2 { font-size: 25px; line-height: 38px; letter-spacing: 0; }
+  :root[lang="ar"] .pr-news { font-size: 27px; line-height: 40px; letter-spacing: 0; }
+  :root[lang="ar"] .pr-hero { font-size: 36px; line-height: 52px; letter-spacing: 0; font-weight: 750; }
+  :root[lang="ar"] .pr-hero-sub { font-size: 17px; line-height: 28px; }
+  :root[lang="ar"] :is(.pr-price, .pr-price-sm) { letter-spacing: 0; }
+  :root[lang="ar"] .pr-step { font-size: 16px; line-height: 24px; }
+  @media (min-width: 768px) {
+    :root[lang="ar"] .pr-h2 { font-size: 28px; line-height: 42px; }
+    :root[lang="ar"] .pr-news { font-size: 30px; line-height: 44px; }
+    :root[lang="ar"] .pr-hero { font-size: 44px; line-height: 64px; }
+    :root[lang="ar"] .pr-hero-sub { font-size: 19px; line-height: 30px; }
+  }
+  @media (min-width: 1200px) {
+    :root[lang="ar"] .pr-title { font-size: 16px; line-height: 25px; }
+    :root[lang="ar"] .pr-h2 { font-size: 30px; line-height: 44px; }
+    :root[lang="ar"] .pr-news { font-size: 33px; line-height: 48px; }
+    :root[lang="ar"] .pr-hero { font-size: 46px; line-height: 64px; }
+    :root[lang="ar"] .pr-hero-sub { font-size: 20px; line-height: 32px; }
+  }
+
+  /* Main width 1336px at 1440 with 52px side margins; bands run full width. */
+  .pr-container {
+    width: 100%;
+    max-width: calc(1336px + 2 * var(--pr-gutter));
+    margin-inline: auto;
+    padding-inline: var(--pr-gutter);
+  }
+
+  /* Brass dash before section headings and the hero eyebrow. */
+  .pr-dash {
+    display: inline-block;
+    width: 38px;
+    height: 3px;
+    flex: none;
+    border-radius: 1px;
+    background: var(--pr-brass);
+  }
+
+  /* Studio shots on white or tinted plates: the white background melts away. */
+  .pr-multiply { mix-blend-mode: multiply; }
+
+  .pr-link { text-underline-offset: 3px; }
+  .pr-link:hover { text-decoration: underline; }
+
+  .pr-rail { scrollbar-width: none; }
+  .pr-rail::-webkit-scrollbar { display: none; }
+
+  .pr-search::placeholder { color: #6c7079; opacity: 1; }
+  .pr-search::-webkit-search-cancel-button { display: none; }
+}

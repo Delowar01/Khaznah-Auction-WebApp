@@ -20,13 +20,15 @@ The options are not ranked, and none is recommended over the others.
 | Option | Direction | In short |
 |---|---|---|
 | **1** | Modern Commerce | Search-led, practical and focused on conversion. Designed for customers who want to find products, categories and auctions quickly. |
-| **2** | Visual Marketplace | Image-led discovery — the marketplace browsed like a well-merchandised store: a centred search hero framed by product photos, and the same sections as Option 1 told with large photography, plus a floating live mini-player. |
-| **3** | Premium Marketplace | A refined, high-end store: a simple header, a split hero with large lifestyle photography, an editorial category grid, tall product cards and an elegant guide to buying on Khazna. |
-| **4** | Discovery Commerce | Built for exploring: a wide search with shortcut chips, a discovery board, colourful category cards, deal and auction rails, themed collections and a "New in" feed. |
+| **2** | Premium Modern Marketplace | A calm, premium storefront in warm ivory, charcoal and restrained brass: a centred logo over a broad search row, a panoramic room hero with the live lot pinned in the scene, photographic categories, Buy Now cards, an Ending soon band, a split live auction, pallets, sellers, and grades beside How Khaznah works. |
+| **3** | Visual Discovery Marketplace | A bright, image-first marketplace in white, indigo and navy with gold: a pill search in the header, a mosaic hero, outlined category pills, a mixed-height product wall, a navy live banner, image-first auctions, photographic seller shelves and an ivory newsletter. |
+| **4** | Contemporary Saudi Commerce | A green and cream storefront: a centred bilingual hero with the marketplace search at its heart, trust points straight after, a category rail beside horizontal Buy Now cards, Ending soon beside the live auction, a seller directory, large 01/02/03 steps and a green footer. |
 
-> **This round:** for Options 2–4 only the **home page** has the new design
-> so far. Their other screens (Browse, product, auction, live, seller,
-> components) still show the previous round's design until the next stage.
+> **This round:** Options 2–4 now show the approved work designs, on the
+> **home page only** so far. Their other screens (Browse, product, auction,
+> live, seller, components) still show the previous round's design until the
+> next stage. The approved designs are light only, so the appearance button
+> does not change these three home pages.
 
 ## Using the preview
 

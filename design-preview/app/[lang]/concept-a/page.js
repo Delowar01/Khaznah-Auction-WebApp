@@ -1,4 +1,4 @@
-import { VisualHome } from "@/components/concept-a/r3/VisualHome";
+import { PremiumModernHome } from "@/components/concept-a/premium-modern/PremiumModernHome";
 import { conceptMetadata } from "@/lib/meta";
 
 export async function generateMetadata({ params }) {
@@ -7,5 +7,5 @@ export async function generateMetadata({ params }) {
 }
 
 export default function Page() {
-  return <VisualHome />;
+  return <PremiumModernHome />;
 }

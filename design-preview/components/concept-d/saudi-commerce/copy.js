@@ -1,0 +1,130 @@
+// Option 4 — Contemporary Saudi Commerce: interface copy (EN / AR).
+// English follows the approved design's copy; Arabic is written for this
+// design. Shared marketplace words come from data/ui.js and data/grades.js.
+export const COPY = {
+  // Utility bar + navigation
+  home: { en: "Khaznah home", ar: "الصفحة الرئيسية لخزنة" },
+  utility: { en: "Location and delivery", ar: "الموقع والتوصيل" },
+  location: { en: "Delivery location", ar: "موقع التوصيل" },
+  chooseCity: { en: "Choose your city", ar: "اختر مدينتك" },
+  delivery: { en: "Delivery & pickup", ar: "التوصيل والاستلام" },
+  deliveryText: { en: "Delivery and pickup options are shown on each listing.", ar: "تظهر خيارات التوصيل والاستلام في كل منتج." },
+  language: { en: "Language", ar: "اللغة" },
+  mainNav: { en: "Shop", ar: "تسوّق" },
+  navBuyNow: { en: "Buy Now", ar: "الشراء الفوري" },
+  navTimed: { en: "Timed Auctions", ar: "المزادات المحددة بوقت" },
+  navLive: { en: "Live Auction", ar: "المزاد المباشر" },
+  navSellers: { en: "Sellers", ar: "البائعون" },
+  navBulk: { en: "Bulk & Pallets", ar: "الجملة والطبليات" },
+  account: { en: "My account", ar: "حسابي" },
+  hello: { en: "Hello, {name}", ar: "مرحباً، {name}" },
+  walletBalance: { en: "Wallet balance", ar: "رصيد المحفظة" },
+  myBids: { en: "My bids", ar: "مزايداتي" },
+  saved: { en: "Saved lots", ar: "المنتجات المحفوظة" },
+  savedEmpty: { en: "Save lots with the heart to find them here.", ar: "احفظ المنتجات بالقلب لتجدها هنا." },
+  cart: { en: "Cart", ar: "السلة" },
+  cartCount: { en: "Cart, {n} items", ar: "السلة، {n} منتج" },
+  openMenu: { en: "Open menu", ar: "فتح القائمة" },
+  menu: { en: "Menu", ar: "القائمة" },
+  skip: { en: "Skip to content", ar: "انتقل إلى المحتوى" },
+
+  // Hero. The eyebrow is set in the other language to keep the design's
+  // bilingual character (Arabic over English, English over Arabic).
+  heroEyebrow: { en: "اكتشف فرصتك القادمة", ar: "Find your next great find." },
+  heroTitle: { en: "Find your next great find.", ar: "اعثر على صفقتك القادمة." },
+  heroSub: { en: "Buy now, bid or discover something unexpected.", ar: "اشترِ فوراً أو زايد أو اكتشف ما لم تتوقعه." },
+  searchLabel: { en: "Search Khaznah", ar: "ابحث في خزنة" },
+  searchScope: { en: "Search in", ar: "البحث في" },
+  allCategories: { en: "All categories", ar: "كل الفئات" },
+  searchPlaceholder: { en: "Search products, categories and sellers", ar: "ابحث عن المنتجات والفئات والبائعين" },
+  search: { en: "Search", ar: "بحث" },
+  popularSearches: { en: "Popular searches", ar: "عمليات بحث شائعة" },
+  resultsLots: { en: "Lots", ar: "المنتجات" },
+  resultsCategories: { en: "Categories", ar: "الفئات" },
+  resultsSellers: { en: "Sellers", ar: "البائعون" },
+  noMatch: { en: "No lots match “{q}”.", ar: "لا توجد منتجات تطابق «{q}»." },
+  seeAllResults: { en: "See all results for “{q}”", ar: "عرض كل النتائج لـ «{q}»" },
+  shopBuyNow: { en: "Shop Buy Now", ar: "تسوّق الشراء الفوري" },
+  exploreAuctions: { en: "Explore auctions", ar: "تصفّح المزادات" },
+
+  // Trust strip
+  trustLabel: { en: "Before you shop", ar: "قبل أن تتسوّق" },
+  trust: [
+    { key: "graded", title: { en: "Condition graded", ar: "مصنّفة حسب الحالة" }, text: { en: "Read the condition and photos before you buy.", ar: "اطّلع على الحالة والصور قبل الشراء." } },
+    { key: "seller", title: { en: "Know your seller", ar: "اعرف البائع" }, text: { en: "Explore seller profiles and inventory.", ar: "تصفّح ملفات البائعين ومنتجاتهم." } },
+    { key: "delivery", title: { en: "Delivery or pickup", ar: "توصيل أو استلام" }, text: { en: "Check available options on each listing.", ar: "تحقق من الخيارات المتاحة في كل منتج." } },
+  ],
+
+  // Retail floor
+  categoriesTitle: { en: "Shop by Category", ar: "تسوّق حسب الفئة" },
+  buyNowTitle: { en: "Buy Now", ar: "الشراء الفوري" },
+  buyNowText: { en: "Shop a wide selection of products from our sellers.", ar: "تسوّق تشكيلة واسعة من منتجات بائعينا." },
+  viewAll: { en: "View all", ar: "عرض الكل" },
+  viewAllNamed: { en: "View all: {name}", ar: "عرض الكل: {name}" },
+  addToCart: { en: "Add to cart", ar: "أضف إلى السلة" },
+  addNamed: { en: "Add {title} to cart", ar: "أضف {title} إلى السلة" },
+  addedToCart: { en: "Added to cart", ar: "أُضيف إلى السلة" },
+  recTitle: { en: "Recommended for you", ar: "مقترحة لك" },
+  recText: { en: "Explore more from our sellers.", ar: "اكتشف المزيد من بائعينا." },
+
+  // Auctions + live
+  endingTitle: { en: "Ending soon", ar: "تنتهي قريباً" },
+  endingText: { en: "Bid before time runs out.", ar: "زايد قبل انتهاء الوقت." },
+  viewAllAuctions: { en: "View all auctions", ar: "عرض كل المزادات" },
+  timeLeft: { en: "Time left", ar: "الوقت المتبقي" },
+  bidNamed: { en: "Bid now on {title}", ar: "زايد الآن على {title}" },
+  liveTitle: { en: "Live Auction", ar: "المزاد المباشر" },
+  liveNow: { en: "Live now", ar: "مباشر الآن" },
+  joinLive: { en: "Join live auction", ar: "انضم إلى المزاد المباشر" },
+  playPreview: { en: "Watch the live auction", ar: "شاهد المزاد المباشر" },
+  onTheBlock: { en: "On the block now: {title}", ar: "المعروض الآن: {title}" },
+
+  // Sellers
+  sellersTitle: { en: "Featured Sellers", ar: "بائعون مميزون" },
+  sellersText: { en: "Explore stores and their latest products.", ar: "تصفّح المتاجر وأحدث منتجاتها." },
+  viewAllSellers: { en: "View all sellers", ar: "عرض كل البائعين" },
+  visitStore: { en: "Visit store", ar: "زيارة المتجر" },
+  visitNamed: { en: "Visit store: {name}", ar: "زيارة متجر {name}" },
+  storeProducts: { en: "Products from {name}", ar: "منتجات من {name}" },
+
+  // Bulk
+  bulkTitle: { en: "Bulk & Pallets", ar: "الجملة والطبليات" },
+  bulkText: { en: "Larger quantities. Great opportunities.", ar: "كميات أكبر وفرص رائعة." },
+  viewManifest: { en: "View manifest", ar: "عرض البيان" },
+  manifestNamed: { en: "View manifest: {title}", ar: "عرض البيان: {title}" },
+
+  // How it works + grades
+  howTitle: { en: "How Khaznah works", ar: "كيف تعمل خزنة" },
+  howText: { en: "A simple way to buy and bid.", ar: "طريقة بسيطة للشراء والمزايدة." },
+  step: { en: "Step {n}", ar: "الخطوة {n}" },
+  steps: [
+    { title: { en: "Find your item", ar: "اعثر على منتجك" }, text: { en: "Search, browse or explore auctions across many categories.", ar: "ابحث أو تصفّح أو استكشف المزادات في فئات كثيرة." } },
+    { title: { en: "Buy now or bid", ar: "اشترِ فوراً أو زايد" }, text: { en: "Choose a Buy Now item or place a bid in our auctions.", ar: "اختر منتجاً للشراء الفوري أو قدّم مزايدة في مزاداتنا." } },
+    { title: { en: "Arrange delivery or pickup", ar: "رتّب التوصيل أو الاستلام" }, text: { en: "Check available options on each listing.", ar: "تحقق من الخيارات المتاحة في كل منتج." } },
+  ],
+  gradesTitle: { en: "Condition grades", ar: "درجات الحالة" },
+  gradesText: { en: "Check the grade and item details before buying.", ar: "تحقق من الدرجة وتفاصيل المنتج قبل الشراء." },
+  gradeGuide: { en: "View grade guide", ar: "عرض دليل الدرجات" },
+  hideGuide: { en: "Hide grade guide", ar: "إخفاء دليل الدرجات" },
+
+  // Newsletter + footer
+  newsTitle: { en: "Fresh finds, in your inbox.", ar: "أحدث المنتجات في بريدك." },
+  newsText: { en: "Be the first to know about new arrivals and auctions.", ar: "كن أول من يعرف عن المنتجات الجديدة والمزادات." },
+  emailLabel: { en: "Email address", ar: "البريد الإلكتروني" },
+  emailPlaceholder: { en: "Your email address", ar: "بريدك الإلكتروني" },
+  subscribe: { en: "Subscribe", ar: "اشترك" },
+  footerNav: { en: "Footer", ar: "تذييل الصفحة" },
+  colMarketplace: { en: "Marketplace", ar: "السوق" },
+  colHelp: { en: "Help", ar: "المساعدة" },
+  colAbout: { en: "About", ar: "عن خزنة" },
+  legal: { en: "Legal", ar: "قانوني" },
+  linkHowItWorks: { en: "How it works", ar: "كيف تعمل خزنة" },
+  linkGrades: { en: "Condition grades", ar: "درجات الحالة" },
+  linkDelivery: { en: "Delivery & pickup", ar: "التوصيل والاستلام" },
+  linkContact: { en: "Contact", ar: "تواصل معنا" },
+  linkAbout: { en: "About Khaznah", ar: "عن خزنة" },
+  linkSell: { en: "Sell on Khaznah", ar: "البيع عبر خزنة" },
+  terms: { en: "Terms", ar: "الشروط" },
+  privacy: { en: "Privacy", ar: "الخصوصية" },
+  copyright: { en: "© 2026 Khaznah", ar: "© 2026 خزنة" },
+};

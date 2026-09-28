@@ -1,4 +1,4 @@
-import { DiscoveryHome } from "@/components/concept-d/discovery/DiscoveryHome";
+import { SaudiCommerceHome } from "@/components/concept-d/saudi-commerce/SaudiCommerceHome";
 import { conceptMetadata } from "@/lib/meta";
 
 export async function generateMetadata({ params }) {
@@ -7,5 +7,5 @@ export async function generateMetadata({ params }) {
 }
 
 export default function Page() {
-  return <DiscoveryHome />;
+  return <SaudiCommerceHome />;
 }

@@ -1,0 +1,271 @@
+/*
+ * Option 3 — Visual Discovery Marketplace (approved design, slot c home)
+ * ─────────────────────────────────────────────────────────────────────────
+ * Tokens apply only while the home page is mounted (html[data-r3]); the
+ * Round 2 screens of this slot keep styles/concept-c.css.
+ *
+ * Bright white marketplace: indigo controls, navy headings and live band,
+ * gold hero / newsletter actions, soft rounded imagery (12–20px), pill
+ * navigation and circular cart buttons. Manrope sets large headings, Inter
+ * compact text, Noto Sans Arabic sets Arabic. Light only; handoff colours
+ * are approximate and muted text, coral pills, live red and the amber grade
+ * text are nudged darker within their hue for WCAG AA.
+ */
+
+:root[data-concept="c"][data-r3],
+:root[data-concept="c"][data-r3][data-theme="dark"] {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #ecf1f8;
+  --surface-elevated: #ffffff;
+  --plate: #f4f6fa;
+  --border: #e5edf7;
+  --border-strong: #cfdaea;
+
+  --text-primary: #071b52;
+  --text-secondary: #5b6b92;
+  --text-tertiary: #5b6b92;
+
+  --primary: #183997;
+  --primary-hover: #12307f;
+  --primary-contrast: #ffffff;
+  --secondary: #06213f;
+  --secondary-contrast: #ffffff;
+  --accent: #e1a932;
+  --accent-contrast: #071b52;
+
+  --success: #207344;
+  --warning: #8f5410;
+  --danger: #d92623;
+  --live: #d92623;
+  --auction: #06213f;
+  --muted: #ecf1f8;
+  --focus: #183997;
+  --overlay: rgb(6 33 63 / 0.55);
+
+  --grade-new: #244896;
+  --grade-a: #207344;
+  --grade-b: #8f5410;
+  --grade-c: #a8401a;
+  --grade-d: #b8384e;
+  --grade-r: #244896;
+  --grade-f: #b8384e;
+
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --r-card: 16px;
+  --r-control: 999px;
+
+  --sh-card: 0 1px 2px rgb(7 27 82 / 0.04), 0 8px 22px -18px rgb(7 27 82 / 0.25);
+  --sh-raised: 0 2px 6px rgb(7 27 82 / 0.06), 0 18px 40px -20px rgb(7 27 82 / 0.3);
+  --sh-overlay: 0 6px 16px rgb(7 27 82 / 0.08), 0 36px 72px -26px rgb(7 27 82 / 0.4);
+
+  --font-display-stack: "Riyal", var(--font-manrope), var(--font-noto-ar), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-inter), var(--font-noto-ar), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", var(--font-inter), var(--font-noto-ar), system-ui, sans-serif;
+
+  --logo-mark: #d8a535;
+  --logo-word: #3d4d9b;
+
+  /* Option-specific */
+  --vd-indigo: #183997;
+  --vd-navy: #06213f;
+  --vd-gold: #e1a932;
+  --vd-gold-hover: #d39b22;
+  --vd-ivory: #faf5eb;
+  --vd-bluegray: #ecf1f8;
+  --vd-ink: #071b52;
+  --vd-muted: #5b6b92;
+  --vd-line: #e5edf7;
+  --vd-coral: #d6401c;
+  --vd-live: #d92623;
+  --vd-blue: #2447c9;
+  --vd-grade-a: #207344;
+  --vd-grade-a-bg: #ddf4e6;
+  --vd-grade-b: #8f5410;
+  --vd-grade-b-bg: #ffe8bc;
+  --vd-grade-c: #a8401a;
+  --vd-grade-c-bg: #ffe4d6;
+  --vd-guide-blue: #244896;
+  --vd-guide-blue-bg: #e3ecfb;
+  --vd-guide-pink: #b8384e;
+  --vd-guide-pink-bg: #fbe0e5;
+  --vd-gutter: 16px;
+  --vd-hero-gutter: 12px;
+}
+
+:root[data-concept="c"][data-r3][lang="ar"] {
+  --font-display-stack: "Riyal", var(--font-noto-ar), var(--font-manrope), system-ui, sans-serif;
+  --font-body-stack: "Riyal", var(--font-noto-ar), var(--font-inter), system-ui, sans-serif;
+  --font-mono-stack: "Riyal", var(--font-noto-ar), var(--font-inter), system-ui, sans-serif;
+}
+
+:root[data-concept="c"][data-r3] body {
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+:root[data-concept="c"][data-r3][lang="ar"] body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  :root[data-concept="c"][data-r3] { --vd-gutter: 28px; --vd-hero-gutter: 20px; }
+}
+@media (min-width: 1200px) {
+  :root[data-concept="c"][data-r3] { --vd-gutter: 50px; --vd-hero-gutter: 21px; }
+}
+
+/* ── Type roles ────────────────────────────────────────────────────────── */
+@layer components {
+  .vd-2xs { font-size: 11px; line-height: 14px; }
+  .vd-xs { font-size: 12px; line-height: 16px; }
+  .vd-sm { font-size: 13px; line-height: 18px; }
+  .vd-md { font-size: 14px; line-height: 20px; }
+  .vd-body { font-size: 15px; line-height: 21px; }
+  .vd-lg { font-size: 16px; line-height: 23px; }
+  .vd-title { font-size: 14px; line-height: 19px; font-weight: 650; }
+  .vd-label { font-size: 11px; line-height: 14px; font-weight: 650; }
+  .vd-display { font-family: var(--font-display-stack); }
+  .vd-h3 { font-family: var(--font-display-stack); font-size: 17px; line-height: 23px; font-weight: 750; letter-spacing: -0.01em; }
+  .vd-h2 { font-family: var(--font-display-stack); font-size: 26px; line-height: 31px; font-weight: 800; letter-spacing: -0.025em; }
+  .vd-live-title { font-family: var(--font-display-stack); font-size: 28px; line-height: 32px; font-weight: 750; letter-spacing: -0.02em; }
+  .vd-news { font-family: var(--font-display-stack); font-size: 28px; line-height: 33px; font-weight: 800; letter-spacing: -0.03em; }
+  .vd-hero { font-family: var(--font-display-stack); font-size: 44px; line-height: 44px; font-weight: 800; letter-spacing: -0.035em; }
+  .vd-hero-sub { font-size: 18px; line-height: 24px; }
+  .vd-price { font-size: 20px; line-height: 24px; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .vd-hand { font-family: var(--font-caveat), cursive; font-size: 26px; line-height: 28px; font-weight: 600; }
+
+  @media (min-width: 768px) {
+    .vd-h2 { font-size: 30px; line-height: 36px; }
+    .vd-live-title { font-size: 36px; line-height: 40px; }
+    .vd-news { font-size: 34px; line-height: 40px; }
+    .vd-hero { font-size: 58px; line-height: 58px; }
+    .vd-hero-sub { font-size: 21px; line-height: 27px; }
+    .vd-price { font-size: 22px; line-height: 26px; }
+  }
+  @media (min-width: 1200px) {
+    .vd-title { font-size: 15px; line-height: 20px; }
+    .vd-h2 { font-size: 38px; line-height: 44px; }
+    .vd-live-title { font-size: 48px; line-height: 48px; }
+    .vd-news { font-size: 44px; line-height: 48px; }
+    .vd-hero { font-size: 75px; line-height: 67px; }
+    .vd-hero-sub { font-size: 25px; line-height: 33px; }
+    .vd-price { font-size: 25px; line-height: 28px; }
+    .vd-hand { font-size: 30px; line-height: 32px; }
+  }
+
+  :root[lang="ar"] .vd-2xs { font-size: 12px; line-height: 17px; }
+  :root[lang="ar"] .vd-xs { font-size: 13px; line-height: 19px; }
+  :root[lang="ar"] .vd-sm { font-size: 14px; line-height: 21px; }
+  :root[lang="ar"] .vd-md { font-size: 15px; line-height: 23px; }
+  :root[lang="ar"] .vd-body { font-size: 16px; line-height: 25px; }
+  :root[lang="ar"] .vd-lg { font-size: 17px; line-height: 27px; }
+  :root[lang="ar"] .vd-title { font-size: 15px; line-height: 23px; }
+  :root[lang="ar"] .vd-label { font-size: 12px; line-height: 17px; }
+  :root[lang="ar"] .vd-h3 { font-size: 18px; line-height: 28px; letter-spacing: 0; }
+  :root[lang="ar"] .vd-h2 { font-size: 26px; line-height: 40px; letter-spacing: 0; }
+  :root[lang="ar"] .vd-live-title { font-size: 28px; line-height: 42px; letter-spacing: 0; }
+  :root[lang="ar"] .vd-news { font-size: 28px; line-height: 42px; letter-spacing: 0; }
+  :root[lang="ar"] .vd-hero { font-size: 40px; line-height: 58px; letter-spacing: 0; }
+  :root[lang="ar"] .vd-hero-sub { font-size: 18px; line-height: 29px; }
+  :root[lang="ar"] .vd-price { letter-spacing: 0; }
+  :root[lang="ar"] .vd-hand { font-family: var(--font-ruqaa), serif; font-size: 24px; line-height: 36px; font-weight: 400; }
+  @media (min-width: 768px) {
+    :root[lang="ar"] .vd-h2 { font-size: 30px; line-height: 46px; }
+    :root[lang="ar"] .vd-live-title { font-size: 34px; line-height: 50px; }
+    :root[lang="ar"] .vd-news { font-size: 32px; line-height: 48px; }
+    :root[lang="ar"] .vd-hero { font-size: 50px; line-height: 72px; }
+    :root[lang="ar"] .vd-hero-sub { font-size: 20px; line-height: 32px; }
+  }
+  @media (min-width: 1200px) {
+    :root[lang="ar"] .vd-title { font-size: 15px; line-height: 23px; }
+    :root[lang="ar"] .vd-h2 { font-size: 34px; line-height: 50px; }
+    :root[lang="ar"] .vd-live-title { font-size: 38px; line-height: 56px; }
+    :root[lang="ar"] .vd-news { font-size: 36px; line-height: 54px; }
+    :root[lang="ar"] .vd-hero { font-size: 52px; line-height: 74px; }
+    :root[lang="ar"] .vd-hero-sub { font-size: 21px; line-height: 34px; }
+    :root[lang="ar"] .vd-hand { font-size: 26px; line-height: 36px; }
+  }
+
+  /* Main content ≈1343px with ≈50px margins; the hero runs wider (≈21px). */
+  .vd-container {
+    width: 100%;
+    max-width: calc(1343px + 2 * var(--vd-gutter));
+    margin-inline: auto;
+    padding-inline: var(--vd-gutter);
+  }
+  .vd-wide {
+    width: 100%;
+    max-width: calc(1399px + 2 * var(--vd-hero-gutter));
+    margin-inline: auto;
+    padding-inline: var(--vd-hero-gutter);
+  }
+
+  .vd-multiply { mix-blend-mode: multiply; }
+  .vd-link { text-underline-offset: 3px; }
+  .vd-link:hover { text-decoration: underline; }
+  .vd-rail { scrollbar-width: none; }
+  .vd-rail::-webkit-scrollbar { display: none; }
+  .vd-search::placeholder { color: #66769c; opacity: 1; }
+  .vd-search::-webkit-search-cancel-button { display: none; }
+
+  /* Live banner areas: phone copy → video → lot → join; tablet copy, join
+     and lot beside the video; desktop copy/join · lot · video in one row. */
+  .vd-live {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "copy" "video" "lot" "join";
+  }
+  @media (min-width: 768px) {
+    .vd-live {
+      gap: 18px 28px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas: "copy video" "join video" "lot video";
+    }
+  }
+  @media (min-width: 1200px) {
+    .vd-live {
+      gap: 0;
+      grid-template-columns: minmax(0, 560fr) minmax(0, 251fr) minmax(0, 515fr);
+      grid-template-rows: auto auto;
+      grid-template-areas: "copy lot video" "join lot video";
+      align-content: center;
+    }
+  }
+
+  /* Product wall: two tall anchors around two stacks of compact cards. */
+  .vd-wall {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "tote mixer"
+      "desk case"
+      "coffee lamp";
+  }
+  /* Very narrow phones: one column, tall and compact imagery kept distinct. */
+  @media (max-width: 379px) {
+    .vd-wall {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "tote" "desk" "case" "coffee" "lamp" "mixer";
+    }
+  }
+  @media (min-width: 1200px) {
+    .vd-wall {
+      column-gap: 16px;
+      grid-template-columns: minmax(0, 335fr) minmax(0, 310fr) minmax(0, 313fr) minmax(0, 331fr);
+      grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas:
+        "tote desk case mixer"
+        "tote coffee lamp mixer";
+    }
+  }
+}
