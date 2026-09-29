@@ -23,7 +23,7 @@ function usePinLot(live) {
   };
 }
 
-function PinCard({ pin, className = "" }) {
+function PinCard({ pin, className = "", style }) {
   const { t } = useLang();
   const { link } = useConcept();
   return (
@@ -31,6 +31,7 @@ function PinCard({ pin, className = "" }) {
       href={link("/live-auction")}
       aria-label={`${t(COPY.pinLabel, { title: t(pin.lot.title) })} — ${pin.label}`}
       className={cx("group block rounded-[4px] bg-white px-3.5 py-3 outline-offset-4", className)}
+      style={style}
     >
       <span className="block pr-sm font-medium text-fg group-hover:underline">{t(pin.lot.title)}</span>
       <span className="mt-1 block pr-xs text-fg-2">{pin.label}</span>
@@ -42,17 +43,29 @@ function PinCard({ pin, className = "" }) {
   );
 }
 
-/** White annotation over the photo with a leader line to the chair (tablet and up). */
-function PricePin({ pin }) {
-  const { isRTL } = useLang();
-  const dot = isRTL ? HERO_ROOM.pinRtl : HERO_ROOM.pin;
+// Master size of the hero photographs (A3 / A4).
+const W = 2508;
+const H = 627;
+const pct = (value, total) => `${(value / total) * 100}%`;
+
+/**
+ * White annotation with a leader line to the chair (from 1024 px). It lives in
+ * the photograph's own coordinates (see Hero), so the dot stays on the
+ * recliner at every width.
+ */
+function PricePin({ pin, room, isRTL }) {
+  const { card, from, dot } = room;
   return (
-    <div className="hidden md:block">
-      <svg aria-hidden="true" className="pointer-events-none absolute inset-0 size-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <line x1={isRTL ? 29 : 71} y1="46" x2={dot.x} y2={dot.y} stroke="white" strokeWidth="1.4" vectorEffect="non-scaling-stroke" />
+    <div className="hidden lg:block">
+      <svg aria-hidden="true" className="pointer-events-none absolute inset-0 size-full" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none">
+        <line x1={from.x} y1={from.y} x2={dot.x} y2={dot.y} stroke="white" strokeWidth="1.4" vectorEffect="non-scaling-stroke" />
       </svg>
-      <span aria-hidden="true" className="pointer-events-none absolute size-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_0_5px_rgb(255_255_255/0.3)]" style={{ left: `${dot.x}%`, top: `${dot.y}%` }} />
-      <PinCard pin={pin} className="absolute end-[4%] top-[17%] w-[218px] shadow-[0_10px_28px_-14px_rgb(23_27_39/0.45)] dt:end-[14.8%]" />
+      <span aria-hidden="true" className="pointer-events-none absolute size-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_0_5px_rgb(255_255_255/0.3)]" style={{ left: pct(dot.x, W), top: pct(dot.y, H) }} />
+      <PinCard
+        pin={pin}
+        className="absolute w-[218px] shadow-[0_10px_28px_-14px_rgb(23_27_39/0.45)]"
+        style={{ top: pct(card.y, H), ...(isRTL ? { right: pct(W - card.x, W) } : { left: pct(card.x, W) }) }}
+      />
     </div>
   );
 }
@@ -61,7 +74,7 @@ function HeroCopy({ titleId }) {
   const { t } = useLang();
   const { link } = useConcept();
   return (
-    <div className="bg-[#f8f7f3] px-4 py-7 md:w-[470px] md:rounded-[4px] md:bg-[#f8f7f3]/[0.97] md:px-8 md:py-8 dt:min-h-[320px] dt:w-[510px] dt:px-10 dt:pb-8 dt:pt-[38px]">
+    <div className="bg-[#f8f7f3] px-[var(--pr-gutter)] py-7 lg:w-[470px] lg:rounded-[4px] lg:bg-[#f8f7f3]/[0.97] lg:px-8 lg:py-8 dt:min-h-[320px] dt:w-[510px] dt:px-10 dt:pb-8 dt:pt-[38px]">
       <p className="flex items-center gap-3 pr-eyebrow text-[#4a4d57]">
         <span aria-hidden="true" className="pr-dash" />
         {t(COPY.heroEyebrow)}
@@ -90,35 +103,51 @@ function HeroCopy({ titleId }) {
 
 /**
  * Full-bleed room photograph with an ivory copy card inset at the start and
- * a white price pin on the recliner. Phones stack the copy, then a shorter
- * landscape photo, then the pin's details docked under it.
+ * a white price pin on the recliner. English uses A3 and Arabic A4 (composed
+ * separately, never mirrored). Below 1024 px the copy card would cover the
+ * chair, so the copy stacks above a photo strip and the pin's details dock
+ * under it.
+ *
+ * The photograph sits on a 4:1 "canvas" that covers the strip like
+ * object-fit: cover, positioned by --px / --py (object-position fractions):
+ * right-biased for English and left-biased for Arabic on narrow strips,
+ * following the asset manifest's crops. The pin, its leader line and the dot
+ * are placed in the canvas's own coordinates, so they stay on the chair
+ * whatever the crop.
  */
 export function Hero({ live }) {
   const { isRTL } = useLang();
   const titleId = useId();
   const pin = usePinLot(live);
+  const room = isRTL ? HERO_ROOM.rtl : HERO_ROOM.ltr;
   return (
-    <section data-ref="03" aria-labelledby={titleId} className="relative isolate flex flex-col bg-bg md:block">
-      <div className="order-1 md:absolute md:inset-0 md:z-10 md:pointer-events-none">
-        <div className="pr-container max-md:!px-0 md:h-full dt:!px-12">
-          <div className="md:pointer-events-auto md:pt-[40px] dt:pt-[60px]">
+    <section data-ref="03" aria-labelledby={titleId} className="relative isolate flex flex-col bg-bg lg:block">
+      <div className="order-1 lg:pointer-events-none lg:absolute lg:inset-0 lg:z-10">
+        <div className="pr-container max-lg:!px-0 lg:h-full dt:!px-12">
+          <div className="lg:pointer-events-auto lg:pt-[40px] dt:pt-[60px]">
             <HeroCopy titleId={titleId} />
           </div>
         </div>
       </div>
-      <div className="relative order-2 h-[230px] overflow-hidden bg-[#d9d2c6] sm:h-[300px] md:h-[420px] dt:h-[432px]">
-        <Img
-          image={HERO_ROOM.image}
-          alt=""
-          priority
-          sizes="100vw"
-          className="absolute inset-0 size-full object-cover"
-          style={{ objectPosition: isRTL ? HERO_ROOM.focusRtl : HERO_ROOM.focus }}
-        />
-        {pin ? <PricePin pin={pin} /> : null}
+      <div
+        className={cx(
+          "relative order-2 h-[var(--h)] overflow-hidden bg-[#d9d2c6] [--h:230px] [--py:0.25] sm:[--h:300px] md:[--h:320px] lg:[--h:420px] dt:[--h:432px]",
+          isRTL ? "[--px:0.1] lg:[--px:0] dt:[--px:0.25] wd:[--px:0.5]" : "[--px:0.94] lg:[--px:1] dt:[--px:0.75] wd:[--px:0.5]",
+        )}
+      >
+        <div className="absolute left-[calc(var(--px)*100%)] top-[calc(var(--py)*100%)] aspect-[4/1] w-[max(100%,calc(var(--h)*4))] translate-x-[calc(var(--px)*-100%)] translate-y-[calc(var(--py)*-100%)]">
+          <Img
+            image={room.image}
+            alt=""
+            priority
+            sizes="(min-width: 1728px) 100vw, (min-width: 1200px) 1728px, (min-width: 1024px) 1680px, (min-width: 768px) 1280px, (min-width: 640px) 1200px, 920px"
+            className="absolute inset-0 size-full object-cover"
+          />
+          {pin ? <PricePin pin={pin} room={room} isRTL={isRTL} /> : null}
+        </div>
       </div>
       {pin ? (
-        <div className="order-3 border-b border-line bg-white px-4 py-1 md:hidden">
+        <div className="order-3 border-b border-line bg-white px-[var(--pr-gutter)] py-1 lg:hidden">
           <PinCard pin={pin} className="!px-0" />
         </div>
       ) : null}

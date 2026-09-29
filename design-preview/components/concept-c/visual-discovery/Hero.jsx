@@ -57,16 +57,22 @@ function CopyTile({ titleId }) {
   );
 }
 
-/** Centre scene: furniture photograph with a Furniture label and the overlapping tote card. */
+/**
+ * Centre scene: furniture photograph (A5) with a Furniture label and the
+ * overlapping tote card. When the tile is at least 512 px wide (552 px in
+ * the 1440 composition) both overlays sit on the photograph's clear floor;
+ * on narrower tiles the label moves above the card and gets its own soft
+ * scrim, because it then lies over the room rather than the floor.
+ */
 function FurnitureTile() {
   const { t, ui } = useLang();
   const { link } = useConcept();
   const tote = HERO.tote;
   return (
-    <div className="relative h-full min-h-[380px] overflow-hidden rounded-[18px] bg-[#e8e1d8]">
-      <Img image={HERO.furniture.image} alt="" priority sizes="(min-width: 1200px) 556px, 100vw" className="absolute inset-0 size-full object-cover" style={{ objectPosition: HERO.furniture.focus }} />
+    <div className="@container relative h-full min-h-[380px] overflow-hidden rounded-[18px] bg-[#e8e1d8]">
+      <Img image={HERO.furniture.image} alt="" priority sizes="(min-width: 1200px) 556px, (min-width: 768px) 50vw, 100vw" className="absolute inset-0 size-full object-cover" style={{ objectPosition: HERO.furniture.focus }} />
       <span aria-hidden="true" className="absolute inset-y-0 start-0 w-[70%] bg-[radial-gradient(ellipse_at_bottom_left,rgb(6_20_40/0.72),rgb(6_20_40/0.3)_45%,transparent_70%)] rtl:bg-[radial-gradient(ellipse_at_bottom_right,rgb(6_20_40/0.72),rgb(6_20_40/0.3)_45%,transparent_70%)]" />
-      <div className="absolute bottom-[178px] start-5 max-w-[70%] text-white dt:bottom-[10px] dt:start-[14px] dt:max-w-[48%]">
+      <div className="absolute bottom-[178px] start-5 isolate max-w-[70%] text-white before:absolute before:-inset-x-8 before:-inset-y-6 before:-z-10 before:bg-[radial-gradient(closest-side,rgb(6_20_40/0.55),transparent)] before:content-[''] @min-[512px]:bottom-[10px] @min-[512px]:start-[14px] @min-[512px]:max-w-[48%] @min-[512px]:before:hidden">
         <p className="vd-h3 !text-[21px] !leading-7 text-white">{t(COPY.furniture)}</p>
         <p className="vd-md text-white/90">{t(COPY.furnitureText)}</p>
         <Link href={link("/browse?category=furniture")} aria-label={t(COPY.exploreNamed, { name: t(COPY.furniture) })} className={btn("white", "sm", "mt-3 h-[38px] gap-3 px-5 dt:mt-[9px] dt:h-[34px] dt:px-[22px]")}>

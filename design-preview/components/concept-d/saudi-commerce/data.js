@@ -3,26 +3,12 @@
 // grades come from data/; this file only picks them and frames the imagery.
 import { Armchair, Boxes, Car, CookingPot, Monitor, ShoppingBag, WashingMachine, Wrench } from "lucide-react";
 import { CATEGORY_BY_SLUG } from "@/data/categories";
-import { BRAND_PHOTOS, cutout, photo } from "@/data/media";
+import { BRAND_PHOTOS, photo } from "@/data/media";
 import { getProduct } from "@/data/products";
 import { SELLER_BY_CODE } from "@/data/sellers";
 import { endingSoon } from "@/lib/catalog";
 
 const pick = (...slugs) => slugs.map(getProduct).filter(Boolean);
-
-/**
- * Hero stage. The approved limestone photograph (tote on a plinth, leather
- * chair, lamp, washer and suitcase, plants) is not in the asset library, so
- * the scene is composed from the catalogue's own cut-outs on a CSS backdrop.
- * There are no plant images, so the plants are left out.
- */
-export const HERO_PROPS = {
-  tote: cutout("suede-tote"),
-  chair: cutout("swivel-chair"),
-  lamp: cutout("floor-lamp"),
-  washer: cutout("washer-front"),
-  suitcase: cutout("hardside-spinner"),
-};
 
 /** Local category rail, in the approved order. */
 export const CATEGORY_RAIL = [

@@ -225,12 +225,4 @@
   .sc-rail::-webkit-scrollbar { display: none; }
   .sc-search::placeholder { color: #6b7686; opacity: 1; }
   .sc-search::-webkit-search-cancel-button { display: none; }
-
-  /* Hero stage: calm limestone backdrop built from soft planes (the
-     approved photograph is not in the asset library). */
-  .sc-stage {
-    background:
-      radial-gradient(ellipse 46% 60% at 50% 42%, #f7f1e8 0%, rgb(247 241 232 / 0) 72%),
-      linear-gradient(180deg, #ece2d4 0%, #efe6da 62%, #e6dccd 62.2%, #eee6db 100%);
-  }
 }

@@ -7,16 +7,18 @@ import { BRAND_PHOTOS, photo } from "@/data/media";
 import { getProduct } from "@/data/products";
 import { SELLER_BY_CODE } from "@/data/sellers";
 import { endingSoon, featuredBuyNow } from "@/lib/catalog";
+import { WORK_MEDIA } from "@/components/shared/r3/work-media";
 
 /**
- * Hero mosaic. The approved furniture scene (tan recliner and walnut desk)
- * is not in the asset library; the closest existing room photograph (walnut
- * desk with a tan leather chair) stands in. The Electronics tile uses the
- * catalogue TV (blue-wave screen) on a pale plate, and Home & Kitchen the
- * catalogue's red coffee-maker lifestyle shot.
+ * Hero mosaic. The furniture scene is the approved A5 photograph (tan
+ * recliner and walnut desk; its lower 28 % is clear floor for the label and
+ * the tote card). `focus` keeps the whole chair in view from the widest tile
+ * (1.06:1) to the narrowest (0.61:1). The Electronics tile uses the catalogue
+ * TV (blue-wave screen) on a pale plate, and Home & Kitchen the catalogue's
+ * red coffee-maker lifestyle shot.
  */
 export const HERO = {
-  furniture: { image: photo("task-lamp", 3), focus: "34% 60%" },
+  furniture: { image: WORK_MEDIA.furnitureScene, focus: "20% 30%" },
   electronics: { image: photo("tv-43", 0), slug: "electronics" },
   kitchen: { image: photo("capsule-coffee", 1), focus: "30% 30%", slug: "home-kitchen" },
   tote: getProduct("suede-tote"),

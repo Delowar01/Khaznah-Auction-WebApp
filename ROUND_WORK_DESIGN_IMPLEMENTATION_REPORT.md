@@ -110,7 +110,7 @@ Side-by-side images (reference | implementation) and the three full-page screens
 
 ## 5. Asset audit
 
-EXACT = the same item exists · SUITABLE = close existing asset · MISSING = not in the library (stand-in used, reported here, no parity claimed). No screenshot of a reference was used as a background. Production briefs for every MISSING and SUITABLE photograph below are in `WORK_DESIGN_MISSING_ASSETS.md` (correction gate).
+EXACT = the same item exists · SUITABLE = close existing asset · MISSING = not in the library (stand-in used, reported here, no parity claimed). No screenshot of a reference was used as a background. Production briefs for every MISSING and SUITABLE photograph below are in `WORK_DESIGN_MISSING_ASSETS.md` (correction gate). **Update:** the Priority 1 photographs (tan recliner, Option 2 hero, Option 3 furniture scene, Option 4 limestone hero) have since replaced their stand-ins on the three home pages — see `PRIORITY_1_ASSET_INTEGRATION_REPORT.md`; the rows below describe the state before that integration.
 
 | Where | Needed | Used | Status |
 |---|---|---|---|
@@ -227,6 +227,8 @@ Recaptured on the correction-gate build:
 - Pixels: the starting checkpoint was built separately (git worktree at `0166ba8`) and served next to the final build. 7 Option 1 routes (Home, Browse, Product, Auction, Live auction, Seller, Components) × EN / AR × 1440 / 1024 / 768 / 390 / 320 = 70 full-page screenshots per build, with a frozen clock, seeded random numbers and photographs masked (their boxes are still compared). Result: 60 identical; 10 differ by 5–13 pixels, all at 390 px, in two spots — the top edge of the sticky phone search bar and a 1–2 px line on the live-auction page. Comparing the checkpoint with itself the same way gives the same kind of 5–13 pixel differences in the same two spots (5 of 70), so this is capture noise, not a change. No Option 1 console errors.
 
 ## 15. Remaining visual differences (honest list)
+
+> Since this list was written, the Priority 1 photographs replaced the Option 2 hero, the Option 3 furniture scene, the Option 4 hero stage and the recliner artwork on the three home pages (`PRIORITY_1_ASSET_INTEGRATION_REPORT.md`). The other items still apply.
 
 **Option 2**
 - Hero photograph: catalogue room shot of an olive recliner instead of the panoramic room with a tan recliner, desk and lamp; the crop is tighter and warmer-grey.

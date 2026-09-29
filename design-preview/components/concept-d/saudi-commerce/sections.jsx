@@ -6,6 +6,7 @@ import { Gavel, Package, Play, Search, ShoppingCart, Store, Truck } from "lucide
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { cardTitle, useCartAdd } from "@/components/shared/r3/home";
+import { lotImage } from "@/components/shared/r3/work-media";
 import { Img } from "@/components/shared/ui/Img";
 import { Money } from "@/components/shared/ui/Money";
 import { GRADES, GRADE_ORDER } from "@/data/grades";
@@ -199,7 +200,7 @@ function LivePanel({ live }) {
           className="absolute inset-y-0 right-0 h-full max-w-none object-cover"
           style={{ width: `${LIVE_SCENE.zoom * 100}%`, objectPosition: LIVE_SCENE.focus }}
         />
-        {lot ? <Img key={lot.lot} image={lot.image} cutout alt="" sizes="360px" className="absolute bottom-[33%] left-1/2 h-[36%] w-[56%] -translate-x-[38%] object-contain object-bottom drop-shadow-[0_18px_22px_rgb(0_0_0/0.45)] sm:bottom-[9%] sm:h-[62%] rtl:-translate-x-[62%]" /> : null}
+        {lot ? <Img key={lot.lot} image={lotImage(lot)} cutout alt="" sizes="360px" className="absolute bottom-[33%] left-1/2 h-[36%] w-[56%] -translate-x-[38%] object-contain object-bottom drop-shadow-[0_18px_22px_rgb(0_0_0/0.45)] sm:bottom-[9%] sm:h-[62%] rtl:-translate-x-[62%]" /> : null}
         <span aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgb(10_16_22/0.74)_0%,rgb(10_16_22/0.18)_42%,rgb(10_16_22/0.12)_58%,rgb(10_16_22/0.82)_100%)]" />
         <div className="absolute inset-x-0 top-0 p-5 text-white dt:ps-[27px] dt:pt-[24px]">
           <p className="max-w-[390px] sc-h2 !text-[22px] !leading-7 text-white md:!text-[27px] md:!leading-[33px] dt:!text-[30px] dt:!leading-[36px]">{t(LIVE_EVENT.title)}</p>

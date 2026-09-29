@@ -1,0 +1,501 @@
+{
+  "title": "Khaznah Priority 1 final correction assets",
+  "date": "2026-09-29",
+  "package": "KHAZNAH_PRIORITY_1_FINAL.zip",
+  "status": "Corrections completed and checked. Ready for the user’s final visual approval before integration.",
+  "generation_method": "Built-in image_gen for background patches in A3, A4 and A6 only; deterministic Pillow/NumPy compositing and alpha cleanup under explicit user authorization.",
+  "resolution_disclosure": "Actual delivered sizes are listed below. The original brief’s 4800x1200/2400x2400/1600-high targets were not attained natively. The accepted exports have not been stretched or upscaled. 2508x627 is the final extended composite canvas, not a single native model output.",
+  "color": "Original RGB/RGBA samples preserved. Files are untagged; intended for sRGB web display. No ICC conversion or color grading applied.",
+  "references": {
+    "repository": "https://github.com/Delowar01/Khaznah-Auction-WebApp",
+    "branch": "claude/magical-faraday-fne4kq",
+    "reviewed_commit": "06eedee",
+    "catalogue_directory": "design-preview/public/images/catalog/",
+    "files": [
+      {
+        "file": "suede-tote-0-1200.webp",
+        "blobSha": "5562ca71301afce5a56ed8bf2709e2332c758316"
+      },
+      {
+        "file": "washer-front-0-1200.webp",
+        "blobSha": "5442cc4da2f25191bc2fa345bd7166e893c9d6ac"
+      },
+      {
+        "file": "hardside-spinner-0-1200.webp",
+        "blobSha": "6f9bede3725cc716257bbc2d410f56859b423418"
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "A1",
+      "name": "Tan leather recliner — studio photograph",
+      "placement": "Shared product reference and live-lot photograph, Options 2–4",
+      "file": "A1_kz-shared-recliner-studio-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "aspect_ratio": "1254:1254",
+      "ratio_decimal": 1.0,
+      "mode": "RGB",
+      "bytes": 1872328,
+      "sha256": "ce00db3694de567f3a44a0df65ad58a7bd74c092f7dc57ca0ad1c6732a3f7bef",
+      "icc_profile_embedded": false,
+      "source_file": "A1_kz-shared-recliner-studio-v1.png",
+      "source_sha256": "ce00db3694de567f3a44a0df65ad58a7bd74c092f7dc57ca0ad1c6732a3f7bef",
+      "original_brief_requested_dimensions": [
+        2400,
+        2400
+      ],
+      "correction": "Approved studio photograph, original file unchanged.",
+      "overlay_guidance": {
+        "note": "Use full square; product image with no text overlay."
+      },
+      "resolution_provenance": "Unchanged original native export."
+    },
+    {
+      "id": "A2",
+      "name": "Matching transparent recliner cut-out",
+      "placement": "Option 2 featured lot; Option 3 live lot card; Option 4 warehouse live scene",
+      "file": "A2_kz-shared-recliner-cutout-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "aspect_ratio": "1254:1254",
+      "ratio_decimal": 1.0,
+      "mode": "RGBA",
+      "bytes": 1775584,
+      "sha256": "eac4b2226ae119061f6fe89a5971dcb719d11dc58e4c5cbb664d7cec268e76a5",
+      "icc_profile_embedded": false,
+      "source_file": "A2_kz-shared-recliner-cutout-v1.png",
+      "source_sha256": "80f981eeeaac3ac26657eb368cbf675ec4fadd8a427bf40fbfd3dfb421035d98",
+      "original_brief_requested_dimensions": [
+        null,
+        1600
+      ],
+      "correction": "Weak residual matte and detached alpha removed. Retained chair RGBA pixels unchanged; outer canvas alpha is zero. No generated edits.",
+      "overlay_guidance": {
+        "subject_bbox_px": [
+          66,
+          102,
+          1174,
+          1156
+        ],
+        "note": "Fit the complete transparent subject. The square canvas is retained; no further trim was part of this correction."
+      },
+      "resolution_provenance": "Deterministic finishing at original pixel scale; no upscaling.",
+      "finishing": {
+        "pixel_dimensions": [
+          1254,
+          1254
+        ],
+        "positive_alpha_bbox": [
+          66,
+          102,
+          1174,
+          1156
+        ],
+        "canvas_edge_alpha": 0,
+        "retained_chair_RGBA_exact": true,
+        "removed_alpha_pixels": 8068,
+        "method": "Keep connected chair alpha above16/255; eliminate weak residual matte and detached pixels. Retained chair RGBA unchanged."
+      }
+    },
+    {
+      "id": "A3",
+      "name": "Furnished-room hero — English",
+      "placement": "Option 2 English full-bleed hero; copy on left, price pin above chair on right",
+      "file": "A3_kz-o2-hero-room-ltr-v2.png",
+      "width": 2508,
+      "height": 627,
+      "aspect_ratio": "2508:627",
+      "ratio_decimal": 4.0,
+      "mode": "RGB",
+      "bytes": 2329415,
+      "sha256": "87129f1febd8b6a91ed585637b24e0c57d93f6143b9a0d40e2b6112998d7265a",
+      "icc_profile_embedded": false,
+      "source_file": "A3_kz-o2-hero-room-ltr-v1.png",
+      "source_sha256": "a3c1f0aeb5dbcc59fdd532930b125c3a81578166328e2d24a35d7f1922473f11",
+      "original_brief_requested_dimensions": [
+        4800,
+        1200
+      ],
+      "correction": "Exact 4:1 composite. Inserted 525 px of window/curtain/floor background on the copy side; retained original foreground at 1:1 pixel scale. Independent English source.",
+      "overlay_guidance": {
+        "copy_region_px": [
+          125,
+          40,
+          1030,
+          560
+        ],
+        "note": "Left copy-card region; use the existing opaque/light HTML card. Keep callouts clear of the chair."
+      },
+      "resolution_provenance": "Extended composite; original foreground unchanged at native pixel scale. New background patches uniformly downsampled only.",
+      "composition": {
+        "file": "A3_kz-o2-hero-room-ltr-v2.png",
+        "dimensions": [
+          2508,
+          627
+        ],
+        "ratio": "4:1",
+        "patches": [
+          {
+            "name": "A3",
+            "native_patch_dimensions": [
+              1536,
+              1024
+            ],
+            "uniformly_reduced_patch_dimensions": [
+              960,
+              640
+            ],
+            "composite_offset": [
+              334,
+              -10
+            ],
+            "new_background_local_x": [
+              216,
+              741
+            ],
+            "background_seam_blend_px": 32
+          }
+        ],
+        "protected_original_pixels_unchanged": true,
+        "protected_pixel_count": 1203840,
+        "generated_or_blended_pixel_count": 368676
+      }
+    },
+    {
+      "id": "A4",
+      "name": "Furnished-room hero — Arabic",
+      "placement": "Option 2 Arabic full-bleed hero; copy on right, price pin above chair on left",
+      "file": "A4_kz-o2-hero-room-rtl-v2.png",
+      "width": 2508,
+      "height": 627,
+      "aspect_ratio": "2508:627",
+      "ratio_decimal": 4.0,
+      "mode": "RGB",
+      "bytes": 2160251,
+      "sha256": "da8041315211c5f64499e9ee74a5f15bfd7e3e94a19fa02371dffcd3c07dc671",
+      "icc_profile_embedded": false,
+      "source_file": "A4_kz-o2-hero-room-rtl-v1.png",
+      "source_sha256": "19e3ee3559c52b5657bb4087f90a930c12faa05353398b27259be3ad5bdb1168",
+      "original_brief_requested_dimensions": [
+        4800,
+        1200
+      ],
+      "correction": "Exact 4:1 composite. Inserted 525 px of window/curtain/floor background on the copy side; retained original foreground at 1:1 pixel scale. Independent Arabic source; never mirrored.",
+      "overlay_guidance": {
+        "copy_region_px": [
+          1478,
+          40,
+          2383,
+          560
+        ],
+        "note": "Right copy-card region; use the existing opaque/light HTML card. Separate Arabic asset, never mirror the English one."
+      },
+      "resolution_provenance": "Extended composite; original foreground unchanged at native pixel scale. New background patches uniformly downsampled only.",
+      "composition": {
+        "file": "A4_kz-o2-hero-room-rtl-v2.png",
+        "dimensions": [
+          2508,
+          627
+        ],
+        "ratio": "4:1",
+        "patches": [
+          {
+            "name": "A4",
+            "native_patch_dimensions": [
+              1536,
+              1024
+            ],
+            "uniformly_reduced_patch_dimensions": [
+              960,
+              640
+            ],
+            "composite_offset": [
+              1214,
+              -10
+            ],
+            "new_background_local_x": [
+              216,
+              741
+            ],
+            "background_seam_blend_px": 32
+          }
+        ],
+        "protected_original_pixels_unchanged": true,
+        "protected_pixel_count": 1203840,
+        "generated_or_blended_pixel_count": 368676
+      }
+    },
+    {
+      "id": "A5",
+      "name": "Furniture-scene hero tile",
+      "placement": "Option 3 middle hero mosaic tile; lower corners reserved for title and tote overlay",
+      "file": "A5_kz-o3-hero-furniture-v2.png",
+      "width": 1200,
+      "height": 1200,
+      "aspect_ratio": "1200:1200",
+      "ratio_decimal": 1.0,
+      "mode": "RGB",
+      "bytes": 1844661,
+      "sha256": "710d9248be109ff59ebe6cda02d3847f0953c5cd06f96f7aa369caf786c188b9",
+      "icc_profile_embedded": false,
+      "source_file": "A5_kz-o3-hero-furniture-v1.png",
+      "source_sha256": "e30e87a630d143fdd381869adcb1f688025000b5dbd6d6dfa524f0aefeedb096",
+      "original_brief_requested_dimensions": [
+        2400,
+        2400
+      ],
+      "correction": "Lossless square reframing to 1200 px; lower 28% provides floor clearance at both corners. No generated or resampled pixels.",
+      "overlay_guidance": {
+        "clear_floor_band_px": [
+          0,
+          864,
+          1200,
+          1200
+        ],
+        "lower_left_overlay_px": [
+          24,
+          864,
+          540,
+          1176
+        ],
+        "lower_right_overlay_px": [
+          576,
+          864,
+          1176,
+          1176
+        ],
+        "note": "Both lower corners are clear. Title and tote card may swap sides in Arabic. A local HTML gradient remains appropriate for white text."
+      },
+      "resolution_provenance": "Deterministic finishing at original pixel scale; no upscaling.",
+      "finishing": {
+        "pixel_dimensions": [
+          1200,
+          1200
+        ],
+        "source_crop": [
+          27,
+          54,
+          1227,
+          1254
+        ],
+        "method": "Lossless reframing: retain source pixels in lower-centered square; no new pixels, no scaling.",
+        "overlay_clearance_target": "bottom28%, y864–1200"
+      }
+    },
+    {
+      "id": "A6",
+      "name": "Limestone architectural hero — wide",
+      "placement": "Option 4 desktop/tablet hero; centered live HTML copy/search/buttons",
+      "file": "A6_kz-o4-hero-limestone-wide-v2.png",
+      "width": 2508,
+      "height": 627,
+      "aspect_ratio": "2508:627",
+      "ratio_decimal": 4.0,
+      "mode": "RGB",
+      "bytes": 2187977,
+      "sha256": "c98ff2d577957a0b98b518ce14ca5c54f8b9b25d74c738491e5a75db3337056d",
+      "icc_profile_embedded": false,
+      "source_file": "A6_kz-o4-hero-limestone-wide-v1.png",
+      "source_sha256": "54fc4c0be45ce69c98371e0c650745b89bc2f72bfe389a3f44706b3946360bf6",
+      "original_brief_requested_dimensions": [
+        4800,
+        1200
+      ],
+      "correction": "Exact 4:1 composite. Added 168 px background at each side, preserving the original limestone centre and all key foreground products at 1:1 pixel scale.",
+      "overlay_guidance": {
+        "clear_content_core_px": [
+          650,
+          60,
+          1700,
+          540
+        ],
+        "note": "Approximate object-free central content core. Keep the live search and buttons inside the visible clear area after cropping; use A7 for narrow layouts."
+      },
+      "resolution_provenance": "Extended composite; original foreground unchanged at native pixel scale. New background patches uniformly downsampled only.",
+      "composition": {
+        "file": "A6_kz-o4-hero-limestone-wide-v2.png",
+        "dimensions": [
+          2508,
+          627
+        ],
+        "ratio": "4:1",
+        "patches": [
+          {
+            "name": "A6_left",
+            "native_patch_dimensions": [
+              1254,
+              1254
+            ],
+            "uniformly_reduced_patch_dimensions": [
+              640,
+              640
+            ],
+            "composite_offset": [
+              0,
+              -10
+            ],
+            "new_background_local_x": [
+              0,
+              168
+            ],
+            "background_seam_blend_px": 24
+          },
+          {
+            "name": "A6_right",
+            "native_patch_dimensions": [
+              1254,
+              1254
+            ],
+            "uniformly_reduced_patch_dimensions": [
+              640,
+              640
+            ],
+            "composite_offset": [
+              1868,
+              -10
+            ],
+            "new_background_local_x": [
+              472,
+              640
+            ],
+            "background_seam_blend_px": 24
+          }
+        ],
+        "protected_original_pixels_unchanged": true,
+        "protected_pixel_count": 1332375,
+        "generated_or_blended_pixel_count": 240141
+      }
+    },
+    {
+      "id": "A7",
+      "name": "Matching limestone hero — mobile",
+      "placement": "Option 4 phone hero; upper approximately 68% clear for live page content",
+      "file": "A7_kz-o4-hero-limestone-mobile-v1.png",
+      "width": 992,
+      "height": 1586,
+      "aspect_ratio": "992:1586",
+      "ratio_decimal": 0.6254728877679697,
+      "mode": "RGB",
+      "bytes": 1556793,
+      "sha256": "3c0842097488e065b307111981f54fa3ca98a9a06a7e3d619d8777f2b89921c5",
+      "icc_profile_embedded": false,
+      "source_file": "A7_kz-o4-hero-limestone-mobile-v1.png",
+      "source_sha256": "3c0842097488e065b307111981f54fa3ca98a9a06a7e3d619d8777f2b89921c5",
+      "original_brief_requested_dimensions": [
+        1200,
+        1920
+      ],
+      "correction": "Approved mobile photograph, original file unchanged.",
+      "overlay_guidance": {
+        "note": "Keep the approved portrait composition. Upper approximately 68% remains the intended content area; preserve the lower product grouping."
+      },
+      "resolution_provenance": "Unchanged original native export."
+    }
+  ],
+  "responsive_crop_guidance": {
+    "coordinates": "Zero-based [left, top, right, bottom]; right and bottom exclusive. Guidance for developer integration, not application code.",
+    "desktop_all_panoramas": {
+      "full_4_to_1": [
+        0,
+        0,
+        2508,
+        627
+      ],
+      "centre_10_to_3": [
+        209,
+        0,
+        2299,
+        627
+      ],
+      "centre_about_40_to_9": [
+        0,
+        31,
+        2508,
+        595
+      ],
+      "note": "The full primary products remain visible in these inspected crops. Peripheral plants, shelving tops and side-table context may be cropped."
+    },
+    "A3": {
+      "tablet_about_12_to_5": [
+        1003,
+        0,
+        2508,
+        627
+      ],
+      "phone_about_17_to_10": [
+        1360,
+        0,
+        2426,
+        627
+      ],
+      "note": "Use a right-biased photo crop. Put copy outside the strip when narrow; dock the price pin if needed."
+    },
+    "A4": {
+      "tablet_about_12_to_5": [
+        0,
+        0,
+        1505,
+        627
+      ],
+      "phone_about_17_to_10": [
+        150,
+        0,
+        1216,
+        627
+      ],
+      "note": "Use a left-biased photo crop. Put Arabic copy outside the strip when narrow; dock the price pin if needed."
+    },
+    "A5": {
+      "desktop_about_1_06_to_1": [
+        0,
+        34,
+        1200,
+        1166
+      ],
+      "phone_0_96_to_1": [
+        24,
+        0,
+        1176,
+        1200
+      ],
+      "note": "These light central trims retain the lower floor clearance. Avoid aggressive vertical zoom."
+    },
+    "A6": {
+      "note": "Use A6 near 4:1. Below approximately 3.33:1, switch to A7 or display A6 uncropped with content outside it. A 2.4:1 centre cover crop cannot retain products at both sides; do not use that crop."
+    },
+    "A7": {
+      "note": "Use the full portrait source with minimal trimming; its 992:1586 ratio is approximately 5:8."
+    }
+  },
+  "verified_checks": {
+    "A1_file_identical": true,
+    "A7_file_identical": true,
+    "A2_retained_pixels_identical": true,
+    "A2_outer_canvas_max_alpha": 0,
+    "A2_fully_transparent_pixels": 644887,
+    "A2_positive_alpha_bbox": [
+      66,
+      102,
+      1174,
+      1156
+    ],
+    "A5_crop_pixels_identical": true,
+    "A3": {
+      "exact_4_to_1": true,
+      "foreground_region_original_pixels_unchanged": true,
+      "no_foreground_resampling": true
+    },
+    "A4": {
+      "exact_4_to_1": true,
+      "foreground_region_original_pixels_unchanged": true,
+      "no_foreground_resampling": true
+    },
+    "A6": {
+      "exact_4_to_1": true,
+      "foreground_region_original_pixels_unchanged": true,
+      "no_foreground_resampling": true
+    }
+  }
+}

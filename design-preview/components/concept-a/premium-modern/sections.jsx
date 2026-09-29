@@ -6,6 +6,7 @@ import { ClipboardList, Play, Truck, UserRoundSearch } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { cardTitle, useCartAdd } from "@/components/shared/r3/home";
+import { lotImage } from "@/components/shared/r3/work-media";
 import { Img } from "@/components/shared/ui/Img";
 import { Money } from "@/components/shared/ui/Money";
 import { GRADES, GRADE_ORDER } from "@/data/grades";
@@ -248,7 +249,7 @@ export function LiveSection({ live }) {
             </Link>
           </div>
           <div className="relative h-full min-h-[190px]">
-            {lot ? <Img image={lot.image} cutout alt="" sizes="260px" className="absolute inset-y-4 end-3 h-[calc(100%-32px)] w-[calc(100%-12px)] object-contain drop-shadow-[0_14px_14px_rgb(23_27_39/0.18)]" /> : null}
+            {lot ? <Img image={lotImage(lot)} cutout alt="" sizes="260px" className="absolute inset-y-4 end-3 h-[calc(100%-32px)] w-[calc(100%-12px)] object-contain drop-shadow-[0_14px_14px_rgb(23_27_39/0.18)]" /> : null}
           </div>
         </article>
       </div>

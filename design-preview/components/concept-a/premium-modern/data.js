@@ -7,21 +7,20 @@ import { BRAND_PHOTOS, cutout, photo } from "@/data/media";
 import { getProduct } from "@/data/products";
 import { SELLER_BY_CODE } from "@/data/sellers";
 import { endingSoon } from "@/lib/catalog";
+import { WORK_MEDIA } from "@/components/shared/r3/work-media";
 
 const pick = (...slugs) => slugs.map(getProduct).filter(Boolean);
 
 /**
- * Hero room. The approved panoramic room (desk, lamp and tan recliner) is not
- * in the asset library; the closest existing photograph is the catalogue's
- * own room shot of the live-auction recliner. `focus` keeps the chair clear of
- * the copy card; `pin` places the white dot on the chair (percent of the hero).
+ * Hero room: the approved A3 (English) and A4 (Arabic) photographs, composed
+ * separately for each reading direction (never mirrored). Positions are in
+ * master pixels (2508 × 627): `card` is the price pin's top outer corner
+ * (top-left in English, top-right in Arabic), `from` a point inside the card
+ * where the leader line starts, `dot` the point on the recliner.
  */
 export const HERO_ROOM = {
-  image: photo("recliner", 2),
-  focus: "50% 26%",
-  focusRtl: "50% 26%",
-  pin: { x: 67, y: 64 },
-  pinRtl: { x: 47, y: 62 },
+  ltr: { image: WORK_MEDIA.heroRoomLtr, card: { x: 1760, y: 60 }, from: { x: 1880, y: 150 }, dot: { x: 2105, y: 445 } },
+  rtl: { image: WORK_MEDIA.heroRoomRtl, card: { x: 730, y: 60 }, from: { x: 610, y: 150 }, dot: { x: 330, y: 455 } },
 };
 
 /** The live lot the hero pin annotates (the recliner in the photo). */

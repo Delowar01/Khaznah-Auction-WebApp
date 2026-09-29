@@ -6,6 +6,7 @@ import { Package, Play, Store, Target, Truck } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { cardTitle, useCartAdd } from "@/components/shared/r3/home";
+import { lotImage } from "@/components/shared/r3/work-media";
 import { Img } from "@/components/shared/ui/Img";
 import { Money } from "@/components/shared/ui/Money";
 import { GRADES, GRADE_ORDER } from "@/data/grades";
@@ -162,7 +163,7 @@ export function LiveBanner({ live }) {
         {lot ? (
           <article style={{ gridArea: "lot" }} aria-label={t(COPY.currentLot)} className="grid h-[164px] grid-cols-[98px_minmax(0,1fr)] items-center gap-3 self-center rounded-[14px] bg-white py-3 ps-2.5 pe-3 text-[var(--vd-ink)] md:max-w-[340px] dt:w-[251px]">
             <div className="relative h-full">
-              <Img image={lot.image} cutout alt="" sizes="98px" className="absolute inset-0 size-full object-contain" />
+              <Img image={lotImage(lot)} cutout alt="" sizes="98px" className="absolute inset-0 size-full object-contain" />
             </div>
             <div className="min-w-0">
               <h3 className="line-clamp-2 vd-title !text-[14px] !leading-[18px]">{t(lot.title)}</h3>

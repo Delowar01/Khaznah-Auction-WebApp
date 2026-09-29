@@ -9,44 +9,60 @@ import { Img } from "@/components/shared/ui/Img";
 import { Money } from "@/components/shared/ui/Money";
 import { useDismiss } from "@/components/shared/ui/hooks";
 import { useGoSearch, useSearchResults } from "@/components/shared/r3/home";
+import { WORK_MEDIA } from "@/components/shared/r3/work-media";
 import { CATEGORIES } from "@/data/categories";
 import { POPULAR_SEARCHES, detailPath, isAuction } from "@/lib/catalog";
 import { COPY } from "./copy";
-import { HERO_PROPS } from "./data";
 import { Arrow, btn, cx } from "./ui";
 
+const srcSet = (image) => image.sources.map((source) => `${source.src} ${source.w}w`).join(", ");
+
 /**
- * Product-framed stage behind the copy. Drawn at the 1440px composition and
- * scaled per breakpoint (the photograph keeps its physical left/right
- * arrangement in Arabic). Decorative only: the products here are scenery,
- * not cards.
+ * The approved limestone photographs (decorative: the products in them are
+ * scenery, not cards; photographs are never mirrored). One <picture>, so a
+ * device only downloads the composition it shows:
+ * - Phones (< 640 px): A7, the portrait companion, full width along the
+ *   bottom of the hero; the copy sits on its quiet upper wall. The photograph
+ *   is clipped here rather than on the hero, so the search suggestions can
+ *   still open below the hero.
+ * - 640–1199 px: A6 as a panorama strip under the copy, cropped only to
+ *   10:3 (the manifest's product-safe crop) and faded into the wall colour.
+ * - From 1200 px: A6 behind the centred copy, bottom-aligned, never taller
+ *   than the 433 px hero and never cropped narrower than ~3.15:1, so the
+ *   tote and the chair, lamp, washer and suitcase stay in view.
  */
-function Stage() {
-  const scale = "scale-[0.4] sm:scale-[0.5] lg:scale-[0.55] dt:scale-[0.72] wd:scale-100";
+function HeroPhoto() {
+  const wide = WORK_MEDIA.limestoneWide;
+  const phone = WORK_MEDIA.limestonePhone;
+  const fallback = wide.sources[1];
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-      {/* Left: arched niche, plinth and the cognac tote */}
-      <div className={cx("absolute bottom-0 left-0 h-[433px] w-[333px] origin-bottom-left", scale)}>
-        <span className="absolute left-[62px] top-0 h-[300px] w-[64px] bg-[#e9dfd1]" />
-        <span className="absolute left-[126px] top-[22px] h-[260px] w-[160px] rounded-t-full bg-[#e3d7c6] shadow-[inset_0_18px_30px_-18px_rgb(120_96_70/0.35)]" />
-        <span className="absolute left-0 top-[270px] h-[16px] w-[333px] bg-[#f6efe6] shadow-[0_1px_0_#d9ccb9]" />
-        <span className="absolute left-0 top-[286px] h-[115px] w-[333px] bg-gradient-to-b from-[#e2d5c3] to-[#d6c8b4] shadow-[inset_-10px_0_18px_-12px_rgb(110_86_60/0.35)]" />
-        <Img image={HERO_PROPS.tote} alt="" sizes="170px" priority className="sc-multiply absolute left-[112px] top-[82px] h-[196px] w-[170px] object-contain object-bottom" />
-      </div>
-      {/* Right: arch, rug, floor lamp, leather chair, washer and suitcase */}
-      <div className={cx("absolute bottom-0 right-0 h-[433px] w-[500px] origin-bottom-right", scale)}>
-        <span className="absolute right-[40px] top-[6px] h-[330px] w-[190px] rounded-t-full bg-[#e5d9c8] shadow-[inset_0_18px_30px_-18px_rgb(120_96_70/0.3)]" />
-        <span className="absolute bottom-[4px] right-[-20px] h-[64px] w-[500px] rounded-[50%] bg-[#d8cbb9]/80" />
-        <Img image={HERO_PROPS.lamp} alt="" sizes="110px" className="absolute right-[196px] top-[92px] h-[318px] w-[103px] object-contain object-bottom" />
-        <Img image={HERO_PROPS.chair} alt="" sizes="230px" className="absolute right-[150px] top-[176px] h-[236px] w-[228px] object-contain object-bottom drop-shadow-[0_12px_14px_rgb(70_50_30/0.25)]" />
-        <Img image={HERO_PROPS.washer} alt="" sizes="170px" className="absolute right-[-12px] top-[120px] h-[222px] w-[164px] object-contain object-bottom drop-shadow-[0_10px_12px_rgb(70_50_30/0.18)]" />
-        <Img image={HERO_PROPS.suitcase} alt="" sizes="110px" className="absolute right-[4px] top-[236px] h-[190px] w-[113px] object-contain object-bottom drop-shadow-[0_10px_12px_rgb(70_50_30/0.22)]" />
-      </div>
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden sm:relative sm:inset-auto sm:aspect-[10/3] sm:w-full dt:absolute dt:inset-x-0 dt:bottom-0 dt:aspect-auto dt:h-[min(433px,31.75vw)]">
+      <picture>
+        <source media="(max-width: 639.98px)" srcSet={srcSet(phone)} sizes="100vw" />
+        <img
+          src={fallback.src}
+          srcSet={srcSet(wide)}
+          sizes="100vw"
+          width={fallback.w}
+          height={fallback.h}
+          alt=""
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          draggable={false}
+          className="absolute bottom-0 left-0 h-auto w-full sm:inset-0 sm:size-full sm:object-cover"
+        />
+      </picture>
+      <span className="absolute inset-x-0 top-0 hidden h-[38%] bg-linear-to-b from-[var(--sc-hero-wall)] to-transparent sm:block dt:h-16 min-[85.25rem]:hidden" />
     </div>
   );
 }
 
-/** Category scope · query · green Search, with suggestions under the field. */
+/**
+ * Category scope · query · green Search, with suggestions under the field.
+ * From 1200 px the field sits over A6 and stops ~12 px short of the leather
+ * chair on the right: 560 px at 1200, growing to 640 px from ~1366 px.
+ */
 function SegmentedSearch() {
   const { t } = useLang();
   const { link } = useConcept();
@@ -62,7 +78,7 @@ function SegmentedSearch() {
   const pick = () => setOpen(false);
   const heading = "sc-xs font-semibold uppercase tracking-[0.08em] text-[var(--sc-muted)]";
   return (
-    <div ref={ref} className="relative mx-auto w-full max-w-[767px] text-start dt:max-w-[660px] wd:max-w-[767px]">
+    <div ref={ref} className="relative mx-auto w-full max-w-[767px] text-start dt:max-w-[min(640px,calc(48.7vw-24px))]">
       <form
         role="search"
         onSubmit={(event) => {
@@ -207,11 +223,12 @@ export function Hero() {
   const titleId = useId();
   const other = lang === "ar" ? "en" : "ar";
   return (
-    <section data-ref="03" aria-labelledby={titleId} className="sc-stage relative isolate">
-      <Stage />
-      {/* Copy and search sit in the calm centre; below tablet the scene
-          continues under the buttons so no text crosses the products. */}
-      <div className="relative z-10 mx-auto flex max-w-[820px] flex-col items-center px-4 pb-[150px] pt-8 text-center sm:pb-[190px] md:px-8 lg:pb-[150px] dt:h-[433px] dt:pb-0 dt:pt-[47px]">
+    <section data-ref="03" aria-labelledby={titleId} className="relative isolate bg-[var(--sc-hero-wall)] [--sc-hero-wall:#e4d1c1] sm:[--sc-hero-wall:#dccbba]">
+      {/* Copy and search sit on the photographs' quiet wall: above A7's
+          products on phones, above the A6 strip on tablets, in A6's clear
+          centre on desktop (the search narrows there to stay clear of the
+          chair on the right). */}
+      <div className="relative z-10 mx-auto flex max-w-[820px] flex-col items-center px-4 pb-[57vw] pt-8 text-center sm:pb-7 md:px-8 dt:h-[433px] dt:pb-0 dt:pt-[47px]">
         <p lang={other} dir={other === "ar" ? "rtl" : "ltr"} className="sc-eyebrow text-[var(--sc-green)]">
           {t(COPY.heroEyebrow)}
         </p>
@@ -233,6 +250,7 @@ export function Hero() {
           </Link>
         </div>
       </div>
+      <HeroPhoto />
     </section>
   );
 }
