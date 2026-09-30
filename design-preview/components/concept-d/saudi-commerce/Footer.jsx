@@ -10,7 +10,13 @@ import { COPY } from "./copy";
 import { SaudiLanguage } from "./Header";
 import { btn } from "./ui";
 
-/** One forest-green band: newsletter at the start, link groups and legal at the end. */
+/**
+ * One forest-green band: newsletter at the start, link groups and legal at
+ * the end. From 1200 px both grids use the 1440 composition's column widths
+ * as fr shares (1365 px band, 769 px link area), so they are exact at 1440
+ * and shrink in proportion below it instead of overflowing the page. The
+ * form keeps the composition's 86 px clearance from the first link column.
+ */
 export function GreenFooter() {
   const { t } = useLang();
   const titleId = useId();
@@ -45,13 +51,13 @@ export function GreenFooter() {
   const linkClass = "sc-link sc-md text-white/90 hover:text-white dt:text-[16px]";
   return (
     <div data-ref="15" className="bg-[var(--sc-deep)] text-white">
-      <div className="sc-container grid gap-10 py-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] dt:h-[239px] dt:grid-cols-[596px_minmax(0,1fr)] dt:gap-0 dt:py-0">
+      <div className="sc-container grid gap-10 py-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] dt:h-[239px] dt:grid-cols-[596fr_769fr] dt:gap-0 dt:py-0">
         <section aria-labelledby={titleId} className="dt:pt-[42px]">
           <h2 id={titleId} className="sc-news text-white">
             {t(COPY.newsTitle)}
           </h2>
           <p className="mt-1.5 sc-lg text-white/90 dt:mt-[8px] dt:text-[17px]">{t(COPY.newsText)}</p>
-          <form noValidate onSubmit={onSubmit} className="mt-4 max-w-[510px] dt:mt-[20px]">
+          <form noValidate onSubmit={onSubmit} className="mt-4 max-w-[510px] dt:mt-[20px] dt:max-w-[min(510px,calc(100%-86px))]">
             <div className="flex flex-col gap-3 sm:flex-row sm:gap-[13px]">
               <label className="min-w-0 sm:flex-1">
                 <span className="sr-only">{t(COPY.emailLabel)}</span>
@@ -74,7 +80,7 @@ export function GreenFooter() {
             </p>
           </form>
         </section>
-        <nav aria-label={t(COPY.footerNav)} className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 dt:grid-cols-[215px_219px_203px_minmax(0,1fr)] dt:gap-0 dt:pt-[46px]">
+        <nav aria-label={t(COPY.footerNav)} className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 dt:grid-cols-[215fr_219fr_203fr_132fr] dt:gap-0 dt:pt-[46px]">
           {columns.map((column) => (
             <div key={column.title.en}>
               <h2 className="sc-lg font-bold text-white">{t(column.title)}</h2>

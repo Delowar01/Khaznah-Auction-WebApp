@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
@@ -59,6 +59,38 @@ function HeroPhoto() {
 }
 
 /**
+ * The longest of `options` that fits the field without being cut off. The
+ * first option (the full placeholder) is also what the server renders; the
+ * check runs whenever the field is laid out or resized, and again once the
+ * web fonts have loaded.
+ */
+function useFittingPlaceholder(ref, options) {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const input = ref.current;
+    if (!input) return undefined;
+    const context = document.createElement("canvas").getContext("2d");
+    let active = true;
+    const measure = () => {
+      if (!active) return;
+      const style = getComputedStyle(input);
+      context.font = `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+      const room = input.clientWidth - parseFloat(style.paddingInlineStart) - parseFloat(style.paddingInlineEnd) - 2;
+      const fits = options.findIndex((text) => context.measureText(text).width <= room);
+      setIndex(fits === -1 ? options.length - 1 : fits);
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(input);
+    document.fonts?.ready.then(measure);
+    return () => {
+      active = false;
+      observer.disconnect();
+    };
+  }, [ref, options]);
+  return options[index] ?? options[0];
+}
+
+/**
  * Category scope · query · green Search, with suggestions under the field.
  * From 1200 px the field sits over A6 and stops ~12 px short of the leather
  * chair on the right: 560 px at 1200, growing to 640 px from ~1366 px.
@@ -69,6 +101,10 @@ function SegmentedSearch() {
   const go = useGoSearch();
   const id = useId();
   const ref = useRef(null);
+  const inputRef = useRef(null);
+  const placeholders = useMemo(() => [COPY.searchPlaceholder, COPY.searchPlaceholderShort, COPY.searchPlaceholderShortest].map((text) => t(text)), [t]);
+  const placeholder = useFittingPlaceholder(inputRef, placeholders);
+  const shortened = placeholder !== placeholders[0];
   const [query, setQuery] = useState("");
   const [scope, setScope] = useState("");
   const [open, setOpen] = useState(false);
@@ -113,6 +149,7 @@ function SegmentedSearch() {
             {t(COPY.searchLabel)}
           </label>
           <input
+            ref={inputRef}
             id={`${id}-q`}
             type="search"
             autoComplete="off"
@@ -123,10 +160,17 @@ function SegmentedSearch() {
               setOpen(true);
             }}
             onFocus={() => setOpen(true)}
-            placeholder={t(COPY.searchPlaceholder)}
+            placeholder={placeholder}
+            aria-describedby={shortened ? `${id}-hint` : undefined}
             aria-controls={open ? listId : undefined}
             className="sc-search h-11 min-w-0 flex-1 bg-transparent sc-md text-[var(--sc-ink)] outline-none dt:text-[15px]"
           />
+          {/* The full hint stays available to assistive technology when a shorter placeholder is shown. */}
+          {shortened ? (
+            <span id={`${id}-hint`} className="sr-only">
+              {placeholders[0]}
+            </span>
+          ) : null}
           <button type="submit" className={btn("green", "md", "h-11 gap-2 px-4 sm:h-[54px] sm:w-[139px] sm:px-0 sm:text-[17px]")}>
             <Search aria-hidden="true" className="size-5" strokeWidth={2.2} />
             {t(COPY.search)}
@@ -134,7 +178,7 @@ function SegmentedSearch() {
         </div>
       </form>
       {open ? (
-        <div id={listId} className="absolute inset-x-0 top-[calc(100%+8px)] z-50 max-h-[70dvh] overflow-y-auto rounded-[10px] border border-[var(--sc-line)] bg-white p-4 text-start shadow-overlay">
+        <div id={listId} data-suggestions className="absolute inset-x-0 top-[calc(100%+8px)] z-50 max-h-[70dvh] overflow-y-auto rounded-[10px] border border-[var(--sc-line)] bg-white p-4 text-start shadow-overlay">
           {!results ? (
             <>
               <p className={heading}>{t(COPY.popularSearches)}</p>
@@ -156,7 +200,8 @@ function SegmentedSearch() {
               </ul>
             </>
           ) : (
-            <div className="grid gap-4 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+              {/* grid-cols-1 keeps the phone column inside the panel, so long titles truncate and every price stays in view. */}
               <div>
                 <p className={heading}>{t(COPY.resultsLots)}</p>
                 {results.lots.length ? null : <p className="mt-2 sc-sm text-[var(--sc-muted)]">{t(COPY.noMatch, { q: query.trim() })}</p>}
@@ -222,8 +267,13 @@ export function Hero() {
   const { link } = useConcept();
   const titleId = useId();
   const other = lang === "ar" ? "en" : "ar";
+  // While the search suggestions are open (they can run past the hero's
+  // bottom edge), z-20 lifts the hero above the sections that follow: their
+  // product cards come later in paint order and their save and bid buttons
+  // use z-10. Header menus (z-50) and the drawers, dialogs and toasts stay
+  // above it; with the panel closed the hero paints exactly as before.
   return (
-    <section data-ref="03" aria-labelledby={titleId} className="relative isolate bg-[var(--sc-hero-wall)] [--sc-hero-wall:#e4d1c1] sm:[--sc-hero-wall:#dccbba]">
+    <section data-ref="03" aria-labelledby={titleId} className="relative isolate has-[[data-suggestions]]:z-20 bg-[var(--sc-hero-wall)] [--sc-hero-wall:#e4d1c1] sm:[--sc-hero-wall:#dccbba]">
       {/* Copy and search sit on the photographs' quiet wall: above A7's
           products on phones, above the A6 strip on tablets, in A6's clear
           centre on desktop (the search narrows there to stay clear of the

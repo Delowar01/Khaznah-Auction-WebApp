@@ -37,6 +37,9 @@ export const COPY = {
   searchScope: { en: "Search in", ar: "البحث في" },
   allCategories: { en: "All categories", ar: "كل الفئات" },
   searchPlaceholder: { en: "Search products, categories and sellers", ar: "ابحث عن المنتجات والفئات والبائعين" },
+  // Shorter visible placeholders, used only where the field is too narrow for the full one.
+  searchPlaceholderShort: { en: "Search products and sellers", ar: "ابحث عن المنتجات والبائعين" },
+  searchPlaceholderShortest: { en: "Search products", ar: "ابحث عن المنتجات" },
   search: { en: "Search", ar: "بحث" },
   popularSearches: { en: "Popular searches", ar: "عمليات بحث شائعة" },
   resultsLots: { en: "Lots", ar: "المنتجات" },

@@ -51,7 +51,12 @@ export function Newsletter() {
   );
 }
 
-/** Warm ivory footer: brand, four link groups, copyright and language. */
+/**
+ * Warm ivory footer: brand, four link groups, copyright and language. From
+ * 1200 px the five columns are the 1440 composition's widths as fr shares of
+ * its 1336 px container, so they are exact at 1440 and shrink in proportion
+ * below it instead of pushing the Legal column off the page.
+ */
 export function Footer() {
   const { t, ui } = useLang();
   const { link } = useConcept();
@@ -92,7 +97,7 @@ export function Footer() {
   return (
     <footer data-ref="15" id="pr-footer" className="bg-bg">
       <div className="pr-container pt-8 dt:pt-[27px]">
-        <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] dt:grid-cols-[338px_254px_261px_282px_minmax(0,1fr)] dt:gap-0">
+        <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] dt:grid-cols-[338fr_254fr_261fr_282fr_201fr] dt:gap-0">
           <div>
             <Link href={link("/")} className="inline-block rounded-[4px] outline-offset-4">
               <Logo variant="lockup" title={t(COPY.home)} className="h-[52px] w-auto dt:h-[64px]" />

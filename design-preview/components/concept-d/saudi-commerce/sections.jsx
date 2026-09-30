@@ -362,13 +362,18 @@ export function BulkPanels() {
 // ── 13 · How Khaznah works: oversized 01 / 02 / 03 ───────────────────────
 const STEP_ICONS = [Search, Gavel, Truck];
 
+/**
+ * Three numbered steps. From 1200 px the columns are the 1440 composition's
+ * widths as fr shares of the 1365 px container: exact at 1440, proportional
+ * below it, so the third step no longer runs past the page edge at ~1200 px.
+ */
 export function HowItWorks() {
   const { t } = useLang();
   const titleId = useId();
   return (
     <section data-ref="13" id="how-it-works" aria-labelledby={titleId} className="sc-container pt-10 dt:pt-[35px]">
       <SectionHead id={titleId} title={t(COPY.howTitle)} text={t(COPY.howText)} />
-      <ol className="mt-5 grid gap-6 dt:mt-[28px] dt:grid-cols-[455px_459px_minmax(0,1fr)] dt:gap-0">
+      <ol className="mt-5 grid gap-6 dt:mt-[28px] dt:grid-cols-[455fr_459fr_451fr] dt:gap-0">
         {COPY.steps.map((step, i) => {
           const Icon = STEP_ICONS[i];
           return (
