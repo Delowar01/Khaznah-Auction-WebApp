@@ -14,7 +14,7 @@ import { LIVE_EVENT } from "@/data/live";
 import { SELLER_BY_CODE } from "@/data/sellers";
 import { detailPath } from "@/lib/catalog";
 import { COPY } from "./copy";
-import { BUY_NOW, CATEGORY_RAIL, ENDING, LIVE_SCENE, PALLETS, RECOMMENDED, SELLER_ROWS } from "./data";
+import { BUY_NOW, CATEGORY_RAIL, ENDING, FEATURED, LIVE_SCENE, PALLETS, RECOMMENDED, SELLER_ROWS } from "./data";
 import { AddToCart, Arrow, GradePill, HeartButton, SectionHead, TextLink, TimeLeft, btn, cx, guideTone } from "./ui";
 
 const sellerName = (code, t) => t(SELLER_BY_CODE[code]?.name ?? { en: "", ar: "" });
@@ -107,7 +107,7 @@ export function RetailFloor() {
   const { t } = useLang();
   const titleId = useId();
   return (
-    <div className="sc-container grid gap-8 pt-6 dt:grid-cols-[253px_minmax(0,1fr)] dt:gap-[32px] dt:pt-[22px]">
+    <div className="sc-container grid gap-8 pt-10 dt:grid-cols-[253px_minmax(0,1fr)] dt:gap-[32px] dt:pt-[38px]">
       <CategoryRail />
       <section data-ref="07" aria-labelledby={titleId} className="min-w-0">
         <SectionHead id={titleId} title={t(COPY.buyNowTitle)} text={t(COPY.buyNowText)} href="/browse?tab=buy_now" linkLabel={t(COPY.viewAll)} className="dt:pt-[8px]" />
@@ -239,7 +239,7 @@ export function AuctionsAndLive({ live }) {
   const { t } = useLang();
   const titleId = useId();
   return (
-    <div className="sc-container grid gap-10 pt-10 dt:grid-cols-[minmax(0,681fr)_minmax(0,654fr)] dt:gap-[30px] dt:pt-[38px]">
+    <div className="sc-container grid gap-10 pt-8 dt:grid-cols-[minmax(0,681fr)_minmax(0,654fr)] dt:gap-[30px] dt:pt-[30px]">
       <section data-ref="09" aria-labelledby={titleId} className="min-w-0">
         <SectionHead id={titleId} title={t(COPY.endingTitle)} text={t(COPY.endingText)} href="/browse?tab=auction" linkLabel={t(COPY.viewAllAuctions)} />
         <ul className="mt-4 grid gap-3 dt:mt-[10px] dt:gap-[8px]">
@@ -252,6 +252,109 @@ export function AuctionsAndLive({ live }) {
       </section>
       <LivePanel live={live} />
     </div>
+  );
+}
+
+// ── 10b · Featured Items: auction product cards on cream, then Buy Now ───
+/** Auction product card: green tag, current bid, red countdown, green Bid now. */
+function FeaturedAuctionCard({ product }) {
+  const { t, ui, pl } = useLang();
+  const { link } = useConcept();
+  return (
+    <article className="relative flex h-full flex-col overflow-hidden rounded-[9px] border border-[var(--sc-line)] bg-white">
+      <div className="relative aspect-[4/3] bg-[var(--sc-plate)]">
+        <Img image={product.images[0]} cutout alt="" sizes="(min-width: 1200px) 320px, (min-width: 1024px) 24vw, 46vw" className="sc-multiply absolute inset-0 size-full object-contain px-5 pb-3 pt-10" />
+        <span className="absolute start-2 top-2 inline-flex h-[26px] items-center gap-1.5 rounded-[6px] bg-[var(--sc-green)] px-2.5 sc-sm font-semibold text-white">
+          <Gavel aria-hidden="true" className="size-3.5" strokeWidth={2} />
+          {t(COPY.featuredAuction)}
+        </span>
+        <HeartButton product={product} className="absolute end-1 top-1" />
+      </div>
+      <div className="flex flex-1 flex-col px-3.5 pb-3.5 pt-3 dt:px-4 dt:pb-4">
+        <h3 className="line-clamp-2 sc-title text-[var(--sc-ink)] dt:!text-[16px] dt:!leading-[22px]">
+          <Link href={link(detailPath(product))} title={t(product.title)} className="after:absolute after:inset-0 after:content-[''] hover:underline">
+            {cardTitle(t(product.title))}
+          </Link>
+        </h3>
+        <p className="mt-1 truncate sc-md text-[var(--sc-muted)]">{sellerName(product.seller, t)}</p>
+        <GradePill grade={product.grade} className="mt-2" />
+        <p className="mt-2.5 sc-md text-[var(--sc-muted)]">
+          {ui("currentBid")} · {pl("bids", product.bidCount)}
+        </p>
+        <Money value={product.currentBid} className="self-start sc-price !text-[22px] !leading-7 text-[var(--sc-ink)] dt:!text-[24px]" symbolClassName="text-[0.66em]" />
+        <TimeLeft endsIn={product.endsIn} className="mt-0.5" />
+        <div className="mt-auto pt-3">
+          <Link href={link(detailPath(product))} aria-label={t(COPY.bidNamed, { title: t(product.title) })} className={btn("green", "md", "relative z-10 h-[46px] w-full dt:text-[16px]")}>
+            {ui("bidNow")}
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+/** Buy Now item: a compact horizontal card with an outline cart button. */
+function FeaturedBuyNowCard({ product }) {
+  const { t } = useLang();
+  const { link } = useConcept();
+  const add = useCartAdd(t(COPY.addedToCart));
+  return (
+    <article className="relative flex h-full items-center gap-3 rounded-[9px] border border-[var(--sc-line)] bg-white p-2 pe-3">
+      <span className="relative size-[76px] shrink-0 overflow-hidden rounded-[6px] bg-[var(--sc-plate)]">
+        <Img image={product.images[0]} cutout alt="" sizes="76px" className="sc-multiply absolute inset-0 size-full object-contain p-2" />
+      </span>
+      <div className="min-w-0 flex-1">
+        <h3 className="truncate sc-title !text-[15px] text-[var(--sc-ink)]">
+          <Link href={link(detailPath(product))} title={t(product.title)} className="after:absolute after:inset-0 after:content-[''] hover:underline">
+            {cardTitle(t(product.title))}
+          </Link>
+        </h3>
+        <p className="truncate sc-md text-[var(--sc-muted)]">{sellerName(product.seller, t)}</p>
+        <Money value={product.price} className="sc-price !text-[19px] !leading-6 text-[var(--sc-ink)]" symbolClassName="text-[0.66em]" />
+      </div>
+      <button
+        type="button"
+        disabled={product.stock <= 0}
+        onClick={() => add(product)}
+        aria-label={t(COPY.addNamed, { title: t(product.title) })}
+        className="relative z-10 grid size-11 shrink-0 place-items-center rounded-[7px] border-2 border-[var(--sc-green)] bg-white text-[var(--sc-ink)] transition-colors outline-offset-2 hover:bg-[var(--sc-soft)] disabled:cursor-not-allowed disabled:opacity-45"
+      >
+        <ShoppingCart aria-hidden="true" className="size-5 shrink-0" strokeWidth={1.8} />
+      </button>
+    </article>
+  );
+}
+
+/**
+ * Featured Items: four auction product cards on a cream panel, then a
+ * slimmer row of Buy Now items, so the auctions always read first.
+ */
+export function FeaturedItems() {
+  const { t } = useLang();
+  const titleId = useId();
+  const buyNowId = useId();
+  return (
+    <section data-ref="10b" aria-labelledby={titleId} className="sc-container pt-10 dt:pt-[40px]">
+      <SectionHead id={titleId} title={t(COPY.featuredTitle)} text={t(COPY.featuredText)} href="/browse?tab=auction" linkLabel={t(COPY.featuredAllAuctions)} />
+      {/* Phones scroll the cards sideways inside the cream panel; 2 × 2 from 640 px, one row from 1024 px. */}
+      <ul className="sc-rail mt-4 flex snap-x scroll-px-3 gap-3 overflow-x-auto rounded-[12px] bg-[var(--sc-cream)]/55 p-3 sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-4 dt:mt-[15px] dt:gap-4 dt:p-4">
+        {FEATURED.auctions.map((product) => (
+          <li key={product.slug} className="w-[min(74%,280px)] min-w-0 shrink-0 snap-start sm:w-auto">
+            <FeaturedAuctionCard product={product} />
+          </li>
+        ))}
+      </ul>
+      <p id={buyNowId} className="mt-5 sc-lg font-semibold text-[var(--sc-ink)] dt:mt-6">
+        {t(COPY.featuredBuyNow)}
+      </p>
+      <ul aria-labelledby={buyNowId} className="mt-2.5 grid gap-3 lg:grid-cols-3 dt:gap-4">
+        {FEATURED.buyNow.map((product) => (
+          <li key={product.slug} className="min-w-0">
+            <FeaturedBuyNowCard product={product} />
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 

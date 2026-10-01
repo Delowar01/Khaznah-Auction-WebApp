@@ -19,14 +19,14 @@ import { POPULAR_SEARCHES, detailPath, isAuction } from "@/lib/catalog";
 import { COPY } from "./copy";
 import { cx } from "./ui";
 
-/** Shopping modes; Discover (this page) is the selected one. */
+/** Shopping modes; Discover (this page) is the selected one. Auctions come before Buy Now. */
 export function useModes() {
   const { t } = useLang();
   return [
     { key: "discover", label: t(COPY.discover), href: "/", current: true },
-    { key: "buy", label: t(COPY.navBuyNow), href: "/browse?tab=buy_now" },
     { key: "timed", label: t(COPY.navTimed), href: "/browse?tab=auction" },
     { key: "live", label: t(COPY.navLive), href: "/live-auction" },
+    { key: "buy", label: t(COPY.navBuyNow), href: "/browse?tab=buy_now" },
     { key: "sellers", label: t(COPY.navSellers), href: "/seller" },
     { key: "bulk", label: t(COPY.navBulk), href: "/browse?category=bulk-pallets" },
   ];

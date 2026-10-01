@@ -89,12 +89,13 @@ function HeroCopy({ titleId }) {
       </h1>
       <p className="mt-3 pr-hero-sub text-[#3e414b]">{t(COPY.heroSub)}</p>
       <div className="mt-6 flex flex-wrap gap-3 sm:gap-4 dt:mt-[26px] dt:flex-nowrap">
-        <Link href={link("/browse?tab=buy_now")} className={btn("brass", "lg", "flex-1 basis-[140px] px-4 sm:px-6 dt:w-[205px] dt:flex-none")}>
-          {t(COPY.shopBuyNow)}
+        {/* Auctions lead; Buy Now is the secondary choice. */}
+        <Link href={link("/browse?tab=auction")} className={btn("brass", "lg", "flex-1 basis-[140px] px-4 sm:px-6 dt:w-[205px] dt:flex-none")}>
+          {t(COPY.exploreAuctions)}
           <Chevron className="size-4" />
         </Link>
-        <Link href={link("/browse?tab=auction")} className={btn("outline", "lg", "flex-1 basis-[140px] border-[#7d7a73] bg-transparent px-4 sm:px-6 dt:w-[205px] dt:flex-none")}>
-          {t(COPY.exploreAuctions)}
+        <Link href={link("/browse?tab=buy_now")} className={btn("outline", "lg", "flex-1 basis-[140px] border-[#7d7a73] bg-transparent px-4 sm:px-6 dt:w-[205px] dt:flex-none")}>
+          {t(COPY.shopBuyNow)}
         </Link>
       </div>
     </div>

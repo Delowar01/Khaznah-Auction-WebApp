@@ -30,6 +30,16 @@ export const RECOMMENDED = pick("capsule-coffee", "task-lamp");
 export const ENDING = endingSoon(3);
 
 /**
+ * Featured Items: four live auction lots first (the refrigerator, with the
+ * most bids of the four, leads), then three Buy Now items that no other
+ * section of this page shows.
+ */
+export const FEATURED = {
+  auctions: pick("fridge-690", "dishwasher", "swivel-chair", "tv-43"),
+  buyNow: pick("floor-lamp", "car-cooler", "multimeter"),
+};
+
+/**
  * Live scene: the current lot's cut-out (A2 for the recliner) stands on the
  * floor of the Priority 2 warehouse aisle (B9), a composite as the approved
  * design shows. `focus` keeps the aisle's vanishing point in view.

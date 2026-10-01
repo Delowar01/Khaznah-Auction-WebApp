@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useId, useState } from "react";
-import { Package, Play, Store, Target, Truck } from "lucide-react";
+import { Gavel, Package, Play, ShoppingCart, Store, Target, Truck } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { cardTitle, useCartAdd } from "@/components/shared/r3/home";
@@ -14,7 +14,7 @@ import { LIVE_EVENT } from "@/data/live";
 import { SELLER_BY_CODE } from "@/data/sellers";
 import { detailPath } from "@/lib/catalog";
 import { COPY } from "./copy";
-import { CATEGORY_PILLS, COMPACT_SELLERS, ENDING, LIVE_STILL, PALLETS, PROMOTED_SELLERS, WALL_BUY_NOW, WALL_RECOMMENDED } from "./data";
+import { CATEGORY_PILLS, COMPACT_SELLERS, ENDING, FEATURED, LIVE_STILL, PALLETS, PROMOTED_SELLERS, WALL_BUY_NOW, WALL_RECOMMENDED } from "./data";
 import { Arrow, CartCircle, CountdownPill, GradePill, HeartDisk, SectionHead, btn, cx, gradeTone } from "./ui";
 
 const sellerName = (code, t) => t(SELLER_BY_CODE[code]?.name ?? { en: "", ar: "" });
@@ -135,7 +135,7 @@ export function LiveBanner({ live }) {
   const lot = live.current;
   const host = SELLER_BY_CODE[LIVE_EVENT.host];
   return (
-    <section data-ref="06" aria-labelledby={titleId} className="mt-5 bg-[var(--vd-navy)] text-white dt:mt-[22px]">
+    <section data-ref="06" aria-labelledby={titleId} className="mt-7 bg-[var(--vd-navy)] text-white dt:mt-[30px]">
       {/* Areas: phone copy → video → lot → join; tablet copy/lot/join beside the video; desktop one row */}
       <div className="vd-container vd-live py-8 dt:min-h-[313px] dt:py-4">
         <div style={{ gridArea: "copy" }} className="dt:pe-6">
@@ -238,6 +238,167 @@ export function EndingSoon() {
         {ENDING.map(({ product, tone, photo }, i) => (
           <li key={product.slug} className="w-[82%] shrink-0 snap-start sm:w-[46%] lg:w-auto">
             <AuctionCard product={product} tone={tone} photo={photo} first={i === 0} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+// ── 07b · Featured Items: an auction-led photo mosaic, then Buy Now finds ─
+function AuctionChip() {
+  const { t } = useLang();
+  return (
+    <span className="inline-flex h-6 items-center gap-1.5 rounded-full bg-[var(--vd-bluegray)] px-2.5 vd-label uppercase tracking-[0.06em] text-[var(--vd-indigo)]">
+      <Gavel aria-hidden="true" className="size-3.5" strokeWidth={2.2} />
+      {t(COPY.featuredAuction)}
+    </span>
+  );
+}
+
+/** Lead lot: its own scene photograph with the bid on a white card. */
+function FeaturedLead({ item }) {
+  const { t, ui, pl } = useLang();
+  const { link } = useConcept();
+  const { product, photo, focus } = item;
+  return (
+    <article className="relative h-full min-h-[380px] overflow-hidden rounded-[18px] bg-[#e8e1d8] md:min-h-[420px]">
+      <Img image={photo} alt="" sizes="(min-width: 1200px) 580px, (min-width: 768px) 40vw, 100vw" className="absolute inset-0 size-full object-cover" style={{ objectPosition: focus }} />
+      <HeartDisk product={product} className="absolute start-3.5 top-3.5" />
+      <CountdownPill endsIn={product.endsIn} className="absolute end-3.5 top-3.5" />
+      <div className="absolute inset-x-3 bottom-3 rounded-[14px] bg-white p-4 shadow-[0_10px_28px_-14px_rgb(7_27_82/0.45)] dt:inset-x-4 dt:bottom-4 dt:px-5">
+        <AuctionChip />
+        <h3 className="mt-2 line-clamp-2 vd-h3 !text-[18px] !leading-6 text-[var(--vd-ink)]">
+          <Link href={link(detailPath(product))} title={t(product.title)} className="after:absolute after:inset-0 after:content-[''] hover:underline">
+            {cardTitle(t(product.title))}
+          </Link>
+        </h3>
+        <div className="mt-2.5 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
+          <div className="min-w-0">
+            <p className="vd-sm text-[var(--vd-muted)]">
+              {ui("currentBid")} · {pl("bids", product.bidCount)}
+            </p>
+            <Money value={product.currentBid} className="vd-price text-[var(--vd-ink)]" symbolClassName="text-[0.7em]" />
+          </div>
+          <Link href={link(detailPath(product))} aria-label={t(COPY.bidNamed, { title: t(product.title) })} className={btn("indigo", "lg", "relative z-10 h-[50px] !rounded-[12px] px-8")}>
+            {ui("bidNow")}
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+/** Auction lot on a tinted plate; the wide tile sets its plate beside the details. */
+function FeaturedAuctionTile({ item }) {
+  const { t, ui, pl } = useLang();
+  const { link } = useConcept();
+  const { product, tone, wide } = item;
+  return (
+    <article className={cx("@container relative grid h-full overflow-hidden rounded-[16px] border border-[var(--vd-line)] bg-white", wide ? "sm:grid-cols-[minmax(0,44%)_minmax(0,1fr)]" : "grid-rows-[auto_minmax(0,1fr)]")}>
+      <div className={cx("relative", wide ? "h-[150px] sm:h-full sm:min-h-[180px]" : "h-[140px] dt:h-[150px]")} style={{ background: tone }}>
+        <Img image={product.images[0]} cutout alt="" sizes={wide ? "(min-width: 1200px) 330px, (min-width: 640px) 40vw, 100vw" : "(min-width: 1200px) 365px, (min-width: 768px) 25vw, 50vw"} className="vd-multiply absolute inset-0 size-full object-contain px-6 pb-3 pt-12" />
+        <HeartDisk product={product} className="absolute start-2.5 top-2.5" />
+        <CountdownPill endsIn={product.endsIn} className="absolute end-2.5 top-2.5" />
+      </div>
+      <div className="flex min-w-0 flex-col px-4 pb-3.5 pt-3">
+        <h3 className={cx("vd-title text-[var(--vd-ink)]", wide ? "line-clamp-2" : "truncate")}>
+          <Link href={link(detailPath(product))} title={t(product.title)} className="after:absolute after:inset-0 after:content-[''] hover:underline">
+            {cardTitle(t(product.title))}
+          </Link>
+        </h3>
+        {wide ? (
+          <>
+            <p className="mt-0.5 truncate vd-sm text-[var(--vd-muted)]">{sellerName(product.seller, t)}</p>
+            <GradePill grade={product.grade} className="mt-2" />
+          </>
+        ) : null}
+        <div className="mt-auto flex flex-wrap items-end justify-between gap-x-3 gap-y-2 pt-2">
+          <div className="min-w-0">
+            <p className="whitespace-nowrap vd-xs text-[var(--vd-muted)]">
+              {ui("currentBid")}
+              {wide ? ` · ${pl("bids", product.bidCount)}` : null}
+            </p>
+            <Money value={product.currentBid} className="vd-price text-[var(--vd-ink)]" symbolClassName="text-[0.7em]" />
+          </div>
+          <Link href={link(detailPath(product))} aria-label={t(COPY.bidNamed, { title: t(product.title) })} className={btn("indigo", "md", "relative z-10 h-11 !rounded-[12px] px-5 @max-[13rem]:w-full")}>
+            {ui("bidNow")}
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+/** Buy Now find: a compact photo card with a quieter cart button. */
+function FeaturedBuyNowTile({ item }) {
+  const { t } = useLang();
+  const { link } = useConcept();
+  const add = useCartAdd(t(COPY.addedToCart));
+  const { product, photo, focus, tone } = item;
+  return (
+    <article className="relative flex h-full items-center gap-3.5 rounded-[14px] border border-[var(--vd-line)] bg-white p-2.5 pe-3.5">
+      <div className="relative size-[84px] shrink-0 overflow-hidden rounded-[10px]" style={{ background: tone }}>
+        <Img
+          image={photo ?? product.images[0]}
+          cutout={!photo}
+          alt=""
+          sizes="84px"
+          className={photo ? "absolute inset-0 size-full object-cover" : "vd-multiply absolute inset-0 size-full object-contain p-2"}
+          style={photo && focus ? { objectPosition: focus } : undefined}
+        />
+      </div>
+      <div className="min-w-0 flex-1">
+        <h3 className="truncate vd-title text-[var(--vd-ink)]">
+          <Link href={link(detailPath(product))} title={t(product.title)} className="after:absolute after:inset-0 after:content-[''] hover:underline">
+            {cardTitle(t(product.title))}
+          </Link>
+        </h3>
+        <p className="truncate vd-sm text-[var(--vd-muted)]">{sellerName(product.seller, t)}</p>
+        <Money value={product.price} className="vd-price !text-[19px] !leading-6 text-[var(--vd-ink)]" symbolClassName="text-[0.7em]" />
+      </div>
+      <button
+        type="button"
+        disabled={product.stock <= 0}
+        onClick={() => add(product)}
+        aria-label={t(COPY.addNamed, { title: t(product.title) })}
+        className="relative z-10 grid size-11 shrink-0 place-items-center rounded-full border-[1.5px] border-[var(--vd-indigo)] bg-white text-[var(--vd-indigo)] transition-colors hover:bg-[var(--vd-bluegray)] disabled:opacity-40"
+      >
+        <ShoppingCart aria-hidden="true" className="size-[18px]" strokeWidth={2.1} />
+      </button>
+    </article>
+  );
+}
+
+/**
+ * Featured Items: the auction lots fill the mosaic (a lead photograph, two
+ * plates, one wide tile); the Buy Now finds follow in a slimmer row.
+ */
+export function FeaturedItems() {
+  const { t } = useLang();
+  const titleId = useId();
+  const buyNowId = useId();
+  return (
+    <section data-ref="07b" aria-labelledby={titleId} className="vd-container pt-7 dt:pt-[30px]">
+      <SectionHead id={titleId} title={t(COPY.featuredTitle)} href="/browse?tab=auction" linkLabel={t(COPY.viewAllAuctions)} />
+      <p className="mt-1 vd-lg text-[var(--vd-muted)]">{t(COPY.featuredSub)}</p>
+      <ul className="vd-featured mt-4 dt:mt-[18px]">
+        <li style={{ gridArea: "lead" }} className="min-w-0">
+          <FeaturedLead item={FEATURED.lead} />
+        </li>
+        {FEATURED.auctions.map((item) => (
+          <li key={item.product.slug} style={{ gridArea: item.area }} className="min-w-0">
+            <FeaturedAuctionTile item={item} />
+          </li>
+        ))}
+      </ul>
+      <p id={buyNowId} className="mt-5 vd-sm font-bold uppercase tracking-[0.08em] text-[var(--vd-muted)] dt:mt-6">
+        {t(COPY.featuredBuyNow)}
+      </p>
+      <ul aria-labelledby={buyNowId} className="mt-2.5 grid gap-3 lg:grid-cols-3 dt:gap-4">
+        {FEATURED.buyNow.map((item) => (
+          <li key={item.product.slug} className="min-w-0">
+            <FeaturedBuyNowTile item={item} />
           </li>
         ))}
       </ul>

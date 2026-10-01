@@ -13,7 +13,7 @@ import { COPY } from "./copy";
 import { Footer, Newsletter } from "./Footer";
 import { AccountSummary, CityChoices, DiscoveryLanguage, Header, SavedList, useModes } from "./Header";
 import { HeroMosaic } from "./Hero";
-import { BulkPanels, CategoryPills, Clarity, EndingSoon, HowItWorks, LiveBanner, ProductWall, SellerShelves } from "./sections";
+import { BulkPanels, CategoryPills, Clarity, EndingSoon, FeaturedItems, HowItWorks, LiveBanner, ProductWall, SellerShelves } from "./sections";
 import { Arrow, cx } from "./ui";
 
 /** Phones and tablets: shopping modes, saved lots, account, city and language. */
@@ -83,9 +83,11 @@ function Page() {
       <main id="main" tabIndex={-1} className="outline-none">
         <HeroMosaic />
         <CategoryPills />
-        <ProductWall />
+        {/* Auctions come before the Buy Now wall. */}
         <LiveBanner live={live} />
         <EndingSoon />
+        <FeaturedItems />
+        <ProductWall />
         <SellerShelves />
         <BulkPanels />
         <Clarity />
@@ -104,10 +106,11 @@ function Page() {
  * White marketplace with a logo + pill-search masthead over a Discover row,
  * a mosaic hero (copy tile, furniture scene with an overlapping tote card,
  * stacked Electronics and Home & Kitchen tiles), eight outlined category
- * pills, a mixed-height product wall, a navy live banner before Ending soon,
- * image-first auction cards, photographic seller shelves, two bulk panels,
- * a compact clarity row, How it works, an ivory newsletter and a white
- * footer with language and social links.
+ * pills, then the auctions: a navy live banner before Ending soon's
+ * image-first cards and a Featured Items mosaic led by auction lots. The
+ * mixed-height Buy Now wall follows, then photographic seller shelves, two
+ * bulk panels, a compact clarity row, How it works, an ivory newsletter and
+ * a white footer with language and social links.
  */
 export function VisualDiscoveryHome() {
   return (

@@ -64,9 +64,9 @@ export function Footer() {
     {
       title: COPY.colMarketplace,
       links: [
-        { label: ui("buyNow"), href: "/browse?tab=buy_now" },
         { label: t(COPY.navTimed), href: "/browse?tab=auction" },
         { label: t(COPY.navLive), href: "/live-auction" },
+        { label: ui("buyNow"), href: "/browse?tab=buy_now" },
         { label: t(COPY.navBulk), href: "/browse?category=bulk-pallets" },
       ],
     },

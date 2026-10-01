@@ -3,6 +3,7 @@
 // come from data/; this file only picks them and frames the photography.
 import { Armchair, Car, CookingPot, Monitor, Package, Refrigerator, ShoppingBag, Wrench } from "lucide-react";
 import { CATEGORY_BY_SLUG } from "@/data/categories";
+import { photo } from "@/data/media";
 import { getProduct } from "@/data/products";
 import { SELLER_BY_CODE } from "@/data/sellers";
 import { endingSoon, featuredBuyNow } from "@/lib/catalog";
@@ -78,6 +79,26 @@ export const WALL_RECOMMENDED = ["tote", "desk", "case", "coffee", "lamp", "mixe
  * catalogue cut-out on the tinted plate.
  */
 export const ENDING = endingSoon(3).map((product, i) => ({ product, tone: ["#dfe5ec", "#e9ebed", "#e4e2df"][i], photo: PRIORITY_2.ending[product.slug] }));
+
+/**
+ * Featured Items mosaic: four live auction lots first (the dishwasher's
+ * kitchen scene leads; the others stand on tinted plates), then three Buy Now
+ * finds that appear nowhere else on this page, including the wall's
+ * Recommended tab. `focus` keeps the whole dishwasher in the lead tile.
+ */
+export const FEATURED = {
+  lead: { product: getProduct("dishwasher"), photo: photo("dishwasher", 1), focus: "50% 58%" },
+  auctions: [
+    { area: "a1", product: getProduct("fridge-690"), tone: "#e6ebf1" },
+    { area: "a2", product: getProduct("swivel-chair"), tone: "#f3ebe3" },
+    { area: "a3", product: getProduct("tv-43"), tone: "#dfe7f0", wide: true },
+  ],
+  buyNow: [
+    { product: getProduct("car-cooler"), photo: photo("car-cooler", 1), focus: "50% 55%" },
+    { product: getProduct("floor-lamp"), tone: "#efe7dc" },
+    { product: getProduct("microwave"), tone: "#e6ebf1" },
+  ],
+};
 
 /** Live banner still: the Priority 2 electronics warehouse (B10). */
 export const LIVE_STILL = { image: PRIORITY_2.liveElectronics, focus: "50% 50%" };

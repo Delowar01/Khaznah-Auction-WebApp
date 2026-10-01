@@ -287,4 +287,37 @@
         "tote coffee lamp mixer";
     }
   }
+
+  /* Featured Items mosaic: the lead auction photograph, two auction plates
+     and a wide auction tile. Phones stack lead → plates → wide tile. */
+  .vd-featured {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "lead lead"
+      "a1 a2"
+      "a3 a3";
+  }
+  @media (max-width: 379px) {
+    .vd-featured {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "lead" "a1" "a2" "a3";
+    }
+  }
+  @media (min-width: 768px) {
+    .vd-featured {
+      gap: 16px;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas:
+        "lead a1 a2"
+        "lead a3 a3";
+    }
+  }
+  @media (min-width: 1200px) {
+    .vd-featured {
+      grid-template-columns: minmax(0, 560fr) minmax(0, 355fr) minmax(0, 355fr);
+    }
+  }
 }

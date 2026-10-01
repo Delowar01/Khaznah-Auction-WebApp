@@ -38,12 +38,13 @@ function CopyTile({ titleId }) {
       </h1>
       <p className="mt-3 max-w-[380px] vd-hero-sub text-[var(--vd-ink)]/90 dt:mt-[14px]">{t(COPY.heroSub)}</p>
       <div className="mt-6 flex flex-wrap gap-3 dt:mt-[21px] dt:gap-[14px]">
-        <Link href={link("/browse?tab=buy_now")} className={btn("gold", "lg", "dt:h-[49px] dt:w-[179px] dt:px-0")}>
-          {t(COPY.shopBuyNow)}
+        {/* Auctions lead; Buy Now is the secondary choice. */}
+        <Link href={link("/browse?tab=auction")} className={btn("gold", "lg", "dt:h-[49px] dt:w-[179px] dt:px-0")}>
+          {t(COPY.exploreAuctions)}
           <Arrow />
         </Link>
-        <Link href={link("/browse?tab=auction")} className={btn("outline", "lg", "dt:h-[49px] dt:w-[171px] dt:px-0")}>
-          {t(COPY.exploreAuctions)}
+        <Link href={link("/browse?tab=buy_now")} className={btn("outline", "lg", "dt:h-[49px] dt:w-[171px] dt:px-0")}>
+          {t(COPY.shopBuyNow)}
         </Link>
       </div>
       <p className="mt-7 flex items-start gap-3 text-[var(--vd-blue)] dt:mt-auto" style={{ transform: `rotate(${isRTL ? 6 : -6}deg)`, transformOrigin: isRTL ? "right center" : "left center" }}>

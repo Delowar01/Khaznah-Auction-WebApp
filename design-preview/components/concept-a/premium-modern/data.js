@@ -53,6 +53,26 @@ export const SELECTED = [
 /** Ending soon: the three auctions closing first (seat, air conditioner, washer). */
 export const ENDING = endingSoon(3);
 
+/**
+ * Featured Items: live auction lots first, then three Buy Now finds, none of
+ * them shown elsewhere on this page. The dishwasher leads with its kitchen
+ * scene; the other lots use a second catalogue photograph, so the category
+ * row's cut-outs (TV, refrigerator, chair, Dutch oven) are not repeated.
+ */
+export const FEATURED = {
+  lead: { product: getProduct("dishwasher"), image: photo("dishwasher", 1), focus: "50% 58%" },
+  auctions: [
+    { product: getProduct("fridge-690"), image: photo("fridge-690", 1) },
+    { product: getProduct("swivel-chair"), image: photo("swivel-chair", 1) },
+    { product: getProduct("tv-43"), image: photo("tv-43", 1) },
+  ],
+  buyNow: [
+    { product: getProduct("floor-lamp"), image: cutout("floor-lamp") },
+    { product: getProduct("field-watch"), image: cutout("field-watch") },
+    { product: getProduct("dutch-oven-blue"), image: photo("dutch-oven-blue", 1) },
+  ],
+};
+
 /** Bulk & Pallets rows, each with its Priority 2 pallet cut-out (B1, B2). */
 export const PALLETS = [
   { product: getProduct("electronics-pallet"), image: PRIORITY_2.palletElectronics },

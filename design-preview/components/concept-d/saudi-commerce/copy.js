@@ -32,7 +32,7 @@ export const COPY = {
   // bilingual character (Arabic over English, English over Arabic).
   heroEyebrow: { en: "اكتشف فرصتك القادمة", ar: "Find your next great find." },
   heroTitle: { en: "Find your next great find.", ar: "اعثر على صفقتك القادمة." },
-  heroSub: { en: "Buy now, bid or discover something unexpected.", ar: "اشترِ فوراً أو زايد أو اكتشف ما لم تتوقعه." },
+  heroSub: { en: "Bid, buy now or discover something unexpected.", ar: "زايد أو اشترِ فوراً أو اكتشف ما لم تتوقعه." },
   searchLabel: { en: "Search Khaznah", ar: "ابحث في خزنة" },
   searchScope: { en: "Search in", ar: "البحث في" },
   allCategories: { en: "All categories", ar: "كل الفئات" },
@@ -82,6 +82,13 @@ export const COPY = {
   playPreview: { en: "Watch the live auction", ar: "شاهد المزاد المباشر" },
   onTheBlock: { en: "On the block now: {title}", ar: "المعروض الآن: {title}" },
 
+  // Featured Items: auction lots first, then a few Buy Now items
+  featuredTitle: { en: "Featured Items", ar: "منتجات مميزة" },
+  featuredText: { en: "Selected auction lots open for bidding, with a few Buy Now items.", ar: "منتجات مزاد مختارة مفتوحة للمزايدة، مع بعض منتجات الشراء الفوري." },
+  featuredAllAuctions: { en: "All auctions", ar: "كل المزادات" },
+  featuredAuction: { en: "Auction", ar: "مزاد" },
+  featuredBuyNow: { en: "Also available to buy now", ar: "متاح أيضاً للشراء الفوري" },
+
   // Sellers
   sellersTitle: { en: "Featured Sellers", ar: "بائعون مميزون" },
   sellersText: { en: "Explore stores and their latest products.", ar: "تصفّح المتاجر وأحدث منتجاتها." },
@@ -98,11 +105,11 @@ export const COPY = {
 
   // How it works + grades
   howTitle: { en: "How Khaznah works", ar: "كيف تعمل خزنة" },
-  howText: { en: "A simple way to buy and bid.", ar: "طريقة بسيطة للشراء والمزايدة." },
+  howText: { en: "A simple way to bid and buy.", ar: "طريقة بسيطة للمزايدة والشراء." },
   step: { en: "Step {n}", ar: "الخطوة {n}" },
   steps: [
     { title: { en: "Find your item", ar: "اعثر على منتجك" }, text: { en: "Search, browse or explore auctions across many categories.", ar: "ابحث أو تصفّح أو استكشف المزادات في فئات كثيرة." } },
-    { title: { en: "Buy now or bid", ar: "اشترِ فوراً أو زايد" }, text: { en: "Choose a Buy Now item or place a bid in our auctions.", ar: "اختر منتجاً للشراء الفوري أو قدّم مزايدة في مزاداتنا." } },
+    { title: { en: "Bid or buy now", ar: "زايد أو اشترِ فوراً" }, text: { en: "Place a bid in our auctions or choose a Buy Now item.", ar: "قدّم مزايدة في مزاداتنا أو اختر منتجاً للشراء الفوري." } },
     { title: { en: "Arrange delivery or pickup", ar: "رتّب التوصيل أو الاستلام" }, text: { en: "Check available options on each listing.", ar: "تحقق من الخيارات المتاحة في كل منتج." } },
   ],
   gradesTitle: { en: "Condition grades", ar: "درجات الحالة" },

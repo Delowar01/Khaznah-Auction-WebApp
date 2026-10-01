@@ -47,7 +47,7 @@ export const COPY = {
     { en: "Find your next", ar: "اعثر على" },
     { en: "great find.", ar: "صفقتك القادمة." },
   ],
-  heroSub: { en: "Buy now, bid or discover something unexpected.", ar: "اشترِ فوراً أو زايد أو اكتشف ما لم تتوقعه." },
+  heroSub: { en: "Bid, buy now or discover something unexpected.", ar: "زايد أو اشترِ فوراً أو اكتشف ما لم تتوقعه." },
   shopBuyNow: { en: "Shop Buy Now", ar: "تسوّق الشراء الفوري" },
   exploreAuctions: { en: "Explore auctions", ar: "تصفّح المزادات" },
   pinLabel: { en: "Live lot in this room: {title}", ar: "منتج مباشر في هذه الغرفة: {title}" },
@@ -67,6 +67,13 @@ export const COPY = {
   viewAllAuctions: { en: "View all auctions", ar: "عرض كل المزادات" },
   timeLeft: { en: "Time left", ar: "الوقت المتبقي" },
   bidNamed: { en: "Bid now on {title}", ar: "زايد الآن على {title}" },
+
+  // Featured Items: auction lots first, then a few Buy Now finds
+  featuredTitle: { en: "Featured Items", ar: "منتجات مميزة" },
+  featuredSub: { en: "A curated edit of auction lots, with a few Buy Now finds.", ar: "مختارات من منتجات المزاد، مع بعض منتجات الشراء الفوري." },
+  featuredAllAuctions: { en: "All auctions", ar: "كل المزادات" },
+  featuredAuction: { en: "Auction", ar: "مزاد" },
+  featuredAlsoBuyNow: { en: "Also on Buy Now", ar: "متاح أيضاً للشراء الفوري" },
 
   // Recommendations
   selectedTitle: { en: "Selected for your everyday", ar: "مختارات لحياتك اليومية" },
@@ -110,7 +117,7 @@ export const COPY = {
   howTitle: { en: "How Khaznah works", ar: "كيف تعمل خزنة" },
   steps: [
     { title: { en: "Find your item", ar: "اعثر على منتجك" }, text: { en: "Browse categories, auctions or search for something specific.", ar: "تصفّح الفئات أو المزادات أو ابحث عن منتج بعينه." } },
-    { title: { en: "Buy now or bid", ar: "اشترِ فوراً أو زايد" }, text: { en: "Add to cart for Buy Now items or place a bid in auctions.", ar: "أضف منتجات الشراء الفوري إلى السلة أو قدّم مزايدة في المزادات." } },
+    { title: { en: "Bid or buy now", ar: "زايد أو اشترِ فوراً" }, text: { en: "Place a bid in auctions or add Buy Now items to your cart.", ar: "قدّم مزايدة في المزادات أو أضف منتجات الشراء الفوري إلى السلة." } },
     { title: { en: "Arrange delivery or pickup", ar: "رتّب التوصيل أو الاستلام" }, text: { en: "Check the available options on each listing.", ar: "تحقق من الخيارات المتاحة في كل منتج." } },
   ],
 

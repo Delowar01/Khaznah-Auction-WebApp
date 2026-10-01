@@ -39,8 +39,8 @@ export const CONCEPTS = [
       ar: "واجهة متجر هادئة وراقية بألوان العاجي والفحمي ولمسات نحاسية هادئة.",
     },
     philosophy: {
-      en: "A centred-logo masthead over a broad search row, then a panoramic room hero with an inset copy card and a pinned live lot. Eight photographic category cut-outs, four Buy Now cards with full-width charcoal buttons, an Ending soon stone band, two recommendation panels, a split live auction, pallet rows, five seller cards, a trust strip, grades beside How Khaznah works, a charcoal newsletter and a light footer. (Home page only.)",
-      ar: "شريط علوي بشعار في المنتصف فوق صف بحث عريض، ثم واجهة غرفة بانورامية مع بطاقة نص داخلية ومنتج مزاد مباشر مثبّت. ثماني صور فئات مقصوصة، وأربع بطاقات للشراء الفوري بأزرار فحمية بعرض كامل، وشريط حجري لما ينتهي قريباً، ولوحتا توصيات، ومزاد مباشر منقسم، وصفوف للطبليات، وخمس بطاقات بائعين، وشريط ثقة، ودرجات الحالة بجانب «كيف تعمل خزنة»، ونشرة بريدية فحمية وتذييل فاتح. (الصفحة الرئيسية فقط.)",
+      en: "A centred-logo masthead over a broad search row, then a panoramic room hero with an inset copy card and a pinned live lot. Eight photographic category cut-outs, an Ending soon stone band, a split live auction, a Featured Items shelf led by auction lots, four Buy Now cards with full-width charcoal buttons, two recommendation panels, pallet rows, five seller cards, a trust strip, grades beside How Khaznah works, a charcoal newsletter and a light footer. (Home page only.)",
+      ar: "شريط علوي بشعار في المنتصف فوق صف بحث عريض، ثم واجهة غرفة بانورامية مع بطاقة نص داخلية ومنتج مزاد مباشر مثبّت. ثماني صور فئات مقصوصة، وشريط حجري لما ينتهي قريباً، ومزاد مباشر منقسم، ورف «منتجات مميزة» تتقدمه منتجات المزاد، وأربع بطاقات للشراء الفوري بأزرار فحمية بعرض كامل، ولوحتا توصيات، وصفوف للطبليات، وخمس بطاقات بائعين، وشريط ثقة، ودرجات الحالة بجانب «كيف تعمل خزنة»، ونشرة بريدية فحمية وتذييل فاتح. (الصفحة الرئيسية فقط.)",
     },
     traits: [
       { en: "Centred logo with a separate search row", ar: "شعار في المنتصف مع صف بحث مستقل" },
@@ -60,8 +60,8 @@ export const CONCEPTS = [
       ar: "سوق مشرق تقوده الصور للتصفّح والاكتشاف — أبيض ونيلي وكحلي مع لمسات ذهبية.",
     },
     philosophy: {
-      en: "A logo and pill-search masthead over a Discover row, then a mosaic hero: a copy tile with a handwritten line, a furniture scene with an overlapping product card, and stacked category photographs. Eight outlined category pills, a mixed-height product wall with circular cart buttons, a navy live banner before Ending soon, image-first auction cards, photographic seller shelves, two tinted pallet panels, a compact clarity row, an ivory newsletter and a white footer. (Home page only.)",
-      ar: "شريط علوي بشعار وبحث على شكل كبسولة فوق صف «اكتشف»، ثم واجهة فسيفسائية: بطاقة نص بسطر مكتوب بخط اليد، ومشهد أثاث مع بطاقة منتج متداخلة، وصور فئات متراصّة. ثماني كبسولات فئات، وجدار منتجات بارتفاعات مختلفة وأزرار سلة دائرية، وشريط كحلي للمزاد المباشر قبل «تنتهي قريباً»، وبطاقات مزادات تتقدمها الصور، ورفوف بائعين مصوّرة، ولوحتان ملونتان للطبليات، وصف توضيحي مختصر، ونشرة بريدية عاجية وتذييل أبيض. (الصفحة الرئيسية فقط.)",
+      en: "A logo and pill-search masthead over a Discover row, then a mosaic hero: a copy tile with a handwritten line, a furniture scene with an overlapping product card, and stacked category photographs. Eight outlined category pills, a navy live banner before Ending soon, image-first auction cards, a Featured Items mosaic led by auction lots, a mixed-height product wall with circular cart buttons, photographic seller shelves, two tinted pallet panels, a compact clarity row, an ivory newsletter and a white footer. (Home page only.)",
+      ar: "شريط علوي بشعار وبحث على شكل كبسولة فوق صف «اكتشف»، ثم واجهة فسيفسائية: بطاقة نص بسطر مكتوب بخط اليد، ومشهد أثاث مع بطاقة منتج متداخلة، وصور فئات متراصّة. ثماني كبسولات فئات، وشريط كحلي للمزاد المباشر قبل «تنتهي قريباً»، وبطاقات مزادات تتقدمها الصور، وفسيفساء «منتجات مميزة» تتقدمها منتجات المزاد، وجدار منتجات بارتفاعات مختلفة وأزرار سلة دائرية، ورفوف بائعين مصوّرة، ولوحتان ملونتان للطبليات، وصف توضيحي مختصر، ونشرة بريدية عاجية وتذييل أبيض. (الصفحة الرئيسية فقط.)",
     },
     traits: [
       { en: "Pill search in the masthead, Discover row below", ar: "بحث على شكل كبسولة في الشريط العلوي وصف «اكتشف» أسفله" },
@@ -81,8 +81,8 @@ export const CONCEPTS = [
       ar: "واجهة متجر بالأخضر والكريمي مع واجهة ثنائية اللغة في المنتصف والبحث في قلبها.",
     },
     philosophy: {
-      en: "A cream utility bar and a white navigation row, then a centred bilingual hero with a segmented category search. Trust points follow at once; a local category rail sits beside four horizontal Buy Now cards; Ending soon runs beside one integrated live-auction scene; five seller rows show each store's products; two sage pallet panels, large 01/02/03 steps, a seven-cell grade strip, and one green newsletter and footer band above a white brand base. (Home page only.)",
-      ar: "شريط خدمات كريمي وصف تنقل أبيض، ثم واجهة ثنائية اللغة في المنتصف مع بحث مقسّم حسب الفئة. تليها نقاط الثقة مباشرة؛ وقائمة فئات محلية بجانب أربع بطاقات أفقية للشراء الفوري؛ و«تنتهي قريباً» بجانب مشهد واحد للمزاد المباشر؛ وخمسة صفوف للبائعين تعرض منتجات كل متجر؛ ولوحتان بلون المريمية للطبليات، وخطوات كبيرة 01/02/03، وشريط درجات من سبع خانات، وشريط أخضر واحد للنشرة البريدية والتذييل فوق قاعدة بيضاء للعلامة. (الصفحة الرئيسية فقط.)",
+      en: "A cream utility bar and a white navigation row, then a centred bilingual hero with a segmented category search. Trust points follow at once; Ending soon runs beside one integrated live-auction scene; Featured Items shows auction product cards on cream; a local category rail sits beside four horizontal Buy Now cards; five seller rows show each store's products; two sage pallet panels, large 01/02/03 steps, a seven-cell grade strip, and one green newsletter and footer band above a white brand base. (Home page only.)",
+      ar: "شريط خدمات كريمي وصف تنقل أبيض، ثم واجهة ثنائية اللغة في المنتصف مع بحث مقسّم حسب الفئة. تليها نقاط الثقة مباشرة؛ و«تنتهي قريباً» بجانب مشهد واحد للمزاد المباشر؛ و«منتجات مميزة» ببطاقات مزاد على خلفية كريمية؛ وقائمة فئات محلية بجانب أربع بطاقات أفقية للشراء الفوري؛ وخمسة صفوف للبائعين تعرض منتجات كل متجر؛ ولوحتان بلون المريمية للطبليات، وخطوات كبيرة 01/02/03، وشريط درجات من سبع خانات، وشريط أخضر واحد للنشرة البريدية والتذييل فوق قاعدة بيضاء للعلامة. (الصفحة الرئيسية فقط.)",
     },
     traits: [
       { en: "Centred bilingual hero with a segmented search", ar: "واجهة ثنائية اللغة في المنتصف مع بحث مقسّم" },

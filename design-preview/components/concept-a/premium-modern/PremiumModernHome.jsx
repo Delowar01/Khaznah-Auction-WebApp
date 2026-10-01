@@ -15,7 +15,7 @@ import { COPY } from "./copy";
 import { Footer, Newsletter } from "./Footer";
 import { AccountSummary, Header, PremiumLanguage, SavedList, useAccountItems, useNavItems } from "./Header";
 import { Hero } from "./Hero";
-import { BulkRows, BuyNowShelf, CategoryRow, EndingSoonBand, GuidanceSplit, LiveSection, Selected, Sellers, TrustStrip } from "./sections";
+import { BulkRows, BuyNowShelf, CategoryRow, EndingSoonBand, FeaturedItems, GuidanceSplit, LiveSection, Selected, Sellers, TrustStrip } from "./sections";
 import { Chevron, cx } from "./ui";
 
 /** Phones, tablets and Arabic below 1366 px: shopping modes, wishlist, account, city and language. */
@@ -117,10 +117,12 @@ function Page() {
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero live={live} />
         <CategoryRow />
-        <BuyNowShelf />
+        {/* Auctions come before any Buy Now section. */}
         <EndingSoonBand />
-        <Selected />
         <LiveSection live={live} />
+        <FeaturedItems />
+        <BuyNowShelf />
+        <Selected />
         <BulkRows />
         <Sellers />
         <TrustStrip />
@@ -138,10 +140,11 @@ function Page() {
  * Option 2 — Premium Modern Marketplace home (approved design).
  * Warm ivory storefront: a centred-logo masthead over a separate search row,
  * a panoramic room hero with an inset copy card and a pinned live lot, eight
- * unboxed category photos, four equal Buy Now cards, an Ending soon stone
- * band, two recommendation panels, a split live auction, two pallet rows,
- * five seller cards, a trust strip, grades beside How Khaznah works, a
- * charcoal newsletter and a light footer.
+ * unboxed category photos, then the auctions (an Ending soon stone band and a
+ * split live auction) and a Featured Items shelf led by auction lots, before
+ * four equal Buy Now cards, two recommendation panels, two pallet rows, five
+ * seller cards, a trust strip, grades beside How Khaznah works, a charcoal
+ * newsletter and a light footer.
  */
 export function PremiumModernHome() {
   return (

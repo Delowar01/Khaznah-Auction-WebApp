@@ -55,6 +55,11 @@ export const COPY = {
     en: "The Saudi marketplace for graded surplus, returned and liquidation stock — timed auctions, Buy Now and live sales from Saudi warehouses.",
     ar: "السوق السعودي للمخزون الفائض والمرتجع ودفعات التصفية المصنّفة — مزادات محددة المدة وشراء فوري ومزادات مباشرة من مستودعات سعودية.",
   },
+  // The same line in the home page's auction-first order (inner pages keep footerBlurb).
+  footerBlurbHome: {
+    en: "The Saudi marketplace for graded surplus, returned and liquidation stock — timed auctions, live sales and Buy Now from Saudi warehouses.",
+    ar: "السوق السعودي للمخزون الفائض والمرتجع ودفعات التصفية المصنّفة — مزادات محددة المدة ومزادات مباشرة وشراء فوري من مستودعات سعودية.",
+  },
   weAccept: { en: "We accept", ar: "نقبل الدفع عبر" },
   newsletterLabel: { en: "Email address", ar: "البريد الإلكتروني" },
 
@@ -90,6 +95,10 @@ export const COPY = {
   },
   liveBandSubtitle: { en: "Presenter-led sales streamed from Saudi warehouses", ar: "مزادات يقدّمها مقدّمون ببث مباشر من مستودعات سعودية" },
   comingUp: { en: "Coming up", ar: "القادم" },
+  featuredTitle: { en: "Featured Items", ar: "منتجات مميزة" },
+  featuredSubtitle: { en: "Top auction lots open for bids, plus selected Buy Now items", ar: "أبرز منتجات المزاد المفتوحة للمزايدة، مع منتجات مختارة للشراء الفوري" },
+  featuredAllAuctions: { en: "All auctions", ar: "كل المزادات" },
+  featuredBuyNow: { en: "Also on Buy Now", ar: "متاح أيضاً للشراء الفوري" },
   dealsTitle: { en: "Deals on Buy Now", ar: "عروض الشراء الفوري" },
   dealsSubtitle: { en: "Fixed prices and disclosed grades, ready to ship or collect", ar: "أسعار ثابتة ودرجات معلنة، جاهزة للشحن أو الاستلام" },
   bulkSubtitle: { en: "Pallets and cartons with full manifests, sold as one lot", ar: "طبليات وكراتين ببيانات كاملة، تُباع كدفعة واحدة" },

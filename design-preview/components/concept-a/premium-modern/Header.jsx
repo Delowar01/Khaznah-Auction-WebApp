@@ -20,13 +20,13 @@ import { POPULAR_SEARCHES, detailPath, isAuction } from "@/lib/catalog";
 import { COPY } from "./copy";
 import { cx } from "./ui";
 
-/** The five shopping modes, in the approved order. */
+/** The five shopping modes, auctions first (Buy Now never leads). */
 export function useNavItems() {
   const { t } = useLang();
   return [
-    { key: "buy", label: t(COPY.navBuyNow), href: "/browse?tab=buy_now" },
     { key: "timed", label: t(COPY.navTimed), href: "/browse?tab=auction" },
     { key: "live", label: t(COPY.navLive), href: "/live-auction" },
+    { key: "buy", label: t(COPY.navBuyNow), href: "/browse?tab=buy_now" },
     { key: "sellers", label: t(COPY.navSellers), href: "/seller" },
     { key: "bulk", label: t(COPY.navBulk), href: "/browse?category=bulk-pallets" },
   ];

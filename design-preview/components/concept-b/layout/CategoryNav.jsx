@@ -8,7 +8,7 @@ import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useDismiss } from "@/components/shared/ui/hooks";
 import { cx } from "../ui/cx";
-import { BrowseLink } from "../utils/navigation";
+import { BrowseLink, useHomeOrder } from "../utils/navigation";
 import { COPY } from "../copy";
 import { useChrome } from "./ChromeContext";
 import { MegaMenu } from "./MegaMenu";
@@ -22,6 +22,10 @@ const LINKS = [
   { key: "sellers", href: "/seller", ui: "sellers" },
 ];
 
+// Home page order: auctions first (Ending soon stays with the timed auctions),
+// then live, Buy Now, sellers and bulk. See useHomeOrder.
+export const HOME_MODE_ORDER = ["auctions", "ending", "live", "buy", "sellers", "bulk"];
+
 const ITEM =
   "relative inline-flex h-11 items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 kb-sm font-semibold text-fg-2 transition-colors hover:text-fg aria-[current=page]:text-primary aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-2.5 aria-[current=page]:after:bottom-0 aria-[current=page]:after:h-0.5 aria-[current=page]:after:rounded-full aria-[current=page]:after:bg-primary";
 
@@ -30,8 +34,9 @@ function NavLinks({ params }) {
   const { link } = useConcept();
   const pathname = usePathname();
   const onBrowse = pathname === link("/browse");
+  const links = useHomeOrder(LINKS, HOME_MODE_ORDER);
 
-  return LINKS.map((item) => {
+  return links.map((item) => {
     let current = false;
     if (item.match) current = onBrowse && Object.entries(item.match).every(([k, v]) => params?.get(k) === v);
     else current = pathname.startsWith(link(item.href));

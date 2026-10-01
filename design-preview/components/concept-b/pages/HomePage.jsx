@@ -7,6 +7,7 @@ import { AuctionsRail } from "../home/AuctionsRail";
 import { BulkSection } from "../home/BulkSection";
 import { CategoryTiles } from "../home/CategoryTiles";
 import { DealsGrid } from "../home/DealsGrid";
+import { FeaturedItems } from "../home/FeaturedItems";
 import { HeroCarousel } from "../home/HeroCarousel";
 import { BrandSlide, LiveSlide, PalletSlide } from "../home/HeroSlides";
 import { HowItWorksGrades } from "../home/HowItWorksGrades";
@@ -49,6 +50,8 @@ export function HomePage() {
       <LiveBand live={live} className="mt-12 lg:mt-14" />
 
       <div className="kb-container mt-12 space-y-12 pb-16 lg:mt-14 lg:space-y-14 lg:pb-20">
+        {/* Featured Items (auction lots first) sits between the auctions and Buy Now deals. */}
+        <FeaturedItems />
         <DealsGrid />
         <BulkSection />
         <SellerShelf />

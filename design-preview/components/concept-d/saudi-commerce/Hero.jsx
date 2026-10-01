@@ -290,12 +290,13 @@ export function Hero() {
           <SegmentedSearch />
         </div>
         <div className="mt-6 flex w-full flex-col items-center justify-center gap-3 sm:flex-row dt:mt-[35px] dt:gap-[18px]">
-          <Link href={link("/browse?tab=buy_now")} className={btn("green", "lg", "h-[52px] w-full gap-3 sm:w-auto sm:px-7 dt:h-[58px] dt:w-[205px] dt:px-0 dt:text-[17px]")}>
-            {t(COPY.shopBuyNow)}
+          {/* Auctions lead; Buy Now is the secondary choice. */}
+          <Link href={link("/browse?tab=auction")} className={btn("green", "lg", "h-[52px] w-full gap-3 sm:w-auto sm:px-7 dt:h-[58px] dt:w-[214px] dt:px-0 dt:text-[17px]")}>
+            {t(COPY.exploreAuctions)}
             <Arrow className="size-5" />
           </Link>
-          <Link href={link("/browse?tab=auction")} className={btn("outline", "lg", "h-[52px] w-full gap-3 sm:w-auto sm:px-7 dt:h-[58px] dt:w-[214px] dt:px-0 dt:text-[17px]")}>
-            {t(COPY.exploreAuctions)}
+          <Link href={link("/browse?tab=buy_now")} className={btn("outline", "lg", "h-[52px] w-full gap-3 sm:w-auto sm:px-7 dt:h-[58px] dt:w-[205px] dt:px-0 dt:text-[17px]")}>
+            {t(COPY.shopBuyNow)}
             <Arrow className="size-5" />
           </Link>
         </div>

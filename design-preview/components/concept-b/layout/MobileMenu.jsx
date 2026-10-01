@@ -11,9 +11,10 @@ import { CATEGORIES } from "@/data/categories";
 import { Button } from "../ui/Button";
 import { SidePanel } from "../ui/Panels";
 import { Plate } from "../ui/Plate";
-import { BrowseLink } from "../utils/navigation";
+import { BrowseLink, useHomeOrder } from "../utils/navigation";
 import { COPY } from "../copy";
 import { AccountSummary } from "./AccountMenu";
+import { HOME_MODE_ORDER } from "./CategoryNav";
 import { LanguageLink } from "./ChromeBits";
 import { useChrome } from "./ChromeContext";
 import { CityPicker } from "./DeliverTo";
@@ -36,14 +37,17 @@ export function MobileMenu() {
   const { toast } = useStore();
   const { panel, close, signedIn, open } = useChrome();
 
-  const nav = [
-    { key: "live", href: "/live-auction", label: ui("liveNow"), live: true },
-    { key: "auctions", href: "/browse?tab=auction", label: ui("auctions"), icon: Gavel },
-    { key: "buy", href: "/browse?tab=buy_now", label: ui("buyNow"), icon: ShoppingBag },
-    { key: "ending", href: "/browse?ending=1h", label: ui("endingSoon"), icon: Timer },
-    { key: "bulk", href: "/browse?category=bulk-pallets", label: ui("bulkLots"), icon: Package },
-    { key: "sellers", href: "/seller", label: ui("sellers"), icon: Store },
-  ];
+  const nav = useHomeOrder(
+    [
+      { key: "live", href: "/live-auction", label: ui("liveNow"), live: true },
+      { key: "auctions", href: "/browse?tab=auction", label: ui("auctions"), icon: Gavel },
+      { key: "buy", href: "/browse?tab=buy_now", label: ui("buyNow"), icon: ShoppingBag },
+      { key: "ending", href: "/browse?ending=1h", label: ui("endingSoon"), icon: Timer },
+      { key: "bulk", href: "/browse?category=bulk-pallets", label: ui("bulkLots"), icon: Package },
+      { key: "sellers", href: "/seller", label: ui("sellers"), icon: Store },
+    ],
+    HOME_MODE_ORDER,
+  );
 
   return (
     <SidePanel

@@ -16,7 +16,7 @@ import { COPY } from "./copy";
 import { BrandBase, GreenFooter } from "./Footer";
 import { AccountSummary, CityChoices, Header, SaudiLanguage, SavedList, useNavItems } from "./Header";
 import { Hero } from "./Hero";
-import { AuctionsAndLive, BulkPanels, GradeStrip, HowItWorks, Recommended, RetailFloor, SellerDirectory, TrustStrip } from "./sections";
+import { AuctionsAndLive, BulkPanels, FeaturedItems, GradeStrip, HowItWorks, Recommended, RetailFloor, SellerDirectory, TrustStrip } from "./sections";
 import { Arrow, cx } from "./ui";
 
 /** Phones and tablets: shopping modes, account, saved lots, city, delivery and language. */
@@ -98,9 +98,11 @@ function Page() {
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
         <TrustStrip />
+        {/* Auctions come before any Buy Now section. */}
+        <AuctionsAndLive live={live} />
+        <FeaturedItems />
         <RetailFloor />
         <Recommended />
-        <AuctionsAndLive live={live} />
         <SellerDirectory />
         <BulkPanels />
         <HowItWorks />
@@ -119,10 +121,11 @@ function Page() {
 /**
  * Option 4 — Contemporary Saudi Commerce home (approved design).
  * A cream utility bar over a white navigation row, a centred bilingual hero
- * with the marketplace search, a sage trust strip, a local category rail
- * beside four horizontal Buy Now cards, a recommended pair, Ending soon
- * beside one integrated live scene, a five-row seller directory, two sage
- * pallet panels, 01/02/03 steps, a seven-cell grade strip, and one green
+ * with the marketplace search, a sage trust strip, then the auctions: Ending
+ * soon beside one integrated live scene and Featured Items led by auction
+ * lots. A local category rail beside four horizontal Buy Now cards and a
+ * recommended pair follow, then a five-row seller directory, two sage pallet
+ * panels, 01/02/03 steps, a seven-cell grade strip, and one green
  * newsletter/footer band above a white brand base.
  */
 export function SaudiCommerceHome() {

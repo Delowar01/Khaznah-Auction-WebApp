@@ -42,7 +42,7 @@ export const COPY = {
     { en: "next great", ar: "صفقتك" },
     { en: "find.", ar: "القادمة." },
   ],
-  heroSub: { en: "Buy now, bid or discover something unexpected.", ar: "اشترِ فوراً أو زايد أو اكتشف ما لم تتوقعه." },
+  heroSub: { en: "Bid, buy now or discover something unexpected.", ar: "زايد أو اشترِ فوراً أو اكتشف ما لم تتوقعه." },
   shopBuyNow: { en: "Shop Buy Now", ar: "تسوّق الشراء الفوري" },
   exploreAuctions: { en: "Explore auctions", ar: "تصفّح المزادات" },
   handwritten: [
@@ -82,6 +82,12 @@ export const COPY = {
   timeLeft: { en: "Time left", ar: "الوقت المتبقي" },
   bidNamed: { en: "Bid now on {title}", ar: "زايد الآن على {title}" },
 
+  // Featured Items: auction lots first, then a few Buy Now finds
+  featuredTitle: { en: "Featured Items", ar: "منتجات مميزة" },
+  featuredSub: { en: "Standout auction lots to bid on, plus a few Buy Now finds.", ar: "منتجات مزاد لافتة للمزايدة عليها، مع بعض منتجات الشراء الفوري." },
+  featuredAuction: { en: "Auction", ar: "مزاد" },
+  featuredBuyNow: { en: "Buy Now finds", ar: "منتجات الشراء الفوري" },
+
   // Sellers
   sellersTitle: { en: "Explore their shelves", ar: "تصفّح رفوفهم" },
   viewAllSellers: { en: "View all sellers", ar: "عرض كل البائعين" },
@@ -114,7 +120,7 @@ export const COPY = {
   howTitle: { en: "How it works", ar: "كيف تعمل خزنة" },
   steps: [
     { title: { en: "Find your item", ar: "اعثر على منتجك" }, text: { en: "Search, browse or watch live auctions.", ar: "ابحث أو تصفّح أو شاهد المزادات المباشرة." } },
-    { title: { en: "Buy now or bid", ar: "اشترِ فوراً أو زايد" }, text: { en: "Choose your item and place a bid or buy now.", ar: "اختر منتجك وقدّم مزايدة أو اشترِ فوراً." } },
+    { title: { en: "Bid or buy now", ar: "زايد أو اشترِ فوراً" }, text: { en: "Choose your item and place a bid or buy now.", ar: "اختر منتجك وقدّم مزايدة أو اشترِ فوراً." } },
     { title: { en: "Arrange delivery or pickup", ar: "رتّب التوصيل أو الاستلام" }, text: { en: "Check the listing for available options.", ar: "تحقق من المنتج لمعرفة الخيارات المتاحة." } },
   ],
 

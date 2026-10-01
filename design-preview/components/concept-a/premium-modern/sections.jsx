@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useId, useState } from "react";
-import { ClipboardList, Play, Truck, UserRoundSearch } from "lucide-react";
+import { ClipboardList, Play, ShoppingCart, Truck, UserRoundSearch } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { cardTitle, useCartAdd } from "@/components/shared/r3/home";
@@ -14,7 +14,7 @@ import { LIVE_EVENT } from "@/data/live";
 import { SELLER_BY_CODE } from "@/data/sellers";
 import { detailPath, isAuction } from "@/lib/catalog";
 import { COPY } from "./copy";
-import { BUY_NOW, CATEGORY_ROW, ENDING, LIVE_STREAM, PALLETS, SELECTED, SELLER_CARDS } from "./data";
+import { BUY_NOW, CATEGORY_ROW, ENDING, FEATURED, LIVE_STREAM, PALLETS, SELECTED, SELLER_CARDS } from "./data";
 import { AddToCart, Chevron, GradePill, HeartButton, SectionHead, TimeLeft, btn, cx, gradeTone } from "./ui";
 
 const sellerName = (code, t) => t(SELLER_BY_CODE[code]?.name ?? { en: "", ar: "" });
@@ -208,7 +208,7 @@ export function LiveSection({ live }) {
   const lot = live.current;
   const host = SELLER_BY_CODE[LIVE_EVENT.host];
   return (
-    <section data-ref="08" aria-labelledby={titleId} className="pr-container pb-6 pt-4 dt:pb-[27px] dt:pt-1.5">
+    <section data-ref="08" aria-labelledby={titleId} className="pr-container pb-6 pt-6 dt:pb-[27px] dt:pt-[19px]">
       <SectionHead id={titleId} title={t(COPY.liveTitle)} sub={t(COPY.liveSub)} />
       <div className="mt-4 grid gap-4 lg:grid-cols-[56.3%_minmax(0,1fr)] dt:mt-3.5 dt:gap-5">
         {/* Event: warehouse preview with status, play and title. Below ~445 px
@@ -256,6 +256,145 @@ export function LiveSection({ live }) {
             {lot ? <Img image={lotImage(lot)} cutout alt="" sizes="260px" className="absolute inset-y-4 end-3 h-[calc(100%-32px)] w-[calc(100%-12px)] object-contain drop-shadow-[0_14px_14px_rgb(23_27_39/0.18)]" /> : null}
           </div>
         </article>
+      </div>
+    </section>
+  );
+}
+
+// ── 08b · Featured Items: an editorial shelf, auction lots first ─────────
+/** Lead lot: its scene photograph beside an ivory panel with the bid. */
+function FeaturedLead({ item }) {
+  const { t, ui, pl } = useLang();
+  const { link } = useConcept();
+  const { product, image, focus } = item;
+  return (
+    <article className="relative grid h-full overflow-hidden rounded-[5px] bg-[var(--pr-panel)] sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] dt:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      {/* A portrait crop at every width, so the whole dishwasher stays in view. */}
+      <div className="relative aspect-[5/4] bg-[#ece9e3] sm:aspect-auto sm:min-h-[320px]">
+        <Img image={image} alt="" sizes="(min-width: 1200px) 264px, (min-width: 640px) 50vw, 100vw" className="absolute inset-0 size-full object-cover" style={{ objectPosition: focus }} />
+      </div>
+      <div className="flex min-w-0 flex-col px-5 pb-5 pt-5 dt:px-6 dt:pt-6">
+        <p className="flex items-center gap-3 pe-10 pr-eyebrow text-[#4a4d57]">
+          <span aria-hidden="true" className="pr-dash !w-6" />
+          {t(COPY.featuredAuction)}
+        </p>
+        <h3 className="mt-3 line-clamp-2 pr-h3 text-fg">
+          <Link href={link(detailPath(product))} title={t(product.title)} className="after:absolute after:inset-0 after:content-[''] hover:underline">
+            {cardTitle(t(product.title))}
+          </Link>
+        </h3>
+        <p className="mt-1 truncate pr-xs text-fg-2">{sellerName(product.seller, t)}</p>
+        <GradePill grade={product.grade} className="mt-2.5 w-fit" />
+        <p className="mt-3 pr-xs text-fg-2">{ui("currentBid")}</p>
+        <p className="flex flex-wrap items-baseline gap-x-2.5">
+          <Money value={product.currentBid} className="pr-price text-fg" symbolClassName="text-[0.78em]" />
+          <span className="pr-sm text-fg-2">{pl("bids", product.bidCount)}</span>
+        </p>
+        <TimeLeft endsIn={product.endsIn} className="mt-1 pr-body" />
+        <div className="mt-auto pt-4">
+          <Link href={link(detailPath(product))} aria-label={t(COPY.bidNamed, { title: t(product.title) })} className={btn("charcoal", "md", "relative z-10 h-11 w-full")}>
+            {ui("bidNow")}
+          </Link>
+        </div>
+      </div>
+      <HeartButton product={product} className="absolute end-1.5 top-1.5 bg-white/90" />
+    </article>
+  );
+}
+
+/** Auction lot on a stone plate: current bid, time left and Bid now. */
+function FeaturedAuctionCard({ item }) {
+  const { t, ui } = useLang();
+  const { link } = useConcept();
+  const { product, image } = item;
+  return (
+    <article className="relative flex h-full flex-col overflow-hidden rounded-[5px] border border-[#ebe9e3] bg-white">
+      <div className="relative aspect-[4/3] bg-[var(--pr-stone)]">
+        <Img image={image} alt="" sizes="(min-width: 1200px) 253px, (min-width: 768px) 30vw, 64vw" className="pr-multiply absolute inset-0 size-full object-contain px-5 py-4" />
+        <HeartButton product={product} className="absolute end-1 top-1" />
+      </div>
+      <div className="flex flex-1 flex-col px-3.5 pb-3.5 pt-3">
+        <p className="pr-eyebrow !tracking-[0.1em] text-[var(--pr-bronze)]">{t(COPY.featuredAuction)}</p>
+        <h3 className="mt-1 line-clamp-2 pr-title text-fg">
+          <Link href={link(detailPath(product))} title={t(product.title)} className="after:absolute after:inset-0 after:content-[''] hover:underline">
+            {cardTitle(t(product.title))}
+          </Link>
+        </h3>
+        <GradePill grade={product.grade} className="mt-2 w-fit" />
+        <p className="mt-2 pr-xs text-fg-2">{ui("currentBid")}</p>
+        <Money value={product.currentBid} className="self-start pr-price-sm text-fg" symbolClassName="text-[0.78em]" />
+        <TimeLeft endsIn={product.endsIn} className="mt-1 pr-md" />
+        <div className="mt-auto pt-3">
+          <Link href={link(detailPath(product))} aria-label={t(COPY.bidNamed, { title: t(product.title) })} className={btn("charcoal", "sm", "relative z-10 h-10 w-full")}>
+            {ui("bidNow")}
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+/** Buy Now find: a slim row with a quieter outline button. */
+function FeaturedBuyNowRow({ item }) {
+  const { t, ui } = useLang();
+  const { link } = useConcept();
+  const add = useCartAdd(t(COPY.addedToCart));
+  const { product, image } = item;
+  return (
+    <article className="relative flex items-center gap-3.5 py-3">
+      <span className="relative size-[68px] shrink-0 overflow-hidden rounded-[4px] bg-white">
+        <Img image={image} alt="" sizes="68px" className="pr-multiply absolute inset-1.5 size-[calc(100%-12px)] object-contain" />
+      </span>
+      <div className="min-w-0 flex-1">
+        <h3 className="truncate pr-md font-medium text-fg">
+          <Link href={link(detailPath(product))} title={t(product.title)} className="after:absolute after:inset-0 after:content-[''] hover:underline">
+            {cardTitle(t(product.title))}
+          </Link>
+        </h3>
+        <p className="truncate pr-xs text-fg-2">{sellerName(product.seller, t)}</p>
+        <Money value={product.price} className="mt-0.5 pr-lg font-semibold text-fg" symbolClassName="text-[0.82em]" />
+      </div>
+      {/* Icon only below 380 px, so the title keeps its room (the name is in the aria-label). */}
+      <button type="button" disabled={product.stock <= 0} onClick={() => add(product)} aria-label={t(COPY.addNamed, { title: t(product.title) })} className={btn("outline", "sm", "relative z-10 h-10 gap-1.5 max-[379px]:w-10 max-[379px]:px-0")}>
+        <ShoppingCart aria-hidden="true" className="size-4 shrink-0" strokeWidth={1.8} />
+        <span className="max-[379px]:sr-only">{ui("addToCart")}</span>
+      </button>
+    </article>
+  );
+}
+
+/**
+ * Featured Items: a lead auction lot and three more on stone plates, then a
+ * slimmer "Also on Buy Now" row, so the auctions always read first.
+ */
+export function FeaturedItems() {
+  const { t } = useLang();
+  const titleId = useId();
+  const buyNowId = useId();
+  return (
+    <section data-ref="08b" aria-labelledby={titleId} className="pr-container pb-6 pt-5 dt:pb-[27px] dt:pt-[21px]">
+      <SectionHead id={titleId} title={t(COPY.featuredTitle)} sub={t(COPY.featuredSub)} href="/browse?tab=auction" linkLabel={t(COPY.featuredAllAuctions)} />
+      <div className="mt-4 grid gap-4 dt:mt-[19px] dt:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+        <FeaturedLead item={FEATURED.lead} />
+        <ul className="pr-rail -mx-[var(--pr-gutter)] flex snap-x gap-3 overflow-x-auto px-[var(--pr-gutter)] md:mx-0 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:px-0">
+          {FEATURED.auctions.map((item) => (
+            <li key={item.product.slug} className="w-[min(64%,250px)] shrink-0 snap-start md:w-auto">
+              <FeaturedAuctionCard item={item} />
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="mt-5 border-t border-line pt-4 dt:mt-6">
+        <p id={buyNowId} className="pr-eyebrow text-[#4a4d57]">
+          {t(COPY.featuredAlsoBuyNow)}
+        </p>
+        <ul aria-labelledby={buyNowId} className="mt-1 grid divide-y divide-line dt:grid-cols-3 dt:gap-x-8 dt:divide-y-0">
+          {FEATURED.buyNow.map((item) => (
+            <li key={item.product.slug} className="min-w-0">
+              <FeaturedBuyNowRow item={item} />
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -326,7 +465,7 @@ export function BulkRows() {
   const { t, ui } = useLang();
   const titleId = useId();
   return (
-    <section data-ref="09" aria-labelledby={titleId} className="pr-container pb-5 pt-3 dt:pb-[21px] dt:pt-[9px]">
+    <section data-ref="09" aria-labelledby={titleId} className="pr-container pb-5 pt-4 dt:pb-[21px] dt:pt-3">
       <SectionHead id={titleId} title={t(COPY.bulkTitle)} sub={t(COPY.bulkSub)} href="/browse?category=bulk-pallets" linkLabel={ui("viewAll")} />
       <ul className="mt-4 grid gap-3 dt:mt-3">
         {PALLETS.map(({ product, image }) => (

@@ -11,7 +11,7 @@ import { CATEGORIES } from "@/data/categories";
 import { LIVE_EVENT } from "@/data/live";
 import { LiveBadge } from "../ui/Badge";
 import { Plate } from "../ui/Plate";
-import { BrowseLink } from "../utils/navigation";
+import { BrowseLink, useHomeOrder } from "../utils/navigation";
 import { COPY } from "../copy";
 
 const QUICK = [
@@ -22,11 +22,15 @@ const QUICK = [
   { key: "bulk", icon: Package, href: "/browse?category=bulk-pallets", ui: "bulkLots" },
 ];
 
+// Home page order: the auction shortcuts before Buy Now deals (see useHomeOrder).
+const HOME_QUICK_ORDER = ["ending", "hot", "new", "deals", "bulk"];
+
 /** Full-width category panel under the nav bar. */
 export function MegaMenu({ open, id, onClose }) {
   const { t, ui, pl } = useLang();
   const { link } = useConcept();
   const current = LIVE_EVENT.items.find((item) => item.status === "live");
+  const quick = useHomeOrder(QUICK, HOME_QUICK_ORDER);
 
   return (
     <AnimatePresence>
@@ -64,7 +68,7 @@ export function MegaMenu({ open, id, onClose }) {
             <div className="border-s border-line ps-8">
               <p className="mb-3 kb-eyebrow text-fg-3">{t(COPY.quickLinks)}</p>
               <ul className="grid gap-0.5">
-                {QUICK.map((item) => (
+                {quick.map((item) => (
                   <li key={item.key}>
                     <BrowseLink href={item.href} onClick={onClose} className="flex h-9 items-center gap-2.5 rounded-lg px-2 kb-sm font-semibold text-fg-2 hover:bg-surface-2 hover:text-fg">
                       <item.icon aria-hidden="true" className="size-4 text-primary" />
