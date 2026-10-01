@@ -137,7 +137,7 @@ export function HeroMosaic() {
         </div>
         <FurnitureTile />
         <div className="grid gap-2 sm:grid-cols-2 md:col-span-2 dt:col-auto dt:grid-cols-1 dt:grid-rows-[243fr_269fr] dt:gap-[8px]">
-          <CategoryPhotoTile slug="electronics" image={HERO.electronics.image} text={t(COPY.electronicsText)} plate className="min-h-[190px]" />
+          <CategoryPhotoTile slug="electronics" image={HERO.electronics.image} focus={HERO.electronics.focus} text={t(COPY.electronicsText)} className="min-h-[190px]" />
           <CategoryPhotoTile slug="home-kitchen" image={HERO.kitchen.image} focus={HERO.kitchen.focus} text={t(COPY.kitchenText)} className="min-h-[190px]" />
         </div>
       </div>

@@ -14,7 +14,7 @@ import { LIVE_EVENT } from "@/data/live";
 import { SELLER_BY_CODE } from "@/data/sellers";
 import { detailPath } from "@/lib/catalog";
 import { COPY } from "./copy";
-import { CATEGORY_PILLS, COMPACT_SELLERS, ENDING, PALLETS, PROMOTED_SELLERS, WALL_BUY_NOW, WALL_RECOMMENDED } from "./data";
+import { CATEGORY_PILLS, COMPACT_SELLERS, ENDING, LIVE_STILL, PALLETS, PROMOTED_SELLERS, WALL_BUY_NOW, WALL_RECOMMENDED } from "./data";
 import { Arrow, CartCircle, CountdownPill, GradePill, HeartDisk, SectionHead, btn, cx, gradeTone } from "./ui";
 
 const sellerName = (code, t) => t(SELLER_BY_CODE[code]?.name ?? { en: "", ar: "" });
@@ -44,18 +44,18 @@ export function CategoryPills() {
 function WallCard({ row }) {
   const { t } = useLang();
   const { link } = useConcept();
-  const { product, tall, recommended, tone, area } = row;
+  const { product, tall, recommended, tone, area, photo, focus } = row;
   if (!product) return null;
-  const image = product.images[0];
   return (
     <article style={{ gridArea: area }} className="relative flex h-full flex-col overflow-hidden rounded-[16px] border border-[var(--vd-line)] bg-white">
       <div className={cx("relative w-full overflow-hidden", tall ? "aspect-[4/5] md:aspect-square dt:aspect-auto dt:flex-1" : "aspect-[315/170] min-[380px]:max-sm:aspect-[4/3] dt:aspect-auto dt:h-[169px] dt:rtl:h-[158px]")} style={{ background: tone }}>
         <Img
-          image={image}
-          cutout
+          image={photo ?? product.images[0]}
+          cutout={!photo}
           alt=""
           sizes={tall ? "(min-width: 1200px) 335px, 50vw" : "(min-width: 1200px) 315px, 50vw"}
-          className={cx("vd-multiply absolute inset-0 size-full object-contain", tall ? "px-6 pb-5 pt-12 dt:px-8 dt:pb-6 dt:pt-14" : "px-8 pb-3 pt-4 dt:pt-[18px]")}
+          className={photo ? "absolute inset-0 size-full object-cover" : cx("vd-multiply absolute inset-0 size-full object-contain", tall ? "px-6 pb-5 pt-12 dt:px-8 dt:pb-6 dt:pt-14" : "px-8 pb-3 pt-4 dt:pt-[18px]")}
+          style={photo && focus ? { objectPosition: focus } : undefined}
         />
         {recommended ? (
           <span className="absolute bottom-2 start-2 inline-flex h-[26px] items-center gap-1.5 rounded-full bg-[var(--vd-coral)] px-2.5 vd-label text-white sm:bottom-auto sm:start-3 sm:top-3">
@@ -179,7 +179,7 @@ export function LiveBanner({ live }) {
           style={{ gridArea: "video" }}
           className="group relative block aspect-[515/268] overflow-hidden rounded-[20px] bg-[#0e2a4d] outline-offset-2 md:aspect-auto md:h-full md:min-h-[260px] dt:ms-4 dt:aspect-[515/268] dt:h-auto dt:min-h-0 dt:self-center"
         >
-          <Img image={LIVE_EVENT.stream} alt="" sizes="(min-width: 1200px) 515px, (min-width: 768px) 50vw, 100vw" className="absolute inset-y-0 right-0 h-full w-[178%] max-w-none object-cover transition-transform duration-500 group-hover:scale-[1.02] md:w-[150%] dt:w-[178%]" style={{ objectPosition: "100% 42%" }} />
+          <Img image={LIVE_STILL.image} alt="" sizes="(min-width: 1200px) 515px, (min-width: 768px) 50vw, 100vw" className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" style={{ objectPosition: LIVE_STILL.focus }} />
           <span aria-hidden="true" className="absolute inset-0 bg-[#06213f]/20" />
           <span className="absolute end-3 top-3 inline-flex h-7 items-center gap-1.5 rounded-full bg-[var(--vd-live)] px-2.5 vd-label uppercase text-white">
             <span aria-hidden="true" className="size-2 rounded-full border-2 border-white" />
@@ -196,13 +196,13 @@ export function LiveBanner({ live }) {
 }
 
 // ── 07 · Ending soon: three image-first cards ───────────────────────────
-function AuctionCard({ product, tone, first }) {
+function AuctionCard({ product, tone, photo, first }) {
   const { t, ui } = useLang();
   const { link } = useConcept();
   return (
     <article className="relative flex h-full flex-col overflow-hidden rounded-[14px] border border-[#dfe7f3] bg-white">
       <div className="relative aspect-[427/204] overflow-hidden" style={{ background: tone }}>
-        <Img image={product.images[0]} cutout alt="" sizes="(min-width: 1200px) 430px, 86vw" className="vd-multiply absolute inset-0 size-full object-contain px-8 pb-3 pt-5" />
+        <Img image={photo ?? product.images[0]} cutout={!photo} alt="" sizes="(min-width: 1200px) 430px, 86vw" className={photo ? "absolute inset-0 size-full object-cover" : "vd-multiply absolute inset-0 size-full object-contain px-8 pb-3 pt-5"} />
         <CountdownPill endsIn={product.endsIn} className="absolute end-3.5 top-3.5" />
         {first ? <HeartDisk product={product} className="absolute start-3.5 top-3.5" /> : null}
       </div>
@@ -235,9 +235,9 @@ export function EndingSoon() {
     <section data-ref="07" aria-labelledby={titleId} className="vd-container pt-6 dt:pt-[21px]">
       <SectionHead id={titleId} title={t(COPY.endingTitle)} href="/browse?tab=auction" linkLabel={t(COPY.viewAllAuctions)} />
       <ul className="vd-rail -mx-[var(--vd-gutter)] mt-4 flex snap-x gap-4 overflow-x-auto px-[var(--vd-gutter)] lg:mx-0 lg:grid lg:grid-cols-3 lg:overflow-visible lg:px-0 dt:mt-[9px] dt:gap-[26px]">
-        {ENDING.map(({ product, tone }, i) => (
+        {ENDING.map(({ product, tone, photo }, i) => (
           <li key={product.slug} className="w-[82%] shrink-0 snap-start sm:w-[46%] lg:w-auto">
-            <AuctionCard product={product} tone={tone} first={i === 0} />
+            <AuctionCard product={product} tone={tone} photo={photo} first={i === 0} />
           </li>
         ))}
       </ul>
@@ -301,7 +301,7 @@ export function SellerShelves() {
 }
 
 // ── 09 · Bulk & Pallets: two differently tinted panels ───────────────────
-function PalletPanel({ product, tone, action }) {
+function PalletPanel({ product, image, tone, action }) {
   const { t, ui, pl } = useLang();
   const { link } = useConcept();
   const add = useCartAdd(t(COPY.addedToCart));
@@ -309,7 +309,7 @@ function PalletPanel({ product, tone, action }) {
   return (
     <article className="relative grid h-full overflow-hidden rounded-[16px] sm:grid-cols-[52%_minmax(0,1fr)]" style={{ background: tone }}>
       <div className="relative h-[190px] sm:h-auto sm:min-h-[248px]">
-        <Img image={product.images[0]} cutout alt="" sizes="(min-width: 1200px) 340px, 50vw" className="vd-multiply absolute inset-0 size-full object-contain px-6 py-5" />
+        <Img image={image ?? product.images[0]} cutout alt="" sizes="(min-width: 1200px) 340px, 50vw" className="vd-multiply absolute inset-0 size-full object-contain px-6 py-5" />
       </div>
       <div className="flex min-w-0 flex-col justify-center px-5 pb-5 sm:ps-1 sm:pe-6 sm:pt-5">
         <h3 className="max-w-[270px] vd-h3 !text-[20px] !leading-6 text-[var(--vd-ink)] dt:!text-[22px] dt:!leading-[27px]">

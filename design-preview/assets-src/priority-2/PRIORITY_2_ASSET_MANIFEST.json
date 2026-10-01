@@ -1,0 +1,1947 @@
+{
+  "package": "KHAZNAH_PRIORITY_2_ASSETS",
+  "date": "2026-10-01",
+  "purpose": "Temporary dummy imagery for Options 2/3/4 design preview",
+  "image_count": 25,
+  "scope": "B1-B18 with B7a-f and B8a-c; no Priority1/C assets or application files",
+  "policy_update": "User changed priority to speed/low usage after generation and correction work. No further generation after that update. Existing selected outputs were retained; no new alternatives were made.",
+  "native_resolution_note": "All images were kept at genuine generated pixel resolution except lossless integer crops and transparent canvas padding. None enlarged or stretched. Actual dimensions govern use.",
+  "validation": "All final files decoded; ratios, ICC profiles, cutout alpha, transparent edges, unique names and checksums checked. Visual review accepted preview-level subject/composition limitations.",
+  "assets": [
+    {
+      "b_id": "B1",
+      "filename": "B1_kz-shared-pallet-electronics-v1.png",
+      "intended_section": "Options 2/3/4 Bulk & Pallets; Option 2 category; Option 4 seller thumbnail",
+      "actual_dimensions": {
+        "width": 1418,
+        "height": 1017
+      },
+      "aspect_ratio": "1418:1017",
+      "aspect_ratio_decimal": 1.394297,
+      "requested_aspect_ratio_before_cutout_trimming": "4:3",
+      "requested_dimensions": {
+        "width": 2000,
+        "height": 1500
+      },
+      "native_generated_dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "color_mode": "RGBA",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": true,
+      "file_size_bytes": 1738748,
+      "source_references": [
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B1"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "alpha-cleaned",
+        "canvas-adjusted"
+      ],
+      "deterministic_finishing_performed": [
+        "Alpha cleanup: removed alpha<=8 residue and disconnected specks outside the main silhouette; retained adjacent antialiasing and transparent internal openings.",
+        "Normalized opaque interior alpha to255; cleared RGB in fully transparent pixels.",
+        "Trimmed transparent surround and added approximately2%transparent margin per side; no product resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2000x1500 master target; native resolution accepted for dummy/preview use under latest instruction. Generic preview pallet; carton arrangement and timber construction approximate the design.",
+      "text_safe_area": "No internal text zone; place live text beside the cut-out.",
+      "developer_crop_guidance": "Contain the whole transparent pallet; do not use cover.",
+      "alpha_validation": {
+        "original_alpha_bbox": [
+          51,
+          58,
+          1411,
+          1033
+        ],
+        "trimmed_subject_dimensions": [
+          1360,
+          975
+        ],
+        "padding_px": [
+          29,
+          21
+        ],
+        "margins_percent": [
+          2.045,
+          2.065
+        ],
+        "edge_nonzero_pixels": 0,
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "transparent_pixels": 453461,
+        "partial_alpha_pixels": 11275,
+        "alpha_changed_pixels": 989364
+      },
+      "crop_box_native": null,
+      "sha256": "656579acd2e628debeec43e10bdee736967f580935760abea2661a0f0c9fbfe0",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Generate exactly ONE standalone photorealistic ecommerce product cut-out, not a collage or presentation. Real transparent RGBA background, clean anti-aliased silhouette, about 2% transparent margin at subject edges. Whole subject visible, no clipping. No text, numbers, logos, brand marks, labels, watermarks, UI, people, floor, background color, checkerboard or baked shadow. sRGB neutral white balance, soft upper-left studio key. Highest genuine native resolution; do not enlarge or stretch. One standard light-timber wooden shipping pallet stacked with mixed-size plain kraft cardboard shipping cartons. Several small cube cartons and a few large flat TV-size cartons behind, neat clear-taped stacking. Pallet deck boards, blocks and fork openings fully visible. Three-quarter view from20â€“25degrees above, front pallet corner pointing at viewer. Overall subject approximately1.4times wider than tall. No printed pictograms needed, keep boxes plain. Target2000x1500,4:3 landscape before tight transparent trimming."
+    },
+    {
+      "b_id": "B2",
+      "filename": "B2_kz-shared-pallet-kitchen-v1.png",
+      "intended_section": "Options 2/3/4 kitchen pallet",
+      "actual_dimensions": {
+        "width": 1430,
+        "height": 1035
+      },
+      "aspect_ratio": "286:207",
+      "aspect_ratio_decimal": 1.381643,
+      "requested_aspect_ratio_before_cutout_trimming": "4:3",
+      "requested_dimensions": {
+        "width": 2000,
+        "height": 1500
+      },
+      "native_generated_dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "color_mode": "RGBA",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": true,
+      "file_size_bytes": 1745574,
+      "source_references": [
+        {
+          "type": "generated reference",
+          "asset": "B1",
+          "use": "Pallet/camera/lighting matched pair"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B2"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided",
+        "alpha-cleaned",
+        "canvas-adjusted"
+      ],
+      "deterministic_finishing_performed": [
+        "Alpha cleanup: removed alpha<=8 residue and disconnected specks outside the main silhouette; retained adjacent antialiasing and transparent internal openings.",
+        "Normalized opaque interior alpha to255; cleared RGB in fully transparent pixels.",
+        "Trimmed transparent surround and added approximately2%transparent margin per side; no product resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2000x1500 master target; native resolution accepted for dummy/preview use under latest instruction. Matched pallet treatment with simple unlettered appliance pictograms; arrangement is illustrative.",
+      "text_safe_area": "No internal text zone.",
+      "developer_crop_guidance": "Contain the whole pallet; same apparent pallet width as B1.",
+      "alpha_validation": {
+        "original_alpha_bbox": [
+          42,
+          84,
+          1414,
+          1077
+        ],
+        "trimmed_subject_dimensions": [
+          1372,
+          993
+        ],
+        "padding_px": [
+          29,
+          21
+        ],
+        "margins_percent": [
+          2.028,
+          2.029
+        ],
+        "edge_nonzero_pixels": 0,
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "transparent_pixels": 459835,
+        "partial_alpha_pixels": 10920,
+        "alpha_changed_pixels": 1021706
+      },
+      "crop_box_native": null,
+      "sha256": "39094daeb8155ea08787426b21434b2625ba448428b8a6942d4be7e6db5a988e",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 2,
+      "latest_generation_prompt": "Create ONE transparent ecommerce product cutout, real alpha. Reference shows ONLY the pallet wood, camera angle and neutral upper-left lighting to match; REPLACE ITS ENTIRE CARTON ARRANGEMENT. New arrangement: 12 medium nearly equal-size squat cubic kraft appliance cartons in a neat 3-columns by2-deep by2-high stack, some offset slightly but stable. NO tall flat cartons, NO TV-shaped cartons. Whole light-timber shipping pallet visible underneath, same front-corner camera20â€“25degrees from above, broad stack1.4times wider than tall. A few tiny unlettered kettle/pot/microwave outline pictograms only. All carton labels/logos/words absent. Real clean alpha transparent background, no floor, no baked shadow, no checkerboard, no people. 4:3 target2000x1500 native, whole subject with2%margin, photorealistic."
+    },
+    {
+      "b_id": "B3",
+      "filename": "B3_kz-o2-tools-drill-v1.png",
+      "intended_section": "Option 2 Tools & DIY category",
+      "actual_dimensions": {
+        "width": 1174,
+        "height": 1220
+      },
+      "aspect_ratio": "587:610",
+      "aspect_ratio_decimal": 0.962295,
+      "requested_aspect_ratio_before_cutout_trimming": "1:1",
+      "requested_dimensions": {
+        "width": 1600,
+        "height": 1600
+      },
+      "native_generated_dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "color_mode": "RGBA",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": true,
+      "file_size_bytes": 1181822,
+      "source_references": [
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B3"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "alpha-cleaned",
+        "canvas-adjusted"
+      ],
+      "deterministic_finishing_performed": [
+        "Alpha cleanup: removed alpha<=8 residue and disconnected specks outside the main silhouette; retained adjacent antialiasing and transparent internal openings.",
+        "Normalized opaque interior alpha to255; cleared RGB in fully transparent pixels.",
+        "Trimmed transparent surround and added approximately2%transparent margin per side; no product resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 1600x1600 master target; native resolution accepted for dummy/preview use under latest instruction. Generic drill, not a branded catalogue SKU.",
+      "text_safe_area": "None required.",
+      "developer_crop_guidance": "Contain; keep chuck facing left in both language layouts.",
+      "alpha_validation": {
+        "original_alpha_bbox": [
+          64,
+          49,
+          1190,
+          1219
+        ],
+        "trimmed_subject_dimensions": [
+          1126,
+          1170
+        ],
+        "padding_px": [
+          24,
+          25
+        ],
+        "margins_percent": [
+          2.044,
+          2.049
+        ],
+        "edge_nonzero_pixels": 0,
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "transparent_pixels": 833374,
+        "partial_alpha_pixels": 9146,
+        "alpha_changed_pixels": 601186
+      },
+      "crop_box_native": null,
+      "sha256": "bc604b50796ee8b37906932c8b43cbb316170577bc585fab772457761fab0c7f",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Generate exactly ONE standalone photorealistic ecommerce product cut-out, not a collage or presentation. Real transparent RGBA background, clean anti-aliased silhouette, about 2% transparent margin at subject edges. Whole subject visible, no clipping. No text, numbers, logos, brand marks, labels, watermarks, UI, people, floor, background color, checkerboard or baked shadow. sRGB neutral white balance, soft upper-left studio key. Highest genuine native resolution; do not enlarge or stretch. One generic cordless drill/driver, blue and black moulded body, black rubber grip, black battery pack, keyless chuck with SHORT steel drill bit. Upright on battery, left-facing side view with slight three-quarter angle. Chuck points LEFT. Mechanically credible grip, trigger, battery and vents. Plain torque collar without numbers or labels. Target1600x1600 square before tight transparent trimming."
+    },
+    {
+      "b_id": "B4",
+      "filename": "B4_kz-o2-automotive-tyre-v1.png",
+      "intended_section": "Option 2 Automotive category",
+      "actual_dimensions": {
+        "width": 1016,
+        "height": 1225
+      },
+      "aspect_ratio": "1016:1225",
+      "aspect_ratio_decimal": 0.829388,
+      "requested_aspect_ratio_before_cutout_trimming": "1:1",
+      "requested_dimensions": {
+        "width": 1600,
+        "height": 1600
+      },
+      "native_generated_dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "color_mode": "RGBA",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": true,
+      "file_size_bytes": 1677787,
+      "source_references": [
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B4"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "alpha-cleaned",
+        "canvas-adjusted"
+      ],
+      "deterministic_finishing_performed": [
+        "Alpha cleanup: removed alpha<=8 residue and disconnected specks outside the main silhouette; retained adjacent antialiasing and transparent internal openings.",
+        "Normalized opaque interior alpha to255; cleared RGB in fully transparent pixels.",
+        "Trimmed transparent surround and added approximately2%transparent margin per side; no product resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 1600x1600 master target; native resolution accepted for dummy/preview use under latest instruction. Generic wheel and tyre; fine tread and rim geometry are illustrative.",
+      "text_safe_area": "None required.",
+      "developer_crop_guidance": "Contain; do not mirror or crop the tyre.",
+      "alpha_validation": {
+        "original_alpha_bbox": [
+          146,
+          40,
+          1120,
+          1215
+        ],
+        "trimmed_subject_dimensions": [
+          974,
+          1175
+        ],
+        "padding_px": [
+          21,
+          25
+        ],
+        "margins_percent": [
+          2.067,
+          2.041
+        ],
+        "edge_nonzero_pixels": 0,
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "transparent_pixels": 327080,
+        "partial_alpha_pixels": 10483,
+        "alpha_changed_pixels": 919275
+      },
+      "crop_box_native": null,
+      "sha256": "8c489d2518ec4bfe766317c97d00a940df253b0c203659327eaf9b83dbc24663",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Generate exactly ONE standalone photorealistic ecommerce product cut-out, not a collage or presentation. Real transparent RGBA background, clean anti-aliased silhouette, about 2% transparent margin at subject edges. Whole subject visible, no clipping. No text, numbers, logos, brand marks, labels, watermarks, UI, people, floor, background color, checkerboard or baked shadow. sRGB neutral white balance, soft upper-left studio key. Highest genuine native resolution; do not enlarge or stretch. One single automotive tyre mounted on a dark graphite multi-spoke alloy wheel. Upright on tread, three-quarter view showing full wheel face plus clearly visible side tread. Realistic repeating tyre tread blocks, real rim and lug geometry. Smooth plain sidewall without any lettering, numbers or manufacturer logos. Target1600x1600 square before tight transparent trimming."
+    },
+    {
+      "b_id": "B5",
+      "filename": "B5_kz-o3-hero-electronics-tv-v1.png",
+      "intended_section": "Option 3 hero Electronics tile",
+      "actual_dimensions": {
+        "width": 1664,
+        "height": 936
+      },
+      "aspect_ratio": "16:9",
+      "aspect_ratio_decimal": 1.777778,
+      "requested_aspect_ratio_before_cutout_trimming": "16:9",
+      "requested_dimensions": {
+        "width": 2400,
+        "height": 1350
+      },
+      "native_generated_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 2235302,
+      "source_references": [
+        {
+          "type": "catalogue identity reference",
+          "filename": "tv-43-0-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/tv-43-0-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/tv-43-0-1200.webp",
+          "sha256": "21b8c3658ed50ed294da3331499568ae9408ccb7ba5fe68da9412f3b5b55f1ce",
+          "git_blob_sha": "de0f5e2250860f45419af25e2138bb9e6f9cdc93",
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "catalogue identity reference",
+          "filename": "tv-43-1-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/tv-43-1-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/tv-43-1-1200.webp",
+          "sha256": "27f78f670a462cd0ff73b68760ef6c8b6a1f58d1832d818af93abddf7a724b2b",
+          "git_blob_sha": "9a95091d2090df7da0339036e1235673d7539f4f",
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B5"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "02_Visual_Discovery_Khaznah_Theme.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided",
+        "deterministically cropped"
+      ],
+      "deterministic_finishing_performed": [
+        "Exact-ratio integer crop from native canvas: [4, 2, 1668, 938]. No resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2400x1350 master target; native resolution accepted for dummy/preview use under latest instruction. TV position and quiet lower corners approximate the brief; tablet-wide cover crops can crop the stand. Tune focus or use contain if whole-product visibility is needed.",
+      "text_safe_area": "Lower-left for HTML label; lower-right for arrow, using the existing label backing if needed.",
+      "developer_crop_guidance": "Start at 60% 48%; inspect the 1.64:1 desktop, 2.57:1 tablet and 1.93:1 phone slots.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        4,
+        2,
+        1668,
+        938
+      ],
+      "sha256": "028d1f470687a5e36194b035000cb6fcc537e4ec641985e72e7ab68e817b05f6",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Bright lifestyle scene of the reference thin-black-bezel TV, on its slim feet above a low simple console, vivid abstract blue ocean-wave screen ONLY. TV approximately x38â€“95%, y8â€“72%, slight turn to left. Green plant at left x0â€“28%, warm beige wall. Quiet lower-left x0â€“52%, y62â€“95% and lower-right x85â€“97%,y70â€“93% for future HTML overlay, no overlay drawn. Soft bright daylight. Match TV design but omit printed logo and remote control. Output 16:9 aspect ratio; target 2400x1350 native pixels."
+    },
+    {
+      "b_id": "B6",
+      "filename": "B6_kz-o3-hero-kitchen-coffee-v1.png",
+      "intended_section": "Option 3 hero Home & Kitchen tile",
+      "actual_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "aspect_ratio": "3:2",
+      "aspect_ratio_decimal": 1.5,
+      "requested_aspect_ratio_before_cutout_trimming": "3:2",
+      "requested_dimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "native_generated_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 1571368,
+      "source_references": [
+        {
+          "type": "catalogue identity reference",
+          "filename": "capsule-coffee-0-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/capsule-coffee-0-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/capsule-coffee-0-1200.webp",
+          "sha256": "b3f7308b92ad12756a40c8e17df8566e550b50a7cd3db1026c1006e34de4146a",
+          "git_blob_sha": "b97addf62259d523119a7cb6821e7052b17869ca",
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B6"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "02_Visual_Discovery_Khaznah_Theme.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2400x1600 master target; native resolution accepted for dummy/preview use under latest instruction. Catalogue machine is recognisable but generated details are not pixel-exact. Very wide tablet crops require tuning.",
+      "text_safe_area": "Lower counter and both bottom corners kept relatively clear.",
+      "developer_crop_guidance": "Start at 68% 50%; retain full machine and lower counter; avoid aggressive vertical cover crops.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sha256": "7ea4bc56b160febc2c1678b5ee6058fd8424bfa71f685d2257c5334845d2f9df",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 2,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. The EXACT reference red capsule coffee machine, same tall red rectangular rounded housing, protruding brew head, three round top buttons, silver slotted circular drip tray, transparent right water tank, design/colour/proportions preserved, omit all lettering. Machine on a light counter against peach-pink wall near #F3CDB8, right half x58â€“88%,y12â€“78%. Low white utensil crock with wooden spoons and white cup to left x5â€“45%, small wooden canister far right. Keep lower-left x0â€“58%,y65â€“95% and bottom-right x85â€“97%,y80â€“97% calm counter for HTML overlays, no overlay drawn. Warm soft daylight. Output 3:2 aspect ratio; target 2400x1600 native pixels. CRITICAL framing correction: zoom the CAMERA OUT, so the entire coffee maker height is only60â€“65%of the canvas, at x60â€“90% and y12â€“76%, with visibly empty counter below it. Keep all props ABOVE y65% by placing them farther back on the counter. Entire LOWER28% must be clear counter surface, except machine may extend only down to y76%. No oversized foreground props, no plants or foreground additions. Preserve the original coffee maker proportions."
+    },
+    {
+      "b_id": "B7a",
+      "filename": "B7a_kz-o3-wall-suede-tote-v1.png",
+      "intended_section": "Option 3 Buy Now product wall, tall tote card",
+      "actual_dimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "aspect_ratio": "3:4",
+      "aspect_ratio_decimal": 0.75,
+      "requested_aspect_ratio_before_cutout_trimming": "3:4",
+      "requested_dimensions": {
+        "width": 1500,
+        "height": 2000
+      },
+      "native_generated_dimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 1646099,
+      "source_references": [
+        {
+          "type": "catalogue identity reference",
+          "filename": "suede-tote-0-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/suede-tote-0-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/suede-tote-0-1200.webp",
+          "sha256": "095abf1a1a549345dae169b21b0378f07e5109be97c2f2a63eceb488e78149d0",
+          "git_blob_sha": null,
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B7"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "02_Visual_Discovery_Khaznah_Theme.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 1500x2000 master target; native resolution accepted for dummy/preview use under latest instruction. Chain, strap and suede texture are generated approximations.",
+      "text_safe_area": "Quiet upper corners for favourite control; approximately 15% upper space.",
+      "developer_crop_guidance": "Centre; retain the whole chain, handles and loose shoulder strap in desktop and phone crops.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        1086,
+        1448
+      ],
+      "sha256": "0535e399da15335e214046c24d4f9caec7cfa43512821d4b2973a874847da602",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Seamless tinted studio sweep, soft natural floor shadow, upper-left soft studio key. Product alone centred in three-quarter view, wholly visible about70%of frame height, all parts within middle60%width where geometry allows. Top15% and top corners empty for future HTML overlays. Preserve reference product identity; remove only printed marks. Exact reference cognac suede tote, seam down front, handles upright, gold chain-and-leather handles and long loose shoulder strap, warm cream background #F6ECDF. Full strap and bag, not cropped. Output 3:4 aspect ratio; target 1500x2000 native pixels."
+    },
+    {
+      "b_id": "B7b",
+      "filename": "B7b_kz-o3-wall-writing-desk-v1.png",
+      "intended_section": "Option 3 Buy Now product wall, writing desk",
+      "actual_dimensions": {
+        "width": 1615,
+        "height": 969
+      },
+      "aspect_ratio": "5:3",
+      "aspect_ratio_decimal": 1.666667,
+      "requested_aspect_ratio_before_cutout_trimming": "5:3",
+      "requested_dimensions": {
+        "width": 2000,
+        "height": 1200
+      },
+      "native_generated_dimensions": {
+        "width": 1619,
+        "height": 971
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 1388627,
+      "source_references": [
+        {
+          "type": "catalogue identity reference",
+          "filename": "hairpin-desk-0-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/hairpin-desk-0-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/hairpin-desk-0-1200.webp",
+          "sha256": "862df61994c49fd8ea7a3dfdf539b712dc994dc77db1f3cf6472ec81da06694d",
+          "git_blob_sha": "849952facbd492efe24d9f54e4c087b01948d7b3",
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B7"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "02_Visual_Discovery_Khaznah_Theme.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided",
+        "deterministically cropped"
+      ],
+      "deterministic_finishing_performed": [
+        "Exact-ratio integer crop from native canvas: [2, 1, 1617, 970]. No resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2000x1200 master target; native resolution accepted for dummy/preview use under latest instruction. Desk compartments and hairpin legs are recognisable; small joinery details may differ.",
+      "text_safe_area": "Quiet top corners; shelf enters part of the nominal top 15% band.",
+      "developer_crop_guidance": "Centre; keep tabletop ends and all four feet visible at 1.84:1 desktop and 1.33:1 phone.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        2,
+        1,
+        1617,
+        970
+      ],
+      "sha256": "a9103dd720f981ae467ac221e08562eb5902e7967c9785ec70394319d6c6b767",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Seamless tinted studio sweep, soft natural floor shadow, upper-left soft studio key. Product alone centred in three-quarter view, wholly visible about70%of frame height, all parts within middle60%width where geometry allows. Top15% and top corners empty for future HTML overlays. Preserve reference product identity; remove only printed marks. Exact reference walnut hairpin-leg writing desk, low raised rear shelf with two dividers and curved side ends, central shallow drawer, FOUR black hairpin legs, peach-beige #F3EBE3 background. Whole tabletop and every foot visible. Preserve realistic width/height; frame entire desk within central70%width to permit phone crop. Output 5:3 aspect ratio; target 2000x1200 native pixels."
+    },
+    {
+      "b_id": "B7c",
+      "filename": "B7c_kz-o3-wall-spinner-suitcase-v1.png",
+      "intended_section": "Option 3 Buy Now product wall, spinner suitcase",
+      "actual_dimensions": {
+        "width": 1615,
+        "height": 969
+      },
+      "aspect_ratio": "5:3",
+      "aspect_ratio_decimal": 1.666667,
+      "requested_aspect_ratio_before_cutout_trimming": "5:3",
+      "requested_dimensions": {
+        "width": 2000,
+        "height": 1200
+      },
+      "native_generated_dimensions": {
+        "width": 1620,
+        "height": 971
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 1142408,
+      "source_references": [
+        {
+          "type": "catalogue identity reference",
+          "filename": "hardside-spinner-0-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/hardside-spinner-0-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/hardside-spinner-0-1200.webp",
+          "sha256": "2e8c860144f35dcfebae9f492995bd56e33c5d2080a5ffb9fbbedebd5676f12f",
+          "git_blob_sha": null,
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B7"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "02_Visual_Discovery_Khaznah_Theme.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided",
+        "generatively edited before preview-only update",
+        "deterministically cropped"
+      ],
+      "deterministic_finishing_performed": [
+        "Exact-ratio integer crop from native canvas: [2, 1, 1617, 970]. No resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": true,
+      "generative_extension_details": "Camera/background reframing was generated inside a replacement native canvas; not pixel-preserving outpainting.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2000x1200 master target; native resolution accepted for dummy/preview use under latest instruction. Telescopic handle deliberately retracted per brief; rib spacing, wheel details and reflections approximate catalogue.",
+      "text_safe_area": "Generous empty upper band after handle retraction.",
+      "developer_crop_guidance": "Centre, with body and wheels wholly visible in both landscape product slots.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        2,
+        1,
+        1617,
+        970
+      ],
+      "sha256": "ae4d1d68ff5accbddeaacf11bff52f75b7ec20588e8428600d011159c17a26fb",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 3,
+      "latest_generation_prompt": "Use case: precise-object-edit. Edit this one photograph ONLY to retract the suitcase telescopic handle fully into its housing: remove the extended twin metal rods and top pull grip above the case. Leave only the small flush handle on top of the silver case. Preserve exactly the shell, ribs, zips, side handle, four wheels, camera angle, body size and body position, pale blue sweep, shadow and lighting. Do NOT enlarge the suitcase to fill the vacated handle space. Keep the empty space above, same 5:3 canvas. No new objects, no lettering, no logos, no UI. Highest genuine native resolution, no artificial upscale."
+    },
+    {
+      "b_id": "B7d",
+      "filename": "B7d_kz-o3-wall-coffee-maker-v1.png",
+      "intended_section": "Option 3 Buy Now product wall, coffee maker",
+      "actual_dimensions": {
+        "width": 1615,
+        "height": 969
+      },
+      "aspect_ratio": "5:3",
+      "aspect_ratio_decimal": 1.666667,
+      "requested_aspect_ratio_before_cutout_trimming": "5:3",
+      "requested_dimensions": {
+        "width": 2000,
+        "height": 1200
+      },
+      "native_generated_dimensions": {
+        "width": 1619,
+        "height": 971
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 1261780,
+      "source_references": [
+        {
+          "type": "catalogue identity reference",
+          "filename": "capsule-coffee-0-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/capsule-coffee-0-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/capsule-coffee-0-1200.webp",
+          "sha256": "b3f7308b92ad12756a40c8e17df8566e550b50a7cd3db1026c1006e34de4146a",
+          "git_blob_sha": "b97addf62259d523119a7cb6821e7052b17869ca",
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B7"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "02_Visual_Discovery_Khaznah_Theme.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided",
+        "generatively edited before preview-only update",
+        "deterministically cropped"
+      ],
+      "deterministic_finishing_performed": [
+        "Exact-ratio integer crop from native canvas: [2, 1, 1617, 970]. No resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": true,
+      "generative_extension_details": "Camera/background reframing was generated inside a replacement native canvas; not pixel-preserving outpainting.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2000x1200 master target; native resolution accepted for dummy/preview use under latest instruction. Two brown ceramic cups accompany the catalogue-inspired machine; small control details approximate source.",
+      "text_safe_area": "Approximately top 15% quiet peach sweep.",
+      "developer_crop_guidance": "Centre; keep cups and machine together at desktop and phone ratios.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        2,
+        1,
+        1617,
+        970
+      ],
+      "sha256": "9079d82cd0e918844eda81d97ecfe6d1e4f9165ab869c3dcb602c1d2b89d20ff",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 2,
+      "latest_generation_prompt": "Correct the existing single product plate. Replace the TWO GLASS cups with TWO SMALL OPAQUE BROWN CERAMIC espresso cups, matching the brief; no transparent glass. Keep exact same red coffee machine, but pull camera back so it occupies y20% through88% (68%image height), all products grouped within central60%width. Upper18%completely empty peach seamless sweep, same soft lighting and contact shadow. No letters, brands or logos. 5:3, no frame. First reference is edit target; second reference defines product identity. Standalone photorealistic ecommerce photograph, highest genuine native resolution targeting2000x1200, sRGB, no people, UI, labels, logos, text, watermark or collage."
+    },
+    {
+      "b_id": "B7e",
+      "filename": "B7e_kz-o3-wall-task-lamp-v1.png",
+      "intended_section": "Option 3 Buy Now product wall, task lamp",
+      "actual_dimensions": {
+        "width": 1615,
+        "height": 969
+      },
+      "aspect_ratio": "5:3",
+      "aspect_ratio_decimal": 1.666667,
+      "requested_aspect_ratio_before_cutout_trimming": "5:3",
+      "requested_dimensions": {
+        "width": 2000,
+        "height": 1200
+      },
+      "native_generated_dimensions": {
+        "width": 1619,
+        "height": 971
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 1153435,
+      "source_references": [
+        {
+          "type": "catalogue identity reference",
+          "filename": "task-lamp-0-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/task-lamp-0-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/task-lamp-0-1200.webp",
+          "sha256": "db38fc82ebf0a96c925120dccf6d5021fcf7d5b6eb0d8f444ccf992aa1dc7349",
+          "git_blob_sha": "b0a20dbb331b27262b3226a48ecdd33cc97630cb",
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B7"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "02_Visual_Discovery_Khaznah_Theme.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided",
+        "generatively edited before preview-only update",
+        "deterministically cropped"
+      ],
+      "deterministic_finishing_performed": [
+        "Exact-ratio integer crop from native canvas: [2, 1, 1617, 970]. No resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": true,
+      "generative_extension_details": "Camera/background reframing was generated inside a replacement native canvas; not pixel-preserving outpainting.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2000x1200 master target; native resolution accepted for dummy/preview use under latest instruction. Arm joints and shade surface are generated approximations.",
+      "text_safe_area": "Top approximately 20% clear.",
+      "developer_crop_guidance": "Centre; preserve top finial and round base.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        2,
+        1,
+        1617,
+        970
+      ],
+      "sha256": "62e355c391dcba717361c47b78615d2d308486d2d9b002f5c63d2fcd3a9cefd1",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 2,
+      "latest_generation_prompt": "Reframe existing single product plate: pull camera back so entire unchanged navy-and-brass lamp including top finial occupies y20% through88%(68%of canvas height). Keep all details and original proportions, centred x50%, same blue-grey seamless sweep. TOP18%must be completely product-free all across the width. Bottom12%empty floor. No words, marks, logos or extra objects. 5:3. First reference is edit target; second reference defines product identity. Standalone photorealistic ecommerce photograph, highest genuine native resolution targeting2000x1200, sRGB, no people, UI, labels, logos, text, watermark or collage."
+    },
+    {
+      "b_id": "B7f",
+      "filename": "B7f_kz-o3-wall-stand-mixer-v1.png",
+      "intended_section": "Option 3 Buy Now product wall, tall mixer card",
+      "actual_dimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "aspect_ratio": "3:4",
+      "aspect_ratio_decimal": 0.75,
+      "requested_aspect_ratio_before_cutout_trimming": "3:4",
+      "requested_dimensions": {
+        "width": 1500,
+        "height": 2000
+      },
+      "native_generated_dimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 1478163,
+      "source_references": [
+        {
+          "type": "catalogue identity reference",
+          "filename": "stand-mixer-0-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/stand-mixer-0-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/stand-mixer-0-1200.webp",
+          "sha256": "e102357a21ab6b5fcb6dceee451302735b2fdc6f7b762cfe9d4cd93049eab4d2",
+          "git_blob_sha": "e64e74a95966c91bcfddec77b51ca5621538ccff",
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B7"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "02_Visual_Discovery_Khaznah_Theme.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 1500x2000 master target; native resolution accepted for dummy/preview use under latest instruction. Mixer controls and bowl reflections approximate the source; tiny plant appears at left.",
+      "text_safe_area": "Quiet upper band and corners.",
+      "developer_crop_guidance": "Centre, preserve head and base in tall desktop and phone cards.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        1086,
+        1448
+      ],
+      "sha256": "a24b3ce2ee70f4ad1608b9c973a139406311142749fad3bd559eab168002866c",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Seamless tinted studio sweep, soft natural floor shadow, upper-left soft studio key. Product alone centred in three-quarter view, wholly visible about70%of frame height, all parts within middle60%width where geometry allows. Top15% and top corners empty for future HTML overlays. Preserve reference product identity; remove only printed marks. Exact reference black stand mixer with broad black head, silver horizontal trim, stainless bowl, right-side controls and wide black base. Warm beige #EFE7DC background, tiny soft green plant at far LEFT EDGE only as in approved design. Mixer centred and whole. Omit logo and all speed numbers. Output 3:4 aspect ratio; target 1500x2000 native pixels."
+    },
+    {
+      "b_id": "B8a",
+      "filename": "B8a_kz-o3-ending-car-seat-v1.png",
+      "intended_section": "Option 3 Ending soon car-seat card",
+      "actual_dimensions": {
+        "width": 1774,
+        "height": 887
+      },
+      "aspect_ratio": "2:1",
+      "aspect_ratio_decimal": 2.0,
+      "requested_aspect_ratio_before_cutout_trimming": "2:1",
+      "requested_dimensions": {
+        "width": 2400,
+        "height": 1200
+      },
+      "native_generated_dimensions": {
+        "width": 1774,
+        "height": 887
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 1295653,
+      "source_references": [
+        {
+          "type": "catalogue identity reference",
+          "filename": "seat-covers-2-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/seat-covers-2-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/seat-covers-2-1200.webp",
+          "sha256": "b76c790b2b3ea04c99115e2551f65f2ffa0d6b5fc53ebb48cb1661db6239978d",
+          "git_blob_sha": "0596d244bb34b4b15c5294d80abf9c14d5a6bcb8",
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "catalogue identity reference",
+          "filename": "seat-covers-0-800.webp",
+          "repository_path": "design-preview/public/images/catalog/seat-covers-0-800.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/seat-covers-0-800.webp",
+          "sha256": "0e24ba9c4f4eb5c05793b6cca1b843420af359ac3b64d8ee6cff56085e10938e",
+          "git_blob_sha": "e263afa6198820ee35cd966bddc1b33f43ec6e89",
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B8"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "02_Visual_Discovery_Khaznah_Theme.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided",
+        "generatively edited before preview-only update"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": true,
+      "generative_extension_details": "Camera/background reframing was generated inside a replacement native canvas; not pixel-preserving outpainting.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2400x1200 master target; native resolution accepted for dummy/preview use under latest instruction. Seat-cover seams approximate the reference; standalone seat is a preview representation.",
+      "text_safe_area": "Top quarter is plain, exceeding the requested 22% timer/favourite clearance.",
+      "developer_crop_guidance": "Centre; preserve complete headrest and low base in roughly 2.1:1 card crops.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "sha256": "062c76f7e87b6661caac5d3b23c6baee95777edd7794f15d2ad23450b073fa79",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 2,
+      "latest_generation_prompt": "Use case: precise-object-edit. Reframe this one car-seat product photograph for ecommerce. Preserve exact black seat design, headrest, seams, leather, proportions, low base, three-quarter angle and pale blue-grey photographic wall/floor. Pull CAMERA BACK so WHOLE SEAT occupies ONLY y27% through y92% of the 2:1 landscape photograph. Top quarter of canvas must be entirely empty wall, across full width. Keep seat centered horizontally. Do NOT crop product, do NOT stretch product. No text, brands, labels, logos, UI, people or extra objects. Soft even light, natural floor shadow. Highest genuine native resolution, target2400x1200."
+    },
+    {
+      "b_id": "B8b",
+      "filename": "B8b_kz-o3-ending-split-ac-v1.png",
+      "intended_section": "Option 3 Ending soon split-AC card",
+      "actual_dimensions": {
+        "width": 1774,
+        "height": 887
+      },
+      "aspect_ratio": "2:1",
+      "aspect_ratio_decimal": 2.0,
+      "requested_aspect_ratio_before_cutout_trimming": "2:1",
+      "requested_dimensions": {
+        "width": 2400,
+        "height": 1200
+      },
+      "native_generated_dimensions": {
+        "width": 1774,
+        "height": 887
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 1299773,
+      "source_references": [
+        {
+          "type": "catalogue identity reference",
+          "filename": "split-ac-0-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/split-ac-0-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/split-ac-0-1200.webp",
+          "sha256": "ae916173b57f3bff80c8b456f0aa7a75ec16a1cc7ea213e8107c8ed7b086cdc6",
+          "git_blob_sha": "99856147834a4f0bd07e610671e0e0e5472d1f08",
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B8"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "02_Visual_Discovery_Khaznah_Theme.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2400x1200 master target; native resolution accepted for dummy/preview use under latest instruction. Natural elongated AC proportion takes less height than other ending-soon products.",
+      "text_safe_area": "Top approximately 22% clear.",
+      "developer_crop_guidance": "Centre; preserve both ends and open lower vent.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "sha256": "b00e1330072841ae420117d6c1beeb948da429058bbd25706fd0a2e4cba0b3d0",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Exact reference white split-AC indoor unit mounted correctly on light grey wall #E9EBED. Preserve top grille, long curved front panel, thin brass/brown lower trim and open lower vent. No logo, lettering or display numbers. Centred horizontally, entire unit, width about75%, own natural long proportions intact, quiet top22% for HTML timers. Light soft daylight, no other objects, no stretching appliance to fill height. Output 2:1 aspect ratio; target 2400x1200 native pixels."
+    },
+    {
+      "b_id": "B8c",
+      "filename": "B8c_kz-o3-ending-washing-machine-v1.png",
+      "intended_section": "Option 3 Ending soon washer card",
+      "actual_dimensions": {
+        "width": 1774,
+        "height": 887
+      },
+      "aspect_ratio": "2:1",
+      "aspect_ratio_decimal": 2.0,
+      "requested_aspect_ratio_before_cutout_trimming": "2:1",
+      "requested_dimensions": {
+        "width": 2400,
+        "height": 1200
+      },
+      "native_generated_dimensions": {
+        "width": 1774,
+        "height": 887
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 2001315,
+      "source_references": [
+        {
+          "type": "catalogue identity reference",
+          "filename": "washer-front-0-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/washer-front-0-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/washer-front-0-1200.webp",
+          "sha256": "41f0a0b80792f2098295153687c01c6eec85247b68ea76528e0746ad61d2199c",
+          "git_blob_sha": null,
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B8"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "02_Visual_Discovery_Khaznah_Theme.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided",
+        "generatively edited before preview-only update"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": true,
+      "generative_extension_details": "Camera/background reframing was generated inside a replacement native canvas; not pixel-preserving outpainting.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2400x1200 master target; native resolution accepted for dummy/preview use under latest instruction. Catalogue washer is recognisable; small dial/door geometry and reflections approximate source. Four blank physical buttons retained.",
+      "text_safe_area": "Top approximately 25% calm wall.",
+      "developer_crop_guidance": "Centre; preserve entire appliance in roughly 2.1:1 card crops.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "sha256": "38716384893c9104605d081d9a483f7a278628d94cf817b0025f7d1a04711b87",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 2,
+      "latest_generation_prompt": "Use case: precise-object-edit. First image is edit target; second image is catalogue product identity. Reframe first scene: WHOLE SILVER WASHER occupies only y27% through y92% of 2:1 canvas, horizontally centered. Top quarter completely empty grey concrete wall. Preserve catalogue washer shape: drawer left, central rotary dial, dark rectangular display right AND FOUR SMALL ROUND PHYSICAL PUSH BUTTONS in a horizontal row BELOW that display. Keep these four silver buttons visibly dimensional, blank with no symbols. Preserve large circular silver-rimmed door and lower plinth, subtle three-quarter view, original proportions and soft neutral daylight. Remove all printed text/logos/numbers from catalogue design; display unlit. Do not remove the physical buttons. No people, props or UI. Target2400x1200, highest genuine native resolution, no upscale."
+    },
+    {
+      "b_id": "B9",
+      "filename": "B9_kz-shared-live-warehouse-aisle-v1.png",
+      "intended_section": "Options 2/4 Live Auction background",
+      "actual_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "aspect_ratio": "3:2",
+      "aspect_ratio_decimal": 1.5,
+      "requested_aspect_ratio_before_cutout_trimming": "3:2",
+      "requested_dimensions": {
+        "width": 3600,
+        "height": 2400
+      },
+      "native_generated_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 2482324,
+      "source_references": [
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B9"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        },
+        {
+          "type": "Priority 1 compatibility",
+          "asset": "A2",
+          "use": "Upper-left light and clear central floor planned for later HTML overlay; no A2 pixels included"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 3600x2400 master target; native resolution accepted for dummy/preview use under latest instruction. Native output is sufficient for preview slots but below the original 3600x2400 master target. Floor perspective needs alignment with the separate A2 overlay.",
+      "text_safe_area": "Central floor x30-70%, lower area for A2/live HTML; use existing dark gradient for white text.",
+      "developer_crop_guidance": "Focus around 55% 55%; retain central floor for A2 in Option 4; inspect portrait phone crop.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sha256": "d44a7737786dee66ccde8db3c17574a9d84a61fa6517d95b839fdfd08ee40959",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Deep empty warehouse aisle in one-point perspective, vanishing point x55%,y45%. Tall blue-grey pallet racking both sides, orange beams, plain kraft cartons and shrink-wrapped pallets, industrial ceiling lights, polished concrete floor with subtle reflections. Red manual hand pallet jack parked at far side, clear of centre. Keep floor x30â€“70%,y60â€“95% unobstructed for later A2 chair overlay; do NOT include chair. Moderately dark, warm upper-LEFT light highlights, cool shadows, darker plain lower third for HTML white text. Calm centre for play control, quiet top band. Correct rack geometry. Output 3:2 aspect ratio; target 3600x2400 native pixels."
+    },
+    {
+      "b_id": "B10",
+      "filename": "B10_kz-o3-live-electronics-warehouse-v1.png",
+      "intended_section": "Option 3 Live Auction video still",
+      "actual_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "aspect_ratio": "3:2",
+      "aspect_ratio_decimal": 1.5,
+      "requested_aspect_ratio_before_cutout_trimming": "3:2",
+      "requested_dimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "native_generated_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 2365587,
+      "source_references": [
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B10"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "02_Visual_Discovery_Khaznah_Theme.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2400x1600 master target; native resolution accepted for dummy/preview use under latest instruction. Illustrative electronics warehouse; TV/rack details may vary from the reference mockup.",
+      "text_safe_area": "Centre kept reasonably calm for play button; use existing badge backing.",
+      "developer_crop_guidance": "Start centre; inspect 1.92:1 wide and 1.16:1 tablet slots.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sha256": "569563f48a62d6231e91fd16c0bc6edb3ad0c5edb39879841a7944c951f51fe4",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Wide slightly elevated interior of an electronics wholesale warehouse. Blue-grey racking with dark navy feature wall; TVs on stands and racks show only bright abstract blue ocean images, plain boxed electronics, kraft cartons on wooden pallets, industrial lights. TV interest across sides; centre x40â€“60%,y35â€“65% reasonably calm for future play button. Medium-dark cool industrial light, warm carton tones, blue screen glow. No packaging lettering or printed branded electronics pictures. Output 3:2 aspect ratio; target 2400x1600 native pixels."
+    },
+    {
+      "b_id": "B11",
+      "filename": "B11_kz-o2-seller-khazna-racking-v1.png",
+      "intended_section": "Option 2 Khazna Direct seller cover",
+      "actual_dimensions": {
+        "width": 1120,
+        "height": 1400
+      },
+      "aspect_ratio": "4:5",
+      "aspect_ratio_decimal": 0.8,
+      "requested_aspect_ratio_before_cutout_trimming": "4:5",
+      "requested_dimensions": {
+        "width": 1600,
+        "height": 2000
+      },
+      "native_generated_dimensions": {
+        "width": 1122,
+        "height": 1402
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 2422973,
+      "source_references": [
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B11"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided",
+        "generatively edited before preview-only update",
+        "deterministically cropped"
+      ],
+      "deterministic_finishing_performed": [
+        "Exact-ratio integer crop from native canvas: [1, 1, 1121, 1401]. No resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 1600x2000 master target; native resolution accepted for dummy/preview use under latest instruction. Racking appears more blue than blue-grey; stair/rail detail is illustrative.",
+      "text_safe_area": "None required.",
+      "developer_crop_guidance": "Centre at 50% 55% for the 0.9:1 seller cover.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        1,
+        1,
+        1121,
+        1401
+      ],
+      "sha256": "e26ab0f815b2971fd971e33c490fe6dda4e8ae6d95cf83af5923acad932cf38d",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 2,
+      "latest_generation_prompt": "Precise object cleanup of this exact photograph. Remove all ink stamps, pictograms, paper stickers and logo-like markings from EVERY wooden pallet block and cardboard carton. Especially BLUE STAMP on pallet block in left edge lower middle at x9.5%,y64%, and black stamp bottom left x7%,y91%. Preserve wood grain and all objects, lighting, composition, staircase, racking, materials, geometry, framing exactly. Clean unprinted pallets and plain kraft cartons. No lettering, logos, symbols, labels, UI or people anywhere. Same4:5 photographic image, no redesign."
+    },
+    {
+      "b_id": "B12",
+      "filename": "B12_kz-o3-seller-khazna-cartons-v1.png",
+      "intended_section": "Option 3 Khazna Direct compact seller",
+      "actual_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "aspect_ratio": "3:2",
+      "aspect_ratio_decimal": 1.5,
+      "requested_aspect_ratio_before_cutout_trimming": "3:2",
+      "requested_dimensions": {
+        "width": 2400,
+        "height": 1600
+      },
+      "native_generated_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 1845071,
+      "source_references": [
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B12"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 2400x1600 master target; native resolution accepted for dummy/preview use under latest instruction. Plain carton stack intentionally has no seller branding.",
+      "text_safe_area": "None required.",
+      "developer_crop_guidance": "Centre; slight trim from 3:2 to 1.55:1 retains stack.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sha256": "a03f58ffa269962684c5f58800672b1297bd389625e6d800d1a57095c9bf7d10",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Neat pyramid of plain kraft shipping cartons sealed with tape. Centre stack fills75%height on white-to-light-grey seamless studio background. Soft bright light, soft real contact shadow. No pallet, no warehouse, no printing, no pictograms or labels. Box edges and stacking credible. Output 3:2 aspect ratio; target 2400x1600 native pixels."
+    },
+    {
+      "b_id": "B13",
+      "filename": "B13_kz-o4-seller-khazna-building-v1.png",
+      "intended_section": "Option 4 Khazna Direct seller row",
+      "actual_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "aspect_ratio": "3:1",
+      "aspect_ratio_decimal": 3.0,
+      "requested_aspect_ratio_before_cutout_trimming": "3:1",
+      "requested_dimensions": {
+        "width": 3000,
+        "height": 1000
+      },
+      "native_generated_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 1930694,
+      "source_references": [
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B13"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 3000x1000 master target; native resolution accepted for dummy/preview use under latest instruction. Generic illustrative building, not a photograph of the seller's actual premises. Wide facade ends may trim in 2.4:1.",
+      "text_safe_area": "None required.",
+      "developer_crop_guidance": "Keep central glass entrance for 2.4:1 row crop.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        2172,
+        724
+      ],
+      "sha256": "95eccd76e33e83afc466baac61b3928f8195a87ce6b068b44caa8416f390af3f",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Three-quarter street-level architectural photograph of modern two-storey warehouse/showroom building, white and charcoal facade with large glass entrance. Building across middle band y25â€“75%, fit whole building with breathing room for2.4:1crop. Bright Saudi daylight, clear blue sky, crisp shadows, realistic straight architecture. No vehicles or people, no signage anywhere. Output 3:1 aspect ratio; target 3000x1000 native pixels."
+    },
+    {
+      "b_id": "B14",
+      "filename": "B14_kz-shared-seller-rawabi-living-v1.png",
+      "intended_section": "Options 2/3/4 Rawabi Home Outlet seller",
+      "actual_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "aspect_ratio": "3:1",
+      "aspect_ratio_decimal": 3.0,
+      "requested_aspect_ratio_before_cutout_trimming": "3:1",
+      "requested_dimensions": {
+        "width": 3600,
+        "height": 1200
+      },
+      "native_generated_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 2468600,
+      "source_references": [
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B14"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 3600x1200 master target; native resolution accepted for dummy/preview use under latest instruction. Illustrative seller interior; furniture may not sit precisely within the requested middle band.",
+      "text_safe_area": "Both outer thirds usable with existing dark HTML gradient; not uniform blank space.",
+      "developer_crop_guidance": "Option 2 portrait: right armchair around 85% 55%; Option 3/4 wide: centre. Tune each independently.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        2172,
+        724
+      ],
+      "sha256": "e65928f81211639e56da3893ec8be664b654bd7044c2ff96c6deea60b0df364c",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Bright contemporary living room, beige sofa with textured cushions across x20â€“65%, glass-and-wood coffee table, open metal-and-wood shelving with ceramics and plants, large window with sheer curtains. At right x70â€“98% a complete armchair with side table and lamp, useful in portrait crop. Soft warm daylight, neutral beige/white. Key furniture middle vertical band y25â€“75%; both outer thirds moderately calm for future HTML text. No prints with letters, no magazines with text. Output 3:1 aspect ratio; target 3600x1200 native pixels."
+    },
+    {
+      "b_id": "B15",
+      "filename": "B15_kz-shared-seller-redsea-electronics-v1.png",
+      "intended_section": "Options 2/3/4 Red Sea Trading Co seller",
+      "actual_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "aspect_ratio": "3:1",
+      "aspect_ratio_decimal": 3.0,
+      "requested_aspect_ratio_before_cutout_trimming": "3:1",
+      "requested_dimensions": {
+        "width": 3600,
+        "height": 1200
+      },
+      "native_generated_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 2236595,
+      "source_references": [
+        {
+          "type": "generated reference",
+          "asset": "B10",
+          "use": "Same seller visual environment, wider viewpoint"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B15"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 3600x1200 master target; native resolution accepted for dummy/preview use under latest instruction. Same navy electronics-warehouse visual family as B10, not a physically exact reconstructed room.",
+      "text_safe_area": "Outer thirds support HTML text with existing gradient; blue screens remain visually bright.",
+      "developer_crop_guidance": "Option 2 portrait: left racking around 23% 50%; Option 3/4 wide: centre.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        2172,
+        724
+      ],
+      "sha256": "8c8c8c71efd9952e6cd8ce805a06d55fb9c11d3cbf8278c71159db6944c22fce",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Wide electronics warehouse, blue-grey pallet racking with plain cartons in deep perspective at left x5â€“45%, row of unboxed thin-bezel TVs with abstract glowing blue screens and flat TV cartons at right x50â€“95%. Key content y25â€“75%. Cool industrial light, warm kraft cartons, medium-dark outer thirds calm for future HTML overlay. No labels, no printed TV box photos, no text on screens. Similar environment to B10 but a different wider viewpoint. Output 3:1 aspect ratio; target 3600x1200 native pixels. The attached image establishes the same business's navy/blue-grey electronics warehouse, blue-screen TVs and carton palette. Photograph it from a DIFFERENT wider horizontal viewpoint matching the new3:1 layout; don't crop the reference."
+    },
+    {
+      "b_id": "B16",
+      "filename": "B16_kz-o2-seller-daralmajd-showroom-v1.png",
+      "intended_section": "Option 2 Dar Al Majd seller cover",
+      "actual_dimensions": {
+        "width": 1120,
+        "height": 1400
+      },
+      "aspect_ratio": "4:5",
+      "aspect_ratio_decimal": 0.8,
+      "requested_aspect_ratio_before_cutout_trimming": "4:5",
+      "requested_dimensions": {
+        "width": 1600,
+        "height": 2000
+      },
+      "native_generated_dimensions": {
+        "width": 1122,
+        "height": 1402
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 1593591,
+      "source_references": [
+        {
+          "type": "catalogue identity reference",
+          "filename": "washer-front-0-1200.webp",
+          "repository_path": "design-preview/public/images/catalog/washer-front-0-1200.webp",
+          "url": "https://github.com/Delowar01/Khaznah-Auction-WebApp/blob/claude/magical-faraday-fne4kq/design-preview/public/images/catalog/washer-front-0-1200.webp",
+          "sha256": "41f0a0b80792f2098295153687c01c6eec85247b68ea76528e0746ad61d2199c",
+          "git_blob_sha": null,
+          "use": "Visual reference for generation; not composited source pixels"
+        },
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B16"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided",
+        "deterministically cropped"
+      ],
+      "deterministic_finishing_performed": [
+        "Exact-ratio integer crop from native canvas: [1, 1, 1121, 1401]. No resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 1600x2000 master target; native resolution accepted for dummy/preview use under latest instruction. Generic showroom; washer is catalogue-inspired and small controls differ from B8c.",
+      "text_safe_area": "None required.",
+      "developer_crop_guidance": "Centre; retain entire foreground washer for 0.9:1 cover.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        1,
+        1,
+        1121,
+        1401
+      ],
+      "sha256": "58ee061137dc0ebbb23b871223e3ed2952bf1c923abea5fa7207fee5e086c0cf",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Vertical view of bright clean appliance showroom, light-grey floor. Whole silver front-load washer centred (reference washer design), white dryer beside it, tall silver refrigerator behind/alongside, neat row of appliances. Even bright showroom light, credible floor contact and metal reflections. No labels, logos, price tags, display text or paperwork. Output 4:5 aspect ratio; target 1600x2000 native pixels."
+    },
+    {
+      "b_id": "B17",
+      "filename": "B17_kz-shared-seller-daralmajd-forklift-v1.png",
+      "intended_section": "Options 3/4 Dar Al Majd seller",
+      "actual_dimensions": {
+        "width": 1980,
+        "height": 792
+      },
+      "aspect_ratio": "5:2",
+      "aspect_ratio_decimal": 2.5,
+      "requested_aspect_ratio_before_cutout_trimming": "5:2",
+      "requested_dimensions": {
+        "width": 3000,
+        "height": 1200
+      },
+      "native_generated_dimensions": {
+        "width": 1983,
+        "height": 793
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 2136628,
+      "source_references": [
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B17"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen",
+        "reference-guided",
+        "generatively edited before preview-only update",
+        "deterministically cropped"
+      ],
+      "deterministic_finishing_performed": [
+        "Exact-ratio integer crop from native canvas: [1, 0, 1981, 792]. No resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": true,
+      "generative_extension_details": "Camera/background reframing was generated inside a replacement native canvas; not pixel-preserving outpainting.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 3000x1200 master target; native resolution accepted for dummy/preview use under latest instruction. Forklift occupies more vertical space than the nominal y25-75% band, but whole subject remains available in the master.",
+      "text_safe_area": "None required.",
+      "developer_crop_guidance": "Start at 50% 50%; 1.55:1 central crop preserves mast and forks; check 2.4:1 row.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        1,
+        0,
+        1981,
+        792
+      ],
+      "sha256": "7f6e004f63455b6668aad1743c3c81edfded0fbc7302518070c7fd74d5975e03",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 3,
+      "latest_generation_prompt": "Precise tiny cleanup ONLY of this exact photograph: remove small WHITE BRAND-LIKE MARK from the dark steering-column panel just below steering wheel, around x57%,y52%. Leave that panel plain dark grey with original texture. Inspect remaining forklift for any printed marks and erase them. Preserve exact forklift, mast, lowered forks, wheels, warm lighting, camera framing, warehouse, racks and plain cartons. No other changes. No text/logos/labels/signage/people/UI anywhere. Same5:2 photographic image."
+    },
+    {
+      "b_id": "B18",
+      "filename": "B18_kz-shared-seller-sahel-living-dining-v1.png",
+      "intended_section": "Options 2/3/4 Sahel Lifestyle seller",
+      "actual_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "aspect_ratio": "3:1",
+      "aspect_ratio_decimal": 3.0,
+      "requested_aspect_ratio_before_cutout_trimming": "3:1",
+      "requested_dimensions": {
+        "width": 3600,
+        "height": 1200
+      },
+      "native_generated_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "color_mode": "RGB",
+      "color_space": "sRGB",
+      "embedded_icc_profile": true,
+      "transparency": false,
+      "file_size_bytes": 2332938,
+      "source_references": [
+        {
+          "type": "brief",
+          "filename": "WORK_DESIGN_MISSING_ASSETS.md",
+          "section": "B18"
+        },
+        {
+          "type": "approved design context",
+          "filenames": [
+            "01_Premium_Modern_Khaznah_Charcoal_Brass.png",
+            "02_Visual_Discovery_Khaznah_Theme.png",
+            "03_Contemporary_Saudi_Commerce.png"
+          ],
+          "use": "Composition/mood studied only; no screenshot pixels used"
+        }
+      ],
+      "generation_method": [
+        "natively generated using built-in image_gen"
+      ],
+      "deterministic_finishing_performed": [
+        "Native canvas retained; no crop or resampling.",
+        "Assigned embedded sRGB ICC profile to originally untagged RGB values; lossless PNG export."
+      ],
+      "generative_extension_performed": false,
+      "generative_extension_details": "None; no separate outpainting step.",
+      "composited_from_approved_source_product_pixels": false,
+      "upscaled": false,
+      "stretched": false,
+      "known_limitations": "Below original requested 3600x1200 master target; native resolution accepted for dummy/preview use under latest instruction. Illustrative interior; narrow crops show selected furniture groups rather than the whole room.",
+      "text_safe_area": "None required.",
+      "developer_crop_guidance": "Option 2 portrait: left sofa around 27% 55%; Option 3 compact: right dining area around 76% 50%; Option 4 wide: left-centre.",
+      "alpha_validation": null,
+      "crop_box_native": [
+        0,
+        0,
+        2172,
+        724
+      ],
+      "sha256": "fa72b679cff258a01678f3495858a1a0fe1de7fbef9fc7a3039e8ea0bb0bd465",
+      "status": "accepted for temporary design-preview imagery; independent review pending",
+      "recorded_generation_passes": 1,
+      "latest_generation_prompt": "Create ONE separate standalone professional commercial photograph. Photorealistic natural materials, plausible proportions/reflections, no people, no readable text/numbers, no brands/logos, no signage, no labels, no watermarks, no UI/buttons/badges. No collage, no contact sheet. sRGB, highest genuine native resolution, no artificial upscale. Airy open-plan living/dining room with white walls. Cream linen sofa with muted blue and sand cushions and light wood coffee table at x10â€“50%, large potted olive tree. Right x55â€“95% round wooden dining table with chairs under pendant lamp. Bright natural daylight, fresh white/cream/light-wood/soft-blue palette. Key furnishings middle vertical band y25â€“75%, whole primary groups in frame. Distinct from Rawabi: light Scandinavian open-plan styling, no glass coffee table, no shelving. Output 3:1 aspect ratio; target 3600x1200 native pixels."
+    }
+  ]
+}

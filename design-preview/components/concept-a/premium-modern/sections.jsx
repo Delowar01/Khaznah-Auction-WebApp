@@ -213,7 +213,7 @@ export function LiveSection({ live }) {
       <div className="mt-4 grid gap-4 lg:grid-cols-[56.3%_minmax(0,1fr)] dt:mt-3.5 dt:gap-5">
         {/* Event: warehouse preview with status, play and title */}
         <Link href={link("/live-auction")} className="group relative block aspect-[16/9] overflow-hidden rounded-[4px] bg-[#2a2926] outline-offset-2 lg:aspect-auto lg:h-[293px] dt:h-[296px]">
-          <Img image={LIVE_STREAM} alt="" sizes="(min-width: 1024px) 1200px, 100vw" className="absolute inset-y-0 right-0 h-full w-[170%] max-w-none object-cover transition-transform duration-500 group-hover:scale-[1.02]" style={{ objectPosition: "100% 38%" }} />
+          <Img image={LIVE_STREAM.image} alt="" sizes="(min-width: 1200px) 752px, (min-width: 1024px) 56vw, 100vw" className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" style={{ objectPosition: LIVE_STREAM.focus }} />
           <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/75 via-black/20 to-black/10" />
           <span className="absolute start-5 top-4 inline-flex h-9 items-center gap-2 rounded-[4px] bg-[var(--pr-live)] px-3 pr-md font-bold uppercase tracking-[0.02em] text-white dt:start-[37px] dt:top-[15px]">
             <span aria-hidden="true" className="size-2.5 rounded-full bg-white" />
@@ -258,7 +258,7 @@ export function LiveSection({ live }) {
 }
 
 // ── 09 · Bulk & Pallets: two aligned full-width rows ─────────────────────
-function PalletRow({ product }) {
+function PalletRow({ product, image }) {
   const { t, ui, pl } = useLang();
   const { link } = useConcept();
   const add = useCartAdd(t(COPY.addedToCart));
@@ -267,7 +267,7 @@ function PalletRow({ product }) {
   return (
     <article className="relative grid grid-cols-[92px_minmax(0,1fr)] items-center gap-x-4 gap-y-3 rounded-[5px] border border-[#ebe9e3] bg-white p-3 md:grid-cols-[150px_minmax(0,1fr)_auto] dt:h-[101px] dt:grid-cols-[240px_minmax(0,1fr)_110px_207px_224px_180px] dt:gap-0 dt:p-0">
       <div className="relative row-span-2 h-[76px] md:row-span-1 dt:h-full">
-        <Img image={product.images[0]} cutout alt="" sizes="200px" className="pr-multiply absolute inset-0 size-full object-contain dt:inset-y-0.5 dt:start-6 dt:h-[calc(100%-4px)] dt:w-[196px]" />
+        <Img image={image ?? product.images[0]} cutout alt="" sizes="200px" className="pr-multiply absolute inset-0 size-full object-contain dt:inset-y-0.5 dt:start-6 dt:h-[calc(100%-4px)] dt:w-[196px]" />
       </div>
       <div className="min-w-0 dt:ps-[19px]">
         <h3 className="line-clamp-2 pr-title text-fg">
@@ -323,9 +323,9 @@ export function BulkRows() {
     <section data-ref="09" aria-labelledby={titleId} className="pr-container pb-5 pt-3 dt:pb-[21px] dt:pt-[9px]">
       <SectionHead id={titleId} title={t(COPY.bulkTitle)} sub={t(COPY.bulkSub)} href="/browse?category=bulk-pallets" linkLabel={ui("viewAll")} />
       <ul className="mt-4 grid gap-3 dt:mt-3">
-        {PALLETS.map((product) => (
+        {PALLETS.map(({ product, image }) => (
           <li key={product.slug}>
-            <PalletRow product={product} />
+            <PalletRow product={product} image={image} />
           </li>
         ))}
       </ul>

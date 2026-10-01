@@ -9,7 +9,7 @@ brief is written so ChatGPT Work can generate the asset on its own.
 | Scope | Home pages of Option 2 (Premium Modern Marketplace), Option 3 (Visual Discovery Marketplace) and Option 4 (Contemporary Saudi Commerce) in `design-preview/`. Option 1 and the earlier-prototype inner screens are out of scope. |
 | Visual authority | The three approved ChatGPT Work images from the homepage developer handoff: `01_Premium_Modern_Khaznah_Charcoal_Brass.png` (Option 2), `02_Visual_Discovery_Khaznah_Theme.png` (Option 3), `03_Contemporary_Saudi_Commerce.png` (Option 4), with the handoff text (`KHAZNAH_HOMEPAGE_DESIGN_HANDOFF.md`, §2.4–2.10, §3.4–3.10, §4.4–4.10). |
 | What was reviewed | Reference vs implementation at 1440 px (`docs/work-design-review/option-{2,3,4}-reference-vs-implementation.jpg`) and the implemented home pages at 1920, 1440, 1024, 768 and 390 px. The slot sizes quoted below were measured in the running preview. |
-| Status | **Priority 1 (A1–A7) delivered, approved and integrated** — see `PRIORITY_1_ASSET_INTEGRATION_REPORT.md`; the masters are kept in `design-preview/assets-src/priority-1/`. Priority 2 (B1–B18) and the optional Priority 3 items are still open; their stand-ins remain in place. |
+| Status | **Priority 1 (A1–A7) delivered, approved and integrated** — see `PRIORITY_1_ASSET_INTEGRATION_REPORT.md`; the masters are kept in `design-preview/assets-src/priority-1/`. **Priority 2 (B1–B18): temporary dummy / preview images integrated** — see `PRIORITY_2_ASSET_INTEGRATION_REPORT.md`; the masters are kept in `design-preview/assets-src/priority-2/`. They stand in for final photography, which is still to be produced. The optional Priority 3 items are still open. |
 
 ---
 

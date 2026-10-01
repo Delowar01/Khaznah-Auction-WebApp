@@ -196,9 +196,9 @@ function LivePanel({ live }) {
         <Img
           image={LIVE_SCENE.image}
           alt=""
-          sizes="(min-width: 1200px) 1200px, 180vw"
-          className="absolute inset-y-0 right-0 h-full max-w-none object-cover"
-          style={{ width: `${LIVE_SCENE.zoom * 100}%`, objectPosition: LIVE_SCENE.focus }}
+          sizes="(min-width: 1200px) 700px, (min-width: 640px) 100vw, 720px"
+          className="absolute inset-0 size-full object-cover"
+          style={{ objectPosition: LIVE_SCENE.focus }}
         />
         {lot ? <Img key={lot.lot} image={lotImage(lot)} cutout alt="" sizes="360px" className="absolute bottom-[33%] left-1/2 h-[36%] w-[56%] -translate-x-[38%] object-contain object-bottom drop-shadow-[0_18px_22px_rgb(0_0_0/0.45)] sm:bottom-[9%] sm:h-[62%] rtl:-translate-x-[62%]" /> : null}
         <span aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgb(10_16_22/0.74)_0%,rgb(10_16_22/0.18)_42%,rgb(10_16_22/0.12)_58%,rgb(10_16_22/0.82)_100%)]" />
@@ -264,7 +264,7 @@ export function SellerDirectory() {
     <section data-ref="11" aria-labelledby={titleId} className="sc-container pt-10 dt:pt-[40px]">
       <SectionHead id={titleId} title={t(COPY.sellersTitle)} text={t(COPY.sellersText)} href="/seller" linkLabel={t(COPY.viewAllSellers)} />
       <ul className="mt-4 divide-y divide-[var(--sc-line)] overflow-hidden rounded-[9px] border border-[var(--sc-line)] bg-white dt:mt-[7px]">
-        {SELLER_ROWS.map(({ code, seller, cover, focus, zoom, products }) => (
+        {SELLER_ROWS.map(({ code, seller, cover, focus, zoom, products, thumbs }) => (
           <li key={code} className="relative grid grid-cols-[112px_minmax(0,1fr)] items-center gap-x-4 gap-y-2 p-2 transition-colors hover:bg-[#f7faf8] md:grid-cols-[160px_minmax(0,1fr)_auto] dt:h-[94px] dt:grid-cols-[206px_minmax(0,323px)_519px_minmax(0,1fr)] dt:gap-0 dt:px-[6px] dt:py-[4px]">
             <div className="relative row-span-2 h-[72px] self-stretch overflow-hidden rounded-[3px] bg-[#e6e2dc] md:h-auto md:min-h-[90px] dt:row-span-1 dt:h-[86px] dt:min-h-0">
               <Img
@@ -284,7 +284,7 @@ export function SellerDirectory() {
               {products.map((product) => (
                 <li key={product.slug} className="grid place-items-center">
                   <Link href={link(detailPath(product))} className="relative block size-12 rounded-[6px] outline-offset-2 dt:size-[76px]">
-                    <Img image={product.images[0]} cutout alt={t(product.title)} sizes="82px" className="sc-multiply absolute inset-0 size-full object-contain" />
+                    <Img image={thumbs?.[product.slug] ?? product.images[0]} cutout alt={t(product.title)} sizes="82px" className="sc-multiply absolute inset-0 size-full object-contain" />
                   </Link>
                 </li>
               ))}
@@ -302,7 +302,7 @@ export function SellerDirectory() {
 }
 
 // ── 12 · Bulk & Pallets: two sage panels ─────────────────────────────────
-function PalletPanel({ product, action }) {
+function PalletPanel({ product, image, action }) {
   const { t, ui, pl } = useLang();
   const { link } = useConcept();
   const add = useCartAdd(t(COPY.addedToCart));
@@ -310,7 +310,7 @@ function PalletPanel({ product, action }) {
   return (
     <article className="relative grid overflow-hidden rounded-[12px] bg-[var(--sc-soft)] sm:grid-cols-[48%_minmax(0,1fr)] dt:h-[249px] dt:grid-cols-[312px_minmax(0,1fr)]">
       <div className="relative h-[180px] sm:h-auto sm:min-h-[220px]">
-        <Img image={product.images[0]} cutout alt="" sizes="(min-width: 1200px) 300px, 50vw" className="sc-multiply absolute inset-0 size-full object-contain px-8 py-4 dt:pb-[14px] dt:ps-[45px] dt:pe-0 dt:pt-[16px]" />
+        <Img image={image ?? product.images[0]} cutout alt="" sizes="(min-width: 1200px) 300px, 50vw" className="sc-multiply absolute inset-0 size-full object-contain px-8 py-4 dt:pb-[14px] dt:ps-[45px] dt:pe-0 dt:pt-[16px]" />
       </div>
       <div className="flex min-w-0 flex-col justify-center px-5 pb-5 sm:pt-5 dt:ps-[33px] dt:pe-4 dt:py-0">
         <h3 className="sc-title text-[var(--sc-ink)] dt:!text-[18px]">

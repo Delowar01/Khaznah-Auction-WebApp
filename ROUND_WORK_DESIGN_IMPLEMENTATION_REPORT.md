@@ -110,7 +110,7 @@ Side-by-side images (reference | implementation) and the three full-page screens
 
 ## 5. Asset audit
 
-EXACT = the same item exists · SUITABLE = close existing asset · MISSING = not in the library (stand-in used, reported here, no parity claimed). No screenshot of a reference was used as a background. Production briefs for every MISSING and SUITABLE photograph below are in `WORK_DESIGN_MISSING_ASSETS.md` (correction gate). **Update:** the Priority 1 photographs (tan recliner, Option 2 hero, Option 3 furniture scene, Option 4 limestone hero) have since replaced their stand-ins on the three home pages — see `PRIORITY_1_ASSET_INTEGRATION_REPORT.md`; the rows below describe the state before that integration.
+EXACT = the same item exists · SUITABLE = close existing asset · MISSING = not in the library (stand-in used, reported here, no parity claimed). No screenshot of a reference was used as a background. Production briefs for every MISSING and SUITABLE photograph below are in `WORK_DESIGN_MISSING_ASSETS.md` (correction gate). **Update:** the Priority 1 photographs (tan recliner, Option 2 hero, Option 3 furniture scene, Option 4 limestone hero) have since replaced their stand-ins on the three home pages — see `PRIORITY_1_ASSET_INTEGRATION_REPORT.md` — and temporary Priority 2 dummy / preview images (pallets, drill, tyre, Option 3 tiles, product wall, Ending soon, live stills, seller covers) replaced the rest — see `PRIORITY_2_ASSET_INTEGRATION_REPORT.md`; the rows below describe the state before those integrations.
 
 | Where | Needed | Used | Status |
 |---|---|---|---|
@@ -228,7 +228,7 @@ Recaptured on the correction-gate build:
 
 ## 15. Remaining visual differences (honest list)
 
-> Since this list was written, the Priority 1 photographs replaced the Option 2 hero, the Option 3 furniture scene, the Option 4 hero stage and the recliner artwork on the three home pages (`PRIORITY_1_ASSET_INTEGRATION_REPORT.md`). The other items still apply.
+> Since this list was written, the Priority 1 photographs replaced the Option 2 hero, the Option 3 furniture scene, the Option 4 hero stage and the recliner artwork on the three home pages (`PRIORITY_1_ASSET_INTEGRATION_REPORT.md`), and temporary Priority 2 dummy / preview images replaced the pallet, drill, tyre, Option 3 tile, product-wall, Ending soon, live-still and seller-cover stand-ins (`PRIORITY_2_ASSET_INTEGRATION_REPORT.md`). The other items still apply.
 
 **Option 2**
 - Hero photograph: catalogue room shot of an olive recliner instead of the panoramic room with a tan recliner, desk and lamp; the crop is tighter and warmer-grey.
