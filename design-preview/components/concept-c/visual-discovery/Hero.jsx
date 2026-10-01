@@ -131,7 +131,7 @@ export function HeroMosaic() {
   const titleId = useId();
   return (
     <section data-ref="03" aria-labelledby={titleId} className="vd-wide pt-2 dt:pt-[8px]">
-      <div className="grid gap-2 md:grid-cols-2 dt:h-[520px] dt:grid-cols-[minmax(0,436fr)_minmax(0,556fr)_minmax(0,401fr)] dt:grid-rows-[minmax(0,1fr)] dt:gap-[8px]">
+      <div className="grid gap-2 md:grid-cols-2 dt:min-h-[520px] dt:grid-cols-[minmax(0,436fr)_minmax(0,556fr)_minmax(0,401fr)] dt:grid-rows-[minmax(0,1fr)] dt:gap-[8px]">
         <div className="md:col-span-1 dt:col-auto">
           <CopyTile titleId={titleId} />
         </div>

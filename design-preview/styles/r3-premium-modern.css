@@ -76,7 +76,7 @@
   --pr-charcoal: #302f2c;
   --pr-stone: #ece8e1;
   --pr-brass: #b28a43;
-  --pr-brass-hover: #a17a36;
+  --pr-brass-hover: #a47d39; /* hover keeps ≥ 4.5:1 with the #171b27 label */
   --pr-bronze: #80602c;
   --pr-timer: #d51f28;
   --pr-live: #c82239;

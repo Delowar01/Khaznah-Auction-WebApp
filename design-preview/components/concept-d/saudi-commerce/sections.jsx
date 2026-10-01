@@ -51,14 +51,14 @@ function CategoryRail() {
   const { link } = useConcept();
   const titleId = useId();
   return (
-    <nav data-ref="06" aria-labelledby={titleId} className="rounded-[9px] bg-[var(--sc-soft)] px-4 pb-3 pt-5 dt:h-[553px] dt:px-[18px] dt:pt-[24px]">
+    <nav data-ref="06" aria-labelledby={titleId} className="rounded-[9px] bg-[var(--sc-soft)] px-4 pb-3 pt-5 max-[359px]:px-3 dt:h-[553px] dt:px-[18px] dt:pt-[24px]">
       <h2 id={titleId} className="px-2 sc-h3 !text-[20px] font-bold text-[var(--sc-green)] dt:px-1 dt:!text-[23px] dt:!leading-[30px]">
         {t(COPY.categoriesTitle)}
       </h2>
       <ul className="mt-2 grid grid-cols-2 gap-x-2 lg:grid-cols-4 dt:mt-[13px] dt:grid-cols-1">
         {CATEGORY_RAIL.map(({ slug, icon: Icon, category }) => (
           <li key={slug}>
-            <Link href={link(`/browse?category=${slug}`)} className="flex h-12 items-center gap-3 rounded-[7px] px-2 sc-lg text-[var(--sc-ink)] transition-colors hover:bg-[#dfece5] hover:text-[var(--sc-green)] dt:h-[58px] dt:gap-[33px] dt:ps-[8px]">
+            <Link href={link(`/browse?category=${slug}`)} className="flex h-12 items-center gap-3 rounded-[7px] px-2 sc-lg max-[359px]:gap-2 text-[var(--sc-ink)] transition-colors hover:bg-[#dfece5] hover:text-[var(--sc-green)] dt:h-[58px] dt:gap-[33px] dt:ps-[8px]">
               <Icon aria-hidden="true" className="size-6 shrink-0 text-[var(--sc-green)] dt:size-[30px]" strokeWidth={1.5} />
               <span className="min-w-0">{slug === "bulk-pallets" ? t(COPY.navBulk) : t(category.name)}</span>
             </Link>
@@ -74,7 +74,7 @@ function HorizontalCard({ product, compact = false }) {
   const { t } = useLang();
   const { link } = useConcept();
   return (
-    <article className={cx("relative grid overflow-hidden rounded-[9px] border border-[var(--sc-line)] bg-white p-2", compact ? "grid-cols-[38%_minmax(0,1fr)] dt:h-[208px] dt:grid-cols-[255px_minmax(0,1fr)] dt:p-1.5" : "grid-cols-[42%_minmax(0,1fr)] dt:h-[225px] dt:grid-cols-[45%_minmax(0,1fr)]")}>
+    <article className={cx("relative grid overflow-hidden rounded-[9px] border border-[var(--sc-line)] bg-white p-2", compact ? "grid-cols-[38%_minmax(0,1fr)] dt:min-h-[208px] dt:grid-cols-[255px_minmax(0,1fr)] dt:p-1.5" : "grid-cols-[42%_minmax(0,1fr)] dt:h-[225px] dt:grid-cols-[45%_minmax(0,1fr)]")}>
       <div className="relative min-h-[150px] overflow-hidden rounded-[6px] bg-[var(--sc-plate)]">
         <Img image={product.images[0]} cutout alt="" sizes="(min-width: 1200px) 255px, 40vw" className="sc-multiply absolute inset-0 size-full object-contain p-4 dt:p-5" />
       </div>
@@ -265,7 +265,7 @@ export function SellerDirectory() {
       <SectionHead id={titleId} title={t(COPY.sellersTitle)} text={t(COPY.sellersText)} href="/seller" linkLabel={t(COPY.viewAllSellers)} />
       <ul className="mt-4 divide-y divide-[var(--sc-line)] overflow-hidden rounded-[9px] border border-[var(--sc-line)] bg-white dt:mt-[7px]">
         {SELLER_ROWS.map(({ code, seller, cover, focus, zoom, products, thumbs }) => (
-          <li key={code} className="relative grid grid-cols-[112px_minmax(0,1fr)] items-center gap-x-4 gap-y-2 p-2 transition-colors hover:bg-[#f7faf8] md:grid-cols-[160px_minmax(0,1fr)_auto] dt:h-[94px] dt:grid-cols-[206px_minmax(0,323px)_519px_minmax(0,1fr)] dt:gap-0 dt:px-[6px] dt:py-[4px]">
+          <li key={code} className="relative grid grid-cols-[112px_minmax(0,1fr)] items-center gap-x-4 gap-y-2 p-2 transition-colors hover:bg-[#f7faf8] md:grid-cols-[160px_minmax(0,1fr)_auto] dt:h-[94px] dt:grid-cols-[206px_minmax(0,323px)_minmax(0,519fr)_minmax(0,303fr)] dt:gap-0 dt:px-[6px] dt:py-[4px]">
             <div className="relative row-span-2 h-[72px] self-stretch overflow-hidden rounded-[3px] bg-[#e6e2dc] md:h-auto md:min-h-[90px] dt:row-span-1 dt:h-[86px] dt:min-h-0">
               <Img
                 image={cover}
@@ -308,7 +308,7 @@ function PalletPanel({ product, image, action }) {
   const add = useCartAdd(t(COPY.addedToCart));
   const auction = action === "bid";
   return (
-    <article className="relative grid overflow-hidden rounded-[12px] bg-[var(--sc-soft)] sm:grid-cols-[48%_minmax(0,1fr)] dt:h-[249px] dt:grid-cols-[312px_minmax(0,1fr)]">
+    <article className="relative grid h-full overflow-hidden rounded-[12px] bg-[var(--sc-soft)] sm:grid-cols-[48%_minmax(0,1fr)] dt:min-h-[249px] dt:grid-cols-[312px_minmax(0,1fr)]">
       <div className="relative h-[180px] sm:h-auto sm:min-h-[220px]">
         <Img image={image ?? product.images[0]} cutout alt="" sizes="(min-width: 1200px) 300px, 50vw" className="sc-multiply absolute inset-0 size-full object-contain px-8 py-4 dt:pb-[14px] dt:ps-[45px] dt:pe-0 dt:pt-[16px]" />
       </div>

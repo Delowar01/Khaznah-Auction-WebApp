@@ -137,7 +137,7 @@ export function LiveBanner({ live }) {
   return (
     <section data-ref="06" aria-labelledby={titleId} className="mt-5 bg-[var(--vd-navy)] text-white dt:mt-[22px]">
       {/* Areas: phone copy → video → lot → join; tablet copy/lot/join beside the video; desktop one row */}
-      <div className="vd-container vd-live py-8 dt:h-[313px] dt:py-0">
+      <div className="vd-container vd-live py-8 dt:min-h-[313px] dt:py-4">
         <div style={{ gridArea: "copy" }} className="dt:pe-6">
           <p className="inline-flex h-10 items-center gap-2.5 rounded-full bg-[var(--vd-live)] px-5 vd-lg font-bold uppercase text-white dt:h-[42px] dt:gap-3 dt:px-[18px] dt:text-[20px]">
             <span aria-hidden="true" className="size-3 rounded-full bg-white/90 dt:size-[14px]" />
@@ -258,7 +258,7 @@ export function SellerShelves() {
           <li key={code}>
             <article className="relative h-[220px] overflow-hidden rounded-[18px] bg-[#1c2a3f] dt:h-[237px]">
               <Img image={cover} alt="" sizes="(min-width: 768px) 660px, 100vw" className="absolute inset-0 size-full object-cover" style={{ objectPosition: focus }} />
-              <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/70 via-black/25 to-transparent" />
+              <span aria-hidden="true" className="vd-banner-shade absolute inset-0" />
               <div className="absolute bottom-5 start-6 text-white dt:bottom-[20px] dt:start-[28px]">
                 <h3 className="vd-h3 !text-[22px] !leading-7 text-white">{t(seller.name)}</h3>
                 <p className="mt-0.5 vd-md text-white/90">{t(COPY.sellerLines[code])}</p>
@@ -274,7 +274,8 @@ export function SellerShelves() {
       <ul className="vd-rail -mx-[var(--vd-gutter)] mt-3 flex snap-x gap-3 overflow-x-auto px-[var(--vd-gutter)] dt:mx-0 dt:mt-[14px] dt:grid dt:grid-cols-3 dt:gap-[22px] dt:overflow-visible dt:px-0">
         {COMPACT_SELLERS.map(({ code, seller, cover, focus, plate, zoom }) => (
           <li key={code} className="w-[86%] shrink-0 snap-start sm:w-[400px] dt:w-auto">
-            <article className="relative grid h-[130px] grid-cols-[46%_minmax(0,1fr)] overflow-hidden rounded-[14px] border border-[var(--vd-line)] bg-white">
+            {/* Below 430 px the photo narrows so "Browse shop" fits beside it. */}
+            <article className="relative grid h-[130px] grid-cols-[46%_minmax(0,1fr)] overflow-hidden rounded-[14px] border border-[var(--vd-line)] bg-white max-[429px]:grid-cols-[36%_minmax(0,1fr)]">
               <div className={cx("relative overflow-hidden", plate ? "bg-[#f1ebe3]" : "bg-[#e4e8ee]")}>
                 <Img
                   image={cover}
@@ -284,10 +285,10 @@ export function SellerShelves() {
                   style={focus ? { objectPosition: focus } : undefined}
                 />
               </div>
-              <div className="flex min-w-0 flex-col justify-center px-4 dt:ps-5">
+              <div className="flex min-w-0 flex-col justify-center px-4 max-[429px]:px-3 dt:ps-5">
                 <h3 className="truncate vd-title text-[var(--vd-ink)]">{t(seller.name)}</h3>
                 <p className="mt-0.5 line-clamp-2 vd-sm text-[var(--vd-muted)]">{t(COPY.sellerLines[code])}</p>
-                <Link href={link(`/seller/${code}`)} aria-label={t(COPY.browseNamed, { name: t(seller.name) })} className={btn("soft", "sm", "mt-2.5 h-[38px] w-fit gap-3 px-5 after:absolute after:inset-0 after:content-['']")}>
+                <Link href={link(`/seller/${code}`)} aria-label={t(COPY.browseNamed, { name: t(seller.name) })} className={btn("soft", "sm", "mt-2.5 h-[38px] w-fit gap-3 px-5 max-[429px]:gap-1.5 max-[429px]:px-3 after:absolute after:inset-0 after:content-['']")}>
                   {t(COPY.browseShop)}
                   <Arrow />
                 </Link>
@@ -437,7 +438,7 @@ export function HowItWorks() {
         <h2 id={titleId} className="vd-h3 !text-[20px] !leading-7 text-[var(--vd-ink)]">
           {t(COPY.howTitle)}
         </h2>
-        <ol className="mt-3 grid gap-4 lg:grid-cols-3 lg:gap-0 dt:mt-0 dt:grid-cols-[430px_477px_minmax(0,1fr)]">
+        <ol className="mt-3 grid gap-4 lg:grid-cols-3 lg:gap-0 dt:mt-0 dt:grid-cols-[minmax(0,430fr)_minmax(0,477fr)_minmax(0,433fr)]">
           {COPY.steps.map((step, i) => (
             <li key={step.title.en} className={cx("flex items-center gap-4 lg:pe-4 dt:gap-[26px]", i === 0 ? "lg:ps-8" : "lg:border-s lg:border-[var(--vd-line)] lg:ps-10 dt:ps-[50px]")}>
               <span aria-hidden="true" className="grid size-[45px] shrink-0 place-items-center rounded-full bg-[var(--vd-indigo)] text-[19px] font-bold text-white tabular">

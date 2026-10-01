@@ -155,7 +155,9 @@
     .vd-h2 { font-size: 38px; line-height: 44px; }
     .vd-live-title { font-size: 48px; line-height: 48px; }
     .vd-news { font-size: 44px; line-height: 48px; }
-    .vd-hero { font-size: 75px; line-height: 67px; }
+    /* 75 px at 1440, easing to ≈60 px at 1200 so the headline keeps to
+       three or four lines in the narrower copy tile (line height 67 px at 75). */
+    .vd-hero { font-size: clamp(56px, calc(6.4538vw - 17.93px), 75px); line-height: 0.893334; }
     .vd-hero-sub { font-size: 25px; line-height: 33px; }
     .vd-price { font-size: 25px; line-height: 28px; }
     .vd-hand { font-size: 30px; line-height: 32px; }
@@ -189,7 +191,7 @@
     :root[lang="ar"] .vd-h2 { font-size: 34px; line-height: 50px; }
     :root[lang="ar"] .vd-live-title { font-size: 38px; line-height: 56px; }
     :root[lang="ar"] .vd-news { font-size: 36px; line-height: 54px; }
-    :root[lang="ar"] .vd-hero { font-size: 52px; line-height: 74px; }
+    :root[lang="ar"] .vd-hero { font-size: clamp(40px, calc(4.4747vw - 12.43px), 52px); line-height: 1.423077; }
     :root[lang="ar"] .vd-hero-sub { font-size: 21px; line-height: 34px; }
     :root[lang="ar"] .vd-hand { font-size: 26px; line-height: 36px; }
   }
@@ -209,6 +211,22 @@
   }
 
   .vd-multiply { mix-blend-mode: multiply; }
+  /* Seller banners: bottom shade plus a start-side shade behind the name and
+     line (a little stronger below 1200 px, where the text covers more photo). */
+  .vd-banner-shade {
+    background-image: linear-gradient(to top, rgb(0 0 0 / 0.7), rgb(0 0 0 / 0.25) 50%, transparent), linear-gradient(to right, rgb(0 0 0 / 0.45), transparent 65%);
+  }
+  :root[dir="rtl"] .vd-banner-shade {
+    background-image: linear-gradient(to top, rgb(0 0 0 / 0.7), rgb(0 0 0 / 0.25) 50%, transparent), linear-gradient(to left, rgb(0 0 0 / 0.45), transparent 65%);
+  }
+  @media (max-width: 1199.98px) {
+    .vd-banner-shade {
+      background-image: linear-gradient(to top, rgb(0 0 0 / 0.72), rgb(0 0 0 / 0.3) 50%, transparent), linear-gradient(to right, rgb(0 0 0 / 0.5), transparent 75%);
+    }
+    :root[dir="rtl"] .vd-banner-shade {
+      background-image: linear-gradient(to top, rgb(0 0 0 / 0.72), rgb(0 0 0 / 0.3) 50%, transparent), linear-gradient(to left, rgb(0 0 0 / 0.5), transparent 75%);
+    }
+  }
   .vd-link { text-underline-offset: 3px; }
   .vd-link:hover { text-decoration: underline; }
   .vd-rail { scrollbar-width: none; }
@@ -234,7 +252,8 @@
   @media (min-width: 1200px) {
     .vd-live {
       gap: 0;
-      grid-template-columns: minmax(0, 560fr) minmax(0, 251fr) minmax(0, 515fr);
+      /* The lot card is 251 px wide; its column never gets narrower. */
+      grid-template-columns: minmax(0, 560fr) minmax(251px, 251fr) minmax(0, 515fr);
       grid-template-rows: auto auto;
       grid-template-areas: "copy lot video" "join lot video";
       align-content: center;

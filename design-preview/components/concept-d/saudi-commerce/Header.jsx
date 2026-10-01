@@ -223,8 +223,9 @@ export function Header() {
               <Logo variant="lockup" title={t(COPY.home)} className="h-10 w-auto md:h-12 dt:h-[58px]" />
             </Link>
           </div>
-          <nav aria-label={t(COPY.mainNav)} className="hidden justify-self-center dt:block dt:pe-[70px]">
-            <ul className="flex items-center gap-[46px]">
+          {/* 46 px apart from 1366 px; tighter below so the modes stay on one line. */}
+          <nav aria-label={t(COPY.mainNav)} className="hidden justify-self-center dt:block min-[1366px]:pe-[70px]">
+            <ul className="flex items-center gap-7 min-[1366px]:gap-[46px]">
               {nav.map((item) => (
                 <li key={item.key}>
                   <Link href={link(item.href)} className="sc-nav text-[var(--sc-ink)] underline-offset-[10px] transition-colors hover:text-[var(--sc-green)] hover:underline">

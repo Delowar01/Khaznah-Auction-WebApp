@@ -37,11 +37,14 @@ export function Arrow({ className = "size-4" }) {
   return <ArrowRight aria-hidden="true" className={cx("flip-rtl shrink-0", className)} strokeWidth={2} />;
 }
 
-/** Blue text link with a forward arrow (View all, Visit store, guide). */
+/**
+ * Blue text link with a forward arrow (View all, Visit store, guide). The
+ * ::after widens the touch area to about 44 px without moving anything.
+ */
 export function TextLink({ href, children, label, className = "" }) {
   const { link } = useConcept();
   return (
-    <Link href={link(href)} aria-label={label} className={cx("sc-link inline-flex items-center gap-2 sc-md font-medium text-[var(--sc-link)] dt:text-[16px]", className)}>
+    <Link href={link(href)} aria-label={label} className={cx("sc-link inline-flex items-center gap-2 sc-md font-medium text-[var(--sc-link)] dt:text-[16px] relative after:absolute after:-inset-x-2 after:-inset-y-3 after:content-['']", className)}>
       {children}
       <Arrow className="size-[18px]" />
     </Link>

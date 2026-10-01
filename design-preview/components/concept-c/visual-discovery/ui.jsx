@@ -49,7 +49,8 @@ export function SectionHead({ id, title, href, linkLabel, children, className = 
       </h2>
       {children}
       {href ? (
-        <Link href={link(href)} className="vd-link ms-auto inline-flex items-center gap-2 vd-md text-[var(--vd-indigo)]">
+        // The ::after widens the touch area to about 44 px without moving anything.
+        <Link href={link(href)} className="vd-link ms-auto inline-flex items-center gap-2 vd-md text-[var(--vd-indigo)] relative after:absolute after:-inset-x-2 after:-inset-y-3 after:content-['']">
           {linkLabel}
           <Arrow />
         </Link>

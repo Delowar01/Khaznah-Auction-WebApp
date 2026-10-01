@@ -103,9 +103,12 @@ export function LiveBand({ live, className = "" }) {
             {ui("enterLiveRoom")}
           </Link>
         </div>
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)]">
+        {/* Explicit minmax(0,1fr) tracks: the upcoming-event cards hold a
+            no-wrap seller line, and an implicit auto track grew to fit it
+            (12 px past a 320 px screen). */}
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)]">
           <LiveEventCard live={live} />
-          <div className="grid content-start gap-3">
+          <div className="grid grid-cols-1 content-start gap-3">
             <p className="kb-eyebrow text-fg-3">{t(COPY.comingUp)}</p>
             {OTHER_EVENTS.map((event) => (
               <EventCard key={event.slug} event={event} reminded={reminders.isOn(event)} onRemind={() => reminders.toggle(event)} />

@@ -56,10 +56,11 @@ export function SectionHead({ id, title, sub, href, linkLabel, className = "" })
   );
 }
 
+// The ::after widens the touch area to about 44 px without moving anything.
 export function ViewAll({ href, label, className = "" }) {
   const { link } = useConcept();
   return (
-    <Link href={link(href)} className={cx("pr-link inline-flex shrink-0 items-center gap-1.5 pr-md font-medium text-[var(--pr-bronze)]", className)}>
+    <Link href={link(href)} className={cx("pr-link inline-flex shrink-0 items-center gap-1.5 pr-md font-medium text-[var(--pr-bronze)] relative after:absolute after:-inset-x-2 after:-inset-y-3 after:content-['']", className)}>
       {label}
       <Chevron className="size-4" />
     </Link>

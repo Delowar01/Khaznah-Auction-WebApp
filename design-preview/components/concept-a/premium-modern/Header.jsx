@@ -371,12 +371,15 @@ export function Header() {
       {/* Row 1: shopping modes · centred logo · wishlist, account, cart */}
       <div data-ref="01" className="border-b border-line">
         <div className="pr-container grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-3 md:h-[76px] dt:h-[85px]">
+          {/* The shopping modes sit inline from 1200 px (16 px apart below
+              1440 so they stay on one line). The Arabic labels are wider, so
+              Arabic keeps the menu button until 1366 px. */}
           <div className="flex items-center justify-self-start">
-            <button type="button" onClick={() => open("menu")} aria-label={t(COPY.openMenu)} className="-ms-2 grid size-11 place-items-center rounded-[4px] text-fg dt:hidden">
+            <button type="button" onClick={() => open("menu")} aria-label={t(COPY.openMenu)} className="-ms-2 grid size-11 place-items-center rounded-[4px] text-fg ltr:dt:hidden rtl:min-[1366px]:hidden">
               <Menu aria-hidden="true" className="size-6" strokeWidth={1.7} />
             </button>
-            <nav aria-label={t(COPY.mainNav)} className="hidden dt:block">
-              <ul className="flex items-center gap-7">
+            <nav aria-label={t(COPY.mainNav)} className="hidden ltr:dt:block rtl:min-[1366px]:block">
+              <ul className="flex items-center gap-4 wd:gap-7">
                 {nav.map((item, i) => (
                   <li key={item.key}>
                     <Link href={link(item.href)} className={cx("pr-link pr-md hover:text-[var(--pr-bronze)]", i === 0 ? "font-semibold text-fg" : "text-[#3c3f49]")}>

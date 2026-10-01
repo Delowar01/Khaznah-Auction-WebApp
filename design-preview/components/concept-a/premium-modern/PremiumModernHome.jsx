@@ -18,7 +18,7 @@ import { Hero } from "./Hero";
 import { BulkRows, BuyNowShelf, CategoryRow, EndingSoonBand, GuidanceSplit, LiveSection, Selected, Sellers, TrustStrip } from "./sections";
 import { Chevron, cx } from "./ui";
 
-/** Phones and tablets: shopping modes, wishlist, account, city and language. */
+/** Phones, tablets and Arabic below 1366 px: shopping modes, wishlist, account, city and language. */
 function Menu() {
   const { t } = useLang();
   const { link } = useConcept();

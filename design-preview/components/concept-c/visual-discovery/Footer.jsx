@@ -17,7 +17,7 @@ export function Newsletter() {
   return (
     <section data-ref="12" aria-labelledby={titleId} className="mx-auto max-w-[1440px] bg-[var(--vd-ivory)] dt:rounded-[18px]">
       <div className="vd-container">
-        <div className="grid gap-5 py-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-8 dt:h-[142px] dt:grid-cols-[minmax(0,1fr)_614px] dt:gap-6 dt:py-0 dt:pe-[14px] dt:ps-[16px]">
+        <div className="grid gap-5 py-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-8 dt:h-[142px] dt:grid-cols-[minmax(0,672fr)_minmax(0,614fr)] dt:gap-6 dt:py-0 dt:pe-[14px] dt:ps-[16px]">
           <div>
             <h2 id={titleId} className="vd-news">
               <span className="text-[var(--vd-ink)]">{t(COPY.newsTitleA)}</span> <span className="text-[var(--vd-blue)]">{t(COPY.newsTitleB)}</span>

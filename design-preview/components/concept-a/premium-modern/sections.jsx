@@ -211,8 +211,12 @@ export function LiveSection({ live }) {
     <section data-ref="08" aria-labelledby={titleId} className="pr-container pb-6 pt-4 dt:pb-[27px] dt:pt-1.5">
       <SectionHead id={titleId} title={t(COPY.liveTitle)} sub={t(COPY.liveSub)} />
       <div className="mt-4 grid gap-4 lg:grid-cols-[56.3%_minmax(0,1fr)] dt:mt-3.5 dt:gap-5">
-        {/* Event: warehouse preview with status, play and title */}
-        <Link href={link("/live-auction")} className="group relative block aspect-[16/9] overflow-hidden rounded-[4px] bg-[#2a2926] outline-offset-2 lg:aspect-auto lg:h-[293px] dt:h-[296px]">
+        {/* Event: warehouse preview with status, play and title. Below ~445 px
+            the 16:9 frame is too short for the play button above a two-line
+            title, so it never drops under 232 px (256 px for the taller Arabic
+            title). w-full keeps the width tied to the column; otherwise the
+            min-height would widen it through the ratio. */}
+        <Link href={link("/live-auction")} className="group relative block aspect-[16/9] min-h-[232px] w-full overflow-hidden rounded-[4px] bg-[#2a2926] outline-offset-2 rtl:min-h-[256px] lg:aspect-auto lg:h-[293px] dt:h-[296px]">
           <Img image={LIVE_STREAM.image} alt="" sizes="(min-width: 1200px) 752px, (min-width: 1024px) 56vw, 100vw" className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" style={{ objectPosition: LIVE_STREAM.focus }} />
           <span aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/75 via-black/20 to-black/10" />
           <span className="absolute start-5 top-4 inline-flex h-9 items-center gap-2 rounded-[4px] bg-[var(--pr-live)] px-3 pr-md font-bold uppercase tracking-[0.02em] text-white dt:start-[37px] dt:top-[15px]">
@@ -244,7 +248,7 @@ export function LiveSection({ live }) {
                 <Money key={lot.currentBid} value={lot.currentBid} className="kz-flash -mx-1 w-fit rounded px-1 pr-price text-fg" symbolClassName="text-[0.78em]" />
               </>
             ) : null}
-            <Link href={link("/live-auction")} className={btn("charcoal", "lg", "mt-4 w-full max-w-[212px] dt:h-[52px]")}>
+            <Link href={link("/live-auction")} className={btn("charcoal", "lg", "mt-4 w-full max-w-[212px] dt:h-[52px] rtl:max-[379px]:h-auto rtl:max-[379px]:min-h-12 rtl:max-[379px]:whitespace-normal rtl:max-[379px]:px-3 rtl:max-[379px]:py-2 rtl:max-[379px]:text-center rtl:max-[379px]:leading-snug")}>
               {t(COPY.joinLive)}
             </Link>
           </div>
@@ -264,8 +268,10 @@ function PalletRow({ product, image }) {
   const add = useCartAdd(t(COPY.addedToCart));
   const auction = isAuction(product);
   const units = product.quantity;
+  // Desktop tracks are fr shares equal to their 1440 px widths, so the row is
+  // exact at 1440 and the lot name keeps its share down to 1200 px.
   return (
-    <article className="relative grid grid-cols-[92px_minmax(0,1fr)] items-center gap-x-4 gap-y-3 rounded-[5px] border border-[#ebe9e3] bg-white p-3 md:grid-cols-[150px_minmax(0,1fr)_auto] dt:h-[101px] dt:grid-cols-[240px_minmax(0,1fr)_110px_207px_224px_180px] dt:gap-0 dt:p-0">
+    <article className="relative grid grid-cols-[92px_minmax(0,1fr)] items-center gap-x-4 gap-y-3 rounded-[5px] border border-[#ebe9e3] bg-white p-3 md:grid-cols-[150px_minmax(0,1fr)_auto] dt:h-[101px] dt:grid-cols-[240px_minmax(0,373fr)_110fr_207fr_224fr_180px] dt:gap-0 dt:p-0">
       <div className="relative row-span-2 h-[76px] md:row-span-1 dt:h-full">
         <Img image={image ?? product.images[0]} cutout alt="" sizes="200px" className="pr-multiply absolute inset-0 size-full object-contain dt:inset-y-0.5 dt:start-6 dt:h-[calc(100%-4px)] dt:w-[196px]" />
       </div>
@@ -345,7 +351,9 @@ export function Sellers() {
         {SELLER_CARDS.map(({ code, seller, cover, focus, plate }) => (
           <li key={code} className="w-[min(72%,280px)] shrink-0 snap-start md:w-auto">
             <article className="relative flex h-[134px] gap-4 rounded-[5px] border border-[#ebe9e3] bg-white p-2.5 ps-3">
-              <span className={cx("relative w-[100px] shrink-0 overflow-hidden rounded-[4px]", plate ? "bg-[#eeede9]" : "bg-[#e7e3dc]")}>
+              {/* 100 px cover, narrowing on the slimmest cards (1200 px desktop,
+                  320 px phones) so two-line names and "Shop now" still fit. */}
+              <span className={cx("relative w-[clamp(76px,43%,100px)] shrink-0 overflow-hidden rounded-[4px]", plate ? "bg-[#eeede9]" : "bg-[#e7e3dc]")}>
                 <Img image={cover} alt="" sizes="100px" className={cx("absolute inset-0 size-full", plate ? "pr-multiply object-contain p-2" : "object-cover")} style={plate ? undefined : { objectPosition: focus }} />
               </span>
               <div className="flex min-w-0 flex-1 flex-col pb-2 pt-[18px]">
@@ -472,12 +480,13 @@ function HowItWorks() {
 }
 
 export function GuidanceSplit() {
+  // Side by side from 1200 px; below that the three steps need the full width.
   return (
-    <section data-ref="12" className="pr-container grid gap-10 py-8 lg:grid-cols-[minmax(0,665fr)_minmax(0,634fr)] lg:gap-0 dt:pb-[37px] dt:pt-[23px]">
-      <div className="lg:pe-9">
+    <section data-ref="12" className="pr-container grid gap-10 py-8 dt:grid-cols-[minmax(0,665fr)_minmax(0,634fr)] dt:gap-0 dt:pb-[37px] dt:pt-[23px]">
+      <div className="dt:pe-9">
         <GradeGuide />
       </div>
-      <div className="lg:border-s lg:border-line lg:ps-9">
+      <div className="dt:border-s dt:border-line dt:ps-9">
         <HowItWorks />
       </div>
     </section>
