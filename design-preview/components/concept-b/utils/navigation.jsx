@@ -19,31 +19,6 @@ function useIsOnBrowse() {
   return pathname === link("/browse");
 }
 
-/** True on this concept's home page (with or without a trailing slash). */
-export function useIsHome() {
-  const pathname = usePathname();
-  const { link } = useConcept();
-  const home = link("/");
-  return pathname === home || pathname === `${home}/`;
-}
-
-/**
- * The home page lists the shopping modes auction-first (timed auctions, live,
- * then Buy Now, sellers and bulk). The header, menus and footer are shared
- * with the inner pages, which keep their original order until that order is
- * approved for the whole site, so the reordering applies on the home page
- * only. `order` lists item keys; items it leaves out keep their place after.
- */
-export function useHomeOrder(items, order, key = (item) => item.key) {
-  const isHome = useIsHome();
-  if (!isHome) return items;
-  const rank = (item) => {
-    const i = order.indexOf(key(item));
-    return i === -1 ? order.length : i;
-  };
-  return [...items].sort((a, b) => rank(a) - rank(b));
-}
-
 function announce(target) {
   window.history.pushState(null, "", target);
   window.dispatchEvent(new Event(BROWSE_NAV_EVENT));

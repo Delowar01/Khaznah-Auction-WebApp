@@ -36,13 +36,14 @@ export function MobileMenu() {
   const { toast } = useStore();
   const { panel, close, signedIn, open } = useChrome();
 
+  // Same auction-first order as the desktop category nav.
   const nav = [
-    { key: "live", href: "/live-auction", label: ui("liveNow"), live: true },
     { key: "auctions", href: "/browse?tab=auction", label: ui("auctions"), icon: Gavel },
-    { key: "buy", href: "/browse?tab=buy_now", label: ui("buyNow"), icon: ShoppingBag },
     { key: "ending", href: "/browse?ending=1h", label: ui("endingSoon"), icon: Timer },
-    { key: "bulk", href: "/browse?category=bulk-pallets", label: ui("bulkLots"), icon: Package },
+    { key: "live", href: "/live-auction", label: ui("liveNow"), live: true },
+    { key: "buy", href: "/browse?tab=buy_now", label: ui("buyNow"), icon: ShoppingBag },
     { key: "sellers", href: "/seller", label: ui("sellers"), icon: Store },
+    { key: "bulk", href: "/browse?category=bulk-pallets", label: ui("bulkLots"), icon: Package },
   ];
 
   return (

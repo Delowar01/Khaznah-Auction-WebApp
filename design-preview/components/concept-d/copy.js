@@ -53,8 +53,8 @@ export const COPY = {
   closePanel: { en: "Close", ar: "إغلاق" },
   buyerAccount: { en: "Buyer account", ar: "حساب مشترٍ" },
   footerBlurb: {
-    en: "The Saudi marketplace for graded surplus, returned and liquidation stock — timed auctions, Buy Now and live sales from Saudi warehouses.",
-    ar: "السوق السعودي للمخزون الفائض والمرتجع ودفعات التصفية المصنّفة — مزادات محددة المدة وشراء فوري ومزادات مباشرة من مستودعات سعودية.",
+    en: "The Saudi marketplace for graded surplus, returned and liquidation stock — timed auctions, live sales and Buy Now from Saudi warehouses.",
+    ar: "السوق السعودي للمخزون الفائض والمرتجع ودفعات التصفية المصنّفة — مزادات محددة المدة ومزادات مباشرة وشراء فوري من مستودعات سعودية.",
   },
   weAccept: { en: "We accept", ar: "نقبل الدفع عبر" },
   newsletterLabel: { en: "Email address", ar: "البريد الإلكتروني" },

@@ -95,8 +95,8 @@ export const HOW_IT_WORKS = [
 
 export const NAV = [
   { key: "auctions", href: "/browse?tab=auction", label: { en: "Auctions", ar: "المزادات" } },
-  { key: "buy-now", href: "/browse?tab=buy_now", label: { en: "Buy Now", ar: "الشراء الفوري" } },
   { key: "live", href: "/live-auction", label: { en: "Live", ar: "مباشر" } },
+  { key: "buy-now", href: "/browse?tab=buy_now", label: { en: "Buy Now", ar: "الشراء الفوري" } },
   { key: "sellers", href: "/seller", label: { en: "Sellers", ar: "البائعون" } },
   { key: "how", href: "#how-it-works", label: { en: "How it works", ar: "كيف تعمل خزنة" } },
 ];
@@ -105,8 +105,8 @@ export const FOOTER_COLUMNS = [
   {
     title: { en: "Marketplace", ar: "السوق" },
     links: [
-      { label: { en: "Live auctions", ar: "المزادات المباشرة" }, href: "/live-auction" },
       { label: { en: "All auctions", ar: "كل المزادات" }, href: "/browse?tab=auction" },
+      { label: { en: "Live auctions", ar: "المزادات المباشرة" }, href: "/live-auction" },
       { label: { en: "Buy Now", ar: "الشراء الفوري" }, href: "/browse?tab=buy_now" },
       { label: { en: "Bulk pallets", ar: "طبليات بالجملة" }, href: "/browse?category=bulk-pallets" },
     ],

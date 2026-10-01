@@ -13,13 +13,15 @@ import { COPY } from "../copy";
 import { useChrome } from "./ChromeContext";
 import { MegaMenu } from "./MegaMenu";
 
+// Shopping modes, auction first: timed auctions (with their Ending soon
+// shortcut), live, then Buy Now, sellers and bulk.
 const LINKS = [
-  { key: "live", href: "/live-auction", ui: "liveNow", live: true },
   { key: "auctions", href: "/browse?tab=auction", ui: "auctions", match: { tab: "auction" } },
-  { key: "buy", href: "/browse?tab=buy_now", ui: "buyNow", match: { tab: "buy_now" } },
   { key: "ending", href: "/browse?ending=1h", ui: "endingSoon", match: { ending: "1h" } },
-  { key: "bulk", href: "/browse?category=bulk-pallets", ui: "bulkLots", match: { category: "bulk-pallets" } },
+  { key: "live", href: "/live-auction", ui: "liveNow", live: true },
+  { key: "buy", href: "/browse?tab=buy_now", ui: "buyNow", match: { tab: "buy_now" } },
   { key: "sellers", href: "/seller", ui: "sellers" },
+  { key: "bulk", href: "/browse?category=bulk-pallets", ui: "bulkLots", match: { category: "bulk-pallets" } },
 ];
 
 const ITEM =

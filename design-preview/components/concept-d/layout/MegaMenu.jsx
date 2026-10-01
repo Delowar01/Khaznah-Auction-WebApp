@@ -14,11 +14,12 @@ import { Plate } from "../ui/Plate";
 import { BrowseLink } from "../utils/navigation";
 import { COPY } from "../copy";
 
+// Quick links: the auction shortcuts come before Buy Now deals.
 const QUICK = [
   { key: "ending", icon: Timer, href: "/browse?ending=1h", copy: COPY.underAnHour },
+  { key: "hot", icon: Flame, href: "/browse?tab=auction&sort=most_bids", ui: "sortMostBids" },
   { key: "new", icon: Sparkles, href: "/browse?sort=newest", ui: "justListed" },
   { key: "deals", icon: Percent, href: "/browse?tab=buy_now&has_discount=true", copy: COPY.buyNowDeals },
-  { key: "hot", icon: Flame, href: "/browse?tab=auction&sort=most_bids", ui: "sortMostBids" },
   { key: "bulk", icon: Package, href: "/browse?category=bulk-pallets", ui: "bulkLots" },
 ];
 
