@@ -1,23 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { BrowseView } from "../browse/BrowseView";
-import { BROWSE_NAV_EVENT } from "../utils/navigation";
+import { BrowseRoute } from "@/components/shared/browse/BrowseRoute";
+import { BrowseFallback, BrowseView } from "../browse/BrowseView";
 
+/**
+ * Browse starts from the URL's parameters and keeps the address bar (and the
+ * header's current shopping mode) in step. In-page navigation that lands on
+ * Browse — header search, mega menu, category links, back / forward —
+ * remounts the view with the new URL (see BrowseRoute).
+ */
 export function BrowsePage() {
-  // The browse engine reads the URL when it mounts. In-page navigation
-  // (header search, mega menu, back/forward) remounts it with the new URL.
-  const [navKey, setNavKey] = useState(0);
-
-  useEffect(() => {
-    const remount = () => setNavKey((k) => k + 1);
-    window.addEventListener(BROWSE_NAV_EVENT, remount);
-    window.addEventListener("popstate", remount);
-    return () => {
-      window.removeEventListener(BROWSE_NAV_EVENT, remount);
-      window.removeEventListener("popstate", remount);
-    };
-  }, []);
-
-  return <BrowseView key={navKey} />;
+  return <BrowseRoute fallback={<BrowseFallback />} view={BrowseView} />;
 }

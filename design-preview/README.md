@@ -20,17 +20,24 @@ customer website, built for client review:
 > cart, saving, newsletter, drawers) lives in `components/shared/r3/`. See
 > `ROUND_WORK_DESIGN_IMPLEMENTATION_REPORT.md` at the repository root for the
 > comparison with the approved images, the asset audit and known differences.
-> This covers the **home page only**. Their other screens are still the Round
-> 2 versions (served through the `(round2)` route group in each slot, with the
-> Round 2 chrome) until the inner pages are redesigned. The home pages render
-> their own shell and scope their tokens to `html[data-r3]` (see
-> `styles/r3-*.css` and `components/shared/r3/R3Root.jsx`), so they never
+> This covers the **home page and Browse**. Browse lives in each option's
+> `browse/` folder (`components/concept-a/premium-modern/browse`,
+> `components/concept-c/visual-discovery/browse`,
+> `components/concept-d/saudi-commerce/browse`, served by
+> `app/[lang]/concept-{a,c,d}/browse/page.js`); Option 1's Browse is
+> `components/concept-b/browse`. Shared Browse behaviour (URL sync, copy,
+> lot facts) is in `components/shared/browse/`. The other screens are still
+> the Round 2 versions (served through the `(round2)` route group in each
+> slot, with the Round 2 chrome) until the inner pages are redesigned. The
+> new pages render their own shell and scope their tokens to `html[data-r3]`
+> (see `styles/r3-*.css` and `components/shared/r3/R3Root.jsx`), so they never
 > change the Round 2 screens or Option 1. The approved designs are light only:
-> on these three home pages the presentation bar shows a static **Light only**
-> indicator instead of the appearance toggle. The Round 2 screens of Options
-> 2–4 open under an "Earlier prototype" note (`PrototypeNotice`, rendered by
-> each `(round2)/layout.js`), the bar's page list groups them as earlier
-> prototypes, and the selector marks Home as the new design.
+> on these pages the presentation bar shows a static **Light only** indicator
+> instead of the appearance toggle. The Round 2 screens of Options 2–4 open
+> under an "Earlier prototype" note (`PrototypeNotice`, rendered by each
+> `(round2)/layout.js`), the bar's page list groups them as earlier
+> prototypes, and the selector marks Home and Browse as the new design
+> (`NEW_DESIGN_PAGES` in `lib/routes.js`).
 >
 > **Round 3B.** The previous homepages for Options 2–4 (Visual Marketplace,
 > Premium Marketplace, Discovery Commerce) are in git history at commit

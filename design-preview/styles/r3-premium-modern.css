@@ -215,3 +215,30 @@
   .pr-search::placeholder { color: #6c7079; opacity: 1; }
   .pr-search::-webkit-search-cancel-button { display: none; }
 }
+
+/* ── Browse ────────────────────────────────────────────────────────────── */
+@layer components {
+  /* Editorial page title (the home page's H1 is the hero, .pr-hero). */
+  .pr-page-title { font-size: 32px; line-height: 38px; font-weight: 700; letter-spacing: -0.018em; }
+  @media (min-width: 768px) {
+    .pr-page-title { font-size: 38px; line-height: 44px; }
+  }
+  @media (min-width: 1200px) {
+    .pr-page-title { font-size: 44px; line-height: 50px; }
+  }
+  :root[lang="ar"] .pr-page-title { font-size: 29px; line-height: 44px; letter-spacing: 0; }
+  @media (min-width: 768px) {
+    :root[lang="ar"] .pr-page-title { font-size: 33px; line-height: 50px; }
+  }
+  @media (min-width: 1200px) {
+    :root[lang="ar"] .pr-page-title { font-size: 38px; line-height: 56px; }
+  }
+
+  /* Small caps label for sale types and filter groups (plain in Arabic). */
+  .pr-kicker { font-size: 11px; line-height: 16px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+  :root[lang="ar"] .pr-kicker { font-size: 13px; line-height: 19px; letter-spacing: 0; text-transform: none; }
+
+  .pr-no-spin { appearance: textfield; }
+  .pr-no-spin::-webkit-inner-spin-button,
+  .pr-no-spin::-webkit-outer-spin-button { appearance: none; margin: 0; }
+}

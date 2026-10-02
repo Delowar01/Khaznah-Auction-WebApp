@@ -16,7 +16,7 @@ import { ViewToggle } from "./SortControls";
  * Sticky "Filters (n) | Sort" bar for phones and tablets. Filters open in a
  * bottom sheet with a live "Show N results" button; sort has its own sheet.
  */
-export function MobileFilterBar({ browse, view, onView, categories, showEnding = true, sticky = true, className = "" }) {
+export function MobileFilterBar({ browse, view, onView, categories, showEnding = true, endingFirst = false, sticky = true, className = "" }) {
   const { t, ui, pl } = useLang();
   const [sheet, setSheet] = useState(null);
   const current = SORT_OPTIONS.find((o) => o.value === browse.state.sort) || SORT_OPTIONS[0];
@@ -49,6 +49,7 @@ export function MobileFilterBar({ browse, view, onView, categories, showEnding =
           className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-control border border-line-strong bg-surface px-2 kb-sm font-bold text-fg"
         >
           <ArrowUpDown aria-hidden="true" className="size-4 shrink-0" />
+          <span className="sr-only">{`${ui("sortBy")}: `}</span>
           <span className="truncate">{ui(current.key)}</span>
         </button>
         {onView ? <ViewToggle view={view} onChange={onView} className="shrink-0" /> : null}
@@ -72,7 +73,7 @@ export function MobileFilterBar({ browse, view, onView, categories, showEnding =
         }
       >
         <div className="px-3">
-          <FacetPanel browse={browse} categories={categories} name="sheet" showEnding={showEnding} />
+          <FacetPanel browse={browse} categories={categories} name="sheet" showEnding={showEnding} endingFirst={endingFirst} />
         </div>
       </SheetPanel>
 

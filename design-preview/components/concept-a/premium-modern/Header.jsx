@@ -322,7 +322,11 @@ export function PremiumLanguage({ className = "", onNavigate }) {
   );
 }
 
-export function Header() {
+/**
+ * `active` is the current shopping mode on Browse ("timed", "buy", "bulk" or
+ * null); the home page leaves it out and keeps its first mode in semibold.
+ */
+export function Header({ active } = {}) {
   const { t } = useLang();
   const { link } = useConcept();
   const { cartCount, watched } = useStore();
@@ -380,13 +384,23 @@ export function Header() {
             </button>
             <nav aria-label={t(COPY.mainNav)} className="hidden ltr:dt:block rtl:min-[1366px]:block">
               <ul className="flex items-center gap-4 wd:gap-7">
-                {nav.map((item, i) => (
-                  <li key={item.key}>
-                    <Link href={link(item.href)} className={cx("pr-link pr-md hover:text-[var(--pr-bronze)]", i === 0 ? "font-semibold text-fg" : "text-[#3c3f49]")}>
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+                {nav.map((item, i) => {
+                  const current = active != null && item.key === active;
+                  return (
+                    <li key={item.key}>
+                      <Link
+                        href={link(item.href)}
+                        aria-current={current ? "page" : undefined}
+                        className={cx(
+                          "pr-link pr-md hover:text-[var(--pr-bronze)]",
+                          current ? "font-semibold text-fg underline decoration-[var(--pr-brass)] decoration-2 underline-offset-[9px]" : active == null && i === 0 ? "font-semibold text-fg" : "text-[#3c3f49]",
+                        )}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
           </div>

@@ -321,3 +321,30 @@
     }
   }
 }
+
+/* ── Browse ────────────────────────────────────────────────────────────── */
+@layer components {
+  /* Display page title (the home page's H1 is the hero, .vd-hero). */
+  .vd-page-title { font-family: var(--font-display-stack); font-size: 34px; line-height: 38px; font-weight: 800; letter-spacing: -0.03em; }
+  @media (min-width: 768px) {
+    .vd-page-title { font-size: 44px; line-height: 48px; }
+  }
+  @media (min-width: 1200px) {
+    .vd-page-title { font-size: 54px; line-height: 56px; letter-spacing: -0.035em; }
+  }
+  :root[lang="ar"] .vd-page-title { font-size: 31px; line-height: 46px; letter-spacing: 0; }
+  @media (min-width: 768px) {
+    :root[lang="ar"] .vd-page-title { font-size: 38px; line-height: 56px; }
+  }
+  @media (min-width: 1200px) {
+    :root[lang="ar"] .vd-page-title { font-size: 44px; line-height: 64px; }
+  }
+
+  /* Small caps kicker (plain in Arabic). */
+  .vd-kicker { font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  :root[lang="ar"] .vd-kicker { font-size: 13px; line-height: 19px; letter-spacing: 0; text-transform: none; }
+
+  .vd-no-spin { appearance: textfield; }
+  .vd-no-spin::-webkit-inner-spin-button,
+  .vd-no-spin::-webkit-outer-spin-button { appearance: none; margin: 0; }
+}

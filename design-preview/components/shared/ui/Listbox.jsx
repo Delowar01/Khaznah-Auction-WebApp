@@ -6,6 +6,7 @@ import { Check, ChevronDown } from "lucide-react";
 /**
  * Accessible single-select dropdown (button + listbox) with keyboard
  * support: ↑/↓/Home/End to move, Enter/Space to pick, Escape to close.
+ * Picking an option or pressing Escape returns focus to the button.
  * Styling is supplied by the caller.
  */
 export function Listbox({
@@ -25,6 +26,7 @@ export function Listbox({
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
   const rootRef = useRef(null);
+  const buttonRef = useRef(null);
   const listRef = useRef(null);
   const id = useId();
   const current = options.find((option) => option.value === value) || options[0];
@@ -47,9 +49,14 @@ export function Listbox({
     setOpen(true);
   };
 
+  const closeToButton = () => {
+    setOpen(false);
+    buttonRef.current?.focus({ preventScroll: true });
+  };
+
   const choose = (index) => {
     onChange?.(options[index].value);
-    setOpen(false);
+    closeToButton();
   };
 
   const onListKeyDown = (event) => {
@@ -68,7 +75,10 @@ export function Listbox({
     } else if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       choose(active);
-    } else if (event.key === "Escape" || event.key === "Tab") {
+    } else if (event.key === "Escape") {
+      event.preventDefault();
+      closeToButton();
+    } else if (event.key === "Tab") {
       setOpen(false);
     }
   };
@@ -76,6 +86,7 @@ export function Listbox({
   return (
     <div ref={rootRef} className={`relative ${className}`}>
       <button
+        ref={buttonRef}
         type="button"
         aria-haspopup="listbox"
         aria-expanded={open}

@@ -31,6 +31,9 @@ const DEFAULTS = {
 
 export const PRICE_BOUNDS = [0, 10000];
 
+/** Default browse state (all lots, recommended order, page 1). */
+export const BROWSE_DEFAULTS = DEFAULTS;
+
 export const SORT_OPTIONS = [
   { value: "recommended", key: "sortEnding" },
   { value: "newest", key: "sortNewest" },
@@ -47,9 +50,8 @@ const listParam = (params, key) =>
     .map((v) => v.trim())
     .filter(Boolean);
 
-function readUrl() {
-  if (typeof window === "undefined") return {};
-  const params = new URLSearchParams(window.location.search);
+/** The browse state carried by URL parameters (only the keys present). */
+export function browseStateFromParams(params) {
   const state = {};
   const tab = params.get("tab");
   if (tab === "auction" || tab === "buy_now" || tab === "live") state.tab = tab;
@@ -77,8 +79,17 @@ function readUrl() {
   return state;
 }
 
-function writeUrl(state) {
-  const params = new URLSearchParams(window.location.search);
+function readUrl() {
+  if (typeof window === "undefined") return {};
+  return browseStateFromParams(new URLSearchParams(window.location.search));
+}
+
+/**
+ * Query string ("?…" or "") for a browse state. Parameters that are not part
+ * of browse (e.g. embed, theme) are kept from `search`.
+ */
+export function browseSearch(state, search = "") {
+  const params = new URLSearchParams(search);
   const set = (key, value) => (value ? params.set(key, value) : params.delete(key));
   set("tab", state.tab !== "all" ? state.tab : "");
   set("search", state.search.trim());
@@ -94,7 +105,16 @@ function writeUrl(state) {
   set("sort", state.sort !== "recommended" ? state.sort : "");
   set("page", state.page > 1 ? String(state.page) : "");
   const query = params.toString();
-  const url = `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`;
+  return query ? `?${query}` : "";
+}
+
+/** Canonical form of a (partial) browse state, for comparing a URL with a view. */
+export function browseKey(state) {
+  return browseSearch({ ...DEFAULTS, ...state });
+}
+
+function writeUrl(state) {
+  const url = `${window.location.pathname}${browseSearch(state, window.location.search)}${window.location.hash}`;
   window.history.replaceState(window.history.state, "", url);
 }
 

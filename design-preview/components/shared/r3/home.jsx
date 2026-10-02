@@ -76,17 +76,28 @@ export function useOtherLanguageHref() {
 /**
  * "EN | العربية": the current language is plain text, the other one a link.
  * `itemClass(current)` styles each label; `separator` sits between them.
+ * On Browse the link also carries the live filters (query string), read at
+ * click time so the rendered link stays the bare path.
  */
 export function LanguageSwitch({ className = "", itemClass = () => "", separator = null, label, onNavigate }) {
   const { lang } = useLang();
+  const router = useRouter();
   const { other, href } = useOtherLanguageHref();
+  const onClick = (event) => {
+    onNavigate?.();
+    const { pathname, search, hash } = window.location;
+    if (!search || !/\/browse\/?$/.test(pathname)) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault();
+    router.push(`${href}${search}${hash}`);
+  };
   const item = (code, text) =>
     code === lang ? (
       <span key={code} lang={code} aria-current="true" className={itemClass(true)}>
         {text}
       </span>
     ) : (
-      <Link key={code} href={href} hrefLang={other} lang={other} onClick={onNavigate} className={itemClass(false)}>
+      <Link key={code} href={href} hrefLang={other} lang={other} onClick={onClick} className={itemClass(false)}>
         {text}
       </Link>
     );

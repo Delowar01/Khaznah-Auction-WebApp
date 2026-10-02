@@ -19,10 +19,13 @@ import { POPULAR_SEARCHES, detailPath, isAuction } from "@/lib/catalog";
 import { COPY } from "./copy";
 import { cx } from "./ui";
 
-/** Shopping modes; Discover (this page) is the selected one. Auctions come before Buy Now. */
-export function useModes() {
+/**
+ * Shopping modes; auctions come before Buy Now. On the home page Discover is
+ * the selected one; Browse passes its current mode as `active` (or null).
+ */
+export function useModes(active) {
   const { t } = useLang();
-  return [
+  const modes = [
     { key: "discover", label: t(COPY.discover), href: "/", current: true },
     { key: "timed", label: t(COPY.navTimed), href: "/browse?tab=auction" },
     { key: "live", label: t(COPY.navLive), href: "/live-auction" },
@@ -30,6 +33,7 @@ export function useModes() {
     { key: "sellers", label: t(COPY.navSellers), href: "/seller" },
     { key: "bulk", label: t(COPY.navBulk), href: "/browse?category=bulk-pallets" },
   ];
+  return active === undefined ? modes : modes.map((mode) => ({ ...mode, current: mode.key === active }));
 }
 
 const panel = "rounded-[16px] border border-[var(--vd-line)] bg-white p-4 shadow-overlay";
@@ -243,10 +247,10 @@ function SearchPill({ className = "" }) {
   );
 }
 
-function ModeNav({ className = "" }) {
+function ModeNav({ active, className = "" }) {
   const { t } = useLang();
   const { link } = useConcept();
-  const modes = useModes();
+  const modes = useModes(active);
   return (
     <nav aria-label={t(COPY.modes)} className={className}>
       <ul className="vd-rail flex items-center gap-2 overflow-x-auto dt:gap-[13px]">
@@ -269,7 +273,8 @@ function ModeNav({ className = "" }) {
   );
 }
 
-export function Header() {
+/** `active`: the current shopping mode on Browse (see useModes). */
+export function Header({ active } = {}) {
   const { t } = useLang();
   const { link } = useConcept();
   const { cartCount, watched } = useStore();
@@ -351,7 +356,7 @@ export function Header() {
         {/* Row 2: shopping modes, starting under the search */}
         <div data-ref="02" className="pb-2.5 dt:grid dt:h-[55px] dt:grid-cols-[257px_minmax(0,1fr)] dt:items-start dt:pb-0 dt:pt-1">
           <span aria-hidden="true" className="hidden dt:block" />
-          <ModeNav className="-mx-4 px-4 md:mx-0 md:px-0 dt:ps-6" />
+          <ModeNav active={active} className="-mx-4 px-4 md:mx-0 md:px-0 dt:ps-6" />
         </div>
       </div>
     </header>

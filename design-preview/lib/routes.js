@@ -12,6 +12,12 @@ export const PAGES = [
   { key: "system", path: "/system", label: { en: "Components & states", ar: "المكونات والحالات" } },
 ];
 
+/**
+ * Screens of Options 2–4 that already carry their new approved design. The
+ * others are earlier prototypes, marked as such in the presentation chrome.
+ */
+export const NEW_DESIGN_PAGES = ["home", "browse"];
+
 /** Splits /en/concept-a/auction/tv-43 → { lang, concept, rest: "/auction/tv-43" }. */
 export function parsePath(pathname = "") {
   const match = pathname.match(/^\/(en|ar)(?:\/concept-([a-d]))?(\/.*)?$/);

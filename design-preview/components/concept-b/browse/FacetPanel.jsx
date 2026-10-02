@@ -20,11 +20,25 @@ const ENDING = [
 /**
  * Every browse facet with live counts. Used in the desktop sidebar and the
  * mobile filter sheet; `categories` narrows the list inside a storefront.
+ * `endingFirst` moves "Ending within" up to sit right after the categories
+ * (Browse, where auction timing leads).
  */
-export function FacetPanel({ browse, categories = CATEGORIES, name = "facet", showEnding = true }) {
+export function FacetPanel({ browse, categories = CATEGORIES, name = "facet", showEnding = true, endingFirst = false }) {
   const { t, ui } = useLang();
   const { state, facets } = browse;
   const priceActive = state.price[0] > PRICE_BOUNDS[0] || state.price[1] < PRICE_BOUNDS[1];
+
+  const ending = showEnding ? (
+    <FacetGroup title={ui("endingWithin")} active={state.ending !== "all" ? 1 : 0}>
+      <div role="radiogroup" aria-label={ui("endingWithin")}>
+        {ENDING.map((option) => (
+          <Radio key={option.value} name={`${name}-ending`} value={option.value} checked={state.ending === option.value} onChange={browse.setEnding}>
+            {ui(option.key)}
+          </Radio>
+        ))}
+      </div>
+    </FacetGroup>
+  ) : null;
 
   return (
     <div>
@@ -39,6 +53,8 @@ export function FacetPanel({ browse, categories = CATEGORIES, name = "facet", sh
           );
         })}
       </FacetGroup>
+
+      {endingFirst ? ending : null}
 
       <FacetGroup title={ui("conditionGrade")} active={state.grades.length}>
         {GRADE_ORDER.map((key) => {
@@ -71,17 +87,7 @@ export function FacetPanel({ browse, categories = CATEGORIES, name = "facet", sh
         <PriceFacet value={state.price} onChange={browse.setPrice} />
       </FacetGroup>
 
-      {showEnding ? (
-        <FacetGroup title={ui("endingWithin")} active={state.ending !== "all" ? 1 : 0}>
-          <div role="radiogroup" aria-label={ui("endingWithin")}>
-            {ENDING.map((option) => (
-              <Radio key={option.value} name={`${name}-ending`} value={option.value} checked={state.ending === option.value} onChange={browse.setEnding}>
-                {ui(option.key)}
-              </Radio>
-            ))}
-          </div>
-        </FacetGroup>
-      ) : null}
+      {endingFirst ? null : ending}
 
       <FacetGroup title={ui("availability")} active={(state.inStock ? 1 : 0) + (state.discounted ? 1 : 0)}>
         <Checkbox checked={state.inStock} onChange={browse.setInStock}>

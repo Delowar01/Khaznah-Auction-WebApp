@@ -7,6 +7,15 @@ const FOCUSABLE =
 
 let lockCount = 0;
 
+// A native radio group is one Tab stop: its checked radio, or its first radio
+// when none is checked. The other radios are skipped when finding the first
+// and last stops, so Tab cannot leave a panel that ends with a radio group.
+function inTabOrder(el, panel) {
+  if (el.type !== "radio" || !el.name) return true;
+  const group = [...panel.querySelectorAll(`input[type="radio"][name="${CSS.escape(el.name)}"]`)];
+  return el === (group.find((radio) => radio.checked) || group[0]);
+}
+
 /**
  * Behaviour shared by modals, drawers and sheets:
  * focus moves inside on open, Tab is trapped, Escape closes,
@@ -49,7 +58,7 @@ export function useOverlay(open, onClose, { initialFocus } = {}) {
         return;
       }
       if (event.key !== "Tab" || !panel) return;
-      const items = [...panel.querySelectorAll(FOCUSABLE)].filter((el) => el.offsetParent !== null || el === document.activeElement);
+      const items = [...panel.querySelectorAll(FOCUSABLE)].filter((el) => (el.offsetParent !== null || el === document.activeElement) && inTabOrder(el, panel));
       if (!items.length) {
         event.preventDefault();
         return;

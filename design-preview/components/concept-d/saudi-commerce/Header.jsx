@@ -192,7 +192,8 @@ function AccountButton() {
   );
 }
 
-export function Header() {
+/** `active`: the current shopping mode on Browse ("timed", "buy", "bulk" or null). */
+export function Header({ active } = {}) {
   const { t } = useLang();
   const { link } = useConcept();
   const { cartCount } = useStore();
@@ -226,13 +227,23 @@ export function Header() {
           {/* 46 px apart from 1366 px; tighter below so the modes stay on one line. */}
           <nav aria-label={t(COPY.mainNav)} className="hidden justify-self-center dt:block min-[1366px]:pe-[70px]">
             <ul className="flex items-center gap-7 min-[1366px]:gap-[46px]">
-              {nav.map((item) => (
-                <li key={item.key}>
-                  <Link href={link(item.href)} className="sc-nav text-[var(--sc-ink)] underline-offset-[10px] transition-colors hover:text-[var(--sc-green)] hover:underline">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              {nav.map((item) => {
+                const current = active != null && item.key === active;
+                return (
+                  <li key={item.key}>
+                    <Link
+                      href={link(item.href)}
+                      aria-current={current ? "page" : undefined}
+                      className={cx(
+                        "sc-nav underline-offset-[10px] transition-colors hover:text-[var(--sc-green)] hover:underline",
+                        current ? "font-semibold text-[var(--sc-green)] underline decoration-2" : "text-[var(--sc-ink)]",
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
           <div className="ms-auto flex items-center gap-2 dt:ms-0 dt:gap-[40px]">

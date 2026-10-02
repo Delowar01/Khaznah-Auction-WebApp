@@ -1,17 +1,16 @@
 "use client";
 
-// Browse-aware navigation. The browse engine reads its filters from the URL
-// once, when it mounts. Links that point at /browse while the visitor is
-// already on it therefore update the URL in place and announce the change,
-// so the browse view can remount with the new filters (no full reload).
+// Browse-aware navigation. Links that point at /browse while the visitor is
+// already on it update the URL in place (history.pushState, which Next.js
+// applies to its router); Browse sees parameters it did not write and
+// remounts with the new filters (see shared/browse/BrowseRoute), with no
+// full reload.
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback } from "react";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useStore } from "@/components/shared/providers/PreviewStore";
-
-export const BROWSE_NAV_EVENT = "kb:browse-nav";
 
 function useIsOnBrowse() {
   const pathname = usePathname();
@@ -21,7 +20,6 @@ function useIsOnBrowse() {
 
 function announce(target) {
   window.history.pushState(null, "", target);
-  window.dispatchEvent(new Event(BROWSE_NAV_EVENT));
   window.scrollTo({ top: 0 });
 }
 

@@ -24,13 +24,14 @@ The options are not ranked, and none is recommended over the others.
 | **3** | Visual Discovery Marketplace | A bright, image-first marketplace in white, indigo and navy with gold: a pill search in the header, a mosaic hero, outlined category pills, a mixed-height product wall, a navy live banner, image-first auctions, photographic seller shelves and an ivory newsletter. |
 | **4** | Contemporary Saudi Commerce | A green and cream storefront: a centred bilingual hero with the marketplace search at its heart, trust points straight after, a category rail beside horizontal Buy Now cards, Ending soon beside the live auction, a seller directory, large 01/02/03 steps and a green footer. |
 
-> **This round:** Options 2–4 now show the approved work designs, on the
-> **home page only** so far. Their other screens (Browse, product, auction,
+> **This round:** Options 2–4 now show the approved work designs on the
+> **home page and Browse** so far. Their other screens (product, auction,
 > live, seller, components) are **earlier prototypes** from the previous round
 > and have not been redesigned yet; each of them carries an "Earlier
-> prototype" note at the top, and the start page marks Home as the new
-> design. The approved designs are light only: on these three home pages the
-> bar shows **Light only** (a sun) instead of the sun / moon button.
+> prototype" note at the top, and the start page marks Home and Browse as the
+> new design. The approved designs are light only: on these pages the bar
+> shows **Light only** (a sun) instead of the sun / moon button. Option 1's
+> Browse was redesigned within its existing design.
 
 ## Using the preview
 

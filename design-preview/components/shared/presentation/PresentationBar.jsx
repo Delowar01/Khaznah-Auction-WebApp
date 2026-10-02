@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ChevronDown, ChevronsUp, Monitor, Moon, SlidersHorizontal, Smartphone, Sun, Tablet } from "lucide-react";
 import { CONCEPTS } from "@/data/concepts";
-import { PAGES, pageKeyOf, parsePath, withConcept, withLang } from "@/lib/routes";
+import { NEW_DESIGN_PAGES, PAGES, pageKeyOf, parsePath, withConcept, withLang } from "@/lib/routes";
 import { tr } from "@/lib/i18n";
 import { useDismiss } from "@/components/shared/ui/hooks";
 
@@ -19,7 +19,7 @@ const LABELS = {
   mobile: { en: "Mobile", ar: "جوال" },
   theme: { en: "Toggle light or dark appearance", ar: "تبديل المظهر الفاتح أو الداكن" },
   lightOnly: { en: "Light only", ar: "فاتح فقط" },
-  lightOnlyHint: { en: "Light only: this home page design has no dark version", ar: "المظهر الفاتح فقط: لا توجد نسخة داكنة من تصميم هذه الصفحة الرئيسية" },
+  lightOnlyHint: { en: "Light only: this page design has no dark version", ar: "المظهر الفاتح فقط: لا توجد نسخة داكنة من تصميم هذه الصفحة" },
   newDesign: { en: "New design", ar: "التصميم الجديد" },
   prototypes: { en: "Earlier prototypes", ar: "نماذج أولية سابقة" },
   prototype: { en: "earlier prototype", ar: "نموذج أولي سابق" },
@@ -70,11 +70,12 @@ export function PresentationBar({ concept }) {
   const { lang, rest } = parsePath(pathname);
   const active = pageKeyOf(rest);
   const current = CONCEPTS.find((c) => c.id === concept);
-  // Options 2–4 have their new approved design on the home page only: those
-  // home pages are light only, and their other screens are earlier
+  // Options 2–4 have their new approved design on the home and Browse pages
+  // only: those pages are light only, and their other screens are earlier
   // prototypes. Option 1's controls are unchanged.
   const split = concept !== "b";
-  const lightOnly = split && active === "home";
+  const isNew = (key) => NEW_DESIGN_PAGES.includes(key);
+  const lightOnly = split && isNew(active);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   useDismiss(menuOpen, () => setMenuOpen(false), menuRef);
@@ -188,7 +189,7 @@ export function PresentationBar({ concept }) {
         <nav aria-label={L("pages")} className="mx-auto hidden items-center gap-0.5 xl:flex">
           {PAGES.map((page) => {
             const isActive = page.key === active;
-            const status = split ? L(page.key === "home" ? "newDesign" : "prototype") : null;
+            const status = split ? L(isNew(page.key) ? "newDesign" : "prototype") : null;
             return (
               <Fragment key={page.key}>
                 <Link
@@ -200,7 +201,7 @@ export function PresentationBar({ concept }) {
                   {tr(page.label, lang)}
                   {status ? <span className="sr-only"> ({status})</span> : null}
                 </Link>
-                {split && page.key === "home" ? <span aria-hidden="true" className="mx-1 h-4 w-px shrink-0 bg-white/20" /> : null}
+                {split && page.key === NEW_DESIGN_PAGES[NEW_DESIGN_PAGES.length - 1] ? <span aria-hidden="true" className="mx-1 h-4 w-px shrink-0 bg-white/20" /> : null}
               </Fragment>
             );
           })}
@@ -219,14 +220,14 @@ export function PresentationBar({ concept }) {
             {split ? (
               <>
                 <optgroup label={L("newDesign")} className="bg-[#12151d]">
-                  {PAGES.filter((page) => page.key === "home").map((page) => (
+                  {PAGES.filter((page) => isNew(page.key)).map((page) => (
                     <option key={page.key} value={page.key} className="bg-[#12151d]">
                       {tr(page.label, lang)}
                     </option>
                   ))}
                 </optgroup>
                 <optgroup label={L("prototypes")} className="bg-[#12151d]">
-                  {PAGES.filter((page) => page.key !== "home").map((page) => (
+                  {PAGES.filter((page) => !isNew(page.key)).map((page) => (
                     <option key={page.key} value={page.key} className="bg-[#12151d]">
                       {tr(page.label, lang)}
                     </option>
@@ -280,7 +281,7 @@ export function PresentationBar({ concept }) {
         </div>
 
         {lightOnly ? (
-          // Not a control: these home pages have no dark version, so there is
+          // Not a control: these pages have no dark version, so there is
           // nothing to toggle. The label shows wherever the bar has room.
           <span title={L("lightOnlyHint")} className="kz-light-only flex h-8 min-w-8 shrink-0 cursor-default items-center justify-center gap-1.5 rounded-full bg-white/[0.07] px-2 text-[var(--pbar-muted)]">
             <Sun aria-hidden="true" className="size-4 shrink-0" />

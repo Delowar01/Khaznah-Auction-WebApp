@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ArrowLeft, Info, Languages, Layers, MonitorSmartphone, MousePointerClick, PanelTopClose, Smartphone } from "lucide-react";
 import { CONCEPTS } from "@/data/concepts";
-import { PAGES } from "@/lib/routes";
+import { NEW_DESIGN_PAGES, PAGES } from "@/lib/routes";
 import { fill, tr } from "@/lib/i18n";
 import { Logo } from "@/components/shared/brand/Logo";
 import { Img } from "@/components/shared/ui/Img";
@@ -137,7 +137,7 @@ function ConceptCard({ concept, lang, index }) {
                   <a href={`${base}${page.path}`} className="underline-offset-4 hover:text-fg hover:underline">
                     {tr(page.label, lang)}
                   </a>
-                  {split && page.key === "home" ? (
+                  {split && NEW_DESIGN_PAGES.includes(page.key) ? (
                     <span className="rounded-full border border-line-strong px-2 text-[11px] font-semibold leading-[18px] text-fg rtl:text-[12px]">{tr(S.newDesign, lang)}</span>
                   ) : null}
                 </li>
