@@ -1,4 +1,4 @@
-import { AuctionPage } from "@/components/concept-a/pages/AuctionPage";
+import { PremiumModernAuction } from "@/components/concept-a/premium-modern/auction/PremiumModernAuction";
 import { conceptMetadata } from "@/lib/meta";
 import { PRODUCTS, getProduct } from "@/data/products";
 import { tr } from "@/lib/i18n";
@@ -16,5 +16,5 @@ export async function generateMetadata({ params }) {
 
 export default async function Page({ params }) {
   const { slug } = await params;
-  return <AuctionPage slug={slug} />;
+  return <PremiumModernAuction slug={slug} />;
 }

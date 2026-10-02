@@ -242,3 +242,22 @@
   .pr-no-spin::-webkit-inner-spin-button,
   .pr-no-spin::-webkit-outer-spin-button { appearance: none; margin: 0; }
 }
+
+/* ── Auction detail ────────────────────────────────────────────────────── */
+@layer components {
+  /* Lot title: one step under the Browse page title, so the bid panel beside it leads. */
+  .pr-lot-title { font-size: 27px; line-height: 33px; font-weight: 700; letter-spacing: -0.016em; }
+  @media (min-width: 768px) {
+    .pr-lot-title { font-size: 31px; line-height: 37px; }
+  }
+  @media (min-width: 1200px) {
+    .pr-lot-title { font-size: 36px; line-height: 42px; }
+  }
+  :root[lang="ar"] .pr-lot-title { font-size: 25px; line-height: 38px; letter-spacing: 0; }
+  @media (min-width: 768px) {
+    :root[lang="ar"] .pr-lot-title { font-size: 28px; line-height: 42px; }
+  }
+  @media (min-width: 1200px) {
+    :root[lang="ar"] .pr-lot-title { font-size: 31px; line-height: 47px; }
+  }
+}

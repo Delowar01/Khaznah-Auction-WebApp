@@ -1,4 +1,4 @@
-import { AuctionPage } from "@/components/concept-c/pages/AuctionPage";
+import { SaudiCommerceAuction } from "@/components/concept-d/saudi-commerce/auction/SaudiCommerceAuction";
 import { conceptMetadata } from "@/lib/meta";
 import { PRODUCTS, getProduct } from "@/data/products";
 import { tr } from "@/lib/i18n";
@@ -11,10 +11,10 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { lang, slug } = await params;
-  return conceptMetadata("c", "auction", lang, tr(getProduct(slug)?.title, lang));
+  return conceptMetadata("d", "auction", lang, tr(getProduct(slug)?.title, lang));
 }
 
 export default async function Page({ params }) {
   const { slug } = await params;
-  return <AuctionPage slug={slug} />;
+  return <SaudiCommerceAuction slug={slug} />;
 }

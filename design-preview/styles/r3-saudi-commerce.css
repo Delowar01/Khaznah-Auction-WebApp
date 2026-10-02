@@ -253,3 +253,22 @@
   .sc-no-spin::-webkit-inner-spin-button,
   .sc-no-spin::-webkit-outer-spin-button { appearance: none; margin: 0; }
 }
+
+/* ── Auction detail ────────────────────────────────────────────────────── */
+@layer components {
+  /* Lot title: a step under the Browse page title. */
+  .sc-lot-title { font-size: 26px; line-height: 32px; font-weight: 750; letter-spacing: -0.015em; }
+  @media (min-width: 768px) {
+    .sc-lot-title { font-size: 30px; line-height: 37px; }
+  }
+  @media (min-width: 1200px) {
+    .sc-lot-title { font-size: 34px; line-height: 42px; letter-spacing: -0.02em; }
+  }
+  :root[lang="ar"] .sc-lot-title { font-size: 25px; line-height: 38px; letter-spacing: 0; font-weight: 700; }
+  @media (min-width: 768px) {
+    :root[lang="ar"] .sc-lot-title { font-size: 28px; line-height: 43px; }
+  }
+  @media (min-width: 1200px) {
+    :root[lang="ar"] .sc-lot-title { font-size: 31px; line-height: 47px; }
+  }
+}

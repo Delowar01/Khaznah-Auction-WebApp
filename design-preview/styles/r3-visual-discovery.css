@@ -348,3 +348,22 @@
   .vd-no-spin::-webkit-inner-spin-button,
   .vd-no-spin::-webkit-outer-spin-button { appearance: none; margin: 0; }
 }
+
+/* ── Auction detail ────────────────────────────────────────────────────── */
+@layer components {
+  /* Lot title: a display heading, a step under the Browse page title. */
+  .vd-lot-title { font-family: var(--font-display-stack); font-size: 29px; line-height: 34px; font-weight: 800; letter-spacing: -0.025em; }
+  @media (min-width: 768px) {
+    .vd-lot-title { font-size: 34px; line-height: 39px; }
+  }
+  @media (min-width: 1200px) {
+    .vd-lot-title { font-size: 42px; line-height: 46px; letter-spacing: -0.03em; }
+  }
+  :root[lang="ar"] .vd-lot-title { font-size: 27px; line-height: 41px; letter-spacing: 0; }
+  @media (min-width: 768px) {
+    :root[lang="ar"] .vd-lot-title { font-size: 31px; line-height: 47px; }
+  }
+  @media (min-width: 1200px) {
+    :root[lang="ar"] .vd-lot-title { font-size: 36px; line-height: 54px; }
+  }
+}

@@ -16,7 +16,7 @@ export const PAGES = [
  * Screens of Options 2–4 that already carry their new approved design. The
  * others are earlier prototypes, marked as such in the presentation chrome.
  */
-export const NEW_DESIGN_PAGES = ["home", "browse"];
+export const NEW_DESIGN_PAGES = ["home", "browse", "auction"];
 
 /** Splits /en/concept-a/auction/tv-43 → { lang, concept, rest: "/auction/tv-43" }. */
 export function parsePath(pathname = "") {

@@ -9,13 +9,13 @@ const T = {
   label: { en: "About this screen", ar: "عن هذه الشاشة" },
   tag: { en: "Earlier prototype", ar: "نموذج أولي سابق" },
   text: {
-    en: "Option {id}’s new approved design covers the home and Browse pages only so far. This screen is from the previous round and has not been redesigned yet.",
-    ar: "يقتصر التصميم الجديد المعتمد للخيار {id} حتى الآن على الصفحة الرئيسية وصفحة التصفّح. هذه الشاشة من الجولة السابقة ولم يُعَد تصميمها بعد.",
+    en: "Option {id}’s new approved design covers the Home, Browse and Auction pages so far. This screen is from the previous round and has not been redesigned yet.",
+    ar: "يقتصر التصميم الجديد المعتمد للخيار {id} حتى الآن على الصفحة الرئيسية وصفحة التصفّح وصفحة المزاد. هذه الشاشة من الجولة السابقة ولم يُعَد تصميمها بعد.",
   },
   // Phones: the same point in one short line.
   short: {
-    en: "Only Home and Browse have Option {id}’s new design so far.",
-    ar: "الرئيسية والتصفّح وحدهما تحملان التصميم الجديد للخيار {id} حتى الآن.",
+    en: "Only Home, Browse and Auction have Option {id}’s new design so far.",
+    ar: "الرئيسية والتصفّح والمزاد وحدها تحمل التصميم الجديد للخيار {id} حتى الآن.",
   },
 };
 

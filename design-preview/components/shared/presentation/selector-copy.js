@@ -9,15 +9,15 @@ export const S = {
   facts: [
     { en: "4 directions", ar: "4 اتجاهات" },
     { en: "Option 1: 6 key screens", ar: "الخيار 1: 6 شاشات رئيسية" },
-    { en: "Options 2–4: new home pages", ar: "الخيارات 2–4: صفحات رئيسية جديدة" },
+    { en: "Options 2–4: new Home, Browse & Auction", ar: "الخيارات 2–4: رئيسية وتصفّح ومزاد جديدة" },
     { en: "English & Arabic", ar: "العربية والإنجليزية" },
     { en: "Light & dark in Option 1", ar: "الوضعان الفاتح والداكن في الخيار 1" },
     { en: "Desktop, tablet & mobile", ar: "سطح المكتب واللوحي والجوال" },
   ],
   noticeTitle: { en: "About this preview", ar: "عن هذه المعاينة" },
   notice: {
-    en: "Design concepts for review. Options 2, 3 and 4 show their new approved designs on the home and Browse pages only; their other screens are earlier prototypes from the previous round and are marked as such. Product information, sellers, prices, figures, auction activity and interactive behaviour shown in this preview use sample data and may not represent the current live platform.",
-    ar: "مفاهيم تصميمية للمراجعة. تظهر التصاميم الجديدة المعتمدة للخيارات 2 و3 و4 في الصفحة الرئيسية وصفحة التصفّح فقط، أما شاشاتها الأخرى فهي نماذج أولية سابقة من الجولة الماضية ومعلَّمة بذلك. معلومات المنتجات والبائعين والأسعار والأرقام ونشاط المزادات والتفاعلات المعروضة في هذه المعاينة مبنية على بيانات نموذجية، وقد لا تعكس المنصة الحالية.",
+    en: "Design concepts for review. Options 2, 3 and 4 show their new approved designs on the Home, Browse and Auction pages only; their other screens are earlier prototypes from the previous round and are marked as such. Product information, sellers, prices, figures, auction activity and interactive behaviour shown in this preview use sample data and may not represent the current live platform.",
+    ar: "مفاهيم تصميمية للمراجعة. تظهر التصاميم الجديدة المعتمدة للخيارات 2 و3 و4 في الصفحة الرئيسية وصفحة التصفّح وصفحة المزاد فقط، أما شاشاتها الأخرى فهي نماذج أولية سابقة من الجولة الماضية ومعلَّمة بذلك. معلومات المنتجات والبائعين والأسعار والأرقام ونشاط المزادات والتفاعلات المعروضة في هذه المعاينة مبنية على بيانات نموذجية، وقد لا تعكس المنصة الحالية.",
   },
   option: { en: "Option", ar: "الخيار" },
   options: { en: "The four options", ar: "الخيارات الأربعة" },
@@ -29,8 +29,8 @@ export const S = {
   screens: { en: "Go straight to a screen", ar: "انتقل مباشرة إلى شاشة" },
   newDesign: { en: "New design", ar: "التصميم الجديد" },
   screensNote: {
-    en: "Only the home and Browse pages have the new approved design so far. The other screens are earlier prototypes from the previous round and have not been redesigned yet.",
-    ar: "الصفحة الرئيسية وصفحة التصفّح وحدهما تحملان التصميم الجديد المعتمد حتى الآن. أما الشاشات الأخرى فهي نماذج أولية سابقة من الجولة الماضية ولم يُعَد تصميمها بعد.",
+    en: "Only the Home, Browse and Auction pages have the new approved design so far. The other screens are earlier prototypes from the previous round and have not been redesigned yet.",
+    ar: "الصفحة الرئيسية وصفحة التصفّح وصفحة المزاد وحدها تحمل التصميم الجديد المعتمد حتى الآن. أما الشاشات الأخرى فهي نماذج أولية سابقة من الجولة الماضية ولم يُعَد تصميمها بعد.",
   },
   previewAlt: { en: "Option {id} — {name}, home page on desktop and mobile", ar: "الخيار {id} — {name}، الصفحة الرئيسية على سطح المكتب والجوال" },
   howTitle: { en: "How to review", ar: "طريقة المراجعة" },
@@ -49,15 +49,15 @@ export const S = {
     {
       title: { en: "Move between screens and options", ar: "التنقل بين الشاشات والخيارات" },
       text: {
-        en: "The dark bar at the top switches between Home, Browse, Product, Auction, Live auction, Seller and Components & states — and between the four options. In Options 2–4 only Home and Browse have the new design; the other screens are labelled as earlier prototypes.",
-        ar: "يتيح الشريط الداكن في الأعلى التنقل بين الرئيسية والتصفّح والمنتج والمزاد والمزاد المباشر والبائع والمكونات والحالات — وبين الخيارات الأربعة. في الخيارات 2–4 تحمل الرئيسية والتصفّح وحدهما التصميم الجديد، والشاشات الأخرى معلَّمة كنماذج أولية سابقة.",
+        en: "The dark bar at the top switches between Home, Browse, Product, Auction, Live auction, Seller and Components & states — and between the four options. In Options 2–4 only Home, Browse and Auction have the new design; the other screens are labelled as earlier prototypes.",
+        ar: "يتيح الشريط الداكن في الأعلى التنقل بين الرئيسية والتصفّح والمنتج والمزاد والمزاد المباشر والبائع والمكونات والحالات — وبين الخيارات الأربعة. في الخيارات 2–4 تحمل الرئيسية والتصفّح والمزاد وحدها التصميم الجديد، والشاشات الأخرى معلَّمة كنماذج أولية سابقة.",
       },
     },
     {
       title: { en: "Switch language and appearance", ar: "تبديل اللغة والمظهر" },
       text: {
-        en: "Use EN / العربية to change the language — the Arabic version is designed right to left, not simply mirrored. The sun and moon button switches between light and dark. The new home and Browse pages of Options 2–4 are light only, so the bar shows Light only there instead.",
-        ar: "استخدم EN / العربية لتغيير اللغة — فالنسخة العربية مصمّمة من اليمين إلى اليسار وليست انعكاساً فحسب. ويبدّل زر الشمس والقمر بين الوضعين الفاتح والداكن. أما الصفحات الرئيسية وصفحات التصفّح الجديدة للخيارات 2–4 فبالمظهر الفاتح فقط، لذا يعرض الشريط «فاتح فقط» مكان الزر.",
+        en: "Use EN / العربية to change the language — the Arabic version is designed right to left, not simply mirrored. The sun and moon button switches between light and dark. The new Home, Browse and Auction pages of Options 2–4 are light only, so the bar shows Light only there instead.",
+        ar: "استخدم EN / العربية لتغيير اللغة — فالنسخة العربية مصمّمة من اليمين إلى اليسار وليست انعكاساً فحسب. ويبدّل زر الشمس والقمر بين الوضعين الفاتح والداكن. أما صفحات الرئيسية والتصفّح والمزاد الجديدة للخيارات 2–4 فبالمظهر الفاتح فقط، لذا يعرض الشريط «فاتح فقط» مكان الزر.",
       },
     },
     {

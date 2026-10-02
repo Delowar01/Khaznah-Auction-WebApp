@@ -70,12 +70,13 @@ export function PresentationBar({ concept }) {
   const { lang, rest } = parsePath(pathname);
   const active = pageKeyOf(rest);
   const current = CONCEPTS.find((c) => c.id === concept);
-  // Options 2–4 have their new approved design on the home and Browse pages
-  // only: those pages are light only, and their other screens are earlier
-  // prototypes. Option 1's controls are unchanged.
+  // Options 2–4 have their new approved design on the Home, Browse and
+  // Auction pages only: those pages are light only and listed first, and the
+  // other screens are earlier prototypes. Option 1's controls are unchanged.
   const split = concept !== "b";
   const isNew = (key) => NEW_DESIGN_PAGES.includes(key);
   const lightOnly = split && isNew(active);
+  const pages = split ? [...PAGES.filter((page) => isNew(page.key)), ...PAGES.filter((page) => !isNew(page.key))] : PAGES;
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   useDismiss(menuOpen, () => setMenuOpen(false), menuRef);
@@ -187,7 +188,7 @@ export function PresentationBar({ concept }) {
         </div>
 
         <nav aria-label={L("pages")} className="mx-auto hidden items-center gap-0.5 xl:flex">
-          {PAGES.map((page) => {
+          {pages.map((page) => {
             const isActive = page.key === active;
             const status = split ? L(isNew(page.key) ? "newDesign" : "prototype") : null;
             return (
