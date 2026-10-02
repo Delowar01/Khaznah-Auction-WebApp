@@ -85,8 +85,8 @@ function Page() {
         <CategoryPills />
         {/* Auctions come before the Buy Now wall. */}
         <LiveBanner live={live} />
-        <EndingSoon />
         <FeaturedItems />
+        <EndingSoon />
         <ProductWall />
         <SellerShelves />
         <BulkPanels />
@@ -106,8 +106,8 @@ function Page() {
  * White marketplace with a logo + pill-search masthead over a Discover row,
  * a mosaic hero (copy tile, furniture scene with an overlapping tote card,
  * stacked Electronics and Home & Kitchen tiles), eight outlined category
- * pills, then the auctions: a navy live banner before Ending soon's
- * image-first cards and a Featured Items mosaic led by auction lots. The
+ * pills, then the auctions: a navy live banner, a Featured Items mosaic led
+ * by auction lots and Ending soon's image-first cards. The
  * mixed-height Buy Now wall follows, then photographic seller shelves, two
  * bulk panels, a compact clarity row, How it works, an ivory newsletter and
  * a white footer with language and social links.

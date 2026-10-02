@@ -232,7 +232,7 @@ export function EndingSoon() {
   const { t } = useLang();
   const titleId = useId();
   return (
-    <section data-ref="07" aria-labelledby={titleId} className="vd-container pt-6 dt:pt-[21px]">
+    <section data-ref="07" aria-labelledby={titleId} className="vd-container pt-7 dt:pt-[30px]">
       <SectionHead id={titleId} title={t(COPY.endingTitle)} href="/browse?tab=auction" linkLabel={t(COPY.viewAllAuctions)} />
       <ul className="vd-rail -mx-[var(--vd-gutter)] mt-4 flex snap-x gap-4 overflow-x-auto px-[var(--vd-gutter)] lg:mx-0 lg:grid lg:grid-cols-3 lg:overflow-visible lg:px-0 dt:mt-[9px] dt:gap-[26px]">
         {ENDING.map(({ product, tone, photo }, i) => (
@@ -378,8 +378,10 @@ export function FeaturedItems() {
   const { t } = useLang();
   const titleId = useId();
   const buyNowId = useId();
+  // Featured Items follows the navy live banner, so it takes the banner's
+  // tighter top spacing (Ending soon below it has the usual section gap).
   return (
-    <section data-ref="07b" aria-labelledby={titleId} className="vd-container pt-7 dt:pt-[30px]">
+    <section data-ref="07b" aria-labelledby={titleId} className="vd-container pt-6 dt:pt-[21px]">
       <SectionHead id={titleId} title={t(COPY.featuredTitle)} href="/browse?tab=auction" linkLabel={t(COPY.viewAllAuctions)} />
       <p className="mt-1 vd-lg text-[var(--vd-muted)]">{t(COPY.featuredSub)}</p>
       <ul className="vd-featured mt-4 dt:mt-[18px]">

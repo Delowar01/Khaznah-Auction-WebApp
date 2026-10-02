@@ -119,8 +119,8 @@ function Page() {
         <CategoryRow />
         {/* Auctions come before any Buy Now section. */}
         <EndingSoonBand />
-        <LiveSection live={live} />
         <FeaturedItems />
+        <LiveSection live={live} />
         <BuyNowShelf />
         <Selected />
         <BulkRows />
@@ -140,8 +140,8 @@ function Page() {
  * Option 2 — Premium Modern Marketplace home (approved design).
  * Warm ivory storefront: a centred-logo masthead over a separate search row,
  * a panoramic room hero with an inset copy card and a pinned live lot, eight
- * unboxed category photos, then the auctions (an Ending soon stone band and a
- * split live auction) and a Featured Items shelf led by auction lots, before
+ * unboxed category photos, then an Ending soon stone band, a Featured Items
+ * shelf led by auction lots and a split live auction, before
  * four equal Buy Now cards, two recommendation panels, two pallet rows, five
  * seller cards, a trust strip, grades beside How Khaznah works, a charcoal
  * newsletter and a light footer.

@@ -45,13 +45,13 @@ export function HomePage() {
       <div className="kb-container mt-10 space-y-12 lg:mt-12 lg:space-y-14">
         <CategoryTiles />
         <AuctionsRail />
+        {/* Featured Items (auction lots first) follows the closing-soon auctions. */}
+        <FeaturedItems />
       </div>
 
       <LiveBand live={live} className="mt-12 lg:mt-14" />
 
       <div className="kb-container mt-12 space-y-12 pb-16 lg:mt-14 lg:space-y-14 lg:pb-20">
-        {/* Featured Items (auction lots first) sits between the auctions and Buy Now deals. */}
-        <FeaturedItems />
         <DealsGrid />
         <BulkSection />
         <SellerShelf />

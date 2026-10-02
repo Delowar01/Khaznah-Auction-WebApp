@@ -2,6 +2,10 @@
 
 Evidence for `AUCTION_FIRST_FEATURED_ITEMS_REPORT.md`.
 
+> Later change: Featured Items moved up one section on Options 1–3. The
+> current screenshots for those options are in `docs/featured-items-reorder/`.
+> Option 4's screenshots here are still current.
+
 - Every image comes from a production build of the `design-preview/` app, with
   all images loaded and animations off.
 - Before images come from the starting commit `68992f2`.
