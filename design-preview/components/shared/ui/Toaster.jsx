@@ -17,6 +17,8 @@ const TONE = {
 /**
  * Live-region toast stack. Colours, radius and type come from the active
  * concept's tokens; `className` lets a concept restyle the card entirely.
+ * On phones the stack's bottom offset is --kz-toast-bottom when a page sets
+ * it (Auction Detail, to stay above its fixed bid bar), 1rem otherwise.
  */
 export function Toaster({ className = "" }) {
   const { toasts, dismissToast } = useStore();
@@ -25,7 +27,7 @@ export function Toaster({ className = "" }) {
     <div
       aria-live="polite"
       aria-atomic="false"
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-[300] flex flex-col items-center gap-2 p-4 md:items-end md:pe-6 md:pb-6"
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-[300] flex flex-col items-center gap-2 p-4 max-md:pb-[var(--kz-toast-bottom,1rem)] md:items-end md:pe-6 md:pb-6"
     >
       <AnimatePresence initial={false}>
         {toasts.map((toast) => {

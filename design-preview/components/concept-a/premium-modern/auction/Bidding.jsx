@@ -8,7 +8,7 @@ import { useId } from "react";
 import { BellRing, ChevronDown, CircleAlert, CircleCheck, Clock3, Gavel, Heart, Info, Minus, Plus, Repeat, ShieldCheck, Trophy, X } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { AUCTION_COPY as C } from "@/components/shared/auction/copy";
-import { useAuctionClock, useBidForm, useBidderStatus, useMaxBid, useWinner } from "@/components/shared/auction/hooks";
+import { useAuctionClock, useBidForm, useBidderStatus, useMaxBid, useToastClearance, useWinner } from "@/components/shared/auction/hooks";
 import { countdownText, useSaveToggle } from "@/components/shared/r3/home";
 import { Modal } from "@/components/shared/ui/Modal";
 import { Money } from "@/components/shared/ui/Money";
@@ -354,8 +354,9 @@ export function PhoneBar({ detail }) {
   const { product, auction, upcoming, closed, priceLabel, price } = detail;
   const { saved, toggle } = useSaveToggle(product);
   const clock = useAuctionClock(auction);
+  const barRef = useToastClearance();
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-[#d3cfc6] bg-[#f8f7f3]/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
+    <div ref={barRef} className="fixed inset-x-0 bottom-0 z-30 border-t border-[#d3cfc6] bg-[#f8f7f3]/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
       <div className="pr-container flex h-[72px] items-center gap-3">
         <div className="min-w-0 flex-1">
           <p className="truncate pr-xs text-fg-2">{priceLabel}</p>

@@ -9,7 +9,7 @@ import { useId } from "react";
 import { BellRing, ChevronDown, CircleAlert, CircleCheck, Clock3, Gavel, Info, Minus, Plus, Repeat, ShieldCheck, TrendingDown, Trophy, X } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { AUCTION_COPY as C } from "@/components/shared/auction/copy";
-import { useAuctionClock, useBidForm, useBidderStatus, useMaxBid, useWinner } from "@/components/shared/auction/hooks";
+import { useAuctionClock, useBidForm, useBidderStatus, useMaxBid, useToastClearance, useWinner } from "@/components/shared/auction/hooks";
 import { countdownText, useSaveToggle } from "@/components/shared/r3/home";
 import { Modal } from "@/components/shared/ui/Modal";
 import { Money } from "@/components/shared/ui/Money";
@@ -331,8 +331,9 @@ export function PhoneBar({ detail }) {
   const { product, auction, upcoming, closed, price } = detail;
   const { saved, toggle } = useSaveToggle(product);
   const clock = useAuctionClock(auction);
+  const barRef = useToastClearance();
   return (
-    <div className="fixed inset-x-3 bottom-[calc(12px+env(safe-area-inset-bottom))] z-30 md:hidden">
+    <div ref={barRef} className="fixed inset-x-3 bottom-[calc(12px+env(safe-area-inset-bottom))] z-30 md:hidden">
       <div className="flex h-16 items-center gap-2.5 rounded-full bg-[var(--vd-navy)] ps-2 pe-2 text-white shadow-[0_12px_30px_-12px_rgb(6_33_63/0.6)] max-[379px]:gap-2">
         {clock.closed ? (
           <span className="inline-flex h-11 shrink-0 items-center rounded-full bg-white/15 px-3.5 vd-sm font-bold max-[379px]:px-2.5">{ui(auction.phase === "sold" ? "sold" : "ended")}</span>

@@ -56,3 +56,18 @@ English, captured while the interaction tests drive the page:
 6. the phone bid sheet at 390 px.
 
 The same steps pass in all four options and both languages (report §I).
+
+## Closeout
+
+`auction-detail-closeout.jpg` shows the two closeout fixes
+(`CLIENT_REVIEW_AUCTION_DETAIL_CLOSEOUT.md`):
+
+1. Option 4's dual-lot card at 320 px before, with the heart over the end
+   of its "Auction + Buy Now" tag;
+2. the same card after: the tag stops short of the heart;
+3. the foot of each option's Auction Detail phone page (390 px) with a
+   toast above the bid bar.
+
+The 20 full-page shots above were taken before the closeout. They show no
+toast. Option 4's dual-lot card does not appear in them, because they
+show `fridge-690` itself.

@@ -10,7 +10,7 @@ import { useId } from "react";
 import { BellRing, CalendarClock, ChevronDown, CircleAlert, CircleCheck, Clock3, Gavel, Info, Minus, Plus, Repeat, ShieldCheck, Trophy, X } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { AUCTION_COPY as C } from "@/components/shared/auction/copy";
-import { useAuctionClock, useBidForm, useBidderStatus, useMaxBid, usePhaseLabel, useWinner } from "@/components/shared/auction/hooks";
+import { useAuctionClock, useBidForm, useBidderStatus, useMaxBid, usePhaseLabel, useToastClearance, useWinner } from "@/components/shared/auction/hooks";
 import { countdownText, useSaveToggle } from "@/components/shared/r3/home";
 import { Modal } from "@/components/shared/ui/Modal";
 import { Money } from "@/components/shared/ui/Money";
@@ -338,8 +338,9 @@ export function PhoneBar({ detail }) {
   const { product, auction, upcoming, closed, priceLabel, price } = detail;
   const { saved, toggle } = useSaveToggle(product);
   const clock = useAuctionClock(auction);
+  const barRef = useToastClearance();
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-[var(--sc-line)] bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-10px_30px_-20px_rgb(16_33_57/0.45)] backdrop-blur-md md:hidden">
+    <div ref={barRef} className="fixed inset-x-0 bottom-0 z-30 border-t border-[var(--sc-line)] bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-10px_30px_-20px_rgb(16_33_57/0.45)] backdrop-blur-md md:hidden">
       <div className="sc-container flex h-[74px] items-center gap-3">
         <div className="min-w-0 flex-1">
           <p className="truncate sc-sm text-[var(--sc-muted)]">{priceLabel}</p>

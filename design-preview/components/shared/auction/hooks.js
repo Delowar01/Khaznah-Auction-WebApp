@@ -3,10 +3,11 @@
 // Auction Detail behaviour shared by the four options: which lot a route
 // shows, the page's bidding flow (confirm step, Buy Now, phone sheet, grade
 // guide), the bid form, the maximum bid, the bidder's status, bid-history
-// pages, the terms, the countdown in words, sharing, tabs and hover zoom.
+// pages, the terms, the countdown in words, sharing, tabs, hover zoom and
+// keeping toasts clear of the phone bid bar.
 // Nothing here decides how anything looks. The simulated auction itself is
 // lib/useAuction.js.
-import { useCallback, useId, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useStore } from "@/components/shared/providers/PreviewStore";
 import { useMediaQuery } from "@/components/shared/ui/hooks";
@@ -418,6 +419,44 @@ export function useBidRow() {
     }),
     [t, ui, lang, elapsed],
   );
+}
+
+// ── Phone bid bar ──────────────────────────────────────────────────────────
+
+/** Space between the top of the phone bid bar and the lowest toast. */
+const TOAST_GAP = 12;
+
+/**
+ * Keeps toasts clear of the fixed phone bid bar. Returns a ref for the bar's
+ * outer element; while that element is shown, the page root gets
+ * --kz-toast-bottom (the bar's height above the bottom of the screen, safe
+ * area included, plus a gap), which the shared Toaster uses as its bottom
+ * offset on phones. Measured, so each option's bar height counts; removed
+ * when the bar is hidden (tablets and up) or the page goes away, so other
+ * pages keep the default placement.
+ */
+export function useToastClearance() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const bar = ref.current;
+    if (!bar) return undefined;
+    const root = document.documentElement;
+    const update = () => {
+      const rect = bar.getBoundingClientRect();
+      if (rect.height > 0) root.style.setProperty("--kz-toast-bottom", `${Math.ceil(window.innerHeight - rect.top + TOAST_GAP)}px`);
+      else root.style.removeProperty("--kz-toast-bottom");
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(bar);
+    window.addEventListener("resize", update);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", update);
+      root.style.removeProperty("--kz-toast-bottom");
+    };
+  }, []);
+  return ref;
 }
 
 // ── Sharing, tabs, zoom ────────────────────────────────────────────────────

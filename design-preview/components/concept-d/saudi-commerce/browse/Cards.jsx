@@ -137,7 +137,10 @@ export function LotCard({ product, priority = false }) {
         <SaleTag facts={facts} className="absolute start-2 top-2 max-sm:hidden" />
       </div>
       <div className="flex min-w-0 flex-1 flex-col ps-3 pe-1 pb-1 pt-1 sm:px-3.5 sm:pb-3.5 sm:pt-3 dt:px-4 dt:pb-4">
-        <SaleTag facts={facts} className="mb-2 self-start sm:hidden" />
+        {/* Phones: the tag stops short of the heart in the card's top corner, like the title below it. */}
+        <div className="mb-2 flex pe-8 sm:hidden">
+          <SaleTag facts={facts} />
+        </div>
         <h3 className="line-clamp-2 pe-8 sc-title text-[var(--sc-ink)] sm:pe-0 dt:!text-[16px] dt:!leading-[22px]">
           <TitleLink facts={facts} />
         </h3>

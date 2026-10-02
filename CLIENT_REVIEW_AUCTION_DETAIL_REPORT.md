@@ -706,12 +706,10 @@ Seller and Components pages (apart from their note's wording).
   kept for a later cleanup because `AuctionDialogs.jsx` in each folder is
   still used by that option's `/system` page.
 - **Option 4's Browse card at 320 px:** on the dual lot's card ("Auction +
-  Buy Now"), the heart overlaps the end of the truncated tag. It is the same
-  on Browse at `b059d7e`; the card is reused unchanged for similar auctions
-  because Browse is frozen in this phase. Suggested fix for the next Browse
-  pass: keep the tag clear of the heart (end padding on the card's top row).
-- **Toasts on phones** briefly cover the bid bar (the shared Toaster is
-  unchanged; it was the same before).
+  Buy Now"), the heart overlapped the end of the truncated tag. *Fixed in
+  the closeout* (`CLIENT_REVIEW_AUCTION_DETAIL_CLOSEOUT.md`).
+- **Toasts on phones** covered the bid bar. *Fixed in the closeout*: they
+  now sit above it.
 - **Option 1's lightbox** (an unchanged product component) takes arrow keys
   when focus is on its image area, not anywhere in the dialog. Options 2–4's
   new viewer takes them anywhere.

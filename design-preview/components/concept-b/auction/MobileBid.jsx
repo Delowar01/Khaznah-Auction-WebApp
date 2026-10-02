@@ -4,6 +4,7 @@ import { BellRing, Gavel } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useStore } from "@/components/shared/providers/PreviewStore";
 import { AUCTION_COPY as C } from "@/components/shared/auction/copy";
+import { useToastClearance } from "@/components/shared/auction/hooks";
 import { Money } from "@/components/shared/ui/Money";
 import { PriceLabel } from "../cards/CardParts";
 import { Button } from "../ui/Button";
@@ -24,8 +25,9 @@ export function MobileBidBar({ detail }) {
   const { isWatched, toggleWatch, toast } = useStore();
   const { product, auction, upcoming, closed, priceLabel, price } = detail;
   const watched = isWatched(product.slug);
+  const barRef = useToastClearance();
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] shadow-(--kb-sh-bar) backdrop-blur-md md:hidden">
+    <div ref={barRef} className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] shadow-(--kb-sh-bar) backdrop-blur-md md:hidden">
       <div className="kb-container flex h-[76px] items-center gap-3">
         <div className="min-w-0">
           <PriceLabel>{priceLabel}</PriceLabel>
