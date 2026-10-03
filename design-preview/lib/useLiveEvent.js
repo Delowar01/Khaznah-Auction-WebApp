@@ -13,8 +13,8 @@ import { useStore } from "@/components/shared/providers/PreviewStore";
 import { useLang } from "@/components/shared/providers/LangProvider";
 
 const RIVALS = ["7Q3", "4821", "K27", "5530", "82F", "A09", "9D1", "3314", "M55"];
-const INTERMISSION = 6;
-const EXTEND_TO = 12; // presenter extends the clock when a bid lands late
+export const INTERMISSION = 6;
+export const EXTEND_TO = 12; // presenter extends the clock when a bid lands late
 
 function initialItems(event) {
   return event.items.map((item) => ({
@@ -46,6 +46,7 @@ export function useLiveEvent(event = LIVE_EVENT) {
   const [viewers, setViewers] = useState(event.viewers);
   const [myState, setMyState] = useState("neutral"); // neutral | highest | outbid | won
   const [lastHammer, setLastHammer] = useState(null);
+  const [rivalTurn, setRivalTurn] = useState(0);
   const stateRef = useRef({});
 
   const current = items[currentIndex];
@@ -121,12 +122,16 @@ export function useLiveEvent(event = LIVE_EVENT) {
   }, [event.itemDurationSeconds, money, toast, ui]);
 
   // Rival bidders: frequent early, thinning out as the price climbs past market.
+  // One attempt every 2.8–7 s; each attempt arms the next (rivalTurn). The
+  // clock is read from stateRef: depending on `remaining` re-armed the timer
+  // every second, so it never fired and no rival ever bid.
   useEffect(() => {
-    if (!current || intermission > 0 || remaining <= 0) return undefined;
+    if (!current || intermission > 0) return undefined;
     const pressure = current.marketPrice ? current.currentBid / current.marketPrice : current.currentBid / (current.startingBid * 3);
     const chance = pressure > 0.95 ? 0.25 : pressure > 0.75 ? 0.55 : 0.85;
     const delay = 2800 + Math.random() * 4200;
     const timer = window.setTimeout(() => {
+      setRivalTurn((n) => n + 1);
       const s = stateRef.current;
       if (s.intermission > 0 || s.remaining <= 1) return;
       if (Math.random() > chance) return;
@@ -140,7 +145,7 @@ export function useLiveEvent(event = LIVE_EVENT) {
       }
     }, delay);
     return () => window.clearTimeout(timer);
-  }, [current, intermission, remaining, recordBid, toast, ui, money]);
+  }, [current, intermission, rivalTurn, recordBid, toast, ui, money]);
 
   const completed = useMemo(() => items.filter((i) => i.status === "sold" || i.status === "reserve_not_met"), [items]);
   const upcoming = useMemo(() => items.filter((i, index) => i.status === "staged" && index > currentIndex), [items, currentIndex]);

@@ -20,7 +20,7 @@ customer website, built for client review:
 > cart, saving, newsletter, drawers) lives in `components/shared/r3/`. See
 > `ROUND_WORK_DESIGN_IMPLEMENTATION_REPORT.md` at the repository root for the
 > comparison with the approved images, the asset audit and known differences.
-> This covers the **home page, Browse and Auction Detail**. Browse lives in each option's
+> This covers the **home page, Browse, Auction Detail and Live Auction**. Browse lives in each option's
 > `browse/` folder (`components/concept-a/premium-modern/browse`,
 > `components/concept-c/visual-discovery/browse`,
 > `components/concept-d/saudi-commerce/browse`, served by
@@ -34,7 +34,14 @@ customer website, built for client review:
 > `app/[lang]/concept-{a,c,d}/auction/`), Option 1's
 > `components/concept-b/auction`, and the shared bidding behaviour and copy in
 > `components/shared/auction/` on top of the simulated engine
-> `lib/useAuction.js`. The other screens are still
+> `lib/useAuction.js`. Live Auction (`/live-auction`) is built the same way:
+> each option's `live/` folder (`components/concept-a/premium-modern/live`,
+> `components/concept-c/visual-discovery/live`,
+> `components/concept-d/saudi-commerce/live`, served by
+> `app/[lang]/concept-{a,c,d}/live-auction/page.js`), Option 1's
+> `components/concept-b/live`, and the shared live-room behaviour and copy in
+> `components/shared/live/` on top of the simulated engine
+> `lib/useLiveEvent.js`. The other screens are still
 > the Round 2 versions (served through the `(round2)` route group in each
 > slot, with the Round 2 chrome) until the inner pages are redesigned. The
 > new pages render their own shell and scope their tokens to `html[data-r3]`
@@ -44,8 +51,8 @@ customer website, built for client review:
 > instead of the appearance toggle. The Round 2 screens of Options 2–4 open
 > under an "Earlier prototype" note (`PrototypeNotice`, rendered by each
 > `(round2)/layout.js`), the bar's page list groups them as earlier
-> prototypes, and the selector marks Home, Browse and Auction as the new
-> design (`NEW_DESIGN_PAGES` in `lib/routes.js`).
+> prototypes, and the selector marks Home, Browse, Auction and Live auction
+> as the new design (`NEW_DESIGN_PAGES` in `lib/routes.js`).
 >
 > **Round 3B.** The previous homepages for Options 2–4 (Visual Marketplace,
 > Premium Marketplace, Discovery Commerce) are in git history at commit

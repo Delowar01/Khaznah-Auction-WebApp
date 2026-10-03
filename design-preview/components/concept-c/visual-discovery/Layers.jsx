@@ -1,8 +1,8 @@
 "use client";
 
 // The phone / tablet menu and the cart drawer of the Visual Discovery pages
-// (home, Browse and Auction). Browse passes its current shopping mode as
-// `active`.
+// (home, Browse, Auction and Live auction). Browse passes its current
+// shopping mode as `active`, the live auction "live".
 import Link from "next/link";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";

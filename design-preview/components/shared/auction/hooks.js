@@ -427,13 +427,13 @@ export function useBidRow() {
 const TOAST_GAP = 12;
 
 /**
- * Keeps toasts clear of the fixed phone bid bar. Returns a ref for the bar's
- * outer element; while that element is shown, the page root gets
+ * Keeps toasts clear of a fixed bid bar. Returns a ref for the bar's outer
+ * element; while that element is shown, the page root gets
  * --kz-toast-bottom (the bar's height above the bottom of the screen, safe
  * area included, plus a gap), which the shared Toaster uses as its bottom
- * offset on phones. Measured, so each option's bar height counts; removed
- * when the bar is hidden (tablets and up) or the page goes away, so other
- * pages keep the default placement.
+ * offset. Measured, so each option's bar height counts; removed when the
+ * bar is hidden (Auction Detail from 768 px, Live Auction from 1024 px) or
+ * the page goes away, so other pages keep the default placement.
  */
 export function useToastClearance() {
   const ref = useRef(null);

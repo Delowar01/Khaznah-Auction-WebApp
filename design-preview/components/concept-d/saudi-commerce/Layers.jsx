@@ -1,8 +1,8 @@
 "use client";
 
 // The phone / tablet menu and the cart drawer of the Contemporary Saudi
-// Commerce pages (home, Browse and Auction). Browse passes its current
-// shopping mode as `active`.
+// Commerce pages (home, Browse, Auction and Live auction). Browse passes its
+// current shopping mode as `active`, the live auction "live".
 import Link from "next/link";
 import { ChevronDown, MapPin, Truck } from "lucide-react";
 import { useState } from "react";

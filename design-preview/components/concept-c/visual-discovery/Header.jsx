@@ -21,7 +21,8 @@ import { cx } from "./ui";
 
 /**
  * Shopping modes; auctions come before Buy Now. On the home page Discover is
- * the selected one; Browse passes its current mode as `active` (or null).
+ * the selected one; Browse passes its current mode as `active` (or null),
+ * the live auction "live".
  */
 export function useModes(active) {
   const { t } = useLang();

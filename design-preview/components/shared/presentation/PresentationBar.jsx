@@ -70,9 +70,10 @@ export function PresentationBar({ concept }) {
   const { lang, rest } = parsePath(pathname);
   const active = pageKeyOf(rest);
   const current = CONCEPTS.find((c) => c.id === concept);
-  // Options 2–4 have their new approved design on the Home, Browse and
-  // Auction pages only: those pages are light only and listed first, and the
-  // other screens are earlier prototypes. Option 1's controls are unchanged.
+  // Options 2–4 have their new approved design on the Home, Browse, Auction
+  // and Live auction pages only: those pages are light only and listed first,
+  // and the other screens are earlier prototypes. Option 1's controls are
+  // unchanged.
   const split = concept !== "b";
   const isNew = (key) => NEW_DESIGN_PAGES.includes(key);
   const lightOnly = split && isNew(active);

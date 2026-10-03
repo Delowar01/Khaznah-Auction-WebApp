@@ -25,14 +25,14 @@ The options are not ranked, and none is recommended over the others.
 | **4** | Contemporary Saudi Commerce | A green and cream storefront: a centred bilingual hero with the marketplace search at its heart, trust points straight after, a category rail beside horizontal Buy Now cards, Ending soon beside the live auction, a seller directory, large 01/02/03 steps and a green footer. |
 
 > **This round:** Options 2–4 now show the approved work designs on the
-> **home page, Browse and the auction page** so far. Their other screens
-> (product, live auction, seller, components) are **earlier prototypes** from
+> **home page, Browse, the auction page and the live auction** so far. Their
+> other screens (product, seller, components) are **earlier prototypes** from
 > the previous round and have not been redesigned yet; each of them carries
 > an "Earlier prototype" note at the top, and the start page marks Home,
-> Browse and Auction as the new design. The approved designs are light only:
-> on these pages the bar shows **Light only** (a sun) instead of the sun /
-> moon button. Option 1's Browse and auction page were redesigned within its
-> existing design.
+> Browse, Auction and Live auction as the new design. The approved designs
+> are light only: on these pages the bar shows **Light only** (a sun) instead
+> of the sun / moon button. Option 1's Browse, auction page and live auction
+> were redesigned within its existing design.
 
 ## Using the preview
 
@@ -43,12 +43,12 @@ The options are not ranked, and none is recommended over the others.
   designs. Use it to:
   - move between screens (Home, Browse, Product, Auction, Live auction, Seller,
     and Components & states; in Options 2–4 the bar lists the new designs —
-    Home, Browse and Auction — first);
+    Home, Browse, Auction and Live auction — first);
   - switch to another option;
   - change the language (**EN / العربية**);
   - change the appearance (sun / moon button — Option 1 and the earlier
-    prototype screens; the new Home, Browse and Auction pages of Options 2–4
-    are light only);
+    prototype screens; the new Home, Browse, Auction and Live auction pages
+    of Options 2–4 are light only);
   - open a tablet or mobile frame;
   - return to the start page (**Concepts**).
 - **Switching options** loads the page afresh, so every option always
