@@ -53,7 +53,7 @@ export function BidPanel({ room }) {
         </span>
         <ClockChip room={room} className="ring-1 ring-inset ring-[var(--sc-line)]" />
       </div>
-      <div className="grid gap-4 p-4 dt:p-5">
+      <div className="grid gap-4 p-4 dt:p-5 lg-short:gap-3 lg-short:pt-4">
         <p className="line-clamp-2 sc-md text-[var(--sc-muted)] max-lg:hidden">
           {hammer ? (nextItem ? t(C.nextLotNamed, { title: t(nextItem.title) }) : hammer.nextLabel) : `${lotInfo?.of} · ${lotInfo?.title}`}
         </p>

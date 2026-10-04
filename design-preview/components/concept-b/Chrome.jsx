@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useLang } from "@/components/shared/providers/LangProvider";
+import { PrototypeNotice } from "@/components/shared/presentation/PrototypeNotice";
 import { COPY } from "./copy";
 import { cx } from "./ui/cx";
 import { ChromeProvider, useChrome } from "./layout/ChromeContext";
@@ -18,6 +19,8 @@ import { WatchlistPanel } from "./layout/WatchlistPanel";
 // (product and auction show their action box in a side column from tablet up).
 const DETAIL = /\/(product|auction|live-auction)(\/|$)/;
 const SIDE_BOX = /\/(product|auction)(\/|$)/;
+// Screens outside the client review carry the presentation's earlier-prototype note, as in Options 2–4.
+const PROTOTYPE = /\/concept-b\/(seller|system)(\/|$)/;
 
 function Frame({ children }) {
   const { t } = useLang();
@@ -34,6 +37,7 @@ function Frame({ children }) {
       >
         {t(COPY.skipToContent)}
       </a>
+      {PROTOTYPE.test(pathname) ? <PrototypeNotice concept="b" /> : null}
       <UtilityStrip />
       <Header />
       <main id="main" tabIndex={-1} className="outline-none">

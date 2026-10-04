@@ -57,11 +57,14 @@ customer website, built for client review:
 > (see `styles/r3-*.css` and `components/shared/r3/R3Root.jsx`), so they never
 > change the Round 2 screens or Option 1. The approved designs are light only:
 > on these pages the presentation bar shows a static **Light only** indicator
-> instead of the appearance toggle. The Round 2 screens of Options 2–4 open
-> under an "Earlier prototype" note (`PrototypeNotice`, rendered by each
-> `(round2)/layout.js`), the bar's page list groups them as earlier
-> prototypes, and the selector marks Home, Browse, Auction, Live auction and
-> Product as the new design (`NEW_DESIGN_PAGES` in `lib/routes.js`).
+> instead of the appearance toggle. In every option the presentation bar
+> lists the five client review pages first, in review order (Home, Browse,
+> Auction, Live auction, Product), then Seller and Components & states as
+> earlier prototypes, not part of the review (`PAGES` and `NEW_DESIGN_PAGES`
+> in `lib/routes.js`). Those two screens open under an "Earlier prototype"
+> note (`PrototypeNotice`, rendered by each `(round2)/layout.js` in Options
+> 2–4 and by Option 1's `Chrome.jsx`), and the selector lists the review
+> pages apart from the prototypes.
 >
 > **Round 3B.** The previous homepages for Options 2–4 (Visual Marketplace,
 > Premium Marketplace, Discovery Commerce) are in git history at commit
@@ -135,8 +138,9 @@ deploy to a live Khazna domain; use a temporary preview subdomain.
 - **Concept selector** — `/en` or `/ar`: the four options side by side, with a
   preview, philosophy, key characteristics and quick links to every screen.
 - **Presentation bar** (top of every concept): back to concepts, switch concept,
-  jump between screens, **EN / العربية**, **light / dark** (a static **Light
-  only** indicator on the new home pages of Options 2–4), and **desktop /
+  jump between screens (the five review pages first, then the earlier
+  prototypes), **EN / العربية**, **light / dark** (a static **Light
+  only** indicator on the new pages of Options 2–4), and **desktop /
   tablet / mobile** device frames. Press **`.`** to hide or show the bar.
   Switching concept (and leaving for the selector or a device frame) is a full
   page load, so no concept's styles carry into the next one; the in-memory

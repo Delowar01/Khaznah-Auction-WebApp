@@ -12,14 +12,13 @@ import { ProductView } from "./ProductView";
 
 function Page({ product }) {
   const { t } = useLang();
-  // Single items sit under Buy Now in the navigation; cartons and pallets under Bulk & Pallets.
-  const mode = product.itemType === "single" ? "buy" : "bulk";
   return (
     <div className="bg-bg font-sans text-fg">
       <a href="#main" className="fixed start-3 top-[calc(var(--pbar-h)+8px)] z-[70] -translate-y-[200%] rounded-[7px] bg-[var(--sc-green)] px-4 py-2.5 sc-md font-semibold text-white transition-transform focus:translate-y-0">
         {t(COPY.skip)}
       </a>
-      <Header active={mode} />
+      {/* A product is bought at a fixed price, so it belongs to Buy Now (cartons and pallets too, like auction lots under Timed Auctions). */}
+      <Header active="buy" />
       <main id="main" tabIndex={-1} className="outline-none">
         {/* Keyed by product so the quantity and gallery start afresh for each one. */}
         <ProductView key={product.slug} product={product} />
@@ -30,7 +29,7 @@ function Page({ product }) {
       </footer>
       {/* Room under the footer for the phone Add to cart bar. */}
       <div aria-hidden="true" className="h-[calc(75px+env(safe-area-inset-bottom))] md:hidden" />
-      <Menu active={mode} />
+      <Menu active="buy" />
       <Cart />
     </div>
   );

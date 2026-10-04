@@ -100,7 +100,8 @@ export const PRODUCTS = [
     highlights: [
       { en: "Sealed in original packaging", ar: "مختومة في عبوتها الأصلية" },
       { en: "Frost-free with LED touch control", ar: "بلا صقيع مع تحكم لمسي LED" },
-      { en: "Buy Now available until bids reach SAR 4,600", ar: "الشراء الفوري متاح حتى تبلغ المزايدات 4,600 ريال" },
+      // The amount as the pages write it (the riyal sign, kept left to right), not "SAR" / "ريال".
+      { en: "Buy Now available until bids reach ⁦⃁ 4,600⁩", ar: "الشراء الفوري متاح حتى تبلغ المزايدات ⁦⃁ 4,600⁩" },
     ],
     specs: [
       { k: { en: "Capacity", ar: "السعة" }, v: { en: "690 L total", ar: "690 لتر إجمالاً" } },

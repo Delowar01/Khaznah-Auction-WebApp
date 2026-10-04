@@ -8,17 +8,25 @@ import { Img } from "@/components/shared/ui/Img";
 import { DialogPanel } from "../ui/Panels";
 import { Plate } from "../ui/Plate";
 import { cx } from "../ui/cx";
+import { COPY } from "../copy";
 
 const ARROW = "absolute top-1/2 z-10 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-surface/95 text-fg shadow-raised ring-1 ring-line transition-colors hover:bg-surface";
 
 /** Full-size image viewer sharing the gallery's index. */
 export function Lightbox({ open, onClose, images, title, gallery }) {
-  const { ui } = useLang();
+  const { t, ui } = useLang();
   const image = images[gallery.index];
   return (
     <DialogPanel open={open} onClose={onClose} title={title} size="xl">
       <div onKeyDown={gallery.onKeyDown} {...gallery.swipeHandlers}>
-        <div className="relative aspect-square max-h-[64dvh] w-full overflow-hidden rounded-xl bg-plate md:aspect-[4/3]">
+        {/* Focus starts on the image when the viewer opens, so the arrow keys move between images straight away. */}
+        <div
+          role="group"
+          aria-label={t(COPY.galleryLabel, { title })}
+          tabIndex={-1}
+          data-autofocus
+          className="relative aspect-square max-h-[64dvh] w-full overflow-hidden rounded-xl bg-plate outline-offset-4 md:aspect-[4/3]"
+        >
           <AnimatePresence initial={false} mode="popLayout">
             <motion.div
               key={gallery.index}

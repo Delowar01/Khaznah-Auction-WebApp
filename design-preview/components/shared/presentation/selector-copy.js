@@ -8,16 +8,15 @@ export const S = {
   },
   facts: [
     { en: "4 directions", ar: "4 اتجاهات" },
-    { en: "Option 1: 6 key screens", ar: "الخيار 1: 6 شاشات رئيسية" },
-    { en: "Options 2–4: new Home, Browse, Auction, Live & Product", ar: "الخيارات 2–4: رئيسية وتصفّح ومزاد ومزاد مباشر ومنتج جديدة" },
+    { en: "5 review pages each: Home, Browse, Auction, Live & Product", ar: "5 صفحات للمراجعة في كل خيار: الرئيسية والتصفّح والمزاد والمزاد المباشر والمنتج" },
     { en: "English & Arabic", ar: "العربية والإنجليزية" },
     { en: "Light & dark in Option 1", ar: "الوضعان الفاتح والداكن في الخيار 1" },
     { en: "Desktop, tablet & mobile", ar: "سطح المكتب واللوحي والجوال" },
   ],
   noticeTitle: { en: "About this preview", ar: "عن هذه المعاينة" },
   notice: {
-    en: "Design concepts for review. Options 2, 3 and 4 show their new approved designs on the Home, Browse, Auction, Live auction and Product pages only; their other screens are earlier prototypes from the previous round and are marked as such. Product information, sellers, prices, figures, auction activity and interactive behaviour shown in this preview use sample data and may not represent the current live platform.",
-    ar: "مفاهيم تصميمية للمراجعة. تظهر التصاميم الجديدة المعتمدة للخيارات 2 و3 و4 في الصفحة الرئيسية وصفحة التصفّح وصفحة المزاد وصفحة المزاد المباشر وصفحة المنتج فقط، أما شاشاتها الأخرى فهي نماذج أولية سابقة من الجولة الماضية ومعلَّمة بذلك. معلومات المنتجات والبائعين والأسعار والأرقام ونشاط المزادات والتفاعلات المعروضة في هذه المعاينة مبنية على بيانات نموذجية، وقد لا تعكس المنصة الحالية.",
+    en: "Design concepts for review. In each option, please review five pages: Home, Browse, Auction, Live auction and Product. The other screens (Seller, Components & states) are earlier prototypes, marked as such, and are not part of this review. Product information, sellers, prices, figures, auction activity and interactive behaviour shown in this preview use sample data and may not represent the current live platform.",
+    ar: "مفاهيم تصميمية للمراجعة. نرجو في كل خيار مراجعة خمس صفحات: الرئيسية والتصفّح والمزاد والمزاد المباشر والمنتج. أما الشاشات الأخرى (البائع، والمكونات والحالات) فهي نماذج أولية سابقة معلَّمة بذلك، وليست جزءاً من هذه المراجعة. معلومات المنتجات والبائعين والأسعار والأرقام ونشاط المزادات والتفاعلات المعروضة في هذه المعاينة مبنية على بيانات نموذجية، وقد لا تعكس المنصة الحالية.",
   },
   option: { en: "Option", ar: "الخيار" },
   options: { en: "The four options", ar: "الخيارات الأربعة" },
@@ -27,11 +26,8 @@ export const S = {
   explore: { en: "Explore Option {id}", ar: "استكشف الخيار {id}" },
   mobile: { en: "Mobile preview", ar: "معاينة الجوال" },
   screens: { en: "Go straight to a screen", ar: "انتقل مباشرة إلى شاشة" },
-  newDesign: { en: "New design", ar: "التصميم الجديد" },
-  screensNote: {
-    en: "Only the Home, Browse, Auction, Live auction and Product pages have the new approved design so far. The other screens are earlier prototypes from the previous round and have not been redesigned yet.",
-    ar: "الصفحة الرئيسية وصفحة التصفّح وصفحة المزاد وصفحة المزاد المباشر وصفحة المنتج وحدها تحمل التصميم الجديد المعتمد حتى الآن. أما الشاشات الأخرى فهي نماذج أولية سابقة من الجولة الماضية ولم يُعَد تصميمها بعد.",
-  },
+  reviewPages: { en: "New design · the five pages to review", ar: "التصميم الجديد · الصفحات الخمس للمراجعة" },
+  prototypePages: { en: "Earlier prototypes · not part of this review", ar: "نماذج أولية سابقة · خارج هذه المراجعة" },
   previewAlt: { en: "Option {id} — {name}, home page on desktop and mobile", ar: "الخيار {id} — {name}، الصفحة الرئيسية على سطح المكتب والجوال" },
   howTitle: { en: "How to review", ar: "طريقة المراجعة" },
   howLead: {
@@ -49,8 +45,8 @@ export const S = {
     {
       title: { en: "Move between screens and options", ar: "التنقل بين الشاشات والخيارات" },
       text: {
-        en: "The dark bar at the top switches between Home, Browse, Product, Auction, Live auction, Seller and Components & states — and between the four options. In Options 2–4 only Home, Browse, Auction, Live auction and Product have the new design; the other screens are labelled as earlier prototypes.",
-        ar: "يتيح الشريط الداكن في الأعلى التنقل بين الرئيسية والتصفّح والمنتج والمزاد والمزاد المباشر والبائع والمكونات والحالات — وبين الخيارات الأربعة. في الخيارات 2–4 تحمل الرئيسية والتصفّح والمزاد والمزاد المباشر والمنتج وحدها التصميم الجديد، والشاشات الأخرى معلَّمة كنماذج أولية سابقة.",
+        en: "The dark bar at the top lists the five pages to review in order — Home, Browse, Auction, Live auction and Product — and switches between the four options. Seller and Components & states come after them, labelled as earlier prototypes.",
+        ar: "يعرض الشريط الداكن في الأعلى الصفحات الخمس للمراجعة بالترتيب — الرئيسية والتصفّح والمزاد والمزاد المباشر والمنتج — ويتيح التنقل بين الخيارات الأربعة. وتأتي بعدها صفحتا البائع والمكونات والحالات، معلَّمتين كنموذجين أوليين سابقين.",
       },
     },
     {

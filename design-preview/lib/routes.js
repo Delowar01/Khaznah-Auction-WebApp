@@ -2,19 +2,22 @@
 
 export const CONCEPT_IDS = ["a", "b", "c", "d"];
 
+// The five client review pages first, in review order, then the earlier
+// prototypes.
 export const PAGES = [
   { key: "home", path: "", label: { en: "Home", ar: "الرئيسية" } },
   { key: "browse", path: "/browse", label: { en: "Browse", ar: "التصفّح" } },
-  { key: "product", path: "/product", label: { en: "Product", ar: "المنتج" } },
   { key: "auction", path: "/auction", label: { en: "Auction", ar: "المزاد" } },
   { key: "live", path: "/live-auction", label: { en: "Live auction", ar: "المزاد المباشر" } },
+  { key: "product", path: "/product", label: { en: "Product", ar: "المنتج" } },
   { key: "seller", path: "/seller", label: { en: "Seller", ar: "البائع" } },
   { key: "system", path: "/system", label: { en: "Components & states", ar: "المكونات والحالات" } },
 ];
 
 /**
- * Screens of Options 2–4 that already carry their new approved design. The
- * others are earlier prototypes, marked as such in the presentation chrome.
+ * The client review pages: the new approved design of every option. The
+ * other screens are earlier prototypes, not part of the review, and marked as
+ * such in the presentation chrome.
  */
 export const NEW_DESIGN_PAGES = ["home", "browse", "auction", "live", "product"];
 

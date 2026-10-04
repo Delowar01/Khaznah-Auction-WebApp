@@ -192,7 +192,7 @@ function AccountButton() {
   );
 }
 
-/** `active`: the current shopping mode on Browse ("timed", "buy", "bulk" or null), "live" on the live auction, or the product's mode on a product page. */
+/** `active`: the current shopping mode on Browse ("timed", "buy", "bulk" or null), "timed" on an auction lot, "live" on the live auction, "buy" on a product page. */
 export function Header({ active } = {}) {
   const { t } = useLang();
   const { link } = useConcept();

@@ -15,6 +15,42 @@ The options are not ranked, and none is recommended over the others.
 > is background for the review team; the preview itself simply shows the four
 > options below.
 
+## What to review
+
+For **each of the four options**, please review these five pages, in this
+order:
+
+1. **Home**
+2. **Browse** — all lots, with the Auctions and Buy Now views
+3. **Auction Detail** — a timed auction lot
+4. **Live Auction** — the live sale room
+5. **Product Detail** — a Buy Now item
+
+The dark bar at the top of the preview lists these five pages first, in this
+order, in every option. The start page lists them under **New design · the
+five pages to review**.
+
+As you go through them, please consider:
+
+- **Overall design direction** — does the option feel like one consistent
+  Khazna website from page to page?
+- **Auction experience** — finding auctions, following a lot, placing a bid
+  and taking part in the live sale.
+- **Product discovery** — browsing, searching, filtering and moving from a
+  card to its page.
+- **Buy Now experience** — price, stock, quantity, Add to cart and Buy it
+  now.
+- **Mobile direction** — the same five pages on a phone.
+- **Arabic direction** — the same five pages in Arabic, designed right to
+  left.
+
+It helps to note what you like in each option. A final direction can combine
+elements from more than one option.
+
+**Not part of this review:** the Seller and Components & states screens are
+earlier prototypes. Each of them carries an "Earlier prototype" note at the
+top. Cart, checkout and account have not been redesigned in any option.
+
 ## Options
 
 | Option | Direction | In short |
@@ -24,16 +60,11 @@ The options are not ranked, and none is recommended over the others.
 | **3** | Visual Discovery Marketplace | A bright, image-first marketplace in white, indigo and navy with gold: a pill search in the header, a mosaic hero, outlined category pills, a mixed-height product wall, a navy live banner, image-first auctions, photographic seller shelves and an ivory newsletter. |
 | **4** | Contemporary Saudi Commerce | A green and cream storefront: a centred bilingual hero with the marketplace search at its heart, trust points straight after, a category rail beside horizontal Buy Now cards, Ending soon beside the live auction, a seller directory, large 01/02/03 steps and a green footer. |
 
-> **This round:** Options 2–4 now show the approved work designs on the
-> **home page, Browse, the auction page, the live auction and the product
-> page** so far. Their other screens (seller, components) are **earlier
-> prototypes** from the previous round and have not been redesigned yet; each
-> of them carries an "Earlier prototype" note at the top, and the start page
-> marks Home, Browse, Auction, Live auction and Product as the new design.
-> The approved designs are light only: on these pages the bar shows **Light
-> only** (a sun) instead of the sun / moon button. Option 1's Browse, auction
-> page, live auction and product page were redesigned within its existing
-> design. Cart, checkout and account have not been redesigned in any option.
+> **This round:** every option shows its new design on the same five pages —
+> **Home, Browse, Auction Detail, Live Auction and Product Detail**. Option
+> 1's pages were redesigned within its existing design; Options 2–4 use their
+> approved new designs, which are light only (on these pages the bar shows
+> **Light only**, a sun, instead of the sun / moon button).
 
 ## Using the preview
 
@@ -42,9 +73,9 @@ The options are not ranked, and none is recommended over the others.
   screens.
 - **The dark bar at the top** belongs to the presentation, not to the website
   designs. Use it to:
-  - move between screens (Home, Browse, Product, Auction, Live auction, Seller,
-    and Components & states; in Options 2–4 the bar lists the new designs —
-    Home, Browse, Product, Auction and Live auction — first);
+  - move between screens: the five pages to review first (Home, Browse,
+    Auction, Live auction, Product), then the earlier prototypes (Seller, and
+    Components & states);
   - switch to another option;
   - change the language (**EN / العربية**);
   - change the appearance (sun / moon button — Option 1 and the earlier
@@ -60,25 +91,6 @@ The options are not ranked, and none is recommended over the others.
   screen.
 - **On a phone**, simply open the preview link. Each design adapts to the
   screen.
-
-## How to review
-
-For each option, please consider:
-
-- the overall visual direction;
-- the homepage;
-- navigation;
-- the marketplace / browse page;
-- the product page;
-- auctions;
-- live auctions;
-- seller pages;
-- the mobile experience;
-- the Arabic experience;
-- light or dark appearance preference.
-
-It helps to note what you like in each option. A final direction can combine
-elements from more than one option.
 
 ## Important
 

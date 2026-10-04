@@ -29,7 +29,7 @@ function CallHead({ room }) {
     { key: "seconds", value: clock.seconds % 60 },
   ];
   return (
-    <div className="kb-on-dark bg-[var(--kb-indigo-950)] px-4 pb-4 pt-3 text-white sm:px-5">
+    <div className="kb-on-dark bg-[var(--kb-indigo-950)] px-4 pb-4 pt-3 text-white sm:px-5 lg-short:pb-3 lg-short:pt-2.5">
       <div className="flex items-center justify-between gap-3">
         <p className="inline-flex min-w-0 items-center gap-2 kb-sm font-bold">
           <span aria-hidden="true" className={cx("size-2 shrink-0 rounded-full", CALL_DOT[clock.tone])} />
@@ -49,7 +49,7 @@ function CallHead({ room }) {
       ) : (
         <>
           <p className="sr-only">{clock.spoken}</p>
-          <div aria-hidden="true" dir="ltr" className="mt-3 flex gap-1.5">
+          <div aria-hidden="true" dir="ltr" className="mt-3 flex gap-1.5 lg-short:mt-2">
             {cells.map((cell) => (
               <div key={cell.key} className="flex min-w-0 flex-1 flex-col items-center rounded-lg bg-white/10 px-1 py-1.5">
                 <span className={cx("text-[26px] font-extrabold leading-8 tabular", CALL_DIGITS[clock.tone])}>{pad(cell.value)}</span>
@@ -77,7 +77,7 @@ function CallHead({ room }) {
           </motion.p>
         ) : null}
       </AnimatePresence>
-      <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/15" role="presentation">
+      <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/15 lg-short:mt-2.5" role="presentation">
         <div
           className="h-full rounded-full bg-[var(--kb-gold-soft)] transition-[width] duration-1000 ease-linear"
           style={{ width: `${(hammer ? hammer.left : clock.progress) * 100}%` }}
@@ -110,10 +110,10 @@ export function LiveBidPanel({ room }) {
       <div className="max-lg:hidden">
         <CallHead room={room} />
       </div>
-      <div className="grid gap-4 p-4 sm:p-5">
+      <div className="grid gap-4 p-4 sm:p-5 lg-short:gap-3 lg-short:pt-4">
         {/* Desktop: what the bid is for, in case the lot strip is below the fold (phones show the strip right above). */}
         {focus ? (
-          <div className="hidden min-w-0 items-center gap-3 border-b border-line pb-4 lg:flex">
+          <div className="hidden min-w-0 items-center gap-3 border-b border-line pb-4 lg:flex lg-short:pb-3">
             <Plate key={focus.order} image={focus.image} alt="" sizes="48px" pad="p-1" className="size-12 shrink-0 rounded-lg border border-line" />
             <div className="min-w-0">
               <p className="kb-2xs font-semibold text-fg-3">{hammer ? ui("upNext") : lotInfo.of}</p>

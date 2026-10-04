@@ -56,8 +56,6 @@ function ConceptCard({ concept, lang, index }) {
   const name = tr(concept.name, lang);
   const Arrow = lang === "ar" ? ArrowLeft : ArrowRight;
   const base = `/${lang}/concept-${concept.id}`;
-  // Options 2–4: only the home page has the new approved design so far.
-  const split = concept.id !== "b";
   return (
     <article
       id={`option-${concept.id}`}
@@ -129,21 +127,28 @@ function ConceptCard({ concept, lang, index }) {
               {tr(S.mobile, lang)}
             </Link>
           </div>
+          {/* Every option: the five client review pages, in review order, then the earlier prototypes. */}
           <nav aria-label={`${tr(S.screens, lang)} — ${name}`} className="mt-5">
-            <p className="text-[12px] text-fg-3 rtl:text-[13px]">{tr(S.screens, lang)}</p>
-            <ul className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] text-fg-2">
-              {PAGES.map((page) => (
-                <li key={page.key} className={split ? "flex items-center gap-1.5" : undefined}>
-                  <a href={`${base}${page.path}`} className="underline-offset-4 hover:text-fg hover:underline">
+            <p className="text-[12px] font-semibold text-fg rtl:text-[13px]">{tr(S.reviewPages, lang)}</p>
+            <ul className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] font-medium text-fg">
+              {PAGES.filter((page) => NEW_DESIGN_PAGES.includes(page.key)).map((page) => (
+                <li key={page.key}>
+                  <a href={`${base}${page.path}`} className="underline-offset-4 hover:underline">
                     {tr(page.label, lang)}
                   </a>
-                  {split && NEW_DESIGN_PAGES.includes(page.key) ? (
-                    <span className="rounded-full border border-line-strong px-2 text-[11px] font-semibold leading-[18px] text-fg rtl:text-[12px]">{tr(S.newDesign, lang)}</span>
-                  ) : null}
                 </li>
               ))}
             </ul>
-            {split ? <p className="mt-2.5 max-w-xl text-[12.5px] leading-relaxed text-fg-3 rtl:text-[13px] rtl:leading-6">{tr(S.screensNote, lang)}</p> : null}
+            <p className="mt-3 text-[12px] text-fg-3 rtl:text-[13px]">{tr(S.prototypePages, lang)}</p>
+            <ul className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] text-fg-2">
+              {PAGES.filter((page) => !NEW_DESIGN_PAGES.includes(page.key)).map((page) => (
+                <li key={page.key}>
+                  <a href={`${base}${page.path}`} className="underline-offset-4 hover:text-fg hover:underline">
+                    {tr(page.label, lang)}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </nav>
         </div>
       </div>

@@ -74,8 +74,10 @@ export function useProductInfo(product) {
     lot: product.lot,
     categoryName: t(category.name),
     categoryHref,
+    // Home › Buy Now › category › product, as an auction lot's Home › Auctions › category › lot.
     crumbs: [
       { key: "home", label: ui("home"), href: "/" },
+      { key: "buy", label: ui("buyNow"), href: "/browse?tab=buy_now" },
       { key: "category", label: t(category.name), href: categoryHref },
       { key: "product", label: title },
     ],

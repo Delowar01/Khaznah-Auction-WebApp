@@ -70,6 +70,17 @@ const GRADE_TONE = {
 };
 export const gradeTone = (grade) => GRADE_TONE[grade];
 
+/** A seller's avatar colour a touch deeper (10 %), so the white initials keep 4.5:1 on every seller's tone. */
+export function sellerTone(hex, by = 0.1) {
+  const n = parseInt(hex.slice(1), 16);
+  return `#${[16, 8, 0].map((shift) => Math.round(((n >> shift) & 255) * (1 - by)).toString(16).padStart(2, "0")).join("")}`;
+}
+
+/** Lot or product facts with the seller's avatar colour deepened (the header avatar and the seller panel both read it). */
+export function withSellerTone(info) {
+  return info.seller ? { ...info, seller: { ...info.seller, tone: sellerTone(info.seller.tone) } } : info;
+}
+
 export function GradePill({ grade, className = "" }) {
   const { t } = useLang();
   const info = GRADES[grade];

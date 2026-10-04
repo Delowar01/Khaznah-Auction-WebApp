@@ -57,8 +57,9 @@ export function LiveView() {
       <Breadcrumbs items={[{ label: ui("home"), href: link("/") }, { label: ui("liveAuctions") }]} />
       <EventBar room={room} className="mt-3" />
 
-      {/* phone / tablet: stage, lot strip, tabs, one section · desktop: [stage + strip | console + activity] over the running order */}
-      <div className="mt-4 grid gap-4 lg:mt-5 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-5 lg:[grid-template-areas:'main_side'_'queue_queue'] xl:grid-cols-[minmax(0,1fr)_384px]">
+      {/* phone / tablet: stage, lot strip, tabs, one section · desktop: [stage + strip | console + activity] over the running order
+          (on short laptop screens the head and console sit a little tighter, so Bid shows on load) */}
+      <div className="mt-4 grid gap-4 lg:mt-5 lg-short:mt-4 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-5 lg:[grid-template-areas:'main_side'_'queue_queue'] xl:grid-cols-[minmax(0,1fr)_384px]">
         <div className="grid min-w-0 content-start gap-4 lg:[grid-area:main]">
           <LiveStage room={room} />
           <CurrentLot room={room} />

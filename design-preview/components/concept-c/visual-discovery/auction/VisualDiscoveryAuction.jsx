@@ -17,7 +17,8 @@ function Page({ product }) {
       <a href="#main" className="fixed start-3 top-[calc(var(--pbar-h)+8px)] z-[70] -translate-y-[200%] rounded-full bg-[var(--vd-indigo)] px-5 py-2.5 vd-md font-semibold text-white transition-transform focus:translate-y-0">
         {t(COPY.skip)}
       </a>
-      <Header />
+      {/* An auction lot belongs to Timed Auctions. */}
+      <Header active="timed" />
       <main id="main" tabIndex={-1} className="outline-none">
         {/* Keyed by lot so the simulated auction restarts for each one. */}
         <AuctionView key={product.slug} product={product} />
@@ -26,7 +27,7 @@ function Page({ product }) {
       <Footer />
       {/* Room under the footer for the floating phone bid bar. */}
       <div aria-hidden="true" className="h-[calc(88px+env(safe-area-inset-bottom))] md:hidden" />
-      <Menu />
+      <Menu active="timed" />
       <Cart />
     </div>
   );

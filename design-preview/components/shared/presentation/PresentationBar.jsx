@@ -20,9 +20,10 @@ const LABELS = {
   theme: { en: "Toggle light or dark appearance", ar: "تبديل المظهر الفاتح أو الداكن" },
   lightOnly: { en: "Light only", ar: "فاتح فقط" },
   lightOnlyHint: { en: "Light only: this page design has no dark version", ar: "المظهر الفاتح فقط: لا توجد نسخة داكنة من تصميم هذه الصفحة" },
-  newDesign: { en: "New design", ar: "التصميم الجديد" },
-  prototypes: { en: "Earlier prototypes", ar: "نماذج أولية سابقة" },
-  prototype: { en: "earlier prototype", ar: "نموذج أولي سابق" },
+  newDesign: { en: "New design · client review", ar: "التصميم الجديد · للمراجعة" },
+  prototypes: { en: "Earlier prototypes · not in this review", ar: "نماذج أولية سابقة · خارج هذه المراجعة" },
+  prototype: { en: "earlier prototype, not part of this review", ar: "نموذج أولي سابق، خارج هذه المراجعة" },
+  prototypesShort: { en: "Prototypes", ar: "نماذج سابقة" },
   hide: { en: "Hide presentation controls", ar: "إخفاء أدوات العرض" },
   hideShort: { en: "Hide controls", ar: "إخفاء الأدوات" },
   hideHint: { en: "Bring them back with the side tab or the . key", ar: "أعدها عبر اللسان الجانبي أو بمفتاح النقطة" },
@@ -70,14 +71,13 @@ export function PresentationBar({ concept }) {
   const { lang, rest } = parsePath(pathname);
   const active = pageKeyOf(rest);
   const current = CONCEPTS.find((c) => c.id === concept);
-  // Options 2–4 have their new approved design on the Home, Browse, Auction,
-  // Live auction and Product pages only: those pages are light only and
-  // listed first, and the other screens are earlier prototypes. Option 1's
-  // controls are unchanged.
-  const split = concept !== "b";
+  // Every option is reviewed on the same five pages (Home, Browse, Auction,
+  // Live auction, Product), listed first in that order; the other screens
+  // follow as earlier prototypes, not part of the review. The new pages of
+  // Options 2–4 are light only; Option 1 keeps its light / dark switch.
   const isNew = (key) => NEW_DESIGN_PAGES.includes(key);
-  const lightOnly = split && isNew(active);
-  const pages = split ? [...PAGES.filter((page) => isNew(page.key)), ...PAGES.filter((page) => !isNew(page.key))] : PAGES;
+  const lightOnly = concept !== "b" && isNew(active);
+  const pages = PAGES;
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   useDismiss(menuOpen, () => setMenuOpen(false), menuRef);
@@ -191,19 +191,27 @@ export function PresentationBar({ concept }) {
         <nav aria-label={L("pages")} className="mx-auto hidden items-center gap-0.5 xl:flex">
           {pages.map((page) => {
             const isActive = page.key === active;
-            const status = split ? L(isNew(page.key) ? "newDesign" : "prototype") : null;
+            const status = L(isNew(page.key) ? "newDesign" : "prototype");
             return (
               <Fragment key={page.key}>
                 <Link
                   href={`/${lang}/concept-${concept}${page.path}`}
                   aria-current={isActive ? "page" : undefined}
-                  title={status ? `${tr(page.label, lang)} — ${status}` : undefined}
+                  title={`${tr(page.label, lang)} — ${status}`}
                   className={`whitespace-nowrap rounded-md px-2.5 py-1.5 font-medium transition-colors ${isActive ? "bg-white text-[#0b0d12]" : "text-[var(--pbar-muted)] hover:bg-white/10 hover:text-white"}`}
                 >
                   {tr(page.label, lang)}
-                  {status ? <span className="sr-only"> ({status})</span> : null}
+                  <span className="sr-only"> ({status})</span>
                 </Link>
-                {split && page.key === NEW_DESIGN_PAGES[NEW_DESIGN_PAGES.length - 1] ? <span aria-hidden="true" className="mx-1 h-4 w-px shrink-0 bg-white/20" /> : null}
+                {page.key === NEW_DESIGN_PAGES[NEW_DESIGN_PAGES.length - 1] ? (
+                  <>
+                    <span aria-hidden="true" className="mx-1 h-4 w-px shrink-0 bg-white/20" />
+                    {/* Wide screens name the group that follows; narrower ones keep the divider (and the tooltips). */}
+                    <span aria-hidden="true" className="hidden whitespace-nowrap px-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--pbar-muted)] opacity-80 rtl:text-[11px] rtl:normal-case rtl:tracking-normal min-[1600px]:inline">
+                      {L("prototypesShort")}
+                    </span>
+                  </>
+                ) : null}
               </Fragment>
             );
           })}
@@ -219,30 +227,20 @@ export function PresentationBar({ concept }) {
             }}
             className="h-8 w-full min-w-0 max-w-[15rem] appearance-none truncate rounded-md border border-white/12 bg-white/5 pe-7 ps-2.5 font-medium text-white outline-none focus-visible:ring-2 focus-visible:ring-[#D8A535]"
           >
-            {split ? (
-              <>
-                <optgroup label={L("newDesign")} className="bg-[#12151d]">
-                  {PAGES.filter((page) => isNew(page.key)).map((page) => (
-                    <option key={page.key} value={page.key} className="bg-[#12151d]">
-                      {tr(page.label, lang)}
-                    </option>
-                  ))}
-                </optgroup>
-                <optgroup label={L("prototypes")} className="bg-[#12151d]">
-                  {PAGES.filter((page) => !isNew(page.key)).map((page) => (
-                    <option key={page.key} value={page.key} className="bg-[#12151d]">
-                      {tr(page.label, lang)}
-                    </option>
-                  ))}
-                </optgroup>
-              </>
-            ) : (
-              PAGES.map((page) => (
+            <optgroup label={L("newDesign")} className="bg-[#12151d]">
+              {PAGES.filter((page) => isNew(page.key)).map((page) => (
                 <option key={page.key} value={page.key} className="bg-[#12151d]">
                   {tr(page.label, lang)}
                 </option>
-              ))
-            )}
+              ))}
+            </optgroup>
+            <optgroup label={L("prototypes")} className="bg-[#12151d]">
+              {PAGES.filter((page) => !isNew(page.key)).map((page) => (
+                <option key={page.key} value={page.key} className="bg-[#12151d]">
+                  {tr(page.label, lang)}
+                </option>
+              ))}
+            </optgroup>
           </select>
           <ChevronDown aria-hidden="true" className="pointer-events-none absolute end-2 size-3.5 opacity-70" />
         </label>

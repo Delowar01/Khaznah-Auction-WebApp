@@ -324,8 +324,8 @@ export function PremiumLanguage({ className = "", onNavigate }) {
 
 /**
  * `active` is the current shopping mode on Browse ("timed", "buy", "bulk" or
- * null), "live" on the live auction, or the product's mode ("buy" or "bulk")
- * on a product page; the home page leaves it out and keeps its first mode in
+ * null), "timed" on an auction lot, "live" on the live auction and "buy" on
+ * a product page; the home page leaves it out and keeps its first mode in
  * semibold.
  */
 export function Header({ active } = {}) {

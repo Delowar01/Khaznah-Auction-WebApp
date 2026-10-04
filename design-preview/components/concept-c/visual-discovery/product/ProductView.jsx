@@ -16,18 +16,10 @@ import { moreFromSeller, relatedFor, useGradeGuide, useProductInfo, usePurchase,
 import { useHomeState } from "@/components/shared/r3/home";
 import { GradeGuide } from "../auction/Dialogs";
 import { ManifestTiles, SellerDelivery } from "../auction/LotSections";
-import { GradePill, cx } from "../ui";
+import { GradePill, cx, withSellerTone } from "../ui";
 import { Gallery } from "./Gallery";
 import { PhoneBar, PriceCard } from "./PriceCard";
 import { AboutItem, DiscoveryList, useDiscoveryChips } from "./Story";
-
-// The seller's avatar colour a touch deeper (10 %), so the white initials
-// keep 4.5:1 on every seller's tone; the Auction Detail's seller panel reads
-// the same field, so it is passed the deeper colour too.
-function deeper(hex, by = 0.1) {
-  const n = parseInt(hex.slice(1), 16);
-  return `#${[16, 8, 0].map((shift) => Math.round(((n >> shift) & 255) * (1 - by)).toString(16).padStart(2, "0")).join("")}`;
-}
 
 function Breadcrumbs({ info }) {
   const { ui } = useLang();
@@ -104,8 +96,7 @@ function Identity({ product, info, onGradeGuide }) {
 export function ProductView({ product }) {
   const { ui } = useLang();
   const { open } = useHomeState();
-  const facts = useProductInfo(product);
-  const info = facts.seller ? { ...facts, seller: { ...facts.seller, tone: deeper(facts.seller.tone) } } : facts;
+  const info = withSellerTone(useProductInfo(product));
   const purchase = usePurchase(product, { openCart: () => open("cart") });
   const detail = useGradeGuide(product);
   useToastsAwayFromPanel();

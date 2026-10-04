@@ -27,7 +27,7 @@ export function EventBar({ room, className = "" }) {
   const { event, lotInfo } = room;
   return (
     <section aria-labelledby="kb-live-title" className={cx("kb-on-dark overflow-hidden rounded-xl bg-[var(--kb-indigo-950)] text-white", className)}>
-      <div className="flex flex-col gap-4 p-4 sm:p-5 xl:flex-row xl:items-end xl:justify-between xl:gap-8">
+      <div className="flex flex-col gap-4 p-4 sm:p-5 lg-short:py-4 xl:flex-row xl:items-end xl:justify-between xl:gap-8">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
             <LiveBadge size="md">{ui("liveNow")}</LiveBadge>

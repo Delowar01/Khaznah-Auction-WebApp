@@ -13,7 +13,7 @@ import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { LiveAnnouncer } from "@/components/shared/live/LiveAnnouncer";
 import { useLiveRoom, useLiveTabs } from "@/components/shared/live/hooks";
-import { cx } from "../ui";
+import { Arrow, cx } from "../ui";
 import { BidPanel } from "./BidPanel";
 import { Activity, LotFacts, RunningOrder } from "./Panels";
 import { PhoneBar } from "./PhoneBar";
@@ -36,22 +36,25 @@ function EventPanel({ room }) {
   const { event } = room;
   return (
     <div className="sc-container pt-5 dt:pt-6">
+      {/* The same breadcrumb as Browse, Auction and Product: blue links, arrows, the page in ink. */}
       <nav aria-label={ui("breadcrumb")}>
         <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 sc-sm text-[var(--sc-muted)]">
           <li>
-            <Link href={link("/")} className="sc-link">
+            <Link href={link("/")} className="sc-link text-[var(--sc-link)]">
               {ui("home")}
             </Link>
           </li>
-          <li className="flex items-center gap-2">
-            <span aria-hidden="true">/</span>
-            <span aria-current="page" className="font-medium text-[var(--sc-ink)]">
+          <li aria-hidden="true">
+            <Arrow className="size-3.5" />
+          </li>
+          <li>
+            <span aria-current="page" className="text-[var(--sc-ink)]">
               {ui("liveAuctions")}
             </span>
           </li>
         </ol>
       </nav>
-      <div className="mt-4 rounded-[12px] bg-[var(--sc-soft)] p-4 sm:p-5 dt:px-7 dt:py-6">
+      <div className="mt-4 rounded-[12px] bg-[var(--sc-soft)] p-4 sm:p-5 dt:px-7 dt:py-6 lg-short:py-5">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
           <span aria-hidden="true" className="size-2.5 shrink-0 rounded-full bg-[var(--sc-red)]" />
           <span className="sc-lg font-semibold text-[var(--sc-ink)]">{ui("liveAuction")}</span>
@@ -65,8 +68,8 @@ function EventPanel({ room }) {
             {ui("connected")}
           </span>
         </div>
-        <h1 className="mt-3 sc-page-title text-balance text-[var(--sc-ink)]">{event.title}</h1>
-        <ul className="mt-4 grid gap-x-6 gap-y-2 border-t border-[#d5e3dc] pt-4 sm:grid-cols-2 dt:grid-cols-4">
+        <h1 className="mt-3 sc-page-title text-balance text-[var(--sc-ink)] lg-short:mt-2">{event.title}</h1>
+        <ul className="mt-4 grid gap-x-6 gap-y-2 border-t border-[#d5e3dc] pt-4 sm:grid-cols-2 dt:grid-cols-4 lg-short:mt-3 lg-short:pt-3">
           <Fact icon={Mic}>{event.presenter}</Fact>
           <Fact icon={Store}>
             {ui("hostedBy")}{" "}
@@ -120,8 +123,9 @@ export function LiveView() {
       <EventPanel room={room} />
 
       {/* phone / tablet: stage, facts, tabs, one section · 1024: [stage + facts | bid] over [running order | activity] ·
-          1200: [running order | stage, facts, activity | bid, kept in view while the column scrolls] */}
-      <div className="sc-container mt-5 grid gap-4 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-5 lg:[grid-template-areas:'stage_bid'_'facts_bid'_'order_activity'] dt:mt-6 dt:grid-cols-[296px_minmax(0,1fr)_372px] dt:gap-6 dt:[grid-template-areas:'order_stage_bid'_'order_facts_bid'_'order_activity_bid']">
+          1200: [running order | stage, facts, activity | bid, kept in view while the column scrolls]
+          (on short laptop screens the event panel and bid panel sit a little tighter, so Bid shows on load) */}
+      <div className="sc-container mt-5 grid gap-4 lg-short:mt-5 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-5 lg:[grid-template-areas:'stage_bid'_'facts_bid'_'order_activity'] dt:mt-6 dt:grid-cols-[296px_minmax(0,1fr)_372px] dt:gap-6 dt:[grid-template-areas:'order_stage_bid'_'order_facts_bid'_'order_activity_bid']">
         <Stage room={room} className="lg:[grid-area:stage]" />
         <LotFacts room={room} className="lg:self-start lg:[grid-area:facts]" />
         <RoomTabs tabs={tabs} />

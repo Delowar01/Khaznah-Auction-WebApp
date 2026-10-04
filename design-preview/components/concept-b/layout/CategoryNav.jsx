@@ -14,12 +14,13 @@ import { useChrome } from "./ChromeContext";
 import { MegaMenu } from "./MegaMenu";
 
 // Shopping modes, auction first: timed auctions (with their Ending soon
-// shortcut), live, then Buy Now, sellers and bulk.
+// shortcut), live, then Buy Now, sellers and bulk. A detail page marks its
+// sale mode (`section`): an auction lot Auctions, a product Buy Now.
 const LINKS = [
-  { key: "auctions", href: "/browse?tab=auction", ui: "auctions", match: { tab: "auction" } },
+  { key: "auctions", href: "/browse?tab=auction", ui: "auctions", match: { tab: "auction" }, section: "/auction" },
   { key: "ending", href: "/browse?ending=1h", ui: "endingSoon", match: { ending: "1h" } },
   { key: "live", href: "/live-auction", ui: "liveNow", live: true },
-  { key: "buy", href: "/browse?tab=buy_now", ui: "buyNow", match: { tab: "buy_now" } },
+  { key: "buy", href: "/browse?tab=buy_now", ui: "buyNow", match: { tab: "buy_now" }, section: "/product" },
   { key: "sellers", href: "/seller", ui: "sellers" },
   { key: "bulk", href: "/browse?category=bulk-pallets", ui: "bulkLots", match: { category: "bulk-pallets" } },
 ];
@@ -32,10 +33,11 @@ function NavLinks({ params }) {
   const { link } = useConcept();
   const pathname = usePathname();
   const onBrowse = pathname === link("/browse");
+  const within = (base) => pathname === base || pathname.startsWith(`${base}/`);
 
   return LINKS.map((item) => {
     let current = false;
-    if (item.match) current = onBrowse && Object.entries(item.match).every(([k, v]) => params?.get(k) === v);
+    if (item.match) current = (onBrowse && Object.entries(item.match).every(([k, v]) => params?.get(k) === v)) || (item.section != null && within(link(item.section)));
     else current = pathname.startsWith(link(item.href));
     const label = (
       <>

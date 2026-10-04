@@ -14,7 +14,7 @@ import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { AUCTION_COPY as C } from "@/components/shared/auction/copy";
 import { useAuctionDetail, useLotInfo, usePhaseLabel, useShareLink } from "@/components/shared/auction/hooks";
-import { GradePill, cx } from "../ui";
+import { GradePill, cx, withSellerTone } from "../ui";
 import { BidCard, BidSheet, BuyNowRow, PhoneBar } from "./Bidding";
 import { ConfirmBid, ConfirmBuyNow, GradeGuide } from "./Dialogs";
 import { Gallery } from "./Gallery";
@@ -102,7 +102,7 @@ function Identity({ detail, info }) {
 
 export function AuctionView({ product }) {
   const detail = useAuctionDetail(product);
-  const info = useLotInfo(product);
+  const info = withSellerTone(useLotInfo(product));
 
   return (
     <>

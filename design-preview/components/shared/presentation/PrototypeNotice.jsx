@@ -9,21 +9,22 @@ const T = {
   label: { en: "About this screen", ar: "عن هذه الشاشة" },
   tag: { en: "Earlier prototype", ar: "نموذج أولي سابق" },
   text: {
-    en: "Option {id}’s new approved design covers the Home, Browse, Auction, Live auction and Product pages so far. This screen is from the previous round and has not been redesigned yet.",
-    ar: "يقتصر التصميم الجديد المعتمد للخيار {id} حتى الآن على الصفحة الرئيسية وصفحة التصفّح وصفحة المزاد وصفحة المزاد المباشر وصفحة المنتج. هذه الشاشة من الجولة السابقة ولم يُعَد تصميمها بعد.",
+    en: "Not part of the final concept review. Option {id}’s new design covers the Home, Browse, Auction, Live auction and Product pages; this screen is from an earlier round and has not been redesigned.",
+    ar: "ليست جزءاً من المراجعة النهائية للمفاهيم. يغطي التصميم الجديد للخيار {id} الصفحة الرئيسية وصفحة التصفّح وصفحة المزاد وصفحة المزاد المباشر وصفحة المنتج، أما هذه الشاشة فمن جولة سابقة ولم يُعَد تصميمها.",
   },
   // Phones: the same point in one short line.
   short: {
-    en: "Only Home, Browse, Auction, Live auction and Product have Option {id}’s new design so far.",
-    ar: "الرئيسية والتصفّح والمزاد والمزاد المباشر والمنتج وحدها تحمل التصميم الجديد للخيار {id} حتى الآن.",
+    en: "Not part of this review: Option {id}’s new design covers Home, Browse, Auction, Live auction and Product.",
+    ar: "خارج هذه المراجعة: يغطي التصميم الجديد للخيار {id} الرئيسية والتصفّح والمزاد والمزاد المباشر والمنتج.",
   },
 };
 
 /**
- * Presentation note above the screens of Options 2–4 that still come from
- * Round 2, so they are not mistaken for parts of the new approved designs.
- * It belongs to the preview, not to the design, and stays visible when the
- * presentation bar is hidden and inside the device preview.
+ * Presentation note above the screens that are not part of the client review
+ * (Seller, Components & states) in every option, so they are not mistaken for
+ * parts of the new approved designs. It belongs to the preview, not to the
+ * design, and stays visible when the presentation bar is hidden and inside
+ * the device preview.
  */
 export function PrototypeNotice({ concept }) {
   const { lang } = parsePath(usePathname());

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { MapPin, Menu, Search, ShoppingBag, UserRound } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
@@ -21,8 +21,8 @@ import { cx } from "./ui";
 
 /**
  * Shopping modes; auctions come before Buy Now. On the home page Discover is
- * the selected one; Browse passes its current mode as `active` (or null),
- * the live auction "live" and a product page the product's mode.
+ * the selected one; Browse passes its current mode as `active` (or null), an
+ * auction lot "timed", the live auction "live" and a product page "buy".
  */
 export function useModes(active) {
   const { t } = useLang();
@@ -252,9 +252,21 @@ function ModeNav({ active, className = "" }) {
   const { t } = useLang();
   const { link } = useConcept();
   const modes = useModes(active);
+  const rail = useRef(null);
+  // Phones: scroll the rail just enough to show the current mode (Buy Now and
+  // Bulk & Pallets start out of view); a mode already in view stays put.
+  useEffect(() => {
+    const list = rail.current;
+    const pill = list?.querySelector('[aria-current="page"]');
+    if (!pill) return;
+    const box = list.getBoundingClientRect();
+    const at = pill.getBoundingClientRect();
+    if (at.left < box.left + 16) list.scrollLeft -= box.left + 16 - at.left;
+    else if (at.right > box.right - 16) list.scrollLeft += at.right - (box.right - 16);
+  }, [active]);
   return (
     <nav aria-label={t(COPY.modes)} className={className}>
-      <ul className="vd-rail flex items-center gap-2 overflow-x-auto dt:gap-[13px]">
+      <ul ref={rail} className="vd-rail flex items-center gap-2 overflow-x-auto dt:gap-[13px]">
         {modes.map((mode) => (
           <li key={mode.key} className="shrink-0">
             <Link
@@ -283,8 +295,8 @@ export function Header({ active } = {}) {
   return (
     <header className="border-b border-[var(--vd-line)] bg-white">
       <div className="mx-auto w-full max-w-[1440px] px-4 md:px-7 dt:px-16">
-        {/* Row 1: logo · pill search · utilities */}
-        <div data-ref="01" className="flex h-16 items-center gap-3 dt:grid dt:h-[73px] dt:grid-cols-[257px_minmax(0,637px)_minmax(0,1fr)] dt:gap-0">
+        {/* Row 1: logo · pill search · utilities (the utilities keep their full width; below 1440 px the search gives way rather than sliding under them) */}
+        <div data-ref="01" className="flex h-16 items-center gap-3 dt:grid dt:h-[73px] dt:grid-cols-[257px_minmax(0,637px)_auto] dt:gap-0">
           <button type="button" onClick={() => open("menu")} aria-label={t(COPY.openMenu)} className="-ms-2 grid size-11 place-items-center rounded-full text-[var(--vd-ink)] dt:hidden">
             <Menu aria-hidden="true" className="size-6" strokeWidth={1.8} />
           </button>

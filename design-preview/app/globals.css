@@ -15,6 +15,11 @@
   --breakpoint-wd: 90rem;
 }
 
+/* Short desktop windows (1024 px wide or more, 860 px tall or less, as on
+   most laptops): the Live Auction pages of Options 1 and 4 tighten a few
+   gaps there so the main Bid shows on load. Taller windows are unchanged. */
+@custom-variant lg-short (@media (min-width: 64rem) and (max-height: 860px));
+
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
