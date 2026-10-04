@@ -20,7 +20,7 @@ customer website, built for client review:
 > cart, saving, newsletter, drawers) lives in `components/shared/r3/`. See
 > `ROUND_WORK_DESIGN_IMPLEMENTATION_REPORT.md` at the repository root for the
 > comparison with the approved images, the asset audit and known differences.
-> This covers the **home page, Browse, Auction Detail and Live Auction**. Browse lives in each option's
+> This covers the **home page, Browse, Auction Detail, Live Auction and Buy Now Product Detail**. Browse lives in each option's
 > `browse/` folder (`components/concept-a/premium-modern/browse`,
 > `components/concept-c/visual-discovery/browse`,
 > `components/concept-d/saudi-commerce/browse`, served by
@@ -41,7 +41,16 @@ customer website, built for client review:
 > `app/[lang]/concept-{a,c,d}/live-auction/page.js`), Option 1's
 > `components/concept-b/live`, and the shared live-room behaviour and copy in
 > `components/shared/live/` on top of the simulated engine
-> `lib/useLiveEvent.js`. The other screens are still
+> `lib/useLiveEvent.js`. Buy Now Product Detail (`/product` and
+> `/product/[slug]`) follows suit: each option's `product/` folder
+> (`components/concept-a/premium-modern/product`,
+> `components/concept-c/visual-discovery/product`,
+> `components/concept-d/saudi-commerce/product`, served by
+> `app/[lang]/concept-{a,c,d}/product/`), Option 1's
+> `components/concept-b/product`, and the shared purchase behaviour and copy
+> (stock, quantity, Add to cart, Buy it now, the discovery lists) in
+> `components/shared/product/`, reusing each option's Auction Detail gallery,
+> viewer and grade guide. The other screens are still
 > the Round 2 versions (served through the `(round2)` route group in each
 > slot, with the Round 2 chrome) until the inner pages are redesigned. The
 > new pages render their own shell and scope their tokens to `html[data-r3]`
@@ -51,8 +60,8 @@ customer website, built for client review:
 > instead of the appearance toggle. The Round 2 screens of Options 2–4 open
 > under an "Earlier prototype" note (`PrototypeNotice`, rendered by each
 > `(round2)/layout.js`), the bar's page list groups them as earlier
-> prototypes, and the selector marks Home, Browse, Auction and Live auction
-> as the new design (`NEW_DESIGN_PAGES` in `lib/routes.js`).
+> prototypes, and the selector marks Home, Browse, Auction, Live auction and
+> Product as the new design (`NEW_DESIGN_PAGES` in `lib/routes.js`).
 >
 > **Round 3B.** The previous homepages for Options 2–4 (Visual Marketplace,
 > Premium Marketplace, Discovery Commerce) are in git history at commit
@@ -148,7 +157,7 @@ Screen routes (same for `concept-a` … `concept-d`, prefixed with `/en` or `/ar
 |---|---|---|
 | Home | `/concept-a` | — |
 | Browse | `/concept-a/browse` | `?tab=auction`, `?tab=buy_now`, `?category=electronics`, `?search=zzz` (empty state) |
-| Buy Now detail | `/concept-a/product` | `/product/tyre-inflator` (sold out), `/product/kitchen-pallet` (full-lot only), `/product/monitor-stands-5` (per case), `/product/capsule-coffee` (low stock) |
+| Buy Now detail | `/concept-a/product` | `/product/tyre-inflator` (sold out), `/product/kitchen-pallet` (full-lot only), `/product/monitor-stands-5` (per case), `/product/hairpin-desk` (low stock), `/product/capsule-coffee` (very low stock), `/product/field-watch` (no discount) |
 | Auction detail | `/concept-a/auction` | `/auction/fridge-690` (auction + Buy Now), `/auction/electronics-pallet` (pallet manifest), `/auction/seat-covers` (closing in minutes), `/auction/leather-sofa` (upcoming), `/auction/robot-vacuum` (sold) |
 | Live auction | `/concept-a/live-auction` | lots rotate automatically |
 | Seller storefront | `/concept-a/seller` | `/seller/REDSEA` (live now), `/seller/KHAZNA`, `/seller/MAJD`, `/seller/SAHEL` |

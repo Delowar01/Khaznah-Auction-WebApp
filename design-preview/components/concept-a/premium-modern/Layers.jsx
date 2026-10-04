@@ -1,8 +1,9 @@
 "use client";
 
 // The phone / tablet menu and the cart drawer of the Premium Modern pages
-// (home, Browse, Auction and Live auction). Browse passes its current
-// shopping mode as `active`, the live auction "live".
+// (home, Browse, Auction, Live auction and Product). Browse passes its
+// current shopping mode as `active`, the live auction "live" and a product
+// page the product's mode.
 import Link from "next/link";
 import { ChevronDown, MapPin } from "lucide-react";
 import { useState } from "react";
