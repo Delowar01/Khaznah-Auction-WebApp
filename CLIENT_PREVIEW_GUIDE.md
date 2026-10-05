@@ -44,8 +44,10 @@ As you go through them, please consider:
 - **Arabic direction** — the same five pages in Arabic, designed right to
   left.
 
-It helps to note what you like in each option. A final direction can combine
-elements from more than one option.
+It helps to note what you like in each option. Please select one primary
+design direction as your preferred concept. You may also note any specific
+elements from the other options that you particularly like; these can be
+reviewed after the primary direction is selected.
 
 **Not part of this review:** the Seller and Components & states screens are
 earlier prototypes. Each of them carries an "Earlier prototype" note at the
