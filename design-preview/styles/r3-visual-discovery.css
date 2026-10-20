@@ -412,3 +412,87 @@
     :root[lang="ar"] .vd-lot-title { font-size: 36px; line-height: 54px; }
   }
 }
+
+/* ── Winner moment (visual-discovery/WinnerCelebration.jsx) ────────────── */
+@layer components {
+  /* Navy-and-gold glow behind the medallion; softer when someone else won. */
+  .vd-win-glow-gold { background: radial-gradient(closest-side, rgb(225 169 50 / 0.42), rgb(225 169 50 / 0.15) 34%, rgb(24 57 151 / 0.3) 58%, transparent 100%); }
+  .vd-win-glow-soft { background: radial-gradient(closest-side, rgb(250 245 235 / 0.2), rgb(24 57 151 / 0.28) 50%, transparent 100%); }
+
+  /* Trophy medallion in burnished gold; ivory with a gold hairline for the gavel. */
+  .vd-win-medal-gold {
+    color: var(--vd-navy);
+    background: radial-gradient(circle at 34% 28%, #f8dc93 0%, #e8b54a 44%, #c98f1f 100%);
+    box-shadow: 0 0 0 6px rgb(225 169 50 / 0.22), 0 0 0 14px rgb(225 169 50 / 0.08), 0 18px 44px -10px rgb(225 169 50 / 0.6);
+  }
+  .vd-win-medal-quiet {
+    color: var(--vd-navy);
+    background: var(--vd-ivory);
+    box-shadow: inset 0 0 0 1.5px rgb(225 169 50 / 0.7), 0 0 0 6px rgb(250 245 235 / 0.16), 0 18px 40px -14px rgb(0 0 0 / 0.5);
+  }
+
+  /* Spaced capitals over the message (plain in Arabic). */
+  .vd-win-eyebrow { font-size: 12px; line-height: 16px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; }
+  :root[lang="ar"] .vd-win-eyebrow { font-size: 14px; line-height: 21px; letter-spacing: 0; text-transform: none; }
+
+  .vd-win-title { font-family: var(--font-display-stack); font-size: 28px; line-height: 34px; font-weight: 800; letter-spacing: -0.02em; }
+  :root[lang="ar"] .vd-win-title { font-size: 26px; line-height: 40px; letter-spacing: 0; }
+  @media (min-width: 768px) {
+    .vd-win-title { font-size: 34px; line-height: 40px; }
+    :root[lang="ar"] .vd-win-title { font-size: 30px; line-height: 46px; }
+  }
+
+  /* Gold flecks (only drawn with motion allowed): out from behind the medallion, then a slow drift down as they fade. */
+  .vd-fleck {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--size);
+    height: calc(var(--size) * var(--h));
+    border-radius: var(--round);
+    background: var(--tone);
+    opacity: 0;
+  }
+}
+
+/* The 3.5 s timeline: veil and glow over 0–0.6 s, the medallion (and
+   flecks) from 0.5 s, the message from 1.2 s, everything fading 2.8–3.5 s;
+   the component removes it at 3.5 s. The fade sits on the layers, not on
+   the whole moment, so the veil's blur keeps reaching the page beneath.
+   With reduced motion none of this runs: the moment shows, still, until
+   it is removed. */
+@media (prefers-reduced-motion: no-preference) {
+  .vd-win-veil { animation: vd-win-in 0.45s ease-out both, vd-win-out 0.7s ease-in-out 2.8s forwards; }
+  .vd-win-glow { animation: vd-win-glow 0.6s cubic-bezier(0.22, 1, 0.36, 1) both, vd-win-out 0.7s ease-in-out 2.8s forwards; }
+  .vd-win-stage { animation: vd-win-out 0.7s ease-in-out 2.8s forwards; }
+  .vd-win-medal { animation: vd-win-medal 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both; }
+  .vd-win-card { animation: vd-win-card 0.45s cubic-bezier(0.22, 1, 0.36, 1) 1.2s both; }
+  .vd-fleck { animation: vd-fleck 1.9s cubic-bezier(0.16, 0.84, 0.3, 1) var(--delay) both; }
+}
+
+@keyframes vd-win-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes vd-win-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes vd-win-glow {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes vd-win-medal {
+  from { opacity: 0; transform: scale(0.45); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes vd-win-card {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes vd-fleck {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3) rotate(0deg); }
+  10% { opacity: 1; }
+  36% { opacity: 1; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1) rotate(calc(var(--spin) * 0.55)); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y) + 10vmin)) scale(0.8) rotate(var(--spin)); }
+}

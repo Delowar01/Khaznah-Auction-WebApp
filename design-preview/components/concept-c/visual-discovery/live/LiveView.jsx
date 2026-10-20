@@ -7,13 +7,16 @@
 // card with the indigo Bid pill. Below on white: every lot as a visual tile,
 // the bid chat and the next sales. Phones: the band holds the stage and the
 // lot card, then Bid / Activity / Lots tabs and the floating navy bid bar.
+// A lot sold to you plays the winner moment once.
 import Link from "next/link";
 import { Eye } from "lucide-react";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
+import { useLiveCelebration } from "@/components/shared/auction/celebration";
 import { LiveAnnouncer } from "@/components/shared/live/LiveAnnouncer";
 import { useLiveRoom, useLiveTabs } from "@/components/shared/live/hooks";
 import { cx } from "../ui";
+import { WinnerCelebration } from "../WinnerCelebration";
 import { BidCard } from "./BidCard";
 import { ActivityChat, LotGrid } from "./Lists";
 import { PhoneBar } from "./PhoneBar";
@@ -92,6 +95,7 @@ function RoomTabs({ tabs }) {
 export function LiveView() {
   const room = useLiveRoom();
   const tabs = useLiveTabs("(min-width: 1024px)");
+  const celebration = useLiveCelebration(room);
   const panel = (key, className = "") => ({ ...tabs.panelProps(key), className: cx("min-w-0 outline-offset-4", !tabs.shown(key) && "max-lg:hidden", className) });
 
   return (
@@ -126,6 +130,7 @@ export function LiveView() {
 
       <PhoneBar room={room} />
       <LiveAnnouncer announce={room.announce} />
+      <WinnerCelebration celebration={celebration} />
     </>
   );
 }

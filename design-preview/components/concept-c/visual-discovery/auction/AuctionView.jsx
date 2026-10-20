@@ -7,14 +7,17 @@
 // tiles, condition and specifications, the seller on navy with delivery
 // tiles, the bid history as a timeline beside the terms, the manifest as
 // photo tiles and discovery-led similar auctions. Phones: a short bid card,
-// a floating navy pill bar and the full form in a sheet.
+// a floating navy pill bar and the full form in a sheet. When the lot
+// closes while the page is open, the winner moment plays once.
 import Link from "next/link";
 import { Share2 } from "lucide-react";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { AUCTION_COPY as C } from "@/components/shared/auction/copy";
+import { useAuctionCelebration } from "@/components/shared/auction/celebration";
 import { useAuctionDetail, useLotInfo, usePhaseLabel, useShareLink } from "@/components/shared/auction/hooks";
 import { GradePill, cx, withSellerTone } from "../ui";
+import { WinnerCelebration } from "../WinnerCelebration";
 import { BidCard, BidSheet, BuyNowRow, PhoneBar } from "./Bidding";
 import { ConfirmBid, ConfirmBuyNow, GradeGuide } from "./Dialogs";
 import { Gallery } from "./Gallery";
@@ -103,6 +106,7 @@ function Identity({ detail, info }) {
 export function AuctionView({ product }) {
   const detail = useAuctionDetail(product);
   const info = withSellerTone(useLotInfo(product));
+  const celebration = useAuctionCelebration(detail);
 
   return (
     <>
@@ -145,6 +149,7 @@ export function AuctionView({ product }) {
       <ConfirmBid detail={detail} />
       {detail.dual ? <ConfirmBuyNow detail={detail} /> : null}
       <GradeGuide detail={detail} />
+      <WinnerCelebration celebration={celebration} />
     </>
   );
 }
