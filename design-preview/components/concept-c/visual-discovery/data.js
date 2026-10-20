@@ -16,18 +16,21 @@ import { PRIORITY_2 } from "@/components/shared/r3/work-media-p2";
  * existing route for its mode. `safe` is the part of the picture that must
  * always stay in view — the words, the button, the products and the live
  * dot — as [left, top, right, bottom] in the picture's own pixels; the card
- * fits the picture around it (see ModeCard in Hero.jsx).
+ * fits the picture around it (see ModeCard in Hero.jsx). `floor` is the
+ * colour of the picture's bottom edge in eight bands, left to right: where
+ * the whole picture is a little shorter than its card (some layouts between
+ * 1200 and 1313 px) the card shows these plain tones below it.
  */
 const cardSources = (name, width, height, widths) =>
   [...widths, width].map((w) => ({ src: `/images/work/option3-cards/${name}-${w}.webp`, w, h: Math.round((w * height) / width) }));
 
-function artwork(name, width, height, widths, safe) {
+function artwork(name, width, height, widths, safe, floor) {
   const [x0, y0, x1, y1] = safe;
   return {
     image: { kind: "scene", ratio: width / height, sources: cardSources(name, width, height, widths) },
-    // Read by .vd-mode (styles/r3-visual-discovery.css); --edge feeds the edge strips.
+    // Read by .vd-mode (styles/r3-visual-discovery.css).
     fit: {
-      "--edge": `url("/images/work/option3-cards/${name}-${widths[0]}.webp")`,
+      "--floor": `linear-gradient(90deg, ${floor.map((tone, i) => `${tone} ${((i + 0.5) * 12.5).toFixed(2)}%`).join(", ")})`,
       "--ratio": (width / height).toFixed(5),
       "--fit-x": (width / (x1 - x0)).toFixed(5),
       "--fit-y": (width / (y1 - y0)).toFixed(5),
@@ -43,8 +46,8 @@ export const HERO_CARDS = {
     label: "modeAuction",
     sizes: "(min-width: 1200px) 560px, (min-width: 1000px) 50vw, (min-width: 640px) 56vw, calc(100vw - 24px)",
     art: {
-      en: artwork("option3-auction-en", 1254, 1254, [640, 960], [75, 95, 1190, 1185]),
-      ar: artwork("option3-auction-ar", 1254, 1254, [640, 960], [330, 95, 1190, 1185]),
+      en: artwork("option3-auction-en", 1254, 1254, [640, 960], [75, 95, 1190, 1185], ["#f9f1e7", "#f9f2e7", "#f9f1e6", "#f8f1e6", "#f9f2e7", "#f9f1e6", "#f8f1e6", "#f7f0e5"]),
+      ar: artwork("option3-auction-ar", 1254, 1254, [640, 960], [330, 95, 1190, 1185], ["#faf5ec", "#faf5eb", "#faf4eb", "#f9f4ea", "#faf5ec", "#faf4eb", "#faf4eb", "#faf4eb"]),
     },
   },
   buyNow: {
@@ -52,8 +55,8 @@ export const HERO_CARDS = {
     label: "modeBuyNow",
     sizes: "(min-width: 1200px) 420px, (min-width: 1000px) 50vw, (min-width: 640px) 44vw, calc(100vw - 24px)",
     art: {
-      en: artwork("option3-buy-now-en", 1564, 1006, [640, 960, 1280], [85, 210, 1445, 700]),
-      ar: artwork("option3-buy-now-ar", 1565, 1005, [640, 960, 1280], [110, 210, 1495, 729]),
+      en: artwork("option3-buy-now-en", 1564, 1006, [640, 960, 1280], [85, 210, 1445, 700], ["#cbb39c", "#c8ae96", "#d1b59a", "#bd9c7d", "#ceb296", "#ceb59c", "#c1a68b", "#c4a88b"]),
+      ar: artwork("option3-buy-now-ar", 1565, 1005, [640, 960, 1280], [110, 210, 1495, 729], ["#c4a88d", "#c3a991", "#d2baa4", "#d7bca3", "#cbab90", "#d5bba3", "#d0b7a2", "#d5bda8"]),
     },
   },
   live: {
@@ -61,8 +64,8 @@ export const HERO_CARDS = {
     label: "modeLive",
     sizes: "(min-width: 1200px) 420px, (min-width: 1000px) 50vw, (min-width: 640px) 44vw, calc(100vw - 24px)",
     art: {
-      en: artwork("option3-live-auction-en", 1564, 1006, [640, 960, 1280], [95, 255, 1290, 727]),
-      ar: artwork("option3-live-auction-ar", 1565, 1005, [640, 960, 1280], [252, 255, 1478, 732]),
+      en: artwork("option3-live-auction-en", 1564, 1006, [640, 960, 1280], [95, 255, 1290, 727], ["#f9efe2", "#f2e1cf", "#e7d0bb", "#e8ccb1", "#ddbc9e", "#c4a68f", "#c2a58e", "#c5a891"]),
+      ar: artwork("option3-live-auction-ar", 1565, 1005, [640, 960, 1280], [252, 255, 1478, 732], ["#c1a28c", "#c2a28c", "#c6a690", "#e2bd9d", "#ebcdb2", "#e7cfba", "#f1dfce", "#f9efe3"]),
     },
   },
 };

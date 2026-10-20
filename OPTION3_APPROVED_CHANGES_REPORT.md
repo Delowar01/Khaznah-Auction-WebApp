@@ -8,9 +8,9 @@ customer's chosen direction. This report covers the two approved changes:
 | 1. Homepage hero category cards (Auction · Buy Now · Live Auction artwork) | **Done** |
 | 2. Auction winner celebration | **Done** (Auction Detail and Live Auction) |
 
-This is customer website work in `design-preview/` only. No backend,
-database, API, auction rule or other option was changed, and nothing was
-deployed or merged.
+This is the design-preview implementation, in `design-preview/` only (see
+"Design preview and production" below). No backend, database, API, auction
+rule or other option was changed, and nothing was deployed or merged.
 
 ---
 
@@ -72,9 +72,17 @@ Live Auction) the red live dot. The card fits the picture around that area
 with a 12 px margin, in CSS (`.vd-mode` in
 `styles/r3-visual-discovery.css`, container query units). It fills the card
 like "cover" wherever that keeps the safe area inside. Otherwise it is drawn
-slightly smaller and the thin strip left over repeats the picture's own top
-or bottom edge, softly blurred. That happens only between 1200 and 1279 px
-(12–22 px). Pictures are never stretched or squashed.
+slightly smaller and sits at the top of the card. Below it the card is a
+clean, plain background matched to the picture's own bottom edge: ivory and
+warm cream, or a soft warm tan under Buy Now, whose picture ends in that
+tone (`floor` in `HERO_CARDS`, eight measured tones per picture, lined up
+with it). There is no repeated or blurred copy of the picture. That happens
+only at the narrowest three-column widths, and only below the picture:
+1200–1282 px in English, and 1200–1313 px in Arabic, where the Arabic hero
+text makes that row up to 22 px taller. The floor is up to 34 px under the
+English Auction card (its bottom edge is already plain cream, so the join
+does not show) and up to 22 px under Buy Now and Live Auction. The Arabic
+Auction card never needs it. Pictures are never stretched or squashed.
 
 Layouts:
 - **1200 px and wider:** the approved three-column mosaic, unchanged (copy ·
@@ -91,6 +99,18 @@ tablet tiles were 190 px tall strips, which would have cut the artwork.
 Measured on the real page at 1920, 1440, 1366, 1280, 1200, 1100, 1024, 900,
 768, 640, 430, 375 and 320 px, in both languages: every safe area stays at
 least 12 px inside its card, and the page never scrolls sideways.
+
+**Final visual review, 1200–1279 px.** The approved version filled that
+leftover space with a softly blurred repeat of the picture's own top or
+bottom edge. Reviewed at 1200, 1216, 1240, 1260 and 1279 px in English and
+Arabic for all three cards (at 2× zoom), it looked artificial: smeared
+leaves and stretched streaks on Buy Now and Live Auction, and a visible
+seam. It was replaced by the plain matched background described above and
+checked again at the same widths, plus Arabic 1280–1313 px. That was a
+presentation-only change (`.vd-mode` in `styles/r3-visual-discovery.css`,
+`floor` in `HERO_CARDS`). The artwork, routes, card sizes and layout are
+unchanged, and at every width where the picture already filled its card
+nothing moved.
 
 The concept selector's Option 3 preview images
 (`public/images/concepts/c-*.webp`) were recaptured so they show the new
@@ -139,8 +159,9 @@ Unchanged and checked with `git diff`: `lib/useAuction.js`,
   lots without a winner, or for scheduled lots.
 - **Live room, other viewers.** The existing Sold card already tells every
   viewer the result. The live engine gives no public winner name, and a lot
-  is hammered about once a minute, so other viewers get no overlay. The moment
-  is the winner's alone. It can be added for everyone on request.
+  is hammered about once a minute, so other viewers get no overlay, only the
+  existing Sold state. The moment is the winner's alone. This was confirmed as
+  the final behaviour in the final visual review.
 - **Once only.** One play per closing. Re-renders (the page ticks every
   second), repeated or stale updates, time passing, focus or visibility
   changes, resizing, and leaving and coming back never replay it. No backend
@@ -220,6 +241,29 @@ areas), `…/copy.js` (link names; the old tile words removed),
 - **Auction Detail:** open `/auction/seat-covers` (it closes about 9 minutes
   after the page opens), set a maximum bid well above the price, and wait. Do
   not bid to see the other-viewer version.
+
+---
+
+## Design preview and production
+
+Both changes are the design-preview implementation: `design-preview/`, whose
+simulated engines stand in for the real backend. No production integration
+change was made. When the winner moment moves to the production website, it
+must:
+
+- use the authoritative auction result from the backend (the closing, the
+  winner and the winning bid);
+- never calculate the winner in the browser;
+- show only approved public or masked winner display data, such as the
+  masked bidder labels listed under Privacy, plus the winner's own first
+  name, shown only to the winner;
+- never expose raw winner user ids, such as the sale-lot detail
+  serializer's `winner` and `highest_bidder`;
+- never expose the legal name, email, phone or any other private profile
+  data.
+
+The hero cards need no backend change: they use existing routes and the
+supplied artwork.
 
 ---
 
