@@ -14,6 +14,7 @@
     "package:static": "STATIC_EXPORT=1 next build && rm -f khazna-design-preview-static.zip && cd out && zip -qr ../khazna-design-preview-static.zip .",
     "lint": "eslint",
     "verify": "node scripts/verify.mjs",
+    "verify:option3": "node scripts/verify-option3.mjs",
     "capture": "node scripts/capture-concepts.mjs"
   },
   "dependencies": {
