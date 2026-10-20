@@ -5,12 +5,9 @@ import { useId } from "react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { Img } from "@/components/shared/ui/Img";
-import { Money } from "@/components/shared/ui/Money";
-import { CATEGORY_BY_SLUG } from "@/data/categories";
-import { detailPath } from "@/lib/catalog";
 import { COPY } from "./copy";
-import { HERO } from "./data";
-import { Arrow, HeartDisk, btn, cx } from "./ui";
+import { HERO_CARDS } from "./data";
+import { Arrow, btn, cx } from "./ui";
 
 /** Three small gold sketch strokes beside the handwritten line. */
 function SketchMarks({ className = "" }) {
@@ -59,87 +56,56 @@ function CopyTile({ titleId }) {
 }
 
 /**
- * Centre scene: furniture photograph (A5) with a Furniture label and the
- * overlapping tote card. When the tile is at least 512 px wide (552 px in
- * the 1440 composition) both overlays sit on the photograph's clear floor;
- * on narrower tiles the label moves above the card and gets its own soft
- * scrim, because it then lies over the room rather than the floor.
+ * One of the three ways to shop as its approved artwork card (HERO_CARDS):
+ * the whole card is one link to that mode's existing page, named in
+ * aria-label; the picture is decorative (alt="") because its words would
+ * only repeat that name. The picture is never cropped into its safe area —
+ * words, button, products, live dot: it is scaled and placed to keep that
+ * area in the card with a margin (cover wherever that allows; see .vd-mode
+ * in styles/r3-visual-discovery.css). Hover: a 1.5 % zoom and a soft lift;
+ * focus: a 3 px indigo ring.
  */
-function FurnitureTile() {
-  const { t, ui } = useLang();
+function ModeCard({ card, className = "" }) {
+  const { t, lang } = useLang();
   const { link } = useConcept();
-  const tote = HERO.tote;
+  const art = card.art[lang];
   return (
-    <div className="@container relative h-full min-h-[380px] overflow-hidden rounded-[18px] bg-[#e8e1d8]">
-      <Img image={HERO.furniture.image} alt="" priority sizes="(min-width: 1200px) 556px, (min-width: 768px) 50vw, 100vw" className="absolute inset-0 size-full object-cover" style={{ objectPosition: HERO.furniture.focus }} />
-      <span aria-hidden="true" className="absolute inset-y-0 start-0 w-[70%] bg-[radial-gradient(ellipse_at_bottom_left,rgb(6_20_40/0.72),rgb(6_20_40/0.3)_45%,transparent_70%)] rtl:bg-[radial-gradient(ellipse_at_bottom_right,rgb(6_20_40/0.72),rgb(6_20_40/0.3)_45%,transparent_70%)]" />
-      <div className="absolute bottom-[178px] start-5 isolate max-w-[70%] text-white before:absolute before:-inset-x-8 before:-inset-y-6 before:-z-10 before:bg-[radial-gradient(closest-side,rgb(6_20_40/0.55),transparent)] before:content-[''] @min-[512px]:bottom-[10px] @min-[512px]:start-[14px] @min-[512px]:max-w-[48%] @min-[512px]:before:hidden">
-        <p className="vd-h3 !text-[21px] !leading-7 text-white">{t(COPY.furniture)}</p>
-        <p className="vd-md text-white/90">{t(COPY.furnitureText)}</p>
-        <Link href={link("/browse?category=furniture")} aria-label={t(COPY.exploreNamed, { name: t(COPY.furniture) })} className={btn("white", "sm", "mt-3 h-[38px] gap-3 px-5 dt:mt-[9px] dt:h-[34px] dt:px-[22px]")}>
-          {t(COPY.explore)}
-          <Arrow />
-        </Link>
-      </div>
-      {/* Overlapping tote card, anchored in the scene's lower end corner */}
-      <article className="absolute bottom-[11px] end-[11px] grid h-[154px] w-[284px] grid-cols-[112px_minmax(0,1fr)] overflow-hidden rounded-[16px] bg-[var(--vd-ivory)] shadow-[0_10px_28px_-12px_rgb(7_27_82/0.45)] max-sm:w-[250px]">
-        <div className="relative">
-          <Img image={tote.images[0]} cutout alt="" sizes="112px" className="absolute inset-0 size-full object-contain px-2.5 py-3" />
-        </div>
-        <div className="relative flex min-w-0 flex-col justify-center pe-3">
-          <HeartDisk product={tote} className="absolute end-2 top-2 !size-8 shadow-none" />
-          <h3 className="line-clamp-2 pe-7 vd-title !text-[14px] !leading-[18px] text-[var(--vd-ink)]">
-            <Link href={link(detailPath(tote))} className="after:absolute after:inset-0 after:content-[''] hover:underline">
-              {t(tote.title)}
-            </Link>
-          </h3>
-          <span className="sr-only">{ui("buyNow")}</span>
-          <Money value={tote.price} className="mt-2 self-start vd-price !text-[22px] text-[var(--vd-ink)]" symbolClassName="text-[0.72em]" />
-        </div>
-      </article>
-    </div>
-  );
-}
-
-/** Category photo tile with a white label plate and a circular arrow. */
-function CategoryPhotoTile({ slug, image, focus, text, plate = false, className = "" }) {
-  const { t } = useLang();
-  const { link } = useConcept();
-  const category = CATEGORY_BY_SLUG[slug];
-  return (
-    <Link href={link(`/browse?category=${slug}`)} className={cx("group relative block overflow-hidden rounded-[18px] outline-offset-2", plate ? "bg-[#dfe8f1]" : "bg-[#f3d9cc]", className)}>
-      <Img
-        image={image}
-        alt=""
-        sizes="(min-width: 1200px) 401px, 50vw"
-        cutout={plate}
-        className={cx("absolute transition-transform duration-300 group-hover:scale-[1.02]", plate ? "end-[4%] top-[7%] h-[70%] w-[80%] object-contain object-right" : "inset-0 size-full object-cover")}
-        style={focus ? { objectPosition: focus } : undefined}
-      />
-      <span className="absolute bottom-[14px] start-0 max-w-[calc(100%-84px)] rounded-e-[14px] bg-white/95 py-2 pe-5 ps-4 dt:bottom-[15px] dt:max-w-[62%]">
-        <span className="block vd-h3 !text-[18px] !leading-6 text-[var(--vd-ink)]">{t(category.name)}</span>
-        <span className="block vd-sm text-[var(--vd-muted)]">{text}</span>
-      </span>
-      <span aria-hidden="true" className="absolute bottom-[14px] end-3 grid size-[52px] place-items-center rounded-full bg-white text-[var(--vd-ink)] shadow-[0_4px_14px_rgb(7_27_82/0.12)] dt:bottom-[17px]">
-        <Arrow className="size-5" />
-      </span>
+    <Link
+      href={link(card.href)}
+      aria-label={t(COPY[card.label])}
+      className={cx(
+        "vd-mode group relative block overflow-hidden rounded-[18px] bg-[#f1e8dc] shadow-[0_1px_2px_rgb(7_27_82/0.06)] ring-1 ring-[var(--vd-ink)]/[0.06] transition-[box-shadow,translate] duration-300 hover:-translate-y-px hover:shadow-[0_16px_34px_-18px_rgb(7_27_82/0.45)] hover:ring-[var(--vd-gold)]/40 focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-[var(--vd-indigo)]",
+        className,
+      )}
+      style={art.fit}
+    >
+      <Img image={art.image} alt="" priority sizes={card.sizes} className="vd-mode-art transition-transform duration-500 ease-out group-hover:scale-[1.015]" />
     </Link>
   );
 }
 
+/**
+ * Copy tile, then the three cards: Auction the largest, Buy Now before
+ * Live Auction. From 1200 px the approved three-column mosaic (copy ·
+ * Auction · Buy Now over Live Auction, 520 px high). 1000–1199 px: copy
+ * beside a square Auction card, Buy Now and Live Auction side by side
+ * below. 640–999 px: the copy across the top, then Auction beside Buy Now
+ * over Live Auction. Phones stack the copy and the three cards. Below
+ * 1200 px every card keeps (about) its picture's own proportions, so each
+ * picture shows whole.
+ */
 export function HeroMosaic() {
-  const { t } = useLang();
   const titleId = useId();
   return (
     <section data-ref="03" aria-labelledby={titleId} className="vd-wide pt-2 dt:pt-[8px]">
-      <div className="grid gap-2 md:grid-cols-2 dt:min-h-[520px] dt:grid-cols-[minmax(0,436fr)_minmax(0,556fr)_minmax(0,401fr)] dt:grid-rows-[minmax(0,1fr)] dt:gap-[8px]">
-        <div className="md:col-span-1 dt:col-auto">
+      <div className="grid gap-2 sm:grid-cols-[minmax(0,1.286fr)_minmax(0,1fr)] min-[62.5rem]:grid-cols-2 dt:min-h-[520px] dt:grid-cols-[minmax(0,436fr)_minmax(0,556fr)_minmax(0,401fr)] dt:grid-rows-[minmax(0,1fr)] dt:gap-[8px]">
+        <div className="sm:col-span-2 min-[62.5rem]:col-span-1 dt:col-auto">
           <CopyTile titleId={titleId} />
         </div>
-        <FurnitureTile />
-        <div className="grid gap-2 sm:grid-cols-2 md:col-span-2 dt:col-auto dt:grid-cols-1 dt:grid-rows-[243fr_269fr] dt:gap-[8px]">
-          <CategoryPhotoTile slug="electronics" image={HERO.electronics.image} focus={HERO.electronics.focus} text={t(COPY.electronicsText)} className="min-h-[190px]" />
-          <CategoryPhotoTile slug="home-kitchen" image={HERO.kitchen.image} focus={HERO.kitchen.focus} text={t(COPY.kitchenText)} className="min-h-[190px]" />
+        <ModeCard card={HERO_CARDS.auction} className="aspect-square self-stretch sm:aspect-auto min-[62.5rem]:aspect-square dt:aspect-auto" />
+        <div className="grid gap-2 min-[62.5rem]:col-span-2 min-[62.5rem]:grid-cols-2 dt:col-auto dt:grid-cols-1 dt:grid-rows-[243fr_269fr] dt:gap-[8px]">
+          <ModeCard card={HERO_CARDS.buyNow} className="aspect-[1564/1006] dt:aspect-auto" />
+          <ModeCard card={HERO_CARDS.live} className="aspect-[1564/1006] dt:aspect-auto" />
         </div>
       </div>
     </section>

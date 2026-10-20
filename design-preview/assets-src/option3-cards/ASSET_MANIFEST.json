@@ -1,0 +1,12 @@
+{
+  "package": "6_Images.zip",
+  "description": "Approved final artwork for the Option 3 (Visual Discovery Marketplace) home hero cards: Auction, Buy Now and Live Auction, in English and Arabic. Used exactly as supplied; the words, button and products are part of each picture.",
+  "assets": [
+    { "filename": "option3-auction-en.png", "card": "auction", "lang": "en", "received_as": "exec-ee4e224b-cbaf-4212-ba6c-9ed1d4b62652.png", "width": 1254, "height": 1254, "sha256": "6fe5f7f2951608808fd678e64ca7da1d1e63071cc0237dbc2073bb96f4be0269" },
+    { "filename": "option3-auction-ar.png", "card": "auction", "lang": "ar", "received_as": "exec-132e7c43-6b7c-464a-bc57-0a65408e6b12.png", "width": 1254, "height": 1254, "sha256": "73ba4686f7c23a96150fed33cf83b090fe4e3c9fbcd1deacc55fef752251607a" },
+    { "filename": "option3-buy-now-en.png", "card": "buy-now", "lang": "en", "received_as": "exec-e073dafc-c093-4a48-9be8-4d63d8e328c4.png", "width": 1564, "height": 1006, "sha256": "99accba598d8c5e909131ecc2347a78a20c767d65b99d89fcc2c7d2e466516ee" },
+    { "filename": "option3-buy-now-ar.png", "card": "buy-now", "lang": "ar", "received_as": "exec-80eca5ef-5ed0-4d11-9d74-4293c553afb0.png", "width": 1565, "height": 1005, "sha256": "59779e1b8ca1d8bd4a578bb5eba175dc4b9368ea36193b932d4df6afa45b4c0f" },
+    { "filename": "option3-live-auction-en.png", "card": "live-auction", "lang": "en", "received_as": "exec-f3ebd8fc-076a-4a15-b79a-8672dcb21061.png", "width": 1564, "height": 1006, "sha256": "4178428e37d41e35d77f273dd153064865547f45a9363c724d5ee09bb1760075" },
+    { "filename": "option3-live-auction-ar.png", "card": "live-auction", "lang": "ar", "received_as": "exec-e8e4bdc8-676a-48b9-b1c7-9dbce9c1a820.png", "width": 1565, "height": 1005, "sha256": "41eb648695fe599aae5a028bb362254fa5d2c9828f053f091122526678c366a5" }
+  ]
+}

@@ -7,23 +7,64 @@ import { photo } from "@/data/media";
 import { getProduct } from "@/data/products";
 import { SELLER_BY_CODE } from "@/data/sellers";
 import { endingSoon, featuredBuyNow } from "@/lib/catalog";
-import { WORK_MEDIA } from "@/components/shared/r3/work-media";
 import { PRIORITY_2 } from "@/components/shared/r3/work-media-p2";
 
 /**
- * Hero mosaic. The furniture scene is the approved A5 photograph (tan
- * recliner and walnut desk; its lower 28 % is clear floor for the label and
- * the tote card). `focus` keeps the whole chair in view from the widest tile
- * (1.06:1) to the narrowest (0.61:1). The Electronics and Home & Kitchen
- * tiles are the Priority 2 scenes (B5 TV, B6 red coffee maker); their
- * `focus` keeps the top of the TV and of the coffee maker in view in the
- * wide tablet tiles (2.6–3:1 between 1024 and 1199 px).
+ * Hero cards: the approved artwork for the three ways to shop, one picture
+ * per language, used exactly as supplied (assets-src/option3-cards/; the
+ * words, button and products are part of each picture). Each opens the
+ * existing route for its mode. `safe` is the part of the picture that must
+ * always stay in view — the words, the button, the products and the live
+ * dot — as [left, top, right, bottom] in the picture's own pixels; the card
+ * fits the picture around it (see ModeCard in Hero.jsx).
  */
-export const HERO = {
-  furniture: { image: WORK_MEDIA.furnitureScene, focus: "20% 30%" },
-  electronics: { image: PRIORITY_2.heroElectronics, focus: "60% 18%", slug: "electronics" },
-  kitchen: { image: PRIORITY_2.heroKitchen, focus: "68% 20%", slug: "home-kitchen" },
-  tote: getProduct("suede-tote"),
+const cardSources = (name, width, height, widths) =>
+  [...widths, width].map((w) => ({ src: `/images/work/option3-cards/${name}-${w}.webp`, w, h: Math.round((w * height) / width) }));
+
+function artwork(name, width, height, widths, safe) {
+  const [x0, y0, x1, y1] = safe;
+  return {
+    image: { kind: "scene", ratio: width / height, sources: cardSources(name, width, height, widths) },
+    // Read by .vd-mode (styles/r3-visual-discovery.css); --edge feeds the edge strips.
+    fit: {
+      "--edge": `url("/images/work/option3-cards/${name}-${widths[0]}.webp")`,
+      "--ratio": (width / height).toFixed(5),
+      "--fit-x": (width / (x1 - x0)).toFixed(5),
+      "--fit-y": (width / (y1 - y0)).toFixed(5),
+      "--cx": ((x0 + x1) / 2 / width).toFixed(5),
+      "--cy": ((y0 + y1) / 2 / height).toFixed(5),
+    },
+  };
+}
+
+export const HERO_CARDS = {
+  auction: {
+    href: "/browse?tab=auction",
+    label: "modeAuction",
+    sizes: "(min-width: 1200px) 560px, (min-width: 1000px) 50vw, (min-width: 640px) 56vw, calc(100vw - 24px)",
+    art: {
+      en: artwork("option3-auction-en", 1254, 1254, [640, 960], [75, 95, 1190, 1185]),
+      ar: artwork("option3-auction-ar", 1254, 1254, [640, 960], [330, 95, 1190, 1185]),
+    },
+  },
+  buyNow: {
+    href: "/browse?tab=buy_now",
+    label: "modeBuyNow",
+    sizes: "(min-width: 1200px) 420px, (min-width: 1000px) 50vw, (min-width: 640px) 44vw, calc(100vw - 24px)",
+    art: {
+      en: artwork("option3-buy-now-en", 1564, 1006, [640, 960, 1280], [85, 210, 1445, 700]),
+      ar: artwork("option3-buy-now-ar", 1565, 1005, [640, 960, 1280], [110, 210, 1495, 729]),
+    },
+  },
+  live: {
+    href: "/live-auction",
+    label: "modeLive",
+    sizes: "(min-width: 1200px) 420px, (min-width: 1000px) 50vw, (min-width: 640px) 44vw, calc(100vw - 24px)",
+    art: {
+      en: artwork("option3-live-auction-en", 1564, 1006, [640, 960, 1280], [95, 255, 1290, 727]),
+      ar: artwork("option3-live-auction-ar", 1565, 1005, [640, 960, 1280], [252, 255, 1478, 732]),
+    },
+  },
 };
 
 /** Eight outlined icon pills, four by two, in the approved order. */

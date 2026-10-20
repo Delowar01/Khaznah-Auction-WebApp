@@ -349,6 +349,51 @@
   .vd-no-spin::-webkit-outer-spin-button { appearance: none; margin: 0; }
 }
 
+/* ── Hero cards (Hero.jsx ModeCard) ─────────────────────────────────────── */
+@layer components {
+  /* Each card is a size container, so the artwork can be fitted to it. The
+     picture is drawn as large as "cover" would draw it, but never larger
+     than keeps its safe area (--fit-x / --fit-y: picture width over the safe
+     area's width / height) inside the card with --m to spare. It is centred
+     on the safe area (--cx / --cy) without leaving a gap where it can cover.
+     Where it has to be drawn smaller than the card (some 1200–1279 px
+     layouts), the strips above and below repeat the picture's own top and
+     bottom edge, softly blurred, so the card stays whole. The geometry is
+     left unresolved here and resolved by the picture and the strips against
+     this card. */
+  .vd-mode {
+    container-type: size;
+    --m: 12px;
+    --w: min(max(100cqw, 100cqh * var(--ratio)), (100cqw - 2 * var(--m)) * var(--fit-x), (100cqh - 2 * var(--m)) * var(--fit-y));
+    --h: calc(var(--w) / var(--ratio));
+    --l: clamp(min(0px, 100cqw - var(--w)), 50cqw - var(--w) * var(--cx), max(0px, 100cqw - var(--w)));
+    --t: clamp(min(0px, 100cqh - var(--h)), 50cqh - var(--h) * var(--cy), max(0px, 100cqh - var(--h)));
+  }
+  .vd-mode-art {
+    position: absolute;
+    max-width: none;
+    width: var(--w);
+    height: var(--h);
+    left: var(--l);
+    top: var(--t);
+  }
+  .vd-mode::before,
+  .vd-mode::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-image: var(--edge);
+    background-repeat: no-repeat;
+    background-size: var(--w) calc(var(--h) * 50);
+    filter: blur(3px);
+    pointer-events: none;
+  }
+  .vd-mode::before { top: 0; height: max(0px, var(--t)); background-position: var(--l) 0; }
+  .vd-mode::after { bottom: 0; height: max(0px, 100cqh - var(--t) - var(--h)); background-position: var(--l) 100%; }
+}
+
 /* ── Auction detail ────────────────────────────────────────────────────── */
 @layer components {
   /* Lot title: a display heading, a step under the Browse page title. */

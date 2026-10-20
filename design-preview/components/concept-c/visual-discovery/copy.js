@@ -49,12 +49,10 @@ export const COPY = {
     { en: "Good things", ar: "الأشياء الجميلة" },
     { en: "find new homes.", ar: "تجد بيوتاً جديدة." },
   ],
-  furniture: { en: "Furniture", ar: "الأثاث" },
-  furnitureText: { en: "Stylish picks for every space", ar: "اختيارات أنيقة لكل مساحة" },
-  explore: { en: "Explore", ar: "استكشف" },
-  exploreNamed: { en: "Explore {name}", ar: "استكشف {name}" },
-  electronicsText: { en: "Top brands, great finds", ar: "علامات معروفة وصفقات رائعة" },
-  kitchenText: { en: "Everything for your home.", ar: "كل ما يحتاجه منزلك." },
+  // Hero cards: each card's whole-card link name (the artwork carries its own words).
+  modeAuction: { en: "Auction — Explore timed auctions", ar: "المزادات — استكشف المزادات المحددة بوقت" },
+  modeBuyNow: { en: "Buy Now — Shop fixed-price items", ar: "اشترِ الآن — تسوّق المنتجات بسعر ثابت" },
+  modeLive: { en: "Live Auction — Join live auctions", ar: "المزاد المباشر — انضم إلى المزادات المباشرة" },
 
   // Categories
   categoriesLabel: { en: "Shop by category", ar: "تسوّق حسب الفئة" },
