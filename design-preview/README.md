@@ -154,6 +154,19 @@ deploy to a live Khazna domain; use a temporary preview subdomain.
   sorting, cart and watchlist, bidding with confirmation, maximum (proxy) bids,
   anti-sniping extensions, rival bidders, Buy Now on auction lots, and a live
   auction room that hammers lots down and moves to the next one.
+- **Hero cards (Option 3 only).** The home hero's three cards are the
+  approved Auction, Buy Now and Live Auction artwork, in the page's
+  language; each opens Timed Auctions, Buy Now or Live Auction. The masters
+  are in `assets-src/option3-cards/` (regenerate the WebP files with
+  `node scripts/process-option3-cards.mjs`).
+- **Winner moment (Option 3 only).** When a lot closes while its page is
+  open, Option 3 plays a 3.5-second celebration once. To see it: on
+  **Live auction**, bid on the lot on the block and stay highest until the
+  hammer (under a minute); or on **`/auction/seat-covers`** (closes about
+  9 minutes after the page opens) set a maximum bid well above the price and
+  wait for the close. Without a bid, the seat-cover lot shows **Auction
+  completed** with the public winning bidder instead. Lots already closed
+  when the page opens never play it.
 
 Screen routes (same for `concept-a` … `concept-d`, prefixed with `/en` or `/ar`):
 
@@ -258,6 +271,17 @@ images, horizontal overflow, serious/critical accessibility violations (axe)
 and whether the mobile menu opens. Options: `--concepts a,b`, `--pages
 home,browse,…`, `--langs en,ar`, `--widths 1440,390`, `--shots` (full-page
 screenshots in `.verify/shots/`), `--no-axe`.
+
+`npm run verify:option3` (`scripts/verify-option3.mjs`, about seven minutes;
+`-- --only cards` or `-- --only winner` for one half) checks Option 3's two
+approved changes on the real pages. The home hero cards: each language's
+own three pictures, the existing route behind each card (Enter opens it),
+the cards' names and focus ring, no old tile labels, and at 1920–320 px the
+words, button and products of every picture inside its card. The winner
+moment on Auction Detail and Live Auction: when it plays and when it never
+does (open lots, lots already closed, Buy Now, live lots sold to someone
+else), the winner's and other viewers' messages in English and Arabic,
+privacy, one play only, focus, reduced motion and phone width.
 
 To refresh the selector's preview images after design changes (run against a
 production server so no development overlay is captured):
