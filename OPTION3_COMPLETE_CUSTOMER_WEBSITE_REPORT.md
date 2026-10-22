@@ -8,8 +8,20 @@ frozen approved pages (HEAD `0309b53`).
 
 - Branch: `claude/magical-faraday-fne4kq` (not merged to main; nothing
   deployed to production).
-- Preview routes: `/{en|ar}/concept-c/…`, using the existing
-  ConceptProvider and LangProvider (no second theme or language system).
+- **Design approved and frozen** at
+  `892dd183b4481f1f3fef021d7f84ba69fbf9e7cd` (see "Design freeze"). Any
+  later work is production integration, not design.
+- **Preview addresses are not production routes.** The design preview
+  serves every page at `/{en|ar}/concept-c/…` (the preview's
+  ConceptProvider and LangProvider). The production website does **not**
+  use language-prefixed customer URLs: language stays with production's
+  customer language provider (the `khaznah-customer-language` preference,
+  synced to the profile) and its RTL handling on `<html>`. No production
+  route migration is approved. Production routes come from
+  CURRENT_CUSTOMER_FRONTEND_INVENTORY.md (section A), the source of truth;
+  where a preview address differs (Buy Now detail, live auction viewer, the
+  preview-only `/seller` stand-in), the "Option 3 → production route
+  integration map" below is authoritative.
 - No backend, database, API contract, authentication, payment, auction,
   pricing, VAT, wallet, shipping or WebSocket behaviour was changed. All
   data in the preview is sample data shaped like the production API.
@@ -38,47 +50,118 @@ Verdict and the open items are at the end ("Status").
 landmarks, keyboard (see Accessibility). "Frozen" = approved page, not
 redesigned (see "The approved five").
 
-| Route (production) | Preview route | EN | AR | Desktop | Mobile | a11y | Interaction | Quirks kept | Decision / blocker |
+| Production route | Preview route (design review only) | EN | AR | Desktop | Mobile | a11y | Interaction | Quirks kept | Decision / blocker |
 |---|---|---|---|---|---|---|---|---|---|
 | `/` | `/{lang}/concept-c` | ✓ | ✓ | ✓ | ✓ | ✓ | Frozen; footer links now open the new pages | — | Frozen (approved) |
-| `/browse` | `/browse` | ✓ | ✓ | ✓ | ✓ | ✓ | Frozen | Browse quirks as approved | Frozen |
-| `/auction/[slug]` | `/auction`, `/auction/{slug}` | ✓ | ✓ | ✓ | ✓ | ✓ | Frozen; winner celebration unchanged | as approved | Frozen |
-| live auction | `/live-auction` | ✓ | ✓ | ✓ | ✓ | ✓ | Frozen; winner-only celebration | as approved | Frozen |
-| `/product/[slug]` | `/product`, `/product/{slug}` | ✓ | ✓ | ✓ | ✓ | ✓ | Frozen; cart drawer now links to Cart and Checkout | as approved | Frozen |
-| `/seller/[code]` | `/seller/REDSEA` (+ `?state=error`) | ✓ | ✓ | ✓ | ✓ | ✓ | Browse's pill bar, filters, sort, Load more, scoped to the seller | Live row for every seller (Live-tab field mismatch); only lookup fields | `/seller` keeps the frozen stand-in (owner decision) |
-| `/cart` | `/cart` (7 states) | ✓ | ✓ | ✓ | ✓ + phone bar | ✓ | quantity, remove (confirm), locks, blocked checkout | "Only N left" always; no grouping in production | Seller grouping is presentation (F) |
-| `/checkout` | `/checkout` (15 states) | ✓ | ✓ | ✓ | ✓ + phone pay bar | ✓ | delivery/pickup, addresses, quote, coupons, wallet, COD, Pay gating, cancel | ~25 (see Quirks) | "Order Created" placeholder kept for the owner to replace |
-| `/payment/moyasar/[id]` | `/payment/moyasar/9051` (4 states) | ✓ | ✓ new Arabic | ✓ | ✓ | ✓ | card-form container (no fake card fields), return | Return always to /checkout | Production page English-only: translation sign-off |
-| `/payment/result` | `/payment/result?payment_record_id=9051` (6 states) | ✓ | ✓ new Arabic | ✓ | ✓ | ✓ | verify → paid → redirect; next actions | raw status token; signed-out "View orders" → staff dashboard | Production page English-only: translation sign-off |
-| `/account` (shell) | `/account` (6 states) | ✓ | ✓ | ✓ side list | ✓ section pill row | ✓ | guard, `?tab=` + aliases, Refresh | Q4 (no `next`), Q5, Q33–Q35 | Suspension banner unreachable in production (Q33) |
-| `/account?tab=overview` | `/account` | ✓ | ✓ | ✓ | ✓ | ✓ | Open wallet, View orders | Q5 figures from this visit | — |
-| `/account?tab=watchlist` (`bids`) | `?tab=watchlist` | ✓ | ✓ | ✓ | ✓ | ✓ | quick bid, auction panel | Q30–Q32 | Buy Now saves get no quick bid (preview data) |
-| `/account?tab=won` | `?tab=won` | ✓ | ✓ | ✓ | ✓ | ✓ | Pay now (pricing, coupons, wallet, address) | Q9–Q14 incl. Q11 lines not adding up | — |
-| `/account?tab=orders` | `?tab=orders` | ✓ | ✓ | ✓ | ✓ | ✓ | details drawer, Track, Invoice, Pay, load more | Q8, Q16–Q21, Q25, Q29 | Empty-list state added |
-| `/account?tab=wallet` (`deposits`) | `?tab=wallet` | ✓ | ✓ | ✓ | ✓ | ✓ | top-up, cards | no client validation; no remove confirm | Remove-card confirmation: owner |
-| `/account?tab=payments` | `?tab=payments` | ✓ | ✓ | ✓ table | ✓ cards | ✓ | gateway link, invoice | gateway link rule | — |
-| `/account?tab=disputes` | `?tab=disputes` | ✓ | ✓ | ✓ table | ✓ cards | ✓ | new dispute (rules, files), cancel | direct visit loads no orders | Owner: load orders on a direct visit |
-| `/account?tab=notifications` | `?tab=notifications` | ✓ | ✓ | ✓ | ✓ | ✓ | filters, Load 10 more (All only), mark read | links to `/account/orders/{id}` (404) | — |
-| `/account?tab=profile` | `?tab=profile` | ✓ | ✓ | ✓ | ✓ | ✓ | photo, save, password, addresses | email/mobile look editable but are not saved | Owner decision |
-| `/account/watchlist` | `/account/watchlist` | ✓ | ✓ | — | — | ✓ | redirects to `?tab=watchlist` | — | — |
-| `/login` | `/login` (5 states) | ✓ | ✓ | ✓ | ✓ | ✓ | buyer-only, `next` cleaned, banners | `verified=1` unread; `next` lost to register; English server text | Theme toggle not shown (Option 3 light-only) |
-| `/register` | `/register` (6 states) | ✓ | ✓ | ✓ | ✓ | ✓ | two steps, email code, 60 s resend, seller swap | no change-email; Latin "s" in Arabic countdown | Test-mode code only in its preview state |
-| `/seller/register` | `/seller/register` (5 states) | ✓ | ✓ | ✓ | ✓ plan rail | ✓ | plans, monthly/annual, validation, success hand-off | fixed "-20%", middle card "Popular" | Plan catalogue values are samples (owner) |
-| `/about` | `/about` | ✓ verbatim | ✓ verbatim | ✓ | ✓ | ✓ | links | production claims kept word for word | Claims for owner review |
-| `/how-it-works` | `/how-it-works` | ✓ | ✓ | ✓ | ✓ | ✓ | links | claims kept | Approved Khaznah photos, not hot-linked stock |
-| `/faq` | `/faq` (2 states) | ✓ | ✓ | ✓ | ✓ | ✓ | search, accordion (keyboard) | one entry; hero copied from Contact | FAQ content needed (owner) |
-| `/contact` | `/contact` (4 states) | ✓ | ✓ | ✓ | ✓ | ✓ | form rules, sent, error (5/min, 503) | English server messages; phone fallback chain | Contact values are samples |
-| `/privacy` | `/privacy` | ✓ verbatim | ✓ verbatim | ✓ section list | ✓ | ✓ | section list, print | "Last updated: January 2025" | LEGAL: text untouched |
-| `/terms` | `/terms` | ✓ verbatim | ✓ verbatim | ✓ | ✓ | ✓ | section list, print | §5 vs §7 contradiction kept | LEGAL: text untouched |
-| 404 | `/orders/1`, `/account/orders/{id}`, unknown seller/lot/path | ✓ | ✓ | ✓ | ✓ | ✓ | home, Browse, shopping modes, Contact | production shows Next's plain English 404 | Branded 404; unsupported routes stay unsupported |
-| error | any page (`/system?state=crash`), auction, seller | ✓ | ✓ | ✓ | ✓ | ✓ | Try again (reset), way out | auction error "live view" wording | — |
-| loading | shown on `/system` | ✓ | ✓ | ✓ | ✓ | ✓ | — | English-only labels in production | Not wired as `loading.js` (see 404/error/loading) |
-| `/live` | `/live` | — | — | — | — | — | redirects to `/browse?tab=live` | — | as production |
-| — | `/system` (Components & states) | ✓ | ✓ | ✓ | ✓ | ✓ | dialogs, side panels, state index | — | Reviewer page |
+| `/browse` | `/{lang}/concept-c/browse` | ✓ | ✓ | ✓ | ✓ | ✓ | Frozen | Browse quirks as approved | Frozen |
+| `/auction/[slug]` | `/{lang}/concept-c/auction`, `/{lang}/concept-c/auction/{slug}` | ✓ | ✓ | ✓ | ✓ | ✓ | Frozen; winner celebration unchanged | as approved | Frozen |
+| `/shop/[id]` — Buy Now / `both` lot detail, numeric sale-lot id | `/{lang}/concept-c/product`, `/{lang}/concept-c/product/{slug}` (design-review abstraction, not a production route) | ✓ | ✓ | ✓ | ✓ | ✓ | Frozen; cart drawer now links to Cart and Checkout | as approved | Frozen |
+| `/live` — legacy index, redirects to `/browse?tab=live` | `/{lang}/concept-c/live` (redirects to the preview's Browse live tab) | — | — | — | — | — | redirect only | — | as production |
+| `/live/[slug]` — live-auction viewer | `/{lang}/concept-c/live-auction` (design-review abstraction: one sample event; not a production route) | ✓ | ✓ | ✓ | ✓ | ✓ | Frozen; winner-only celebration | as approved | Frozen |
+| `/seller/[code]` | `/{lang}/concept-c/seller/{CODE}`, e.g. `REDSEA` (+ `?state=error`) | ✓ | ✓ | ✓ | ✓ | ✓ | Browse's pill bar, filters, sort, Load more, scoped to the seller | Live row for every seller (Live-tab field mismatch); only lookup fields | — |
+| none — production has no `/seller` | `/{lang}/concept-c/seller` — **preview-only** stand-in (the featured seller's storefront, as at the frozen commit) | ✓ | ✓ | ✓ | ✓ | ✓ | opened by the approved header's "Sellers" mode | — | Preview-only; not a production route or requirement |
+| `/cart` | `/{lang}/concept-c/cart` (7 states) | ✓ | ✓ | ✓ | ✓ + phone bar | ✓ | quantity, remove (confirm), locks, blocked checkout | "Only N left" always; no grouping in production | Seller grouping is presentation (F) |
+| `/checkout` | `/{lang}/concept-c/checkout` (15 states) | ✓ | ✓ | ✓ | ✓ + phone pay bar | ✓ | delivery/pickup, addresses, quote, coupons, wallet, COD, Pay gating, cancel | ~25 (see Quirks) | "Order Created" placeholder kept for the owner to replace |
+| `/payment/moyasar/[id]` | `/{lang}/concept-c/payment/moyasar/9051` (4 states) | ✓ | ✓ new Arabic | ✓ | ✓ | ✓ | card-form container (no fake card fields), return | Return always to /checkout | Production page English-only: translation sign-off |
+| `/payment/result` | `/{lang}/concept-c/payment/result?payment_record_id=9051` (6 states) | ✓ | ✓ new Arabic | ✓ | ✓ | ✓ | verify → paid → redirect; next actions | raw status token; signed-out "View orders" → staff dashboard | Production page English-only: translation sign-off |
+| `/account` (shell) | `/{lang}/concept-c/account` (6 states) | ✓ | ✓ | ✓ side list | ✓ section pill row | ✓ | guard, `?tab=` + aliases, Refresh | Q4 (no `next`), Q5, Q33–Q35 | Suspension banner unreachable in production (Q33) |
+| `/account?tab=overview` | `/{lang}/concept-c/account` | ✓ | ✓ | ✓ | ✓ | ✓ | Open wallet, View orders | Q5 figures from this visit | — |
+| `/account?tab=watchlist` (`bids`) | `/{lang}/concept-c/account?tab=watchlist` | ✓ | ✓ | ✓ | ✓ | ✓ | quick bid, auction panel | Q30–Q32 | Buy Now saves get no quick bid (preview data) |
+| `/account?tab=won` | `/{lang}/concept-c/account?tab=won` | ✓ | ✓ | ✓ | ✓ | ✓ | Pay now (pricing, coupons, wallet, address) | Q9–Q14 incl. Q11 lines not adding up | — |
+| `/account?tab=orders` | `/{lang}/concept-c/account?tab=orders` | ✓ | ✓ | ✓ | ✓ | ✓ | details drawer, Track, Invoice, Pay, load more | Q8, Q16–Q21, Q25, Q29 | Empty-list state added |
+| `/account?tab=wallet` (`deposits`) | `/{lang}/concept-c/account?tab=wallet` | ✓ | ✓ | ✓ | ✓ | ✓ | top-up, cards | no client validation; no remove confirm | Remove-card confirmation: owner |
+| `/account?tab=payments` | `/{lang}/concept-c/account?tab=payments` | ✓ | ✓ | ✓ table | ✓ cards | ✓ | gateway link, invoice | gateway link rule | — |
+| `/account?tab=disputes` | `/{lang}/concept-c/account?tab=disputes` | ✓ | ✓ | ✓ table | ✓ cards | ✓ | new dispute (rules, files), cancel | direct visit loads no orders | Owner: load orders on a direct visit |
+| `/account?tab=notifications` | `/{lang}/concept-c/account?tab=notifications` | ✓ | ✓ | ✓ | ✓ | ✓ | filters, Load 10 more (All only), mark read | links to `/account/orders/{id}` (404) | — |
+| `/account?tab=profile` | `/{lang}/concept-c/account?tab=profile` | ✓ | ✓ | ✓ | ✓ | ✓ | photo, save, password, addresses | email/mobile look editable but are not saved | Owner decision |
+| `/account/watchlist` | `/{lang}/concept-c/account/watchlist` | ✓ | ✓ | — | — | ✓ | redirects to `?tab=watchlist` | — | — |
+| `/login` | `/{lang}/concept-c/login` (5 states) | ✓ | ✓ | ✓ | ✓ | ✓ | buyer-only, `next` cleaned, banners | `verified=1` unread; `next` lost to register; English server text | Theme toggle not shown (Option 3 light-only) |
+| `/register` | `/{lang}/concept-c/register` (6 states) | ✓ | ✓ | ✓ | ✓ | ✓ | two steps, email code, 60 s resend, seller swap | no change-email; Latin "s" in Arabic countdown | Test-mode code only in its preview state |
+| `/seller/register` | `/{lang}/concept-c/seller/register` (5 states) | ✓ | ✓ | ✓ | ✓ plan rail | ✓ | plans, monthly/annual, validation, success hand-off | fixed "-20%", middle card "Popular" | Plan catalogue values are samples (owner) |
+| `/about` | `/{lang}/concept-c/about` | ✓ verbatim | ✓ verbatim | ✓ | ✓ | ✓ | links | production claims kept word for word | Claims for owner review |
+| `/how-it-works` | `/{lang}/concept-c/how-it-works` | ✓ | ✓ | ✓ | ✓ | ✓ | links | claims kept | Approved Khaznah photos, not hot-linked stock |
+| `/faq` | `/{lang}/concept-c/faq` (2 states) | ✓ | ✓ | ✓ | ✓ | ✓ | search, accordion (keyboard) | one entry; hero copied from Contact | FAQ content needed (owner) |
+| `/contact` | `/{lang}/concept-c/contact` (4 states) | ✓ | ✓ | ✓ | ✓ | ✓ | form rules, sent, error (5/min, 503) | English server messages; phone fallback chain | Contact values are samples |
+| `/privacy` | `/{lang}/concept-c/privacy` | ✓ verbatim | ✓ verbatim | ✓ section list | ✓ | ✓ | section list, print | "Last updated: January 2025" | LEGAL: text untouched |
+| `/terms` | `/{lang}/concept-c/terms` | ✓ verbatim | ✓ verbatim | ✓ | ✓ | ✓ | section list, print | §5 vs §7 contradiction kept | LEGAL: text untouched |
+| unknown / 404 — production shows Next's default 404 | any unknown `/{lang}/concept-c/…` address, e.g. `/{lang}/concept-c/orders/1` | ✓ | ✓ | ✓ | ✓ | ✓ | home, Browse, shopping modes, Contact | production shows Next's plain English 404 | Branded 404; unsupported routes stay unsupported |
+| error — production has `auction/[slug]/error.js` and `seller/[code]/error.js` only | any Option 3 page (`/{lang}/concept-c/system?state=crash`), auction, seller | ✓ | ✓ | ✓ | ✓ | ✓ | Try again (reset), way out | auction error "live view" wording | — |
+| loading — production has `(main)/loading.js` and `auction/[slug]/loading.js` | shown on `/{lang}/concept-c/system` | ✓ | ✓ | ✓ | ✓ | ✓ | — | English-only labels in production | Not wired as `loading.js` in the preview (see 404/error/loading) |
+| none | `/{lang}/concept-c/system` — **preview-only** Components & states page | ✓ | ✓ | ✓ | ✓ | ✓ | dialogs, side panels, state index | — | Reviewer page; not a production route |
 
-Not built, as the brief requires: `/account/orders/{id}`, `/orders/1` and a
-`/seller` index (production has none). Links to them that production has
-are kept and land on the branded 404.
+Not built, as the brief requires, and absent from production:
+`/account/orders/[id]`, `/orders/[id]` and a `/seller` index. Production's
+own links to the first two (backend notification links, the checkout
+placeholder's Track Order) are kept and land on the branded 404. No
+production page links to `/seller`; in the preview only, the approved
+header's "Sellers" mode opens the preview-only stand-in above.
+
+`{lang}` is `en` or `ar`. Preview states are chosen with `?state=` (see
+"How to review").
+
+## Option 3 → production route integration map
+
+This table is the authoritative hand-off for production integration. The
+production route list is CURRENT_CUSTOMER_FRONTEND_INVENTORY.md
+(section A). Component paths are under
+`design-preview/components/concept-c/visual-discovery/`. "Production-
+authoritative" behaviour stays exactly as it is in production; the
+Option 3 screen replaces presentation only.
+
+| Production route | Preview / design route | Selected Option 3 screen / component | Integration notes | Behaviour that must remain production-authoritative |
+|---|---|---|---|---|
+| `/` | `/{lang}/concept-c` | `VisualDiscoveryHome.jsx` (`Hero.jsx`, `sections.jsx`, `Header.jsx`, `Footer.jsx`, `Layers.jsx`) | Presentation over the existing homepage data; keep the server entry and client component split. | ISR `revalidate = 20`; `khaznah-country` cookie; `GET marketplace/homepage/?country=` (2.5 s timeout, `null` on failure); 30 s client refresh; watch needs sign-in; guest cart. |
+| `/browse` | `/{lang}/concept-c/browse` | `browse/VisualDiscoveryBrowse.jsx` (`BrowseView.jsx`, `Controls.jsx`, `Filters.jsx`, `Cards.jsx`) | Presentation over the existing `BrowseContent` queries and URL state. | The URL contract (`tab`, `search`, `category` English names, `condition`, `location`, `item_type`, `min_price`/`max_price`, `ending`, `in_stock`, `has_discount`, `sort`, `page`) written with `history.replaceState`; tab rules; inbound links from the Navbar search and the homepage. |
+| `/auction/[slug]` | `/{lang}/concept-c/auction`, `/{lang}/concept-c/auction/{slug}` | `auction/VisualDiscoveryAuction.jsx` (`AuctionView.jsx`, `Gallery.jsx`, `Bidding.jsx`, `Dialogs.jsx`, `LotSections.jsx`), `WinnerCelebration.jsx` | Presentation over `AuctionDetailClient`'s data and actions; keep the route's `layout.js` (metadata), `loading.js` and `error.js` (restyle only). | ISR `revalidate = 15`; by-slug fetch, `redirect_slug`, numeric-id fallback, no `notFound()`; minimum bid, proxy bid, deposits, extensions and closing as the backend decides; WebSocket updates; the winner comes from the authoritative result — the celebration (about 3.5 s) is for the winner only, everyone else sees the public masked identity. |
+| `/shop/[id]` | `/{lang}/concept-c/product`, `/{lang}/concept-c/product/{slug}` (design-review abstraction) | `product/VisualDiscoveryProduct.jsx` (`ProductView.jsx`, `Gallery.jsx`, `PriceCard.jsx`, `Story.jsx`) | Keep `/shop/[id]` with the numeric sale-lot id (Buy Now and `both` lots). Do **not** introduce `/product/[slug]`. | Numeric id only; "This listing is not available as a Buy Now product." unless `sale_type` is `buy_now` or `both`; canonical `/shop/{id}`; availability (`status`, `quantity_available`, `both`: current bid below the Buy Now price); full-stock lock; cart-bound quantity; Buy Now = add then `/cart`; wallet line when signed in; Arabic title and description from `extra_data`. |
+| `/live` | `/{lang}/concept-c/live` | none (redirect) | Keep as is. | Server `redirect("/browse?tab=live")`; the Navbar "Live" link points here. |
+| `/live/[slug]` | `/{lang}/concept-c/live-auction` (design-review abstraction: one sample event) | `live/VisualDiscoveryLive.jsx` (`LiveView.jsx`, `Stage.jsx`, `BidCard.jsx`, `Lists.jsx`, `Upcoming.jsx`, `PhoneBar.jsx`), `WinnerCelebration.jsx` | Keep `/live/[slug]`. Do **not** introduce `/live-auction`. Presentation over the existing viewer's state. | Slug resolution (`by-slug`, `redirect_slug`, numeric fallback, the unknown-slug spinner); WebSocket `/ws/live-auctions/{id}/` with single-use tickets, `state_version` and backoff; operator-controlled lots (no auto-advance, no automatic anti-sniping); bid and max-bid endpoints and the deposit retry; the full-screen moment for the winner only — non-winners see the Sold state. |
+| `/seller/[code]` | `/{lang}/concept-c/seller/{CODE}` | `seller/SellerView.jsx` (reuses Browse's results and drawers) | Presentation over `BrowseContent` with `warehouse_code`. | ISR `revalidate = 60`; upper-cased code; `GET marketplace/sellers/{CODE}/`; 404 → `notFound()`; the seller error boundary; `KHAZNA` alias; `REGISTER` shadowed by `/seller/register`; entitlement tabs including the Live-tab quirk; only lookup fields shown. |
+| `/cart` | `/{lang}/concept-c/cart` | `cart/CartPage.jsx`, `kit/Quantity.jsx` | Presentation over `CartProvider`. Grouping lines by seller is presentation only. | Guest-cart cookie and the one-time merge after login; optimistic updates with rollback; line rules (minimum 1, maximum stock, locked full-stock and `both` lines, "Remove Item?"); checkout blocking; totals; Proceed → `/checkout`. |
+| `/checkout` | `/{lang}/concept-c/checkout` | `checkout/CheckoutPage.jsx` (`Delivery.jsx`, `Orders.jsx`, `Payment.jsx`, `Screens.jsx`) | Presentation over the existing checkout page's flow. | Buyer-only guard → `/login?next=/cart`; deferred-session resume; delivery quote and pricing preview gate Pay; coupons; wallet modes; COD rules; one order per seller; redirect to the backend's `payment_page_url` / `transaction_url`; VAT and totals from the server. |
+| `/payment/moyasar/[id]` | `/{lang}/concept-c/payment/moyasar/9051` | `payment/MoyasarPage.jsx`, `kit/AuthShell.jsx` (payment variant) | Moyasar's hosted form mounts where the preview shows the labelled container. The preview's "Preview only" buttons are not ported. | The Moyasar form (`moyasar-payment-form@2.2.10` from jsDelivr, allowed by the CSP), the payment record, amount and callback; no Navbar or Footer (payment layout). |
+| `/payment/result` | `/{lang}/concept-c/payment/result?payment_record_id=9051` | `payment/ResultPage.jsx` | Presentation over the verification flow. | Params `payment_record_id` and `id` / `payment_id`; the verify call, then status polling; automatic redirect only when paid, in production's destination order; the signed-out message; staff → `/dashboard/orders`. |
+| `/account` | `/{lang}/concept-c/account?tab=…` | `account/AccountPage.jsx` (`Overview.jsx`, `Watchlist.jsx`, `Won.jsx`, `Orders.jsx`, `WalletTab.jsx`, `Payments.jsx`, `Disputes.jsx`, `Notifications.jsx`, `Profile.jsx`, `Appeal.jsx`) | Presentation over the existing account page's data and actions. | Buyer-only; signed out → `/login` with no `next`; staff and warehouse users → `/dashboard`; `?tab=` values and the aliases `deposits` and `bids`; `replaceState`; backend links `/account?tab=orders&order={id}` and `/account?tab=notifications` keep working; wallet, payment, dispute and notification rules. |
+| `/account/watchlist` | `/{lang}/concept-c/account/watchlist` | `account/AccountPage.jsx` (`WatchlistRedirect`) | Keep the legacy redirect. | `window.location.replace("/account?tab=watchlist")`. |
+| `/login` | `/{lang}/concept-c/login` | `auth/LoginPage.jsx`, `kit/AuthShell.jsx` | Presentation over the existing sign-in flow. | Buyer-only; `next` cleaned by `lib/safeRedirect.js`; `registered` and `expired`; the profile language update after sign-in; portal links to `/warehouse/login` and `/dashboard/login`; the session (in-memory JWT, refresh cookie, CSRF). |
+| `/register` | `/{lang}/concept-c/register` | `auth/RegisterPage.jsx` | Presentation over the existing two-step flow. | `POST accounts/register/` (role `buyer`), send and verify OTP (6 digits, 60 s resend); success → `/login?registered=1&verified=1`; the in-place switch to seller sign-up. |
+| `/seller/register` | `/{lang}/concept-c/seller/register` | `auth/SellerRegister.jsx` | Presentation over the existing seller signup. | The plan catalogue from `billing/packages/public`; the signup call; auto-login; hand-off to `/dashboard` (out of scope). |
+| `/about` | `/{lang}/concept-c/about` | `content/AboutPage.jsx`, `content/ContentKit.jsx` | Static content, copy word for word. | Production's claims stay as they are until the owner reviews them. |
+| `/how-it-works` | `/{lang}/concept-c/how-it-works` | `content/HowItWorksPage.jsx` | Uses approved Khaznah photography from the repository instead of hot-linked stock. | Copy word for word; claims pending owner review. |
+| `/faq` | `/{lang}/concept-c/faq` | `content/FaqPage.jsx` | One real entry today; more content is an owner decision. | Production's search matching. |
+| `/contact` | `/{lang}/concept-c/contact` | `content/ContactPage.jsx` | Presentation over the API calls. The preview's sample values and simulated sending are not ported. | `GET notifications/support/contact/`, `POST notifications/support/message/` (5 a minute, English server messages); WhatsApp only when configured. |
+| `/privacy` | `/{lang}/concept-c/privacy` | `content/PolicyPage.jsx` | Presentation only. | Legal text and "Last updated: January 2025" unchanged. |
+| `/terms` | `/{lang}/concept-c/terms` | `content/PolicyPage.jsx` | Presentation only. | Legal text and "Last updated: January 2025" unchanged. |
+| unknown / 404 | any unknown `/{lang}/concept-c/…` address | `content/NotFoundPage.jsx` (`Option3NotFound.jsx` is only the preview's switch for unmatched addresses) | Production has no `not-found.js` today; adding the branded page is a presentation change. | Unknown addresses keep the 404 status; `/seller/[code]`'s `notFound()`; no route is added to make a 404 go away. |
+
+**These routes do not exist — do not create them during integration:**
+
+- `/account/orders/[id]` — does not exist. Backend notification links point
+  to it and reach the 404; that stays a documented quirk until the owner
+  decides otherwise.
+- `/orders/[id]` — does not exist. Only checkout's placeholder Track Order
+  links to `/orders/1`.
+- `/seller` (index) — does not exist. No production page links to it and
+  there is no public seller-list endpoint. The preview's
+  `/{lang}/concept-c/seller` stand-in is preview-only and is not a
+  production requirement.
+
+**Preview-only — not to be ported:** the `/{en|ar}/concept-c` prefix and
+the concept selector; the presentation bar with its page and Preview state
+pickers (`?state=`, `StateRoute`); the simulated session (`PreviewStore`
+`signedIn`, `kit/session.js`) — production keeps its `AuthProvider`; all
+sample data (`data/*Samples.js`, `data/support.js`, `data/sellerPlans.js`);
+the card page's "Preview only" buttons and the sample contact-link notes;
+the `/{lang}/concept-c/seller` stand-in and `/{lang}/concept-c/system`;
+the `/{lang}/concept-c/product/{slug}` and `/{lang}/concept-c/live-auction`
+addresses (abstractions of `/shop/[id]` and `/live/[slug]`).
+
+**Language in production:** customer URLs stay without a language prefix.
+Language keeps working as it does today — the customer language provider
+(`khaznah-customer-language`, synced across tabs and to the profile's
+`customer_language`), the pre-paint `<html lang/dir>` script and RTL.
+Option 3's English and Arabic copy is applied within that provider. No
+production route migration is approved.
 
 ## What was built
 
@@ -119,7 +202,7 @@ product cards). No generic abstraction was added for its own sake.
 
 ### Seller storefront (Phase 1)
 
-Production's storefront is Browse scoped to one seller's warehouse, and so
+Production route `/seller/[code]`. Production's storefront is Browse scoped to one seller's warehouse, and so
 is this one: the approved Browse pill bar, filters and sort drawers,
 image-led cards and Load more, under a navy seller hero. The hero keeps
 production's headline and "Seller · CODE" chip and shows only fields of the
@@ -203,8 +286,10 @@ production's hot-linked stock photos.
 
 ### 404, error and loading (Phases 23–24)
 
-- Branded Option 3 404 for every unknown Option 3 address (status 404; the
-  static export does the same). Other options keep the preview's own 404.
+- Branded Option 3 404 for every unknown Option 3 preview address (status
+  404; the static export does the same). Other options keep the preview's
+  own 404. Production today shows Next's default 404 (it has no
+  `not-found.js`).
 - Error pages: general, auction and seller catalogue, each with Try again
   and production's way out.
 - Loading screens (production's main and auction loaders) are shown on the
@@ -213,9 +298,10 @@ production's hot-linked stock photos.
   included — loading-first, and turn the 404s and the `/live` redirect into
   200 responses. In production they belong in `(main)/loading.js` and
   `auction/[slug]/loading.js`.
-- Components & states (`/system`): the kit, one example of each kind of
-  page state in its own page's words (no business states collapsed into a
-  generic message), and an index of every preview state.
+- Components & states (`/{lang}/concept-c/system`, preview-only): the
+  kit, one example of each kind of page state in its own page's words (no
+  business states collapsed into a generic message), and an index of every
+  preview state.
 
 ## Design consistency (Phase 29)
 
@@ -258,8 +344,10 @@ findings on every page and state checked.
 
 ## The approved five (Phase 30)
 
-Home, Browse, Timed Auction Detail, Live Auction and Buy Now Product
-Detail were not redesigned. Their shared chrome changed only where the
+Home (`/`), Browse (`/browse`), Timed Auction Detail (`/auction/[slug]`),
+Live Auction (`/live/[slug]`; preview `/{lang}/concept-c/live-auction`) and
+Buy Now Product Detail (`/shop/[id]`; preview `/{lang}/concept-c/product`)
+were not redesigned. Their shared chrome changed only where the
 brief required it: the footer's placeholder links now open the new pages
 (How it works, Contact, About, Sell on Khaznah, Terms, Privacy; Delivery &
 pickup goes to Contact, as production's Shipping link does; Condition
@@ -278,7 +366,7 @@ Tests.
 
 | Area | What it covers | Checks | Result |
 |---|---|---|---|
-| global | 23 routes × EN/AR × 9 widths (1920–320): status, lang/dir, one h1, one main, skip link (first Tab stop, Enter → content), no broken images, no sideways scroll, no console errors; axe at 1440 and 390; presentation-bar page list; account menu and the session across a reload | 3,464 | all passed |
+| global | 23 preview routes × EN/AR × 9 widths (1920–320): status, lang/dir, one h1, one main, skip link (first Tab stop, Enter → content), no broken images, no sideways scroll, no console errors; axe at 1440 and 390; presentation-bar page list; account menu and the session across a reload | 3,464 | all passed |
 | discovery | auction-first header on the approved pages; product → cart drawer → cart/checkout; seller storefront (chip, headline, no invented fields, listings, live row, error, 404, phones) | 71 | all passed |
 | cart | empty, sample, attention, guest, signed out, loading, error; quantity rules; locks; remove with confirmation; phone bar | 119 | all passed |
 | checkout | delivery, pickup, address, multi-seller, coupons, wallet, COD, Pay gating, every state, phones | 193 | all passed |
@@ -380,9 +468,10 @@ tracking data after Track (Q22–Q24).
 Presentation or accessibility only, no business rule changed:
 
 - Header account menu carries production's dropdown links; footer
-  placeholders open the new pages; `/seller` keeps the frozen stand-in
-  (the featured seller's storefront) because the approved header and home
-  link to it — production has no `/seller` page.
+  placeholders open the new pages. In the preview only, the approved
+  header's "Sellers" mode opens `/{lang}/concept-c/seller`, a stand-in (the
+  featured seller's storefront, unchanged from the frozen commit).
+  Production has no `/seller` page and none is to be created.
 - Cart lines grouped by seller.
 - Native browser confirms and validation bubbles became accessible dialogs
   and inline messages with the same rules and questions.
@@ -418,8 +507,9 @@ Presentation or accessibility only, no business rule changed:
    not built).
 6. Cash on delivery is off platform-wide by default; the sample turns it
    on for one seller to show the per-order choice.
-7. `/seller`: link "Sellers" to a real destination, or let it reach the
-   branded 404.
+7. The approved header's "Sellers" mode has no production destination:
+   production has no `/seller` page and none is to be created. Before
+   integration the owner decides which existing route it uses.
 8. Whether to fix the documented production bugs (above) in production.
 9. A forgot-password flow does not exist in production (no endpoint) — not
    designed.
@@ -543,9 +633,21 @@ All paths are under `design-preview/`.
   content, regression), `package.json` (the new script).
 - **Docs:** this report and `CLIENT_PREVIEW_GUIDE.md` (repository root).
 
+## Design freeze
+
+OPTION 3 COMPLETE CUSTOMER WEBSITE:
+`892dd183b4481f1f3fef021d7f84ba69fbf9e7cd`
+
+The complete Option 3 customer website design is approved and frozen at
+this commit. Later commits on this branch change documentation only; the
+preview's code, styles and tests are identical to the frozen commit. Any
+subsequent work belongs to production integration, not further design.
+
 ## Status
 
-**OPTION 3 CUSTOMER WEBSITE COMPLETE.**
+**OPTION 3 DESIGN COMPLETE — READY FOR PRODUCTION INTEGRATION.**
+
+The build itself was reported as "OPTION 3 CUSTOMER WEBSITE COMPLETE".
 
 Every customer route in the brief is built in Option 3, in English and
 Arabic, on desktop and phones, with its documented states, and verified
@@ -554,7 +656,7 @@ passing; the approved five unchanged). The business, API and legal items
 above are decisions for the owner before production integration; none of
 them blocks the design.
 
-Not done, by design (the brief's final stop): nothing is merged to main,
-nothing is integrated into the production source, and nothing is deployed
-to production. The work waits for independent review on
-`claude/magical-faraday-fne4kq`.
+Not done, by design: nothing is merged to main, nothing is integrated into
+the production source, and nothing is deployed to production. Production
+integration starts from the integration map above, outside this design
+preview.

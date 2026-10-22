@@ -8,6 +8,10 @@ a customer meets, from the home page to checkout, payment, the buyer
 account, signing in and the help pages, in English and Arabic, on desktop
 and on phones.
 
+The design is **approved and frozen** at commit
+`892dd183b4481f1f3fef021d7f84ba69fbf9e7cd`. What follows is production
+integration, not further design.
+
 Options 1, 2 and 4 stay in the preview exactly as they were reviewed (the
 five pages each), for reference only. They were not developed further.
 
@@ -26,8 +30,8 @@ picker:
 5. **Company and help:** About, How it works, FAQ, Contact, Privacy policy,
    Terms and conditions.
 6. **States and system:** Components & states (the shared building blocks
-   and the standard empty, error and loading states) and Page not found
-   (404).
+   and the standard empty, error and loading states — a review page that
+   exists only in the preview) and Page not found (404).
 
 As you go through them, please consider:
 
@@ -38,6 +42,34 @@ As you go through them, please consider:
   notifications.
 - **Mobile** — the same pages on a phone.
 - **Arabic** — the same pages in Arabic, right to left.
+
+## Preview addresses are not the live website's addresses
+
+The preview's addresses are for design review only:
+
+- Every preview page lives under `/en/concept-c/…` or `/ar/concept-c/…`.
+  The live website does **not** put the language in its addresses; it keeps
+  remembering each customer's language choice as it does today, and Arabic
+  pages switch to right to left in the same way. No change to the live
+  website's addresses is approved.
+- A Buy Now item is at `/shop/{number}` on the live website. The preview
+  shows it at `…/concept-c/product`, an address that exists only in the
+  preview.
+- A live auction is at `/live/{event}` on the live website. The preview
+  shows one sample event at `…/concept-c/live-auction`, an address that
+  exists only in the preview. `/live` on its own opens the Live tab of
+  Browse, on both.
+- A seller's storefront is at `/seller/{CODE}` on both. The live website
+  has **no** sellers page at `/seller`: in the preview, the header's
+  "Sellers" link opens a stand-in (one seller's storefront) that exists only
+  in the preview.
+- Order-detail addresses such as `/account/orders/{number}` or
+  `/orders/{number}` do not exist on the live website; in the preview they
+  show the Page not found screen.
+
+The full list of live-website addresses and how each Option 3 page maps
+onto them is in OPTION3_COMPLETE_CUSTOMER_WEBSITE_REPORT.md ("Option 3 →
+production route integration map").
 
 ## Page states
 
@@ -89,6 +121,9 @@ new functionality represented only for demonstration.**
   provider's secure card form appears; it is not a working card form.
 - Nothing you enter (sign-in details, addresses, messages, dispute
   details) is sent anywhere.
+- The **Preview state** picker, the simulated sign-in, the `/seller` stand-in
+  and the Components & states page belong to the preview only; they are not
+  part of the live website.
 - The legal pages show the live platform's current text unchanged; the
   design does not change their wording or dates.
 - Where the live platform has a known quirk, the preview keeps it rather
