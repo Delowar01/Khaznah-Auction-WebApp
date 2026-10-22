@@ -2,105 +2,95 @@
 
 ## Purpose
 
-This preview presents four alternative customer-facing design directions for
-Khazna. Each direction shows the same screens with the same sample content, so
-the comparison is about design and experience, not about products.
+**Option 3 — Visual Discovery Marketplace is the selected master design.**
+The preview now shows the complete customer website in Option 3: every page
+a customer meets, from the home page to checkout, payment, the buyer
+account, signing in and the help pages, in English and Arabic, on desktop
+and on phones.
 
-The options are not ranked, and none is recommended over the others.
-
-> **This is the second round.** After reviewing the first set, the Modern
-> Commerce direction was kept as the starting point, and three new
-> alternatives were created in the same commercially-focused family so all
-> four options now feel like serious, realistic Khazna marketplaces. This note
-> is background for the review team; the preview itself simply shows the four
-> options below.
+Options 1, 2 and 4 stay in the preview exactly as they were reviewed (the
+five pages each), for reference only. They were not developed further.
 
 ## What to review
 
-For **each of the four options**, please review these five pages, in this
-order:
+In Option 3, please review the pages in the order of the dark bar's page
+picker:
 
-1. **Home**
-2. **Browse** — all lots, with the Auctions and Buy Now views
-3. **Auction Detail** — a timed auction lot
-4. **Live Auction** — the live sale room
-5. **Product Detail** — a Buy Now item
-
-The dark bar at the top of the preview lists these five pages first, in this
-order, in every option. The start page lists them under **New design · the
-five pages to review**.
+1. **Approved review pages** (already approved; unchanged): Home, Browse,
+   Auction, Live auction, Product.
+2. **Shopping:** Seller storefront, Cart, Checkout, Card payment, Payment
+   result.
+3. **Account:** My account, with its nine tabs — Overview, Watchlist, Won,
+   Orders, Wallet, Payments, Disputes, Notifications and Profile.
+4. **Sign in and sign up:** Sign in, Create account, Seller registration.
+5. **Company and help:** About, How it works, FAQ, Contact, Privacy policy,
+   Terms and conditions.
+6. **States and system:** Components & states (the shared building blocks
+   and the standard empty, error and loading states) and Page not found
+   (404).
 
 As you go through them, please consider:
 
-- **Overall design direction** — does the option feel like one consistent
-  Khazna website from page to page?
-- **Auction experience** — finding auctions, following a lot, placing a bid
-  and taking part in the live sale.
-- **Product discovery** — browsing, searching, filtering and moving from a
-  card to its page.
-- **Buy Now experience** — price, stock, quantity, Add to cart and Buy it
-  now.
-- **Mobile direction** — the same five pages on a phone.
-- **Arabic direction** — the same five pages in Arabic, designed right to
-  left.
+- **One website** — do the new pages feel like the approved five pages?
+- **The buying path** — from a product or a won auction to the cart,
+  checkout and payment, and back to the account.
+- **The account** — finding orders, payments, the wallet, disputes and
+  notifications.
+- **Mobile** — the same pages on a phone.
+- **Arabic** — the same pages in Arabic, right to left.
 
-It helps to note what you like in each option. Please select one primary
-design direction as your preferred concept. You may also note any specific
-elements from the other options that you particularly like; these can be
-reviewed after the primary direction is selected.
+## Page states
 
-**Not part of this review:** the Seller and Components & states screens are
-earlier prototypes. Each of them carries an "Earlier prototype" note at the
-top. Cart, checkout and account have not been redesigned in any option.
+Many pages have more than one state: an empty cart, a loading page, a
+failed payment, a signed-out visitor, a step of a form. On Option 3 pages
+the dark bar has a **Preview state** picker that lists the states of the
+page you are on. Choose one to see the page in that state; choose the
+first entry to return to the normal page.
 
-## Options
+## Signing in and out
 
-| Option | Direction | In short |
-|---|---|---|
-| **1** | Modern Commerce | Search-led, practical and focused on conversion. Designed for customers who want to find products, categories and auctions quickly. |
-| **2** | Premium Modern Marketplace | A calm, premium storefront in warm ivory, charcoal and restrained brass: a centred logo over a broad search row, a panoramic room hero with the live lot pinned in the scene, photographic categories, Buy Now cards, an Ending soon band, a split live auction, pallets, sellers, and grades beside How Khaznah works. |
-| **3** | Visual Discovery Marketplace | A bright, image-first marketplace in white, indigo and navy with gold: a pill search in the header, a mosaic hero, outlined category pills, a mixed-height product wall, a navy live banner, image-first auctions, photographic seller shelves and an ivory newsletter. |
-| **4** | Contemporary Saudi Commerce | A green and cream storefront: a centred bilingual hero with the marketplace search at its heart, trust points straight after, a category rail beside horizontal Buy Now cards, Ending soon beside the live auction, a seller directory, large 01/02/03 steps and a green footer. |
-
-> **This round:** every option shows its new design on the same five pages —
-> **Home, Browse, Auction Detail, Live Auction and Product Detail**. Option
-> 1's pages were redesigned within its existing design; Options 2–4 use their
-> approved new designs, which are light only (on these pages the bar shows
-> **Light only**, a sun, instead of the sun / moon button).
+The preview signs you in as the demo buyer. Use **Logout** in the account
+menu (the person icon in the header, or the phone menu) to see the website
+as a visitor: the account and checkout then ask you to sign in, as the
+live platform does. Sign in again on the **Sign in** page with any email
+and password. The choice lasts while the browser tab stays open.
 
 ## Using the preview
 
-- **Start page:** the preview opens on a page showing the four options side by
-  side. Select **Explore** on any option, or go straight to one of its
-  screens.
-- **The dark bar at the top** belongs to the presentation, not to the website
-  designs. Use it to:
-  - move between screens: the five pages to review first (Home, Browse,
-    Auction, Live auction, Product), then the earlier prototypes (Seller, and
-    Components & states);
+- **Start page:** the preview opens on a page showing the four options side
+  by side. Select **Explore** on Option 3, or go straight to one of its
+  pages.
+- **The dark bar at the top** belongs to the presentation, not to the
+  website. Use it to:
+  - move between pages (the page picker) and, on Option 3, between the
+    states of a page (the **Preview state** picker);
   - switch to another option;
   - change the language (**EN / العربية**);
-  - change the appearance (sun / moon button — Option 1 and the earlier
-    prototype screens; the new Home, Browse, Auction, Live auction and
-    Product pages of Options 2–4 are light only);
   - open a tablet or mobile frame;
   - return to the start page (**Concepts**).
-- **Switching options** loads the page afresh, so every option always
-  appears exactly as designed. Anything added to the demo cart or watchlist
-  starts again in each option.
+- **Switching options** loads the page afresh. Anything added to the demo
+  cart or watchlist starts again in each option.
 - **To see a design on its own**, hide the bar with its hide button or the
-  full-stop key (**.**). Bring it back with the small tab at the side of the
-  screen.
-- **On a phone**, simply open the preview link. Each design adapts to the
+  full-stop key (**.**). Bring it back with the small tab at the side of
+  the screen.
+- **On a phone**, simply open the preview link. Each page adapts to the
   screen.
 
 ## Important
 
-**These are interactive design prototypes using sample data. Selection of a
-concept approves the visual/UX direction; it does not automatically approve
+**These are interactive design prototypes using sample data. Approving a
+page approves its visual and UX design; it does not automatically approve
 new functionality represented only for demonstration.**
 
-Product information, sellers, prices, figures, auction activity and
-interactive behaviour in the preview are samples and may not match the current
-live platform. Some features appear only to illustrate a design idea. Each of
-those would need its own decision before it could be offered to customers.
+- Product information, sellers, prices, orders, balances, figures, auction
+  activity and interactive behaviour are samples and may not match the
+  live platform.
+- **No payment is taken.** The card payment page shows where the payment
+  provider's secure card form appears; it is not a working card form.
+- Nothing you enter (sign-in details, addresses, messages, dispute
+  details) is sent anywhere.
+- The legal pages show the live platform's current text unchanged; the
+  design does not change their wording or dates.
+- Where the live platform has a known quirk, the preview keeps it rather
+  than quietly fixing it. The list, and the questions that need a business
+  or legal decision, are in OPTION3_COMPLETE_CUSTOMER_WEBSITE_REPORT.md.
