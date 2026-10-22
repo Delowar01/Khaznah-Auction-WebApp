@@ -15,8 +15,10 @@ const STEP = "grid size-9 place-items-center rounded-full bg-white text-[var(--v
  * (with the item name, so each line's controls are distinct). As in
  * production's cart, typing commits real values only — an empty field is held
  * until it loses focus — so editing the number never removes the line.
+ * `editable={false}`: only − and + change it, the number is plain text (as
+ * production's checkout); `canIncrease` disables + without a known maximum.
  */
-export function QuantityStepper({ value, max, onChange, labels, disabled = false, busy = false, className = "" }) {
+export function QuantityStepper({ value, max, onChange, labels, disabled = false, busy = false, className = "", editable = true, canIncrease }) {
   const set = (next) => onChange(Math.max(1, Math.min(max, Number.isFinite(next) ? Math.round(next) : 1)));
   const [draft, setDraft] = useState(String(value));
   const [shown, setShown] = useState(value);
@@ -30,30 +32,36 @@ export function QuantityStepper({ value, max, onChange, labels, disabled = false
       <button type="button" onClick={() => set(value - 1)} disabled={disabled || value <= 1} aria-label={labels.decrease} className={STEP}>
         <Minus aria-hidden="true" className="size-4" strokeWidth={2.4} />
       </button>
-      <input
-        type="number"
-        inputMode="numeric"
-        min={1}
-        max={max}
-        value={draft}
-        disabled={disabled}
-        onChange={(event) => {
-          const raw = event.target.value.replace(/[^\d]/g, "");
-          setDraft(raw);
-          if (raw !== "" && Number(raw) >= 1) set(Number(raw));
-        }}
-        onBlur={() => {
-          const next = Math.max(1, Math.min(max, Number(draft) || 1));
-          setDraft(String(next));
-          if (next !== value) set(next);
-        }}
-        onKeyDown={(event) => {
-          if (event.key === "Enter") event.currentTarget.blur();
-        }}
-        aria-label={labels.quantity}
-        className="vd-no-spin w-10 min-w-0 rounded-full bg-transparent text-center vd-md font-extrabold text-[var(--vd-ink)] tabular"
-      />
-      <button type="button" onClick={() => set(value + 1)} disabled={disabled || value >= max} aria-label={labels.increase} className={STEP}>
+      {editable ? (
+        <input
+          type="number"
+          inputMode="numeric"
+          min={1}
+          max={max}
+          value={draft}
+          disabled={disabled}
+          onChange={(event) => {
+            const raw = event.target.value.replace(/[^\d]/g, "");
+            setDraft(raw);
+            if (raw !== "" && Number(raw) >= 1) set(Number(raw));
+          }}
+          onBlur={() => {
+            const next = Math.max(1, Math.min(max, Number(draft) || 1));
+            setDraft(String(next));
+            if (next !== value) set(next);
+          }}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") event.currentTarget.blur();
+          }}
+          aria-label={labels.quantity}
+          className="vd-no-spin w-10 min-w-0 rounded-full bg-transparent text-center vd-md font-extrabold text-[var(--vd-ink)] tabular"
+        />
+      ) : (
+        <span aria-live="polite" className="min-w-10 text-center vd-md font-extrabold text-[var(--vd-ink)] tabular" dir="ltr">
+          {value}
+        </span>
+      )}
+      <button type="button" onClick={() => set(value + 1)} disabled={disabled || (canIncrease === undefined ? value >= max : !canIncrease)} aria-label={labels.increase} className={STEP}>
         <Plus aria-hidden="true" className="size-4" strokeWidth={2.4} />
       </button>
     </div>
