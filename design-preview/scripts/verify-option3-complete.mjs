@@ -5,6 +5,7 @@
 //   npm run build && npm run start            (serves on http://localhost:3100)
 //   npm run verify:option3-complete -- [--base http://localhost:3100]
 //       [--only global,cart] [--no-axe] [--verbose] [--shots DIR]
+//       [--baseline http://localhost:3400] [--widths 1440,390] [--out DIR]
 //
 // Areas, one module each in scripts/option3/ (run in this order):
 //   global     every Option 3 route: status, html lang and dir, one h1, one
@@ -13,6 +14,9 @@
 //   discovery  the approved pages and the seller storefront
 //   cart, checkout, payment, account (9 tabs), auth, content (with the
 //   404, loading and error states)
+//   regression the five approved pages against a baseline server (the
+//              frozen commit), pixel by pixel and by structure; runs only
+//              with --baseline http://localhost:3400 [--out DIR for diffs]
 // `npm run verify:option3` (hero cards and the winner moment) stays as is.
 // Exits 1 on any failure.
 import { chromium } from "@playwright/test";
@@ -21,7 +25,7 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { createHarness } from "./option3/harness.mjs";
 
-const AREAS = ["global", "discovery", "cart", "checkout", "payment", "account", "auth", "content"];
+const AREAS = ["global", "discovery", "cart", "checkout", "payment", "account", "auth", "content", "regression"];
 
 const args = process.argv.slice(2);
 const flag = (name) => args.includes(`--${name}`);
@@ -38,7 +42,7 @@ const ONLY = opt("only", "")
 const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), "option3");
 const executablePath = fs.existsSync("/opt/pw-browsers/chromium") ? "/opt/pw-browsers/chromium" : undefined;
 const browser = await chromium.launch({ executablePath });
-const h = createHarness({ browser, base: BASE, axe: !flag("no-axe"), verbose: flag("verbose"), shots: opt("shots", "") });
+const h = createHarness({ browser, base: BASE, baseline: opt("baseline", ""), axe: !flag("no-axe"), verbose: flag("verbose"), shots: opt("shots", ""), opt });
 
 const started = Date.now();
 for (const name of AREAS) {

@@ -12,6 +12,9 @@
 //   h.overflow(page) / h.axe(page)   the individual measurements
 //   h.mainText(page)                 the visible text of <main>
 //   h.shot(page, name)               a screenshot when --shots is given
+//   h.browser, h.baseline            the browser, and the --baseline server
+//                                    (the regression area compares against it)
+//   h.opt(name, fallback)            another command-line option (--widths …)
 //
 // Paths are Option 3 paths without the language and concept prefix
 // ("/cart?state=empty"); `lang` is "en" or "ar".
@@ -23,7 +26,7 @@ export const LANGS = ["en", "ar"];
 export const REVIEW_WIDTHS = [1920, 1440, 1280, 1024, 768, 430, 390, 375, 320];
 export const heightFor = (width) => (width < 768 ? 844 : width < 1024 ? 1024 : 900);
 
-export function createHarness({ browser, base, axe = true, verbose = false, shots = "" }) {
+export function createHarness({ browser, base, baseline = "", axe = true, verbose = false, shots = "", opt = (name, fallback) => fallback }) {
   const stats = { pass: 0, fail: 0, failures: [] };
   let area = "";
 
@@ -127,5 +130,5 @@ export function createHarness({ browser, base, axe = true, verbose = false, shot
     await page.screenshot({ path: path.join(shots, `${name}.png`), fullPage: true });
   }
 
-  return { base, url, section, check, open, overflow, axe: axeFindings, audit, mainText, shot, stats, verbose };
+  return { browser, base, baseline, opt, url, section, check, open, overflow, axe: axeFindings, audit, mainText, shot, stats, verbose, shots };
 }
