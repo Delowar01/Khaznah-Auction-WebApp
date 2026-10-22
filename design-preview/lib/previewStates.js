@@ -67,11 +67,14 @@ export const PAGE_STATES = {
     S("errors", "Missing details", "بيانات ناقصة"),
     S("verify", "Email code", "رمز البريد"),
     S("verify-error", "Wrong code", "رمز غير صحيح"),
+    S("verify-test", "Email code · test mode", "رمز البريد · وضع الاختبار"),
     S("seller", "Selling instead", "التسجيل كبائع"),
   ],
   sellerRegister: [
     S("default", "Seller details", "بيانات البائع"),
     S("errors", "Missing details", "بيانات ناقصة"),
+    S("loading", "Plans loading", "جارٍ تحميل الباقات"),
+    S("no-plans", "No plans available", "لا توجد باقات متاحة"),
     S("success", "Account created", "تم إنشاء الحساب"),
   ],
   contact: [

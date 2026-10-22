@@ -86,9 +86,20 @@ function FooterLine() {
   );
 }
 
-/** The furniture photograph with the brand line, beside sign-in forms from 1024 px. */
-function PhotoPanel() {
+/**
+ * The furniture photograph beside sign-in forms from 1024 px: the brand
+ * line, or — `children` — the page's own introduction over a navy fade.
+ */
+function PhotoPanel({ children }) {
   const { t } = useLang();
+  if (children) {
+    return (
+      <div className="relative hidden overflow-hidden rounded-[28px] bg-[var(--vd-navy)] lg:flex lg:flex-col lg:justify-end">
+        <Img image={WORK_MEDIA.furnitureScene} alt="" sizes="(min-width: 1200px) 560px, 45vw" className="absolute inset-0 size-full object-cover" />
+        <div className="relative bg-gradient-to-t from-[#06213f] from-45% via-[#06213f]/80 via-70% to-[#06213f]/0 p-8 pt-36 text-white dt:p-10 dt:pt-44">{children}</div>
+      </div>
+    );
+  }
   return (
     <aside aria-hidden="true" className="relative hidden overflow-hidden rounded-[28px] bg-[var(--vd-ivory)] lg:block">
       <Img image={WORK_MEDIA.furnitureScene} alt="" sizes="(min-width: 1200px) 560px, 45vw" className="absolute inset-0 size-full object-cover" />
@@ -101,11 +112,13 @@ function PhotoPanel() {
 }
 
 /**
- * `variant` "auth": the form card beside the photograph (sign in, sign up);
- * "wide": a single wide column (seller registration); "payment": a narrow
- * centred column with the secure-payment badge.
+ * `variant` "auth": the form card beside the photograph (sign in, sign up;
+ * `aside` replaces the photograph's brand line with the page's own
+ * introduction); "wide": a single wide column; "split": the full 1240 px
+ * width for a page's own two columns (seller registration); "payment": a
+ * narrow centred column with the secure-payment badge.
  */
-export function AuthShell({ variant = "auth", children }) {
+export function AuthShell({ variant = "auth", aside = null, children }) {
   const secure = variant === "payment";
   return (
     <R3Root>
@@ -114,12 +127,12 @@ export function AuthShell({ variant = "auth", children }) {
         <TopBar secure={secure} />
         <main id="main" tabIndex={-1} className="flex-1 outline-none">
           {variant === "auth" ? (
-            <div className="mx-auto grid w-full max-w-[1240px] gap-8 px-4 py-8 md:px-7 md:py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-stretch dt:gap-12 dt:py-14">
+            <div className="mx-auto grid w-full max-w-[1240px] grid-cols-[minmax(0,1fr)] gap-8 px-4 py-8 md:px-7 md:py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-stretch dt:gap-12 dt:py-14">
               <div className="mx-auto w-full max-w-[520px] lg:mx-0 lg:max-w-none">{children}</div>
-              <PhotoPanel />
+              <PhotoPanel>{aside}</PhotoPanel>
             </div>
           ) : (
-            <div className={cx("mx-auto w-full px-4 py-8 md:px-7 md:py-12 dt:py-14", variant === "wide" ? "max-w-[1040px]" : "max-w-[720px]")}>{children}</div>
+            <div className={cx("mx-auto w-full px-4 py-8 md:px-7 md:py-12 dt:py-14", { wide: "max-w-[1040px]", split: "max-w-[1240px]" }[variant] || "max-w-[720px]")}>{children}</div>
           )}
         </main>
         <FooterLine />

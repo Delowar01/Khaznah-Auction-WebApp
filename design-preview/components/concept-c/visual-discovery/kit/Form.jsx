@@ -86,10 +86,20 @@ export function Select({ id, describedBy, invalid, className = "", children, ...
   );
 }
 
-/** Password with a show / hide eye button inside the field. */
-export function PasswordInput({ id, describedBy, invalid, className = "", ...rest }) {
+/**
+ * Password with a show / hide eye button inside the field. Optional: `shown`
+ * and `onShownChange` to share one toggle between two fields (the other
+ * field passes `toggle={false}`), `labels` ({ show, hide }) to name the
+ * toggle when a form has two.
+ */
+export function PasswordInput({ id, describedBy, invalid, className = "", shown: shownProp, onShownChange, toggle = true, labels, disabled, ...rest }) {
   const { t } = useLang();
-  const [shown, setShown] = useState(false);
+  const [shownState, setShownState] = useState(false);
+  const shown = shownProp ?? shownState;
+  const flip = () => {
+    if (shownProp === undefined) setShownState(!shown);
+    onShownChange?.(!shown);
+  };
   return (
     <span className="relative block">
       <input
@@ -98,18 +108,22 @@ export function PasswordInput({ id, describedBy, invalid, className = "", ...res
         aria-describedby={describedBy}
         aria-invalid={invalid || undefined}
         dir="ltr"
-        className={cx(fieldClass(invalid), "h-12 pe-14 rtl:text-right", className)}
+        disabled={disabled}
+        className={cx(fieldClass(invalid), "h-12 rtl:text-right", toggle && "pe-14", className)}
         {...rest}
       />
-      <button
-        type="button"
-        onClick={() => setShown((value) => !value)}
-        aria-pressed={shown}
-        aria-label={t(shown ? TEXT.hide : TEXT.show)}
-        className="absolute end-1.5 top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full text-[var(--vd-indigo)] hover:bg-[var(--vd-bluegray)]"
-      >
-        {shown ? <EyeOff aria-hidden="true" className="size-[18px]" strokeWidth={2} /> : <Eye aria-hidden="true" className="size-[18px]" strokeWidth={2} />}
-      </button>
+      {toggle ? (
+        <button
+          type="button"
+          onClick={flip}
+          disabled={disabled}
+          aria-pressed={shown}
+          aria-label={labels ? (shown ? labels.hide : labels.show) : t(shown ? TEXT.hide : TEXT.show)}
+          className="absolute end-1.5 top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full text-[var(--vd-indigo)] hover:bg-[var(--vd-bluegray)] disabled:opacity-45"
+        >
+          {shown ? <EyeOff aria-hidden="true" className="size-[18px]" strokeWidth={2} /> : <Eye aria-hidden="true" className="size-[18px]" strokeWidth={2} />}
+        </button>
+      ) : null}
     </span>
   );
 }
