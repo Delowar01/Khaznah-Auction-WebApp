@@ -92,6 +92,8 @@ function NotificationItem({ item }) {
           {item.action_url ? (
             <Link
               href={item.action_url.startsWith("/") ? link(item.action_url) : item.action_url}
+              // Order links lead to a page production does not have (the 404); never prefetch them.
+              prefetch={false}
               onClick={() => {
                 if (unread) acc.markRead(item);
               }}

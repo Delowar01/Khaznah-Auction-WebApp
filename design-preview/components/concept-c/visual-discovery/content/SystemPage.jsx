@@ -73,7 +73,7 @@ function Example({ label, href, children, className = "" }) {
       <figcaption className="mb-4 flex flex-wrap items-center justify-between gap-2">
         <span className="vd-kicker text-[var(--vd-muted)]">{t(label)}</span>
         {href ? (
-          <Link href={link(href)} className="vd-link inline-flex items-center gap-1.5 vd-sm font-bold text-[var(--vd-indigo)]">
+          <Link href={link(href)} prefetch={false} className="vd-link inline-flex items-center gap-1.5 vd-sm font-bold text-[var(--vd-indigo)]">
             {t(S.openOnPage)}
             <Arrow className="size-3.5" />
           </Link>

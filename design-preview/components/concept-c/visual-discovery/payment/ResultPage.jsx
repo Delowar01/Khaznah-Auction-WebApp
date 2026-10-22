@@ -170,7 +170,8 @@ function ResultView({ params, state }) {
           </div>
         )}
         <div className="mt-7 flex flex-wrap justify-center gap-3">
-          <Link href={link(href)} className={btn("indigo", "lg")} data-testid="result-primary">
+          {/* Signed out, production sends "View orders" to the staff dashboard, which the preview does not have (the 404). */}
+          <Link href={link(href)} prefetch={buyer ? null : false} className={btn("indigo", "lg")} data-testid="result-primary">
             {t(primaryLabel(payment))}
           </Link>
           {buyer ? (

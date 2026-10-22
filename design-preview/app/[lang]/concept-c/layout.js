@@ -2,11 +2,11 @@ import "@/styles/concept-c.css";
 import "@/styles/r3-visual-discovery.css";
 import { ConceptShell } from "@/components/shared/presentation/ConceptShell";
 
-// The home, Browse, Auction, Live auction and Product pages render the
-// approved Visual Discovery design with their own shell (see page.js,
-// browse/page.js, auction/, live-auction/ and product/); the other screens
-// keep the Round 2 chrome through the (round2) route group until they are
-// redesigned.
+// Option 3 — Visual Discovery, the selected master design. The approved
+// home, Browse, Auction, Live auction and Product pages render their own
+// shell (see page.js, browse/page.js, auction/, live-auction/ and
+// product/); every other customer page uses the shared Option 3 kit
+// (components/concept-c/visual-discovery/kit: VDPage or AuthShell).
 export default function ConceptLayout({ children }) {
   return (
     <ConceptShell concept="c" defaultTheme="light">

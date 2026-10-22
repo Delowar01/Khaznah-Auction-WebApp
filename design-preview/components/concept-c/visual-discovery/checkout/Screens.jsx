@@ -252,7 +252,7 @@ export function CreatedOrder({ order, paymentStatus }) {
             <Download aria-hidden="true" className="size-4" strokeWidth={2.2} />
             {t(C.downloadInvoice)}
           </button>
-          <Link href={link("/orders/1")} className={btn("soft", "lg")} data-testid="track-order">
+          <Link href={link("/orders/1")} prefetch={false} className={btn("soft", "lg")} data-testid="track-order">
             {t(C.trackOrder)} <span aria-hidden="true">→</span>
           </Link>
         </div>
