@@ -537,4 +537,7 @@
   :root[data-concept="c"][data-r3] .vd-print-hide { display: none !important; }
   :root[data-concept="c"][data-r3] .pt-pbar { padding-top: 0 !important; }
   :root[data-concept="c"][data-r3] .vd-prose { max-width: none; color: #000; }
+  /* A page printed as a document (the privacy policy and terms): the
+     masthead, newsletter and footer drop out too. */
+  :root[data-concept="c"][data-r3]:has([data-print-document]) :is(header:has([data-ref="01"]), [data-ref="12"], [data-ref="13"]) { display: none !important; }
 }

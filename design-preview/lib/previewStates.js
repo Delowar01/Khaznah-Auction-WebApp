@@ -81,6 +81,7 @@ export const PAGE_STATES = {
   ],
   contact: [
     S("default", "Contact", "تواصل معنا"),
+    S("unconfigured", "Support details not set", "بيانات الدعم غير مضبوطة"),
     S("sent", "Message sent", "تم إرسال الرسالة"),
     S("error", "Message failed", "تعذّر الإرسال"),
   ],

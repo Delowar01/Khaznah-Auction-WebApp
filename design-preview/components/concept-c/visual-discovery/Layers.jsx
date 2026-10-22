@@ -11,13 +11,15 @@ import { useStore } from "@/components/shared/providers/PreviewStore";
 import { Logo } from "@/components/shared/brand/Logo";
 import { CartDrawer, MenuDrawer } from "@/components/shared/r3/drawers";
 import { useHomeState } from "@/components/shared/r3/home";
+import { CONTENT_COPY, HELP_PAGES } from "@/components/shared/commerce/contentCopy";
 import { COPY } from "./copy";
 import { AccountLinks, AccountSummary, CityChoices, DiscoveryLanguage, SavedList, useModes } from "./Header";
 import { Arrow, cx } from "./ui";
 
 /**
- * Phones and tablets: shopping modes, saved lots, account, city and language.
- * Browse passes its current shopping mode as `active`.
+ * Phones and tablets: shopping modes, account, saved lots, the help and
+ * company pages, city and language. Browse passes its current shopping
+ * mode as `active`.
  */
 export function Menu({ active } = {}) {
   const { t } = useLang();
@@ -64,6 +66,17 @@ export function Menu({ active } = {}) {
           </div>
         </>
       ) : null}
+      {/* Production's phone menu: About, How it works, FAQ, Contact, Privacy and Terms. */}
+      <p className={cx(heading, "mt-7")}>{t(CONTENT_COPY.helpNav)}</p>
+      <ul className="mt-2 grid gap-0.5">
+        {HELP_PAGES.map((page) => (
+          <li key={page.key}>
+            <Link href={link(page.href)} onClick={close} className="flex h-10 items-center rounded-full px-3 vd-md text-[var(--vd-ink)] transition-colors hover:bg-[var(--vd-bluegray)]">
+              {t(page.short ?? page.label)}
+            </Link>
+          </li>
+        ))}
+      </ul>
       <p className={cx(heading, "mt-7")}>{t(COPY.chooseCity)}</p>
       <div className="mt-2">
         <CityChoices />
