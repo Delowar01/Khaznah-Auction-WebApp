@@ -1,10 +1,11 @@
 // Every Option 3 route, English and Arabic: the expected status, html lang
-// and dir, one h1, one main landmark, a skip link to it, no sideways scroll
+// and dir, one h1, one main landmark, a skip link to it (the first Tab stop;
+// Enter moves focus to the content), no broken images, no sideways scroll
 // at every review width (1920–320 px), no console or page errors, and no
 // serious or critical axe findings (at 1440 and 390 px). Also: the
 // presentation bar lists every page, and the header's account menu follows
 // the simulated session.
-import { LANGS, REVIEW_WIDTHS } from "./harness.mjs";
+import { LANGS, REVIEW_WIDTHS, settle } from "./harness.mjs";
 
 export const ROUTES = [
   ["home", ""],
@@ -60,19 +61,46 @@ export default async function global(h) {
         const label = `${key} ${lang} ${width}`;
         let status = 0;
         try {
-          const response = await page.goto(h.url(lang, route), { waitUntil: "networkidle", timeout: 90000 });
+          const response = await page.goto(h.url(lang, route), { waitUntil: "load", timeout: 90000 });
           status = response?.status() ?? 0;
+          await settle(page);
         } catch (error) {
           errors.push(`navigation: ${error.message}`);
         }
         await page.waitForTimeout(250);
         h.check(`${label}: status ${expected}`, status === expected, `${status}`);
-        if (expected === 404) errors.splice(0, errors.length, ...errors.filter((text) => !/404 \(Not Found\)/.test(text)));
         const info = await page.evaluate(() => ({
           skip: Boolean(document.querySelector('a[href="#main"]')) && Boolean(document.querySelector("main#main")),
+          broken: [...document.images].filter((img) => img.complete && img.naturalWidth === 0 && img.currentSrc).map((img) => img.currentSrc.split("/").pop()),
         }));
         h.check(`${label}: skip link to main`, info.skip);
-        await h.audit(page, label, { errors: [...errors], axe: AXE_WIDTHS.includes(width) });
+        h.check(`${label}: no broken images`, info.broken.length === 0, info.broken.slice(0, 3).join(", "));
+        if (width === 1440) {
+          // Keyboard: the website's first Tab stop (after the preview's own
+          // presentation-bar controls, which come first) is the skip link,
+          // and it moves focus to the page's content.
+          await page.evaluate(() => document.activeElement?.blur());
+          let first = null;
+          for (let i = 0; i < 25; i += 1) {
+            await page.keyboard.press("Tab");
+            const stop = await page.evaluate(() => {
+              const el = document.activeElement;
+              return el && !el.closest(".kz-pbar, .kz-pbar-show") ? { href: el.getAttribute("href") } : null;
+            });
+            if (stop) {
+              first = stop.href;
+              break;
+            }
+          }
+          await page.keyboard.press("Enter");
+          await page.waitForTimeout(150);
+          const focused = await page.evaluate(() => document.activeElement?.id || document.activeElement?.closest("main")?.id || "");
+          h.check(`${label}: keyboard — Tab reaches the skip link, Enter moves to main`, first === "#main" && focused === "main", `${first} → ${focused}`);
+        }
+        // On the 404 page the browser logs the page's own 404 (and the 404s
+        // of links to the same unknown address, e.g. the language switch).
+        const logged = expected === 404 ? errors.filter((text) => !/status of 404 \(Not Found\)/.test(text)) : [...errors];
+        await h.audit(page, label, { errors: logged, axe: AXE_WIDTHS.includes(width) });
       }
       await context.close();
     }
@@ -82,7 +110,8 @@ export default async function global(h) {
   {
     const context = await h.browser.newContext({ viewport: { width: 1440, height: 900 } });
     const page = await context.newPage();
-    await page.goto(h.url("en", "/cart"), { waitUntil: "networkidle" });
+    await page.goto(h.url("en", "/cart"), { waitUntil: "load" });
+    await settle(page);
     const values = await page.locator('[data-testid="preview-page"] option').evaluateAll((options) => options.map((option) => option.value));
     const missing = ROUTES.filter(([key]) => key !== "sellers" && !values.includes(key));
     h.check("presentation bar lists every page", missing.length === 0, missing.map(([key]) => key).join(", "));
@@ -111,7 +140,8 @@ export default async function global(h) {
       `${lang} account menu: signed out offers Sign in, Create Account, Join as Seller`,
       ["/login", "/register", "/seller/register"].every((path) => signedOut.some((href) => href?.endsWith(path))),
     );
-    await page.reload({ waitUntil: "networkidle" });
+    await page.reload({ waitUntil: "load" });
+    await settle(page);
     await page.locator("header button[aria-expanded]").nth(1).click();
     h.check(`${lang} account menu: signed out survives a reload`, (await page.getByRole("link", { name: names.signIn }).count()) > 0);
     h.check(`${lang} account menu: no errors`, errors.length === 0, errors.slice(0, 2).join(" | "));

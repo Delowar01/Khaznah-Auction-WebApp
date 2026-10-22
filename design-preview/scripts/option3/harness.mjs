@@ -15,6 +15,8 @@
 //   h.browser, h.baseline            the browser, and the --baseline server
 //                                    (the regression area compares against it)
 //   h.opt(name, fallback)            another command-line option (--widths …)
+//   settle(page)                     (export) wait for the network to go quiet,
+//                                    10 s at most
 //
 // Paths are Option 3 paths without the language and concept prefix
 // ("/cart?state=empty"); `lang` is "en" or "ar".
@@ -25,6 +27,16 @@ import path from "node:path";
 export const LANGS = ["en", "ar"];
 export const REVIEW_WIDTHS = [1920, 1440, 1280, 1024, 768, 430, 390, 375, 320];
 export const heightFor = (width) => (width < 768 ? 844 : width < 1024 ? 1024 : 900);
+
+/**
+ * Waits for the network to go quiet, for at most 10 s. In a production
+ * build Next keeps the prefetch of a link to an address with no route (the
+ * 404 page's own language link, for one) open, so such a page never reaches
+ * "networkidle"; everything else settles well within the limit.
+ */
+export async function settle(page, timeout = 10000) {
+  await page.waitForLoadState("networkidle", { timeout }).catch(() => {});
+}
 
 export function createHarness({ browser, base, baseline = "", axe = true, verbose = false, shots = "", opt = (name, fallback) => fallback }) {
   const stats = { pass: 0, fail: 0, failures: [] };
@@ -79,8 +91,9 @@ export function createHarness({ browser, base, baseline = "", axe = true, verbos
     });
     let status = 0;
     try {
-      const response = await page.goto(url(lang, route), { waitUntil: "networkidle", timeout: 90000 });
+      const response = await page.goto(url(lang, route), { waitUntil: "load", timeout: 90000 });
       status = response?.status() ?? 0;
+      await settle(page);
     } catch (error) {
       errors.push(`navigation: ${error.message}`);
     }
