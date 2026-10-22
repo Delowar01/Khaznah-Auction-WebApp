@@ -3,19 +3,50 @@
 // Client-side state for the interactive prototype: a demo cart, the
 // watchlist and toast notifications. Lives in the root layout so it persists
 // while the client moves between pages and concepts.
-import { createContext, useCallback, useContext, useMemo, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useMemo, useRef, useState, useSyncExternalStore } from "react";
 
 const StoreContext = createContext(null);
 
 let toastSeq = 0;
 
+// Option 3's customer pages: a simulated session. The demo buyer is signed
+// in; signing out (and in again) switches it, as production's AuthProvider
+// would, and the choice lasts for the browser tab (sessionStorage) so a
+// reload keeps it. The server render and hydration assume signed in.
+const SESSION_KEY = "kz-session";
+const sessionListeners = new Set();
+let session = null;
+
+function readSession() {
+  if (session === null) {
+    try {
+      session = sessionStorage.getItem(SESSION_KEY) !== "out";
+    } catch {
+      session = true;
+    }
+  }
+  return session;
+}
+
+function writeSession(value) {
+  session = Boolean(value);
+  try {
+    if (session) sessionStorage.removeItem(SESSION_KEY);
+    else sessionStorage.setItem(SESSION_KEY, "out");
+  } catch {}
+  sessionListeners.forEach((listener) => listener());
+}
+
+function subscribeSession(listener) {
+  sessionListeners.add(listener);
+  return () => sessionListeners.delete(listener);
+}
+
 export function PreviewStore({ children }) {
   const [cart, setCart] = useState([]);
   const [watched, setWatched] = useState(() => new Set(["split-ac", "suede-tote"]));
   const [toasts, setToasts] = useState([]);
-  // Option 3's customer pages: a simulated session (the demo buyer is signed
-  // in; sign out and sign in switch it, as production's AuthProvider would).
-  const [signedIn, setSignedIn] = useState(true);
+  const signedIn = useSyncExternalStore(subscribeSession, readSession, () => true);
   const timers = useRef(new Map());
 
   const dismissToast = useCallback((id) => {
@@ -88,7 +119,7 @@ export function PreviewStore({ children }) {
       setCartQty,
       replaceCart,
       signedIn,
-      setSignedIn,
+      setSignedIn: writeSession,
       watched,
       isWatched,
       toggleWatch,

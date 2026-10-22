@@ -24,6 +24,7 @@ import { cartLines, cartSummary, groupBySeller } from "@/lib/cart";
 import { detailPath } from "@/lib/catalog";
 import { toneOf } from "../browse/Cards";
 import { EmptyState, ErrorState, Notice, PageHeader, Panel, Placeholder, Spinner, SummaryRow } from "../kit/Blocks";
+import { useSession } from "../kit/session";
 import { Dialog } from "../kit/Overlay";
 import { LockedQuantity, QuantityStepper } from "../kit/Quantity";
 import { VDPage } from "../kit/Page";
@@ -226,31 +227,39 @@ function PhoneBar({ summary, checkoutHref }) {
   );
 }
 
+function CartHeader() {
+  const { t } = useLang();
+  return <PageHeader crumbs={[{ label: t(C.kicker) }]} title={t(C.title)} intro={t(C.intro)} />;
+}
+
 function CartSkeleton() {
   const { t } = useLang();
   return (
-    <div className="vd-container grid gap-6 pb-16 pt-6 dt:grid-cols-[minmax(0,1fr)_400px] dt:gap-8" aria-busy="true">
-      <Panel>
-        <Spinner label={t(C.loading)} />
-        <div className="mt-5 grid gap-6">
-          {Array.from({ length: 3 }, (_, i) => (
-            <div key={i} className="grid grid-cols-[76px_minmax(0,1fr)] gap-4 sm:grid-cols-[104px_minmax(0,1fr)]">
-              <span aria-hidden="true" className="aspect-square animate-pulse rounded-[16px] bg-[var(--vd-bluegray)] motion-reduce:animate-none" />
-              <div className="grid content-start gap-3">
-                <Placeholder className="h-4 w-3/4" />
-                <Placeholder className="h-3 w-1/3" />
-                <Placeholder className="mt-2 h-10 w-36" />
+    <>
+      <CartHeader />
+      <div className="vd-container grid gap-6 pb-16 pt-6 dt:grid-cols-[minmax(0,1fr)_400px] dt:gap-8" aria-busy="true">
+        <Panel>
+          <Spinner label={t(C.loading)} />
+          <div className="mt-5 grid gap-6">
+            {Array.from({ length: 3 }, (_, i) => (
+              <div key={i} className="grid grid-cols-[76px_minmax(0,1fr)] gap-4 sm:grid-cols-[104px_minmax(0,1fr)]">
+                <span aria-hidden="true" className="aspect-square animate-pulse rounded-[16px] bg-[var(--vd-bluegray)] motion-reduce:animate-none" />
+                <div className="grid content-start gap-3">
+                  <Placeholder className="h-4 w-3/4" />
+                  <Placeholder className="h-3 w-1/3" />
+                  <Placeholder className="mt-2 h-10 w-36" />
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </Panel>
-      <Panel>
-        <Placeholder className="h-5 w-40" />
-        <Placeholder className="mt-5 h-24 w-full !rounded-[20px]" />
-        <Placeholder className="mt-5 h-14 w-full" />
-      </Panel>
-    </div>
+            ))}
+          </div>
+        </Panel>
+        <Panel>
+          <Placeholder className="h-5 w-40" />
+          <Placeholder className="mt-5 h-24 w-full !rounded-[20px]" />
+          <Placeholder className="mt-5 h-14 w-full" />
+        </Panel>
+      </div>
+    </>
   );
 }
 
@@ -259,8 +268,10 @@ function CartView({ state }) {
   const { link } = useConcept();
   const router = useRouter();
   const { cart, setCartQty, removeFromCart, replaceCart, toast } = useStore();
+  const { ready, signedIn } = useSession();
   const [confirm, setConfirm] = useState(null);
-  const guest = state === "guest";
+  // A guest: the "guest" preview state, or a visitor who signed out.
+  const guest = state === "guest" || (ready && !signedIn);
 
   // Preview states load their sample cart into the store once (the header
   // count, the cart drawer and checkout follow); "empty" clears it.
@@ -274,8 +285,10 @@ function CartView({ state }) {
   const lines = cartLines(cart);
   const summary = cartSummary(lines);
   const groups = groupBySeller(lines);
-  // Signed out, checkout sends the visitor to sign in first (production: /login?next=/cart).
-  const checkoutHref = link(guest ? "/checkout?state=signed-out" : "/checkout");
+  // Signed out, checkout sends the visitor to sign in first (production:
+  // /login?next=/checkout). The "guest" preview state shows that step
+  // without signing the preview's session out.
+  const checkoutHref = link(state === "guest" ? "/checkout?state=signed-out" : "/checkout");
 
   const onQty = (line, next) => setCartQty(line.slug, next);
   const onRemove = () => {
@@ -286,7 +299,7 @@ function CartView({ state }) {
 
   return (
     <>
-      <PageHeader crumbs={[{ label: t(C.kicker) }]} title={t(C.title)} intro={t(C.intro)} />
+      <CartHeader />
       <div className="vd-container pb-28 pt-6 md:pb-16 dt:pb-20 dt:pt-8">
         {state === "error" ? (
           <ErrorState title={t(C.loadFailed)} text={t(C.loadFailedText)} onRetry={() => router.replace(link("/cart"))} />
