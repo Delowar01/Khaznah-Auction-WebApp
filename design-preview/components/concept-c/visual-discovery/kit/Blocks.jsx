@@ -168,8 +168,8 @@ export function EmptyState({ icon: Icon, title, text, actions, headingLevel = 2,
   );
 }
 
-/** A load that failed: what happened, and the retry the page already offers. */
-export function ErrorState({ title, text, onRetry, retryLabel, actions, headingLevel = 2, className = "" }) {
+/** A load that failed: what happened, and the retry the page already offers. `kicker`: an optional line above the title. */
+export function ErrorState({ title, text, onRetry, retryLabel, actions, headingLevel = 2, className = "", kicker }) {
   const { ui } = useLang();
   const Heading = `h${headingLevel}`;
   return (
@@ -177,7 +177,8 @@ export function ErrorState({ title, text, onRetry, retryLabel, actions, headingL
       <span className="mx-auto grid size-14 place-items-center rounded-full bg-white text-[#a61b18] shadow-[0_2px_8px_rgb(7_27_82/0.1)]">
         <TriangleAlert aria-hidden="true" className="size-6" strokeWidth={1.9} />
       </span>
-      <Heading className="mt-4 vd-h3 text-[var(--vd-ink)]">{title || ui("somethingWrong")}</Heading>
+      {kicker ? <p className="mt-4 vd-kicker text-[#a61b18]">{kicker}</p> : null}
+      <Heading className={cx(kicker ? "mt-2" : "mt-4", "vd-h3 text-[var(--vd-ink)]")}>{title || ui("somethingWrong")}</Heading>
       {text ? <p className="mx-auto mt-1.5 max-w-md vd-md text-[var(--vd-muted)]">{text}</p> : null}
       <div className="mt-5 flex flex-wrap justify-center gap-3">
         {onRetry ? (

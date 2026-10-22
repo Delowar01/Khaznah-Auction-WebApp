@@ -86,6 +86,7 @@ export const PAGE_STATES = {
     S("error", "Message failed", "تعذّر الإرسال"),
   ],
   faq: [S("default", "FAQ", "الأسئلة الشائعة"), S("no-results", "No matching question", "لا يوجد سؤال مطابق")],
+  system: [S("default", "Components and states", "المكونات والحالات"), S("crash", "Error page (simulated failure)", "صفحة الخطأ (عطل محاكى)")],
 };
 
 export const statesOf = (pageKey) => PAGE_STATES[pageKey] || null;
