@@ -15,6 +15,7 @@
     "lint": "eslint",
     "verify": "node scripts/verify.mjs",
     "verify:option3": "node scripts/verify-option3.mjs",
+    "verify:option3-complete": "node scripts/verify-option3-complete.mjs",
     "capture": "node scripts/capture-concepts.mjs"
   },
   "dependencies": {
