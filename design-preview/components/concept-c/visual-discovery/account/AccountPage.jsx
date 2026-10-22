@@ -16,8 +16,8 @@
 // visit to a later section shows 0 until Overview or Orders has loaded);
 // the alert bar's precedence; the suspension banner and appeal (production
 // can never show it — quirk Q33 — so the preview states show the design).
-// Sign-in guard: a signed-out visitor goes to sign in and comes back here
-// (production drops the section — quirk Q4 — the preview keeps it in next).
+// Sign-in guard: a signed-out visitor goes to sign in with no next, so after
+// signing in the buyer lands on the home page (production — quirk Q4).
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Bell, CreditCard, FileText, Heart, House, RefreshCw, Settings, TriangleAlert, Trophy, Wallet } from "lucide-react";
@@ -790,18 +790,16 @@ function AccountView({ params, state }) {
   );
 }
 
-/** Signed out: off to sign in and back (production's guard, with the section kept). */
+/** Signed out: off to sign in, with no way back to the section (production's guard, quirk Q4). */
 function Guarded({ params, state }) {
   const { t } = useLang();
   const { link } = useConcept();
   const router = useRouter();
   const { ready, signedIn } = useSession();
-  const tab = params.get("tab");
   useEffect(() => {
     if (!ready || signedIn) return;
-    const next = `/account${tab ? `?tab=${encodeURIComponent(tab)}` : ""}`;
-    router.replace(link(`/login?next=${encodeURIComponent(next)}`));
-  }, [ready, signedIn, tab, router, link]);
+    router.replace(link("/login"));
+  }, [ready, signedIn, router, link]);
   if (!ready || !signedIn) {
     return (
       <div aria-busy="true" className="vd-container grid min-h-[50vh] place-items-center py-16" data-testid="account-guard">

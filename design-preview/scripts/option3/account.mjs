@@ -23,11 +23,11 @@ const activeId = (page) => page.evaluate(() => document.querySelector('[data-tes
 const focused = (page) => page.evaluate(() => document.activeElement?.dataset?.testid || document.activeElement?.textContent?.trim().slice(0, 40));
 
 export default async function account(h) {
-  // Sign-in guard: off to sign in, keeping the section to come back to.
+  // Sign-in guard: off to sign in with no next, as production (quirk Q4).
   {
     const { page, close } = await h.open("en", "/account?tab=orders", { signedOut: true, wait: 300 });
-    await page.waitForURL(/\/login\?next=/, { timeout: 30000 }).catch(() => {});
-    h.check("guard: a signed-out visitor goes to sign in with next", /\/concept-c\/login\?next=%2Faccount%3Ftab%3Dorders$/.test(page.url()), page.url());
+    await page.waitForURL(/\/login$/, { timeout: 30000 }).catch(() => {});
+    h.check("guard: a signed-out visitor goes to sign in, without next (production)", /\/concept-c\/login$/.test(page.url()), page.url());
     await close();
   }
 

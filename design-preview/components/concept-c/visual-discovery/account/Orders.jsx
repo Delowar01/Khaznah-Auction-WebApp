@@ -365,7 +365,7 @@ export function OrderDrawer() {
                     <Ltr>{current.quantity ?? 1}</Ltr>
                   </p>
                 </div>
-                <Money value={num(current.subtotal) + discount} className="shrink-0 vd-md font-extrabold" />
+                <Money value={num(current.subtotal ?? current.total_amount)} className="shrink-0 vd-md font-extrabold" />
               </div>
             </section>
           ) : null}
@@ -375,8 +375,8 @@ export function OrderDrawer() {
               {t(C.priceBreakdown)}
             </h4>
             <dl className="mt-3 grid gap-2">
-              {/* Before the coupon, so the lines add up (quirk Q11). */}
-              <SummaryRow label={t(C.subtotal)} amount={num(current.subtotal ?? current.total_amount) + discount} />
+              {/* Production's subtotal is already discounted and the coupon line is listed as well, so the lines do not add up (quirk Q11). */}
+              <SummaryRow label={t(C.subtotal)} amount={num(current.subtotal ?? current.total_amount)} />
               {discount > 0 ? <SummaryRow label={`${t(C.couponApplied)}${current.discount_code ? ` (${current.discount_code})` : ""}`} tone="saving" value={<span dir="ltr">−<Money value={discount} /></span>} /> : null}
               {num(current.customer_delivery_charge) > 0 ? <SummaryRow label={t(C.delivery)} amount={num(current.customer_delivery_charge)} /> : null}
               {num(current.cod_surcharge_amount) > 0 ? <SummaryRow label={t(C.codSurcharge)} amount={num(current.cod_surcharge_amount)} /> : null}

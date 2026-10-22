@@ -311,8 +311,8 @@ function PayNowBody({ order }) {
           {t(C.priceBreakdown)}
         </h4>
         <dl className="mt-3 grid gap-2">
-          {/* The won bid before any coupon, so the lines add up (production shows the discounted figure — quirk Q11). */}
-          <SummaryRow label={t(C.winningBid)} amount={bidOf(current)} />
+          {/* Production shows the already-discounted subtotal as the winning bid and lists the coupon as well, so the lines do not add up (quirk Q11). */}
+          <SummaryRow label={t(C.winningBid)} amount={num(current.subtotal ?? current.total_amount)} />
           {discount > 0 ? <SummaryRow label={`${t(C.couponApplied)}${current.discount_code ? ` (${current.discount_code})` : ""}`} tone="saving" value={<span dir="ltr">−<Money value={discount} /></span>} /> : null}
           {delivery > 0 ? <SummaryRow label={t(C.delivery)} amount={delivery} /> : null}
           {cod > 0 ? <SummaryRow label={t(C.codSurcharge)} amount={cod} /> : null}
