@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Fragment, Suspense, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ChevronDown, ChevronsUp, Monitor, Moon, SlidersHorizontal, Smartphone, Sun, Tablet } from "lucide-react";
 import { CONCEPTS } from "@/data/concepts";
-import { NEW_DESIGN_PAGES, PAGES, pageKeyOf, parsePath, withConcept, withLang } from "@/lib/routes";
+import { NEW_DESIGN_PAGES, OPTION3_GROUPS, OPTION3_PAGES, PAGES, option3KeyOf, pageKeyOf, parsePath, withConcept, withLang } from "@/lib/routes";
+import { statesOf } from "@/lib/previewStates";
 import { tr } from "@/lib/i18n";
 import { useDismiss } from "@/components/shared/ui/hooks";
 
@@ -32,6 +33,8 @@ const LABELS = {
   preview: { en: "Concept preview", ar: "معاينة المفاهيم" },
   device: { en: "Device", ar: "الجهاز" },
   language: { en: "Language", ar: "اللغة" },
+  state: { en: "Preview state", ar: "حالة المعاينة" },
+  selected: { en: "Selected design · complete website", ar: "التصميم المختار · الموقع كاملاً" },
 };
 
 // Path plus the live query string. Only call from event handlers or UI that
@@ -65,18 +68,60 @@ export function toggleTheme(concept) {
   }
 }
 
+/**
+ * Option 3 only: the documented states of the current page (empty, loading,
+ * errors, signed out …), set as `?state=` while the page's other parameters
+ * stay. Reads the query string, so it renders on the client only.
+ */
+function StateSwitch({ pageKey, lang }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const params = useSearchParams();
+  const states = statesOf(pageKey);
+  if (!states) return null;
+  const current = params.get("state") || "default";
+  const onChange = (event) => {
+    const next = new URLSearchParams(params.toString());
+    if (event.target.value === "default") next.delete("state");
+    else next.set("state", event.target.value);
+    const query = next.toString();
+    router.replace(`${pathname}${query ? `?${query}` : ""}`, { scroll: false });
+  };
+  return (
+    <label className="relative flex min-w-0 shrink items-center">
+      <span className="sr-only">{tr(LABELS.state, lang)}</span>
+      <select
+        value={states.some((state) => state.key === current) ? current : "default"}
+        onChange={onChange}
+        data-testid="preview-state"
+        className="h-8 w-full min-w-0 max-w-[13rem] appearance-none truncate rounded-md border border-[#D8A535]/50 bg-[#D8A535]/10 pe-7 ps-2.5 font-medium text-white outline-none focus-visible:ring-2 focus-visible:ring-[#D8A535]"
+      >
+        {states.map((state) => (
+          <option key={state.key} value={state.key} className="bg-[#12151d]">
+            {tr(state.label, lang)}
+          </option>
+        ))}
+      </select>
+      <ChevronDown aria-hidden="true" className="pointer-events-none absolute end-2 size-3.5 opacity-70" />
+    </label>
+  );
+}
+
 export function PresentationBar({ concept }) {
   const pathname = usePathname();
   const router = useRouter();
   const { lang, rest } = parsePath(pathname);
-  const active = pageKeyOf(rest);
+  // Option 3 is the selected design and covers every customer page (grouped
+  // in a page menu); the other options keep their review pages.
+  const isOption3 = concept === "c";
+  const active = isOption3 ? (option3KeyOf(rest) ?? "notFound") : pageKeyOf(rest);
   const current = CONCEPTS.find((c) => c.id === concept);
   // Every option is reviewed on the same five pages (Home, Browse, Auction,
   // Live auction, Product), listed first in that order; the other screens
   // follow as earlier prototypes, not part of the review. The new pages of
   // Options 2–4 are light only; Option 1 keeps its light / dark switch.
   const isNew = (key) => NEW_DESIGN_PAGES.includes(key);
-  const lightOnly = concept !== "b" && isNew(active);
+  const lightOnly = isOption3 || (concept !== "b" && isNew(active));
   const pages = PAGES;
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
@@ -188,7 +233,7 @@ export function PresentationBar({ concept }) {
           ) : null}
         </div>
 
-        <nav aria-label={L("pages")} className="mx-auto hidden items-center gap-0.5 xl:flex">
+        <nav aria-label={L("pages")} className={`mx-auto hidden items-center gap-0.5 ${isOption3 ? "" : "xl:flex"}`}>
           {pages.map((page) => {
             const isActive = page.key === active;
             const status = L(isNew(page.key) ? "newDesign" : "prototype");
@@ -217,8 +262,30 @@ export function PresentationBar({ concept }) {
           })}
         </nav>
 
-        <label className="relative mx-auto flex min-w-0 shrink items-center xl:hidden">
+        <label className={`relative mx-auto flex min-w-0 shrink items-center ${isOption3 ? "" : "xl:hidden"}`}>
           <span className="sr-only">{L("page")}</span>
+          {isOption3 ? (
+            <select
+              value={active}
+              onChange={(e) => {
+                const page = OPTION3_PAGES.find((p) => p.key === e.target.value);
+                router.push(`/${lang}/concept-${concept}${page.path}`);
+              }}
+              title={L("selected")}
+              data-testid="preview-page"
+              className="h-8 w-full min-w-0 max-w-[15rem] appearance-none truncate rounded-md border border-white/12 bg-white/5 pe-7 ps-2.5 font-medium text-white outline-none focus-visible:ring-2 focus-visible:ring-[#D8A535]"
+            >
+              {OPTION3_GROUPS.map((group) => (
+                <optgroup key={group.key} label={tr(group.label, lang)} className="bg-[#12151d]">
+                  {OPTION3_PAGES.filter((page) => page.group === group.key).map((page) => (
+                    <option key={page.key} value={page.key} className="bg-[#12151d]">
+                      {tr(page.label, lang)}
+                    </option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
+          ) : (
           <select
             value={active}
             onChange={(e) => {
@@ -242,8 +309,15 @@ export function PresentationBar({ concept }) {
               ))}
             </optgroup>
           </select>
+          )}
           <ChevronDown aria-hidden="true" className="pointer-events-none absolute end-2 size-3.5 opacity-70" />
         </label>
+
+        {isOption3 ? (
+          <Suspense fallback={null}>
+            <StateSwitch pageKey={active} lang={lang} />
+          </Suspense>
+        ) : null}
 
         <div className="hidden shrink-0 items-center rounded-md border border-white/10 p-0.5 md:flex" role="group" aria-label={L("device")}>
           <button type="button" aria-pressed="true" title={L("desktop")} aria-label={L("desktop")} className="grid size-7 place-items-center rounded bg-white/15 text-white">

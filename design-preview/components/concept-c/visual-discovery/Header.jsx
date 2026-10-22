@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
-import { MapPin, Menu, Search, ShoppingBag, UserRound } from "lucide-react";
+import { LogOut, MapPin, Menu, Search, ShoppingBag, Store, UserRound } from "lucide-react";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
 import { useStore } from "@/components/shared/providers/PreviewStore";
@@ -77,6 +77,76 @@ export function AccountSummary() {
         </p>
       </div>
     </div>
+  );
+}
+
+/**
+ * Production's account menu (Navbar dropdown): signed in — My Account,
+ * Orders, Profile, My Bids, Watchlist and Logout (My Bids opens the
+ * Watchlist tab, as in production); signed out — Sign in, Create Account and
+ * Join as Seller. The preview's session is simulated (PreviewStore).
+ */
+export function AccountLinks({ onPick, saved = null }) {
+  const { t } = useLang();
+  const { link } = useConcept();
+  const { signedIn, setSignedIn, toast } = useStore();
+  const item = "flex h-10 items-center gap-2.5 rounded-full px-3 vd-md text-[var(--vd-ink)] transition-colors hover:bg-[var(--vd-bluegray)]";
+  if (!signedIn) {
+    return (
+      <ul className="grid gap-0.5">
+        <li>
+          <Link href={link("/login")} onClick={onPick} className={cx(item, "font-semibold")}>
+            {t(COPY.menuSignIn)}
+          </Link>
+        </li>
+        <li>
+          <Link href={link("/register")} onClick={onPick} className={item}>
+            {t(COPY.menuCreateAccount)}
+          </Link>
+        </li>
+        <li>
+          <Link href={link("/seller/register")} onClick={onPick} className={cx(item, "font-bold text-[var(--vd-indigo)]")}>
+            <Store aria-hidden="true" className="size-4 shrink-0" strokeWidth={2.2} />
+            {t(COPY.menuJoinSeller)}
+          </Link>
+        </li>
+      </ul>
+    );
+  }
+  const links = [
+    { key: "account", label: COPY.menuMyAccount, href: "/account" },
+    { key: "orders", label: COPY.menuOrders, href: "/account?tab=orders" },
+    { key: "profile", label: COPY.menuProfile, href: "/account?tab=profile" },
+    { key: "bids", label: COPY.menuMyBids, href: "/account?tab=watchlist" },
+    { key: "watchlist", label: COPY.menuWatchlist, href: "/account?tab=watchlist" },
+  ];
+  return (
+    <>
+      <ul className="grid gap-0.5">
+        {links.map((entry) => (
+          <li key={entry.key}>
+            <Link href={link(entry.href)} onClick={onPick} className={item}>
+              {t(entry.label)}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      {saved}
+      <div className="mt-2 border-t border-[var(--vd-line)] pt-2">
+        <button
+          type="button"
+          onClick={() => {
+            setSignedIn(false);
+            onPick?.();
+            toast({ tone: "success", title: t(COPY.loggedOut) });
+          }}
+          className={cx(item, "w-full text-[#b3261e] hover:bg-[#fdf1f0]")}
+        >
+          <LogOut aria-hidden="true" className="size-4 shrink-0 rtl:-scale-x-100" strokeWidth={2.2} />
+          {t(COPY.menuLogout)}
+        </button>
+      </div>
+    </>
   );
 }
 
@@ -290,7 +360,7 @@ function ModeNav({ active, className = "" }) {
 export function Header({ active } = {}) {
   const { t } = useLang();
   const { link } = useConcept();
-  const { cartCount, watched } = useStore();
+  const { cartCount, watched, signedIn } = useStore();
   const { open, city } = useHomeState();
   return (
     <header className="border-b border-[var(--vd-line)] bg-white">
@@ -339,17 +409,30 @@ export function Header({ active } = {}) {
                 </button>
               )}
             >
-              {(close) => (
-                <>
-                  <AccountSummary />
-                  <p className="mt-4 vd-xs font-bold uppercase tracking-[0.08em] text-[var(--vd-muted)]">
-                    {t(COPY.saved)} · {watched.size}
-                  </p>
-                  <div className="mt-1">
-                    <SavedList onPick={close} />
-                  </div>
-                </>
-              )}
+              {(close) =>
+                signedIn ? (
+                  <>
+                    <AccountSummary />
+                    <div className="mt-3 border-t border-[var(--vd-line)] pt-2">
+                      <AccountLinks
+                        onPick={close}
+                        saved={
+                          <>
+                            <p className="mt-3 vd-xs font-bold uppercase tracking-[0.08em] text-[var(--vd-muted)]">
+                              {t(COPY.saved)} · {watched.size}
+                            </p>
+                            <div className="mt-1">
+                              <SavedList onPick={close} />
+                            </div>
+                          </>
+                        }
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <AccountLinks onPick={close} />
+                )
+              }
             </Popover>
             <button type="button" onClick={() => open("cart")} aria-label={t(COPY.cartCount, { n: cartCount })} className={cx(utility, "relative -me-2 dt:me-0")}>
               <ShoppingBag aria-hidden="true" className="size-[22px] text-[var(--vd-indigo)]" strokeWidth={1.7} />

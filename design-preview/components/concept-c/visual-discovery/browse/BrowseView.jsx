@@ -204,7 +204,7 @@ function Empty({ browse }) {
 
 const GRID = "grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 dt:grid-cols-4 dt:gap-x-[18px] dt:gap-y-6 max-[359px]:grid-cols-1";
 
-function Results({ browse, view }) {
+export function Results({ browse, view }) {
   if (browse.loading) {
     return view === "list" ? (
       <div aria-hidden="true" className="grid gap-3">
@@ -249,7 +249,7 @@ function Results({ browse, view }) {
   );
 }
 
-function LoadMore({ browse }) {
+export function LoadMore({ browse }) {
   const { ui } = useLang();
   if (browse.loading || !browse.total) return null;
   const shown = browse.shownItems.length;
@@ -270,15 +270,19 @@ function LoadMore({ browse }) {
   );
 }
 
-/** Pinned pill bar: sale mode, quick toggles, all filters, sort and view. */
-function PillBar({ browse, view, onView, onOpen }) {
+/**
+ * Pinned pill bar: sale mode, quick toggles, all filters, sort and view.
+ * `modes`: the sale modes on offer (a seller storefront passes only those
+ * the seller's package includes); all of them on Browse.
+ */
+export function PillBar({ browse, view, onView, onOpen, modes }) {
   const { t, ui } = useLang();
   const sort = SORT_OPTIONS.find((option) => option.value === browse.state.sort) || SORT_OPTIONS[0];
   const count = browse.active.length;
   return (
     <div className="sticky top-[var(--pbar-h)] z-20 mt-6 border-y border-[var(--vd-line)] bg-white dt:mt-7">
       <div className="vd-container flex flex-wrap items-center gap-x-3 gap-y-2.5 py-3">
-        <ModePills browse={browse} className="w-full sm:w-auto" />
+        {modes && modes.length < 2 ? null : <ModePills browse={browse} modes={modes} className="w-full sm:w-auto" />}
         <div className="vd-rail -mx-[var(--vd-gutter)] flex min-w-0 flex-1 items-center gap-2 overflow-x-auto px-[var(--vd-gutter)] sm:mx-0 sm:px-0">
           <button
             type="button"
@@ -308,36 +312,12 @@ function PillBar({ browse, view, onView, onOpen }) {
   );
 }
 
-export function BrowseView({ initial, onState }) {
+/** The filters drawer and the phone sort sheet (`sheet`: { name, side } or null). */
+export function BrowseSheets({ browse, sheet, close }) {
   const { t, ui, pl } = useLang();
-  const browse = useBrowse({ pageSize: PAGE_SIZE, initial, syncUrl: false });
-  useReportState(browse.state, onState);
-  const heading = useBrowseHeading(browse.state, { auction: t(COPY.navTimed) });
-  const [view, setView] = useState("grid");
-  const [sheet, setSheet] = useState(null);
-
-  const open = (name) => setSheet({ name, side: name === "filters" && window.matchMedia("(min-width: 768px)").matches ? "end" : "bottom" });
-  const close = () => setSheet(null);
   const panel = (side) => cx("bg-white font-sans text-fg shadow-overlay", side === "bottom" ? "rounded-t-[20px]" : "rounded-s-[20px] max-sm:rounded-none");
-
   return (
     <>
-      <PageHead browse={browse} heading={heading} />
-      <LiveBanner />
-      <PillBar browse={browse} view={view} onView={setView} onOpen={open} />
-
-      <section aria-labelledby="vd-results-title" aria-busy={browse.loading} className="vd-container pb-14 pt-5 dt:pb-20 dt:pt-6">
-        <h2 id="vd-results-title" className="sr-only">
-          {t(C.resultsLabel)}
-        </h2>
-        <div className="flex flex-wrap items-center justify-between gap-3 max-dt:mb-5">
-          <ActivePills browse={browse} className="dt:mb-5" />
-          <ViewSwitch view={view} onChange={setView} className="ms-auto dt:hidden" />
-        </div>
-        <Results browse={browse} view={view} />
-        <LoadMore browse={browse} />
-      </section>
-
       <Drawer open={sheet?.name === "filters"} onClose={close} title={t(C.filters)} side={sheet?.side ?? "bottom"} panelClassName={panel(sheet?.side)}>
         <DrawerHead onClose={close}>
           <p className="vd-h3 text-[var(--vd-ink)]">
@@ -371,6 +351,40 @@ export function BrowseView({ initial, onState }) {
           />
         </div>
       </Drawer>
+    </>
+  );
+}
+
+export function BrowseView({ initial, onState }) {
+  const { t } = useLang();
+  const browse = useBrowse({ pageSize: PAGE_SIZE, initial, syncUrl: false });
+  useReportState(browse.state, onState);
+  const heading = useBrowseHeading(browse.state, { auction: t(COPY.navTimed) });
+  const [view, setView] = useState("grid");
+  const [sheet, setSheet] = useState(null);
+
+  const open = (name) => setSheet({ name, side: name === "filters" && window.matchMedia("(min-width: 768px)").matches ? "end" : "bottom" });
+  const close = () => setSheet(null);
+
+  return (
+    <>
+      <PageHead browse={browse} heading={heading} />
+      <LiveBanner />
+      <PillBar browse={browse} view={view} onView={setView} onOpen={open} />
+
+      <section aria-labelledby="vd-results-title" aria-busy={browse.loading} className="vd-container pb-14 pt-5 dt:pb-20 dt:pt-6">
+        <h2 id="vd-results-title" className="sr-only">
+          {t(C.resultsLabel)}
+        </h2>
+        <div className="flex flex-wrap items-center justify-between gap-3 max-dt:mb-5">
+          <ActivePills browse={browse} className="dt:mb-5" />
+          <ViewSwitch view={view} onChange={setView} className="ms-auto dt:hidden" />
+        </div>
+        <Results browse={browse} view={view} />
+        <LoadMore browse={browse} />
+      </section>
+
+      <BrowseSheets browse={browse} sheet={sheet} close={close} />
     </>
   );
 }

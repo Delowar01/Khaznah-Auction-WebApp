@@ -105,17 +105,18 @@ export function Footer() {
     {
       title: COPY.colHelp,
       links: [
-        { label: t(COPY.linkHowItWorks), href: "#how-it-works" },
-        { label: t(COPY.linkGrades), href: "#grades" },
-        { label: t(COPY.linkDelivery), href: "#" },
-        { label: t(COPY.linkContact), href: "#" },
+        { label: t(COPY.linkHowItWorks), href: "/how-it-works" },
+        { label: t(COPY.linkGrades), href: "/#grades" },
+        // Production's footer sends its Shipping link to Contact; so does this one.
+        { label: t(COPY.linkDelivery), href: "/contact" },
+        { label: t(COPY.linkContact), href: "/contact" },
       ],
     },
     {
       title: COPY.colAbout,
       links: [
-        { label: t(COPY.linkAbout), href: "#" },
-        { label: t(COPY.linkSell), href: "#" },
+        { label: t(COPY.linkAbout), href: "/about" },
+        { label: t(COPY.linkSell), href: "/seller/register" },
       ],
     },
   ];
@@ -165,13 +166,13 @@ export function Footer() {
           <p className="vd-md text-[var(--vd-muted)] dt:text-[15px] dt:leading-[22px]">{t(COPY.copyright)}</p>
           <ul aria-label={t(COPY.legal)} className="flex items-center">
             <li>
-              <SiteLink href="#" label={t(COPY.terms)} className={linkClass}>
+              <SiteLink href="/terms" label={t(COPY.terms)} className={linkClass}>
                 {t(COPY.terms)}
               </SiteLink>
             </li>
             <li aria-hidden="true" className="mx-5 h-5 w-px bg-[var(--vd-indigo)]/60 dt:mx-[24px]" />
             <li>
-              <SiteLink href="#" label={t(COPY.privacy)} className={linkClass}>
+              <SiteLink href="/privacy" label={t(COPY.privacy)} className={linkClass}>
                 {t(COPY.privacy)}
               </SiteLink>
             </li>

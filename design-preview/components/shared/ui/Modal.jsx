@@ -21,6 +21,7 @@ export function Modal({
   variant = "dialog",
   initialFocus,
   labelledBy,
+  describedBy,
 }) {
   const [mounted, setMounted] = useState(false);
   const titleId = useId();
@@ -54,7 +55,7 @@ export function Modal({
             role="dialog"
             aria-modal="true"
             aria-labelledby={labelledBy || (title ? titleId : undefined)}
-            aria-describedby={description ? descId : undefined}
+            aria-describedby={describedBy || (description ? descId : undefined)}
             tabIndex={-1}
             className={`relative w-full max-h-[92dvh] overflow-y-auto outline-none ${sheet ? "md:max-w-lg" : "max-w-lg"} ${panelClassName}`}
             initial={sheet ? { y: 40, opacity: 0 } : { y: 12, opacity: 0, scale: 0.98 }}

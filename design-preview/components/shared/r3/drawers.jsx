@@ -41,7 +41,11 @@ export function DrawerHead({ children, onClose }) {
   );
 }
 
-export function CartDrawer({ open, onClose, titleClassName = "", priceClassName = "", smallClassName = "" }) {
+/**
+ * `cartHref` / `checkoutHref`: an option that has the cart and checkout pages
+ * (Option 3) links to them; the others keep the "not in this preview" note.
+ */
+export function CartDrawer({ open, onClose, titleClassName = "", priceClassName = "", smallClassName = "", cartHref = null, checkoutHref = null }) {
   const { t, ui } = useLang();
   const { link } = useConcept();
   const { cart, removeFromCart, toast } = useStore();
@@ -91,14 +95,27 @@ export function CartDrawer({ open, onClose, titleClassName = "", priceClassName 
               <span>{t(TEXT.subtotal)}</span>
               <Money value={subtotal} className={cx("font-bold", priceClassName)} />
             </p>
-            <p className={cx("mt-1 text-fg-2", smallClassName)}>{ui("buyNowCheckoutNote")}</p>
-            <button
-              type="button"
-              onClick={() => toast({ tone: "info", title: ui("checkout"), description: ui("buyNowCheckoutNote") })}
-              className={cx(button, "mt-3 w-full bg-primary text-on-primary hover:bg-primary-hover")}
-            >
-              {ui("checkout")}
-            </button>
+            {checkoutHref ? (
+              <div className="mt-3 grid gap-2">
+                <Link href={checkoutHref} onClick={onClose} className={cx(button, "w-full bg-primary text-on-primary hover:bg-primary-hover")}>
+                  {ui("checkout")}
+                </Link>
+                <Link href={cartHref} onClick={onClose} className={cx(button, "w-full border border-line-strong bg-surface text-fg hover:bg-surface-2")}>
+                  {ui("viewCart")}
+                </Link>
+              </div>
+            ) : (
+              <>
+                <p className={cx("mt-1 text-fg-2", smallClassName)}>{ui("buyNowCheckoutNote")}</p>
+                <button
+                  type="button"
+                  onClick={() => toast({ tone: "info", title: ui("checkout"), description: ui("buyNowCheckoutNote") })}
+                  className={cx(button, "mt-3 w-full bg-primary text-on-primary hover:bg-primary-hover")}
+                >
+                  {ui("checkout")}
+                </button>
+              </>
+            )}
           </div>
         </>
       ) : (

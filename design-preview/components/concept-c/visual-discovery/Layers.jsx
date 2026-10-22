@@ -1,9 +1,9 @@
 "use client";
 
-// The phone / tablet menu and the cart drawer of the Visual Discovery pages
-// (home, Browse, Auction, Live auction and Product). Browse passes its
-// current shopping mode as `active`, an auction lot "timed", the live auction
-// "live" and a product page "buy".
+// The phone / tablet menu and the cart drawer of the Visual Discovery pages.
+// Browse passes its current shopping mode as `active`, an auction lot
+// "timed", the live auction "live", a product page "buy" and a seller
+// storefront "sellers".
 import Link from "next/link";
 import { useLang } from "@/components/shared/providers/LangProvider";
 import { useConcept } from "@/components/shared/providers/ConceptProvider";
@@ -12,7 +12,7 @@ import { Logo } from "@/components/shared/brand/Logo";
 import { CartDrawer, MenuDrawer } from "@/components/shared/r3/drawers";
 import { useHomeState } from "@/components/shared/r3/home";
 import { COPY } from "./copy";
-import { AccountSummary, CityChoices, DiscoveryLanguage, SavedList, useModes } from "./Header";
+import { AccountLinks, AccountSummary, CityChoices, DiscoveryLanguage, SavedList, useModes } from "./Header";
 import { Arrow, cx } from "./ui";
 
 /**
@@ -22,7 +22,7 @@ import { Arrow, cx } from "./ui";
 export function Menu({ active } = {}) {
   const { t } = useLang();
   const { link } = useConcept();
-  const { watched } = useStore();
+  const { watched, signedIn } = useStore();
   const { layer, close } = useHomeState();
   const modes = useModes(active);
   const heading = "vd-xs font-bold uppercase tracking-[0.08em] text-[var(--vd-muted)]";
@@ -46,15 +46,24 @@ export function Menu({ active } = {}) {
         </ul>
       </nav>
       <p className={cx(heading, "mt-7")}>{t(COPY.account)}</p>
-      <div className="mt-3">
-        <AccountSummary />
+      {signedIn ? (
+        <div className="mt-3">
+          <AccountSummary />
+        </div>
+      ) : null}
+      <div className="mt-2">
+        <AccountLinks onPick={close} />
       </div>
-      <p className={cx(heading, "mt-7")}>
-        {t(COPY.saved)} · {watched.size}
-      </p>
-      <div className="mt-1">
-        <SavedList onPick={close} />
-      </div>
+      {signedIn ? (
+        <>
+          <p className={cx(heading, "mt-7")}>
+            {t(COPY.saved)} · {watched.size}
+          </p>
+          <div className="mt-1">
+            <SavedList onPick={close} />
+          </div>
+        </>
+      ) : null}
       <p className={cx(heading, "mt-7")}>{t(COPY.chooseCity)}</p>
       <div className="mt-2">
         <CityChoices />
@@ -68,6 +77,17 @@ export function Menu({ active } = {}) {
 }
 
 export function Cart() {
+  const { link } = useConcept();
   const { layer, close } = useHomeState();
-  return <CartDrawer open={layer === "cart"} onClose={close} titleClassName="vd-h3 text-fg" priceClassName="vd-price !text-[18px]" smallClassName="vd-sm" />;
+  return (
+    <CartDrawer
+      open={layer === "cart"}
+      onClose={close}
+      titleClassName="vd-h3 text-fg"
+      priceClassName="vd-price !text-[18px]"
+      smallClassName="vd-sm"
+      cartHref={link("/cart")}
+      checkoutHref={link("/checkout")}
+    />
+  );
 }

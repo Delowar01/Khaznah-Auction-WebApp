@@ -18,6 +18,8 @@ const VARIANT = {
   outline: "border-[1.5px] border-[var(--vd-indigo)] bg-white text-[var(--vd-ink)] hover:bg-[var(--vd-bluegray)]",
   soft: "border border-[var(--vd-line)] bg-white text-[var(--vd-indigo)] hover:bg-[var(--vd-bluegray)]",
   white: "bg-white text-[var(--vd-ink)] hover:bg-white/90",
+  // Customer pages: confirming a removal, a cancellation or similar.
+  danger: "bg-[#b3261e] text-white hover:bg-[#9a1f19]",
 };
 const SIZE = {
   sm: "h-9 px-4 vd-sm font-semibold",

@@ -13,6 +13,9 @@ export function PreviewStore({ children }) {
   const [cart, setCart] = useState([]);
   const [watched, setWatched] = useState(() => new Set(["split-ac", "suede-tote"]));
   const [toasts, setToasts] = useState([]);
+  // Option 3's customer pages: a simulated session (the demo buyer is signed
+  // in; sign out and sign in switch it, as production's AuthProvider would).
+  const [signedIn, setSignedIn] = useState(true);
   const timers = useRef(new Map());
 
   const dismissToast = useCallback((id) => {
@@ -50,6 +53,16 @@ export function PreviewStore({ children }) {
     setCart((items) => items.filter((item) => item.slug !== slug));
   }, []);
 
+  // Option 3's cart and checkout pages: set a line's quantity, load a sample
+  // cart, or empty the cart (a cancelled checkout clears it, as in production).
+  const setCartQty = useCallback((slug, qty) => {
+    setCart((items) => items.map((item) => (item.slug === slug ? { ...item, qty } : item)));
+  }, []);
+
+  const replaceCart = useCallback((items) => {
+    setCart(items.map((item) => ({ ...item })));
+  }, []);
+
   const isWatched = useCallback((slug) => watched.has(slug), [watched]);
 
   const toggleWatch = useCallback(
@@ -72,6 +85,10 @@ export function PreviewStore({ children }) {
       cartCount: cart.reduce((sum, item) => sum + item.qty, 0),
       addToCart,
       removeFromCart,
+      setCartQty,
+      replaceCart,
+      signedIn,
+      setSignedIn,
       watched,
       isWatched,
       toggleWatch,
@@ -79,7 +96,7 @@ export function PreviewStore({ children }) {
       toast,
       dismissToast,
     }),
-    [cart, addToCart, removeFromCart, watched, isWatched, toggleWatch, toasts, toast, dismissToast],
+    [cart, addToCart, removeFromCart, setCartQty, replaceCart, signedIn, watched, isWatched, toggleWatch, toasts, toast, dismissToast],
   );
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;

@@ -13,8 +13,12 @@ import { GRADES } from "@/data/grades";
 import { SORT_OPTIONS } from "@/lib/useBrowse";
 import { cx } from "../ui";
 
-/** All → Auctions → Buy Now, indigo pill on a blue-grey track. */
-export function ModePills({ browse, className = "" }) {
+/**
+ * All → Auctions → Buy Now, indigo pill on a blue-grey track. `modes`
+ * limits the choice (a seller storefront offers only what the seller's
+ * package includes).
+ */
+export function ModePills({ browse, className = "", modes }) {
   const { t } = useLang();
   const name = useId();
   const { state, facets } = browse;
@@ -22,11 +26,11 @@ export function ModePills({ browse, className = "" }) {
     { value: "all", label: t(C.all), count: facets.tabs.all },
     { value: "auction", label: t(C.auctions), count: facets.tabs.auction },
     { value: "buy_now", label: t(C.buyNow), count: facets.tabs.buy_now },
-  ];
+  ].filter((option) => !modes || modes.includes(option.value));
   return (
     <fieldset className={cx("min-w-0", className)}>
       <legend className="sr-only">{t(C.saleType)}</legend>
-      <div className="grid grid-cols-3 gap-1 rounded-full bg-[var(--vd-bluegray)] p-1 max-[379px]:rounded-[26px] sm:inline-grid sm:grid-cols-[repeat(3,auto)]">
+      <div className={cx("grid gap-1 rounded-full bg-[var(--vd-bluegray)] p-1 max-[379px]:rounded-[26px] sm:inline-grid", options.length === 3 ? "grid-cols-3 sm:grid-cols-[repeat(3,auto)]" : "grid-cols-2 sm:grid-cols-[repeat(2,auto)]")}>
         {options.map((option) => {
           const checked = state.tab === option.value;
           return (

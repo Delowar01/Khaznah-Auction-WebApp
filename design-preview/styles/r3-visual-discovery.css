@@ -491,3 +491,50 @@
   36% { opacity: 1; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1) rotate(calc(var(--spin) * 0.55)); }
   100% { opacity: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y) + 10vmin)) scale(0.8) rotate(var(--spin)); }
 }
+
+/* ── Customer pages (visual-discovery/kit and the screens built on it) ──── */
+@layer components {
+  /* H1 of the transactional pages (cart, checkout, payment, account): the
+     section heading's scale, so data stays the focus; content pages and the
+     storefront keep the display title (.vd-page-title). */
+  .vd-title-page { font-family: var(--font-display-stack); font-size: 30px; line-height: 36px; font-weight: 800; letter-spacing: -0.025em; }
+  @media (min-width: 768px) {
+    .vd-title-page { font-size: 34px; line-height: 40px; }
+  }
+  @media (min-width: 1200px) {
+    .vd-title-page { font-size: 40px; line-height: 46px; letter-spacing: -0.03em; }
+  }
+  :root[lang="ar"] .vd-title-page { font-size: 28px; line-height: 42px; letter-spacing: 0; }
+  @media (min-width: 768px) {
+    :root[lang="ar"] .vd-title-page { font-size: 31px; line-height: 47px; }
+  }
+  @media (min-width: 1200px) {
+    :root[lang="ar"] .vd-title-page { font-size: 34px; line-height: 50px; }
+  }
+
+  /* Long-form reading (policies, About): a 70-character measure, generous
+     leading, quiet headings with room above. Arabic prose follows its own
+     direction (as production's global rule). */
+  .vd-prose { max-width: 72ch; font-size: 16px; line-height: 27px; color: var(--vd-ink); }
+  .vd-prose p, .vd-prose ul, .vd-prose ol { margin-top: 14px; }
+  .vd-prose ul { list-style: disc; padding-inline-start: 22px; }
+  .vd-prose ol { list-style: decimal; padding-inline-start: 22px; }
+  .vd-prose li { margin-top: 6px; }
+  .vd-prose li::marker { color: var(--vd-indigo); }
+  .vd-prose h2 { margin-top: 40px; font-family: var(--font-display-stack); font-size: 22px; line-height: 29px; font-weight: 800; letter-spacing: -0.015em; }
+  .vd-prose h3 { margin-top: 24px; font-size: 17px; line-height: 24px; font-weight: 750; }
+  .vd-prose a { color: var(--vd-indigo); text-decoration: underline; text-underline-offset: 3px; }
+  :root[lang="ar"] .vd-prose { font-size: 17px; line-height: 31px; }
+  :root[lang="ar"] .vd-prose h2 { font-size: 22px; line-height: 34px; letter-spacing: 0; }
+  :root[lang="ar"] .vd-prose :is(p, li) { unicode-bidi: plaintext; }
+}
+
+/* Printing a policy (or any customer page): the page only — no presentation
+   bar, masthead, footer or floating layers — in black on white. */
+@media print {
+  :root[data-concept="c"][data-r3] .kz-pbar,
+  :root[data-concept="c"][data-r3] .kz-pbar-show,
+  :root[data-concept="c"][data-r3] .vd-print-hide { display: none !important; }
+  :root[data-concept="c"][data-r3] .pt-pbar { padding-top: 0 !important; }
+  :root[data-concept="c"][data-r3] .vd-prose { max-width: none; color: #000; }
+}
